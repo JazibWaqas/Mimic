@@ -4,6 +4,7 @@ Handles file uploads, Gemini 3 processing, and video rendering.
 """
 
 import os
+import sys
 from fastapi import FastAPI, UploadFile, File, WebSocket, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -17,6 +18,15 @@ import json
 from models import *
 from engine.orchestrator import run_mimic_pipeline
 from utils import ensure_directory, cleanup_session
+
+# Ensure Windows consoles don't crash on emoji/unicode log output
+try:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 
 app = FastAPI(title="MIMIC API", version="1.0.0")
 

@@ -8,6 +8,15 @@ All state management, error handling, and module coordination happens here.
 """
 
 import time
+import sys
+
+# Fix Windows console encoding for print statements
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+    except:
+        pass
 from pathlib import Path
 from typing import Callable, List
 from models import PipelineResult, StyleBlueprint, ClipIndex, EDL
@@ -101,7 +110,7 @@ def run_mimic_pipeline(
         try:
             blueprint = analyze_reference_video(reference_path, api_key)
         except Exception as e:
-            print(f"⚠️  Gemini analysis failed: {e}")
+            print(f"[WARN] Gemini analysis failed: {e}")
             print("    Using fallback mode...")
             blueprint = create_fallback_blueprint(reference_path)
         
@@ -123,7 +132,7 @@ def run_mimic_pipeline(
             clip_index = analyze_all_clips(standardized_paths, api_key)
         except Exception as e:
             # If analysis fails, create default index
-            print(f"⚠️  Clip analysis failed: {e}")
+            print(f"[WARN] Clip analysis failed: {e}")
             print("    Using default energy levels...")
             from models import ClipMetadata, EnergyLevel, MotionType
             from engine.processors import get_video_duration
@@ -197,7 +206,7 @@ def run_mimic_pipeline(
         processing_time = time.time() - start_time
         
         print(f"\n{'='*60}")
-        print(f"✅ PIPELINE COMPLETE")
+        print(f"[OK] PIPELINE COMPLETE")
         print(f"{'='*60}")
         print(f"Output: {final_output_path}")
         print(f"Duration: {blueprint.total_duration:.2f}s")
@@ -218,7 +227,7 @@ def run_mimic_pipeline(
         processing_time = time.time() - start_time
         
         print(f"\n{'='*60}")
-        print(f"❌ PIPELINE FAILED")
+        print(f"[ERROR] PIPELINE FAILED")
         print(f"{'='*60}")
         print(f"Error: {str(e)}")
         print(f"{'='*60}\n")

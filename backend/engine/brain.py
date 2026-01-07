@@ -162,10 +162,10 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
                 model_name=model_name,
                 generation_config=GeminiConfig.GENERATION_CONFIG
             )
-            print(f"✅ Using model: {model_name}")
+            print(f"[OK] Using model: {model_name}")
             return model
         except Exception as e:
-            print(f"⚠️  Model {model_name} not available: {e}")
+            print(f"[WARN] Model {model_name} not available: {e}")
             continue
     
     raise ValueError("No Gemini models available. Check API key and model access.")
@@ -258,7 +258,7 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
         ValueError: If Gemini returns invalid JSON
     """
     print(f"\n{'='*60}")
-    print(f"🧠 ANALYZING REFERENCE VIDEO: {Path(video_path).name}")
+    print(f"[BRAIN] ANALYZING REFERENCE VIDEO: {Path(video_path).name}")
     print(f"{'='*60}\n")
     
     model = initialize_gemini(api_key)
@@ -276,7 +276,7 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
             json_data = _parse_json_response(response.text)
             blueprint = StyleBlueprint(**json_data)
             
-            print(f"✅ Analysis complete: {len(blueprint.segments)} segments")
+            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments")
             return blueprint
             
         except Exception as e:
@@ -313,7 +313,7 @@ def analyze_clip(clip_path: str, api_key: str | None = None) -> tuple[EnergyLeve
             energy = EnergyLevel(json_data["energy"])
             motion = MotionType(json_data["motion"])
             
-            print(f"    ✅ {energy.value} / {motion.value}")
+            print(f"    [OK] {energy.value} / {motion.value}")
             return energy, motion
             
         except Exception as e:
@@ -334,7 +334,7 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None) -> Clip
         ClipIndex with metadata for all clips
     """
     print(f"\n{'='*60}")
-    print(f"🧠 ANALYZING USER CLIPS ({len(clip_paths)} total)")
+    print(f"[BRAIN] ANALYZING USER CLIPS ({len(clip_paths)} total)")
     print(f"{'='*60}\n")
     
     clip_metadata_list = []
@@ -356,7 +356,7 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None) -> Clip
         )
         clip_metadata_list.append(clip_metadata)
     
-    print(f"\n✅ All clips analyzed\n")
+    print(f"\n[OK] All clips analyzed\n")
     return ClipIndex(clips=clip_metadata_list)
 
 
@@ -375,7 +375,7 @@ def create_fallback_blueprint(video_path: str) -> StyleBlueprint:
     Returns:
         StyleBlueprint with even 2-second segments
     """
-    print("⚠️  Using fallback mode: Linear 2-second segments")
+    print("[WARN] Using fallback mode: Linear 2-second segments")
     
     from engine.processors import get_video_duration
     duration = get_video_duration(video_path)

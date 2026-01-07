@@ -42,7 +42,7 @@ def match_clips_to_blueprint(blueprint: StyleBlueprint, clip_index: ClipIndex) -
         EDL (Edit Decision List) with frame-accurate instructions
     """
     print(f"\n{'='*60}")
-    print(f"✂️  MATCHING CLIPS TO BLUEPRINT")
+    print(f"[EDITOR] MATCHING CLIPS TO BLUEPRINT")
     print(f"{'='*60}\n")
     
     # Track how many times each clip has been used
@@ -65,7 +65,7 @@ def match_clips_to_blueprint(blueprint: StyleBlueprint, clip_index: ClipIndex) -
         matching_clips = energy_pools.get(segment.energy, [])
         
         if not matching_clips:
-            print(f"  ⚠️  No {segment.energy.value} clips available, using fallback")
+            print(f"  [WARN] No {segment.energy.value} clips available, using fallback")
             # Fallback: Use round-robin from all clips
             matching_clips = sorted(
                 clip_index.clips,
@@ -110,13 +110,13 @@ def match_clips_to_blueprint(blueprint: StyleBlueprint, clip_index: ClipIndex) -
             timeline_position += use_duration
             remaining_duration -= use_duration
             
-            print(f"    ✅ Using {selected_clip.filename} "
+            print(f"    [OK] Using {selected_clip.filename} "
                   f"[{clip_start:.2f}s-{clip_start + use_duration:.2f}s] "
                   f"→ timeline [{decision.timeline_start:.2f}s-{decision.timeline_end:.2f}s]")
             
             # If we still need more footage, switch to next clip in pool
             if remaining_duration > 0.01:
-                print(f"    ⚠️  Clip exhausted, need {remaining_duration:.2f}s more")
+                print(f"    [WARN] Clip exhausted, need {remaining_duration:.2f}s more")
                 # Get next clip from pool
                 next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
                 selected_clip = next_clip
@@ -125,7 +125,7 @@ def match_clips_to_blueprint(blueprint: StyleBlueprint, clip_index: ClipIndex) -
         clip_usage_count[selected_clip.filename] += 1
     
     edl = EDL(decisions=decisions)
-    print(f"\n✅ Matching complete: {len(decisions)} edit decisions\n")
+    print(f"\n[OK] Matching complete: {len(decisions)} edit decisions\n")
     return edl
 
 
@@ -169,7 +169,7 @@ def _get_next_clip(
 def print_edl_summary(edl: EDL, blueprint: StyleBlueprint, clip_index: ClipIndex) -> None:
     """Print human-readable EDL summary for debugging."""
     print(f"\n{'='*60}")
-    print(f"📋 EDIT DECISION LIST SUMMARY")
+    print(f"[EDL] EDIT DECISION LIST SUMMARY")
     print(f"{'='*60}\n")
     
     print(f"Total decisions: {len(edl.decisions)}")

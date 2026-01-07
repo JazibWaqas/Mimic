@@ -110,7 +110,7 @@ def standardize_clip(input_path: str, output_path: str) -> None:
             text=True,
             check=True
         )
-        print(f"  ✅ Standardized: {Path(output_path).name}")
+        print(f"  [OK] Standardized: {Path(output_path).name}")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(
             f"FFmpeg standardization failed:\n"
@@ -154,12 +154,12 @@ def extract_audio(video_path: str, audio_output_path: str) -> bool:
             text=True,
             check=True
         )
-        print(f"  ✅ Audio extracted: {Path(audio_output_path).name}")
+        print(f"  [OK] Audio extracted: {Path(audio_output_path).name}")
         return True
     except subprocess.CalledProcessError as e:
         # Check if it's a "no audio stream" error
         if "does not contain any stream" in e.stderr or "no audio" in e.stderr.lower():
-            print(f"  ⚠️  No audio track found in {Path(video_path).name}")
+            print(f"  [WARN] No audio track found in {Path(video_path).name}")
             return False
         else:
             raise RuntimeError(f"Audio extraction failed: {e.stderr}")
@@ -197,7 +197,7 @@ def extract_segment(
     
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(f"    ✅ Segment extracted: {start_time:.2f}s - {start_time + duration:.2f}s")
+        print(f"    [OK] Segment extracted: {start_time:.2f}s - {start_time + duration:.2f}s")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Segment extraction failed: {e.stderr}")
 
@@ -243,7 +243,7 @@ def concatenate_videos(input_paths: List[str], output_path: str) -> None:
     
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(f"  ✅ Concatenated {len(input_paths)} segments (frame-perfect)")
+        print(f"  [OK] Concatenated {len(input_paths)} segments (frame-perfect)")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Concatenation failed: {e.stderr}")
     finally:
@@ -292,7 +292,7 @@ def merge_audio_video(
     
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(f"  ✅ Audio merged onto video (optimized)")
+        print(f"  [OK] Audio merged onto video (optimized)")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Audio/video merge failed: {e.stderr}")
 
@@ -320,7 +320,7 @@ def create_silent_video(input_path: str, output_path: str) -> None:
     
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(f"  ✅ Silent video created")
+        print(f"  [OK] Silent video created")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Silent video creation failed: {e.stderr}")
 
