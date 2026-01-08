@@ -19,29 +19,31 @@ def ensure_directory(path: str | Path) -> Path:
     return p
 
 
-def cleanup_session(session_id: str, keep_dirs: bool = False) -> None:
+def cleanup_session(session_id: str, cleanup_uploads: bool = False) -> None:
     """
-    Clean up temporary files for a session.
+    Clean up temporary processing files for a session.
+    
+    NOTE: This only cleans temp/ (intermediate processing files).
+    Uploaded files in data/uploads/ are kept by default (permanent).
     
     Args:
         session_id: Session ID to clean
-        keep_dirs: If True, keep directory structure but delete contents
+        cleanup_uploads: If True, also delete uploaded files from data/uploads/
     """
-    session_dir = Path(f"temp/{session_id}")
+    BASE_DIR = Path(__file__).resolve().parent.parent
     
-    if not session_dir.exists():
-        return
+    # Clean temp/ (intermediate processing files)
+    temp_session_dir = BASE_DIR / "temp" / session_id
+    if temp_session_dir.exists():
+        shutil.rmtree(temp_session_dir, ignore_errors=True)
+        print(f"[CLEANUP] Deleted temp files: {temp_session_dir}")
     
-    if keep_dirs:
-        # Delete contents but keep structure
-        for subdir in session_dir.iterdir():
-            if subdir.is_dir():
-                for file in subdir.iterdir():
-                    if file.is_file():
-                        file.unlink()
-    else:
-        # Delete entire session directory
-        shutil.rmtree(session_dir, ignore_errors=True)
+    # Optionally clean uploads/ (permanent files)
+    if cleanup_uploads:
+        uploads_session_dir = BASE_DIR / "data" / "uploads" / session_id
+        if uploads_session_dir.exists():
+            shutil.rmtree(uploads_session_dir, ignore_errors=True)
+            print(f"[CLEANUP] Deleted uploaded files: {uploads_session_dir}")
 
 
 def cleanup_all_temp() -> None:

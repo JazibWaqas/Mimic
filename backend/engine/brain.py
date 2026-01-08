@@ -16,6 +16,14 @@ import google.generativeai as genai
 from models import StyleBlueprint, ClipMetadata, ClipIndex, EnergyLevel, MotionType, Segment
 
 # ============================================================================
+# CACHE VERSIONING
+# ============================================================================
+
+# Increment this when prompts change to invalidate old caches
+CACHE_VERSION = "2.0"  # v2.0: Updated to detect actual cut points (Jan 9, 2025)
+# v1.0: Initial prompt (3-8 segments, basic energy/motion)
+
+# ============================================================================
 # PROMPTS (These are CRITICAL—do not modify without testing)
 # ============================================================================
 
@@ -115,6 +123,42 @@ OUTPUT FORMAT (JSON only, no markdown):
 }
 
 Respond ONLY with valid JSON matching the schema above.
+"""
+
+BEST_MOMENT_PROMPT_TEMPLATE = """
+You are a professional video editor analyzing a clip to find the SINGLE BEST MOMENT that matches a specific energy and motion profile.
+
+TARGET PROFILE:
+- Energy: {target_energy}
+- Motion: {target_motion}
+- Desired Duration: {target_duration:.2f} seconds
+
+YOUR TASK:
+Watch the ENTIRE clip and identify the SINGLE BEST continuous moment (lasting approximately {target_duration:.2f} seconds) that best matches the target profile.
+
+CRITERIA FOR "BEST MOMENT":
+1. The moment should have energy level matching "{target_energy}"
+2. The moment should have motion type matching "{target_motion}"
+3. The moment should be visually compelling and "viral-worthy"
+4. The moment should be continuous (no cuts within it)
+5. If multiple moments match, choose the MOST INTENSE or MOST DYNAMIC one
+
+OUTPUT FORMAT (JSON only, no markdown):
+{{
+  "best_moment_start": 12.5,
+  "best_moment_end": 15.2,
+  "reason": "Brief explanation of why this moment matches (max 50 words)"
+}}
+
+IMPORTANT:
+- Provide timestamps in SECONDS (decimal format, e.g., 12.5 not 12:30)
+- best_moment_start must be >= 0
+- best_moment_end must be > best_moment_start
+- best_moment_end must be <= clip duration
+- The duration (best_moment_end - best_moment_start) should be approximately {target_duration:.2f} seconds
+- If no good moment exists, return the closest match you can find
+
+Respond ONLY with valid JSON. Do not include explanations, markdown, or any other text.
 """
 
 
@@ -303,12 +347,22 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
         print(f"[CACHE] Found cached analysis: {cache_file.name}")
         try:
             with open(cache_file) as f:
-                data = json.load(f)
-                blueprint = StyleBlueprint(**data)
-                print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments")
-                return blueprint
+                cache_data = json.load(f)
+                
+                # Check cache version
+                cache_version = cache_data.get("_cache_version", "1.0")  # Default to 1.0 for old caches
+                if cache_version != CACHE_VERSION:
+                    print(f"[CACHE] Version mismatch (cached: {cache_version}, current: {CACHE_VERSION})")
+                    print(f"[CACHE] Prompt changed - invalidating cache and re-analyzing...")
+                    cache_file.unlink()  # Delete old cache
+                else:
+                    # Remove metadata before validation
+                    blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
+                    blueprint = StyleBlueprint(**blueprint_data)
+                    print(f"[OK] Loaded from cache (v{CACHE_VERSION}): {len(blueprint.segments)} segments")
+                    return blueprint
         except Exception as e:
-            print(f"[WARN] Cache corrupted: {e}. Re-analyzing...")
+            print(f"[WARN] Cache corrupted or invalid: {e}. Re-analyzing...")
     
     # Cache miss - call API
     model = initialize_gemini(api_key)
@@ -324,10 +378,15 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
             json_data = _parse_json_response(response.text)
             blueprint = StyleBlueprint(**json_data)
             
-            # Save to cache
+            # Save to cache with version metadata
+            cache_data = {
+                **json_data,
+                "_cache_version": CACHE_VERSION,
+                "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
+            }
             with open(cache_file, 'w') as f:
-                json.dump(json_data, f, indent=2)
-            print(f"[CACHE] Saved to {cache_file.name}")
+                json.dump(cache_data, f, indent=2)
+            print(f"[CACHE] Saved to {cache_file.name} (v{CACHE_VERSION})")
             
             print(f"[OK] Analysis complete: {len(blueprint.segments)} segments")
             return blueprint
@@ -342,6 +401,81 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
                 raise Exception(f"Failed to analyze reference after {GeminiConfig.MAX_RETRIES} attempts: {e}")
             
             print(f"Analysis failed: {e}. Retrying in {GeminiConfig.RETRY_DELAY}s...")
+            time.sleep(GeminiConfig.RETRY_DELAY)
+
+
+def find_best_moment(
+    clip_path: str,
+    target_energy: EnergyLevel,
+    target_motion: MotionType,
+    target_duration: float,
+    api_key: str | None = None
+) -> tuple[float, float]:
+    """
+    Find the best moment within a clip that matches target energy/motion profile.
+    
+    This uses Gemini 3's spatial-temporal reasoning to identify the most compelling
+    moment within the clip, rather than just using sequential cuts.
+    
+    Args:
+        clip_path: Path to clip file
+        target_energy: Desired energy level
+        target_motion: Desired motion type
+        target_duration: Desired duration in seconds
+        api_key: Optional Gemini API key
+    
+    Returns:
+        Tuple of (start_time, end_time) in seconds
+    
+    Raises:
+        Exception: If analysis fails
+    """
+    print(f"  Finding best moment in {Path(clip_path).name} for {target_energy.value}/{target_motion.value} ({target_duration:.2f}s)...")
+    
+    prompt = BEST_MOMENT_PROMPT_TEMPLATE.format(
+        target_energy=target_energy.value,
+        target_motion=target_motion.value,
+        target_duration=target_duration
+    )
+    
+    model = initialize_gemini(api_key)
+    video_file = _upload_video_with_retry(clip_path)
+    
+    for attempt in range(GeminiConfig.MAX_RETRIES):
+        try:
+            response = model.generate_content([video_file, prompt])
+            json_data = _parse_json_response(response.text)
+            
+            start = float(json_data["best_moment_start"])
+            end = float(json_data["best_moment_end"])
+            
+            # Validate timestamps
+            from engine.processors import get_video_duration
+            clip_duration = get_video_duration(clip_path)
+            
+            if start < 0 or end <= start or end > clip_duration:
+                print(f"    [WARN] Invalid timestamps from AI, using fallback")
+                # Fallback: use first N seconds
+                start = 0.0
+                end = min(target_duration, clip_duration)
+            else:
+                print(f"    [OK] Best moment: {start:.2f}s - {end:.2f}s ({json_data.get('reason', 'N/A')})")
+            
+            return start, end
+            
+        except Exception as e:
+            error_msg = str(e).lower()
+            if "429" in error_msg or "quota" in error_msg:
+                print(f"    [QUOTA] Rate limit hit. Waiting 10s...")
+                time.sleep(10.0)
+            
+            if attempt == GeminiConfig.MAX_RETRIES - 1:
+                print(f"    [WARN] Best moment analysis failed, using fallback: {e}")
+                # Fallback: use first N seconds
+                from engine.processors import get_video_duration
+                clip_duration = get_video_duration(clip_path)
+                return 0.0, min(target_duration, clip_duration)
+            
             time.sleep(GeminiConfig.RETRY_DELAY)
 
 
@@ -448,13 +582,20 @@ def _analyze_single_clip(model: genai.GenerativeModel, clip_path: str) -> tuple[
     if cache_file.exists():
         try:
             with open(cache_file) as f:
-                data = json.load(f)
-                energy = EnergyLevel(data["energy"])
-                motion = MotionType(data["motion"])
-                print(f"    [CACHE] {energy.value} / {motion.value}")
-                return energy, motion
-        except:
-            pass  # Cache corrupted, re-analyze
+                cache_data = json.load(f)
+                
+                # Check cache version (clip analysis prompt hasn't changed, but check anyway)
+                cache_version = cache_data.get("_cache_version", "1.0")
+                if cache_version != CACHE_VERSION:
+                    print(f"    [CACHE] Version mismatch - invalidating...")
+                    cache_file.unlink()
+                else:
+                    energy = EnergyLevel(cache_data["energy"])
+                    motion = MotionType(cache_data["motion"])
+                    print(f"    [CACHE] {energy.value} / {motion.value}")
+                    return energy, motion
+        except Exception as e:
+            print(f"    [WARN] Cache corrupted: {e}. Re-analyzing...")
     
     # Cache miss - call API
     video_file = _upload_video_with_retry(clip_path)
@@ -467,9 +608,15 @@ def _analyze_single_clip(model: genai.GenerativeModel, clip_path: str) -> tuple[
             energy = EnergyLevel(json_data["energy"])
             motion = MotionType(json_data["motion"])
             
-            # Save to cache
+            # Save to cache with version metadata
+            cache_data = {
+                "energy": energy.value,
+                "motion": motion.value,
+                "_cache_version": CACHE_VERSION,
+                "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
+            }
             with open(cache_file, 'w') as f:
-                json.dump({"energy": energy.value, "motion": motion.value}, f)
+                json.dump(cache_data, f, indent=2)
             
             print(f"    [OK] {energy.value} / {motion.value}")
             return energy, motion

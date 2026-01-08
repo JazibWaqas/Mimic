@@ -25,12 +25,16 @@ load_dotenv()
 
 # Root Directory Setup
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMP_DIR = BASE_DIR / "temp"
+TEMP_DIR = BASE_DIR / "temp"  # Only for intermediate processing files
 DATA_DIR = BASE_DIR / "data"
-RESULTS_DIR = DATA_DIR / "results"
+UPLOADS_DIR = DATA_DIR / "uploads"  # Permanent storage for uploaded files
+RESULTS_DIR = DATA_DIR / "results"  # Final output videos
+CACHE_DIR = DATA_DIR / "cache"      # Cached AI analyses
 
 # Ensure dirs exist
+UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+CACHE_DIR.mkdir(parents=True, exist_ok=True)
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="MIMIC API", version="1.0.0")
@@ -76,18 +80,19 @@ async def upload_files(
     print(f"[UPLOAD] Reference: {reference.filename}")
     print(f"[UPLOAD] Clips: {len(clips)} files")
     
-    # Create session directories
-    session_dir = TEMP_DIR / session_id
-    ref_dir = ensure_directory(session_dir / "reference")
-    clips_dir = ensure_directory(session_dir / "clips")
+    # Save to permanent storage (data/uploads/)
+    session_uploads_dir = UPLOADS_DIR / session_id
+    ref_dir = ensure_directory(session_uploads_dir / "reference")
+    clips_dir = ensure_directory(session_uploads_dir / "clips")
     
-    # Save reference
+    # Save reference (permanent)
     ref_path = ref_dir / reference.filename
     with open(ref_path, "wb") as f:
         content = await reference.read()
         f.write(content)
+    print(f"[UPLOAD] Reference saved to: {ref_path}")
     
-    # Save clips
+    # Save clips (permanent)
     clip_paths = []
     for clip in clips:
         clip_path = clips_dir / clip.filename
@@ -95,6 +100,7 @@ async def upload_files(
             content = await clip.read()
             f.write(content)
         clip_paths.append(str(clip_path))
+    print(f"[UPLOAD] {len(clip_paths)} clips saved to: {clips_dir}")
     
     # Store session info
     active_sessions[session_id] = {
@@ -135,11 +141,11 @@ async def upload_manual(
     # Generate session ID
     session_id = str(uuid.uuid4())
     
-    # Create session directories
-    session_dir = TEMP_DIR / session_id
-    clips_dir = ensure_directory(session_dir / "clips")
+    # Save to permanent storage (data/uploads/)
+    session_uploads_dir = UPLOADS_DIR / session_id
+    clips_dir = ensure_directory(session_uploads_dir / "clips")
     
-    # Save clips
+    # Save clips (permanent)
     clip_paths = []
     for clip in clips:
         clip_path = clips_dir / clip.filename
@@ -147,6 +153,7 @@ async def upload_manual(
             content = await clip.read()
             f.write(content)
         clip_paths.append(str(clip_path))
+    print(f"[UPLOAD] {len(clip_paths)} clips saved to: {clips_dir}")
     
     # Parse and validate JSON
     try:

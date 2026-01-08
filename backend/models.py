@@ -122,7 +122,9 @@ class ClipMetadata(BaseModel):
         "filepath": "/temp/abc123/clips/dance_clip.mp4",
         "duration": 5.2,
         "energy": "High",
-        "motion": "Dynamic"
+        "motion": "Dynamic",
+        "best_moment_start": 12.5,  # Optional: best moment timestamp
+        "best_moment_end": 17.2     # Optional: best moment timestamp
     }
     """
     filename: str
@@ -130,6 +132,19 @@ class ClipMetadata(BaseModel):
     duration: float = Field(..., gt=0)
     energy: EnergyLevel
     motion: MotionType
+    best_moment_start: float | None = Field(None, ge=0, description="Start time of best moment (if analyzed)")
+    best_moment_end: float | None = Field(None, gt=0, description="End time of best moment (if analyzed)")
+    
+    @field_validator('best_moment_end')
+    @classmethod
+    def validate_best_moment(cls, v, info):
+        if v is not None and 'best_moment_start' in info.data:
+            start = info.data.get('best_moment_start')
+            if start is not None and v <= start:
+                raise ValueError('best_moment_end must be greater than best_moment_start')
+            if 'duration' in info.data and v > info.data['duration']:
+                raise ValueError('best_moment_end cannot exceed clip duration')
+        return v
 
 
 class ClipIndex(BaseModel):

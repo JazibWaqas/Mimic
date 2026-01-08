@@ -93,17 +93,20 @@ def run_mimic_pipeline(
         # Setup session directories
         # Use absolute path to ensure consistency regardless of CWD
         BASE_DIR = Path(__file__).resolve().parent.parent.parent
-        session_dir = BASE_DIR / "temp" / session_id
-        standardized_dir = session_dir / "standardized"
-        segments_dir = session_dir / "segments"
         
-        ensure_directory(session_dir)
+        # Permanent uploads are in data/uploads/{session_id}/
+        # Temporary processing files go to temp/{session_id}/
+        temp_session_dir = BASE_DIR / "temp" / session_id
+        standardized_dir = temp_session_dir / "standardized"
+        segments_dir = temp_session_dir / "segments"
+        
+        ensure_directory(temp_session_dir)
         ensure_directory(standardized_dir)
         ensure_directory(segments_dir)
         ensure_directory(output_dir)
         
-        # No cleanup here—it deletes the files we just uploaded!
-        # cleanup_session(session_id, keep_dirs=True)
+        # Note: Uploaded files stay in data/uploads/ (permanent)
+        # Only temp/ files (standardized, segments) can be cleaned up
         
         # ==================================================================
         # STEP 2: ANALYZE REFERENCE
@@ -158,7 +161,7 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(4, TOTAL_STEPS, "Creating edit sequence...")
         
-        edl = match_clips_to_blueprint(blueprint, clip_index)
+        edl = match_clips_to_blueprint(blueprint, clip_index, find_best_moments=True, api_key=api_key)
         validate_edl(edl, blueprint)
         print_edl_summary(edl, blueprint, clip_index)
         
@@ -330,10 +333,12 @@ def run_mimic_pipeline_manual(
         print(f"{'='*60}\n")
         
         # Setup directories
-        session_dir = Path(f"temp/{session_id}")
-        standardized_dir = session_dir / "standardized"
-        segments_dir = session_dir / "segments"
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        temp_session_dir = BASE_DIR / "temp" / session_id
+        standardized_dir = temp_session_dir / "standardized"
+        segments_dir = temp_session_dir / "segments"
         
+        ensure_directory(temp_session_dir)
         ensure_directory(standardized_dir)
         ensure_directory(segments_dir)
         ensure_directory(output_dir)
@@ -355,7 +360,8 @@ def run_mimic_pipeline_manual(
         # STEP 2: MATCH CLIPS TO BLUEPRINT
         update_progress(2, TOTAL_STEPS, "Creating edit sequence...")
         
-        edl = match_clips_to_blueprint(blueprint, clip_index)
+        # Manual mode - no best moment analysis (saves API calls)
+        edl = match_clips_to_blueprint(blueprint, clip_index, find_best_moments=False)
         validate_edl(edl, blueprint)
         print_edl_summary(edl, blueprint, clip_index)
         

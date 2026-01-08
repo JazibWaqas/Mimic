@@ -19,7 +19,12 @@ from models import (
 # MATCHING ALGORITHM
 # ============================================================================
 
-def match_clips_to_blueprint(blueprint: StyleBlueprint, clip_index: ClipIndex) -> EDL:
+def match_clips_to_blueprint(
+    blueprint: StyleBlueprint, 
+    clip_index: ClipIndex,
+    find_best_moments: bool = True,
+    api_key: str | None = None
+) -> EDL:
     """
     Match user clips to blueprint segments using energy-based greedy algorithm.
     
@@ -76,50 +81,91 @@ def match_clips_to_blueprint(blueprint: StyleBlueprint, clip_index: ClipIndex) -
         selected_clip = min(matching_clips, key=lambda c: clip_usage_count[c.filename])
         print(f"  📎 Selected: {selected_clip.filename} ({selected_clip.energy.value})")
         
+        # Find best moment if enabled and not already analyzed
+        if find_best_moments and (selected_clip.best_moment_start is None or selected_clip.best_moment_end is None):
+            try:
+                from engine.brain import find_best_moment
+                best_start, best_end = find_best_moment(
+                    selected_clip.filepath,
+                    segment.energy,
+                    segment.motion,
+                    segment.duration,
+                    api_key
+                )
+                # Update clip metadata with best moment
+                selected_clip.best_moment_start = best_start
+                selected_clip.best_moment_end = best_end
+                print(f"  ✨ Best moment found: {best_start:.2f}s - {best_end:.2f}s")
+            except Exception as e:
+                print(f"  [WARN] Best moment analysis failed: {e}, using sequential cutting")
+        
         # Fill the segment duration
         remaining_duration = segment.duration
         segment_start_time = timeline_position
         
         while remaining_duration > 0.01:  # 10ms tolerance
-            # Get current position in this clip
-            clip_start = clip_current_position[selected_clip.filename]
-            available_duration = selected_clip.duration - clip_start
-            
-            if available_duration <= 0:
-                # Clip exhausted, reset to beginning
-                clip_current_position[selected_clip.filename] = 0.0
-                clip_start = 0.0
-                available_duration = selected_clip.duration
-            
-            # How much of this clip should we use?
-            use_duration = min(remaining_duration, available_duration)
+            # Determine clip start position
+            if selected_clip.best_moment_start is not None and selected_clip.best_moment_end is not None:
+                # Use best moment (non-sequential cutting)
+                best_duration = selected_clip.best_moment_end - selected_clip.best_moment_start
+                if best_duration >= remaining_duration:
+                    # Best moment is long enough, use portion of it
+                    clip_start = selected_clip.best_moment_start
+                    clip_end = selected_clip.best_moment_start + remaining_duration
+                    use_duration = remaining_duration
+                    print(f"    [BEST MOMENT] Using {use_duration:.2f}s from best moment")
+                else:
+                    # Best moment is shorter than needed, use it fully and continue
+                    clip_start = selected_clip.best_moment_start
+                    clip_end = selected_clip.best_moment_end
+                    use_duration = best_duration
+                    print(f"    [BEST MOMENT] Using full best moment ({use_duration:.2f}s), need {remaining_duration - use_duration:.2f}s more")
+            else:
+                # Fallback to sequential cutting
+                clip_start = clip_current_position[selected_clip.filename]
+                available_duration = selected_clip.duration - clip_start
+                
+                if available_duration <= 0:
+                    # Clip exhausted, reset to beginning
+                    clip_current_position[selected_clip.filename] = 0.0
+                    clip_start = 0.0
+                    available_duration = selected_clip.duration
+                
+                use_duration = min(remaining_duration, available_duration)
+                clip_end = clip_start + use_duration
+                
+                # Update tracking for sequential mode
+                clip_current_position[selected_clip.filename] += use_duration
             
             # Create edit decision
             decision = EditDecision(
                 segment_id=segment.id,
                 clip_path=selected_clip.filepath,
                 clip_start=clip_start,
-                clip_end=clip_start + use_duration,
+                clip_end=clip_end,
                 timeline_start=timeline_position,
                 timeline_end=timeline_position + use_duration
             )
             decisions.append(decision)
             
-            # Update tracking
-            clip_current_position[selected_clip.filename] += use_duration
+            # Update timeline
             timeline_position += use_duration
             remaining_duration -= use_duration
             
             print(f"    [OK] Using {selected_clip.filename} "
-                  f"[{clip_start:.2f}s-{clip_start + use_duration:.2f}s] "
+                  f"[{clip_start:.2f}s-{clip_end:.2f}s] "
                   f"→ timeline [{decision.timeline_start:.2f}s-{decision.timeline_end:.2f}s]")
             
             # If we still need more footage, switch to next clip in pool
             if remaining_duration > 0.01:
-                print(f"    [WARN] Clip exhausted, need {remaining_duration:.2f}s more")
+                print(f"    [WARN] Need {remaining_duration:.2f}s more")
                 # Get next clip from pool
                 next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
                 selected_clip = next_clip
+                # Reset best moment for new clip (will be analyzed if needed)
+                if find_best_moments:
+                    selected_clip.best_moment_start = None
+                    selected_clip.best_moment_end = None
         
         # Mark clip as used
         clip_usage_count[selected_clip.filename] += 1
