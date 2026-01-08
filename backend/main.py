@@ -15,9 +15,13 @@ from typing import List
 import asyncio
 import json
 
+from dotenv import load_dotenv
 from models import *
 from engine.orchestrator import run_mimic_pipeline
 from utils import ensure_directory, cleanup_session
+
+# Load environment variables
+load_dotenv()
 
 # Root Directory Setup
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -108,6 +112,65 @@ async def upload_files(
     }
 
 
+@app.post("/api/upload-manual")
+async def upload_manual(
+    clips: List[UploadFile] = File(...),
+    blueprint: str = File(...),
+    clip_analysis: str = File(...)
+):
+    """
+    Manual mode: Upload clips with pre-analyzed JSON from AI Studio.
+    Bypasses Gemini API entirely - only runs matching + rendering.
+    
+    Returns:
+        {"session_id": "uuid", "mode": "manual"}
+    """
+    # Generate session ID
+    session_id = str(uuid.uuid4())
+    
+    # Create session directories
+    session_dir = TEMP_DIR / session_id
+    clips_dir = ensure_directory(session_dir / "clips")
+    
+    # Save clips
+    clip_paths = []
+    for clip in clips:
+        clip_path = clips_dir / clip.filename
+        with open(clip_path, "wb") as f:
+            content = await clip.read()
+            f.write(content)
+        clip_paths.append(str(clip_path))
+    
+    # Parse and validate JSON
+    try:
+        blueprint_data = json.loads(blueprint)
+        clip_analysis_data = json.loads(clip_analysis)
+        
+        # Validate structure
+        from models import StyleBlueprint, ClipIndex
+        validated_blueprint = StyleBlueprint(**blueprint_data)
+        validated_clips = ClipIndex(**clip_analysis_data)
+        
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid JSON: {str(e)}")
+    
+    # Store session info with manual mode flag
+    active_sessions[session_id] = {
+        "mode": "manual",
+        "clip_paths": clip_paths,
+        "blueprint": validated_blueprint.model_dump(),
+        "clip_index": validated_clips.model_dump(),
+        "status": "uploaded",
+        "progress": 0.0
+    }
+    
+    return {
+        "session_id": session_id,
+        "mode": "manual",
+        "clips": [{"filename": Path(p).name} for p in clip_paths]
+    }
+
+
 @app.post("/api/generate/{session_id}")
 async def generate_video(session_id: str, background_tasks: BackgroundTasks):
     """
@@ -140,23 +203,45 @@ async def generate_video(session_id: str, background_tasks: BackgroundTasks):
     return {"status": "processing", "session_id": session_id}
 
 
-async def process_video_pipeline(session_id: str, ref_path: str, clip_paths: List[str]):
+def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: List[str] = None):
     """
     Run the MIMIC pipeline with progress updates.
+    Supports both Auto mode (with Gemini API) and Manual mode (pre-analyzed JSON).
     """
     def progress_callback(step: int, total: int, message: str):
         active_sessions[session_id]["progress"] = step / total
         active_sessions[session_id]["current_step"] = message
-        # WebSocket will broadcast this to connected clients
     
     try:
-        result = run_mimic_pipeline(
-            reference_path=ref_path,
-            clip_paths=clip_paths,
-            session_id=session_id,
-            output_dir=str(RESULTS_DIR),
-            progress_callback=progress_callback
-        )
+        session = active_sessions[session_id]
+        
+        # Check if manual mode
+        if session.get("mode") == "manual":
+            # Manual mode: Use pre-provided analysis
+            from models import StyleBlueprint, ClipIndex
+            from engine.orchestrator import run_mimic_pipeline_manual
+            
+            blueprint = StyleBlueprint(**session["blueprint"])
+            clip_index = ClipIndex(**session["clip_index"])
+            clip_paths = session["clip_paths"]
+            
+            result = run_mimic_pipeline_manual(
+                blueprint=blueprint,
+                clip_index=clip_index,
+                clip_paths=clip_paths,
+                session_id=session_id,
+                output_dir=str(RESULTS_DIR),
+                progress_callback=progress_callback
+            )
+        else:
+            # Auto mode: Full pipeline with Gemini
+            result = run_mimic_pipeline(
+                reference_path=ref_path,
+                clip_paths=clip_paths,
+                session_id=session_id,
+                output_dir=str(RESULTS_DIR),
+                progress_callback=progress_callback
+            )
         
         if result.success:
             active_sessions[session_id]["status"] = "complete"

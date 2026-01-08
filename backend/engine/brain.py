@@ -109,9 +109,10 @@ class GeminiConfig:
     """Configuration for Gemini API calls."""
     
     # Model selection - USING GEMINI 3 FOR HACKATHON
-    MODEL_NAME = "gemini-3-flash-preview"  # Primary model for Gemini 3 Hackathon
-    FALLBACK_MODEL = "gemini-3-pro-preview"  # Use if Flash fails
-    EMERGENCY_FALLBACK = "gemini-exp-1206"  # Use if both Gemini 3 models return 404
+    MODEL_NAME = "gemini-3-flash-preview"  # Primary Hackathon Model
+    FALLBACK_MODEL = "gemini-1.5-flash"     # Reliable Backup (High Quota)
+    PRO_MODEL = "gemini-3-pro-preview"      # Higher tier backup
+    EMERGENCY_FALLBACK = "gemini-2.0-flash-exp"
     
     # Generation config for consistent, structured output
     GENERATION_CONFIG = {
@@ -155,8 +156,15 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
     
     genai.configure(api_key=api_key)
     
-    # Try models in order: Gemini 3 Flash → Gemini 3 Pro → Experimental
-    for model_name in [GeminiConfig.MODEL_NAME, GeminiConfig.FALLBACK_MODEL, GeminiConfig.EMERGENCY_FALLBACK]:
+    # Try models in order: Gemini 3 Flash → Gemini 1.5 Flash (Backup) → Gemini 3 Pro
+    models_to_try = [
+        GeminiConfig.MODEL_NAME, 
+        GeminiConfig.FALLBACK_MODEL, 
+        GeminiConfig.PRO_MODEL,
+        GeminiConfig.EMERGENCY_FALLBACK
+    ]
+    
+    for model_name in models_to_try:
         try:
             model = genai.GenerativeModel(
                 model_name=model_name,
@@ -165,7 +173,7 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
             print(f"[OK] Using model: {model_name}")
             return model
         except Exception as e:
-            print(f"[WARN] Model {model_name} not available: {e}")
+            print(f"[WARN] Model {model_name} could not be initialized: {e}")
             continue
     
     raise ValueError("No Gemini models available. Check API key and model access.")
@@ -210,32 +218,42 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
 
 def _parse_json_response(response_text: str) -> dict:
     """
-    Parse Gemini's JSON response, handling common formatting issues.
-    
-    Args:
-        response_text: Raw response text from Gemini
-    
-    Returns:
-        Parsed JSON as dictionary
-    
-    Raises:
-        ValueError: If response is not valid JSON
+    Parse Gemini's JSON response, handling common formatting issues and cut-off text.
     """
-    # Remove markdown code fences if present
     text = response_text.strip()
-    if text.startswith("```json"):
-        text = text[7:]  # Remove ```json
-    if text.startswith("```"):
-        text = text[3:]  # Remove ```
-    if text.endswith("```"):
-        text = text[:-3]
+    
+    # Remove markdown code fences
+    if "```" in text:
+        text = text.split("```")[1]
+        if text.startswith("json"):
+            text = text[4:]
     
     text = text.strip()
     
     try:
         return json.loads(text)
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Failed to parse JSON response: {e}\nResponse: {text}")
+    except json.JSONDecodeError:
+        # Emergency repair for "unterminated string" or cut-off JSON
+        print("[WARN] Attempting to repair malformed JSON...")
+        # If it ends with a comma or incomplete object, try to close it
+        text = text.strip()
+        if text.endswith(","):
+            text = text[:-1]
+        
+        # Count braces
+        open_braces = text.count("{")
+        close_braces = text.count("}")
+        open_brackets = text.count("[")
+        close_brackets = text.count("]")
+        
+        # Add missing closures
+        text += "]" * (open_brackets - close_brackets)
+        text += "}" * (open_braces - close_braces)
+        
+        try:
+            return json.loads(text)
+        except Exception as e:
+            raise ValueError(f"Failed to parse or repair JSON: {e}\nRaw: {response_text}")
 
 
 # ============================================================================
@@ -246,42 +264,66 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
     """
     Analyze reference video to extract editing structure.
     
-    Args:
-        video_path: Path to reference video file
-        api_key: Optional Gemini API key
-    
-    Returns:
-        StyleBlueprint with timing and energy analysis
-    
-    Raises:
-        Exception: If analysis fails after all retries
-        ValueError: If Gemini returns invalid JSON
+    QUOTA OPTIMIZATION: Checks cache first to avoid redundant API calls.
+    Cache key is based on file hash, so same video = instant result.
     """
     print(f"\n{'='*60}")
     print(f"[BRAIN] ANALYZING REFERENCE VIDEO: {Path(video_path).name}")
     print(f"{'='*60}\n")
     
-    model = initialize_gemini(api_key)
+    # Check cache first
+    cache_dir = Path(__file__).parent.parent.parent / "data" / "cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
     
-    # Upload video
+    # Use file hash as cache key (same video = same hash)
+    import hashlib
+    with open(video_path, 'rb') as f:
+        file_hash = hashlib.md5(f.read()).hexdigest()[:12]
+    
+    cache_file = cache_dir / f"ref_{file_hash}.json"
+    
+    if cache_file.exists():
+        print(f"[CACHE] Found cached analysis: {cache_file.name}")
+        try:
+            with open(cache_file) as f:
+                data = json.load(f)
+                blueprint = StyleBlueprint(**data)
+                print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments")
+                return blueprint
+        except Exception as e:
+            print(f"[WARN] Cache corrupted: {e}. Re-analyzing...")
+    
+    # Cache miss - call API
+    model = initialize_gemini(api_key)
     video_file = _upload_video_with_retry(video_path)
     
     # Generate analysis
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:
-            print(f"Requesting analysis... (attempt {attempt + 1})")
+            print(f"Requesting analysis (attempt {attempt + 1})...")
             response = model.generate_content([video_file, REFERENCE_ANALYSIS_PROMPT])
             
             # Parse and validate
             json_data = _parse_json_response(response.text)
             blueprint = StyleBlueprint(**json_data)
             
+            # Save to cache
+            with open(cache_file, 'w') as f:
+                json.dump(json_data, f, indent=2)
+            print(f"[CACHE] Saved to {cache_file.name}")
+            
             print(f"[OK] Analysis complete: {len(blueprint.segments)} segments")
             return blueprint
             
         except Exception as e:
+            error_msg = str(e).lower()
+            if "429" in error_msg or "quota" in error_msg:
+                print(f"[QUOTA] Rate limit hit. Waiting 10s before retry...")
+                time.sleep(10.0)
+            
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to analyze reference after {GeminiConfig.MAX_RETRIES} attempts: {e}")
+            
             print(f"Analysis failed: {e}. Retrying in {GeminiConfig.RETRY_DELAY}s...")
             time.sleep(GeminiConfig.RETRY_DELAY)
 
@@ -317,6 +359,11 @@ def analyze_clip(clip_path: str, api_key: str | None = None) -> tuple[EnergyLeve
             return energy, motion
             
         except Exception as e:
+            error_msg = str(e).lower()
+            if "429" in error_msg or "quota" in error_msg:
+                print(f"    [QUOTA] Rate limit hit on clip. Waiting 10s...")
+                time.sleep(10.0)
+                
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to analyze clip after {GeminiConfig.MAX_RETRIES} attempts: {e}")
             time.sleep(GeminiConfig.RETRY_DELAY)
@@ -326,26 +373,29 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None) -> Clip
     """
     Analyze all user clips and build a ClipIndex.
     
-    Args:
-        clip_paths: List of paths to clip files
-        api_key: Optional Gemini API key
-    
-    Returns:
-        ClipIndex with metadata for all clips
+    OPTIMIZATION: Reuses single model instance for all clips to minimize API overhead.
     """
     print(f"\n{'='*60}")
     print(f"[BRAIN] ANALYZING USER CLIPS ({len(clip_paths)} total)")
     print(f"{'='*60}\n")
     
+    # Initialize model ONCE for all clips
+    model = initialize_gemini(api_key)
+    
     clip_metadata_list = []
     
     for clip_path in clip_paths:
-        # Get duration using ffprobe (from processors module)
         from engine.processors import get_video_duration
         duration = get_video_duration(clip_path)
         
-        # Analyze with Gemini
-        energy, motion = analyze_clip(clip_path, api_key)
+        # Analyze with Gemini (reusing model instance)
+        try:
+            energy, motion = _analyze_single_clip(model, clip_path)
+        except Exception as e:
+            print(f"    [WARN] Analysis failed for {Path(clip_path).name}: {e}")
+            print(f"    Using default: Medium/Dynamic")
+            energy = EnergyLevel.MEDIUM
+            motion = MotionType.DYNAMIC
         
         clip_metadata = ClipMetadata(
             filename=Path(clip_path).name,
@@ -358,6 +408,64 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None) -> Clip
     
     print(f"\n[OK] All clips analyzed\n")
     return ClipIndex(clips=clip_metadata_list)
+
+
+def _analyze_single_clip(model: genai.GenerativeModel, clip_path: str) -> tuple[EnergyLevel, MotionType]:
+    """
+    Internal helper: Analyze one clip using an existing model instance.
+    
+    QUOTA OPTIMIZATION: Caches results per clip to avoid redundant analysis.
+    """
+    print(f"  Analyzing {Path(clip_path).name}...")
+    
+    # Check cache
+    cache_dir = Path(__file__).parent.parent.parent / "data" / "cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    
+    import hashlib
+    with open(clip_path, 'rb') as f:
+        file_hash = hashlib.md5(f.read()).hexdigest()[:12]
+    
+    cache_file = cache_dir / f"clip_{file_hash}.json"
+    
+    if cache_file.exists():
+        try:
+            with open(cache_file) as f:
+                data = json.load(f)
+                energy = EnergyLevel(data["energy"])
+                motion = MotionType(data["motion"])
+                print(f"    [CACHE] {energy.value} / {motion.value}")
+                return energy, motion
+        except:
+            pass  # Cache corrupted, re-analyze
+    
+    # Cache miss - call API
+    video_file = _upload_video_with_retry(clip_path)
+    
+    for attempt in range(GeminiConfig.MAX_RETRIES):
+        try:
+            response = model.generate_content([video_file, CLIP_ANALYSIS_PROMPT])
+            json_data = _parse_json_response(response.text)
+            
+            energy = EnergyLevel(json_data["energy"])
+            motion = MotionType(json_data["motion"])
+            
+            # Save to cache
+            with open(cache_file, 'w') as f:
+                json.dump({"energy": energy.value, "motion": motion.value}, f)
+            
+            print(f"    [OK] {energy.value} / {motion.value}")
+            return energy, motion
+            
+        except Exception as e:
+            error_msg = str(e).lower()
+            if "429" in error_msg or "quota" in error_msg:
+                print(f"    [QUOTA] Rate limit hit on clip. Waiting 10s...")
+                time.sleep(10.0)
+                
+            if attempt == GeminiConfig.MAX_RETRIES - 1:
+                raise Exception(f"Failed to analyze clip after {GeminiConfig.MAX_RETRIES} attempts: {e}")
+            time.sleep(GeminiConfig.RETRY_DELAY)
 
 
 # ============================================================================

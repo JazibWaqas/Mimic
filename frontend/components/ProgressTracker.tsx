@@ -22,12 +22,11 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
 
   const baseSteps = useMemo<ProgressStep[]>(
     () => [
-      { id: "upload", title: "Files uploaded", status: "complete" },
-      { id: "analyze_ref", title: "Reference analyzed", status: "pending" },
-      { id: "analyze_clips", title: "Clips analyzed", status: "pending" },
-      { id: "matching", title: "Edit sequence created", status: "pending" },
+      { id: "analyze_ref", title: "Analyzing reference", status: "pending" },
+      { id: "analyze_clips", title: "Analyzing clips", status: "pending" },
+      { id: "matching", title: "Creating sequence", status: "pending" },
       { id: "rendering", title: "Rendering video", status: "pending" },
-      { id: "audio", title: "Merging audio", status: "pending" },
+      { id: "complete", title: "Finishing up", status: "pending" },
     ],
     []
   );
@@ -49,13 +48,15 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
       setCurrentStep(String(data.message ?? ""));
 
       setSteps((prev) => {
-        const updated = prev.map((step, index) => {
-          const threshold = p * prev.length;
-          if (index < threshold) return { ...step, status: "complete" as const };
-          if (index === Math.floor(threshold)) return { ...step, status: "active" as const };
+        // Calculate which step index is currently active based on progress (0.0 to 1.0)
+        // We have 5 steps, so each step is roughly 0.2 of the progress.
+        const currentActiveIndex = Math.min(Math.floor(p * prev.length), prev.length - 1);
+
+        return prev.map((step, index) => {
+          if (index < currentActiveIndex) return { ...step, status: "complete" as const };
+          if (index === currentActiveIndex) return { ...step, status: "active" as const };
           return { ...step, status: "pending" as const };
         });
-        return updated;
       });
     };
 

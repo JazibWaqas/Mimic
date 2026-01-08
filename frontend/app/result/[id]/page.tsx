@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { use, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { VideoComparison } from "@/components/VideoComparison";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,8 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getDownloadUrl, getStatus } from "@/lib/api";
 
-export default function ResultPage({ params }: { params: { id: string } }) {
-  const sessionId = params.id;
+export default function ResultPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id: sessionId } = use(params);
   const [status, setStatus] = useState<any>(null);
 
   useEffect(() => {

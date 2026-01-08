@@ -1,26 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ProgressTracker } from "@/components/ProgressTracker";
 import { Button } from "@/components/ui/button";
 import { generateVideo, getStatus } from "@/lib/api";
 import { toast } from "sonner";
 
-export default function GeneratePage({ params }: { params: { id: string } }) {
+export default function GeneratePage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-  const sessionId = params.id;
+  const { id: sessionId } = use(params);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
 
     async function start() {
-      if (started) return;
+      if (started || !sessionId || sessionId === "undefined") return;
       setStarted(true);
       try {
         await generateVideo(sessionId);
       } catch (e: any) {
+        setStarted(false); // allow retry on error? maybe not automatically, but let's be safe.
         toast.error(e?.message || "Failed to start generation");
       }
     }

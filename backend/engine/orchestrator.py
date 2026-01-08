@@ -91,10 +91,13 @@ def run_mimic_pipeline(
         _validate_inputs(reference_path, clip_paths)
         
         # Setup session directories
-        session_dir = Path(f"temp/{session_id}")
+        # Use absolute path to ensure consistency regardless of CWD
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        session_dir = BASE_DIR / "temp" / session_id
         standardized_dir = session_dir / "standardized"
         segments_dir = session_dir / "segments"
         
+        ensure_directory(session_dir)
         ensure_directory(standardized_dir)
         ensure_directory(segments_dir)
         ensure_directory(output_dir)
@@ -105,19 +108,20 @@ def run_mimic_pipeline(
         # ==================================================================
         # STEP 2: ANALYZE REFERENCE
         # ==================================================================
-        update_progress(2, TOTAL_STEPS, "Analyzing reference video structure...")
+        update_progress(2, TOTAL_STEPS, "Analyzing reference video structure with Gemini AI...")
         
         try:
             blueprint = analyze_reference_video(reference_path, api_key)
+            print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
         except Exception as e:
-            print(f"[WARN] Gemini analysis failed: {e}")
-            print("    Using fallback mode...")
+            print(f"[ERROR] Gemini reference analysis failed: {e}")
+            print("    FALLING BACK to linear 2-second segments. Results will be generic.")
             blueprint = create_fallback_blueprint(reference_path)
         
         # ==================================================================
         # STEP 3: ANALYZE USER CLIPS
         # ==================================================================
-        update_progress(3, TOTAL_STEPS, "Analyzing user clips...")
+        update_progress(3, TOTAL_STEPS, "Analyzing user clips with Gemini AI...")
         
         # Standardize clips first (required for consistent analysis)
         standardized_paths = []
@@ -130,10 +134,11 @@ def run_mimic_pipeline(
         # Analyze standardized clips
         try:
             clip_index = analyze_all_clips(standardized_paths, api_key)
+            print(f"[OK] Gemini successfully analyzed {len(clip_index.clips)} clips.")
         except Exception as e:
             # If analysis fails, create default index
-            print(f"[WARN] Clip analysis failed: {e}")
-            print("    Using default energy levels...")
+            print(f"[ERROR] Gemini clip analysis failed: {e}")
+            print("    FALLING BACK to default energy levels. Edit quality will be reduced.")
             from models import ClipMetadata, EnergyLevel, MotionType
             from engine.processors import get_video_duration
             
@@ -281,3 +286,129 @@ def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
         except Exception as e:
             raise ValueError(f"Could not read clip {i}: {e}")
 
+
+def run_mimic_pipeline_manual(
+    blueprint: StyleBlueprint,
+    clip_index: ClipIndex,
+    clip_paths: List[str],
+    session_id: str,
+    output_dir: str,
+    progress_callback: Callable[[int, int, str], None] | None = None
+) -> PipelineResult:
+    """
+    MANUAL MODE: Run pipeline with pre-analyzed JSON from AI Studio.
+    Skips Gemini API calls entirely - only does matching + rendering.
+    
+    Args:
+        blueprint: Pre-analyzed reference structure (from AI Studio)
+        clip_index: Pre-analyzed clip metadata (from AI Studio)
+        clip_paths: Paths to user clips
+        session_id: Unique session identifier
+        output_dir: Where to save final video
+        progress_callback: Optional progress updates
+    
+    Returns:
+        PipelineResult with success/failure status
+    """
+    start_time = time.time()
+    
+    def update_progress(step: int, total: int, message: str):
+        if progress_callback:
+            progress_callback(step, total, message)
+        print(f"\n[{step}/{total}] {message}")
+    
+    TOTAL_STEPS = 3  # Standardize, Match, Render
+    
+    try:
+        print(f"\n{'='*60}")
+        print(f"[MANUAL MODE] Using pre-analyzed JSON")
+        print(f"{'='*60}\n")
+        
+        # Setup directories
+        session_dir = Path(f"temp/{session_id}")
+        standardized_dir = session_dir / "standardized"
+        segments_dir = session_dir / "segments"
+        
+        ensure_directory(standardized_dir)
+        ensure_directory(segments_dir)
+        ensure_directory(output_dir)
+        
+        # STEP 1: STANDARDIZE CLIPS
+        update_progress(1, TOTAL_STEPS, "Standardizing clips...")
+        
+        standardized_paths = []
+        for i, clip_path in enumerate(clip_paths, start=1):
+            output_path = standardized_dir / f"clip_{i:03d}.mp4"
+            print(f"  Standardizing clip {i}/{len(clip_paths)}...")
+            standardize_clip(clip_path, str(output_path))
+            standardized_paths.append(str(output_path))
+        
+        # Update clip_index with standardized paths
+        for i, clip_meta in enumerate(clip_index.clips):
+            clip_meta.filepath = standardized_paths[i]
+        
+        # STEP 2: MATCH CLIPS TO BLUEPRINT
+        update_progress(2, TOTAL_STEPS, "Creating edit sequence...")
+        
+        edl = match_clips_to_blueprint(blueprint, clip_index)
+        validate_edl(edl, blueprint)
+        print_edl_summary(edl, blueprint, clip_index)
+        
+        # STEP 3: RENDER
+        update_progress(3, TOTAL_STEPS, "Rendering final video...")
+        
+        # Extract segments
+        segment_files = []
+        for i, decision in enumerate(edl.decisions, start=1):
+            segment_path = segments_dir / f"segment_{i:03d}.mp4"
+            extract_segment(
+                decision.clip_path,
+                str(segment_path),
+                decision.clip_start,
+                decision.clip_end
+            )
+            segment_files.append(str(segment_path))
+            print(f"    [OK] Segment extracted: {decision.clip_start:.2f}s - {decision.clip_end:.2f}s")
+        
+        # Concatenate
+        stitched_path = session_dir / "stitched.mp4"
+        concatenate_videos(segment_files, str(stitched_path))
+        
+        # Create silent output (no reference audio in manual mode)
+        output_filename = f"mimic_output_{session_id[:8]}.mp4"
+        output_path = Path(output_dir) / output_filename
+        create_silent_video(str(stitched_path), str(output_path))
+        
+        # Validate
+        validate_output(str(output_path), blueprint.total_duration)
+        
+        elapsed = time.time() - start_time
+        
+        print(f"\n{'='*60}")
+        print(f"[OK] MANUAL MODE COMPLETE")
+        print(f"{'='*60}")
+        print(f"Output: {output_path}")
+        print(f"Duration: {blueprint.total_duration:.2f}s")
+        print(f"Segments: {len(edl.decisions)}")
+        print(f"Processing time: {elapsed:.1f}s")
+        print(f"{'='*60}\n")
+        
+        return PipelineResult(
+            success=True,
+            output_path=str(output_path),
+            blueprint=blueprint,
+            clip_index=clip_index,
+            edl=edl,
+            processing_time_seconds=elapsed
+        )
+        
+    except Exception as e:
+        print(f"\n[ERROR] Manual pipeline failed: {e}")
+        import traceback
+        traceback.print_exc()
+        
+        return PipelineResult(
+            success=False,
+            error=str(e),
+            processing_time_seconds=time.time() - start_time
+        )
