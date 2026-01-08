@@ -36,7 +36,9 @@ export async function getHistory() {
 }
 
 export function getDownloadUrl(sessionId: string) {
-  return `${API_BASE}/api/download/${sessionId}`;
+  // Add timestamp to prevent browser caching
+  const timestamp = Date.now();
+  return `${API_BASE}/api/download/${sessionId}?t=${timestamp}`;
 }
 
 export function getWebSocketUrl(sessionId: string) {

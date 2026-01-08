@@ -20,12 +20,17 @@ from models import StyleBlueprint, ClipMetadata, ClipIndex, EnergyLevel, MotionT
 # ============================================================================
 
 REFERENCE_ANALYSIS_PROMPT = """
-You are a professional video editor analyzing the PACING STRUCTURE of this video.
+You are a professional video editor analyzing the EDITING STRUCTURE and CUT PATTERN of this video.
 
-YOUR TASK: Divide the video into 3-8 time-based segments based on editing rhythm.
+YOUR TASK: Identify EVERY significant cut/edit point and create segments that match the exact editing rhythm.
 
-IMPORTANT: Analyze the STRUCTURE, not the content. We don't care if it's a cat or a car—
-we care about WHEN cuts happen, HOW FAST things move, and the RHYTHM of edits.
+CRITICAL: This video's "DNA" is its CUT TIMING. You must detect:
+- When cuts happen (scene changes, shot transitions)
+- How frequently cuts occur (rapid cuts = many short segments, slow cuts = fewer long segments)
+- The exact timing of each edit point
+
+For videos with MANY CUTS: Create many short segments (0.5-2 seconds each)
+For videos with FEW CUTS: Create fewer longer segments (2-5 seconds each)
 
 For each segment, determine:
 
@@ -35,17 +40,21 @@ For each segment, determine:
    - **Medium**: Moderate pacing, some camera movement, occasional cuts
      Examples: Vlogs, talking heads with B-roll, product demos
    - **High**: Rapid cuts, fast motion, intense action, high energy
-     Examples: Sports highlights, dance trends, action sequences
+     Examples: Sports highlights, dance trends, action sequences, TikTok edits
 
 2. **MOTION** (camera + subject movement):
    - **Static**: Fixed camera, minimal subject movement
    - **Dynamic**: Panning, zooming, tracking, fast subject motion
 
 RULES:
-- Segments should be 2-5 seconds each (unless the video is very short)
+- Detect ACTUAL CUT POINTS - each major cut should create a new segment boundary
+- Segment length should match cut frequency: Rapid cuts = 0.5-1.5s segments, Slow cuts = 2-5s segments
+- For videos with many rapid cuts, create 10-30+ segments (one per major cut)
+- For videos with few cuts, create 3-8 segments
 - Segments must be contiguous (no gaps or overlaps)
-- Base energy on PACING and RHYTHM, not on content emotion
+- Base energy on PACING and CUT FREQUENCY, not on content emotion
 - The last segment must end exactly at the video's total duration
+- IMPORTANT: If you see rapid cuts (multiple cuts per second), create a segment for EACH significant cut
 
 OUTPUT FORMAT (JSON only, no markdown code fences):
 {
@@ -54,16 +63,24 @@ OUTPUT FORMAT (JSON only, no markdown code fences):
     {
       "id": 1,
       "start": 0.0,
-      "end": 3.2,
-      "duration": 3.2,
+      "end": 0.8,
+      "duration": 0.8,
       "energy": "High",
       "motion": "Dynamic"
     },
     {
       "id": 2,
-      "start": 3.2,
-      "end": 8.0,
-      "duration": 4.8,
+      "start": 0.8,
+      "end": 1.5,
+      "duration": 0.7,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 3,
+      "start": 1.5,
+      "end": 4.0,
+      "duration": 2.5,
       "energy": "Medium",
       "motion": "Static"
     }

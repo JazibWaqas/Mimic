@@ -187,9 +187,14 @@ def run_mimic_pipeline(
         audio_path = session_dir / "ref_audio.aac"
         has_audio = extract_audio(reference_path, str(audio_path))
         
-        # Final output
-        output_filename = f"mimic_output_{session_id[:8]}.mp4"
+        # Final output (use full session_id to prevent collisions)
+        output_filename = f"mimic_output_{session_id}.mp4"
         final_output_path = Path(output_dir) / output_filename
+        
+        # Remove old file if it exists (force regeneration)
+        if final_output_path.exists():
+            print(f"[WARN] Removing existing output file: {final_output_path}")
+            final_output_path.unlink()
         
         if has_audio:
             merge_audio_video(
@@ -375,8 +380,13 @@ def run_mimic_pipeline_manual(
         concatenate_videos(segment_files, str(stitched_path))
         
         # Create silent output (no reference audio in manual mode)
-        output_filename = f"mimic_output_{session_id[:8]}.mp4"
+        output_filename = f"mimic_output_{session_id}.mp4"
         output_path = Path(output_dir) / output_filename
+        
+        # Remove old file if it exists (force regeneration)
+        if output_path.exists():
+            print(f"[WARN] Removing existing output file: {output_path}")
+            output_path.unlink()
         create_silent_video(str(stitched_path), str(output_path))
         
         # Validate

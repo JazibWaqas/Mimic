@@ -39,28 +39,78 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
 
   useEffect(() => {
     if (!sessionId || sessionId === "undefined") return;
-    const ws = new WebSocket(getWebSocketUrl(sessionId));
+    
+    let ws: WebSocket | null = null;
+    let reconnectTimeout: NodeJS.Timeout | null = null;
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 10;
+    
+    const connect = () => {
+      try {
+        const wsUrl = getWebSocketUrl(sessionId);
+        console.log("Connecting to WebSocket:", wsUrl);
+        ws = new WebSocket(wsUrl);
 
-    ws.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      const p = Math.max(0, Math.min(1, Number(data.progress ?? 0)));
-      setProgress(p * 100);
-      setCurrentStep(String(data.message ?? ""));
+        ws.onopen = () => {
+          console.log("WebSocket connected successfully");
+          reconnectAttempts = 0;
+        };
 
-      setSteps((prev) => {
-        // Calculate which step index is currently active based on progress (0.0 to 1.0)
-        // We have 5 steps, so each step is roughly 0.2 of the progress.
-        const currentActiveIndex = Math.min(Math.floor(p * prev.length), prev.length - 1);
+        ws.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            const p = Math.max(0, Math.min(1, Number(data.progress ?? 0)));
+            setProgress(p * 100);
+            setCurrentStep(String(data.message ?? ""));
 
-        return prev.map((step, index) => {
-          if (index < currentActiveIndex) return { ...step, status: "complete" as const };
-          if (index === currentActiveIndex) return { ...step, status: "active" as const };
-          return { ...step, status: "pending" as const };
-        });
-      });
+            setSteps((prev) => {
+              const currentActiveIndex = Math.min(Math.floor(p * prev.length), prev.length - 1);
+
+              return prev.map((step, index) => {
+                if (index < currentActiveIndex) return { ...step, status: "complete" as const };
+                if (index === currentActiveIndex) return { ...step, status: "active" as const };
+                return { ...step, status: "pending" as const };
+              });
+            });
+
+            if (data.status === "complete" || data.status === "error") {
+              ws?.close(1000, "Done");
+            }
+          } catch (e) {
+            console.error("WebSocket message parse error:", e);
+          }
+        };
+
+        ws.onerror = (error) => {
+          console.error("WebSocket error:", error);
+        };
+
+        ws.onclose = (event) => {
+          console.log("WebSocket closed", event.code, event.reason);
+          
+          if (event.code !== 1000 && reconnectAttempts < maxReconnectAttempts) {
+            reconnectAttempts++;
+            console.log(`Reconnecting WebSocket (attempt ${reconnectAttempts}/${maxReconnectAttempts})...`);
+            reconnectTimeout = setTimeout(connect, 2000);
+          }
+        };
+      } catch (error) {
+        console.error("Failed to create WebSocket:", error);
+        if (reconnectAttempts < maxReconnectAttempts) {
+          reconnectAttempts++;
+          reconnectTimeout = setTimeout(connect, 2000);
+        }
+      }
     };
+    
+    setTimeout(connect, 500);
 
-    return () => ws.close();
+    return () => {
+      if (reconnectTimeout) clearTimeout(reconnectTimeout);
+      if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) {
+        ws.close(1000, "Component unmounted");
+      }
+    };
   }, [sessionId]);
 
   return (

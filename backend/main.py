@@ -71,6 +71,11 @@ async def upload_files(
     # Generate session ID
     session_id = str(uuid.uuid4())
     
+    print(f"\n[UPLOAD] New upload request")
+    print(f"[UPLOAD] Session ID: {session_id}")
+    print(f"[UPLOAD] Reference: {reference.filename}")
+    print(f"[UPLOAD] Clips: {len(clips)} files")
+    
     # Create session directories
     session_dir = TEMP_DIR / session_id
     ref_dir = ensure_directory(session_dir / "reference")
@@ -98,6 +103,8 @@ async def upload_files(
         "status": "uploaded",
         "progress": 0.0
     }
+    
+    print(f"[UPLOAD] Upload complete - session created\n")
     
     return {
         "session_id": session_id,
@@ -193,11 +200,15 @@ async def generate_video(session_id: str, background_tasks: BackgroundTasks):
     session["progress"] = 0.0
     
     # Run pipeline in background
+    print(f"[GENERATE] Starting pipeline for session: {session_id}")
+    print(f"[GENERATE] Reference: {session.get('reference_path')}")
+    print(f"[GENERATE] Clips: {len(session.get('clip_paths', []))}")
+    
     background_tasks.add_task(
         process_video_pipeline,
         session_id,
-        session["reference_path"],
-        session["clip_paths"]
+        session.get("reference_path"),
+        session.get("clip_paths")
     )
     
     return {"status": "processing", "session_id": session_id}
@@ -208,15 +219,35 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
     Run the MIMIC pipeline with progress updates.
     Supports both Auto mode (with Gemini API) and Manual mode (pre-analyzed JSON).
     """
+    import time
+    start_time = time.time()
+    
+    print(f"\n{'='*60}")
+    print(f"[PIPELINE] STARTING NEW PIPELINE RUN")
+    print(f"{'='*60}")
+    print(f"[PIPELINE] Session ID: {session_id}")
+    print(f"[PIPELINE] Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"[PIPELINE] Reference: {ref_path}")
+    print(f"[PIPELINE] Clips ({len(clip_paths) if clip_paths else 0}): {clip_paths}")
+    print(f"{'='*60}\n")
+    
     def progress_callback(step: int, total: int, message: str):
-        active_sessions[session_id]["progress"] = step / total
-        active_sessions[session_id]["current_step"] = message
+        if session_id in active_sessions:
+            active_sessions[session_id]["progress"] = step / total
+            active_sessions[session_id]["current_step"] = message
+            print(f"[PROGRESS] Step {step}/{total}: {message}")
     
     try:
+        if session_id not in active_sessions:
+            print(f"[PIPELINE] ERROR: Session {session_id} not found in active_sessions")
+            return
+        
         session = active_sessions[session_id]
+        mode = session.get('mode', 'auto')
+        print(f"[PIPELINE] Mode: {mode}")
         
         # Check if manual mode
-        if session.get("mode") == "manual":
+        if mode == "manual":
             # Manual mode: Use pre-provided analysis
             from models import StyleBlueprint, ClipIndex
             from engine.orchestrator import run_mimic_pipeline_manual
@@ -225,6 +256,7 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
             clip_index = ClipIndex(**session["clip_index"])
             clip_paths = session["clip_paths"]
             
+            print(f"[PIPELINE] Running MANUAL pipeline...")
             result = run_mimic_pipeline_manual(
                 blueprint=blueprint,
                 clip_index=clip_index,
@@ -235,6 +267,7 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
             )
         else:
             # Auto mode: Full pipeline with Gemini
+            print(f"[PIPELINE] Running AUTO pipeline with Gemini...")
             result = run_mimic_pipeline(
                 reference_path=ref_path,
                 clip_paths=clip_paths,
@@ -243,16 +276,25 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
                 progress_callback=progress_callback
             )
         
+        elapsed = time.time() - start_time
+        
         if result.success:
+            print(f"\n[PIPELINE] SUCCESS - Pipeline completed in {elapsed:.1f}s")
+            print(f"[PIPELINE] Output: {result.output_path}")
             active_sessions[session_id]["status"] = "complete"
             active_sessions[session_id]["output_path"] = result.output_path
             active_sessions[session_id]["blueprint"] = result.blueprint.model_dump() if result.blueprint else None
             active_sessions[session_id]["clip_index"] = result.clip_index.model_dump() if result.clip_index else None
         else:
+            print(f"\n[PIPELINE] FAILED - Error: {result.error}")
             active_sessions[session_id]["status"] = "error"
             active_sessions[session_id]["error"] = result.error
             
     except Exception as e:
+        elapsed = time.time() - start_time
+        print(f"\n[PIPELINE] EXCEPTION after {elapsed:.1f}s: {e}")
+        import traceback
+        traceback.print_exc()
         active_sessions[session_id]["status"] = "error"
         active_sessions[session_id]["error"] = str(e)
 
@@ -297,7 +339,7 @@ async def download_video(session_id: str):
     return FileResponse(
         output_path,
         media_type="video/mp4",
-        filename=f"mimic_output_{session_id[:8]}.mp4"
+        filename=f"mimic_output_{session_id}.mp4"
     )
 
 
@@ -306,9 +348,50 @@ async def websocket_progress(websocket: WebSocket, session_id: str):
     """
     WebSocket for real-time progress updates.
     """
-    await websocket.accept()
+    # Accept WebSocket connection (CORS is handled at HTTP level)
+    origin = websocket.headers.get("origin")
+    if origin and origin not in [FRONTEND_URL, "http://localhost:3000", "http://127.0.0.1:3000"]:
+        print(f"[WS] Rejecting connection from origin: {origin}")
+        await websocket.close(code=1008, reason="Origin not allowed")
+        return
     
     try:
+        await websocket.accept()
+        print(f"[WS] Connection accepted for session: {session_id}")
+    except Exception as e:
+        print(f"[WS] Failed to accept connection: {e}")
+        return
+    
+    try:
+        # Wait up to 10 seconds for session to be created
+        wait_count = 0
+        max_wait = 10
+        
+        while wait_count < max_wait:
+            if session_id in active_sessions:
+                print(f"[WS] Session found: {session_id}")
+                break
+            await asyncio.sleep(0.5)
+            wait_count += 0.5
+        
+        if session_id not in active_sessions:
+            print(f"[WS] Session not found after {max_wait}s: {session_id}")
+            await websocket.send_json({
+                "status": "error",
+                "progress": 0.0,
+                "message": "Session not found. Make sure you've uploaded files first."
+            })
+            await websocket.close(code=1000)
+            return
+        
+        # Send initial status
+        session = active_sessions[session_id]
+        await websocket.send_json({
+            "status": session["status"],
+            "progress": session.get("progress", 0.0),
+            "message": session.get("current_step", "Waiting to start...")
+        })
+        
         while True:
             if session_id in active_sessions:
                 session = active_sessions[session_id]
@@ -320,14 +403,37 @@ async def websocket_progress(websocket: WebSocket, session_id: str):
                 
                 # Stop sending if complete or error
                 if session["status"] in ["complete", "error"]:
+                    print(f"[WS] Session {session_id} finished with status: {session['status']}")
                     break
+            else:
+                # Session was deleted
+                await websocket.send_json({
+                    "status": "error",
+                    "progress": 0.0,
+                    "message": "Session expired"
+                })
+                break
             
             await asyncio.sleep(1)  # Update every second
             
     except Exception as e:
-        print(f"WebSocket error: {e}")
+        print(f"[WS] Error in WebSocket handler: {e}")
+        import traceback
+        traceback.print_exc()
+        try:
+            await websocket.send_json({
+                "status": "error",
+                "progress": 0.0,
+                "message": f"Error: {str(e)}"
+            })
+        except:
+            pass
     finally:
-        await websocket.close()
+        try:
+            await websocket.close(code=1000)
+            print(f"[WS] Connection closed for session: {session_id}")
+        except:
+            pass
 
 
 @app.get("/api/history")

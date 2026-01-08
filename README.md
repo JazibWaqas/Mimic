@@ -1,3 +1,14 @@
+To run need to do:
+
+cd backend
+.\venv\Scripts\activate
+uvicorn main:app --reload --port 8000
+
+cd frontend 
+npm run dev
+
+
+
 # 🎬 MIMIC - AI Video Structural Replication
 
 **Steal the editing structure of any viral video and apply it to your own footage.**
