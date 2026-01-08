@@ -28,6 +28,7 @@ export default function GeneratePage({ params }: { params: { id: string } }) {
     start();
 
     const interval = setInterval(async () => {
+      if (!sessionId || sessionId === "undefined") return;
       try {
         const status = await getStatus(sessionId);
         if (cancelled) return;

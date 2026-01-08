@@ -19,14 +19,15 @@ from models import *
 from engine.orchestrator import run_mimic_pipeline
 from utils import ensure_directory, cleanup_session
 
-# Ensure Windows consoles don't crash on emoji/unicode log output
-try:
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8")
-    if hasattr(sys.stderr, "reconfigure"):
-        sys.stderr.reconfigure(encoding="utf-8")
-except Exception:
-    pass
+# Root Directory Setup
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMP_DIR = BASE_DIR / "temp"
+DATA_DIR = BASE_DIR / "data"
+RESULTS_DIR = DATA_DIR / "results"
+
+# Ensure dirs exist
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="MIMIC API", version="1.0.0")
 
@@ -67,7 +68,7 @@ async def upload_files(
     session_id = str(uuid.uuid4())
     
     # Create session directories
-    session_dir = Path(f"temp/{session_id}")
+    session_dir = TEMP_DIR / session_id
     ref_dir = ensure_directory(session_dir / "reference")
     clips_dir = ensure_directory(session_dir / "clips")
     
@@ -153,7 +154,7 @@ async def process_video_pipeline(session_id: str, ref_path: str, clip_paths: Lis
             reference_path=ref_path,
             clip_paths=clip_paths,
             session_id=session_id,
-            output_dir="temp/outputs",
+            output_dir=str(RESULTS_DIR),
             progress_callback=progress_callback
         )
         

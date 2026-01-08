@@ -99,8 +99,8 @@ def run_mimic_pipeline(
         ensure_directory(segments_dir)
         ensure_directory(output_dir)
         
-        # Clean any previous session data
-        cleanup_session(session_id, keep_dirs=True)
+        # No cleanup here—it deletes the files we just uploaded!
+        # cleanup_session(session_id, keep_dirs=True)
         
         # ==================================================================
         # STEP 2: ANALYZE REFERENCE
@@ -259,9 +259,9 @@ def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
     # Check reference duration (3-20 seconds)
     try:
         ref_duration = get_video_duration(reference_path)
-        if not (3.0 <= ref_duration <= 20.0):
+        if not (3.0 <= ref_duration <= 60.0):
             raise ValueError(
-                f"Reference video must be 3-20 seconds (got {ref_duration:.1f}s)"
+                f"Reference video must be 3-60 seconds (got {ref_duration:.1f}s)"
             )
     except Exception as e:
         raise ValueError(f"Could not read reference video: {e}")

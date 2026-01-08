@@ -39,6 +39,7 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
   }, [baseSteps]);
 
   useEffect(() => {
+    if (!sessionId || sessionId === "undefined") return;
     const ws = new WebSocket(getWebSocketUrl(sessionId));
 
     ws.onmessage = (event) => {
