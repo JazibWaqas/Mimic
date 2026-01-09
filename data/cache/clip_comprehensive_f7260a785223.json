@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 1.0,
+      "end": 3.5,
+      "reason": "Dynamic camera rotation and movement following the group on the snowy path."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 5.5,
+      "reason": "Steady walking shot capturing the group's progression through the forest."
+    },
+    "Low": {
+      "start": 5.0,
+      "end": 7.0,
+      "reason": "Calm upward pan focusing on the tall pine trees and the sky."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 15:11:48"
+}

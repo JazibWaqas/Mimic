@@ -113,18 +113,47 @@ class StyleBlueprint(BaseModel):
 # USER CLIP ANALYSIS
 # ============================================================================
 
+class BestMoment(BaseModel):
+    """
+    A single best moment within a clip for a specific energy profile.
+    
+    Example: {
+        "start": 8.2,
+        "end": 10.5,
+        "reason": "Peak action moment with fast motion"
+    }
+    """
+    start: float = Field(..., ge=0, description="Start time in seconds")
+    end: float = Field(..., gt=0, description="End time in seconds")
+    reason: str | None = Field(None, description="Why this moment was selected")
+    
+    @field_validator('end')
+    @classmethod
+    def end_after_start(cls, v, info):
+        if 'start' in info.data and v <= info.data['start']:
+            raise ValueError('end must be greater than start')
+        return v
+
+
 class ClipMetadata(BaseModel):
     """
-    Analysis result for a single user clip.
+    Comprehensive analysis result for a single user clip.
+    
+    Contains overall energy/motion PLUS pre-computed best moments for each
+    energy level, enabling instant lookup during segment matching without
+    additional API calls.
     
     Example: {
         "filename": "dance_clip.mp4",
         "filepath": "/temp/abc123/clips/dance_clip.mp4",
-        "duration": 5.2,
+        "duration": 15.2,
         "energy": "High",
         "motion": "Dynamic",
-        "best_moment_start": 12.5,  # Optional: best moment timestamp
-        "best_moment_end": 17.2     # Optional: best moment timestamp
+        "best_moments": {
+            "High": {"start": 8.2, "end": 10.5, "reason": "Peak dance move"},
+            "Medium": {"start": 4.0, "end": 6.2, "reason": "Moderate movement"},
+            "Low": {"start": 0.0, "end": 2.0, "reason": "Calm intro"}
+        }
     }
     """
     filename: str
@@ -132,8 +161,33 @@ class ClipMetadata(BaseModel):
     duration: float = Field(..., gt=0)
     energy: EnergyLevel
     motion: MotionType
-    best_moment_start: float | None = Field(None, ge=0, description="Start time of best moment (if analyzed)")
-    best_moment_end: float | None = Field(None, gt=0, description="End time of best moment (if analyzed)")
+    
+    # Pre-computed best moments for each energy level (filled during comprehensive analysis)
+    best_moments: dict[str, BestMoment] | None = Field(
+        None, 
+        description="Best moments keyed by energy level (High/Medium/Low)"
+    )
+    
+    # Legacy fields for backward compatibility (deprecated - use best_moments instead)
+    best_moment_start: float | None = Field(None, ge=0, description="DEPRECATED: Use best_moments instead")
+    best_moment_end: float | None = Field(None, gt=0, description="DEPRECATED: Use best_moments instead")
+    
+    def get_best_moment_for_energy(self, energy: EnergyLevel) -> tuple[float, float] | None:
+        """
+        Get the best moment timestamps for a specific energy level.
+        
+        Returns:
+            Tuple of (start, end) or None if not available
+        """
+        if self.best_moments and energy.value in self.best_moments:
+            moment = self.best_moments[energy.value]
+            return (moment.start, moment.end)
+        
+        # Fallback to legacy fields
+        if self.best_moment_start is not None and self.best_moment_end is not None:
+            return (self.best_moment_start, self.best_moment_end)
+        
+        return None
     
     @field_validator('best_moment_end')
     @classmethod

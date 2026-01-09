@@ -1,0 +1,23 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 0.5,
+      "end": 2.318478,
+      "reason": "Fast panning motion showing the boat's speed and the driver against the water."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Steady shot of the passenger with the boat in motion and wind effects."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 1.5,
+      "reason": "Initial frame with the most stable view of the passenger before the camera pans."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 15:12:02"
+}

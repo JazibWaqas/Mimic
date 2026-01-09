@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 3.0,
+      "end": 5.5,
+      "reason": "The man aims and shoots the arrow, successfully popping a balloon."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The man is handed the bow and prepares for his shot."
+    },
+    "Low": {
+      "start": 5.5,
+      "end": 7.4,
+      "reason": "The action concludes as the man lowers the bow and begins to walk away."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 15:11:33"
+}

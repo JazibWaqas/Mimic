@@ -1,0 +1,23 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 11.0,
+      "end": 14.0,
+      "reason": "Peak intensity with everyone singing loudly and using expressive hand gestures."
+    },
+    "Medium": {
+      "start": 5.0,
+      "end": 8.0,
+      "reason": "Steady singing with moderate movement and engagement from the group."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The beginning of the clip where the energy is building up and movements are more contained."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:57:58"
+}

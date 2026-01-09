@@ -1,6 +1,6 @@
 # MIMIC Project - Comprehensive Status Document
 
-**Last Updated:** January 9, 2025  
+**Last Updated:** January 9, 2025 (Evening - Major API Optimization)  
 **Purpose:** This document provides a complete overview of the MIMIC project, its implementation, design decisions, current status, and how to get up to speed.
 
 ---
@@ -31,8 +31,10 @@
 ### Key Features
 - ✅ Reference video analysis (cut detection, energy/motion classification)
 - ✅ User clip analysis (energy/motion matching)
-- ✅ **Best moment selection** (finds optimal timestamps within clips)
-- ✅ Caching system (reduces API calls)
+- ✅ **Comprehensive Clip Analysis** - Gets energy, motion, AND best moments for ALL energy levels in ONE API call ⭐ NEW
+- ✅ **Rate Limiting** - Automatic throttling to prevent hitting Gemini quotas ⭐ NEW
+- ✅ **Mock Brain Mode** - Test FFmpeg/rendering without ANY API calls ⭐ NEW
+- ✅ Caching system (reduces API calls, version-aware cache invalidation)
 - ✅ Manual mode (bypass API for testing)
 - ✅ Real-time progress tracking (WebSocket)
 - ✅ Video standardization & rendering (FFmpeg)
@@ -370,7 +372,54 @@ cache_file = f"data/cache/ref_{file_hash}.json"
 
 ## 🆕 Recent Changes
 
-### January 9, 2025 - Best Moment Selection
+### January 9, 2025 (Evening) - MAJOR API OPTIMIZATION ⭐
+
+**What Changed:**
+
+1. **Comprehensive Clip Analysis** (`brain.py`)
+   - New `CLIP_COMPREHENSIVE_PROMPT` gets energy, motion, AND best moments for ALL energy levels in ONE API call
+   - New `_analyze_single_clip_comprehensive()` function
+   - Added `BestMoment` model in `models.py`
+   - Updated `ClipMetadata` with `best_moments: dict[str, BestMoment]` field
+   - Added `get_best_moment_for_energy()` method for easy lookup
+
+2. **Rate Limiting** (`brain.py`)
+   - New `RateLimiter` class tracks requests per minute
+   - Global `rate_limiter` instance used by all API calls
+   - Auto-waits when approaching Gemini's 15 req/min limit
+   - Prevents 429 quota errors during testing
+
+3. **Mock Brain Mode** (`brain.py`)
+   - New `set_mock_mode(True)` enables testing without API calls
+   - `create_mock_blueprint()` - Generate synthetic reference analysis
+   - `create_mock_clip_index()` - Generate synthetic clip analysis with mock best moments
+   - Use for testing FFmpeg/rendering logic without burning quota
+
+4. **Editor Update** (`editor.py`)
+   - Now uses PRE-COMPUTED best moments from clip analysis
+   - `find_best_moments` parameter is DEPRECATED (best moments come from comprehensive analysis)
+   - NO additional API calls during matching
+
+**API Cost Comparison:**
+
+| Scenario | Before (per-segment calls) | After (comprehensive) |
+|----------|---------------------------|----------------------|
+| 1 reference + 8 clips + 10 segments | 1 + 8 + 10 = **19 calls** | 1 + 8 = **9 calls** |
+| 1 reference + 8 clips + 20 segments | 1 + 8 + 20 = **29 calls** | 1 + 8 = **9 calls** |
+| With caching (repeat run) | Same | **0 calls** |
+
+**Testing Commands:**
+```python
+# Enable mock mode (no API calls)
+from engine.brain import set_mock_mode, create_mock_blueprint, create_mock_clip_index
+set_mock_mode(True)
+
+# Normal mode with rate limiting (safe)
+from engine.brain import analyze_reference_video, analyze_all_clips
+# These now use rate_limiter internally
+```
+
+### January 9, 2025 (Earlier) - Best Moment Selection
 
 **What Changed:**
 1. Added `best_moment_start/end` to `ClipMetadata` model
@@ -383,13 +432,9 @@ cache_file = f"data/cache/ref_{file_hash}.json"
 - Best moment finds most compelling part (more professional)
 
 **Impact:**
-- **API Calls:** +1 per clip-segment match (when enabled)
+- **API Calls:** +1 per clip-segment match (when enabled) - NOW DEPRECATED, use comprehensive analysis
 - **Quality:** Significantly better (uses peak moments)
 - **Performance:** Slight increase (extra Gemini calls)
-
-**Configuration:**
-- Auto mode: `find_best_moments=True` (enabled)
-- Manual mode: `find_best_moments=False` (disabled, saves API)
 
 ### January 9, 2025 - Reference Analysis Improvements
 

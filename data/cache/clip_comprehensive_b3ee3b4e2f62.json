@@ -1,0 +1,23 @@
+{
+  "energy": "Low",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 2.5,
+      "end": 5.0,
+      "reason": "The camera pans towards the sun and a hand enters the frame, adding a focal point of action."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.5,
+      "reason": "A steady pan across the scenic landscape, showing the trees and distant horizon."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "The opening shot with minimal camera movement, focusing on the person looking at the view."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 15:12:32"
+}

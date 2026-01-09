@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 2.5,
+      "end": 4.833333,
+      "reason": "The man breaks free from the hug, laughs heartily, and puts on a hat with energetic movement."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 3.5,
+      "reason": "Transition from the hug to moving apart with moderate laughter and motion."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "The two men are relatively still during the initial hug at the start of the clip."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:49:49"
+}

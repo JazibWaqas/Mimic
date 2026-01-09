@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 2.0,
+      "end": 5.0,
+      "reason": "The bumper cars are spinning rapidly with visible sparks underneath, creating the most action-packed sequence."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The cars begin to move and navigate the floor, showing moderate activity as they gain momentum."
+    },
+    "Low": {
+      "start": 5.5,
+      "end": 8.0,
+      "reason": "The cars slow down and come to a stop, marking the calmest part of the clip."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:57:13"
+}

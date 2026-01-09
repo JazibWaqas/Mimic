@@ -126,35 +126,45 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(3, TOTAL_STEPS, "Analyzing user clips with Gemini AI...")
         
-        # Standardize clips first (required for consistent analysis)
-        standardized_paths = []
-        for i, clip_path in enumerate(clip_paths, start=1):
-            output_path = standardized_dir / f"clip_{i:03d}.mp4"
-            print(f"  Standardizing clip {i}/{len(clip_paths)}...")
-            standardize_clip(clip_path, str(output_path))
-            standardized_paths.append(str(output_path))
-        
-        # Analyze standardized clips
+        # 1. Analyze ORIGINAL clips first (allows better caching)
         try:
-            clip_index = analyze_all_clips(standardized_paths, api_key)
-            print(f"[OK] Gemini successfully analyzed {len(clip_index.clips)} clips.")
+            # We pass clip_paths (originals) to leverage the cache
+            clip_index = analyze_all_clips(clip_paths, api_key)
+            print(f"[OK] Gemini successfully analyzed {len(clip_index.clips)} clips (using originals for cache).")
         except Exception as e:
-            # If analysis fails, create default index
             print(f"[ERROR] Gemini clip analysis failed: {e}")
             print("    FALLING BACK to default energy levels. Edit quality will be reduced.")
             from models import ClipMetadata, EnergyLevel, MotionType
             from engine.processors import get_video_duration
             
             clips = []
-            for path in standardized_paths:
+            for path in clip_paths:
                 clips.append(ClipMetadata(
                     filename=Path(path).name,
                     filepath=path,
                     duration=get_video_duration(path),
-                    energy=EnergyLevel.MEDIUM,  # Default
+                    energy=EnergyLevel.MEDIUM,
                     motion=MotionType.DYNAMIC
                 ))
             clip_index = ClipIndex(clips=clips)
+            
+        # 2. Standardize clips for rendering
+        standardized_paths = []
+        for i, clip_path in enumerate(clip_paths, start=1):
+            output_path = standardized_dir / f"clip_{i:03d}.mp4"
+            print(f"  Standardizing clip {i}/{len(clip_paths)}...")
+            standardize_clip(clip_path, str(output_path))
+            standardized_paths.append(str(output_path))
+            
+            # Update the filepath in the clip index to the standardized one
+            # Find the corresponding metadata and update path
+            original_filename = Path(clip_path).name
+            for clip_meta in clip_index.clips:
+                if clip_meta.filename == original_filename:
+                    clip_meta.filepath = str(output_path)
+                    break
+        
+        print(f"[OK] All clips standardized and ready for render.")
         
         # ==================================================================
         # STEP 4: MATCH & EDIT
@@ -183,11 +193,11 @@ def run_mimic_pipeline(
             segment_paths.append(str(segment_path))
         
         # Concatenate segments
-        temp_video_path = session_dir / "temp_video.mp4"
+        temp_video_path = temp_session_dir / "temp_video.mp4"
         concatenate_videos(segment_paths, str(temp_video_path))
         
         # Handle audio
-        audio_path = session_dir / "ref_audio.aac"
+        audio_path = temp_session_dir / "ref_audio.aac"
         has_audio = extract_audio(reference_path, str(audio_path))
         
         # Final output (use full session_id to prevent collisions)
@@ -382,7 +392,7 @@ def run_mimic_pipeline_manual(
             print(f"    [OK] Segment extracted: {decision.clip_start:.2f}s - {decision.clip_end:.2f}s")
         
         # Concatenate
-        stitched_path = session_dir / "stitched.mp4"
+        stitched_path = temp_session_dir / "stitched.mp4"
         concatenate_videos(segment_files, str(stitched_path))
         
         # Create silent output (no reference audio in manual mode)

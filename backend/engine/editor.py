@@ -22,7 +22,7 @@ from models import (
 def match_clips_to_blueprint(
     blueprint: StyleBlueprint, 
     clip_index: ClipIndex,
-    find_best_moments: bool = True,
+    find_best_moments: bool = False,  # DEPRECATED: Best moments now come from comprehensive analysis
     api_key: str | None = None
 ) -> EDL:
     """
@@ -34,21 +34,35 @@ def match_clips_to_blueprint(
         a. Find clips matching segment energy
         b. If no match, use round-robin from all clips
         c. Select least-used clip from pool
-        d. Handle short clips (fill remainder with next clip)
+        d. Use PRE-COMPUTED best moment for that energy level (from comprehensive analysis)
+        e. Create edit decision with timestamps
+        f. If clip exhausted, switch to next clip
     3. Return Edit Decision List
     
     PRIORITY: Maintain global pacing > Perfect energy matching > Single clip integrity
     
+    OPTIMIZATION: Best moments are now pre-computed during clip analysis.
+    The `find_best_moments` parameter is DEPRECATED and ignored.
+    
     Args:
         blueprint: Analyzed reference structure
-        clip_index: Analyzed user clips
+        clip_index: Analyzed user clips (should have best_moments populated)
+        find_best_moments: DEPRECATED - ignored
+        api_key: DEPRECATED - not needed
     
     Returns:
         EDL (Edit Decision List) with frame-accurate instructions
     """
     print(f"\n{'='*60}")
     print(f"[EDITOR] MATCHING CLIPS TO BLUEPRINT")
-    print(f"{'='*60}\n")
+    print(f"{'='*60}")
+    print(f"  Segments: {len(blueprint.segments)}")
+    print(f"  Clips: {len(clip_index.clips)}")
+    
+    # Check if clips have pre-computed best moments
+    clips_with_moments = sum(1 for c in clip_index.clips if c.best_moments)
+    print(f"  Clips with pre-computed best moments: {clips_with_moments}/{len(clip_index.clips)}")
+    print()
     
     # Track how many times each clip has been used
     clip_usage_count = {clip.filename: 0 for clip in clip_index.clips}
@@ -56,8 +70,11 @@ def match_clips_to_blueprint(
     # Group clips by energy for fast lookup
     energy_pools = _create_energy_pools(clip_index)
     
-    # Track current position in each clip (for sequential reuse)
+    # Track current position in each clip (for sequential fallback)
     clip_current_position = {clip.filename: 0.0 for clip in clip_index.clips}
+    
+    # Track which best moments have been used (to avoid repeating exact same moment)
+    used_moments = set()  # (filename, energy_level)
     
     decisions: List[EditDecision] = []
     timeline_position = 0.0
@@ -81,45 +98,51 @@ def match_clips_to_blueprint(
         selected_clip = min(matching_clips, key=lambda c: clip_usage_count[c.filename])
         print(f"  📎 Selected: {selected_clip.filename} ({selected_clip.energy.value})")
         
-        # Find best moment if enabled and not already analyzed
-        if find_best_moments and (selected_clip.best_moment_start is None or selected_clip.best_moment_end is None):
-            try:
-                from engine.brain import find_best_moment
-                best_start, best_end = find_best_moment(
-                    selected_clip.filepath,
-                    segment.energy,
-                    segment.motion,
-                    segment.duration,
-                    api_key
-                )
-                # Update clip metadata with best moment
-                selected_clip.best_moment_start = best_start
-                selected_clip.best_moment_end = best_end
-                print(f"  ✨ Best moment found: {best_start:.2f}s - {best_end:.2f}s")
-            except Exception as e:
-                print(f"  [WARN] Best moment analysis failed: {e}, using sequential cutting")
+        # Get best moment for this clip's energy level
+        best_moment = None
+        if selected_clip.best_moments:
+            # Use the segment's target energy to look up best moment
+            best_moment = selected_clip.get_best_moment_for_energy(segment.energy)
+            if best_moment:
+                print(f"  ✨ Using pre-computed best moment for {segment.energy.value}: "
+                      f"{best_moment[0]:.2f}s - {best_moment[1]:.2f}s")
         
         # Fill the segment duration
         remaining_duration = segment.duration
         segment_start_time = timeline_position
         
-        while remaining_duration > 0.01:  # 10ms tolerance
+        # Safety counter to prevent infinite loops
+        max_iterations = 10
+        iteration = 0
+        
+        while remaining_duration > 0.1:  # 100ms tolerance (increased from 10ms to avoid rounding issues)
+            iteration += 1
+            if iteration > max_iterations:
+                print(f"    [WARN] Max iterations reached, accepting {remaining_duration:.2f}s gap")
+                break
+            
             # Determine clip start position
-            if selected_clip.best_moment_start is not None and selected_clip.best_moment_end is not None:
-                # Use best moment (non-sequential cutting)
-                best_duration = selected_clip.best_moment_end - selected_clip.best_moment_start
+            if best_moment is not None:
+                # Use pre-computed best moment
+                moment_key = (selected_clip.filename, segment.energy.value)
+                best_start, best_end = best_moment
+                best_duration = best_end - best_start
+                
                 if best_duration >= remaining_duration:
                     # Best moment is long enough, use portion of it
-                    clip_start = selected_clip.best_moment_start
-                    clip_end = selected_clip.best_moment_start + remaining_duration
+                    clip_start = best_start
+                    clip_end = best_start + remaining_duration
                     use_duration = remaining_duration
-                    print(f"    [BEST MOMENT] Using {use_duration:.2f}s from best moment")
+                    print(f"    [BEST MOMENT] Using {use_duration:.2f}s from {clip_start:.2f}s")
                 else:
                     # Best moment is shorter than needed, use it fully and continue
-                    clip_start = selected_clip.best_moment_start
-                    clip_end = selected_clip.best_moment_end
+                    clip_start = best_start
+                    clip_end = best_end
                     use_duration = best_duration
-                    print(f"    [BEST MOMENT] Using full best moment ({use_duration:.2f}s), need {remaining_duration - use_duration:.2f}s more")
+                    print(f"    [BEST MOMENT] Using full moment ({use_duration:.2f}s), "
+                          f"need {remaining_duration - use_duration:.2f}s more")
+                    # Clear best_moment so next iteration uses sequential
+                    best_moment = None
             else:
                 # Fallback to sequential cutting
                 clip_start = clip_current_position[selected_clip.filename]
@@ -136,6 +159,17 @@ def match_clips_to_blueprint(
                 
                 # Update tracking for sequential mode
                 clip_current_position[selected_clip.filename] += use_duration
+                print(f"    [SEQUENTIAL] Using {clip_start:.2f}s - {clip_end:.2f}s ({use_duration:.2f}s)")
+            
+            # Snap timestamps to 0.1s precision (frame-safe)
+            clip_start = round(clip_start, 1)
+            clip_end = round(clip_end, 1)
+            use_duration = clip_end - clip_start
+            
+            # Skip if duration is too small after rounding
+            if use_duration < 0.05:
+                print(f"    [SKIP] Duration too small after rounding: {use_duration:.2f}s")
+                break
             
             # Create edit decision
             decision = EditDecision(
@@ -152,7 +186,7 @@ def match_clips_to_blueprint(
             timeline_position += use_duration
             remaining_duration -= use_duration
             
-            print(f"    [OK] Using {selected_clip.filename} "
+            print(f"    [OK] {selected_clip.filename} "
                   f"[{clip_start:.2f}s-{clip_end:.2f}s] "
                   f"→ timeline [{decision.timeline_start:.2f}s-{decision.timeline_end:.2f}s]")
             
@@ -162,10 +196,11 @@ def match_clips_to_blueprint(
                 # Get next clip from pool
                 next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
                 selected_clip = next_clip
-                # Reset best moment for new clip (will be analyzed if needed)
-                if find_best_moments:
-                    selected_clip.best_moment_start = None
-                    selected_clip.best_moment_end = None
+                # Get new best moment for new clip
+                if selected_clip.best_moments:
+                    best_moment = selected_clip.get_best_moment_for_energy(segment.energy)
+                else:
+                    best_moment = None
         
         # Mark clip as used
         clip_usage_count[selected_clip.filename] += 1
@@ -248,7 +283,7 @@ def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:
         next_decision = edl.decisions[i + 1]
         
         gap = abs(current.timeline_end - next_decision.timeline_start)
-        if gap > 0.01:  # 10ms tolerance
+        if gap > 0.02:  # 20ms tolerance (allow for rounding)
             raise ValueError(
                 f"Timeline gap/overlap between decision {i} and {i+1}: {gap:.3f}s"
             )
@@ -258,7 +293,8 @@ def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:
         total_duration = edl.decisions[-1].timeline_end
         expected = blueprint.total_duration
         
-        if abs(total_duration - expected) > 0.01:
+        # Increased tolerance to 0.1s to account for timestamp rounding in editor
+        if abs(total_duration - expected) > 0.1:
             raise ValueError(
                 f"EDL total duration ({total_duration:.2f}s) "
                 f"doesn't match blueprint ({expected:.2f}s)"

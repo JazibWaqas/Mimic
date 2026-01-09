@@ -1,0 +1,23 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 5.5,
+      "end": 8.5,
+      "reason": "Peak chaos with multiple people running and falling in the background while the subject reacts with high energy."
+    },
+    "Medium": {
+      "start": 9.0,
+      "end": 12.0,
+      "reason": "Subject gestures towards the sky with moderate movement from background figures and expressive lip-syncing."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "The opening shot where the subject is relatively still and posing before the background action begins."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:56:59"
+}

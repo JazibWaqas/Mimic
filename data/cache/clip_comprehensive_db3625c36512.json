@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 2.0,
+      "end": 4.837956,
+      "reason": "Intense laughter and dynamic movement as they react to the situation."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "Transition from a static hug to active laughter and movement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Initial static pose with minimal movement before the reaction starts."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:56:40"
+}

@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Fast-paced camera movement and enthusiastic clapping at the start."
+    },
+    "Medium": {
+      "start": 2.5,
+      "end": 5.0,
+      "reason": "Steady pan across the group of guests showing their reactions."
+    },
+    "Low": {
+      "start": 4.0,
+      "end": 6.0,
+      "reason": "Relatively stable shot focusing on individuals standing still."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:58:11"
+}

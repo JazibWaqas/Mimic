@@ -1,0 +1,23 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 1.0,
+      "end": 4.0,
+      "reason": "Peak intensity of the ride with rapid swinging motion and loud vocal reactions."
+    },
+    "Medium": {
+      "start": 9.0,
+      "end": 12.0,
+      "reason": "A full swing cycle showing the height and structure of the ride with moderate camera movement."
+    },
+    "Low": {
+      "start": 6.0,
+      "end": 8.0,
+      "reason": "A brief moment where the camera focuses more on the ride's metal structure, offering a slightly more stable view."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 15:11:17"
+}

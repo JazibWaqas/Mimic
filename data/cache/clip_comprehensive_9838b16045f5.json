@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Dynamic camera movement following the group as they walk towards the building, creating a sense of arrival."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "Steady walking shot showing the group's progression through the outdoor area."
+    },
+    "Low": {
+      "start": 2.0,
+      "end": 4.0,
+      "reason": "The movement stabilizes and slows down as the group approaches the entrance of the building."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:58:26"
+}

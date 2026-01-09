@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 8.0,
+      "end": 10.383438,
+      "reason": "Quick camera zoom out and loud laughter/reaction from the group."
+    },
+    "Medium": {
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "Interaction between the three people with moderate camera movement and dialogue."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Relatively stable shot of the two men lying on the floor at the start."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-09 14:57:27"
+}
