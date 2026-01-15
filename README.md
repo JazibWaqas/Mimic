@@ -1,216 +1,129 @@
-To run need to do:
-
-cd backend
-.\venv\Scripts\activate
-uvicorn main:app --reload --port 8000
-
-cd frontend 
-npm run dev
-
-
-
 # 🎬 MIMIC - AI Video Structural Replication
 
 **Steal the editing structure of any viral video and apply it to your own footage.**
 
-MIMIC uses Gemini 3's multimodal reasoning to analyze the "editing DNA" of viral videos (timing, pacing, energy) and automatically applies it to your raw clips.
+MIMIC uses Gemini 3's multimodal reasoning to analyze the "editing DNA" of viral videos (timing, pacing, energy) and automatically applies it to your raw clips using a high-precision, frame-perfect rendering engine.
 
 ---
 
-## 🚀 Quick Start
+## 🧭 Project Navigation (For Developers & AI Agents)
 
-### Prerequisites
-- **FFmpeg** installed ([download](https://ffmpeg.org/download.html))
-- **Python 3.10+** with pip
-- **Node.js 18+** with npm
-- **Gemini API Key** ([get one](https://aistudio.google.com/app/apikey))
+*Use this section to quickly understand the project architecture and logic flow.*
 
-### 1. Backend Setup
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+### 📂 Key Documentation
+- **[CURRENT_FLOW.md](./CURRENT_FLOW.md)**: The definitive step-by-step logic of the pipeline (Jan 15, 2026).
+- **[IMPORTANT_FILES.md](./IMPORTANT_FILES.md)**: Map of the codebase and how files are linked.
+- **[STATUS.md](./STATUS.md)**: Current development state and upcoming milestones.
+- **[FIXES_APPLIED.md](./FIXES_APPLIED.md)**: Detailed report on the major Editor rewrite and Rapid Cuts fix.
+- **[MIMIC_QUICK_REFERENCE.md](./MIMIC_QUICK_REFERENCE.md)**: The "Why" behind technical decisions and Hackathon strategy.
 
-# Create .env file
-echo "GEMINI_API_KEY=your_actual_key_here" > .env
-echo "FRONTEND_URL=http://localhost:3000" >> .env
-
-# Start server
-uvicorn main:app --reload --port 8000
-```
-
-### 2. Frontend Setup
-```bash
-cd frontend
-npm install
-
-# Create .env.local
-echo "NEXT_PUBLIC_API_URL=http://localhost:8000" > .env.local
-
-# Start dev server
-npm run dev
-```
-
-### 3. Open App
-Navigate to [http://localhost:3000](http://localhost:3000)
+### 🧠 Core Methodology
+1.  **Editing DNA**: We extract cut points, energy levels, and motion patterns from a reference video.
+2.  **Comprehensive Analysis**: Gemini 3 analyzes each user clip *once* to find the best moments for Low, Medium, and High energy needs.
+3.  **Rapid Cuts Algorithm**: In `editor.py`, we split segments into multiple rapid cuts (0.2s - 1.5s) to match the high-tempo feel of viral content.
+4.  **Frame-Perfect Render**: Using FFmpeg re-encoding (not just stream copying) to ensure every cut aligns exactly with the reference timing.
 
 ---
 
-## 🎯 Two Modes of Operation
-
-### 🤖 Auto Mode (Full AI Pipeline)
-- Upload reference video + clips
-- Gemini 3 analyzes everything automatically
-- **Quota:** Uses ~14 API calls per video (reference + 6 clips)
-- **Best for:** Production use with paid API tier
-
-### ✍️ Manual Mode (Quota-Free Testing)
-- Analyze videos once in [AI Studio](https://aistudio.google.com)
-- Paste the JSON analysis into the UI
-- System skips API calls and goes straight to rendering
-- **Quota:** 0 API calls - test unlimited times!
-- **Best for:** Development, testing, demo preparation
-
----
-
-## 📋 Manual Mode Workflow
-
-1. **Analyze Reference in AI Studio:**
-   - Upload your reference video to AI Studio
-   - Use the prompt from `backend/engine/brain.py` (REFERENCE_ANALYSIS_PROMPT)
-   - Copy the JSON output
-
-2. **Analyze Each Clip:**
-   - Upload each clip to AI Studio
-   - Use the CLIP_ANALYSIS_PROMPT
-   - Compile results into a ClipIndex JSON
-
-3. **Upload to MIMIC:**
-   - Switch to "Manual Mode" in the upload page
-   - Paste both JSON analyses
-   - Upload your clips
-   - Click "Render Video" → Done!
-
-**Example JSON formats are shown in the UI placeholders.**
-
----
-
-## 📁 Project Structure
+## 🏗️ Repository Structure
 
 ```
 Mimic/
-├── backend/              # FastAPI + Core Engine
-│   ├── engine/
-│   │   ├── brain.py      # Gemini 3 integration
-│   │   ├── editor.py     # Clip matching algorithm
-│   │   ├── processors.py # FFmpeg wrappers
-│   │   └── orchestrator.py # Pipeline controller
-│   ├── main.py           # API endpoints
-│   └── models.py         # Pydantic schemas
-│
-├── frontend/             # Next.js 14 + TypeScript
-│   ├── app/
-│   │   ├── upload/       # Dual-mode upload page
-│   │   ├── generate/     # Real-time progress
-│   │   ├── result/       # Side-by-side comparison
-│   │   └── history/      # Past projects
-│   └── components/       # Reusable UI components
-│
-├── data/
-│   ├── cache/            # AI analysis cache (quota saver)
-│   ├── results/          # Final rendered videos
-│   └── samples/          # Test videos
-│
-└── temp/                 # Session-based processing files
+├── backend/                # FastAPI Application
+│   ├── engine/             # The Processing Core
+│   │   ├── brain.py        # Gemini 3 API, Prompts, & Caching
+│   │   ├── editor.py       # THE MATCHING ENGINE (Rapid Cuts Algorithm)
+│   │   ├── processors.py   # FFmpeg execution logic
+│   │   └── orchestrator.py # Pipeline controller (Entry point)
+│   ├── main.py             # REST & WebSocket Endpoints
+│   └── models.py           # Pydantic data schemas
+├── frontend/               # Next.js 15 Application
+│   ├── app/                # Pages (Upload, Generate, Result)
+│   └── components/         # UI Library (shadcn/ui + custom)
+├── data/                   # Persistent Storage
+│   ├── cache/              # AI Analysis Cache (JSON)
+│   ├── results/            # Final MP4 Outputs
+│   ├── uploads/            # Raw user uploads (Permanent session storage)
+│   └── samples/            # Test assets (Reference & clips)
+└── temp/                   # Intermediate processing (Safe to clear)
 ```
 
 ---
 
-## 🧠 How It Works
+## � Prerequisites
 
-1. **Analysis Phase:**
-   - Gemini 3 watches the reference video
-   - Extracts timing structure (segments, energy levels, motion)
-   - Analyzes each user clip for energy/motion
+- **Python 3.10+** (recommended via `pyenv` or system install)
+- **Node.js 18+** (npm comes with it)
+- **FFmpeg 6.0+** – must be on your `PATH` (`ffmpeg -version` to verify)
+- **Gemini API key** – create a `.env` file in `backend/` with:
+  ```
+  GEMINI_API_KEY=your_key_here
+  FRONTEND_URL=http://localhost:3000
+  ```
+- **Git** – to clone the repository.
 
-2. **Matching Phase:**
-   - Algorithm matches clips to reference segments by energy
-   - Creates an Edit Decision List (EDL) with frame-perfect timing
+Once the above are installed, you can run the backend and frontend in separate terminals as described in the QUICK START section.
+---
 
-3. **Rendering Phase:**
-   - FFmpeg standardizes clips (1080x1920, 30fps)
-   - Extracts and concatenates segments per EDL
-   - Merges reference audio (auto mode) or creates silent video (manual mode)
+## �🚀 QUICK START: TESTING VIA FRONTEND
+
+To test the full experience (UI + Backend), follow these steps in **two separate terminals**.
+
+### 1. Start the Backend
+*The backend handles the AI analysis and FFmpeg rendering.*
+```powershell
+cd backend
+python -m venv venv
+.\venv\Scripts\Activate.ps1  # Windows PowerShell
+pip install -r requirements.txt
+
+# Ensure your .env has:
+# GEMINI_API_KEY=your_key_here
+# FRONTEND_URL=http://localhost:3000
+
+python main.py               # Runs on http://localhost:8000
+```
+
+### 2. Start the Frontend
+*The frontend is the user interface.*
+```powershell
+cd frontend
+npm install
+
+# Ensure your .env.local has:
+# NEXT_PUBLIC_API_URL=http://localhost:8000
+
+npm run dev                  # Runs on http://localhost:3000
+```
+
+### 3. Usage
+1. Open **[http://localhost:3000](http://localhost:3000)** in your browser.
+2. Go to the **Upload** page.
+3. Select a reference video (from `data/samples/reference/`).
+4. Select 2-5 user clips (from `data/samples/clips/`).
+5. Click **Generate** and watch the progress bar!
 
 ---
 
-## ✅ Current Status
+## 🛠️ Modes of Operation
 
-### Completed Features
-- ✅ Full backend pipeline (brain, editor, processors, orchestrator)
-- ✅ FastAPI with WebSocket progress tracking
-- ✅ Next.js frontend with 5 pages
-- ✅ Dual-mode operation (Auto + Manual)
-- ✅ Intelligent caching system (quota optimization)
-- ✅ Real-time progress updates
-- ✅ Side-by-side video comparison
-- ✅ Project history gallery
+### 🤖 Auto Mode
+- Uses Gemini 3 API for fresh analysis.
+- **Highly Automated**: Just upload and click generate.
+- **Quota Saver**: Uses comprehensive analysis to minimize API calls (1 call per clip).
 
-### Known Limitations
-- **Free Tier Quota:** Auto mode limited to ~1-2 videos/day (use Manual mode for testing)
-- **Manual Mode Audio:** No reference audio (silent output) - can be added if needed
-- **Video Format:** Optimized for vertical (1080x1920) TikTok/Instagram content
+### ✍️ Manual Mode
+- Bypass the API by providing pre-analyzed JSON.
+- **Infinite Testing**: Test rendering logic and new edit styles without hitting API limits.
+- **Demo Ready**: Ideal for hackathon presentations to ensure 100% reliability.
 
 ---
 
-## 🐛 Troubleshooting
-
-**"429 Quota Exceeded" Error:**
-- Switch to Manual Mode
-- Or wait 24 hours for quota reset
-- Or upgrade to paid Gemini API tier
-
-**Videos Not Processing:**
-- Check backend logs: `uvicorn` terminal
-- Ensure FFmpeg is installed: `ffmpeg -version`
-- Verify `.env` has valid `GEMINI_API_KEY`
-
-**Frontend Can't Connect:**
-- Ensure backend is running on port 8000
-- Check `NEXT_PUBLIC_API_URL` in `frontend/.env.local`
-- Verify CORS settings in `backend/main.py`
-
-**Cache Not Working:**
-- Check `data/cache/` directory exists
-- Ensure backend has write permissions
+## ⚠️ Legacy Content
+The following documents are kept for historical context but **may contain outdated code samples**:
+- `MIMIC_MASTER_BUILD_PLAN_FINAL.md` (See `CURRENT_FLOW.md` for current logic)
+- `MIMIC_CURSOR_LAUNCH_CHECKLIST.md`
 
 ---
 
-## 🎥 For Demo/Hackathon
-
-1. **Pre-analyze 3-5 reference videos** in AI Studio
-2. **Save JSON outputs** to `data/samples/`
-3. **Use Manual Mode** during live demo (instant, no quota risk)
-4. **Show side-by-side** comparison to judges
-5. **Explain:** "We analyzed the structure once, now we can apply it to any footage"
-
----
-
-## 📚 Documentation
-
-- **Master Plan:** `MIMIC_MASTER_BUILD_PLAN_FINAL.md` - Complete architecture
-- **Quick Reference:** `MIMIC_QUICK_REFERENCE.md` - API endpoints
-- **Launch Checklist:** `MIMIC_CURSOR_LAUNCH_CHECKLIST.md` - Deployment steps
-
----
-
-## 🔗 Links
-
-- **AI Studio:** https://aistudio.google.com
-- **Gemini API Docs:** https://ai.google.dev/docs
-- **FFmpeg Download:** https://ffmpeg.org/download.html
-
----
-
-**Built for Gemini 3 Global Hackathon** | Powered by Gemini 3 Flash + Next.js + FastAPI
+**Built for the Gemini 3 Global Hackathon** | *Agentic AI Video Orchestration*
