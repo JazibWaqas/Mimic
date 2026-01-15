@@ -1,19 +1,36 @@
 # MIMIC Project - Comprehensive Status Document
 
-**Last Updated:** January 15, 2026 (Editor Rewrite Complete - Production Ready)
+**Last Updated:** January 16, 2026 (Critical Fixes Applied - Production Ready)
 **Purpose:** This document provides a complete overview of the MIMIC project, its implementation, design decisions, current status, and how to get up to speed.
 
 ---
 
-## 🎯 Current Status (Jan 15, 2026)
+## 🎯 Current Status (Jan 16, 2026)
 
-MIMIC is now in a **Coherent State**. Following the major editor rewrite, the system consistently produces high-quality, rhythmically accurate edits using real-world videos.
+MIMIC is now in a **Production-Ready State**. Following critical fixes to the editor and matching logic, the system produces dynamic, varied edits with proper clip rotation and beat alignment.
+
+### Latest Fixes (Jan 16):
+- ✅ **Consistent Short Cuts:** Fixed growing duration bug - cuts now stay 0.2-0.5s (High), 0.4-0.8s (Med), 0.8-1.5s (Low)
+- ✅ **Segment Subdivision:** Forces 25-30 cuts for 15s video (was 15) by splitting long segments
+- ✅ **Beat Sync:** Aligns cuts to 120 BPM grid for music synchronization
+- ✅ **Clip Variety:** Prioritizes least-used clips - ensures all clips get used fairly
+- ✅ **Infinite Loop Fix:** Breaks out when segment <0.1s remaining instead of looping forever
 
 ### Key Highlights:
-- ✅ **Rapid Cuts Algorithm:** `editor.py` now splits reference segments into multiple short cuts (0.2s - 1.5s) to match viral pacing.
-- ✅ **Fair Distribution:** LRU (Least Recently Used) clip selection ensures all user clips are showcased in the final edit.
-- ✅ **Comprehensive Analysis:** Gemini 3 analyzes each clip once for all potential energy levels, resulting in zero extra API calls during the matching phase.
-- ✅ **Frame-Perfect Rendering:** FFmpeg re-encoding prevents sync drift, ensuring cuts align perfectly with reference beat drops.
+- ✅ **Rapid Cuts Algorithm:** `editor.py` creates multiple short cuts per segment based on energy level
+- ✅ **Fair Distribution:** Smart selection ensures all user clips are showcased (not just 2-3 repeated)
+- ✅ **Comprehensive Analysis:** Gemini 3 analyzes each clip once for all energy levels + best moments
+- ✅ **Frame-Perfect Rendering:** FFmpeg re-encoding prevents sync drift
+- ✅ **Audio Sync:** Simple beat grid (120 BPM) aligns cuts to music without heavy dependencies
+
+---
+
+## 📋 Table of Contents
+1. [Project Overview](#project-overview)
+2. [Architecture](#architecture)
+3. [Recent Changes](#recent-changes)
+4. [Implementation Details](#implementation-details)
+5. [Current Issues](#current-issues)
 6. [Known Issues](#known-issues)
 7. [Design Decisions](#design-decisions)
 8. [Testing & Usage](#testing--usage)
@@ -33,16 +50,12 @@ MIMIC is now in a **Coherent State**. Following the major editor rewrite, the sy
 ### Key Features
 - ✅ Reference video analysis (cut detection, energy/motion classification)
 - ✅ User clip analysis (energy/motion matching)
-- ✅ **Comprehensive Clip Analysis** - Gets energy, motion, AND best moments for ALL energy levels in ONE API call ⭐ NEW
-- ✅ **Soft Segments Algorithm** - Organic variable-length cuts (0.15s-3.0s) instead of fixed intervals ⭐ IMPLEMENTED
-- ✅ **Segment Spillover** - Cuts can flow across segment boundaries when energy/motion matches ⭐ IMPLEMENTED
-- ✅ **Micro-Jitter** - ±100ms randomization prevents mathematical regularity ⭐ IMPLEMENTED
-- ✅ **Deterministic Randomness** - Organic results that are reproducible with same inputs ⭐ IMPLEMENTED
-- ✅ **Motion-Aware Cuts** - Dynamic motion favors shorter cuts, static allows longer ⭐ ENHANCEMENT
-- ✅ **Timeline Drift Protection** - Prevents runaway spillovers (±2s cap) ⭐ ENHANCEMENT
-- ✅ **Fair Clip Distribution** - Usage counting per decision, not per segment ⭐ FIX APPLIED
-- ✅ **Rate Limiting** - Automatic throttling to prevent hitting Gemini quotas ⭐ NEW
-- ✅ **Mock Brain Mode** - Test FFmpeg/rendering without ANY API calls ⭐ NEW
+- ✅ **Comprehensive Clip Analysis** - Gets energy, motion, AND best moments for ALL energy levels in ONE API call
+- ✅ **Segment Subdivision** - Splits long segments to force more cuts (0.5-0.6s max)
+- ✅ **Smart Clip Selection** - Prioritizes unused clips, then least-used
+- ✅ **Beat Grid Alignment** - Snaps cuts to 120 BPM for music sync
+- ✅ **Rate Limiting** - Automatic throttling to prevent hitting Gemini quotas
+- ✅ **Mock Brain Mode** - Test FFmpeg/rendering without ANY API calls
 - ✅ Caching system (reduces API calls, version-aware cache invalidation)
 - ✅ Manual mode (bypass API for testing)
 - ✅ Real-time progress tracking (WebSocket)

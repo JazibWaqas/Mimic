@@ -20,13 +20,15 @@ from models import (
     MotionType,
     ClipMetadata
 )
+from engine.processors import has_audio, get_beat_grid, align_to_nearest_beat
 
 
 def match_clips_to_blueprint(
     blueprint: StyleBlueprint,
     clip_index: ClipIndex,
     find_best_moments: bool = False,  # Ignored - best moments come from comprehensive analysis
-    api_key: str | None = None
+    api_key: str | None = None,
+    reference_path: str | None = None  # NEW: For beat detection
 ) -> EDL:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
@@ -63,6 +65,15 @@ def match_clips_to_blueprint(
     # Check if clips have pre-computed best moments
     clips_with_moments = sum(1 for c in clip_index.clips if c.best_moments)
     print(f"  Clips with pre-computed best moments: {clips_with_moments}/{len(clip_index.clips)}")
+    
+    # PHASE 2: Generate beat grid for audio sync
+    beat_grid = None
+    if reference_path and has_audio(reference_path):
+        beat_grid = get_beat_grid(blueprint.total_duration, bpm=120)
+        print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at 120 BPM")
+    else:
+        print(f"  🔇 No audio detected - using visual cuts only")
+    
     print()
     
     # Track usage: how many times each clip has been used
@@ -108,30 +119,34 @@ def match_clips_to_blueprint(
                 # If we've exhausted all clips, use any clip
                 available_clips = matching_clips
             
-            # Select LEAST USED clip from available pool
-            selected_clip = min(available_clips, key=lambda c: clip_usage_count[c.filename])
+            # SMART SELECTION: Prioritize unused clips, then least-used
+            # Sort by usage count (lowest first), then shuffle within each usage tier
+            import random
+            
+            # Group clips by usage count
+            min_usage = min(clip_usage_count[c.filename] for c in available_clips)
+            least_used_clips = [c for c in available_clips if clip_usage_count[c.filename] == min_usage]
+            
+            # Shuffle within the least-used group for variety
+            random.shuffle(least_used_clips)
+            selected_clip = least_used_clips[0]
             
             if cuts_in_segment == 0:  # Only print once per segment
-                print(f"  📎 Starting segment with: {selected_clip.filename} ({selected_clip.energy.value})")
+                print(f"  📎 Starting segment with: {selected_clip.filename} ({selected_clip.energy.value}, used {clip_usage_count[selected_clip.filename]}x)")
 
             
-            # CRITICAL FIX: Make RAPID CUTS based on energy level
-            # High energy = many short cuts (0.2-0.5s)
-            # Medium energy = moderate cuts (0.3-0.8s)
-            # Low energy = longer cuts (0.5-1.5s)
+            # FIXED: Consistent short cuts based on energy level
+            # NO MORE GROWING DURATIONS - stay rapid throughout
             if segment.energy == EnergyLevel.HIGH:
-                # Viral TikTok style: very rapid cuts
-                base_cut_duration = 0.2 + (cuts_in_segment * 0.05)  # 0.2s, 0.25s, 0.3s...
-                max_cut_duration = 0.5
+                # Viral TikTok style: consistently fast cuts
+                target_duration = random.uniform(0.2, 0.5)  # Always 0.2-0.5s
             elif segment.energy == EnergyLevel.MEDIUM:
-                base_cut_duration = 0.3 + (cuts_in_segment * 0.08)  # 0.3s, 0.38s, 0.46s...
-                max_cut_duration = 0.8
+                target_duration = random.uniform(0.4, 0.8)  # Moderate pacing
             else:  # LOW
-                base_cut_duration = 0.5 + (cuts_in_segment * 0.1)  # 0.5s, 0.6s, 0.7s...
-                max_cut_duration = 1.5
+                target_duration = random.uniform(0.8, 1.5)  # Slower, deliberate cuts
             
-            # Clamp to max and remaining budget
-            use_duration = min(base_cut_duration, max_cut_duration, segment_remaining)
+            # Clamp to remaining segment budget
+            use_duration = min(target_duration, segment_remaining)
             
             # Try to use best moment if available
             clip_start = None
@@ -183,10 +198,27 @@ def match_clips_to_blueprint(
             
             # Ensure minimum duration
             if actual_duration < 0.1:
-                print(f"    [SKIP] Duration too small: {actual_duration:.2f}s")
-                # Reset clip and try again
-                clip_current_position[selected_clip.filename] = 0.0
-                continue
+                print(f"    [SKIP] Segment remaining too small ({actual_duration:.2f}s), moving to next segment")
+                # Don't continue loop - just finish this segment
+                break
+            
+            # PHASE 2: Align cut points to beats if audio exists
+            if beat_grid:
+                aligned_start = align_to_nearest_beat(timeline_position, beat_grid, tolerance=0.15)
+                aligned_end = align_to_nearest_beat(timeline_position + actual_duration, beat_grid, tolerance=0.15)
+                
+                # Adjust duration if needed after alignment
+                aligned_duration = aligned_end - aligned_start
+                if aligned_duration >= 0.1:  # Ensure it's still valid
+                    timeline_start_for_decision = aligned_start
+                    timeline_end_for_decision = aligned_end
+                else:
+                    # Alignment made it too short, use original
+                    timeline_start_for_decision = timeline_position
+                    timeline_end_for_decision = timeline_position + actual_duration
+            else:
+                timeline_start_for_decision = timeline_position
+                timeline_end_for_decision = timeline_position + actual_duration
             
             # Create edit decision
             decision = EditDecision(
@@ -194,14 +226,14 @@ def match_clips_to_blueprint(
                 clip_path=selected_clip.filepath,
                 clip_start=clip_start,
                 clip_end=clip_end,
-                timeline_start=timeline_position,
-                timeline_end=timeline_position + actual_duration
+                timeline_start=timeline_start_for_decision,
+                timeline_end=timeline_end_for_decision
             )
             decisions.append(decision)
             
             # Update tracking
             clip_current_position[selected_clip.filename] = clip_end
-            clip_usage_count[selected_clip.filename] += 1
+            clip_usage_count[selected_clip.filename] += 1  # CRITICAL: Track usage
             timeline_position += actual_duration
             segment_remaining -= actual_duration
             

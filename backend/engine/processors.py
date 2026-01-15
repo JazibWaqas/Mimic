@@ -66,6 +66,91 @@ def get_video_info(video_path: str) -> dict:
         raise RuntimeError(f"Failed to get info for {video_path}: {e}")
 
 
+def has_audio(video_path: str) -> bool:
+    """
+    Check if video has an audio track.
+    
+    Args:
+        video_path: Path to video file
+    
+    Returns:
+        True if video has audio, False otherwise
+    """
+    cmd = [
+        "ffprobe",
+        "-v", "error",
+        "-select_streams", "a:0",
+        "-show_entries", "stream=codec_type",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        video_path
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        return "audio" in result.stdout.lower()
+    except Exception:
+        return False
+
+
+def get_beat_grid(duration: float, bpm: int = 120) -> List[float]:
+    """
+    Generate beat timestamps assuming fixed BPM.
+    
+    This creates a "beat grid" for aligning cuts to music, even without
+    real beat detection. Works well for most electronic/pop music.
+    
+    Args:
+        duration: Total video duration in seconds
+        bpm: Beats per minute (default 120 = common pop/electronic tempo)
+    
+    Returns:
+        List of beat timestamps in seconds [0.0, 0.5, 1.0, 1.5, ...]
+    
+    Examples:
+        120 BPM = 0.5s per beat (2 beats/second)
+        140 BPM = 0.428s per beat
+        100 BPM = 0.6s per beat
+    """
+    beat_interval = 60.0 / bpm
+    timestamps = []
+    t = 0.0
+    
+    while t < duration:
+        timestamps.append(t)
+        t += beat_interval
+    
+    return timestamps
+
+
+def align_to_nearest_beat(time: float, beat_grid: List[float], tolerance: float = 0.15) -> float:
+    """
+    Snap a time value to the nearest beat on the grid.
+    
+    Args:
+        time: Original time in seconds
+        beat_grid: List of beat timestamps from get_beat_grid()
+        tolerance: Maximum distance to snap (default 0.15s)
+    
+    Returns:
+        Nearest beat timestamp, or original time if no beat is close enough
+    
+    Example:
+        align_to_nearest_beat(1.23, [0.0, 0.5, 1.0, 1.5]) → 1.0
+        align_to_nearest_beat(0.75, [0.0, 0.5, 1.0, 1.5]) → 0.5
+    """
+    if not beat_grid:
+        return time
+    
+    # Find nearest beat
+    nearest_beat = min(beat_grid, key=lambda t: abs(t - time))
+    
+    # Only snap if within tolerance
+    if abs(nearest_beat - time) <= tolerance:
+        return nearest_beat
+    
+    return time
+
+
 # ============================================================================
 # VIDEO STANDARDIZATION
 # ============================================================================

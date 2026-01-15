@@ -488,6 +488,61 @@ def _parse_json_response(response_text: str) -> dict:
 # PUBLIC API
 # ============================================================================
 
+def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 0.6) -> StyleBlueprint:
+    """
+    Split long segments into smaller chunks for rapid-fire editing.
+    
+    This ensures we get enough cuts even if Gemini returns coarse segments.
+    For example: A 2.0s segment becomes 3-4 segments of 0.5-0.6s each.
+    
+    Args:
+        blueprint: Original blueprint from Gemini
+        max_segment_duration: Maximum allowed segment duration (default 0.6s)
+    
+    Returns:
+        Blueprint with subdivided segments
+    """
+    new_segments = []
+    segment_id = 1
+    
+    for segment in blueprint.segments:
+        if segment.duration > max_segment_duration:
+            # Calculate how many splits we need
+            num_splits = int(segment.duration / max_segment_duration) + 1
+            split_duration = segment.duration / num_splits
+            
+            # Create sub-segments
+            for i in range(num_splits):
+                new_segments.append(Segment(
+                    id=segment_id,
+                    start=segment.start + (i * split_duration),
+                    end=segment.start + ((i + 1) * split_duration),
+                    duration=split_duration,
+                    energy=segment.energy,  # Preserve original energy classification
+                    motion=segment.motion    # Preserve original motion classification
+                ))
+                segment_id += 1
+        else:
+            # Keep segment as-is but update ID
+            new_segments.append(Segment(
+                id=segment_id,
+                start=segment.start,
+                end=segment.end,
+                duration=segment.duration,
+                energy=segment.energy,
+                motion=segment.motion
+            ))
+            segment_id += 1
+    
+    print(f"[SUBDIVISION] {len(blueprint.segments)} segments → {len(new_segments)} segments (max {max_segment_duration:.1f}s each)")
+    
+    # Create new blueprint with subdivided segments
+    return StyleBlueprint(
+        total_duration=blueprint.total_duration,
+        segments=new_segments
+    )
+
+
 def analyze_reference_video(video_path: str, api_key: str | None = None) -> StyleBlueprint:
     """
     Analyze reference video to extract editing structure.
@@ -526,6 +581,10 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
                     # Remove metadata before validation
                     blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
                     blueprint = StyleBlueprint(**blueprint_data)
+                    
+                    # Apply subdivision to cached blueprints too
+                    blueprint = subdivide_segments(blueprint, max_segment_duration=0.6)
+                    
                     print(f"[OK] Loaded from cache (v{CACHE_VERSION}): {len(blueprint.segments)} segments")
                     return blueprint
         except Exception as e:
@@ -547,7 +606,11 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
             json_data = _parse_json_response(response.text)
             blueprint = StyleBlueprint(**json_data)
             
-            # Save to cache with version metadata
+            # Apply subdivision to ensure rapid cuts
+            blueprint = subdivide_segments(blueprint, max_segment_duration=0.6)
+            
+            # Save ORIGINAL (non-subdivided) to cache
+            # We subdivide on load so cache stays pure
             cache_data = {
                 **json_data,
                 "_cache_version": CACHE_VERSION,
@@ -557,7 +620,7 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
                 json.dump(cache_data, f, indent=2)
             print(f"[CACHE] Saved to {cache_file.name} (v{CACHE_VERSION})")
             
-            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments")
+            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments (after subdivision)")
             return blueprint
             
         except Exception as e:

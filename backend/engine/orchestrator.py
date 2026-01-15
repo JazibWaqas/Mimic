@@ -171,7 +171,13 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(4, TOTAL_STEPS, "Creating edit sequence...")
         
-        edl = match_clips_to_blueprint(blueprint, clip_index, find_best_moments=True, api_key=api_key)
+        edl = match_clips_to_blueprint(
+            blueprint, 
+            clip_index, 
+            find_best_moments=True, 
+            api_key=api_key,
+            reference_path=reference_path  # For beat grid detection
+        )
         
         # Validate EDL but don't fail - allow debugging even if timing is off
         try:
