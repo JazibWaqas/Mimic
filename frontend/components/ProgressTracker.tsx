@@ -19,6 +19,7 @@ interface ProgressTrackerProps {
 export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
   const [progress, setProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState("");
+  const [connectionError, setConnectionError] = useState<string | null>(null);
 
   const baseSteps = useMemo<ProgressStep[]>(
     () => [
@@ -49,11 +50,28 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
       try {
         const wsUrl = getWebSocketUrl(sessionId);
         console.log("Connecting to WebSocket:", wsUrl);
+        console.log("Session ID:", sessionId);
+        
+        // Verify session exists before connecting
+        if (!sessionId || sessionId === "undefined" || sessionId === "null") {
+          console.error("Invalid session ID, cannot connect WebSocket");
+          return;
+        }
+        
+        // Verify WebSocket URL is valid
+        if (!wsUrl || !wsUrl.startsWith("ws://") && !wsUrl.startsWith("wss://")) {
+          console.error("Invalid WebSocket URL:", wsUrl);
+          setConnectionError("Invalid WebSocket URL. Check API configuration.");
+          return;
+        }
+        
+        console.log("Creating WebSocket connection...");
         ws = new WebSocket(wsUrl);
 
         ws.onopen = () => {
           console.log("WebSocket connected successfully");
           reconnectAttempts = 0;
+          setConnectionError(null);
         };
 
         ws.onmessage = (event) => {
@@ -83,6 +101,18 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
 
         ws.onerror = (error) => {
           console.error("WebSocket error:", error);
+          console.error("WebSocket state:", ws?.readyState);
+          console.error("WebSocket URL:", wsUrl);
+          console.error("Session ID:", sessionId);
+          
+          // WebSocket errors don't provide detailed info, but we can check the state
+          if (ws?.readyState === WebSocket.CLOSED) {
+            const errorMsg = `Cannot connect to ${wsUrl}. Make sure backend is running on port 8000.`;
+            console.error(errorMsg);
+            setConnectionError(errorMsg);
+          } else {
+            setConnectionError("WebSocket connection failed. Check console for details.");
+          }
         };
 
         ws.onclose = (event) => {
@@ -103,7 +133,8 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
       }
     };
     
-    setTimeout(connect, 500);
+    // Wait a bit longer for session to be created and generation to start
+    setTimeout(connect, 1500);
 
     return () => {
       if (reconnectTimeout) clearTimeout(reconnectTimeout);
@@ -123,6 +154,9 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
         <Progress value={progress} className="h-2" />
         {currentStep && (
           <p className="mt-2 text-sm text-muted-foreground">{currentStep}</p>
+        )}
+        {connectionError && (
+          <p className="mt-2 text-sm text-red-500">{connectionError}</p>
         )}
       </div>
 

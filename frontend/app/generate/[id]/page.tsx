@@ -19,10 +19,12 @@ export default function GeneratePage({ params }: { params: Promise<{ id: string 
       if (started || !sessionId || sessionId === "undefined") return;
       setStarted(true);
       try {
-        await generateVideo(sessionId);
+        const result = await generateVideo(sessionId);
+        console.log("Generation started:", result);
       } catch (e: any) {
-        setStarted(false); // allow retry on error? maybe not automatically, but let's be safe.
-        toast.error(e?.message || "Failed to start generation");
+        console.error("Failed to start generation:", e);
+        // Don't reset started - prevent infinite retry loop
+        toast.error(e?.message || "Failed to start generation. Please try uploading again.");
       }
     }
 

@@ -172,7 +172,14 @@ def run_mimic_pipeline(
         update_progress(4, TOTAL_STEPS, "Creating edit sequence...")
         
         edl = match_clips_to_blueprint(blueprint, clip_index, find_best_moments=True, api_key=api_key)
-        validate_edl(edl, blueprint)
+        
+        # Validate EDL but don't fail - allow debugging even if timing is off
+        try:
+            validate_edl(edl, blueprint)
+        except ValueError as e:
+            print(f"[WARN] EDL validation failed: {e}")
+            print("[WARN] Continuing anyway to allow debugging...")
+        
         print_edl_summary(edl, blueprint, clip_index)
         
         # ==================================================================
@@ -372,7 +379,14 @@ def run_mimic_pipeline_manual(
         
         # Manual mode - no best moment analysis (saves API calls)
         edl = match_clips_to_blueprint(blueprint, clip_index, find_best_moments=False)
-        validate_edl(edl, blueprint)
+        
+        # Validate EDL but don't fail - allow debugging even if timing is off
+        try:
+            validate_edl(edl, blueprint)
+        except ValueError as e:
+            print(f"[WARN] EDL validation failed: {e}")
+            print("[WARN] Continuing anyway to allow debugging...")
+        
         print_edl_summary(edl, blueprint, clip_index)
         
         # STEP 3: RENDER

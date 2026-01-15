@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import List
 import google.generativeai as genai
 from models import StyleBlueprint, ClipMetadata, ClipIndex, EnergyLevel, MotionType, Segment, BestMoment
+from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 
 # ============================================================================
 # CACHE VERSIONING
@@ -322,12 +323,40 @@ class GeminiConfig:
 # CORE FUNCTIONS
 # ============================================================================
 
+def _handle_rate_limit_error(e: Exception, operation: str = "API call") -> bool:
+    """
+    Handle rate limit errors by rotating to the next API key.
+    
+    Args:
+        e: The exception that occurred
+        operation: Description of the operation (for logging)
+    
+    Returns:
+        True if key was rotated, False if not a rate limit error or all keys exhausted
+    """
+    error_msg = str(e).lower()
+    if "429" not in error_msg and "quota" not in error_msg:
+        return False
+    
+    print(f"[QUOTA] Rate limit detected during {operation}")
+    
+    new_key = rotate_api_key(f"Rate limit during {operation}")
+    if new_key:
+        print(f"[QUOTA] Rotated to new API key, re-initializing genai...")
+        genai.configure(api_key=new_key)
+        return True
+    else:
+        print(f"[QUOTA] All API keys exhausted. Waiting 15s before retry...")
+        time.sleep(15)
+        return False
+
+
 def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
     """
     Initialize Gemini API client with automatic fallback.
     
     Args:
-        api_key: Optional API key. If None, reads from GEMINI_API_KEY env var.
+        api_key: Optional API key. If None, uses API key manager.
     
     Returns:
         Configured GenerativeModel instance
@@ -336,7 +365,7 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
         ValueError: If API key is not provided or found in environment
     """
     if api_key is None:
-        api_key = os.getenv("GEMINI_API_KEY")
+        api_key = get_api_key()
     
     if not api_key:
         raise ValueError(
@@ -407,9 +436,9 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to upload video after {GeminiConfig.MAX_RETRIES} attempts: {e}")
             
-            if "429" in str(e) or "quota" in str(e).lower():
-                print(f"[QUOTA] Rate limit hit on upload. Waiting 15s...")
-                time.sleep(15)
+            if _handle_rate_limit_error(e, "video upload"):
+                # Key rotated, retry immediately
+                continue
             else:
                 print(f"Upload failed: {e}. Retrying in {GeminiConfig.RETRY_DELAY}s...")
                 time.sleep(GeminiConfig.RETRY_DELAY)
@@ -532,10 +561,9 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
             return blueprint
             
         except Exception as e:
-            error_msg = str(e).lower()
-            if "429" in error_msg or "quota" in error_msg:
-                print(f"[QUOTA] Rate limit hit. Waiting 10s before retry...")
-                time.sleep(10.0)
+            if _handle_rate_limit_error(e, "reference analysis"):
+                # Key rotated, retry immediately
+                continue
             
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to analyze reference after {GeminiConfig.MAX_RETRIES} attempts: {e}")
@@ -604,10 +632,9 @@ def find_best_moment(
             return start, end
             
         except Exception as e:
-            error_msg = str(e).lower()
-            if "429" in error_msg or "quota" in error_msg:
-                print(f"    [QUOTA] Rate limit hit. Waiting 10s...")
-                time.sleep(10.0)
+            if _handle_rate_limit_error(e, "best moment analysis"):
+                # Key rotated, retry immediately
+                continue
             
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 print(f"    [WARN] Best moment analysis failed, using fallback: {e}")
@@ -650,10 +677,9 @@ def analyze_clip(clip_path: str, api_key: str | None = None) -> tuple[EnergyLeve
             return energy, motion
             
         except Exception as e:
-            error_msg = str(e).lower()
-            if "429" in error_msg or "quota" in error_msg:
-                print(f"    [QUOTA] Rate limit hit on clip. Waiting 10s...")
-                time.sleep(10.0)
+            if _handle_rate_limit_error(e, "clip analysis"):
+                # Key rotated, retry immediately
+                continue
                 
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to analyze clip after {GeminiConfig.MAX_RETRIES} attempts: {e}")
@@ -863,10 +889,9 @@ def _analyze_single_clip_comprehensive(
             )
             
         except Exception as e:
-            error_msg = str(e).lower()
-            if "429" in error_msg or "quota" in error_msg:
-                print(f"    [QUOTA] Rate limit hit. Waiting 15s...")
-                time.sleep(15.0)
+            if _handle_rate_limit_error(e, "comprehensive clip analysis"):
+                # Key rotated, retry immediately
+                continue
                 
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to analyze clip after {GeminiConfig.MAX_RETRIES} attempts: {e}")
@@ -932,10 +957,9 @@ def _analyze_single_clip_simple(model: genai.GenerativeModel, clip_path: str) ->
             return energy, motion
             
         except Exception as e:
-            error_msg = str(e).lower()
-            if "429" in error_msg or "quota" in error_msg:
-                print(f"    [QUOTA] Rate limit hit. Waiting 15s...")
-                time.sleep(15.0)
+            if _handle_rate_limit_error(e, "comprehensive clip analysis"):
+                # Key rotated, retry immediately
+                continue
                 
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise Exception(f"Failed to analyze clip after {GeminiConfig.MAX_RETRIES} attempts: {e}")

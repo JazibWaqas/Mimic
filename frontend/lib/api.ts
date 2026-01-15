@@ -19,7 +19,10 @@ export async function generateVideo(sessionId: string) {
     method: "POST",
   });
 
-  if (!response.ok) throw new Error("Generation failed");
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.detail || `Generation failed: ${response.status} ${response.statusText}`);
+  }
   return response.json();
 }
 

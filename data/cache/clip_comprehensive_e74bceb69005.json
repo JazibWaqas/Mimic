@@ -1,0 +1,23 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The jet ski moves towards the camera, creating a visible wake and dynamic motion."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 5.5,
+      "reason": "The jet ski passes close to the camera at a steady pace."
+    },
+    "Low": {
+      "start": 5.5,
+      "end": 7.0,
+      "reason": "The jet ski moves away from the camera, and the motion stabilizes."
+    }
+  },
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-15 14:55:45"
+}

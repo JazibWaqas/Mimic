@@ -12,6 +12,7 @@ from models import (
     EDL,
     EditDecision,
     EnergyLevel,
+    MotionType,
     ClipMetadata
 )
 
@@ -167,11 +168,18 @@ def match_clips_to_blueprint(
             # If we have a best moment window, try to stay within it
             if best_moment_window:
                 window_start, window_end = best_moment_window
-                available_in_window = window_end - clip_current_position[selected_clip.filename]
+                current_pos = clip_current_position[selected_clip.filename]
+                
+                # If current position is before window, start from window start
+                if current_pos < window_start:
+                    clip_start = window_start
+                else:
+                    clip_start = current_pos
+                
+                available_in_window = window_end - clip_start
 
                 if available_in_window > 0.1:  # Still content in window
                     # Stay within the best moment window
-                    clip_start = clip_current_position[selected_clip.filename]
                     clip_end = min(clip_start + use_duration, window_end)
                     actual_duration = clip_end - clip_start
                 else:
@@ -184,12 +192,18 @@ def match_clips_to_blueprint(
                         # Clip exhausted, get next clip
                         next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
                         selected_clip = next_clip
-                        clip_current_position[selected_clip.filename] = 0.0
-                        clip_start = 0.0
-                        available_duration = selected_clip.duration
                         # Try to get new best moment window
                         if selected_clip.best_moments:
                             best_moment_window = selected_clip.get_best_moment_for_energy(segment.energy)
+                            if best_moment_window:
+                                # Start from window start if we have a best moment
+                                clip_current_position[selected_clip.filename] = best_moment_window[0]
+                            else:
+                                clip_current_position[selected_clip.filename] = 0.0
+                        else:
+                            clip_current_position[selected_clip.filename] = 0.0
+                        clip_start = clip_current_position[selected_clip.filename]
+                        available_duration = selected_clip.duration - clip_start
 
                     clip_end = clip_start + min(use_duration, available_duration)
                     actual_duration = clip_end - clip_start
@@ -202,12 +216,18 @@ def match_clips_to_blueprint(
                     # Clip exhausted, get next clip
                     next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
                     selected_clip = next_clip
-                    clip_current_position[selected_clip.filename] = 0.0
-                    clip_start = 0.0
-                    available_duration = selected_clip.duration
                     # Try to get best moment window for new clip
                     if selected_clip.best_moments:
                         best_moment_window = selected_clip.get_best_moment_for_energy(segment.energy)
+                        if best_moment_window:
+                            # Start from window start if we have a best moment
+                            clip_current_position[selected_clip.filename] = best_moment_window[0]
+                        else:
+                            clip_current_position[selected_clip.filename] = 0.0
+                    else:
+                        clip_current_position[selected_clip.filename] = 0.0
+                    clip_start = clip_current_position[selected_clip.filename]
+                    available_duration = selected_clip.duration - clip_start
 
                 clip_end = clip_start + min(use_duration, available_duration)
                 actual_duration = clip_end - clip_start
@@ -230,7 +250,18 @@ def match_clips_to_blueprint(
             clip_end = round(clip_end, 1)
             actual_duration = clip_end - clip_start
 
-            # Skip if duration is too small
+            # Ensure minimum duration after all processing
+            if actual_duration < 0.1:
+                # If too small, extend clip_end to get minimum duration
+                clip_end = clip_start + 0.1
+                actual_duration = 0.1
+                # Clamp to window or clip duration if needed
+                if best_moment_window:
+                    clip_end = min(clip_end, best_moment_window[1])
+                clip_end = min(clip_end, selected_clip.duration)
+                actual_duration = clip_end - clip_start
+
+            # Skip if still too small (shouldn't happen now, but safety check)
             if actual_duration < 0.05:
                 print(f"    [SKIP] Duration too small after processing: {actual_duration:.2f}s")
                 break
@@ -275,7 +306,8 @@ def match_clips_to_blueprint(
         # Handle spillover logic
         if can_spillover and segment_progress > segment.duration:
             # We spilled into next segment, skip it
-            print(f"  [SPILLOVER] Continued into next segment, skipping segment {segment_index + 1}")
+            next_segment_id = blueprint.segments[segment_index + 1].id if segment_index + 1 < len(blueprint.segments) else "?"
+            print(f"  [SPILLOVER] Continued into next segment, skipping segment {next_segment_id}")
             segment_index += 1  # Skip next segment since we already covered it
             assert segment_index < len(blueprint.segments), "Spillover logic error: double-skipped"
 

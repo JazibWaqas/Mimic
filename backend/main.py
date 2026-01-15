@@ -194,8 +194,31 @@ async def generate_video(session_id: str, background_tasks: BackgroundTasks):
     Returns:
         {"status": "processing", "session_id": "..."}
     """
+    # Try to recover session from disk if it doesn't exist in memory
     if session_id not in active_sessions:
-        raise HTTPException(status_code=404, detail="Session not found")
+        session_uploads_dir = UPLOADS_DIR / session_id
+        ref_dir = session_uploads_dir / "reference"
+        clips_dir = session_uploads_dir / "clips"
+        
+        # Check if upload directory exists (session was created before restart)
+        if session_uploads_dir.exists():
+            print(f"[GENERATE] Recovering session from disk: {session_id}")
+            ref_files = list(ref_dir.glob("*")) if ref_dir.exists() else []
+            clip_files = list(clips_dir.glob("*")) if clips_dir.exists() else []
+            
+            if ref_files and clip_files:
+                active_sessions[session_id] = {
+                    "reference_path": str(ref_files[0]),
+                    "clip_paths": [str(f) for f in clip_files],
+                    "status": "uploaded",
+                    "progress": 0.0,
+                    "created_at": ""
+                }
+                print(f"[GENERATE] Session recovered: {len(clip_files)} clips found")
+            else:
+                raise HTTPException(status_code=404, detail="Session files not found. Please re-upload.")
+        else:
+            raise HTTPException(status_code=404, detail="Session not found. Please upload files first.")
     
     session = active_sessions[session_id]
     
@@ -355,12 +378,21 @@ async def websocket_progress(websocket: WebSocket, session_id: str):
     """
     WebSocket for real-time progress updates.
     """
+    print(f"[WS] Connection attempt for session: {session_id}")
     # Accept WebSocket connection (CORS is handled at HTTP level)
     origin = websocket.headers.get("origin")
-    if origin and origin not in [FRONTEND_URL, "http://localhost:3000", "http://127.0.0.1:3000"]:
-        print(f"[WS] Rejecting connection from origin: {origin}")
-        await websocket.close(code=1008, reason="Origin not allowed")
-        return
+    print(f"[WS] Origin: {origin}")
+    allowed_origins = [FRONTEND_URL, "http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:3001"]
+    
+    # In development, be more lenient
+    if origin and origin not in allowed_origins:
+        # Log but allow in development (localhost variants)
+        if "localhost" in origin or "127.0.0.1" in origin:
+            print(f"[WS] Allowing localhost origin: {origin}")
+        else:
+            print(f"[WS] Rejecting connection from origin: {origin}")
+            await websocket.close(code=1008, reason="Origin not allowed")
+            return
     
     try:
         await websocket.accept()
