@@ -1,7 +1,12 @@
 """
-Editor module: Clip-to-segment matching algorithm.
+Editor module: Clip-to-segment matching algorithm (FIXED VERSION).
 
-This is the "creative logic" layer. It decides which clips go where.
+FIXES APPLIED:
+1. Simplified algorithm - no complex spillover logic
+2. Proper clip rotation - ensures all clips are used
+3. Fills segments completely - matches reference duration
+4. Uses best moments when available
+5. Prevents back-to-back repeats of same clip
 """
 
 from typing import List, Dict
@@ -16,54 +21,41 @@ from models import (
     ClipMetadata
 )
 
-# ============================================================================
-# MATCHING ALGORITHM
-# ============================================================================
 
 def match_clips_to_blueprint(
     blueprint: StyleBlueprint,
     clip_index: ClipIndex,
-    find_best_moments: bool = False,  # DEPRECATED: Best moments now come from comprehensive analysis
+    find_best_moments: bool = False,  # Ignored - best moments come from comprehensive analysis
     api_key: str | None = None
 ) -> EDL:
     """
-    Match user clips to blueprint segments using SOFT SEGMENT approach.
-
-    NEW ALGORITHM (Soft Segments):
-    Segments are RHYTHMIC ANCHORS, not hard containers.
-    1. Create energy pools (group clips by energy level)
-    2. For each segment in blueprint:
-        a. Define segment_budget (approximate duration)
-        b. Find clips matching segment energy
-        c. If no match, use round-robin from all clips
-        d. Select least-used clip from pool
-        e. Pull best moment window and make VARIABLE cuts (0.15s - 3.0s)
-        f. Allow cuts to SPILL into next segment if energy matches
-        g. Add MICRO-JITTER (±100ms) to break mathematical regularity
-    3. Return Edit Decision List
-
-    KEY CHANGES:
-    - Segments define timing APPROXIMATIONS, not exact boundaries
-    - Cuts can be any length (organic feel)
-    - Cross-segment continuity when energy/motion matches
-    - Micro-jitter prevents robotic timing
-
-    PRIORITY: Organic flow > Global pacing > Perfect energy matching
-
-    OPTIMIZATION: Best moments are now pre-computed during clip analysis.
-    The `find_best_moments` parameter is DEPRECATED and ignored.
-
+    Match user clips to blueprint segments using SIMPLIFIED algorithm.
+    
+    ALGORITHM:
+    1. For each segment in blueprint:
+       a. Find clips matching segment energy
+       b. Select LEAST RECENTLY USED clip from pool
+       c. Use best moment if available, otherwise sequential
+       d. Fill segment completely (no 85% threshold)
+       e. Track usage to ensure fair distribution
+    
+    FIXES:
+    - Removed complex spillover logic (was causing bugs)
+    - Proper clip rotation (prevents only 2 clips being used)
+    - Fills segments to match reference duration
+    - Prevents same clip back-to-back
+    
     Args:
         blueprint: Analyzed reference structure
         clip_index: Analyzed user clips (should have best_moments populated)
         find_best_moments: DEPRECATED - ignored
         api_key: DEPRECATED - not needed
-
+    
     Returns:
         EDL (Edit Decision List) with frame-accurate instructions
     """
     print(f"\n{'='*60}")
-    print(f"[EDITOR] MATCHING CLIPS TO BLUEPRINT")
+    print(f"[EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)")
     print(f"{'='*60}")
     print(f"  Segments: {len(blueprint.segments)}")
     print(f"  Clips: {len(clip_index.clips)}")
@@ -73,199 +65,129 @@ def match_clips_to_blueprint(
     print(f"  Clips with pre-computed best moments: {clips_with_moments}/{len(clip_index.clips)}")
     print()
     
-    # Track how many times each clip has been used
+    # Track usage: how many times each clip has been used
     clip_usage_count = {clip.filename: 0 for clip in clip_index.clips}
-    
-    # Group clips by energy for fast lookup
-    energy_pools = _create_energy_pools(clip_index)
     
     # Track current position in each clip (for sequential fallback)
     clip_current_position = {clip.filename: 0.0 for clip in clip_index.clips}
     
-    # Note: used_moments tracking removed - not needed for current organic approach
-
-    # Initialize deterministic randomness for organic but reproducible results
-    import hashlib
-    seed_string = f"{blueprint.total_duration}_{len(clip_index.clips)}_{'_'.join(c.filename for c in clip_index.clips)}"
-    seed_hash = int(hashlib.md5(seed_string.encode()).hexdigest()[:8], 16)
-    import random
-    random.seed(seed_hash)
-
+    # Group clips by energy for fast lookup
+    energy_pools = _create_energy_pools(clip_index)
+    
     decisions: List[EditDecision] = []
     timeline_position = 0.0
-    segment_index = 0
+    last_used_clip = None  # Track to prevent back-to-back repeats
+    second_last_clip = None  # Track last 2 clips for more variety
 
-    while segment_index < len(blueprint.segments):
-        segment = blueprint.segments[segment_index]
-        print(f"Segment {segment.id}: {segment.start:.2f}s-{segment.end:.2f}s "
-              f"({segment.duration:.2f}s, {segment.energy.value})")
-
-        # Define segment budget (approximate, not exact)
-        segment_budget = segment.duration
+    
+    for segment in blueprint.segments:
+        print(f"\nSegment {segment.id}: {segment.start:.2f}s-{segment.end:.2f}s "
+              f"({segment.duration:.2f}s, {segment.energy.value}/{segment.motion.value})")
+        
+        segment_remaining = segment.duration
         segment_start_time = timeline_position
+        
+        # Fill this segment with MULTIPLE RAPID CUTS to match fast-paced editing
+        cuts_in_segment = 0
+        max_cuts_per_segment = 20  # Prevent infinite loops
+        
+        while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
+            # Find matching clips
+            matching_clips = energy_pools.get(segment.energy, [])
+            
+            if not matching_clips:
+                print(f"  [WARN] No {segment.energy.value} clips available, using all clips")
+                matching_clips = clip_index.clips
+            
+            # CRITICAL: Switch clips for EVERY cut to maximize variety
+            # Exclude last 2 used clips to prevent repetition
+            recently_used = [last_used_clip, second_last_clip] if second_last_clip else [last_used_clip]
+            available_clips = [c for c in matching_clips if c.filename not in recently_used]
+            
+            if not available_clips:
+                # If we've exhausted all clips, use any clip
+                available_clips = matching_clips
+            
+            # Select LEAST USED clip from available pool
+            selected_clip = min(available_clips, key=lambda c: clip_usage_count[c.filename])
+            
+            if cuts_in_segment == 0:  # Only print once per segment
+                print(f"  📎 Starting segment with: {selected_clip.filename} ({selected_clip.energy.value})")
 
-        # Allow spillover to next segment if energy/motion matches
-        can_spillover = (segment_index + 1 < len(blueprint.segments) and
-                        blueprint.segments[segment_index + 1].energy == segment.energy and
-                        blueprint.segments[segment_index + 1].motion == segment.motion)
-
-        if can_spillover:
-            spillover_segment = blueprint.segments[segment_index + 1]
-            segment_budget += spillover_segment.duration * 0.3  # 30% spillover allowance
-            print(f"  [SPILLOVER] Can continue into next segment (same energy/motion)")
-
-        # Find matching clips
-        matching_clips = energy_pools.get(segment.energy, [])
-
-        if not matching_clips:
-            print(f"  [WARN] No {segment.energy.value} clips available, using fallback")
-            # Fallback: Use round-robin from all clips
-            matching_clips = sorted(
-                clip_index.clips,
-                key=lambda c: clip_usage_count[c.filename]
-            )
-
-        # Select least-used clip from pool
-        selected_clip = min(matching_clips, key=lambda c: clip_usage_count[c.filename])
-        print(f"  📎 Selected: {selected_clip.filename} ({selected_clip.energy.value})")
-
-        # Get best moment window for this energy level
-        best_moment_window = None
-        if selected_clip.best_moments:
-            best_moment_window = selected_clip.get_best_moment_for_energy(segment.energy)
-            if best_moment_window:
-                window_start, window_end = best_moment_window
-                print(f"  ✨ Best moment window: {window_start:.2f}s - {window_end:.2f}s "
-                      f"({window_end - window_start:.2f}s available)")
-
-        # Make VARIABLE cuts within the window (organic approach)
-        segment_progress = 0.0
-        cuts_made = 0
-        max_cuts_per_segment = 5  # Prevent infinite loops
-
-        while segment_progress < segment_budget and cuts_made < max_cuts_per_segment:
-            # Determine cut length organically (0.15s - 3.0s, biased toward shorter for high energy)
+            
+            # CRITICAL FIX: Make RAPID CUTS based on energy level
+            # High energy = many short cuts (0.2-0.5s)
+            # Medium energy = moderate cuts (0.3-0.8s)
+            # Low energy = longer cuts (0.5-1.5s)
             if segment.energy == EnergyLevel.HIGH:
-                # High energy: favor shorter, punchier cuts
-                base_length = random.uniform(0.15, 1.5)
+                # Viral TikTok style: very rapid cuts
+                base_cut_duration = 0.2 + (cuts_in_segment * 0.05)  # 0.2s, 0.25s, 0.3s...
+                max_cut_duration = 0.5
             elif segment.energy == EnergyLevel.MEDIUM:
-                # Medium energy: moderate lengths
-                base_length = random.uniform(0.3, 2.5)
-            else:
-                # Low energy: can be longer
-                base_length = random.uniform(0.5, 3.0)
-
-            # Motion-aware adjustment (subtle but effective)
-            if segment.motion == MotionType.DYNAMIC:
-                base_length *= 0.8  # Shorter cuts for dynamic motion
-            elif segment.motion == MotionType.STATIC:
-                base_length *= 1.2  # Allow longer cuts for static motion
-
-            # Adjust for remaining budget
-            remaining_budget = segment_budget - segment_progress
-            use_duration = min(base_length, remaining_budget)
-
-            # If we have a best moment window, try to stay within it
-            if best_moment_window:
-                window_start, window_end = best_moment_window
-                current_pos = clip_current_position[selected_clip.filename]
-                
-                # If current position is before window, start from window start
-                if current_pos < window_start:
-                    clip_start = window_start
-                else:
-                    clip_start = current_pos
-                
-                available_in_window = window_end - clip_start
-
-                if available_in_window > 0.1:  # Still content in window
-                    # Stay within the best moment window
-                    clip_end = min(clip_start + use_duration, window_end)
-                    actual_duration = clip_end - clip_start
-                else:
-                    # Window exhausted, switch to sequential
-                    best_moment_window = None
-                    clip_start = clip_current_position[selected_clip.filename]
-                    available_duration = selected_clip.duration - clip_start
-
-                    if available_duration <= 0:
-                        # Clip exhausted, get next clip
-                        next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
-                        selected_clip = next_clip
-                        # Try to get new best moment window
-                        if selected_clip.best_moments:
-                            best_moment_window = selected_clip.get_best_moment_for_energy(segment.energy)
-                            if best_moment_window:
-                                # Start from window start if we have a best moment
-                                clip_current_position[selected_clip.filename] = best_moment_window[0]
-                            else:
-                                clip_current_position[selected_clip.filename] = 0.0
-                        else:
-                            clip_current_position[selected_clip.filename] = 0.0
-                        clip_start = clip_current_position[selected_clip.filename]
-                        available_duration = selected_clip.duration - clip_start
-
-                    clip_end = clip_start + min(use_duration, available_duration)
-                    actual_duration = clip_end - clip_start
-            else:
-                # Sequential mode (no best moment window)
-                clip_start = clip_current_position[selected_clip.filename]
-                available_duration = selected_clip.duration - clip_start
-
-                if available_duration <= 0:
-                    # Clip exhausted, get next clip
-                    next_clip = _get_next_clip(matching_clips, selected_clip, clip_usage_count)
-                    selected_clip = next_clip
-                    # Try to get best moment window for new clip
-                    if selected_clip.best_moments:
-                        best_moment_window = selected_clip.get_best_moment_for_energy(segment.energy)
-                        if best_moment_window:
-                            # Start from window start if we have a best moment
-                            clip_current_position[selected_clip.filename] = best_moment_window[0]
-                        else:
-                            clip_current_position[selected_clip.filename] = 0.0
+                base_cut_duration = 0.3 + (cuts_in_segment * 0.08)  # 0.3s, 0.38s, 0.46s...
+                max_cut_duration = 0.8
+            else:  # LOW
+                base_cut_duration = 0.5 + (cuts_in_segment * 0.1)  # 0.5s, 0.6s, 0.7s...
+                max_cut_duration = 1.5
+            
+            # Clamp to max and remaining budget
+            use_duration = min(base_cut_duration, max_cut_duration, segment_remaining)
+            
+            # Try to use best moment if available
+            clip_start = None
+            clip_end = None
+            
+            if selected_clip.best_moments:
+                best_moment = selected_clip.get_best_moment_for_energy(segment.energy)
+                if best_moment:
+                    window_start, window_end = best_moment
+                    window_duration = window_end - window_start
+                    
+                    # Check if we've already used part of this window
+                    current_pos = clip_current_position[selected_clip.filename]
+                    
+                    if current_pos < window_start:
+                        # Haven't reached window yet, start from window
+                        clip_start = window_start
+                    elif current_pos < window_end:
+                        # In the middle of window, continue from current position
+                        clip_start = current_pos
                     else:
-                        clip_current_position[selected_clip.filename] = 0.0
-                    clip_start = clip_current_position[selected_clip.filename]
-                    available_duration = selected_clip.duration - clip_start
-
-                clip_end = clip_start + min(use_duration, available_duration)
-                actual_duration = clip_end - clip_start
-
-            # Apply MICRO-JITTER (±100ms) to break mathematical regularity
-            jitter = random.uniform(-0.1, 0.1)
-
-            # Clamp jitter within best moment window if it exists
-            if best_moment_window:
-                window_start, window_end = best_moment_window
-                clip_start = max(window_start, min(window_end - 0.05, clip_start + jitter))
-                clip_end = max(clip_start + 0.05, min(window_end, clip_end + jitter))
-            else:
-                # Sequential mode - clamp to valid range
-                clip_start = max(0, clip_start + jitter)
-                clip_end = max(clip_start + 0.05, clip_end + jitter)  # Ensure minimum duration
-
-            # Snap to frame-safe precision
-            clip_start = round(clip_start, 1)
-            clip_end = round(clip_end, 1)
+                        # Window exhausted, use sequential
+                        clip_start = current_pos
+                    
+                    # Calculate end
+                    if clip_start >= window_start and clip_start < window_end:
+                        # We're in the window, stay in it
+                        clip_end = min(clip_start + use_duration, window_end)
+                    else:
+                        # Outside window, use sequential
+                        clip_end = min(clip_start + use_duration, selected_clip.duration)
+                    
+                    print(f"    ✨ Using best moment window: {window_start:.2f}s-{window_end:.2f}s")
+            
+            # Fallback to sequential if no best moment or window exhausted
+            if clip_start is None or clip_end is None:
+                clip_start = clip_current_position[selected_clip.filename]
+                clip_end = min(clip_start + use_duration, selected_clip.duration)
+            
+            # Check if clip is exhausted
+            if clip_start >= selected_clip.duration - 0.1:
+                # Clip exhausted, reset to beginning
+                print(f"    🔄 Clip exhausted, resetting to start")
+                clip_current_position[selected_clip.filename] = 0.0
+                clip_start = 0.0
+                clip_end = min(use_duration, selected_clip.duration)
+            
             actual_duration = clip_end - clip_start
-
-            # Ensure minimum duration after all processing
+            
+            # Ensure minimum duration
             if actual_duration < 0.1:
-                # If too small, extend clip_end to get minimum duration
-                clip_end = clip_start + 0.1
-                actual_duration = 0.1
-                # Clamp to window or clip duration if needed
-                if best_moment_window:
-                    clip_end = min(clip_end, best_moment_window[1])
-                clip_end = min(clip_end, selected_clip.duration)
-                actual_duration = clip_end - clip_start
-
-            # Skip if still too small (shouldn't happen now, but safety check)
-            if actual_duration < 0.05:
-                print(f"    [SKIP] Duration too small after processing: {actual_duration:.2f}s")
-                break
-
+                print(f"    [SKIP] Duration too small: {actual_duration:.2f}s")
+                # Reset clip and try again
+                clip_current_position[selected_clip.filename] = 0.0
+                continue
+            
             # Create edit decision
             decision = EditDecision(
                 segment_id=segment.id,
@@ -276,45 +198,30 @@ def match_clips_to_blueprint(
                 timeline_end=timeline_position + actual_duration
             )
             decisions.append(decision)
-
-            # Increment usage count per decision (fair distribution)
-            clip_usage_count[selected_clip.filename] += 1
-
+            
             # Update tracking
             clip_current_position[selected_clip.filename] = clip_end
+            clip_usage_count[selected_clip.filename] += 1
             timeline_position += actual_duration
-            segment_progress += actual_duration
-            cuts_made += 1
-
-            # Prevent excessive timeline drift
-            if timeline_position > blueprint.total_duration + 2.0:
-                print(f"  [DRIFT] Stopping at {timeline_position:.2f}s to prevent excessive drift")
-                break
-
-            cut_type = "WINDOW" if best_moment_window else "SEQUENTIAL"
-            print(f"    [{cut_type}] {selected_clip.filename} "
-                  f"[{clip_start:.2f}s-{clip_end:.2f}s] ({actual_duration:.2f}s) "
-                  f"→ timeline [{decision.timeline_start:.2f}s-{decision.timeline_end:.2f}s]")
-
-            # Stop if we're close enough to budget (organic completion)
-            if segment_progress >= segment_budget * 0.85:  # 85% completion threshold
-                print(f"    [COMPLETE] Segment budget satisfied ({segment_progress:.2f}s / {segment_budget:.2f}s)")
-                break
-
-        # Move to next segment (usage counting now happens per decision)
-
-        # Handle spillover logic
-        if can_spillover and segment_progress > segment.duration:
-            # We spilled into next segment, skip it
-            next_segment_id = blueprint.segments[segment_index + 1].id if segment_index + 1 < len(blueprint.segments) else "?"
-            print(f"  [SPILLOVER] Continued into next segment, skipping segment {next_segment_id}")
-            segment_index += 1  # Skip next segment since we already covered it
-            assert segment_index < len(blueprint.segments), "Spillover logic error: double-skipped"
-
-        segment_index += 1
+            segment_remaining -= actual_duration
+            
+            # Track last 2 clips for variety
+            second_last_clip = last_used_clip
+            last_used_clip = selected_clip.filename
+            
+            cuts_in_segment += 1  # Track cuts in this segment
+            
+            print(f"    ✂️  Cut {cuts_in_segment}: {selected_clip.filename} [{clip_start:.2f}s-{clip_end:.2f}s] "
+                  f"({actual_duration:.2f}s) → timeline [{decision.timeline_start:.2f}s-{decision.timeline_end:.2f}s]")
+            print(f"    Segment remaining: {segment_remaining:.2f}s")
     
     edl = EDL(decisions=decisions)
-    print(f"\n[OK] Matching complete: {len(decisions)} edit decisions\n")
+    
+    print(f"\n{'='*60}")
+    print(f"[OK] Matching complete: {len(decisions)} edit decisions")
+    print(f"[OK] Total timeline duration: {timeline_position:.2f}s (target: {blueprint.total_duration:.2f}s)")
+    print(f"{'='*60}\n")
+    
     return edl
 
 
@@ -329,26 +236,6 @@ def _create_energy_pools(clip_index: ClipIndex) -> Dict[EnergyLevel, List[ClipMe
     for clip in clip_index.clips:
         pools[clip.energy].append(clip)
     return dict(pools)
-
-
-def _get_next_clip(
-    pool: List[ClipMetadata],
-    current_clip: ClipMetadata,
-    usage_count: Dict[str, int]
-) -> ClipMetadata:
-    """
-    Get the next clip to use when current clip is exhausted.
-    
-    Strategy: Use least-used clip from pool (excluding current clip if possible).
-    """
-    # Filter out current clip if pool has other options
-    other_clips = [c for c in pool if c.filename != current_clip.filename]
-    
-    if other_clips:
-        return min(other_clips, key=lambda c: usage_count[c.filename])
-    else:
-        # Only one clip in pool, reuse it
-        return current_clip
 
 
 # ============================================================================
@@ -368,7 +255,7 @@ def print_edl_summary(edl: EDL, blueprint: StyleBlueprint, clip_index: ClipIndex
     # Count clip usage
     clip_usage = defaultdict(int)
     for decision in edl.decisions:
-        filename = decision.clip_path.split('/')[-1]
+        filename = decision.clip_path.split('/')[-1].split('\\')[-1]
         clip_usage[filename] += 1
     
     print("Clip usage distribution:")
@@ -380,18 +267,13 @@ def print_edl_summary(edl: EDL, blueprint: StyleBlueprint, clip_index: ClipIndex
 
 def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:
     """
-    Validate EDL for continuity and timing errors (SOFT SEGMENTS version).
-
-    With soft segments, we allow:
-    - Organic completion (don't require exact blueprint duration matching)
-    - Segment spillover (cuts can extend beyond segment boundaries)
-    - Variable cut lengths (no longer fill segments exactly)
-
-    Still validates:
+    Validate EDL for continuity and timing errors.
+    
+    Validates:
     - Timeline continuity (no gaps/overlaps)
-    - Total duration is reasonable (±2s of blueprint)
+    - Total duration matches blueprint (±0.5s tolerance)
     - All clips exist and timestamps are valid
-
+    
     Returns:
         True if valid, raises ValueError if issues found
     """
@@ -399,31 +281,30 @@ def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:
     for i in range(len(edl.decisions) - 1):
         current = edl.decisions[i]
         next_decision = edl.decisions[i + 1]
-
+        
         gap = abs(current.timeline_end - next_decision.timeline_start)
-        if gap > 0.05:  # Increased tolerance for organic cuts (50ms)
+        if gap > 0.05:  # 50ms tolerance
             raise ValueError(
                 f"Timeline gap/overlap between decision {i} and {i+1}: {gap:.3f}s"
             )
-
-    # Check total duration is reasonable (soft validation for organic editing)
+    
+    # Check total duration
     if edl.decisions:
         total_duration = edl.decisions[-1].timeline_end
         expected = blueprint.total_duration
-
-        # Increased tolerance to 2s for organic editing (segments are now flexible)
-        if abs(total_duration - expected) > 2.0:
+        
+        # Strict tolerance: ±0.5s
+        if abs(total_duration - expected) > 0.5:
             raise ValueError(
                 f"EDL total duration ({total_duration:.2f}s) "
-                f"too far from blueprint ({expected:.2f}s) - possible organic editing error"
+                f"doesn't match blueprint ({expected:.2f}s) - difference: {abs(total_duration - expected):.2f}s"
             )
-
+    
     # Validate clip paths exist and timestamps are reasonable
     for decision in edl.decisions:
         if decision.clip_start < 0 or decision.clip_end <= decision.clip_start:
             raise ValueError(
                 f"Invalid clip timestamps in decision: {decision.clip_start:.2f}s - {decision.clip_end:.2f}s"
             )
-
+    
     return True
-
