@@ -1,23 +1,23 @@
 {
-  "energy": "High",
+  "energy": "Medium",
   "motion": "Dynamic",
   "best_moments": {
     "High": {
-      "start": 4.0,
-      "end": 7.0,
-      "reason": "Peak dance moves with kicks and arm swings as they get closer to the camera."
+      "start": 5.0,
+      "end": 7.666,
+      "reason": "Energetic dance move and kick towards the camera"
     },
     "Medium": {
       "start": 2.0,
-      "end": 4.0,
-      "reason": "Transition from walking to rhythmic movement as they approach."
+      "end": 5.0,
+      "reason": "Walking towards the camera at a steady pace"
     },
     "Low": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Steady walking at a distance with minimal dynamic movement."
+      "reason": "Calm opening with subjects walking in the distance"
     }
   },
-  "_cache_version": "3.0",
-  "_cached_at": "2026-01-09 15:11:00"
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:19:46"
 }

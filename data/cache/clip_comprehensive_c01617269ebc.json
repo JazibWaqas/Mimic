@@ -1,23 +1,23 @@
 {
-  "energy": "High",
+  "energy": "Medium",
   "motion": "Dynamic",
   "best_moments": {
     "High": {
-      "start": 0.5,
-      "end": 2.318478,
-      "reason": "Fast panning motion showing the boat's speed and the driver against the water."
-    },
-    "Medium": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Steady shot of the passenger with the boat in motion and wind effects."
+      "reason": "Fast camera pan and boat movement creating a sense of speed and excitement."
+    },
+    "Medium": {
+      "start": 0.5,
+      "end": 2.318478,
+      "reason": "Focus on the passenger in the life jacket with moderate motion and clear scenery."
     },
     "Low": {
-      "start": 0.0,
-      "end": 1.5,
-      "reason": "Initial frame with the most stable view of the passenger before the camera pans."
+      "start": 1.0,
+      "end": 2.318478,
+      "reason": "The camera stabilizes slightly on the passenger towards the end of the clip."
     }
   },
-  "_cache_version": "3.0",
-  "_cached_at": "2026-01-09 15:12:02"
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:22:34"
 }

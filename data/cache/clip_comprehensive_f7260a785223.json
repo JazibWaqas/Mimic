@@ -3,21 +3,21 @@
   "motion": "Dynamic",
   "best_moments": {
     "High": {
-      "start": 1.0,
-      "end": 3.5,
-      "reason": "Dynamic camera rotation and movement following the group on the snowy path."
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Initial walking sequence with multiple people in motion and background chatter."
     },
     "Medium": {
-      "start": 3.0,
-      "end": 5.5,
-      "reason": "Steady walking shot capturing the group's progression through the forest."
+      "start": 2.0,
+      "end": 5.0,
+      "reason": "Steady tracking shot of the group walking along the snowy path."
     },
     "Low": {
-      "start": 5.0,
+      "start": 4.5,
       "end": 7.0,
-      "reason": "Calm upward pan focusing on the tall pine trees and the sky."
+      "reason": "Camera pans away from the group towards the quiet, snow-covered trees."
     }
   },
-  "_cache_version": "3.0",
-  "_cached_at": "2026-01-09 15:11:48"
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:21:55"
 }

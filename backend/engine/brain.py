@@ -21,7 +21,8 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 # ============================================================================
 
 # Increment this when prompts change to invalidate old caches
-CACHE_VERSION = "3.0"  # v3.0: Comprehensive clip analysis with best moments (Jan 9, 2025)
+CACHE_VERSION = "4.0"  # v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
+# v3.0: Comprehensive clip analysis with best moments (Jan 9, 2025)
 # v2.0: Updated to detect actual cut points (Jan 9, 2025)
 # v1.0: Initial prompt (3-8 segments, basic energy/motion)
 
@@ -174,6 +175,8 @@ WATCH THE ENTIRE CLIP carefully and provide:
 1. **OVERALL CLASSIFICATION:**
    - Energy: The DOMINANT energy level (Low/Medium/High)
    - Motion: The DOMINANT motion type (Static/Dynamic)
+   - Content Description: A brief 1-sentence description of what is happening in the clip
+   - Vibes: 2-4 aesthetic/content tags (e.g., "Nature", "Urban", "Action", "Calm", "Friends", "Food", "Travel")
 
 2. **BEST MOMENTS FOR EACH ENERGY LEVEL:**
    For each energy level, identify the SINGLE BEST continuous moment (2-4 seconds):
@@ -192,6 +195,8 @@ OUTPUT FORMAT (JSON only, no markdown):
 {
   "energy": "High",
   "motion": "Dynamic",
+  "content_description": "A person dancing energetically in a neon-lit urban setting",
+  "vibes": ["Urban", "Action", "Nightlife"],
   "best_moments": {
     "High": {
       "start": 8.2,
@@ -288,8 +293,9 @@ class RateLimiter:
         return sum(1 for t in self.request_times if now - t <= 60)
 
 
-# Global rate limiter instance (shared across all API calls)
+# Global rate limiter instance (DISABLED - we use key rotation instead)
 rate_limiter = RateLimiter()
+rate_limiter.disable()  # Gemini API enforces its own limits, we just rotate keys on 429
 
 
 # ============================================================================
@@ -399,7 +405,7 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
 
 def _upload_video_with_retry(video_path: str) -> genai.File:
     """
-    Upload video to Gemini with retry logic.
+    Upload video to Gemini with retry logic (NO key rotation - caller handles that).
     
     Args:
         video_path: Path to video file
@@ -408,39 +414,25 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
         Uploaded file object
     
     Raises:
-        Exception: If all retries fail
+        Exception: If upload fails
     """
-    for attempt in range(GeminiConfig.MAX_RETRIES):
-        try:
-            # Respect rate limit before upload
-            rate_limiter.wait_if_needed()
-            print(f"Uploading {Path(video_path).name}... (attempt {attempt + 1})")
-            video_file = genai.upload_file(path=video_path)
-            
-            # Wait for processing to complete
-            while video_file.state.name == "PROCESSING":
-                print(f"Waiting for video processing (state: {video_file.state.name})...")
-                # Poll more slowly and respect rate limits on polling too
-                time.sleep(10) 
-                rate_limiter.wait_if_needed()
-                video_file = genai.get_file(video_file.name)
-            
-            if video_file.state.name == "FAILED":
-                raise Exception(f"Video processing failed: {video_file.state}")
-            
-            print(f"Upload complete: {video_file.uri}")
-            return video_file
-            
-        except Exception as e:
-            if attempt == GeminiConfig.MAX_RETRIES - 1:
-                raise Exception(f"Failed to upload video after {GeminiConfig.MAX_RETRIES} attempts: {e}")
-            
-            if _handle_rate_limit_error(e, "video upload"):
-                # Key rotated, retry immediately
-                continue
-            else:
-                print(f"Upload failed: {e}. Retrying in {GeminiConfig.RETRY_DELAY}s...")
-                time.sleep(GeminiConfig.RETRY_DELAY)
+    # Single upload attempt - caller will retry with new key if needed
+    rate_limiter.wait_if_needed()
+    print(f"Uploading {Path(video_path).name}...")
+    video_file = genai.upload_file(path=video_path)
+    
+    # Wait for processing to complete
+    while video_file.state.name == "PROCESSING":
+        print(f"Waiting for video processing (state: {video_file.state.name})...")
+        time.sleep(10)
+        rate_limiter.wait_if_needed()
+        video_file = genai.get_file(video_file.name)
+    
+    if video_file.state.name == "FAILED":
+        raise Exception(f"Video processing failed: {video_file.state}")
+    
+    print(f"Upload complete: {video_file.uri}")
+    return video_file
 
 
 def _parse_json_response(response_text: str) -> dict:
@@ -855,15 +847,10 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None, use_com
                     motion=motion
                 )
         except Exception as e:
-            print(f"    [WARN] Analysis failed for {Path(clip_path).name}: {e}")
-            print(f"    Using default: Medium/Dynamic with no best moments")
-            clip_metadata = ClipMetadata(
-                filename=Path(clip_path).name,
-                filepath=clip_path,
-                duration=duration,
-                energy=EnergyLevel.MEDIUM,
-                motion=MotionType.DYNAMIC
-            )
+            print(f"    [ERROR] Analysis failed for {Path(clip_path).name}: {e}")
+            # DO NOT use defaults - this would poison the cache
+            # Let the exception propagate to the orchestrator
+            raise Exception(f"Failed to analyze {Path(clip_path).name}: {e}")
         
         clip_metadata_list.append(clip_metadata)
     
@@ -932,12 +919,15 @@ def _analyze_single_clip_comprehensive(
         except Exception as e:
             print(f"    [WARN] Cache corrupted: {e}. Re-analyzing...")
     
-    # Cache miss - call API with rate limiting
+    
+    # Cache miss - call API with retry and key rotation
     rate_limiter.wait_if_needed()
-    video_file = _upload_video_with_retry(clip_path)
     
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:
+            # CRITICAL: Upload with CURRENT key (re-upload if key rotated)
+            video_file = _upload_video_with_retry(clip_path)
+            
             print(f"    Requesting comprehensive analysis (attempt {attempt + 1})...")
             response = model.generate_content([video_file, CLIP_COMPREHENSIVE_PROMPT])
             json_data = _parse_json_response(response.text)
@@ -945,6 +935,10 @@ def _analyze_single_clip_comprehensive(
             # Parse overall classification
             energy = EnergyLevel(json_data["energy"])
             motion = MotionType(json_data["motion"])
+            
+            # Parse vibes and content (NEW)
+            vibes = json_data.get("vibes", [])
+            content_description = json_data.get("content_description", "")
             
             # Parse best moments
             best_moments = {}
@@ -981,10 +975,12 @@ def _analyze_single_clip_comprehensive(
                         reason=f"Fallback: {level} moment not detected"
                     )
             
-            # Save to cache
+            # Save to cache (INCLUDING vibes and content!)
             cache_data = {
                 "energy": energy.value,
                 "motion": motion.value,
+                "vibes": vibes,
+                "content_description": content_description,
                 "best_moments": {
                     level: {"start": bm.start, "end": bm.end, "reason": bm.reason or ""}
                     for level, bm in best_moments.items()
@@ -998,6 +994,8 @@ def _analyze_single_clip_comprehensive(
             print(f"    [OK] {energy.value}/{motion.value} with best moments:")
             for level, bm in best_moments.items():
                 print(f"        {level}: {bm.start:.2f}s - {bm.end:.2f}s")
+            if vibes:
+                print(f"    Vibes: {', '.join(vibes)}")
             
             return ClipMetadata(
                 filename=Path(clip_path).name,
@@ -1005,12 +1003,14 @@ def _analyze_single_clip_comprehensive(
                 duration=duration,
                 energy=energy,
                 motion=motion,
+                vibes=vibes,
                 best_moments=best_moments
             )
             
         except Exception as e:
             if _handle_rate_limit_error(e, "comprehensive clip analysis"):
-                # Key rotated, retry immediately
+                # Key rotated, REINITIALIZE MODEL
+                model = initialize_gemini()
                 continue
                 
             if attempt == GeminiConfig.MAX_RETRIES - 1:
@@ -1053,10 +1053,12 @@ def _analyze_single_clip_simple(model: genai.GenerativeModel, clip_path: str) ->
     
     # Cache miss - call API with rate limiting
     rate_limiter.wait_if_needed()
-    video_file = _upload_video_with_retry(clip_path)
     
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:
+            # CRITICAL: Upload with CURRENT key (re-upload if key rotated)
+            video_file = _upload_video_with_retry(clip_path)
+            
             response = model.generate_content([video_file, CLIP_ANALYSIS_PROMPT])
             json_data = _parse_json_response(response.text)
             
@@ -1078,7 +1080,8 @@ def _analyze_single_clip_simple(model: genai.GenerativeModel, clip_path: str) ->
             
         except Exception as e:
             if _handle_rate_limit_error(e, "comprehensive clip analysis"):
-                # Key rotated, retry immediately
+                # Key rotated, REINITIALIZE MODEL
+                model = initialize_gemini()
                 continue
                 
             if attempt == GeminiConfig.MAX_RETRIES - 1:

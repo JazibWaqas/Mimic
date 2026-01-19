@@ -3,21 +3,21 @@
   "motion": "Dynamic",
   "best_moments": {
     "High": {
-      "start": 3.0,
+      "start": 3.5,
       "end": 5.5,
-      "reason": "The man aims and shoots the arrow, successfully popping a balloon."
+      "reason": "The moment the shot is fired and a balloon pops, representing the peak action."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "The man is handed the bow and prepares for his shot."
+      "start": 1.5,
+      "end": 3.5,
+      "reason": "The man carefully aiming the rifle, showing focused movement and anticipation."
     },
     "Low": {
-      "start": 5.5,
-      "end": 7.4,
-      "reason": "The action concludes as the man lowers the bow and begins to walk away."
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "The initial preparation and handing over of the rifle with minimal movement."
     }
   },
-  "_cache_version": "3.0",
-  "_cached_at": "2026-01-09 15:11:33"
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:21:02"
 }

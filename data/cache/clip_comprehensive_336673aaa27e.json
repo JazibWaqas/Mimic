@@ -1,0 +1,23 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "best_moments": {
+    "High": {
+      "start": 26.5,
+      "end": 29.5,
+      "reason": "High"
+    },
+    "Medium": {
+      "start": 11.5,
+      "end": 14.5,
+      "reason": "Consistent rhythmic dancing and hand movements with moderate intensity."
+    },
+    "Low": {
+      "start": 23.0,
+      "end": 25.5,
+      "reason": "Low"
+    }
+  },
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:24:01"
+}

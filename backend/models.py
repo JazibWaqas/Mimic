@@ -49,7 +49,9 @@ class Segment(BaseModel):
         "end": 2.3,
         "duration": 2.3,
         "energy": "High",
-        "motion": "Dynamic"
+        "motion": "Dynamic",
+        "vibe": "Action",
+        "reasoning": "Rapid visual movement detected in reference shots."
     }
     """
     id: int = Field(..., description="Sequential segment number (1, 2, 3...)")
@@ -58,6 +60,8 @@ class Segment(BaseModel):
     duration: float = Field(..., gt=0, description="Segment length in seconds")
     energy: EnergyLevel
     motion: MotionType
+    vibe: str = Field("General", description="The aesthetic/content vibe (e.g. Nature, Urban, Action)")
+    reasoning: str = Field("", description="AI's thinking about why this segment has this profile")
     
     @field_validator('end')
     @classmethod
@@ -83,6 +87,8 @@ class StyleBlueprint(BaseModel):
     """
     total_duration: float = Field(..., gt=0, description="Total video length in seconds")
     segments: List[Segment] = Field(..., min_length=1, description="Ordered list of segments")
+    overall_reasoning: str = Field("", description="AI's holistic thinking about this video's structure")
+    ideal_material_suggestions: List[str] = Field(default_factory=list, description="Suggestions for the user on what clips would work best")
     
     @field_validator('segments')
     @classmethod
@@ -161,6 +167,7 @@ class ClipMetadata(BaseModel):
     duration: float = Field(..., gt=0)
     energy: EnergyLevel
     motion: MotionType
+    vibes: List[str] = Field(default_factory=list, description="Aesthetic/Content tags for semantic matching")
     
     # Pre-computed best moments for each energy level (filled during comprehensive analysis)
     best_moments: dict[str, BestMoment] | None = Field(
@@ -229,6 +236,10 @@ class EditDecision(BaseModel):
     clip_end: float = Field(..., gt=0, description="End time in source clip")
     timeline_start: float = Field(..., ge=0, description="Start time in final video")
     timeline_end: float = Field(..., gt=0, description="End time in final video")
+    
+    # Matching metadata for Thinking UI
+    reasoning: str = Field("", description="Why this clip was chosen for this segment")
+    vibe_match: bool = Field(False, description="Did the vibes match?")
 
 
 class EDL(BaseModel):

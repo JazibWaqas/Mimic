@@ -28,7 +28,8 @@ def match_clips_to_blueprint(
     clip_index: ClipIndex,
     find_best_moments: bool = False,  # Ignored - best moments come from comprehensive analysis
     api_key: str | None = None,
-    reference_path: str | None = None  # NEW: For beat detection
+    reference_path: str | None = None,  # NEW: For beat detection
+    bpm: float = 120.0  # NEW: Dynamic BPM detection
 ) -> EDL:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
@@ -69,8 +70,8 @@ def match_clips_to_blueprint(
     # PHASE 2: Generate beat grid for audio sync
     beat_grid = None
     if reference_path and has_audio(reference_path):
-        beat_grid = get_beat_grid(blueprint.total_duration, bpm=120)
-        print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at 120 BPM")
+        beat_grid = get_beat_grid(blueprint.total_duration, bpm=int(bpm))
+        print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at {bpm:.2f} BPM")
         print(f"  DEBUG: First 5 beats: {beat_grid[:5]}")
     else:
         print(f"  🔇 No audio detected - using visual cuts only")
@@ -120,20 +121,50 @@ def match_clips_to_blueprint(
                 # If we've exhausted all clips, use any clip
                 available_clips = matching_clips
             
-            # SMART SELECTION: Prioritize unused clips, then least-used
-            # Sort by usage count (lowest first), then shuffle within each usage tier
+            # SMART SELECTION: Prioritize vibes, then unused clips, then least-used
             import random
             
-            # Group clips by usage count
-            min_usage = min(clip_usage_count[c.filename] for c in available_clips)
-            least_used_clips = [c for c in available_clips if clip_usage_count[c.filename] == min_usage]
+            # 1. Scoring available clips based on Vibes
+            def _score_vibe(clip: ClipMetadata, segment_vibe: str) -> float:
+                if not segment_vibe or segment_vibe == "General":
+                    return 0.0
+                # Case-insensitive partial matching
+                vibe_score = 0.0
+                for v in clip.vibes:
+                    if v.lower() in segment_vibe.lower() or segment_vibe.lower() in v.lower():
+                        vibe_score += 1.0
+                return vibe_score
+
+            # Calculate scores for all available clips
+            scored_clips = []
+            for c in available_clips:
+                v_score = _score_vibe(c, segment.vibe)
+                u_count = clip_usage_count[c.filename]
+                # Priority: High Vibe Score > Low Usage Count
+                # We subtract usage count from score to treat it as a tie-breaker
+                total_score = (v_score * 10.0) - (u_count * 0.1)
+                scored_clips.append((c, total_score, v_score))
             
-            # Shuffle within the least-used group for variety
-            random.shuffle(least_used_clips)
-            selected_clip = least_used_clips[0]
+            # Sort by total score (highest first)
+            scored_clips.sort(key=lambda x: x[1], reverse=True)
             
+            # Pick from the top tier (clips with same highest score) to maintain variety
+            max_score = scored_clips[0][1]
+            top_tier = [c for c, score, v_score in scored_clips if abs(score - max_score) < 0.05]
+            random.shuffle(top_tier)
+            
+            selected_clip = top_tier[0]
+            v_score_selected = next(vs for c, s, vs in scored_clips if c == selected_clip)
+            
+            # Construct reasoning
+            if v_score_selected > 0:
+                thinking = f"Semantic Match: Vibe '{segment.vibe}' matches clip tags {selected_clip.vibes}."
+            else:
+                thinking = f"Flow Optimization: Selecting least-used clip ({clip_usage_count[selected_clip.filename]}x) to maintain visual variety."
+
             if cuts_in_segment == 0:  # Only print once per segment
-                print(f"  📎 Starting segment with: {selected_clip.filename} ({selected_clip.energy.value}, used {clip_usage_count[selected_clip.filename]}x)")
+                print(f"  🧠 AI Thinking: {thinking}")
+                print(f"  📎 Selected: {selected_clip.filename} ({selected_clip.energy.value})")
 
             
             # FIXED: Consistent short cuts based on energy level
@@ -229,7 +260,9 @@ def match_clips_to_blueprint(
                 clip_start=clip_start,
                 clip_end=clip_end,
                 timeline_start=timeline_start_for_decision,
-                timeline_end=timeline_end_for_decision
+                timeline_end=timeline_end_for_decision,
+                reasoning=thinking,
+                vibe_match=(v_score_selected > 0)
             )
             decisions.append(decision)
             

@@ -1,132 +1,338 @@
-QUICK IINSTRUCTION FOR AI:
-NEVER MAKE NEW MD FILES JUST USE THE EXSISITNG ONES AND UPDATE THEM
+# MIMIC - AI-Powered Video Style Transfer
 
-# 🎬 MIMIC - AI Video Structural Replication
+**Transform your raw clips into professionally-edited videos by learning from examples.**
 
-**Steal the editing structure of any viral video and apply it to your own footage.**
-
-MIMIC uses Gemini 3's multimodal reasoning to analyze the "editing DNA" of viral videos (timing, pacing, energy) and automatically applies it to your raw clips using a high-precision, frame-perfect rendering engine.
+MIMIC analyzes a reference video's editing style (cuts, pacing, energy, vibes) and automatically recreates that style using your clips. Think "Instagram Reels editor that learns from examples."
 
 ---
 
-## 🧭 Project Navigation (For Developers & AI Agents)
+## 🎯 What It Does
 
-*Use this section to quickly understand the project architecture and logic flow.*
+1. **Upload a reference video** (the style you want to mimic)
+2. **Upload your raw clips** (your content)
+3. **MIMIC analyzes both** using Gemini 3 AI
+4. **Get a professionally-edited video** matching the reference's rhythm
 
-### 📂 Key Documentation
-- **[DIAGNOSTIC_LOG.md](./DIAGNOSTIC_LOG.md)**: THE FORENSIC EVIDENCE. BPM drifts, Lazy Gemini proofs, and the "Lottery" clip selection audit.
-- **[CURRENT_FLOW.md](./CURRENT_FLOW.md)**: The definitive logic of the pipeline (Jan 19, 2026 - 22:45 PM).
-- **[IMPORTANT_FILES.md](./IMPORTANT_FILES.md)**: Map of the codebase and how files are linked (Jan 19, 2026).
-- **[STATUS.md](./STATUS.md)**: Current development state (Jan 19, 2026 - 22:45 PM).
-- **[FIXES_APPLIED.md](./FIXES_APPLIED.md)**: Detailed report on Scene Detection fixes & Logic Pivots.
-
-### 🧠 Core Methodology
-1.  **Editing DNA**: We extract cut points, energy levels, and motion patterns from a reference video.
-2.  **Comprehensive Analysis**: Gemini 3 analyzes each user clip *once* to find the best moments for Low, Medium, and High energy needs.
-3.  **Rapid Cuts Algorithm**: In `editor.py`, we split segments into multiple rapid cuts (0.2s - 1.5s) to match the high-tempo feel of viral content.
-4.  **Frame-Perfect Render**: Using FFmpeg re-encoding (not just stream copying) to ensure every cut aligns exactly with the reference timing.
+**Example:**
+- Reference: A fast-paced TikTok dance video (30 cuts in 15 seconds)
+- Your Clips: Random footage of you dancing
+- Output: Your footage edited with the same fast-paced style
 
 ---
 
-## 🏗️ Repository Structure
+## ✨ Key Features
+
+### **Intelligent Analysis**
+- **Scene Detection:** FFmpeg detects every visual cut in the reference
+- **BPM Detection:** librosa extracts the music tempo for beat-perfect cuts
+- **Semantic Understanding:** Gemini 3 identifies energy, motion, and content vibes
+- **Best Moment Extraction:** Pre-computes optimal segments from each clip
+
+### **Smart Matching**
+- **Vibe-Aware Selection:** Matches clips to segments based on content themes (Urban, Nature, Action, etc.)
+- **Energy Matching:** Pairs high-energy clips with high-energy segments
+- **Beat Synchronization:** Snaps cuts to the detected BPM for musical alignment
+- **Variety Optimization:** Rotates through clips to avoid repetition
+
+### **Transparent AI**
+- **Reasoning Logs:** See why the AI chose each clip
+- **Material Suggestions:** Get feedback on missing clip types
+- **Thinking Display:** Watch the AI's decision-making process
+
+---
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+- Python 3.10+
+- FFmpeg installed and in PATH
+- Node.js 18+ (for frontend)
+- Google Gemini API key
+
+### **Installation**
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/Mimic.git
+cd Mimic
+
+# Backend setup
+cd backend
+python -m venv .venv
+.venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+
+# Create .env file
+echo "GEMINI_API_KEY=your_key_here" > .env
+
+# Frontend setup
+cd ../frontend
+npm install
+```
+
+### **Running the App**
+
+```bash
+# Terminal 1: Backend
+cd backend
+.venv\Scripts\activate
+uvicorn main:app --reload
+
+# Terminal 2: Frontend
+cd frontend
+npm run dev
+```
+
+Visit `http://localhost:3000`
+
+---
+
+## 📁 Project Structure
 
 ```
 Mimic/
-├── backend/                # FastAPI Application
-│   ├── engine/             # The Processing Core
-│   │   ├── brain.py        # Gemini 3 API, Prompts, & Caching
-│   │   ├── editor.py       # THE MATCHING ENGINE (Rapid Cuts Algorithm)
-│   │   ├── processors.py   # FFmpeg execution logic
-│   │   └── orchestrator.py # Pipeline controller (Entry point)
-│   ├── main.py             # REST & WebSocket Endpoints
-│   └── models.py           # Pydantic data schemas
-├── frontend/               # Next.js 15 Application
-│   ├── app/                # Pages (Upload, Generate, Result)
-│   └── components/         # UI Library (shadcn/ui + custom)
-├── data/                   # Persistent Storage
-│   ├── cache/              # AI Analysis Cache (JSON)
-│   ├── results/            # Final MP4 Outputs
-│   ├── uploads/            # Raw user uploads (Permanent session storage)
-│   └── samples/            # Test assets (Reference & clips)
-└── temp/                   # Intermediate processing (Safe to clear)
+├── backend/
+│   ├── engine/
+│   │   ├── orchestrator.py    # Main pipeline controller
+│   │   ├── brain.py            # Gemini AI integration
+│   │   ├── editor.py           # Clip matching algorithm
+│   │   └── processors.py       # FFmpeg + librosa wrappers
+│   ├── utils/
+│   │   └── api_key_manager.py  # Multi-key rotation
+│   ├── models.py               # Pydantic data schemas
+│   └── main.py                 # FastAPI server
+├── frontend/
+│   ├── app/                    # Next.js pages
+│   └── components/             # React components
+├── data/
+│   ├── samples/                # Test videos
+│   ├── cache/                  # Analysis cache
+│   └── results/                # Generated videos
+├── STATUS.md                   # Complete project context
+├── DIAGNOSTIC_LOG.md           # Bug forensics
+├── NEXT_SESSION.md             # Action plan
+└── README.md                   # This file
 ```
 
 ---
 
-## � Prerequisites
+## 🧪 Testing
 
-- **Python 3.10+** (recommended via `pyenv` or system install)
-- **Node.js 18+** (npm comes with it)
-- **FFmpeg 6.0+** – must be on your `PATH` (`ffmpeg -version` to verify)
-- **Gemini API key** – create a `.env` file in `backend/` with:
-  ```
-  GEMINI_API_KEY=your_key_here
-  FRONTEND_URL=http://localhost:3000
-  ```
-- **Git** – to clone the repository.
-
-Once the above are installed, you can run the backend and frontend in separate terminals as described in the QUICK START section.
----
-
-## �🚀 QUICK START: TESTING VIA FRONTEND
-
-To test the full experience (UI + Backend), follow these steps in **two separate terminals**.
-
-### 1. Start the Backend
-*The backend handles the AI analysis and FFmpeg rendering.*
-```powershell
-cd backend
-python -m venv venv
-.\venv\Scripts\Activate.ps1  # Windows PowerShell
-pip install -r requirements.txt
-
-# Ensure your .env has:
-# GEMINI_API_KEY=your_key_here
-# FRONTEND_URL=http://localhost:3000
-
-python main.py               # Runs on http://localhost:8000
+### **Quick Test**
+```bash
+# Test with sample data
+python test_ref4_v4.py
 ```
 
-### 2. Start the Frontend
-*The frontend is the user interface.*
-```powershell
-cd frontend
-npm install
-
-# Ensure your .env.local has:
-# NEXT_PUBLIC_API_URL=http://localhost:8000
-
-npm run dev                  # Runs on http://localhost:3000
+### **Check API Keys**
+```bash
+# Verify all keys are working
+python test_api_keys.py
 ```
 
-### 3. Usage
-1. Open **[http://localhost:3000](http://localhost:3000)** in your browser.
-2. Go to the **Upload** page.
-3. Select a reference video (from `data/samples/reference/`).
-4. Select 2-5 user clips (from `data/samples/clips/`).
-5. Click **Generate** and watch the progress bar!
+### **Manual Test**
+1. Place reference video in `data/samples/reference/`
+2. Place clips in `data/samples/clips/`
+3. Run pipeline via API or test script
 
 ---
 
-## 🛠️ Modes of Operation
+## 🔧 Configuration
 
-### 🤖 Auto Mode
-- Uses Gemini 3 API for fresh analysis.
-- **Highly Automated**: Just upload and click generate.
-- **Quota Saver**: Uses comprehensive analysis to minimize API calls (1 call per clip).
+### **API Keys**
+The system supports multiple Gemini API keys for quota management:
 
-### ✍️ Manual Mode
-- Bypass the API by providing pre-analyzed JSON.
-- **Infinite Testing**: Test rendering logic and new edit styles without hitting API limits.
-- **Demo Ready**: Ideal for hackathon presentations to ensure 100% reliability.
+```env
+# .env file
+GEMINI_API_KEY=primary_key_here
+
+# Commented keys are automatically loaded as backups
+#GEMINI_API_KEY=backup_key_1
+#GEMINI_API_KEY=backup_key_2
+```
+
+**Automatic Rotation:**
+- System loads all keys (active + commented)
+- On quota limit, rotates to next key
+- Supports up to 11 keys (220 requests/day capacity)
+
+### **Cache Management**
+```bash
+# Clear clip cache (force re-analysis)
+Remove-Item data/cache/clip_comprehensive*.json -Force
+
+# Clear reference cache
+Remove-Item data/cache/ref_*.json -Force
+
+# Clear all cache
+Remove-Item data/cache/*.json -Force
+```
 
 ---
 
-## ⚠️ Legacy Content
-The following documents are kept for historical context but **may contain outdated code samples**:
-- `MIMIC_MASTER_BUILD_PLAN_FINAL.md` (See `CURRENT_FLOW.md` for current logic)
-- `MIMIC_CURSOR_LAUNCH_CHECKLIST.md`
+## 📊 How It Works
+
+### **Pipeline Stages**
+
+**Stage 1: Reference Analysis**
+```
+1. Detect visual scene cuts (FFmpeg)
+2. Extract audio and detect BPM (librosa)
+3. Analyze segments with Gemini:
+   - Energy level (Low/Medium/High)
+   - Motion type (Static/Dynamic)
+   - Content vibe (Nature, Urban, Action, etc.)
+   - Reasoning for classification
+```
+
+**Stage 2: Clip Analysis**
+```
+1. Analyze each clip with Gemini:
+   - Overall energy and motion
+   - Content description
+   - Aesthetic vibes (2-4 tags)
+   - Best moments for each energy level
+2. Cache results for future use
+```
+
+**Stage 3: Intelligent Matching**
+```
+1. For each reference segment:
+   - Score clips by vibe match (10 points)
+   - Penalize frequently-used clips (-0.1 per use)
+   - Select highest-scoring clip
+   - Extract best moment for segment's energy
+   - Record reasoning for selection
+```
+
+**Stage 4: Rendering**
+```
+1. Generate beat grid from detected BPM
+2. Snap cut points to nearest beats
+3. Extract clip segments via FFmpeg
+4. Concatenate segments
+5. Merge with reference audio
+6. Output final video
+```
 
 ---
 
-**Built for the Gemini 3 Global Hackathon** | *Agentic AI Video Orchestration*
+## 🎨 Data Models
+
+### **Segment** (Reference Analysis)
+```json
+{
+  "id": 1,
+  "start": 0.0,
+  "end": 0.53,
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibe": "Action",
+  "reasoning": "Fast camera pan with rapid movement"
+}
+```
+
+### **ClipMetadata** (Clip Analysis)
+```json
+{
+  "filename": "skateboard.mp4",
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": ["Urban", "Action", "Sports"],
+  "content_description": "Person skateboarding in urban plaza",
+  "best_moments": {
+    "High": {"start": 8.2, "end": 10.5, "reason": "Peak trick"},
+    "Medium": {"start": 4.0, "end": 6.2, "reason": "Cruising"},
+    "Low": {"start": 0.0, "end": 2.0, "reason": "Setup"}
+  }
+}
+```
+
+### **EditDecision** (Matching Result)
+```json
+{
+  "segment_id": 1,
+  "clip_path": "/path/to/clip",
+  "clip_start": 8.2,
+  "clip_end": 10.5,
+  "reasoning": "Semantic Match: Vibe 'Action' matches clip tags",
+  "vibe_match": true
+}
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### **"All API keys exhausted"**
+- **Cause:** Hit 20 requests/day limit on all keys
+- **Solution:** Wait for quota reset (time unknown) or add more keys
+
+### **"No vibes in cache"**
+- **Cause:** Old cache from before vibes feature
+- **Solution:** Delete cache and re-run analysis
+
+### **"403 Permission Denied"**
+- **Cause:** Trying to access file uploaded by different key
+- **Solution:** Should be fixed - if persists, check upload is inside retry loop
+
+### **"Cuts don't align with beats"**
+- **Cause:** BPM detection failed or wrong
+- **Solution:** Check detected BPM in logs, verify librosa is installed
+
+---
+
+## 📚 Documentation
+
+- **STATUS.md** - Complete project context and current state
+- **DIAGNOSTIC_LOG.md** - Bug history and forensics
+- **NEXT_SESSION.md** - Immediate action plan
+- **FIXES_APPLIED.md** - Chronological fix log
+- **ONBOARDING.md** - New developer guide
+
+---
+
+## 🎯 Roadmap
+
+### **Current Status: MVP Complete (Pending Test)**
+- ✅ Reference analysis (scene cuts + BPM + vibes)
+- ✅ Clip analysis (energy + motion + vibes + best moments)
+- ✅ Semantic matching (vibe-aware selection)
+- ✅ Beat synchronization (dynamic BPM)
+- ✅ API key rotation (11 keys)
+- ⏳ Full test pending (waiting for quota reset)
+
+### **Next Features:**
+- [ ] Material suggestions UI
+- [ ] Reasoning display in frontend
+- [ ] Multiple reference video tests
+- [ ] Demo video recording
+- [ ] Hackathon submission
+
+---
+
+## 🤝 Contributing
+
+This is a hackathon project for the Gemini API Developer Competition.
+
+**Theme:** Action Era - Creative Autopilot  
+**Focus:** Vibe Engineering - Understanding and matching aesthetic themes
+
+---
+
+## 📄 License
+
+MIT License - See LICENSE file for details
+
+---
+
+## 🙏 Acknowledgments
+
+- Google Gemini API for video analysis
+- FFmpeg for video processing
+- librosa for audio analysis
+- Next.js and FastAPI for the stack
+
+---
+
+**Built with ❤️ for the Gemini API Developer Competition**

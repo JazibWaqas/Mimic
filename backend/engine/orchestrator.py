@@ -114,11 +114,19 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(2, TOTAL_STEPS, "Detecting visual cuts and analyzing reference structure...")
         
+        # Setup audio analysis path
+        audio_analysis_path = temp_session_dir / "ref_analysis_audio.wav"
+        ref_bpm = 120.0
+        
         try:
             # 2a. Detect visual cuts first (Temporal Hints)
             scene_timestamps = detect_scene_changes(reference_path)
             
-            # 2b. Analyze with Gemini using hints
+            # 2b. Extract audio and detect BPM (Dynamic Rhythm)
+            if extract_audio(reference_path, str(audio_analysis_path)):
+                ref_bpm = detect_bpm(str(audio_analysis_path))
+            
+            # 2c. Analyze with Gemini using hints
             blueprint = analyze_reference_video(
                 reference_path, 
                 api_key=api_key,
@@ -185,7 +193,8 @@ def run_mimic_pipeline(
             clip_index, 
             find_best_moments=True, 
             api_key=api_key,
-            reference_path=reference_path  # For beat grid detection
+            reference_path=reference_path,  # For beat grid detection
+            bpm=ref_bpm  # Dynamic BPM detected in Step 2
         )
         
         # Validate EDL but don't fail - allow debugging even if timing is off

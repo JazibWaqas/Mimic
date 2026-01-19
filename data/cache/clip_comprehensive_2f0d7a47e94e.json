@@ -3,21 +3,21 @@
   "motion": "Dynamic",
   "best_moments": {
     "High": {
-      "start": 5.5,
-      "end": 8.5,
-      "reason": "Peak chaos with multiple people running and falling in the background while the subject reacts with high energy."
+      "start": 5.0,
+      "end": 8.0,
+      "reason": "High"
     },
     "Medium": {
-      "start": 9.0,
-      "end": 12.0,
-      "reason": "Subject gestures towards the sky with moderate movement from background figures and expressive lip-syncing."
+      "start": 2.0,
+      "end": 5.0,
+      "reason": "Moderate movement as people begin to run into the scene behind the main subject."
     },
     "Low": {
-      "start": 0.0,
-      "end": 2.5,
-      "reason": "The opening shot where the subject is relatively still and posing before the background action begins."
+      "start": 13.0,
+      "end": 15.0,
+      "reason": "The main subject is standing relatively still at the end of the clip with less background action."
     }
   },
-  "_cache_version": "3.0",
-  "_cached_at": "2026-01-09 14:56:59"
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:19:09"
 }

@@ -3,21 +3,21 @@
   "motion": "Dynamic",
   "best_moments": {
     "High": {
-      "start": 2.0,
-      "end": 4.837956,
-      "reason": "Intense laughter and dynamic movement as they react to the situation."
+      "start": 1.5,
+      "end": 3.5,
+      "reason": "The peak of the laughter and sudden movement away from each other."
     },
     "Medium": {
-      "start": 1.0,
-      "end": 3.0,
-      "reason": "Transition from a static hug to active laughter and movement."
-    },
-    "Low": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Initial static pose with minimal movement before the reaction starts."
+      "reason": "The initial playful hug and the beginning of the reaction."
+    },
+    "Low": {
+      "start": 2.5,
+      "end": 4.5,
+      "reason": "Low"
     }
   },
-  "_cache_version": "3.0",
-  "_cached_at": "2026-01-09 14:56:40"
+  "_cache_version": "4.0",
+  "_cached_at": "2026-01-19 23:18:31"
 }

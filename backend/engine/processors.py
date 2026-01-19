@@ -151,6 +151,68 @@ def align_to_nearest_beat(time: float, beat_grid: List[float], tolerance: float 
     return time
 
 
+def detect_bpm(audio_path: str) -> float:
+    """
+    Detect the tempo (BPM) of an audio file using librosa.
+    
+    Args:
+        audio_path: Path to the audio file (wav preferred)
+    
+    Returns:
+        Detected BPM as a float, or 120.0 as fallback
+    """
+    try:
+        import librosa
+        import numpy as np
+        
+        print(f"  [BEAT] Detecting BPM for {Path(audio_path).name}...")
+        y, sr = librosa.load(audio_path)
+        
+        # tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
+        # Note: librosa 0.10.0+ returns tempo as an array if not specified
+        tempo_result = librosa.beat.beat_track(y=y, sr=sr)
+        
+        # Handle both old and new librosa versions
+        if isinstance(tempo_result, tuple):
+            tempo = tempo_result[0]
+        else:
+            tempo = tempo_result
+            
+        # If it's still an array/list, get the first element
+        if hasattr(tempo, "__len__"):
+            tempo = float(tempo[0])
+        else:
+            tempo = float(tempo)
+            
+        print(f"  [OK] Detected BPM: {tempo:.2f}")
+        return tempo
+    except Exception as e:
+        print(f"  [WARN] BPM detection failed: {e}. Falling back to 120.0")
+        return 120.0
+
+
+def extract_audio(video_path: str, output_path: str) -> str:
+    """
+    Extract audio from video to a WAV file for analysis.
+    """
+    cmd = [
+        "ffmpeg",
+        "-i", video_path,
+        "-vn",
+        "-acodec", "pcm_s16le",
+        "-ar", "44100",
+        "-ac", "2",
+        "-y",
+        output_path
+    ]
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+        return output_path
+    except Exception as e:
+        print(f"  [WARN] Audio extraction failed: {e}")
+        return ""
+
+
 # ============================================================================
 # VIDEO STANDARDIZATION
 # ============================================================================
