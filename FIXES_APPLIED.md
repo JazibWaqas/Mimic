@@ -1,6 +1,38 @@
-# MIMIC - FIXES APPLIED (January 15, 2026)
+# MIMIC - FIXES APPLIED (January 19, 2026 - 22:00 PM)
 
-## Issues Identified and Fixed
+## Latest Fixes (Step 2 Verification)
+
+### 7. **Scene Hint Integration** ✅
+**Problem:** Gemini analysis segments were physically disconnected from actual visual cuts in reference videos, causing "misaligned edits" where cuts happened mid-shot.
+**Fix:**
+- Implemented `detect_scene_changes` using FFmpeg in `processors.py`.
+- Passed detected timestamps to `analyze_reference_video` as `scene_timestamps`.
+- Modified Gemini prompt to use these timestamps as hard boundaries.
+- **Compact Decoding:** Reconstructs full segment objects from 2-letter codes (`HD`, `MS`) to save tokens and prevent response truncation.
+
+### 8. **Segment Start Validation** ✅
+**Problem:** FFmpeg sometimes reports cuts at `0.0s`, leading to zero-duration segments or negative timestamps during reconstruction.
+**Fix:**
+- Clamped timestamps to `≥ 0.1s` in `detect_scene_changes`.
+- Ensured `duration` calculation always yields positive values.
+
+---
+
+---
+
+## 🔍 Forensic Diagnosis (The Scientific Basis)
+The logic pivots made on January 19 were driven by deep forensic analysis of the video pipeline. 
+
+See **[DIAGNOSTIC_LOG.md](./DIAGNOSTIC_LOG.md)** for the full scientific record of:
+- **Audio Sync Proof:** BPM drift (129.2 Actual vs 120.0 Hardcoded).
+- **Scene Detection Proof:** Timing discrepancies in visual cuts.
+- **Lazy Gemini Proof:** Why AI analysis failed without "Scene Anchors."
+- **Lottery Selection Proof:** Identifying the lack of semantic matching.
+- **GOP Snapping Fix:** Pivoting from `-c copy` to re-encoding for frame-accuracy.
+
+---
+
+## Historical Fixes (January 15, 2026)
 
 ### 1. **Editor Algorithm - COMPLETELY REWRITTEN** ✅
 **Problem:** 
@@ -86,8 +118,10 @@ while segment_remaining > 0.05:  # Fill segment completely
 
 ## Files Modified
 
-1. **backend/engine/editor.py** - Complete rewrite with simplified algorithm
-2. **backend/engine/editor_fixed.py** - New fixed version (backup)
+1. **backend/engine/editor.py** - Logic rewrite for rapid cuts & rotation.
+2. **backend/engine/brain.py** - Integrated Scene Anchors & Compact Decoding.
+3. **backend/engine/processors.py** - Added visual scene detection and frame-accurate extraction.
+4. **backend/engine/orchestrator.py** - Integrated scene detection into Step 2.
 
 ## Files Already Working (No Changes Needed)
 

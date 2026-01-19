@@ -4,17 +4,17 @@ This document identifies the critical files in the MIMIC project and how they co
 
 ---
 
-## 🏗️ Technical Architecture Map
+## 🏗️ Technical Architecture Map (Updated Jan 19, 2026 - 22:10 PM)
 
 ### 1. The Core Engine (Backend Logic)
 These files reside in `backend/engine/` and form the heart of the system.
 
 | File | Responsibility | Connected To |
 |------|--------------|--------------|
-| `orchestrator.py` | **The Brain.** Orchestrates the entire pipeline from upload to render. | Calls `brain.py`, `editor.py`, `processors.py`. |
-| `brain.py` | **AI Integration.** Handles all Gemini 3 API calls, caching, and comprehensive analysis. | Called by `orchestrator.py`. Uses `models.py`. |
-| `editor.py` | **Matching Algorithm.** Decides which clips go where. Implements "Soft Segments" and "Rapid Cuts." | Called by `orchestrator.py`. Uses `models.py`. |
-| `processors.py` | **Video Execution.** FFmpeg wrappers for standardizing, cutting, and stitching. | Called by `orchestrator.py`. |
+| `orchestrator.py` | **The Brain.** Orchestrates the entire pipeline. Now includes **Scene Detection** as a pre-analysis step. | Calls `brain.py`, `editor.py`, `processors.py`. |
+| `brain.py` | **AI Integration.** Handles Gemini 3 API calls with **Compact Hint Encoding** (`HD, MS` codes). | Called by `orchestrator.py`. Uses `models.py`. |
+| `editor.py` | **Matching Algorithm.** Match clips to segments. Now respects **Visual Scene Anchors**. | Called by `orchestrator.py`. Uses `models.py`. |
+| `processors.py` | **Video Execution.** FFmpeg wrappers. Includes **Scene Detection** (`detect_scene_changes`). | Called by `orchestrator.py`. |
 
 ### 2. The API Layer (Backend Entry)
 | File | Responsibility | Connected To |
@@ -41,9 +41,10 @@ These files reside in `backend/engine/` and form the heart of the system.
 3.  **Frontend** redirects to `/generate/{session_id}` and triggers **Backend (`/api/generate`)**.
 4.  **Backend (`main.py`)** starts a background task calling **`orchestrator.py:run_mimic_pipeline`**.
 5.  **`orchestrator.py`** then:
-    - Calls **`brain.py`** to analyze the reference (cached if possible).
-    - Calls **`brain.py`** to analyze clips comprehensively (energy, motion, best moments).
-    - Calls **`editor.py`** to create an EDL using the "Rapid Cuts" algorithm.
+    - Calls **`processors.py`** to detect physical scene cuts in the reference first.
+    - Calls **`brain.py`** to analyze the reference using those cuts as **anchors**.
+    - Calls **`brain.py`** to analyze clips comprehensively (one call per clip).
+    - Calls **`editor.py`** to create an EDL aligned to the **scene-anchored segments**.
     - Calls **`processors.py`** to render the final video using FFmpeg.
 6.  **Backend (`main.py`)** sends updates via **WebSocket** to **Frontend (`ProgressTracker.tsx`)**.
 7.  **Frontend** displays the final video from `data/results/`.

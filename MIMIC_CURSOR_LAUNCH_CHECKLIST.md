@@ -35,8 +35,10 @@ npm run dev   # runs on http://localhost:3000
 2. Navigate to **Upload**.
 3. Choose a reference video from `data/samples/reference/`.
 4. Choose 2‑5 clips from `data/samples/clips/`.
-5. Click **Generate** and watch the progress bar.
+5. Click **Generate** and watch the progress bar. (FFmpeg scene detection → Gemini analysis → Render).
 6. When finished, verify the side‑by‑side comparison and download the result.
+
+*(Updated Jan 19, 2026 - 22:20 PM)*
 
 ## � Common Issues & Fixes
 - **Gemini model not found** – double‑check the API key and that your Gemini 3 access is enabled.

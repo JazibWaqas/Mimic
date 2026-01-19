@@ -300,7 +300,7 @@ class GeminiConfig:
     """Configuration for Gemini API calls."""
     
     # Model selection - USING GEMINI 3 FOR HACKATHON
-    MODEL_NAME = "gemini-3-flash-preview"  # Primary Hackathon Model
+    MODEL_NAME = "gemini-3-flash-preview"  # Primary 2.0 Model
     FALLBACK_MODEL = "gemini-1.5-flash"     # Reliable Backup (High Quota)
     PRO_MODEL = "gemini-3-pro-preview"      # Higher tier backup
     EMERGENCY_FALLBACK = "gemini-2.0-flash-exp"
@@ -310,8 +310,7 @@ class GeminiConfig:
         "temperature": 0.1,  # Low temperature for consistency
         "top_p": 0.95,
         "top_k": 40,
-        "max_output_tokens": 2048,
-        "response_mime_type": "application/json"  # Force JSON output
+        "max_output_tokens": 2048
     }
     
     # Retry config
@@ -446,7 +445,7 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
 
 def _parse_json_response(response_text: str) -> dict:
     """
-    Parse Gemini's JSON response, handling common formatting issues and cut-off text.
+    Parse Gemini's JSON response.
     """
     text = response_text.strip()
     
@@ -459,7 +458,28 @@ def _parse_json_response(response_text: str) -> dict:
     text = text.strip()
     
     try:
-        return json.loads(text)
+        data = json.loads(text)
+        
+        # Robust enum cleaning (handling Gemini hallucinations like "LowLow" or "DynamicDynamic")
+        from models import EnergyLevel, MotionType
+        valid_energies = [e.value for e in EnergyLevel]
+        valid_motions = [m.value for m in MotionType]
+        
+        def clean_data(obj):
+            if isinstance(obj, list):
+                return [clean_data(i) for i in obj]
+            if isinstance(obj, dict):
+                return {k: clean_data(v) for k, v in obj.items()}
+            if isinstance(obj, str):
+                # Clean Energy
+                for v in valid_energies:
+                    if v.lower() in obj.lower(): return v
+                # Clean Motion
+                for v in valid_motions:
+                    if v.lower() in obj.lower(): return v
+            return obj
+            
+        return clean_data(data)
     except json.JSONDecodeError:
         # Emergency repair for "unterminated string" or cut-off JSON
         print("[WARN] Attempting to repair malformed JSON...")
@@ -479,7 +499,7 @@ def _parse_json_response(response_text: str) -> dict:
         text += "}" * (open_braces - close_braces)
         
         try:
-            return json.loads(text)
+            return clean_data(json.loads(text))
         except Exception as e:
             raise ValueError(f"Failed to parse or repair JSON: {e}\nRaw: {response_text}")
 
@@ -488,19 +508,12 @@ def _parse_json_response(response_text: str) -> dict:
 # PUBLIC API
 # ============================================================================
 
-def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 0.6) -> StyleBlueprint:
+def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 2.0) -> StyleBlueprint:
     """
-    Split long segments into smaller chunks for rapid-fire editing.
+    Split long segments into smaller chunks if they exceed the max duration.
     
-    This ensures we get enough cuts even if Gemini returns coarse segments.
-    For example: A 2.0s segment becomes 3-4 segments of 0.5-0.6s each.
-    
-    Args:
-        blueprint: Original blueprint from Gemini
-        max_segment_duration: Maximum allowed segment duration (default 0.6s)
-    
-    Returns:
-        Blueprint with subdivided segments
+    With real scene detection, we want to respect the original cuts more,
+    so we increase the default max duration to 2.0s.
     """
     new_segments = []
     segment_id = 1
@@ -543,27 +556,35 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
     )
 
 
-def analyze_reference_video(video_path: str, api_key: str | None = None) -> StyleBlueprint:
+def analyze_reference_video(
+    video_path: str, 
+    api_key: str | None = None,
+    scene_timestamps: List[float] | None = None
+) -> StyleBlueprint:
     """
     Analyze reference video to extract editing structure.
     
-    QUOTA OPTIMIZATION: Checks cache first to avoid redundant API calls.
-    Cache key is based on file hash, so same video = instant result.
+    QUOTA OPTIMIZATION: Checks cache first.
+    TEMPORAL HINTS: Uses scene_timestamps to ground Gemini's analysis.
     """
     print(f"\n{'='*60}")
     print(f"[BRAIN] ANALYZING REFERENCE VIDEO: {Path(video_path).name}")
+    if scene_timestamps:
+        print(f"[BRAIN] Using {len(scene_timestamps)} visual scene anchors.")
     print(f"{'='*60}\n")
     
     # Check cache first
     cache_dir = Path(__file__).parent.parent.parent / "data" / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
     
-    # Use file hash as cache key (same video = same hash)
+    # Cache key includes file hash AND number of hints to ensure fresh analysis if hints change
     import hashlib
     with open(video_path, 'rb') as f:
         file_hash = hashlib.md5(f.read()).hexdigest()[:12]
     
-    cache_file = cache_dir / f"ref_{file_hash}.json"
+    num_hints = len(scene_timestamps) if scene_timestamps else 0
+    hint_suffix = f"_hints{num_hints}"
+    cache_file = cache_dir / f"ref_{file_hash}{hint_suffix}.json"
     
     if cache_file.exists():
         print(f"[CACHE] Found cached analysis: {cache_file.name}")
@@ -572,45 +593,81 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
                 cache_data = json.load(f)
                 
                 # Check cache version
-                cache_version = cache_data.get("_cache_version", "1.0")  # Default to 1.0 for old caches
+                cache_version = cache_data.get("_cache_version", "1.0")
                 if cache_version != CACHE_VERSION:
-                    print(f"[CACHE] Version mismatch (cached: {cache_version}, current: {CACHE_VERSION})")
-                    print(f"[CACHE] Prompt changed - invalidating cache and re-analyzing...")
-                    cache_file.unlink()  # Delete old cache
+                    print(f"[CACHE] Version mismatch. Re-analyzing...")
+                    cache_file.unlink()
                 else:
-                    # Remove metadata before validation
                     blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
                     blueprint = StyleBlueprint(**blueprint_data)
                     
-                    # Apply subdivision to cached blueprints too
-                    blueprint = subdivide_segments(blueprint, max_segment_duration=0.6)
+                    # Apply subdivision (now defaults to 2.0s)
+                    blueprint = subdivide_segments(blueprint)
                     
-                    print(f"[OK] Loaded from cache (v{CACHE_VERSION}): {len(blueprint.segments)} segments")
+                    print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments")
                     return blueprint
         except Exception as e:
-            print(f"[WARN] Cache corrupted or invalid: {e}. Re-analyzing...")
+            print(f"[WARN] Cache issue: {e}. Re-analyzing...")
     
+    # Prepare Prompt
+    from .processors import get_video_duration
+    duration = get_video_duration(video_path)
+    
+    if scene_timestamps:
+        rounded_hints = [round(t, 2) for t in scene_timestamps]
+        prompt = f"""
+        Scene cuts: {rounded_hints}
+        Duration: {duration}
+        Task: Provide a comma-separated string of {len(rounded_hints) + 1} codes (one per segment).
+        Codes: H (High), M (Medium), L (Low) + D (Dynamic), S (Static). 
+        Format: {{ "total_duration": {duration}, "codes": "HD, MS, LS, ..." }}
+        """
+    else:
+        prompt = REFERENCE_ANALYSIS_PROMPT
+
     # Cache miss - call API
     model = initialize_gemini(api_key)
     video_file = _upload_video_with_retry(video_path)
     
-    # Generate analysis
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:
-            # Respect rate limit before analysis call
             rate_limiter.wait_if_needed()
-            print(f"Requesting analysis (attempt {attempt + 1})...")
-            response = model.generate_content([video_file, REFERENCE_ANALYSIS_PROMPT])
-            
-            # Parse and validate
+            response = model.generate_content([video_file, prompt])
             json_data = _parse_json_response(response.text)
+            
+            # Reconstruct from codes
+            if "codes" in json_data:
+                print(f"[BRAIN] Reconstructing from codes: {json_data['codes']}")
+                codes = [c.strip().upper() for c in json_data["codes"].split(",")]
+                energy_map = {"H": "High", "M": "Medium", "L": "Low"}
+                motion_map = {"D": "Dynamic", "S": "Static"}
+                
+                full_timestamps = [0.0] + (scene_timestamps or []) + [duration]
+                reconstructed_segments = []
+                
+                for i in range(len(full_timestamps) - 1):
+                    # Use provided code or fallback to Medium/Dynamic
+                    code = codes[i] if i < len(codes) else "MD"
+                    e_code = code[0] if len(code) > 0 else "M"
+                    m_code = code[1] if len(code) > 1 else "D"
+                    
+                    reconstructed_segments.append({
+                        "id": i + 1,
+                        "start": full_timestamps[i],
+                        "end": full_timestamps[i+1],
+                        "duration": full_timestamps[i+1] - full_timestamps[i],
+                        "energy": energy_map.get(e_code, "Medium"),
+                        "motion": motion_map.get(m_code, "Dynamic")
+                    })
+                json_data["segments"] = reconstructed_segments
+                del json_data["codes"]
+
             blueprint = StyleBlueprint(**json_data)
             
-            # Apply subdivision to ensure rapid cuts
-            blueprint = subdivide_segments(blueprint, max_segment_duration=0.6)
+            # Apply subdivision (respects real cuts better)
+            blueprint = subdivide_segments(blueprint)
             
-            # Save ORIGINAL (non-subdivided) to cache
-            # We subdivide on load so cache stays pure
+            # Save ORIGINAL to cache
             cache_data = {
                 **json_data,
                 "_cache_version": CACHE_VERSION,
@@ -618,21 +675,21 @@ def analyze_reference_video(video_path: str, api_key: str | None = None) -> Styl
             }
             with open(cache_file, 'w') as f:
                 json.dump(cache_data, f, indent=2)
-            print(f"[CACHE] Saved to {cache_file.name} (v{CACHE_VERSION})")
             
-            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments (after subdivision)")
+            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments.")
             return blueprint
             
         except Exception as e:
+            print(f"[RETRY DEBUG] Reference analysis attempt {attempt + 1} failed: {e}")
+            import traceback
+            # traceback.print_exc()
             if _handle_rate_limit_error(e, "reference analysis"):
-                # Key rotated, retry immediately
                 continue
-            
             if attempt == GeminiConfig.MAX_RETRIES - 1:
-                raise Exception(f"Failed to analyze reference after {GeminiConfig.MAX_RETRIES} attempts: {e}")
-            
-            print(f"Analysis failed: {e}. Retrying in {GeminiConfig.RETRY_DELAY}s...")
+                raise Exception(f"Failed to analyze reference: {e}")
             time.sleep(GeminiConfig.RETRY_DELAY)
+            
+    raise Exception("Failed to analyze reference video after all retries and key rotations.")
 
 
 def find_best_moment(

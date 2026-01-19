@@ -1,0 +1,247 @@
+{
+  "total_duration": 14.133333,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.533333,
+      "duration": 0.533333,
+      "energy": "High",
+      "motion": "Static"
+    },
+    {
+      "id": 2,
+      "start": 0.533333,
+      "end": 0.933333,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 3,
+      "start": 0.933333,
+      "end": 1.4,
+      "duration": 0.46666699999999994,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 4,
+      "start": 1.4,
+      "end": 1.866667,
+      "duration": 0.46666700000000017,
+      "energy": "Medium",
+      "motion": "Static"
+    },
+    {
+      "id": 5,
+      "start": 1.866667,
+      "end": 2.266667,
+      "duration": 0.3999999999999999,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 6,
+      "start": 2.266667,
+      "end": 2.766667,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 7,
+      "start": 2.766667,
+      "end": 3.266667,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Static"
+    },
+    {
+      "id": 8,
+      "start": 3.266667,
+      "end": 3.666667,
+      "duration": 0.3999999999999999,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 9,
+      "start": 3.666667,
+      "end": 4.066667,
+      "duration": 0.3999999999999999,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 10,
+      "start": 4.066667,
+      "end": 4.566667,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Static"
+    },
+    {
+      "id": 11,
+      "start": 4.566667,
+      "end": 5.0,
+      "duration": 0.4333330000000002,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 12,
+      "start": 5.0,
+      "end": 5.433333,
+      "duration": 0.4333330000000002,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 13,
+      "start": 5.433333,
+      "end": 5.8,
+      "duration": 0.36666699999999963,
+      "energy": "High",
+      "motion": "Static"
+    },
+    {
+      "id": 14,
+      "start": 5.8,
+      "end": 6.266667,
+      "duration": 0.46666700000000017,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 15,
+      "start": 6.266667,
+      "end": 6.766667,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 16,
+      "start": 6.766667,
+      "end": 7.233333,
+      "duration": 0.466666,
+      "energy": "Medium",
+      "motion": "Static"
+    },
+    {
+      "id": 17,
+      "start": 7.233333,
+      "end": 7.733333,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 18,
+      "start": 7.733333,
+      "end": 8.233333,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 19,
+      "start": 8.233333,
+      "end": 8.7,
+      "duration": 0.4666669999999993,
+      "energy": "High",
+      "motion": "Static"
+    },
+    {
+      "id": 20,
+      "start": 8.7,
+      "end": 9.166667,
+      "duration": 0.46666700000000105,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 21,
+      "start": 9.166667,
+      "end": 9.666667,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 22,
+      "start": 9.666667,
+      "end": 10.266667,
+      "duration": 0.5999999999999996,
+      "energy": "Medium",
+      "motion": "Static"
+    },
+    {
+      "id": 23,
+      "start": 10.266667,
+      "end": 10.733333,
+      "duration": 0.466666,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 24,
+      "start": 10.733333,
+      "end": 11.366667,
+      "duration": 0.6333339999999996,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 25,
+      "start": 11.366667,
+      "end": 11.833333,
+      "duration": 0.466666,
+      "energy": "High",
+      "motion": "Static"
+    },
+    {
+      "id": 26,
+      "start": 11.833333,
+      "end": 12.266667,
+      "duration": 0.43333400000000033,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 27,
+      "start": 12.266667,
+      "end": 12.733333,
+      "duration": 0.466666,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 28,
+      "start": 12.733333,
+      "end": 13.2,
+      "duration": 0.4666669999999993,
+      "energy": "Medium",
+      "motion": "Static"
+    },
+    {
+      "id": 29,
+      "start": 13.2,
+      "end": 13.666667,
+      "duration": 0.46666700000000105,
+      "energy": "High",
+      "motion": "Dynamic"
+    },
+    {
+      "id": 30,
+      "start": 13.666667,
+      "end": 14.133333,
+      "duration": 0.466666,
+      "energy": "Medium",
+      "motion": "Dynamic"
+    }
+  ],
+  "_cache_version": "3.0",
+  "_cached_at": "2026-01-19 21:30:00"
+}

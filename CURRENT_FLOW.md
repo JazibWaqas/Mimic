@@ -1,13 +1,14 @@
 # 🌊 MIMIC - Current Development Flow
 
-This document details the exact sequence of logic implemented in the MIMIC pipeline as of **January 15, 2026**.
+This document details the exact sequence of logic implemented in the MIMIC pipeline as of **January 19, 2026 - 21:55 PM**.
 
 ---
 
 ## 🚀 The Pipeline (Step-by-Step)
 
 ### 1. Pre-Analysis & Caching
-- **Reference Video:** Gemini 3 analyzes the reference once. The result is cached in `data/cache/ref_{hash}.json`. It detects *cut points*, not just energy changes.
+- **Visual Scene Detection:** FFmpeg detects physical cuts in the reference video first. These timestamps are used as "ground truth" for the AI.
+- **Reference Video:** Gemini 3 analyzes the reference using scene timestamps as anchors. It returns a compact string of codes (`HD, MS, LS`). Reconstructs segments by splitting the video at exactly those detected scene points. Result is cached in `ref_{hash}_hints{N}.json`.
 - **User Clips:** Every clip is analyzed *once* comprehensively. Gemini extracts:
   - Overall Energy/Motion.
   - Three "Best Moments" (Low, Medium, High energy windows).

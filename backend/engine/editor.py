@@ -71,6 +71,7 @@ def match_clips_to_blueprint(
     if reference_path and has_audio(reference_path):
         beat_grid = get_beat_grid(blueprint.total_duration, bpm=120)
         print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at 120 BPM")
+        print(f"  DEBUG: First 5 beats: {beat_grid[:5]}")
     else:
         print(f"  🔇 No audio detected - using visual cuts only")
     
@@ -221,6 +222,7 @@ def match_clips_to_blueprint(
                 timeline_end_for_decision = timeline_position + actual_duration
             
             # Create edit decision
+            print(f"DEBUG: pos={timeline_position}, dur={actual_duration}, start={timeline_start_for_decision}")
             decision = EditDecision(
                 segment_id=segment.id,
                 clip_path=selected_clip.filepath,

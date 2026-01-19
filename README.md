@@ -1,3 +1,6 @@
+QUICK IINSTRUCTION FOR AI:
+NEVER MAKE NEW MD FILES JUST USE THE EXSISITNG ONES AND UPDATE THEM
+
 # 🎬 MIMIC - AI Video Structural Replication
 
 **Steal the editing structure of any viral video and apply it to your own footage.**
@@ -11,11 +14,11 @@ MIMIC uses Gemini 3's multimodal reasoning to analyze the "editing DNA" of viral
 *Use this section to quickly understand the project architecture and logic flow.*
 
 ### 📂 Key Documentation
-- **[CURRENT_FLOW.md](./CURRENT_FLOW.md)**: The definitive step-by-step logic of the pipeline (Jan 15, 2026).
-- **[IMPORTANT_FILES.md](./IMPORTANT_FILES.md)**: Map of the codebase and how files are linked.
-- **[STATUS.md](./STATUS.md)**: Current development state and upcoming milestones.
-- **[FIXES_APPLIED.md](./FIXES_APPLIED.md)**: Detailed report on the major Editor rewrite and Rapid Cuts fix.
-- **[MIMIC_QUICK_REFERENCE.md](./MIMIC_QUICK_REFERENCE.md)**: The "Why" behind technical decisions and Hackathon strategy.
+- **[DIAGNOSTIC_LOG.md](./DIAGNOSTIC_LOG.md)**: THE FORENSIC EVIDENCE. BPM drifts, Lazy Gemini proofs, and the "Lottery" clip selection audit.
+- **[CURRENT_FLOW.md](./CURRENT_FLOW.md)**: The definitive logic of the pipeline (Jan 19, 2026 - 22:45 PM).
+- **[IMPORTANT_FILES.md](./IMPORTANT_FILES.md)**: Map of the codebase and how files are linked (Jan 19, 2026).
+- **[STATUS.md](./STATUS.md)**: Current development state (Jan 19, 2026 - 22:45 PM).
+- **[FIXES_APPLIED.md](./FIXES_APPLIED.md)**: Detailed report on Scene Detection fixes & Logic Pivots.
 
 ### 🧠 Core Methodology
 1.  **Editing DNA**: We extract cut points, energy levels, and motion patterns from a reference video.

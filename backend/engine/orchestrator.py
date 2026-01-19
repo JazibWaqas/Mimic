@@ -34,7 +34,8 @@ from engine.processors import (
     concatenate_videos,
     merge_audio_video,
     create_silent_video,
-    validate_output
+    validate_output,
+    detect_scene_changes
 )
 from utils import ensure_directory, cleanup_session
 
@@ -111,10 +112,18 @@ def run_mimic_pipeline(
         # ==================================================================
         # STEP 2: ANALYZE REFERENCE
         # ==================================================================
-        update_progress(2, TOTAL_STEPS, "Analyzing reference video structure with Gemini AI...")
+        update_progress(2, TOTAL_STEPS, "Detecting visual cuts and analyzing reference structure...")
         
         try:
-            blueprint = analyze_reference_video(reference_path, api_key)
+            # 2a. Detect visual cuts first (Temporal Hints)
+            scene_timestamps = detect_scene_changes(reference_path)
+            
+            # 2b. Analyze with Gemini using hints
+            blueprint = analyze_reference_video(
+                reference_path, 
+                api_key=api_key,
+                scene_timestamps=scene_timestamps
+            )
             print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
         except Exception as e:
             print(f"[ERROR] Gemini reference analysis failed: {e}")

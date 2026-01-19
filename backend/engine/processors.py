@@ -288,6 +288,56 @@ def extract_segment(
 
 
 # ============================================================================
+# ADVANCED DIAGNOSTICS (NEW)
+# ============================================================================
+
+def detect_scene_changes(video_path: str, threshold: float = 0.3) -> List[float]:
+    """
+    Use FFmpeg visual analysis to find ACTUAL cut points in a video.
+    
+    Returns:
+        List of timestamps (seconds) where a scene change was detected.
+    """
+    print(f"  [DIAGNOSTIC] Detecting visual scene changes (threshold={threshold})...")
+    cmd = [
+        "ffmpeg",
+        "-i", video_path,
+        "-filter:v", f"select='gt(scene,{threshold})',showinfo",
+        "-f", "null",
+        "-"
+    ]
+    
+    try:
+        # Scene detection info goes to stderr
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        output = result.stderr
+        
+        timestamps = []
+        import re
+        # Look for 'pts_time:9.833333' pattern
+        matches = re.findall(r"pts_time:([\d\.]+)", output)
+        for m in matches:
+            ts = float(m)
+            # Clamp to >= 0.1s to avoid issues with start of video
+            if ts >= 0.1 and ts not in timestamps:
+                timestamps.append(ts)
+        
+        # Sort and filter close timestamps
+        timestamps.sort()
+        final_ts = []
+        if timestamps:
+            final_ts.append(timestamps[0])
+            for i in range(1, len(timestamps)):
+                if timestamps[i] - final_ts[-1] > 0.3: # Min 0.3s between cuts
+                    final_ts.append(timestamps[i])
+        
+        print(f"  [OK] Detected {len(final_ts)} visual cuts.")
+        return final_ts
+    except Exception as e:
+        print(f"  [WARN] Scene detection failed: {e}")
+        return []
+
+# ============================================================================
 # VIDEO CONCATENATION
 # ============================================================================
 

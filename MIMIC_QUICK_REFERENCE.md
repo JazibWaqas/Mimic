@@ -11,10 +11,11 @@
 **Why:** Content creators spend hours reverse-engineering viral videos. MIMIC does it in 60 seconds.
 
 **How:**
-1. Gemini 3 watches reference video → extracts timing blueprint
-2. Gemini 3 analyzes user clips → classifies energy levels
-3. Editor matches clips to blueprint → creates Edit Decision List
-4. FFmpeg renders video → frame-perfect cuts matching reference
+1. FFmpeg runs visual scene detection → extracts physical cut timestamps.
+2. Gemini 3 watches reference video using scene timestamps as anchors → extracts timing blueprint using compact codes (`HD, MS, LS`).
+3. Gemini 3 analyzes user clips → classifies energy levels.
+4. Editor matches clips to blueprint segments → aligns clips to physical visual anchors.
+5. FFmpeg renders video → frame-perfect cuts matching reference rhythm.
 
 **The Magic Moment:** Side-by-side comparison showing output perfectly matching reference beat drops.
 
