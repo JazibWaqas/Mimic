@@ -151,6 +151,27 @@ def align_to_nearest_beat(time: float, beat_grid: List[float], tolerance: float 
     return time
 
 
+def remove_audio(input_path: str, output_path: str) -> str:
+    """
+    Remove audio track from video (bypass recitation blocks).
+    Uses stream copying for speed.
+    """
+    import subprocess
+    cmd = [
+        "ffmpeg", "-y",
+        "-i", input_path,
+        "-an",  # No audio
+        "-vcodec", "copy",
+        output_path
+    ]
+    
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+        return output_path
+    except Exception as e:
+        raise RuntimeError(f"Failed to remove audio: {e}")
+
+
 def detect_bpm(audio_path: str) -> float:
     """
     Detect the tempo (BPM) of an audio file using librosa.

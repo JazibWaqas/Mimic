@@ -27,8 +27,8 @@ def main():
     # Skip ref3.mp4 for now (known recitation issues)
     # Prioritize ref4.mp4 and refrence2.mp4
     all_refs = list(reference_dir.glob("*.mp4"))
-    references = [r for r in all_refs if "ref3.mp4" not in r.name]
-    references.sort(key=lambda x: "ref4" not in x.name) # Put ref4 first
+    references = [r for r in all_refs]
+    references.sort()  # Process in order
     
     if not references:
         print(f"No reference videos found in {reference_dir}")
@@ -54,6 +54,8 @@ def main():
             print("-" * 40)
         except Exception as e:
             print(f"   ⚠️  SKIPPING {ref_path.name}: {e}")
+            import traceback
+            traceback.print_exc()
             failed.append((ref_path.name, str(e)))
             print("-" * 40)
 

@@ -33,35 +33,33 @@ CACHE_VERSION = "6.0"  # v6.0: Deep Emotional and Arc analysis for references (J
 # ============================================================================
 
 REFERENCE_ANALYSIS_PROMPT = """
-You are a professional video editor and creative director. Your task is to analyze the EDITING DNA, EMOTIONAL ARC, and STRUCTURAL LOGIC of this video.
+You are a professional video editor. Analyze the EDITING DNA and EMOTIONAL ARC of this video.
 
-YOUR TASK: Identify EVERY significant cut/edit point and create segments that match the exact editing rhythm. You must understand WHY the editor made these choices (the "heart" of the edit).
+YOUR TASK: Identify EVERY significant cut point and create segments that match the exact editing rhythm.
 
 1. **OVERALL ANALYSIS**:
-   - Identify the **editing_style** (e.g., Cinematic, Vlog, Hype-Reel, Montage).
-   - Identify the **emotional_intent** (e.g., Nostalgic, Energetic, Peaceful, Melancholic).
-   - Provide an **arc_description** explaining how the energy flows (e.g., "Slow build-up to a fast-paced climax").
+   - editing_style: (e.g., Cinematic, Vlog, Montage)
+   - emotional_intent: (e.g., Nostalgic, Energetic, Peaceful)
+   - arc_description: How the energy flows (e.g., "Slow build to fast climax").
 
 2. **SEGMENT ANALYSIS**:
-   For each cut-to-cut segment, capture:
-   - **ENERGY**: (Low/Medium/High) Based on visual pacing and cut frequency.
-   - **MOTION**: (Static/Dynamic) Camera or subject movement.
-   - **VIBE**: A specific aesthetic keyword (e.g., "Ethereal", "Urban", "Nature", "Candid", "Gritty").
-   - **ARC_STAGE**: (Intro, Build-up, Peak, Transition, Outro) The role of this segment in the story.
-   - **REASONING**: A brief explanation of why this segment has this profile (e.g., "Rapid cuts to match a beat drop").
+   For each cut-to-cut segment:
+   - ENERGY: (Low/Medium/High)
+   - MOTION: (Static/Dynamic)
+   - VIBE: Aesthetic keyword (e.g., Nature, Urban, Candid)
+   - ARC_STAGE: (Intro, Build-up, Peak, Outro)
 
 RULES:
-- Detect ACTUAL CUT POINTS - each major cut should create a new segment boundary.
-- Segment duration must be exact (Total Duration must match last segment end).
-- Pacing is critical: detect if segments get shorter (accelerating) or longer (decelerating).
-- Respond ONLY with valid JSON.
+- Detect ACTUAL CUTS.
+- Last segment MUST end at total_duration.
+- Output VALID JSON ONLY.
 
-OUTPUT FORMAT (JSON only):
+JSON SCHEMA:
 {
   "total_duration": 15.5,
-  "editing_style": "Cinematic Travel Montage",
-  "emotional_intent": "Nostalgic and Adventurous",
-  "arc_description": "Begins with slow, wide scenic shots to build atmosphere, then increases cut frequency for an active middle section, ending on a memorable wide shot.",
+  "editing_style": "...",
+  "emotional_intent": "...",
+  "arc_description": "...",
   "segments": [
     {
       "id": 1,
@@ -71,12 +69,11 @@ OUTPUT FORMAT (JSON only):
       "energy": "Low",
       "motion": "Dynamic",
       "vibe": "Nature",
-      "arc_stage": "Intro",
-      "reasoning": "Slow drone pan of the forest establishing the calm setting."
+      "arc_stage": "Intro"
     }
   ],
-  "overall_reasoning": "The edit focuses on atmosphere first, then transitions to human activity.",
-  "ideal_material_suggestions": ["Golden hour shots", "Happy human interactions", "Wide landscapes"]
+  "overall_reasoning": "...",
+  "ideal_material_suggestions": ["..."]
 }
 """
 
@@ -295,12 +292,20 @@ class GeminiConfig:
         "temperature": 0.1,  # Low temperature for consistency
         "top_p": 0.95,
         "top_k": 40,
-        "max_output_tokens": 2048
+        "max_output_tokens": 8192  # Increased for deep reference analysis
     }
+
+    # Safety settings to prevent false positive blocks during hackathon
+    SAFETY_SETTINGS = [
+        {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+        {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+    ]
     
     # Retry config
-    MAX_RETRIES = 3
-    RETRY_DELAY = 2.0  # seconds
+    MAX_RETRIES = 5
+    RETRY_DELAY = 1.0  # seconds
 
 
 # ============================================================================
@@ -371,7 +376,8 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
         try:
             model = genai.GenerativeModel(
                 model_name=model_name,
-                generation_config=GeminiConfig.GENERATION_CONFIG
+                generation_config=GeminiConfig.GENERATION_CONFIG,
+                safety_settings=GeminiConfig.SAFETY_SETTINGS
             )
             print(f"[OK] Using model: {model_name}")
             return model
@@ -403,7 +409,7 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
     # Wait for processing to complete
     while video_file.state.name == "PROCESSING":
         print(f"Waiting for video processing (state: {video_file.state.name})...")
-        time.sleep(10)
+        time.sleep(20)
         rate_limiter.wait_if_needed()
         video_file = genai.get_file(video_file.name)
     
@@ -416,17 +422,16 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
 
 def _parse_json_response(response_text: str) -> dict:
     """
-    Parse Gemini's JSON response.
+    Parse Gemini's JSON response using regex to handle 'chatty' responses.
     """
+    import re
     text = response_text.strip()
     
-    # Remove markdown code fences
-    if "```" in text:
-        text = text.split("```")[1]
-        if text.startswith("json"):
-            text = text[4:]
-    
-    text = text.strip()
+    # More robust extraction: find the outermost curly braces
+    # This handles preamble text, markdown fences, and trailing garbage
+    match = re.search(r'(\{.*\})', text, re.DOTALL)
+    if match:
+        text = match.group(1)
     
     try:
         data = json.loads(text)
@@ -506,11 +511,18 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
             
             # Create sub-segments
             for i in range(num_splits):
+                start_t = segment.start + (i * split_duration)
+                end_t = segment.start + ((i + 1) * split_duration)
+                
+                # Snap last sub-segment to original end to avoid float drift
+                if i == num_splits - 1:
+                    end_t = segment.end
+                    
                 new_segments.append(Segment(
                     id=segment_id,
-                    start=segment.start + (i * split_duration),
-                    end=segment.start + ((i + 1) * split_duration),
-                    duration=split_duration,
+                    start=start_t,
+                    end=end_t,
+                    duration=end_t - start_t,
                     energy=segment.energy,
                     motion=segment.motion,
                     vibe=segment.vibe,
@@ -601,8 +613,17 @@ def analyze_reference_video(
             print(f"[WARN] Cache issue: {e}. Re-analyzing...")
     
     # Prepare Prompt
-    from .processors import get_video_duration
+    from .processors import get_video_duration, remove_audio
     duration = get_video_duration(video_path)
+    
+    # Bypass recitation blocks by muting reference for analysis
+    # This is safe because we only need visual rhythm/energy for analysis
+    muted_path = str(cache_dir / f"muted_{file_hash}.mp4")
+    if not Path(muted_path).exists():
+        print(f"[BRAIN] Creating muted copy for analysis: {muted_path}")
+        remove_audio(video_path, muted_path)
+    
+    analysis_video_path = muted_path
     
     if scene_timestamps:
         rounded_hints = [round(t, 2) for t in scene_timestamps]
@@ -616,17 +637,26 @@ def analyze_reference_video(
     else:
         prompt = REFERENCE_ANALYSIS_PROMPT
 
-    # Cache miss - call API
-    model = initialize_gemini(api_key)
-    video_file = _upload_video_with_retry(video_path)
-    
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:
+            # Re-initialize model (handles key rotation if needed)
+            model = initialize_gemini(api_key)
+            video_file = _upload_video_with_retry(analysis_video_path)
+            
             rate_limiter.wait_if_needed()
             response = model.generate_content([video_file, prompt])
+            
+            # Check for safety/recitation blocks
+            if not response.candidates or response.candidates[0].finish_reason != 1:
+                reason = "UNKNOWN"
+                if response.candidates:
+                    from google.generativeai.types import FinishReason
+                    reason = FinishReason(response.candidates[0].finish_reason).name
+                raise ValueError(f"Gemini blocked the response. Reason: {reason}")
+
             json_data = _parse_json_response(response.text)
             
-            # Reconstruct from codes
+            # Reconstruct from codes if that was the prompt used
             if "codes" in json_data:
                 print(f"[BRAIN] Reconstructing from codes: {json_data['codes']}")
                 codes = [c.strip().upper() for c in json_data["codes"].split(",")]
@@ -920,6 +950,7 @@ def _analyze_single_clip_comprehensive(
                         energy=energy,
                         motion=motion,
                         vibes=vibes,
+                        content_description=content_description,
                         best_moments=best_moments
                     )
         except Exception as e:
@@ -1010,6 +1041,7 @@ def _analyze_single_clip_comprehensive(
                 energy=energy,
                 motion=motion,
                 vibes=vibes,
+                content_description=content_description,
                 best_moments=best_moments
             )
             

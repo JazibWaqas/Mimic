@@ -1,0 +1,157 @@
+{
+  "total_duration": 14.0,
+  "editing_style": "Travel Montage",
+  "emotional_intent": "Nostalgic & Adventurous",
+  "arc_description": "A rhythmic sequence of travel highlights, maintaining a steady pace of one-second snapshots to create a sense of a full, memory-packed journey.",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Adventure",
+      "arc_stage": "Intro"
+    },
+    {
+      "id": 2,
+      "start": 1.0,
+      "end": 2.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Scenic",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 3,
+      "start": 2.0,
+      "end": 3.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Static",
+      "vibe": "Candid",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 4,
+      "start": 3.0,
+      "end": 4.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 5,
+      "start": 4.0,
+      "end": 5.0,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Dynamic",
+      "vibe": "Scenic",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 6,
+      "start": 5.0,
+      "end": 6.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Candid",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 7,
+      "start": 6.0,
+      "end": 7.0,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 8,
+      "start": 7.0,
+      "end": 8.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Landmark",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 9,
+      "start": 8.0,
+      "end": 9.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Candid",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 10,
+      "start": 9.0,
+      "end": 10.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Candid",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 11,
+      "start": 10.0,
+      "end": 11.0,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Scenic",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 12,
+      "start": 11.0,
+      "end": 12.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Cultural",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 13,
+      "start": 12.0,
+      "end": 13.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Candid",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 14,
+      "start": 13.0,
+      "end": 14.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Static",
+      "vibe": "Candid",
+      "arc_stage": "Outro"
+    }
+  ],
+  "overall_reasoning": "The video employs a strict rhythmic editing style where each clip lasts exactly one second. This 'heartbeat' pacing creates a rapid-fire delivery of memories, effectively conveying the breadth of the trip in a short time. The consistent text overlay anchors the emotional theme of friendship and nostalgia throughout the various scenic and candid shots.",
+  "ideal_material_suggestions": [
+    "High-frame-rate footage for slow-motion transitions between the one-second clips.",
+    "Drone establishing shots of the Himalayan landscapes to provide scale.",
+    "Diegetic sound design (water splashing, wind, laughter) to enhance the immersion of each snapshot.",
+    "Color grading that emphasizes warm, nostalgic tones to match the 'memories' theme."
+  ],
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 01:42:44"
+}

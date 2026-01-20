@@ -1,0 +1,167 @@
+{
+  "total_duration": 15.0,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Nostalgic & Joyful",
+  "arc_description": "A rapid-fire sequence of high-energy highlights, maintaining a consistent rhythmic pace to celebrate friendship and shared memories through a 'best of' collection of moments.",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Intro"
+    },
+    {
+      "id": 2,
+      "start": 1.0,
+      "end": 2.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Celebration",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 3,
+      "start": 2.0,
+      "end": 3.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Social",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 4,
+      "start": 3.0,
+      "end": 4.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Candid",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 5,
+      "start": 4.0,
+      "end": 5.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Adventure",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 6,
+      "start": 5.0,
+      "end": 6.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Summer",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 7,
+      "start": 6.0,
+      "end": 7.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Social",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 8,
+      "start": 7.0,
+      "end": 8.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Thrill",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 9,
+      "start": 8.0,
+      "end": 9.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Golden Hour",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 10,
+      "start": 9.0,
+      "end": 10.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Roadtrip",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 11,
+      "start": 10.0,
+      "end": 11.0,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Scenic",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 12,
+      "start": 11.0,
+      "end": 12.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Freedom",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 13,
+      "start": 12.0,
+      "end": 13.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Playful",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 14,
+      "start": 13.0,
+      "end": 14.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Exploration",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 15,
+      "start": 14.0,
+      "end": 15.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nostalgia",
+      "arc_stage": "Outro"
+    }
+  ],
+  "overall_reasoning": "The video employs a rhythmic, beat-matched editing style where each cut occurs approximately every second. This creates a fast-paced 'highlight reel' effect that emphasizes the quantity and quality of shared experiences within a friend group. The consistent use of a central text overlay anchors the diverse locations and activities into a single cohesive narrative about friendship and the passage of time.",
+  "ideal_material_suggestions": [
+    "Handheld, slightly shaky camera work to enhance the 'candid' and 'authentic' feel of personal memories.",
+    "A mix of wide landscape shots to establish scale and close-up emotional reactions to build intimacy.",
+    "Warm color grading, particularly emphasizing golden hour tones and vibrant blues for a summer aesthetic.",
+    "Action-oriented footage like jumping, running, or dancing to maintain a high-energy pace throughout the montage."
+  ],
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 01:41:27"
+}

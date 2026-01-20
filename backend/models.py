@@ -175,6 +175,7 @@ class ClipMetadata(BaseModel):
     energy: EnergyLevel
     motion: MotionType
     vibes: List[str] = Field(default_factory=list, description="Aesthetic/Content tags for semantic matching")
+    content_description: str | None = Field(None, description="Detailed AI description of what is happening in the clip")
     
     # Pre-computed best moments for each energy level (filled during comprehensive analysis)
     best_moments: dict[str, BestMoment] | None = Field(

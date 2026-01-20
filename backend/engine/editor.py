@@ -84,6 +84,14 @@ def match_clips_to_blueprint(
     # Track current position in each clip (for sequential fallback)
     clip_current_position = {clip.filename: 0.0 for clip in clip_index.clips}
     
+    # VISUAL COOLDOWN SYSTEM: Track when each clip was last used on the timeline
+    clip_last_used_at = {clip.filename: -999.0 for clip in clip_index.clips}
+    MIN_CLIP_REUSE_GAP = 5.0  # Don't reuse a clip within 5 seconds
+    
+    # TRANSITION MEMORY: Track the last clip's motion for smooth flow
+    last_clip_motion = None
+    last_clip_content = None
+    
     # Group clips by energy for fast lookup
     energy_pools = _create_energy_pools(clip_index)
     
@@ -121,60 +129,133 @@ def match_clips_to_blueprint(
                 # If we've exhausted all clips, use any clip
                 available_clips = matching_clips
             
-            # SMART SELECTION: Prioritize vibes, then unused clips, then least-used
+            # EDITING GRAMMAR: Multi-dimensional clip scoring
             import random
             
-            # 1. Scoring available clips based on Vibes
-            def _score_vibe(clip: ClipMetadata, segment_vibe: str) -> float:
-                if not segment_vibe or segment_vibe == "General":
-                    return 0.0
-                # Case-insensitive partial matching
-                vibe_score = 0.0
-                for v in clip.vibes:
-                    if v.lower() in segment_vibe.lower() or segment_vibe.lower() in v.lower():
-                        vibe_score += 1.0
-                return vibe_score
+            def score_clip_intelligence(clip: ClipMetadata, segment) -> tuple[float, str]:
+                """
+                Score a clip based on professional editing principles.
+                Returns: (score, reasoning_snippet)
+                """
+                score = 0.0
+                reasons = []
+                
+                # === A. ARC STAGE RELEVANCE (Highest Priority) ===
+                stage = segment.arc_stage.lower()
+                content = (clip.content_description or "").lower()
+                clip_tags = [v.lower() for v in clip.vibes]
+                
+                if stage == "intro":
+                    if any(kw in content for kw in ["intro", "opening", "start", "establishing", "wide"]):
+                        score += 20.0
+                        reasons.append("Intro-style shot")
+                    if "intro" in clip_tags or "establishing" in clip_tags:
+                        score += 15.0
+                        
+                elif stage == "peak":
+                    if any(kw in content for kw in ["action", "peak", "intensity", "fast", "climax", "jump"]):
+                        score += 20.0
+                        reasons.append("Peak-intensity moment")
+                    if any(tag in clip_tags for tag in ["action", "peak", "intense"]):
+                        score += 15.0
+                        
+                elif stage == "build-up":
+                    if any(kw in content for kw in ["building", "rising", "approaching", "moving"]):
+                        score += 15.0
+                        reasons.append("Build-up energy")
+                        
+                elif stage == "outro":
+                    if any(kw in content for kw in ["outro", "ending", "finish", "fading", "sunset", "closing"]):
+                        score += 20.0
+                        reasons.append("Outro-style shot")
+                    if "outro" in clip_tags or "ending" in clip_tags:
+                        score += 15.0
+                
+                # === B. VIBE MATCHING (Semantic Alignment) ===
+                if segment.vibe and segment.vibe != "General":
+                    for v in clip.vibes:
+                        if v.lower() in segment.vibe.lower() or segment.vibe.lower() in v.lower():
+                            score += 12.0
+                            reasons.append(f"Vibe '{segment.vibe}'")
+                            break
+                
+                # === C. VISUAL COOLDOWN (Anti-Monotony) ===
+                time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
+                if time_since_last_use < MIN_CLIP_REUSE_GAP:
+                    # Heavy penalty for recent reuse
+                    cooldown_penalty = -50.0 * (1.0 - time_since_last_use / MIN_CLIP_REUSE_GAP)
+                    score += cooldown_penalty
+                    if cooldown_penalty < -25.0:
+                        reasons.append(f"⚠️ Recently used ({time_since_last_use:.1f}s ago)")
+                
+                # === D. TRANSITION SMOOTHNESS (Motion Continuity) ===
+                if last_clip_motion:
+                    if clip.motion == last_clip_motion:
+                        score += 8.0
+                        reasons.append("Smooth motion flow")
+                    else:
+                        # Motion change can be jarring, slight penalty
+                        score -= 3.0
+                
+                # === E. USAGE PENALTY (Encourage Variety) ===
+                usage_penalty = clip_usage_count[clip.filename] * 3.0
+                score -= usage_penalty
+                if clip_usage_count[clip.filename] > 2:
+                    reasons.append(f"Used {clip_usage_count[clip.filename]}x")
+                
+                # === F. MOMENT FRESHNESS (Prefer Unused Portions) ===
+                # This will be evaluated per-moment, not per-clip
+                
+                reasoning = " | ".join(reasons) if reasons else "Flow optimization"
+                return score, reasoning
 
             # Calculate scores for all available clips
             scored_clips = []
             for c in available_clips:
-                v_score = _score_vibe(c, segment.vibe)
-                u_count = clip_usage_count[c.filename]
-                # Priority: High Vibe Score > Low Usage Count
-                # We subtract usage count from score to treat it as a tie-breaker
-                total_score = (v_score * 10.0) - (u_count * 0.1)
-                scored_clips.append((c, total_score, v_score))
+                total_score, reasoning = score_clip_intelligence(c, segment)
+                scored_clips.append((c, total_score, reasoning))
             
             # Sort by total score (highest first)
             scored_clips.sort(key=lambda x: x[1], reverse=True)
             
             # Pick from the top tier (clips with same highest score) to maintain variety
             max_score = scored_clips[0][1]
-            top_tier = [c for c, score, v_score in scored_clips if abs(score - max_score) < 0.05]
+            top_tier = [(c, s, r) for c, s, r in scored_clips if abs(s - max_score) < 5.0]
             random.shuffle(top_tier)
             
-            selected_clip = top_tier[0]
-            v_score_selected = next(vs for c, s, vs in scored_clips if c == selected_clip)
+            selected_clip, selected_score, selected_reasoning = top_tier[0]
             
-            # Construct reasoning
-            if v_score_selected > 0:
-                thinking = f"Semantic Match: Vibe '{segment.vibe}' matches clip tags {selected_clip.vibes}."
+            # Construct final reasoning for logs
+            if selected_score > 15.0:
+                thinking = f"✨ Smart Match: {selected_reasoning}"
+            elif selected_score > 0:
+                thinking = f"🎯 Good Fit: {selected_reasoning}"
             else:
-                thinking = f"Flow Optimization: Selecting least-used clip ({clip_usage_count[selected_clip.filename]}x) to maintain visual variety."
+                thinking = f"⚙️ Constraint Relaxation: {selected_reasoning}"
 
             if cuts_in_segment == 0:  # Only print once per segment
                 print(f"  🧠 AI Thinking: {thinking}")
-                print(f"  📎 Selected: {selected_clip.filename} ({selected_clip.energy.value})")
+                print(f"  📎 Selected: {selected_clip.filename} (Score: {selected_score:.1f})")
 
-            
             # PHASE 1: Target Duration Selection
-            # We Pick a duration that fits the energy level
-            if segment.energy == EnergyLevel.HIGH:
-                target_duration = random.uniform(0.2, 0.45)  # Viral TikTok style
-            elif segment.energy == EnergyLevel.MEDIUM:
-                target_duration = random.uniform(0.5, 0.9)   # Moderate pacing
-            else:  # LOW
-                target_duration = random.uniform(1.0, 2.0)   # Slower cuts
+            # Use Arc Stage to influence cut pacing
+            if segment.arc_stage == "Intro":
+                # Intros are usually longerestablishing shots
+                target_duration = random.uniform(2.0, 3.5)
+            elif segment.arc_stage == "Peak":
+                # Peaks are rapid fire
+                target_duration = random.uniform(0.15, 0.45)
+            elif segment.arc_stage == "Build-up":
+                # Accelerating
+                target_duration = random.uniform(0.5, 1.2)
+            else:
+                # Default by energy
+                if segment.energy == EnergyLevel.HIGH:
+                    target_duration = random.uniform(0.3, 0.6)
+                elif segment.energy == EnergyLevel.MEDIUM:
+                    target_duration = random.uniform(0.8, 1.5)
+                else:
+                    target_duration = random.uniform(1.5, 3.0)
             
             # BUDGET CHECK: How much time is really left in this segment?
             # We check relative to the segment's actual end on the global timeline
@@ -259,7 +340,7 @@ def match_clips_to_blueprint(
                 timeline_start=decision_start,
                 timeline_end=decision_end,
                 reasoning=thinking,
-                vibe_match=(v_score_selected > 0)
+                vibe_match=("Semantic Match" in thinking)
             )
             decisions.append(decision)
             
@@ -267,6 +348,11 @@ def match_clips_to_blueprint(
             timeline_position = decision_end # The head moves to the exact end of last decision
             clip_current_position[selected_clip.filename] = clip_end
             clip_usage_count[selected_clip.filename] += 1
+            clip_last_used_at[selected_clip.filename] = timeline_position  # Visual cooldown tracking
+            
+            # Transition memory for next iteration
+            last_clip_motion = selected_clip.motion
+            last_clip_content = selected_clip.content_description
             
             last_used_clip = selected_clip.filename
             second_last_clip = last_used_clip

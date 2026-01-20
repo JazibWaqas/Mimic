@@ -1,0 +1,168 @@
+{
+  "total_duration": 15.5,
+  "editing_style": "Travel Montage",
+  "emotional_intent": "Nostalgic and Adventurous",
+  "arc_description": "The video follows a classic travel arc: starting with the journey (bus), moving through scenic exploration and solo moments, building up to high-energy group celebrations, and ending on a warm, communal note.",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.0,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Intro"
+    },
+    {
+      "id": 2,
+      "start": 1.0,
+      "end": 1.8,
+      "duration": 0.8,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Candid",
+      "arc_stage": "Intro"
+    },
+    {
+      "id": 3,
+      "start": 1.8,
+      "end": 2.8,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 4,
+      "start": 2.8,
+      "end": 3.8,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Adventure",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 5,
+      "start": 3.8,
+      "end": 4.8,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Peaceful",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 6,
+      "start": 4.8,
+      "end": 5.8,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Aesthetic",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 7,
+      "start": 5.8,
+      "end": 7.8,
+      "duration": 2.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Joyful",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 8,
+      "start": 7.8,
+      "end": 8.8,
+      "duration": 1.0,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Reflective",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 9,
+      "start": 8.8,
+      "end": 9.8,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Fun",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 10,
+      "start": 9.8,
+      "end": 10.8,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Social",
+      "arc_stage": "Build-up"
+    },
+    {
+      "id": 11,
+      "start": 10.8,
+      "end": 11.8,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Candid",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 12,
+      "start": 11.8,
+      "end": 12.8,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Community",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 13,
+      "start": 12.8,
+      "end": 13.8,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Energetic",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 14,
+      "start": 13.8,
+      "end": 14.8,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Celebration",
+      "arc_stage": "Peak"
+    },
+    {
+      "id": 15,
+      "start": 14.8,
+      "end": 15.5,
+      "duration": 0.7,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nostalgic",
+      "arc_stage": "Outro"
+    }
+  ],
+  "overall_reasoning": "The video uses a rhythmic montage style where cuts are timed to the music's beat. It transitions from wide, scenic shots to intimate group moments, effectively conveying the 'story' of a trip. The energy peaks in the final third with fast-paced cuts of a group celebration inside a bus.",
+  "ideal_material_suggestions": [
+    "Wide-angle landscape shots of mountains or forests.",
+    "Candid clips of friends laughing or walking together.",
+    "POV shots from a moving vehicle window.",
+    "Low-light footage of group activities like singing or campfires.",
+    "Slow-motion shots of individuals interacting with the environment."
+  ],
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 01:35:30"
+}
