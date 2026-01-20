@@ -1,23 +1,29 @@
 {
-  "energy": "Medium",
+  "energy": "High",
   "motion": "Dynamic",
+  "vibes": [
+    "Action",
+    "Outdoors",
+    "Travel"
+  ],
+  "content_description": "A man aims and shoots a rifle at a board of balloons in a mountainous outdoor area.",
   "best_moments": {
     "High": {
-      "start": 3.5,
-      "end": 5.5,
-      "reason": "The moment the shot is fired and a balloon pops, representing the peak action."
+      "start": 3.0,
+      "end": 5.0,
+      "reason": "The moment the shot is fired and a balloon pops."
     },
     "Medium": {
-      "start": 1.5,
-      "end": 3.5,
-      "reason": "The man carefully aiming the rifle, showing focused movement and anticipation."
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "The man takes the rifle and prepares to aim."
     },
     "Low": {
-      "start": 0.0,
-      "end": 2.0,
-      "reason": "The initial preparation and handing over of the rifle with minimal movement."
+      "start": 5.0,
+      "end": 7.0,
+      "reason": "The man lowers the rifle and walks away after the shot."
     }
   },
-  "_cache_version": "4.0",
-  "_cached_at": "2026-01-19 23:21:02"
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:51:01"
 }

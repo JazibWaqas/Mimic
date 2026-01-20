@@ -21,7 +21,9 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 # ============================================================================
 
 # Increment this when prompts change to invalidate old caches
-CACHE_VERSION = "4.0"  # v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
+CACHE_VERSION = "6.0"  # v6.0: Deep Emotional and Arc analysis for references (Jan 21, 2026)
+# v5.0: Fixed string corruption bug + vibes loading (Jan 21, 2026)
+# v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
 # v3.0: Comprehensive clip analysis with best moments (Jan 9, 2025)
 # v2.0: Updated to detect actual cut points (Jan 9, 2025)
 # v1.0: Initial prompt (3-8 segments, basic energy/motion)
@@ -31,74 +33,51 @@ CACHE_VERSION = "4.0"  # v4.0: Added vibes, content_description, and reasoning (
 # ============================================================================
 
 REFERENCE_ANALYSIS_PROMPT = """
-You are a professional video editor analyzing the EDITING STRUCTURE and CUT PATTERN of this video.
+You are a professional video editor and creative director. Your task is to analyze the EDITING DNA, EMOTIONAL ARC, and STRUCTURAL LOGIC of this video.
 
-YOUR TASK: Identify EVERY significant cut/edit point and create segments that match the exact editing rhythm.
+YOUR TASK: Identify EVERY significant cut/edit point and create segments that match the exact editing rhythm. You must understand WHY the editor made these choices (the "heart" of the edit).
 
-CRITICAL: This video's "DNA" is its CUT TIMING. You must detect:
-- When cuts happen (scene changes, shot transitions)
-- How frequently cuts occur (rapid cuts = many short segments, slow cuts = fewer long segments)
-- The exact timing of each edit point
+1. **OVERALL ANALYSIS**:
+   - Identify the **editing_style** (e.g., Cinematic, Vlog, Hype-Reel, Montage).
+   - Identify the **emotional_intent** (e.g., Nostalgic, Energetic, Peaceful, Melancholic).
+   - Provide an **arc_description** explaining how the energy flows (e.g., "Slow build-up to a fast-paced climax").
 
-For videos with MANY CUTS: Create many short segments (0.5-2 seconds each)
-For videos with FEW CUTS: Create fewer longer segments (2-5 seconds each)
-
-For each segment, determine:
-
-1. **ENERGY** (visual rhythm intensity):
-   - **Low**: Slow camera movement, steady shots, minimal cuts, calm pacing
-     Examples: Meditation videos, slow pans, locked-off shots
-   - **Medium**: Moderate pacing, some camera movement, occasional cuts
-     Examples: Vlogs, talking heads with B-roll, product demos
-   - **High**: Rapid cuts, fast motion, intense action, high energy
-     Examples: Sports highlights, dance trends, action sequences, TikTok edits
-
-2. **MOTION** (camera + subject movement):
-   - **Static**: Fixed camera, minimal subject movement
-   - **Dynamic**: Panning, zooming, tracking, fast subject motion
+2. **SEGMENT ANALYSIS**:
+   For each cut-to-cut segment, capture:
+   - **ENERGY**: (Low/Medium/High) Based on visual pacing and cut frequency.
+   - **MOTION**: (Static/Dynamic) Camera or subject movement.
+   - **VIBE**: A specific aesthetic keyword (e.g., "Ethereal", "Urban", "Nature", "Candid", "Gritty").
+   - **ARC_STAGE**: (Intro, Build-up, Peak, Transition, Outro) The role of this segment in the story.
+   - **REASONING**: A brief explanation of why this segment has this profile (e.g., "Rapid cuts to match a beat drop").
 
 RULES:
-- Detect ACTUAL CUT POINTS - each major cut should create a new segment boundary
-- Segment length should match cut frequency: Rapid cuts = 0.5-1.5s segments, Slow cuts = 2-5s segments
-- For videos with many rapid cuts, create 10-30+ segments (one per major cut)
-- For videos with few cuts, create 3-8 segments
-- Segments must be contiguous (no gaps or overlaps)
-- Base energy on PACING and CUT FREQUENCY, not on content emotion
-- The last segment must end exactly at the video's total duration
-- IMPORTANT: If you see rapid cuts (multiple cuts per second), create a segment for EACH significant cut
+- Detect ACTUAL CUT POINTS - each major cut should create a new segment boundary.
+- Segment duration must be exact (Total Duration must match last segment end).
+- Pacing is critical: detect if segments get shorter (accelerating) or longer (decelerating).
+- Respond ONLY with valid JSON.
 
-OUTPUT FORMAT (JSON only, no markdown code fences):
+OUTPUT FORMAT (JSON only):
 {
   "total_duration": 15.5,
+  "editing_style": "Cinematic Travel Montage",
+  "emotional_intent": "Nostalgic and Adventurous",
+  "arc_description": "Begins with slow, wide scenic shots to build atmosphere, then increases cut frequency for an active middle section, ending on a memorable wide shot.",
   "segments": [
     {
       "id": 1,
       "start": 0.0,
-      "end": 0.8,
-      "duration": 0.8,
-      "energy": "High",
-      "motion": "Dynamic"
-    },
-    {
-      "id": 2,
-      "start": 0.8,
-      "end": 1.5,
-      "duration": 0.7,
-      "energy": "High",
-      "motion": "Dynamic"
-    },
-    {
-      "id": 3,
-      "start": 1.5,
-      "end": 4.0,
-      "duration": 2.5,
-      "energy": "Medium",
-      "motion": "Static"
+      "end": 3.2,
+      "duration": 3.2,
+      "energy": "Low",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Slow drone pan of the forest establishing the calm setting."
     }
-  ]
+  ],
+  "overall_reasoning": "The edit focuses on atmosphere first, then transitions to human activity.",
+  "ideal_material_suggestions": ["Golden hour shots", "Happy human interactions", "Wide landscapes"]
 }
-
-Respond ONLY with valid JSON. Do not include explanations, markdown, or any other text.
 """
 
 CLIP_ANALYSIS_PROMPT = """
@@ -452,26 +431,35 @@ def _parse_json_response(response_text: str) -> dict:
     try:
         data = json.loads(text)
         
-        # Robust enum cleaning (handling Gemini hallucinations like "LowLow" or "DynamicDynamic")
+        # Only clean the specific enum fields, NOT all strings
+        # This prevents corrupting "reason" fields that contain words like "high" or "dynamic"
         from models import EnergyLevel, MotionType
         valid_energies = [e.value for e in EnergyLevel]
         valid_motions = [m.value for m in MotionType]
         
-        def clean_data(obj):
-            if isinstance(obj, list):
-                return [clean_data(i) for i in obj]
-            if isinstance(obj, dict):
-                return {k: clean_data(v) for k, v in obj.items()}
-            if isinstance(obj, str):
-                # Clean Energy
-                for v in valid_energies:
-                    if v.lower() in obj.lower(): return v
-                # Clean Motion
-                for v in valid_motions:
-                    if v.lower() in obj.lower(): return v
-            return obj
+        def clean_enum_value(value: str, valid_values: list) -> str:
+            """Clean a single enum value, handling hallucinations like 'LowLow'."""
+            for v in valid_values:
+                if v.lower() in value.lower():
+                    return v
+            return value
+        
+        # Only clean the top-level energy and motion fields
+        if "energy" in data and isinstance(data["energy"], str):
+            data["energy"] = clean_enum_value(data["energy"], valid_energies)
+        if "motion" in data and isinstance(data["motion"], str):
+            data["motion"] = clean_enum_value(data["motion"], valid_motions)
+        
+        # Clean energy/motion in segments if present (for reference analysis)
+        if "segments" in data and isinstance(data["segments"], list):
+            for seg in data["segments"]:
+                if isinstance(seg, dict):
+                    if "energy" in seg:
+                        seg["energy"] = clean_enum_value(seg["energy"], valid_energies)
+                    if "motion" in seg:
+                        seg["motion"] = clean_enum_value(seg["motion"], valid_motions)
             
-        return clean_data(data)
+        return data
     except json.JSONDecodeError:
         # Emergency repair for "unterminated string" or cut-off JSON
         print("[WARN] Attempting to repair malformed JSON...")
@@ -491,7 +479,7 @@ def _parse_json_response(response_text: str) -> dict:
         text += "}" * (open_braces - close_braces)
         
         try:
-            return clean_data(json.loads(text))
+            return json.loads(text)  # Just return parsed JSON, enum cleaning happens above
         except Exception as e:
             raise ValueError(f"Failed to parse or repair JSON: {e}\nRaw: {response_text}")
 
@@ -523,8 +511,11 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
                     start=segment.start + (i * split_duration),
                     end=segment.start + ((i + 1) * split_duration),
                     duration=split_duration,
-                    energy=segment.energy,  # Preserve original energy classification
-                    motion=segment.motion    # Preserve original motion classification
+                    energy=segment.energy,
+                    motion=segment.motion,
+                    vibe=segment.vibe,
+                    reasoning=segment.reasoning,
+                    arc_stage=segment.arc_stage
                 ))
                 segment_id += 1
         else:
@@ -535,16 +526,24 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
                 end=segment.end,
                 duration=segment.duration,
                 energy=segment.energy,
-                motion=segment.motion
+                motion=segment.motion,
+                vibe=segment.vibe,
+                reasoning=segment.reasoning,
+                arc_stage=segment.arc_stage
             ))
             segment_id += 1
     
-    print(f"[SUBDIVISION] {len(blueprint.segments)} segments → {len(new_segments)} segments (max {max_segment_duration:.1f}s each)")
+    print(f"[SUBDIVISION] {len(blueprint.segments)} segments -> {len(new_segments)} segments (max {max_segment_duration:.1f}s each)")
     
-    # Create new blueprint with subdivided segments
+    # Create new blueprint with subdivided segments, preserving style metadata
     return StyleBlueprint(
         total_duration=blueprint.total_duration,
-        segments=new_segments
+        segments=new_segments,
+        editing_style=blueprint.editing_style,
+        emotional_intent=blueprint.emotional_intent,
+        arc_description=blueprint.arc_description,
+        overall_reasoning=blueprint.overall_reasoning,
+        ideal_material_suggestions=blueprint.ideal_material_suggestions
     )
 
 
@@ -906,7 +905,13 @@ def _analyze_single_clip_comprehensive(
                             for level, moment_data in cache_data["best_moments"].items()
                         }
                     
+                    # Load vibes and content_description from cache
+                    vibes = cache_data.get("vibes", [])
+                    content_description = cache_data.get("content_description", "")
+                    
                     print(f"    [CACHE] Loaded: {energy.value}/{motion.value} with {len(best_moments) if best_moments else 0} best moments")
+                    if vibes:
+                        print(f"    [CACHE] Vibes: {', '.join(vibes)}")
                     
                     return ClipMetadata(
                         filename=Path(clip_path).name,
@@ -914,6 +919,7 @@ def _analyze_single_clip_comprehensive(
                         duration=duration,
                         energy=energy,
                         motion=motion,
+                        vibes=vibes,
                         best_moments=best_moments
                     )
         except Exception as e:

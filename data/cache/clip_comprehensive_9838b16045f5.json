@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Urban",
+    "Casual"
+  ],
+  "content_description": "A group of young men walk together towards a building entrance in an outdoor courtyard.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Dynamic camera pan following the group's initial movement towards the building."
+    },
+    "Medium": {
+      "start": 0.5,
+      "end": 3.0,
+      "reason": "Consistent walking pace as the group moves across the courtyard area."
+    },
+    "Low": {
+      "start": 1.5,
+      "end": 4.0,
+      "reason": "Slower movement as the group nears the building entrance and prepares to enter."
+    }
+  },
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 01:02:42"
+}

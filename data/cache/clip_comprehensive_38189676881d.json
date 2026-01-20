@@ -1,23 +1,29 @@
 {
   "energy": "High",
   "motion": "Dynamic",
+  "vibes": [
+    "Action",
+    "Travel",
+    "Thrill"
+  ],
+  "content_description": "A person records their experience on a fast-moving swinging boat ride at an outdoor amusement park.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Peak swinging motion with intense visual movement and audio reactions."
+      "reason": "Intense swinging motion with high-speed visuals and screaming."
     },
     "Medium": {
-      "start": 4.0,
-      "end": 7.0,
-      "reason": "Moderate movement as the ride swings through its arc, showing the structure."
+      "start": 3.0,
+      "end": 6.0,
+      "reason": "Moderate movement while looking up at the ride's structure."
     },
     "Low": {
       "start": 12.0,
       "end": 15.0,
-      "reason": "A slightly more stable perspective of the ride's frame compared to the peak swings."
+      "reason": "A relatively calmer moment panning across the ride's seating area."
     }
   },
-  "_cache_version": "4.0",
-  "_cached_at": "2026-01-19 23:20:26"
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:50:37"
 }

@@ -1,23 +1,29 @@
 {
-  "energy": "Medium",
+  "energy": "High",
   "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Funny",
+    "Prank"
+  ],
+  "content_description": "A man playfully scares his friend from behind, resulting in laughter and a lighthearted reaction.",
   "best_moments": {
     "High": {
-      "start": 1.5,
-      "end": 3.5,
-      "reason": "The peak of the laughter and sudden movement away from each other."
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "The initial scare and the friend's energetic jump and laughter."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 2.0,
-      "reason": "The initial playful hug and the beginning of the reaction."
+      "start": 2.0,
+      "end": 4.0,
+      "reason": "The friends laughing and moving around after the prank."
     },
     "Low": {
-      "start": 2.5,
-      "end": 4.5,
-      "reason": "Low"
+      "start": 3.0,
+      "end": 4.837956,
+      "reason": "The friend putting on his hat as the energy settles down."
     }
   },
-  "_cache_version": "4.0",
-  "_cached_at": "2026-01-19 23:18:31"
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:49:01"
 }

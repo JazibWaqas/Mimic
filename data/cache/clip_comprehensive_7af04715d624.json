@@ -1,23 +1,30 @@
 {
   "energy": "Medium",
   "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Friends",
+    "Outdoors",
+    "Fun"
+  ],
+  "content_description": "Two friends walk down a rocky forest path and perform a synchronized dance move.",
   "best_moments": {
     "High": {
-      "start": 5.0,
+      "start": 5.5,
       "end": 7.666,
-      "reason": "Energetic dance move and kick towards the camera"
+      "reason": "Energetic synchronized dance move and kick towards the camera."
     },
     "Medium": {
-      "start": 2.0,
-      "end": 5.0,
-      "reason": "Walking towards the camera at a steady pace"
+      "start": 2.5,
+      "end": 5.5,
+      "reason": "Walking closer to the camera with rhythmic movement."
     },
     "Low": {
       "start": 0.0,
-      "end": 2.0,
-      "reason": "Calm opening with subjects walking in the distance"
+      "end": 2.5,
+      "reason": "Calm opening as they walk in the distance on a forest path."
     }
   },
-  "_cache_version": "4.0",
-  "_cached_at": "2026-01-19 23:19:46"
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:50:13"
 }

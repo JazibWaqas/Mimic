@@ -1,0 +1,29 @@
+{
+  "energy": "Low",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Travel",
+    "Calm"
+  ],
+  "content_description": "A scenic pan across a mountain landscape overlooking a distant body of water under a clear blue sky.",
+  "best_moments": {
+    "High": {
+      "start": 3.0,
+      "end": 5.5,
+      "reason": "The camera pans towards the sun and a hand enters the frame to point at the view, adding dynamic movement."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.5,
+      "reason": "A steady, continuous pan across the horizon and forested hills showing the landscape."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "The beginning of the clip with a slower camera movement and a person in the foreground setting the scene."
+    }
+  },
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 01:03:07"
+}

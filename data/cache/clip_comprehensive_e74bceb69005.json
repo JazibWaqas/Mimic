@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Action",
+    "Water",
+    "Outdoors"
+  ],
+  "content_description": "Two men are riding a jet ski on a river near a bank with trees.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Initial approach with visible wake and spray as the jet ski moves towards the camera."
+    },
+    "Medium": {
+      "start": 2.5,
+      "end": 5.0,
+      "reason": "Steady cruising past the camera providing a clear view of the riders and the vehicle."
+    },
+    "Low": {
+      "start": 5.0,
+      "end": 7.0,
+      "reason": "The jet ski begins to move away from the camera with reduced spray and more stable motion."
+    }
+  },
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 01:03:32"
+}

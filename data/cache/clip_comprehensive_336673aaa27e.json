@@ -1,23 +1,30 @@
 {
   "energy": "High",
   "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Nightlife",
+    "Music",
+    "Fun"
+  ],
+  "content_description": "A group of friends is energetically singing and dancing along to music inside a car at night.",
   "best_moments": {
     "High": {
       "start": 26.5,
       "end": 29.5,
-      "reason": "High"
+      "reason": "Peak energy during the chorus with everyone singing and dancing enthusiastically."
     },
     "Medium": {
-      "start": 11.5,
-      "end": 14.5,
-      "reason": "Consistent rhythmic dancing and hand movements with moderate intensity."
+      "start": 1.0,
+      "end": 4.0,
+      "reason": "Consistent rhythmic movement and singing from the group."
     },
     "Low": {
       "start": 23.0,
       "end": 25.5,
-      "reason": "Low"
+      "reason": "A brief moment of relatively less intense movement compared to the rest of the clip."
     }
   },
-  "_cache_version": "4.0",
-  "_cached_at": "2026-01-19 23:24:01"
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:54:52"
 }

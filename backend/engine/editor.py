@@ -167,20 +167,38 @@ def match_clips_to_blueprint(
                 print(f"  📎 Selected: {selected_clip.filename} ({selected_clip.energy.value})")
 
             
-            # FIXED: Consistent short cuts based on energy level
-            # NO MORE GROWING DURATIONS - stay rapid throughout
+            # PHASE 1: Target Duration Selection
+            # We Pick a duration that fits the energy level
             if segment.energy == EnergyLevel.HIGH:
-                # Viral TikTok style: consistently fast cuts
-                target_duration = random.uniform(0.2, 0.5)  # Always 0.2-0.5s
+                target_duration = random.uniform(0.2, 0.45)  # Viral TikTok style
             elif segment.energy == EnergyLevel.MEDIUM:
-                target_duration = random.uniform(0.4, 0.8)  # Moderate pacing
+                target_duration = random.uniform(0.5, 0.9)   # Moderate pacing
             else:  # LOW
-                target_duration = random.uniform(0.8, 1.5)  # Slower, deliberate cuts
+                target_duration = random.uniform(1.0, 2.0)   # Slower cuts
             
-            # Clamp to remaining segment budget
-            use_duration = min(target_duration, segment_remaining)
+            # BUDGET CHECK: How much time is really left in this segment?
+            # We check relative to the segment's actual end on the global timeline
+            segment_remaining = segment.end - timeline_position
             
-            # Try to use best moment if available
+            is_last_cut_of_segment = False
+            if target_duration >= segment_remaining - 0.1:
+                # If target is close to end, or this is the last available time, snap to end
+                use_duration = segment_remaining
+                is_last_cut_of_segment = True
+            else:
+                use_duration = target_duration
+
+            # PHASE 2: Beat Alignment (if audio exists)
+            # We only align if we aren't snapping to the segment end (which is already a beat/cut point)
+            if beat_grid and not is_last_cut_of_segment:
+                target_end = timeline_position + use_duration
+                aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.15)
+                
+                # Check if alignment is still within segment bounds and reasonable
+                if aligned_end > timeline_position + 0.1 and aligned_end < segment.end - 0.1:
+                    use_duration = aligned_end - timeline_position
+            
+            # PHASE 3: Clip Source Selection (start/end in the raw file)
             clip_start = None
             clip_end = None
             
@@ -188,99 +206,84 @@ def match_clips_to_blueprint(
                 best_moment = selected_clip.get_best_moment_for_energy(segment.energy)
                 if best_moment:
                     window_start, window_end = best_moment
-                    window_duration = window_end - window_start
-                    
-                    # Check if we've already used part of this window
                     current_pos = clip_current_position[selected_clip.filename]
                     
-                    if current_pos < window_start:
-                        # Haven't reached window yet, start from window
+                    # Start from current pos if it's in window, else reset to window start
+                    if window_start <= current_pos < window_end:
+                        clip_start = current_pos
+                    else:
                         clip_start = window_start
-                    elif current_pos < window_end:
-                        # In the middle of window, continue from current position
-                        clip_start = current_pos
-                    else:
-                        # Window exhausted, use sequential
-                        clip_start = current_pos
                     
-                    # Calculate end
-                    if clip_start >= window_start and clip_start < window_end:
-                        # We're in the window, stay in it
-                        clip_end = min(clip_start + use_duration, window_end)
-                    else:
-                        # Outside window, use sequential
-                        clip_end = min(clip_start + use_duration, selected_clip.duration)
+                    # End is clip_start + use_duration, capped by window end
+                    clip_end = min(clip_start + use_duration, window_end)
                     
-                    print(f"    ✨ Using best moment window: {window_start:.2f}s-{window_end:.2f}s")
+                    # If the window is too small for the duration, just use whatever is left
+                    if clip_end - clip_start < 0.1:
+                         # Window exhausted, fallback to sequential from window_start
+                         clip_start = window_start
+                         clip_end = min(clip_start + use_duration, selected_clip.duration)
             
-            # Fallback to sequential if no best moment or window exhausted
-            if clip_start is None or clip_end is None:
+            # Fallback to sequential if no best moments
+            if clip_start is None:
                 clip_start = clip_current_position[selected_clip.filename]
                 clip_end = min(clip_start + use_duration, selected_clip.duration)
             
-            # Check if clip is exhausted
+            # RECYCLE CHECK: If clip is exhausted, reset
             if clip_start >= selected_clip.duration - 0.1:
-                # Clip exhausted, reset to beginning
-                print(f"    🔄 Clip exhausted, resetting to start")
-                clip_current_position[selected_clip.filename] = 0.0
                 clip_start = 0.0
                 clip_end = min(use_duration, selected_clip.duration)
             
+            # FINAL CALCULATION
             actual_duration = clip_end - clip_start
             
-            # Ensure minimum duration
-            if actual_duration < 0.1:
-                print(f"    [SKIP] Segment remaining too small ({actual_duration:.2f}s), moving to next segment")
-                # Don't continue loop - just finish this segment
-                break
+            # SAFETY: If somehow duration is tiny, skip if not last cut
+            if actual_duration < 0.05 and not is_last_cut_of_segment:
+                print(f"    [SKIP] Cut too short ({actual_duration:.2f}s)")
+                cuts_in_segment += 1
+                continue
+
+            # PHASE 4: Create Decision with Locked Boundaries
+            # timeline_start is ALWAYS EXACTLY the previous timeline_end
+            decision_start = timeline_position
+            decision_end = decision_start + actual_duration
             
-            # PHASE 2: Align cut points to beats if audio exists
-            if beat_grid:
-                aligned_start = align_to_nearest_beat(timeline_position, beat_grid, tolerance=0.15)
-                aligned_end = align_to_nearest_beat(timeline_position + actual_duration, beat_grid, tolerance=0.15)
-                
-                # Adjust duration if needed after alignment
-                aligned_duration = aligned_end - aligned_start
-                if aligned_duration >= 0.1:  # Ensure it's still valid
-                    timeline_start_for_decision = aligned_start
-                    timeline_end_for_decision = aligned_end
-                else:
-                    # Alignment made it too short, use original
-                    timeline_start_for_decision = timeline_position
-                    timeline_end_for_decision = timeline_position + actual_duration
-            else:
-                timeline_start_for_decision = timeline_position
-                timeline_end_for_decision = timeline_position + actual_duration
-            
-            # Create edit decision
-            print(f"DEBUG: pos={timeline_position}, dur={actual_duration}, start={timeline_start_for_decision}")
+            # If this was supposed to be the last cut, FORCE the snap
+            if is_last_cut_of_segment:
+                decision_end = segment.end
+
             decision = EditDecision(
                 segment_id=segment.id,
                 clip_path=selected_clip.filepath,
                 clip_start=clip_start,
                 clip_end=clip_end,
-                timeline_start=timeline_start_for_decision,
-                timeline_end=timeline_end_for_decision,
+                timeline_start=decision_start,
+                timeline_end=decision_end,
                 reasoning=thinking,
                 vibe_match=(v_score_selected > 0)
             )
             decisions.append(decision)
             
-            # Update tracking
+            # Update Trackers
+            timeline_position = decision_end # The head moves to the exact end of last decision
             clip_current_position[selected_clip.filename] = clip_end
-            clip_usage_count[selected_clip.filename] += 1  # CRITICAL: Track usage
-            timeline_position += actual_duration
-            segment_remaining -= actual_duration
+            clip_usage_count[selected_clip.filename] += 1
             
-            # Track last 2 clips for variety
-            second_last_clip = last_used_clip
             last_used_clip = selected_clip.filename
+            second_last_clip = last_used_clip
+            cuts_in_segment += 1
             
-            cuts_in_segment += 1  # Track cuts in this segment
-            
-            print(f"    ✂️  Cut {cuts_in_segment}: {selected_clip.filename} [{clip_start:.2f}s-{clip_end:.2f}s] "
-                  f"({actual_duration:.2f}s) → timeline [{decision.timeline_start:.2f}s-{decision.timeline_end:.2f}s]")
-            print(f"    Segment remaining: {segment_remaining:.2f}s")
+            print(f"    ✂️ Cut {cuts_in_segment}: {selected_clip.filename} "
+                  f"[{clip_start:.2f}s-{clip_end:.2f}s] ({actual_duration:.2f}s) "
+                  f"→ timeline [{decision.timeline_start:.6f}s-{decision.timeline_end:.6f}s]")
+
+        # Ensure segment is fully filled (Gap-Filler)
+        if abs(timeline_position - segment.end) > 0.001 and abs(timeline_position - segment.end) < 0.5:
+             # If there's a tiny gap left because the while loop exited, stretch the last decision
+             print(f"    🔗 Snapping segment {segment.id} tail ({timeline_position:.4f} -> {segment.end:.4f})")
+             if decisions:
+                 decisions[-1].timeline_end = segment.end
+                 timeline_position = segment.end
+
     
     edl = EDL(decisions=decisions)
     

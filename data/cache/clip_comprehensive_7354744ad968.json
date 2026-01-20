@@ -1,0 +1,29 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Party",
+    "Friends",
+    "Celebration"
+  ],
+  "content_description": "A group of young men dancing and celebrating at an indoor event with vibrant lighting.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Energetic dancing and spinning at the start of the clip."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 5.5,
+      "reason": "Camera panning across guests who are smiling and interacting."
+    },
+    "Low": {
+      "start": 5.8,
+      "end": 6.899063,
+      "reason": "Relatively stable shot of guests standing and observing the event."
+    }
+  },
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 01:02:17"
+}

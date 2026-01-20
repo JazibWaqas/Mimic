@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Action",
+    "Fun"
+  ],
+  "content_description": "Two people enjoy a fun ride in bumper cars at an indoor amusement center.",
+  "best_moments": {
+    "High": {
+      "start": 2.5,
+      "end": 5.5,
+      "reason": "Active bumping and spinning as the cars collide and change direction quickly."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Initial movement and setup as the drivers begin to navigate the arena."
+    },
+    "Low": {
+      "start": 5.5,
+      "end": 8.0,
+      "reason": "Slower circular motion towards the end of the clip with less direct interaction."
+    }
+  },
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:59:30"
+}

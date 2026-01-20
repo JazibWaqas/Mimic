@@ -1,23 +1,29 @@
 {
   "energy": "High",
   "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Funny",
+    "Travel"
+  ],
+  "content_description": "Two friends are laughing uncontrollably in a hotel room, with one lying in bed and the other on the floor.",
   "best_moments": {
     "High": {
       "start": 12.0,
       "end": 15.0,
-      "reason": "Dynamic"
+      "reason": "Peak laughter with expressive gestures and dynamic camera movement."
     },
     "Medium": {
       "start": 4.0,
       "end": 7.0,
-      "reason": "Consistent laughter with a more stable camera angle focusing on the person on the floor."
+      "reason": "Consistent laughter and interaction between the two friends."
     },
     "Low": {
-      "start": 24.0,
-      "end": 26.968917,
-      "reason": "The laughter begins to subside as the person on the floor sits up and the scene calms down."
+      "start": 23.0,
+      "end": 26.0,
+      "reason": "The laughter begins to subside as they catch their breath at the end of the clip."
     }
   },
-  "_cache_version": "4.0",
-  "_cached_at": "2026-01-19 23:23:17"
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 00:53:17"
 }

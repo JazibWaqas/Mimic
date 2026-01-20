@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Casual",
+    "Indoors"
+  ],
+  "content_description": "Two friends lie on a wooden floor talking while another person leans over them in a casual indoor setting.",
+  "best_moments": {
+    "High": {
+      "start": 2.5,
+      "end": 5.5,
+      "reason": "Close-up interaction with the person leaning in and dynamic camera movement."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Initial setup with dialogue and moderate camera panning as they lie on the floor."
+    },
+    "Low": {
+      "start": 7.0,
+      "end": 10.0,
+      "reason": "Wider shot with less movement as the interaction settles and the camera stabilizes."
+    }
+  },
+  "_cache_version": "5.0",
+  "_cached_at": "2026-01-21 01:00:16"
+}

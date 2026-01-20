@@ -62,6 +62,7 @@ class Segment(BaseModel):
     motion: MotionType
     vibe: str = Field("General", description="The aesthetic/content vibe (e.g. Nature, Urban, Action)")
     reasoning: str = Field("", description="AI's thinking about why this segment has this profile")
+    arc_stage: str = Field("Main", description="The role of this segment in the video's story arc (e.g. Intro, Build-up, Peak, Outro)")
     
     @field_validator('end')
     @classmethod
@@ -87,6 +88,12 @@ class StyleBlueprint(BaseModel):
     """
     total_duration: float = Field(..., gt=0, description="Total video length in seconds")
     segments: List[Segment] = Field(..., min_length=1, description="Ordered list of segments")
+    
+    # Professional Editing Metadata
+    editing_style: str = Field("General", description="The editing style (e.g. Cinematic, Vlog, Montage, TikTok/Reel)")
+    emotional_intent: str = Field("Dynamic", description="The intended mood/emotion (e.g. Nostalgic, Energetic, Peaceful)")
+    arc_description: str = Field("", description="Description of the video's structural story arc")
+    
     overall_reasoning: str = Field("", description="AI's holistic thinking about this video's structure")
     ideal_material_suggestions: List[str] = Field(default_factory=list, description="Suggestions for the user on what clips would work best")
     
