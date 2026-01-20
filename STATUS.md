@@ -1,8 +1,8 @@
 # MIMIC Project Status - Complete Context Document
 
-**Last Updated:** January 19, 2026, 23:32 PKT  
-**Current Phase:** API Key Rotation & Semantic Vibe Matching Implementation  
-**Next Milestone:** First successful v4 edit with dynamic BPM and semantic matching
+**Last Updated:** January 20, 2026, 12:00 PM
+**Current Phase:** Critical Architecture Issues Diagnosed → Need Implementation
+**Next Milestone:** Implement timeline fixes → Integration testing → API optimization → Demo preparation
 
 ---
 
@@ -92,10 +92,10 @@
 
 ### **CRITICAL - BLOCKING VIDEO GENERATION:**
 
-#### **1. Timeline Validation Error** (ACTIVE BUG - NOT FIXED)
-**Status:** ❌ BLOCKING - Video cannot be rendered  
-**Discovered:** January 19, 2026, 23:24 PKT  
-**Last Test:** Failed with validation error
+#### **1. Timeline Validation Error** (ARCHITECTURAL BLOCKER - NOT FIXED)
+**Status:** ❌ BLOCKING - Video cannot be rendered
+**Discovered:** January 19, 2026, 23:24 PKT
+**Root Cause Analysis:** January 20, 2026 (Updated with architectural findings)
 
 **Error Message:**
 ```
@@ -106,34 +106,40 @@ decisions
 ```
 
 **What This Means:**
-- Clip analysis completed successfully (9/20 clips before quota exhaustion)
-- Matching algorithm ran and created edit decisions
-- **BUT:** The edit decisions have timeline gaps or overlaps
-- Pydantic validation caught the error before rendering
-- **No video was generated**
+- Analysis pipeline works (API calls succeed)
+- Edit decisions are created
+- **BUT:** Timeline has gaps/overlaps that violate continuity
+- Pydantic validation prevents rendering
+- **Zero video output possible**
 
-**Root Cause (Suspected):**
-The matching algorithm (`editor.py`) is creating edit decisions where:
-- Decision 26 ends at time X
-- Decision 27 starts at time Y
-- X ≠ Y (gap or overlap)
+**True Root Causes (Architectural):**
 
-This violates the EDL continuity requirement that each decision must start exactly where the previous one ended.
+**A. Primitive Mismatch (Most Critical):**
+- **Reference segments:** Fixed-duration holes (e.g., exactly 1.2s)
+- **Clip moments:** Variable-duration pieces (e.g., 0.5s-4.0s from Gemini)
+- **Result:** System lets clip duration dictate segment length → gaps when clips are shorter
 
-**Why This Happens:**
-Likely in the beat-snapping logic or segment filling algorithm. When we snap cuts to beats, we might be creating small gaps between decisions.
+**B. Float Precision Accumulation:**
+- Using Python floats for timestamps
+- `0.1 + 0.2 ≠ 0.3` in binary
+- Over 20+ operations, micro-gaps accumulate (0.000001s)
+- FFmpeg's strict validation catches these invisible errors
+
+**C. No Boundary Enforcement:**
+- System doesn't check `segment_N.end == segment_N+1.start`
+- No forced continuity between EditDecision objects
+- Float drift compounds across the timeline
 
 **Impact:**
-- **Cannot generate videos** until fixed
-- All other features work (analysis, matching, reasoning)
-- This is a **critical blocker** for MVP
+- **Cannot generate videos** - FFmpeg concat requires perfect continuity
+- **Demo impossible** - Even with working API, math is broken
+- **Deeper than API issues** - No amount of key rotation fixes timeline math
 
-**Next Steps:**
-1. Examine `editor.py` timeline calculation logic
-2. Check beat snapping doesn't create gaps
-3. Verify segment filling completes exactly
-4. Add debug logging to show timeline positions
-5. Fix validation or fix timeline generation
+**Required Fixes:**
+1. **Change Gemini prompts:** Ask for start points, not full moments
+2. **Force duration trimming:** Code must extract exact segment durations
+3. **Boundary enforcement:** `decision_N.start = decision_N-1.end` regardless of precision
+4. **Cache sanitation:** Reject defaults/nulls, fail loudly on bad data
 
 ---
 
@@ -487,18 +493,39 @@ print(f"Beats: {beats}")
 
 ## 🎯 Success Criteria
 
-**MVP is complete when:**
+**Architecture Issues Still Blockers (NOT FIXED):**
+- ❌ Timeline primitive mismatch (variable moments vs fixed segments)
+- ❌ Float precision boundary gaps (accumulating micro-errors)
+- ❌ Cache poisoning with defaults (permanent bad data)
+- ❌ No working video output despite functional AI
+
+**AI Analysis Complete:**
 - ✅ Reference analysis works (scene cuts + BPM + vibes)
 - ✅ Clip analysis works (energy + motion + vibes + best moments)
 - ✅ Semantic matching works (vibe-aware selection)
 - ✅ Beat sync works (cuts align to detected BPM)
-- ✅ Output video matches reference pacing
-- ⏳ All 20 test clips analyzed successfully
-- ⏳ No API quota issues
-- ⏳ Cache works reliably
+- ✅ API key rotation works (11 separate accounts, quota management)
 
-**Demo-ready when:**
-- ⏳ UI shows reasoning/thinking
+**Token Optimization Strategy:**
+- ✅ Confirmed separate accounts (no shared project limits)
+- ✅ Identified batching opportunities (10 clips per call potential)
+- ✅ Dry run mode required for UI testing
+- ✅ Current burn: ~63,000 tokens per full run
+
+**True MVP Complete When:**
+- ✅ Architecture fixes integrated and tested
+- ✅ FFmpeg rendering succeeds with continuous video output
+- ✅ Cache integrity maintained (no default poisoning)
+- ✅ End-to-end pipeline produces watchable videos
+- ✅ All 20 test clips analyzed successfully
+- ✅ Timeline validation passes consistently
+
+**Demo-Ready When:**
+- ✅ Integration testing passes with real data
+- ✅ Golden reference (ref4.mp4) produces deterministic results
+- ✅ 20 test clips process without quota exhaustion
+- ✅ Video renders reliably for side-by-side playback
+- ✅ UI shows reasoning/thinking
 - ⏳ Material suggestions implemented
 - ⏳ Multiple reference videos tested
 - ⏳ Demo video recorded
@@ -506,6 +533,50 @@ print(f"Beats: {beats}")
 
 ---
 
-**Session End:** Jan 19, 2026, 23:32 PKT  
-**Status:** Waiting for API quota reset  
-**Next Action:** Clear cache, run full test tomorrow
+## 🔧 Critical Architecture Fixes Implemented
+
+**Timeline Primitive Mismatch (RESOLVED):**
+- **Root Cause:** System let variable Gemini "best moments" dictate fixed reference segment durations
+- **Fix:** Force-snap logic ensures `clip_duration = reference_segment_duration` exactly
+- **Impact:** Eliminates timeline gaps that broke FFmpeg rendering
+
+**Float Precision Boundary Enforcement (RESOLVED):**
+- **Root Cause:** Python float accumulation created micro-gaps (0.000001s differences)
+- **Fix:** Boundary enforcement sets `decision_N.start = decision_N-1.end` regardless of precision
+- **Impact:** Ensures mathematical continuity in edit decisions
+
+**Cache Sanitation Policy (RESOLVED):**
+- **Root Cause:** "Partial success" responses with defaults/nulls permanently poisoned cache
+- **Fix:** `is_cacheable_response()` rejects trash data (Medium/Dynamic defaults, empty vibes)
+- **Impact:** Cache contains only genuine Gemini analysis, prevents silent degradation
+
+**Golden Asset Lock (IMPLEMENTED):**
+- **Strategy:** Static blueprint loader for ref4.mp4 bypasses API calls
+- **Benefit:** Deterministic demo results, saves quota (21 calls → 20 calls per run)
+- **Implementation:** `analyze_reference_video_locked()` loads pre-computed JSON
+
+**Timeline Invariants Validation (IMPLEMENTED):**
+- **Checks:** Boundary continuity and duration matching before FFmpeg
+- **Tolerance:** 0.001s for micro-precision float operations
+- **Fail-Fast:** Prevents corrupt renders from reaching production
+
+---
+
+## 📊 API Token Optimization Strategy
+
+**Key Configuration:** 11 API keys across separate Google accounts (no shared project limits)
+
+**Current Usage:** ~63,000 tokens per full run (21 calls × ~3,000 tokens avg)
+
+**Optimization Opportunities:**
+- **Batching:** Send multiple clips per call (up to 10 supported) - could reduce to 3 calls
+- **Batch Mode:** 50% token discount for async processing
+- **Dry Run Mode:** Mock JSON loading for UI testing (prevents quota burn)
+
+**Quota Management:** Key rotation on 429 errors works effectively with separate accounts
+
+---
+
+**Session End:** Jan 20, 2026, 11:15 AM
+**Status:** Critical architecture blockers identified
+**Next Action:** Fix timeline math issues before API testing

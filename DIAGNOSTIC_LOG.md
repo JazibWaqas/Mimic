@@ -383,38 +383,150 @@ Get-Content data/cache/clip_comprehensive_*.json | ConvertFrom-Json | Select vib
 | #6 Defaults Poisoning | Critical | Jan 19 | Jan 19 | Bad cache data |
 | #7 Vibes Not Saved | Critical | Jan 19 | Jan 19 | Semantic matching broken |
 
-**Total Bugs Fixed:** 7  
-**Critical Bugs:** 4  
+**Total Bugs Fixed:** 7
+**Critical Bugs:** 4
 **All Fixes Verified:** ✅
 
 ---
 
-## 🔍 Debugging Methodology
+## 🐛 Bug #8: Moment vs Segment Primitive Mismatch (ARCHITECTURAL)
 
-### **How We Found These Bugs:**
+**Discovered:** January 20, 2026, 10:00 AM
+**Severity:** CRITICAL (Architecture Breaking)
+**Status:** ❌ ACTIVE BLOCKER
 
-1. **Static Code Analysis** - Read through entire flow, traced execution paths
-2. **Log Analysis** - Examined terminal output for patterns
-3. **Cache Inspection** - Checked what was actually being saved
-4. **API Testing** - Verified each key individually
-5. **Manual Tracing** - Walked through code step-by-step on paper
+### Symptoms:
+- Timeline validation errors: "Value error, Timeline gap/overlap between decisions"
+- FFmpeg concat failures with corrupt output
+- Segments not filling completely, leaving gaps
 
-### **Key Lessons:**
+### Root Cause:
+**Fundamental primitive mismatch:**
+- **Reference segments:** Fixed-duration holes (e.g., exactly 1.2s)
+- **Clip moments:** Variable-duration pieces (e.g., 0.5s or 4.0s from Gemini)
 
-1. **Trust but verify** - Code that "should work" often doesn't
-2. **Check the cache** - What you think you're saving ≠ what's actually saved
-3. **Read the logs** - Error messages contain critical clues
-4. **Test in isolation** - Verify each component separately
-5. **Fail loudly** - Silent failures are worse than crashes
+The matching algorithm lets clip duration dictate segment length instead of forcing clips to fit reference segments.
+
+### Impact:
+- **Cannot render videos** - FFmpeg expects continuous timeline
+- **Demo blocker** - No working output possible
+- **Systemic issue** - Architecture assumes compatible primitives
+
+### Required Fix:
+**Change Gemini prompt:** Instead of "best moments that fit", ask for "start points", then code forces exact duration extraction.
 
 ---
 
-## 🚨 Current Known Issues
+## 🐛 Bug #9: Float Precision Timeline Gaps (MATHEMATICAL)
 
-### **None!**
+**Discovered:** January 20, 2026, 10:15 AM
+**Severity:** CRITICAL (Accumulating Errors)
+**Status:** ❌ ACTIVE BLOCKER
 
-All discovered bugs have been fixed. System is ready for testing once API quotas reset.
+### Symptoms:
+- Micro-gaps in timeline (0.000001s differences)
+- FFmpeg strict validation catches tiny discontinuities
+- Inconsistent render failures across runs
+
+### Root Cause:
+**Using Python floats for video timestamps:**
+- `0.1 + 0.2 ≠ 0.3` in binary representation
+- Over 20 segments/clips, errors accumulate
+- No explicit boundary enforcement: `segment_N.end == segment_N+1.start`
+
+### Impact:
+- **Invisible but deadly** - Errors too small to see but break FFmpeg
+- **Non-deterministic** - Same inputs produce different gaps
+- **Hackathon killer** - Could fail live during demo
+
+### Required Fix:
+**Boundary enforcement:** Force `timeline_start` of decision N+1 = `timeline_end` of decision N, regardless of float precision.
 
 ---
 
-**Next Session Action:** Clear cache, run full test, verify all fixes work together.
+## 🐛 Bug #10: Cache Poisoning with Defaults (DATA INTEGRITY)
+
+**Discovered:** January 20, 2026, 10:30 AM
+**Severity:** CRITICAL (Permanent Corruption)
+**Status:** ❌ ACTIVE BLOCKER
+
+### Symptoms:
+- Clips showing "Medium/Dynamic" defaults in cache
+- `vibes: null`, `content_description: null` in JSON files
+- Matching uses garbage data permanently
+
+### Root Cause:
+**Caching partial failures as truth:**
+- System caches ANY successful Gemini response, even with defaults
+- Failed analyses insert fallback data that gets saved
+- No "failed result" detection - defaults are treated as valid
+
+### Impact:
+- **Permanent poisoning** - Bad data survives cache clears
+- **Hidden failures** - System appears to work but uses fake data
+- **Development blocker** - Can't trust test results
+
+### Required Fix:
+**Sanitation policy:** Flag responses with defaults/nulls as "stale", never cache them. Fail loudly instead of silently defaulting.
+
+---
+
+**Updated Bug Summary Statistics**
+
+| Bug | Severity | Discovery Date | Status | Impact |
+|-----|----------|----------------|--------|--------|
+| #1 BPM Drift | Medium | Jan 15 | ✅ FIXED | Audio sync off |
+| #2 Model Not Reinit | Critical | Jan 19 | ✅ FIXED | Keys not rotating |
+| #3 Upload/Analysis Mismatch | Critical | Jan 19 | ✅ FIXED | 403 errors |
+| #4 Upload Rotation Conflict | High | Jan 19 | ✅ FIXED | Unpredictable state |
+| #5 Rate Limiter Aggressive | Medium | Jan 19 | ✅ FIXED | Slow processing |
+| #6 Defaults Poisoning | Critical | Jan 19 | ✅ FIXED | Bad cache data |
+| #7 Vibes Not Saved | Critical | Jan 19 | ✅ FIXED | Semantic matching broken |
+| #8 Moment vs Segment Mismatch | Critical | Jan 20 | ❌ DIAGNOSED | Timeline gaps |
+| #9 Float Precision Gaps | Critical | Jan 20 | ❌ DIAGNOSED | Accumulating errors |
+| #10 Cache Poisoning Defaults | Critical | Jan 20 | ❌ DIAGNOSED | Data corruption |
+
+**Total Bugs Discovered:** 10
+**Bugs Fixed:** 7 (original API bugs)
+**Critical Architectural Issues:** 3 (DIAGNOSED, NOT FIXED)
+**Active Blockers:** 3
+
+---
+
+## 🔍 Updated Debugging Methodology
+
+### **New Lessons from Deep Architecture Analysis:**
+
+1. **Primitives matter more than features** - Matching incompatible data types breaks everything
+2. **Float math kills video editing** - Precision errors are invisible but fatal for timelines
+3. **Cache integrity is existential** - Bad data permanence is worse than API failures
+4. **Demo-safe means mathematically sound** - No amount of cheating fixes broken math
+5. **Fail fast on contracts** - Don't let invalid data propagate through the pipeline
+
+---
+
+## 🚨 Current Known Issues (UPDATED)
+
+### **CRITICAL ARCHITECTURAL BLOCKERS (3 Active - DIAGNOSED BUT NOT FIXED)**
+
+#### **1. Timeline Primitive Mismatch**
+**Status:** ❌ BLOCKING - Videos cannot render due to gaps
+**Root:** Gemini moments ≠ Reference segments (incompatible durations)
+**Impact:** FFmpeg concat fails on discontinuous timeline
+**Fix Required:** Implement force-snap duration logic in editor.py
+
+#### **2. Float Precision Accumulation**
+**Status:** ❌ BLOCKING - Micro-gaps cause validation failures
+**Root:** Python floats accumulate precision errors over 20+ operations
+**Impact:** Invisible gaps that break strict FFmpeg requirements
+**Fix Required:** Boundary enforcement in EditDecision creation
+
+#### **3. Cache Default Poisoning**
+**Status:** ❌ BLOCKING - Permanent bad data in cache
+**Root:** System caches fallback defaults as truth
+**Impact:** Matching uses fake "Medium/Dynamic" data forever
+**Fix Required:** Sanitation policy - reject defaults, fail loudly
+
+---
+
+**Next Session Action:** Implement the 3 architectural fixes, then test integration.

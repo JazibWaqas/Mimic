@@ -1,11 +1,109 @@
-# Next Session - Immediate Action Plan
+# Next Session - Critical Architecture Fixes Required
 
-**Created:** January 19, 2026, 23:32 PKT  
-**Purpose:** Clear, actionable steps for the next coding session
+**Created:** January 20, 2026, 11:00 AM
+**Purpose:** Address fundamental architectural blockers before any testing
+**Priority:** FIX MATH ISSUES → THEN TEST API
 
 ---
 
-## ⏰ Before You Start
+## 🚨 CRITICAL BLOCKERS (MUST FIX FIRST)
+
+**The system cannot produce working videos until these 3 architectural issues are resolved:**
+
+1. **Timeline Primitive Mismatch** - Gemini moments ≠ Reference segments (causes gaps)
+2. **Float Precision Errors** - Accumulating micro-gaps break FFmpeg
+3. **Cache Poisoning** - Defaults permanently corrupt matching data
+
+**These are deeper than API issues - they're mathematical impossibilities that no amount of key rotation can fix.**
+
+---
+
+## 🔧 Step 1: Fix Timeline Primitive Mismatch
+
+**Problem:** System matches variable-duration "best moments" to fixed-duration segments, creating gaps.
+
+**Required Change:** Modify Gemini prompts to return start points, not full moments. Code must force exact duration extraction.
+
+**Files to examine:**
+- `backend/engine/brain.py` - Clip analysis prompt (lines ~800-900)
+- `backend/engine/editor.py` - Matching logic (lines ~100-200)
+- `backend/engine/processors.py` - FFmpeg extraction commands
+
+**Success Criteria:**
+- Segments fill completely (no gaps)
+- Clip moments get trimmed to exact reference durations
+- Timeline validation passes
+
+---
+
+## 🔧 Step 2: Fix Float Precision Boundary Enforcement
+
+**Problem:** Python floats accumulate precision errors, creating invisible gaps.
+
+**Required Change:** Add boundary enforcement in `EditDecision` creation.
+
+**Code Location:** `backend/engine/editor.py` - EditDecision creation loop
+
+**Implementation:**
+```python
+# Force continuity regardless of float precision
+if i > 0:
+    decision.timeline_start = previous_decision.timeline_end
+```
+
+**Success Criteria:**
+- No micro-gaps in timeline
+- Consistent rendering across runs
+- Pydantic validation passes
+
+---
+
+## 🔧 Step 3: Implement Cache Sanitation Policy
+
+**Problem:** System caches defaults as truth, permanently poisoning data.
+
+**Required Change:** Add "stale data" detection and rejection.
+
+**Implementation:**
+- Check for `vibes: null` or `"Medium"` defaults
+- Flag as "STALE" and never cache
+- Fail loudly instead of silently defaulting
+
+**Files:** `backend/engine/brain.py` - Cache saving logic (lines ~880-920)
+
+**Success Criteria:**
+- Cache contains only real Gemini responses
+- No "Medium/Dynamic" defaults in JSON files
+- Fresh analysis on corrupted cache entries
+
+---
+
+## 🧪 Step 4: Validate Fixes (AFTER Implementation)
+
+**Only then proceed to API testing:**
+
+```powershell
+# Clear ALL cache (fresh start)
+Remove-Item data/cache/*.json -Force
+
+# Run minimal test (1-2 clips first)
+python test_minimal.py  # Create this - tests just ref4 + 2 clips
+
+# Check for timeline validation errors
+# Verify no gaps in EditDecision objects
+# Confirm cache has real data
+```
+
+**Expected Outcome:**
+- Timeline validation passes
+- FFmpeg renders successfully
+- Cache contains genuine analysis data
+
+---
+
+## 🎯 Step 5: API Testing (AFTER Architecture Fixes)
+
+**Only if Steps 1-3 work:**
 
 ### **Check API Quota Status:**
 ```powershell
@@ -13,218 +111,67 @@ cd c:\Users\OMNIBOOK\Documents\GitHub\Mimic
 python test_api_keys.py
 ```
 
-**Expected Output:**
-```
-✅ Fresh keys:     X/11
-❌ Exhausted keys: Y/11
-```
-
-**If all keys still exhausted:** Wait longer, quotas reset at unknown time.  
-**If some keys fresh:** Proceed with testing.
-
----
-
-## 🧹 Step 1: Clear Bad Cache (REQUIRED)
-
-**Why:** 9 clips were cached before the vibes bug was fixed. They have `vibes: null`.
-
+### **Clear Cache & Test:**
 ```powershell
-# Delete all clip caches
+# Fresh analysis with fixed architecture
 Remove-Item data/cache/clip_comprehensive*.json -Force
-
-# Verify deletion
-ls data/cache/clip_comprehensive*.json
-# Should show: "Cannot find path" (good!)
-```
-
-**DO NOT skip this step.** Bad cache will break semantic matching.
-
----
-
-## 🧪 Step 2: Run Full Test
-
-```powershell
 python test_ref4_v4.py
 ```
 
-### **What to Watch For:**
-
-#### ✅ **Success Indicators:**
-- `[OK] High/Dynamic with best moments:`
-- `Vibes: Urban, Action, Nightlife` ← **MUST SEE THIS**
-- `[API KEY MANAGER] Rotated to key X/11` ← Key rotation working
-- `🧠 AI Thinking: Semantic Match: Vibe 'X' matches...` ← Semantic matching working
-- `🎵 Beat grid generated: X beats at Y BPM` ← Dynamic BPM working
-- `✅ SUCCESS!` at the end
-
-#### ❌ **Failure Indicators:**
-- `Using default: Medium/Dynamic` ← Should NEVER appear
-- `403 Permission Denied` ← Upload/analysis key mismatch (should be fixed)
-- `All keys exhausted` before 20/20 clips ← Quota issue
-- No "Vibes:" in logs ← Bug #7 not actually fixed
-
-### **Expected Timeline:**
-- **Total Time:** 5-10 minutes
-- **Per Clip:** 20-40 seconds (upload + analysis)
-- **Key Rotations:** 1-2 (depending on quota timing)
+### **Success Indicators (Architecture + API):**
+- ✅ No timeline validation errors
+- ✅ No "Using default" messages
+- ✅ Vibes appear in logs and cache
+- ✅ FFmpeg concat succeeds
+- ✅ Output video renders
 
 ---
 
-## 📊 Step 3: Verify Results
+## 📋 Implementation Checklist
 
-### **Check Cache:**
-```powershell
-# Verify vibes are saved
-Get-ChildItem data/cache/clip_comprehensive*.json | ForEach-Object { 
-    $c = Get-Content $_.FullName | ConvertFrom-Json
-    [PSCustomObject]@{ 
-        File = $_.Name
-        HasVibes = ($c.vibes -ne $null)
-        Vibes = ($c.vibes -join ", ")
-        Energy = $c.energy
-    } 
-} | Format-Table -AutoSize
-```
+**Before Coding Session:**
+- [ ] Read `DIAGNOSTIC_LOG.md` Bugs #8-10
+- [ ] Understand primitive mismatch concept
+- [ ] Review float precision issues
+- [ ] Plan cache sanitation logic
 
-**Expected Output:**
-```
-File                                 HasVibes Vibes                  Energy
-----                                 -------- -----                  ------
-clip_comprehensive_abc123.json       True     Urban, Action, Sports  High
-clip_comprehensive_def456.json       True     Nature, Calm           Medium
-...
-```
+**During Coding:**
+- [ ] Modify Gemini prompts for start points
+- [ ] Add boundary enforcement in editor.py
+- [ ] Implement cache staleness checks
+- [ ] Test with minimal clips first
 
-**All clips MUST have `HasVibes = True`.**
-
-### **Check Output Video:**
-```powershell
-# Find the output
-ls data/results/mimic_output_ref4_v4*.mp4
-
-# Play it
-start data/results/mimic_output_ref4_v4_vibes_test.mp4
-```
-
-**Manual Verification:**
-- [ ] Cuts align with music beats
-- [ ] Pacing matches reference video
-- [ ] No jarring transitions
-- [ ] Clips seem thematically appropriate
+**After Implementation:**
+- [ ] Run validation tests
+- [ ] Confirm timeline continuity
+- [ ] Verify cache integrity
+- [ ] Only then test full pipeline
 
 ---
 
-## 🐛 Step 4: If Test Fails
+## 🚨 Why This Order Matters
 
-### **Scenario A: "All keys exhausted" before completion**
+**Architecture fixes FIRST, API testing SECOND.**
 
-**Diagnosis:** Quotas haven't reset yet or we're using more requests than expected.
+- **If timeline math is broken:** No video output possible, even with working API
+- **If cache is poisoned:** API calls wasted on corrupted data
+- **If primitives don't match:** System fundamentally cannot work
 
-**Action:**
-1. Check how many clips were analyzed: Look for `[X/20] Processing...` in logs
-2. If X < 20, wait longer for quota reset
-3. If X = 20 but matching failed, check logs for other errors
-
-### **Scenario B: No vibes in logs**
-
-**Diagnosis:** Bug #7 fix didn't work, or Gemini isn't returning vibes.
-
-**Action:**
-1. Check one cache file manually: `Get-Content data/cache/clip_comprehensive_*.json | Select -First 1`
-2. If `vibes: null`, the fix didn't work - review `brain.py` lines 939-995
-3. If `vibes: []` (empty array), Gemini isn't returning data - check prompt
-
-### **Scenario C: 403 errors after rotation**
-
-**Diagnosis:** Bug #3 fix didn't work, upload still outside retry loop.
-
-**Action:**
-1. Check `brain.py` line 943 and 1065
-2. Verify upload is INSIDE the `for attempt in range(...)` loop
-3. Not before it
-
-### **Scenario D: Defaults appear**
-
-**Diagnosis:** Bug #6 fix didn't work, fallback still active.
-
-**Action:**
-1. Check `brain.py` lines 863-867
-2. Should be `raise Exception(...)`, not `clip_metadata = ClipMetadata(...)`
-3. If correct, the error is happening at orchestrator level (acceptable)
+**Fix the math, then worry about API limits.**
 
 ---
 
-## ✅ Step 5: Success Checklist
+## 📚 Context for Next Developer
 
-Once test completes successfully:
+**Must Read:**
+- `DIAGNOSTIC_LOG.md` - New architectural bugs #8-10
+- `STATUS.md` - Current system overview
+- Focus on `backend/engine/editor.py` and `backend/engine/brain.py`
 
-- [ ] All 20 clips analyzed
-- [ ] All clips have vibes in cache
-- [ ] Output video exists
-- [ ] Video plays correctly
-- [ ] Cuts align with beats
-- [ ] No errors in logs (except expected quota warnings)
+**Key Concept:** The system was built assuming Gemini moments would perfectly fit reference segments. They don't. The architecture must force the fit.
 
-**If all checked:** You're ready to move to next features (Material Suggestions, UI updates).
+**Goal:** Make the timeline math work reliably before optimizing AI usage.
 
 ---
 
-## 🚀 Step 6: Next Features (After Successful Test)
-
-### **Priority 1: Material Suggestions**
-Implement the gap analysis that warns users about missing clip types.
-
-**Files to modify:**
-- `backend/engine/orchestrator.py` - Add gap analysis after Step 3
-- `backend/models.py` - Add MaterialSuggestions model
-- Frontend - Display suggestions in UI
-
-### **Priority 2: Reasoning Display**
-Show the AI's "thinking" in the frontend.
-
-**Files to modify:**
-- Frontend progress component - Add reasoning display
-- Backend - Ensure reasoning is included in API response
-
-### **Priority 3: Multiple Reference Tests**
-Test with different reference videos to verify system robustness.
-
-**Test videos to try:**
-- Slow-paced vlog (low energy, few cuts)
-- Fast-paced action (high energy, many cuts)
-- Music video (beat-driven, varied energy)
-
----
-
-## 📝 Notes for Next Developer
-
-### **Context You Need:**
-- Read `STATUS.md` first - complete project overview
-- Read `DIAGNOSTIC_LOG.md` - understand what bugs were fixed
-- All code is in `backend/` and `frontend/`
-- Test scripts are in root directory
-
-### **Common Pitfalls:**
-1. **Don't skip cache clearing** - Old cache will break everything
-2. **Check API keys first** - No point testing if quotas exhausted
-3. **Watch for vibes in logs** - If missing, something's wrong
-4. **Verify cache after test** - Make sure data is actually saved
-
-### **Quick Commands:**
-```powershell
-# Test API keys
-python test_api_keys.py
-
-# Clear cache
-Remove-Item data/cache/clip_comprehensive*.json -Force
-
-# Run test
-python test_ref4_v4.py
-
-# Check results
-ls data/results/*.mp4
-```
-
----
-
-**Good luck! The system is ready - just waiting for API quotas to reset.**
+**Next Session Focus:** Fix architectural math issues. API testing comes after proven timeline continuity.
