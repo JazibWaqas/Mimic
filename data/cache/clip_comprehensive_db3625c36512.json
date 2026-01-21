@@ -1,29 +1,29 @@
 {
-  "energy": "High",
+  "energy": "Medium",
   "motion": "Dynamic",
   "vibes": [
     "Friends",
-    "Funny",
-    "Prank"
+    "Humor",
+    "Indoor"
   ],
-  "content_description": "A man playfully scares his friend from behind, resulting in laughter and a lighthearted reaction.",
+  "content_description": "Two friends are playfully interacting in a room, laughing as one hugs the other from behind before they break apart.",
   "best_moments": {
     "High": {
-      "start": 0.0,
-      "end": 2.5,
-      "reason": "The initial scare and the friend's energetic jump and laughter."
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "Sudden movement and laughter as they break the hug."
     },
     "Medium": {
-      "start": 2.0,
-      "end": 4.0,
-      "reason": "The friends laughing and moving around after the prank."
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Playful hug and initial reaction."
     },
     "Low": {
-      "start": 3.0,
-      "end": 4.837956,
-      "reason": "The friend putting on his hat as the energy settles down."
+      "start": 2.5,
+      "end": 4.5,
+      "reason": "The action settles as one person puts on a hat."
     }
   },
-  "_cache_version": "5.0",
-  "_cached_at": "2026-01-21 00:49:01"
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 18:23:35"
 }

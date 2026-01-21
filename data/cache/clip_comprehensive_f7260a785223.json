@@ -4,27 +4,27 @@
   "vibes": [
     "Nature",
     "Travel",
-    "Friends",
-    "Winter"
+    "Winter",
+    "Friends"
   ],
-  "content_description": "Three friends walk along a snowy mountain trail lined with tall pine trees.",
+  "content_description": "A group of friends walks along a snowy mountain path surrounded by tall pine trees.",
   "best_moments": {
     "High": {
-      "start": 2.0,
-      "end": 5.0,
-      "reason": "Group walking together with active movement and interaction as they navigate the snowy path."
+      "start": 1.5,
+      "end": 3.5,
+      "reason": "Active walking with the camera following the group closely as they navigate the snowy path."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "Steady walking shot following the group from behind at a moderate pace."
+      "start": 3.5,
+      "end": 5.5,
+      "reason": "Steady walking pace showing the group's progression and the surrounding snowy environment."
     },
     "Low": {
       "start": 5.5,
-      "end": 7.918005,
-      "reason": "Camera pans away from the group to focus on the calm and scenic forest landscape."
+      "end": 7.5,
+      "reason": "The camera tilts up to capture the serene pine trees and sky, providing a calm conclusion."
     }
   },
-  "_cache_version": "5.0",
-  "_cached_at": "2026-01-21 00:51:54"
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 18:27:09"
 }

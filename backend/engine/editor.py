@@ -314,8 +314,20 @@ def match_clips_to_blueprint(
                 clip_start = 0.0
                 clip_end = min(use_duration, selected_clip.duration)
             
+            # SAFETY: Ensure clip_end is valid (must be > clip_start and > 0)
+            if clip_end <= clip_start or clip_end <= 0 or selected_clip.duration <= 0:
+                print(f"    [SKIP] Invalid clip state: clip_end={clip_end:.2f}, clip_start={clip_start:.2f}, duration={selected_clip.duration:.2f}")
+                cuts_in_segment += 1
+                continue
+            
             # FINAL CALCULATION
             actual_duration = clip_end - clip_start
+            
+            # SAFETY: Ensure clip_end is always greater than clip_start
+            if clip_end <= clip_start or clip_end <= 0:
+                print(f"    [SKIP] Invalid clip boundaries ({clip_start:.2f}s-{clip_end:.2f}s)")
+                cuts_in_segment += 1
+                continue
             
             # SAFETY: If somehow duration is tiny, skip if not last cut
             if actual_duration < 0.05 and not is_last_cut_of_segment:
@@ -354,8 +366,9 @@ def match_clips_to_blueprint(
             last_clip_motion = selected_clip.motion
             last_clip_content = selected_clip.content_description
             
-            last_used_clip = selected_clip.filename
+            # Update clip tracking (save old value before updating)
             second_last_clip = last_used_clip
+            last_used_clip = selected_clip.filename
             cuts_in_segment += 1
             
             print(f"    ✂️ Cut {cuts_in_segment}: {selected_clip.filename} "

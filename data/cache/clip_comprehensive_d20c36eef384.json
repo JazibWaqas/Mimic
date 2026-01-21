@@ -6,24 +6,24 @@
     "Nightlife",
     "Fun"
   ],
-  "content_description": "A group of friends dance and pose energetically in front of a blue-lit structure at night.",
+  "content_description": "A group of friends dancing and posing energetically in front of a blue-lit Eiffel Tower replica at night.",
   "best_moments": {
     "High": {
       "start": 1.5,
       "end": 4.5,
-      "reason": "The group is actively dancing and jumping, creating a peak energy moment."
+      "reason": "The group is actively dancing and jumping with high energy and excitement."
     },
     "Medium": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Initial movement as the group gets into position and starts to dance."
+      "reason": "Initial movement as the group gets into the frame and starts their performance."
     },
     "Low": {
       "start": 4.0,
       "end": 5.504,
-      "reason": "The camera stabilizes and focuses on a watch, with less overall group movement."
+      "reason": "The camera focuses on a watch, showing less group movement and a more stable shot."
     }
   },
-  "_cache_version": "5.0",
-  "_cached_at": "2026-01-21 00:55:14"
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 18:30:26"
 }

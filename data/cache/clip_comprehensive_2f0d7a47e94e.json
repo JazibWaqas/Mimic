@@ -1,30 +1,29 @@
 {
-  "energy": "Medium",
+  "energy": "High",
   "motion": "Dynamic",
   "vibes": [
     "Nature",
     "Friends",
-    "Fun",
-    "Outdoors"
+    "Fun"
   ],
-  "content_description": "A man stands in a grassy field while his friends run playfully around him against a scenic mountain backdrop.",
+  "content_description": "A group of friends playfully running and dancing on a scenic hilltop with a mountain backdrop.",
   "best_moments": {
     "High": {
       "start": 5.0,
       "end": 8.0,
-      "reason": "Multiple people running across the frame simultaneously creates the peak dynamic action of the clip."
+      "reason": "Peak action with multiple people running across the frame and the main subject dancing."
     },
     "Medium": {
-      "start": 1.0,
-      "end": 4.0,
-      "reason": "The initial movement of a person running past the subject provides a moderate level of energy."
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The opening sequence with moderate movement as the subject begins his performance."
     },
     "Low": {
       "start": 12.5,
       "end": 15.0,
-      "reason": "The subject is relatively still and the background activity is less chaotic compared to other parts."
+      "reason": "The subject stands relatively still at the end, providing a calm conclusion to the clip."
     }
   },
-  "_cache_version": "5.0",
-  "_cached_at": "2026-01-21 00:49:51"
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 18:24:12"
 }

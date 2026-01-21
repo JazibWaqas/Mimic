@@ -12,19 +12,19 @@
     "High": {
       "start": 10.0,
       "end": 13.0,
-      "reason": "Peak excitement with loud cheering and a clear view of the fast-moving road."
+      "reason": "Peak excitement with loud cheering and a dynamic view of the fast-moving road."
     },
     "Medium": {
       "start": 3.0,
       "end": 6.0,
-      "reason": "Steady motion as the camera pans to show the road ahead."
+      "reason": "Steady car movement with moderate cheering and a clear view of the streetlights."
     },
     "Low": {
       "start": 0.0,
-      "end": 2.0,
-      "reason": "Initial dark frames with minimal movement before the main action begins."
+      "end": 2.5,
+      "reason": "The beginning of the clip with less intense motion and lower volume before the main action."
     }
   },
-  "_cache_version": "5.0",
-  "_cached_at": "2026-01-21 00:59:08"
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 18:33:03"
 }

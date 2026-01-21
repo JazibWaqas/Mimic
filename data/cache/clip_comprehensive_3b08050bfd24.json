@@ -11,19 +11,19 @@
     "High": {
       "start": 11.0,
       "end": 14.0,
-      "reason": "Peak enthusiasm and synchronized singing with expressive hand movements."
+      "reason": "Peak enthusiasm with expressive singing and hand gestures from the entire group."
     },
     "Medium": {
-      "start": 4.0,
-      "end": 7.0,
-      "reason": "Steady singing with moderate movement and engagement from the group."
-    },
-    "Low": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "The start of the clip where the energy is building up, relatively calmer than the later parts."
+      "reason": "Consistent singing and engagement as the group starts the chorus."
+    },
+    "Low": {
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "Slightly more subdued singing with less intense physical movement compared to the peak."
     }
   },
-  "_cache_version": "5.0",
-  "_cached_at": "2026-01-21 01:01:54"
+  "_cache_version": "6.0",
+  "_cached_at": "2026-01-21 18:38:40"
 }

@@ -35,7 +35,8 @@ from engine.processors import (
     merge_audio_video,
     create_silent_video,
     validate_output,
-    detect_scene_changes
+    detect_scene_changes,
+    detect_bpm
 )
 from utils import ensure_directory, cleanup_session
 
