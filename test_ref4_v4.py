@@ -1,6 +1,6 @@
 """
-Test ref4 with the new Vibes + BPM system.
-This will generate ref4_v4.mp4 with semantic matching and dynamic BPM.
+Test a reference with the Vibes + BPM system.
+Writes full terminal output to data/results/<ref_stem>_xray_output.txt.
 """
 
 import sys
@@ -14,15 +14,33 @@ from engine.processors import get_video_duration
 import os
 
 # Paths
-REFERENCE = Path("data/samples/reference/ref4.mp4")
+REFERENCE = Path("data/samples/reference/ref5.mp4")
 CLIPS_DIR = Path("data/samples/clips")
 RESULTS_DIR = Path("data/results")
+RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-# Get all clips (you said you have 20 now)
+# Get all clips
 CLIP_PATHS = sorted([str(CLIPS_DIR / f) for f in os.listdir(CLIPS_DIR) if f.endswith('.mp4')])
 
+class Tee:
+    def __init__(self, *files):
+        self.files = files
+    def write(self, s):
+        for f in self.files:
+            f.write(s)
+            try: f.flush()
+            except Exception: pass
+    def flush(self):
+        for f in self.files:
+            try: f.flush()
+            except Exception: pass
+
+xray_path = RESULTS_DIR / f"{REFERENCE.stem}_xray_output.txt"
+xray_file = open(xray_path, 'w', encoding='utf-8')
+sys.stdout = Tee(sys.__stdout__, xray_file)
+
 print("=" * 80)
-print("🎬 TESTING REF4 WITH VIBES + DYNAMIC BPM")
+print(f"TESTING {REFERENCE.name.upper()} WITH VIBES + DYNAMIC BPM")
 print("=" * 80)
 
 # Get reference info
@@ -34,7 +52,7 @@ print(f"   Cache Version: 6.0 (will re-analyze clips for vibes)")
 print()
 
 # Run pipeline
-session_id = "ref4_v4_vibes_test"
+session_id = f"{REFERENCE.stem}_vibes_test"
 
 print("🚀 Starting pipeline...")
 print("   Step 1: Validating inputs")
@@ -263,3 +281,7 @@ else:
     print(f"   Error: {result.error}")
 
 print("=" * 80)
+
+sys.stdout = sys.__stdout__
+xray_file.close()
+print(f"X-ray log: {xray_path}", file=sys.__stdout__)

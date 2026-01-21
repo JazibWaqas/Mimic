@@ -1,0 +1,541 @@
+================================================================================
+TESTING REFRENCE2.MP4 WITH VIBES + DYNAMIC BPM
+================================================================================
+
+📹 Reference: refrence2.mp4
+   Duration: 12.16s
+
+📎 Testing with 20 clips
+   Cache Version: 6.0 (will re-analyze clips for vibes)
+
+🚀 Starting pipeline...
+   Step 1: Validating inputs
+   Step 2: Scene detection + BPM detection + Reference analysis
+   Step 3: Clip analysis (NEW: extracting vibes + content)
+   Step 4: Semantic matching (NEW: vibe-aware selection)
+   Step 5: Rendering with dynamic BPM sync
+
+
+[1/5] Validating inputs...
+
+[2/5] Detecting visual cuts and analyzing reference structure...
+  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.3)...
+  [OK] Detected 19 visual cuts.
+  [OK] Audio extracted: ref_analysis_audio.wav
+  [BEAT] Detecting BPM for ref_analysis_audio.wav...
+  [OK] Detected BPM: 117.45
+
+============================================================
+[BRAIN] ANALYZING REFERENCE VIDEO: refrence2.mp4
+[BRAIN] Using 19 visual scene anchors.
+============================================================
+
+[API KEY MANAGER] Loaded 28 API key(s)
+[API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_ee04c14e021e.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/sipx7t0cflz8
+[RETRY DEBUG] Reference analysis attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 48.041237739s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 48
+}
+]
+[QUOTA] Rate limit detected during reference analysis
+[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during reference analysis)
+[API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_ee04c14e021e.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/elz6npb4ke6u
+[BRAIN] Reconstructing from codes: MD, MD, MD, MS, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD, MD
+[SUBDIVISION] 20 segments -> 21 segments (max 2.0s each)
+[OK] Analysis complete: 21 segments.
+[OK] Gemini successfully analyzed reference: 21 segments found.
+
+[3/5] Analyzing user clips with Gemini AI...
+
+============================================================
+[BRAIN] ANALYZING USER CLIPS (20 total)
+[BRAIN] Mode: COMPREHENSIVE (energy + best moments)
+============================================================
+
+[OK] Using model: gemini-3-flash-preview
+
+[1/20] Processing clip.mp4
+  Analyzing comprehensively: clip.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Humor, Indoor
+
+[2/20] Processing clip1.mp4
+  Analyzing comprehensively: clip1.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Friends, Fun
+
+[3/20] Processing clip10.mp4
+  Analyzing comprehensively: clip10.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Friends, Dance
+
+[4/20] Processing clip11.mp4
+  Analyzing comprehensively: clip11.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Travel, Thrill
+
+[5/20] Processing clip12.mp4
+  Analyzing comprehensively: clip12.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Outdoors, Travel
+
+[6/20] Processing clip13.mp4
+  Analyzing comprehensively: clip13.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Winter, Friends
+
+[7/20] Processing clip14.mp4
+  Analyzing comprehensively: clip14.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Travel, Adventure, Nature
+
+[8/20] Processing clip15.mp4
+  Analyzing comprehensively: clip15.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Funny, Travel, Candid
+
+[9/20] Processing clip16.mp4
+  Analyzing comprehensively: clip16.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Fun, Music
+
+[10/20] Processing clip17.mp4
+  Analyzing comprehensively: clip17.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Fun
+
+[11/20] Processing clip18.mp4
+  Analyzing comprehensively: clip18.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Urban, Friends, Night, Action
+
+[12/20] Processing clip19.mp4
+  Analyzing comprehensively: clip19.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Night, Action, Travel
+
+[13/20] Processing clip2.mp4
+  Analyzing comprehensively: clip2.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Fun
+
+[14/20] Processing clip3.mp4
+  Analyzing comprehensively: clip3.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Casual, Humorous
+
+[15/20] Processing clip4.mp4
+  Analyzing comprehensively: clip4.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Casual, Fun
+
+[16/20] Processing clip5.mp4
+  Analyzing comprehensively: clip5.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Music, Fun
+
+[17/20] Processing clip6.mp4
+  Analyzing comprehensively: clip6.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Party, Friends, Celebration, Dance
+
+[18/20] Processing clip7.mp4
+  Analyzing comprehensively: clip7.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Urban, Casual
+
+[19/20] Processing clip8.mp4
+  Analyzing comprehensively: clip8.mp4...
+    [CACHE] Loaded: Low/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Calm
+
+[20/20] Processing clip9.mp4
+  Analyzing comprehensively: clip9.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Water, Outdoors
+
+[OK] All 20 clips analyzed
+[OK] Rate limiter status: 0 requests in last minute
+
+[OK] Gemini successfully analyzed 20 clips (using originals for cache).
+  Standardizing clip 1/20...
+  [OK] Standardized: clip_001.mp4
+  Standardizing clip 2/20...
+  [OK] Standardized: clip_002.mp4
+  Standardizing clip 3/20...
+  [OK] Standardized: clip_003.mp4
+  Standardizing clip 4/20...
+  [OK] Standardized: clip_004.mp4
+  Standardizing clip 5/20...
+  [OK] Standardized: clip_005.mp4
+  Standardizing clip 6/20...
+  [OK] Standardized: clip_006.mp4
+  Standardizing clip 7/20...
+  [OK] Standardized: clip_007.mp4
+  Standardizing clip 8/20...
+  [OK] Standardized: clip_008.mp4
+  Standardizing clip 9/20...
+  [OK] Standardized: clip_009.mp4
+  Standardizing clip 10/20...
+  [OK] Standardized: clip_010.mp4
+  Standardizing clip 11/20...
+  [OK] Standardized: clip_011.mp4
+  Standardizing clip 12/20...
+  [OK] Standardized: clip_012.mp4
+  Standardizing clip 13/20...
+  [OK] Standardized: clip_013.mp4
+  Standardizing clip 14/20...
+  [OK] Standardized: clip_014.mp4
+  Standardizing clip 15/20...
+  [OK] Standardized: clip_015.mp4
+  Standardizing clip 16/20...
+  [OK] Standardized: clip_016.mp4
+  Standardizing clip 17/20...
+  [OK] Standardized: clip_017.mp4
+  Standardizing clip 18/20...
+  [OK] Standardized: clip_018.mp4
+  Standardizing clip 19/20...
+  [OK] Standardized: clip_019.mp4
+  Standardizing clip 20/20...
+  [OK] Standardized: clip_020.mp4
+[OK] All clips standardized and ready for render.
+
+[4/5] Creating edit sequence...
+
+============================================================
+[EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)
+============================================================
+  Segments: 21
+  Clips: 20
+  Clips with pre-computed best moments: 20/20
+  🎵 Beat grid generated: 24 beats at 117.45 BPM
+  DEBUG: First 5 beats: [0.0, 0.5128205128205128, 1.0256410256410255, 1.5384615384615383, 2.051282051282051]
+
+
+Segment 1: 0.00s-1.18s (1.18s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Flow optimization
+  📎 Selected: clip9.mp4 (Score: 0.0)
+    ✂️ Cut 1: clip9.mp4 [2.50s-3.53s] (1.03s) → timeline [0.000000s-1.025641s]
+    ✂️ Cut 2: clip3.mp4 [0.00s-0.16s] (0.16s) → timeline [1.025641s-1.183334s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=8.80
+
+Segment 2: 1.18s-2.37s (1.18s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip12.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip12.mp4 [1.00s-1.87s] (0.87s) → timeline [1.183334s-2.051282s]
+    ✂️ Cut 2: clip4.mp4 [0.00s-0.32s] (0.32s) → timeline [2.051282s-2.366667s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=4.07
+
+Segment 3: 2.37s-2.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip13.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip13.mp4 [3.50s-4.00s] (0.50s) → timeline [2.366667s-2.866667s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=4.07
+
+Segment 4: 2.87s-3.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip.mp4 [0.00s-0.50s] (0.50s) → timeline [2.866667s-3.366667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=8.80
+
+Segment 5: 3.37s-3.87s (0.50s, Medium/Static)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip10.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip10.mp4 [2.50s-3.00s] (0.50s) → timeline [3.366667s-3.866667s]
+    [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=2.32
+
+Segment 6: 3.87s-4.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip14.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip14.mp4 [0.50s-1.00s] (0.50s) → timeline [3.866667s-4.366667s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=4.07
+
+Segment 7: 4.37s-4.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip2.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip2.mp4 [0.00s-0.50s] (0.50s) → timeline [4.366667s-4.866667s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=4.07
+
+Segment 8: 4.87s-5.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip7.mp4 (Score: 8.0)
+    ✂️ Cut 1: clip7.mp4 [1.00s-1.50s] (0.50s) → timeline [4.866667s-5.366667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=10.38
+
+Segment 9: 5.37s-5.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Smooth motion flow
+  📎 Selected: clip3.mp4 (Score: -3.2)
+    ✂️ Cut 1: clip3.mp4 [0.16s-0.66s] (0.50s) → timeline [5.366667s-5.866667s]
+    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.03
+
+Segment 10: 5.87s-6.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip9.mp4 (Score: 3.4)
+    ✂️ Cut 1: clip9.mp4 [3.53s-4.03s] (0.50s) → timeline [5.866667s-6.366667s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=7.87
+
+Segment 11: 6.37s-6.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Smooth motion flow
+  📎 Selected: clip12.mp4 (Score: -1.8)
+    ✂️ Cut 1: clip12.mp4 [1.87s-2.37s] (0.50s) → timeline [6.366667s-6.866667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=14.47
+
+Segment 12: 6.87s-7.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip4.mp4 (Score: 0.0)
+    ✂️ Cut 1: clip4.mp4 [0.32s-0.82s] (0.50s) → timeline [6.866667s-7.366667s]
+    [SKIP] Invalid clip state: clip_end=3.50, clip_start=3.50, duration=7.92
+
+Segment 13: 7.37s-7.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip13.mp4 (Score: 0.0)
+    ✂️ Cut 1: clip13.mp4 [4.00s-4.50s] (0.50s) → timeline [7.366667s-7.866667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=4.84
+
+Segment 14: 7.87s-8.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip.mp4 (Score: 0.0)
+    ✂️ Cut 1: clip.mp4 [0.50s-1.00s] (0.50s) → timeline [7.866667s-8.366667s]
+    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.67
+
+Segment 15: 8.37s-8.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Smooth motion flow
+  📎 Selected: clip14.mp4 (Score: -5.0)
+    ✂️ Cut 1: clip14.mp4 [1.00s-1.50s] (0.50s) → timeline [8.366667s-8.866667s]
+    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.67
+
+Segment 16: 8.87s-9.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip10.mp4 (Score: 5.0)
+    ✂️ Cut 1: clip10.mp4 [3.00s-3.50s] (0.50s) → timeline [8.866667s-9.366667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=8.80
+
+Segment 17: 9.37s-9.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Smooth motion flow
+  📎 Selected: clip7.mp4 (Score: -5.0)
+    ✂️ Cut 1: clip7.mp4 [1.50s-2.00s] (0.50s) → timeline [9.366667s-9.866667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=8.80
+
+Segment 18: 9.87s-10.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip2.mp4 (Score: 5.0)
+    ✂️ Cut 1: clip2.mp4 [0.50s-1.00s] (0.50s) → timeline [9.866667s-10.366667s]
+    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.03
+
+Segment 19: 10.37s-10.87s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Smooth motion flow
+  📎 Selected: clip9.mp4 (Score: -8.0)
+    ✂️ Cut 1: clip9.mp4 [4.03s-4.53s] (0.50s) → timeline [10.366667s-10.866667s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=10.38
+
+Segment 20: 10.87s-11.37s (0.50s, Medium/Dynamic)
+  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
+  📎 Selected: clip3.mp4 (Score: 2.0)
+    ✂️ Cut 1: clip3.mp4 [0.66s-1.16s] (0.50s) → timeline [10.866667s-11.366667s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=7.87
+
+Segment 21: 11.37s-12.16s (0.80s, Medium/Dynamic)
+  🧠 AI Thinking: ⚙️ Constraint Relaxation: Smooth motion flow
+  📎 Selected: clip12.mp4 (Score: -3.0)
+    ✂️ Cut 1: clip12.mp4 [2.37s-3.00s] (0.63s) → timeline [11.366667s-12.164399s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=14.47
+
+============================================================
+[OK] Matching complete: 23 edit decisions
+[OK] Total timeline duration: 12.16s (target: 12.16s)
+============================================================
+
+
+============================================================
+[EDL] EDIT DECISION LIST SUMMARY
+============================================================
+
+Total decisions: 23
+Total segments: 21
+Available clips: 20
+
+Clip usage distribution:
+  clip_020.mp4: 3 times
+  clip_014.mp4: 3 times
+  clip_005.mp4: 3 times
+  clip_015.mp4: 2 times
+  clip_006.mp4: 2 times
+  clip_001.mp4: 2 times
+  clip_003.mp4: 2 times
+  clip_007.mp4: 2 times
+  clip_013.mp4: 2 times
+  clip_018.mp4: 2 times
+
+
+[5/5] Rendering final video...
+    [OK] Segment extracted: 2.50s - 3.53s
+    [OK] Segment extracted: 0.00s - 0.16s
+    [OK] Segment extracted: 1.00s - 1.87s
+    [OK] Segment extracted: 0.00s - 0.32s
+    [OK] Segment extracted: 3.50s - 4.00s
+    [OK] Segment extracted: 0.00s - 0.50s
+    [OK] Segment extracted: 2.50s - 3.00s
+    [OK] Segment extracted: 0.50s - 1.00s
+    [OK] Segment extracted: 0.00s - 0.50s
+    [OK] Segment extracted: 1.00s - 1.50s
+    [OK] Segment extracted: 0.16s - 0.66s
+    [OK] Segment extracted: 3.53s - 4.03s
+    [OK] Segment extracted: 1.87s - 2.37s
+    [OK] Segment extracted: 0.32s - 0.82s
+    [OK] Segment extracted: 4.00s - 4.50s
+    [OK] Segment extracted: 0.50s - 1.00s
+    [OK] Segment extracted: 1.00s - 1.50s
+    [OK] Segment extracted: 3.00s - 3.50s
+    [OK] Segment extracted: 1.50s - 2.00s
+    [OK] Segment extracted: 0.50s - 1.00s
+    [OK] Segment extracted: 4.03s - 4.53s
+    [OK] Segment extracted: 0.66s - 1.16s
+    [OK] Segment extracted: 2.37s - 3.00s
+  [OK] Concatenated 23 segments (frame-perfect)
+  [OK] Audio extracted: ref_audio.aac
+  [OK] Audio merged onto video (optimized)
+
+============================================================
+[OK] PIPELINE COMPLETE
+============================================================
+Output: data\results\mimic_output_refrence2_vibes_test.mp4
+Duration: 12.16s
+Segments: 21
+Processing time: 228.6s
+============================================================
+
+
+================================================================================
+✅ SUCCESS!
+
+📊 Basic Results:
+   Output: mimic_output_refrence2_vibes_test.mp4
+   Duration: 12.10s (ref: 12.16s)
+   Difference: 0.07s
+   Processing time: 228.6s
+
+================================================================================
+🧠 COMPREHENSIVE SYSTEM ANALYSIS
+================================================================================
+
+📹 Reference Analysis:
+   Editing Style: General
+   Emotional Intent: Dynamic
+   Arc Description: 
+   Total Segments: 21
+
+📈 Arc Stage Distribution:
+   Main: 21 segments (100.0%)
+
+📎 Clip Usage Analysis:
+   Unique clips used: 10/20
+   Most used clips:
+     clip_020.mp4: 3 times (13.0%)
+     clip_014.mp4: 3 times (13.0%)
+     clip_005.mp4: 3 times (13.0%)
+     clip_015.mp4: 2 times (8.7%)
+     clip_006.mp4: 2 times (8.7%)
+
+🧠 AI Reasoning Breakdown:
+   ✨ Smart Match: 0 (0.0%)
+   🎯 Good Fit: 16 (69.6%)
+   ⚙️ Constraint Relaxation: 7 (30.4%)
+
+🎨 Vibe Matching:
+   Matches: 0/23 (0.0%)
+
+📏 Cut Statistics by Arc Stage:
+   Main: 23 cuts, avg 0.53s
+
+📏 Overall Cut Statistics:
+   Total cuts: 23
+   Average cut: 0.53s
+   Shortest cut: 0.16s
+   Longest cut: 1.03s
+
+💭 Sample AI Reasoning (first 5 decisions):
+   1. clip_020.mp4: ⚙️ Constraint Relaxation: Flow optimization...
+   2. clip_014.mp4: 🎯 Good Fit: Smooth motion flow...
+   3. clip_005.mp4: 🎯 Good Fit: Smooth motion flow...
+   4. clip_015.mp4: 🎯 Good Fit: Smooth motion flow...
+   5. clip_006.mp4: 🎯 Good Fit: Smooth motion flow...
+
+📦 Clip Metadata Quality:
+   Clips with best_moments: 20/20
+   Clips with vibes: 20/20
+   Clips with content_description: 20/20
+
+🔍 Temporal Precision Check:
+   ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
+
+📦 Material Efficiency:
+   Total source duration available: 232.22s
+   Total duration used in edit: 12.00s
+   Unique clip segments used: 23
+   Utilization Ratio: 5.2%
+   💡 Note: Low utilization suggests clips may not match reference vibes well
+
+📊 Selection Reasoning Breakdown:
+   Arc Stage Relevance: 0 decisions (0.0%)
+   Vibe Matching: 0 decisions (0.0%)
+   Visual Cooldown Warnings: 0 decisions (0.0%)
+   Smooth Transitions: 22 decisions (95.7%)
+   Usage Penalties Applied: 0 decisions (0.0%)
+
+💭 Detailed Reasoning Examples (first 3 decisions):
+
+   Decision 1:
+     Timeline: 0.000s - 1.026s (1.026s)
+     Clip: clip_020.mp4
+     Source: 2.50s - 3.53s
+     Segment: Main | Medium/Dynamic | Vibe: General
+     Reasoning: ⚙️ Constraint Relaxation: Flow optimization
+     Vibe Match: ❌
+
+   Decision 2:
+     Timeline: 1.026s - 1.183s (0.158s)
+     Clip: clip_014.mp4
+     Source: 0.00s - 0.16s
+     Segment: Main | Medium/Dynamic | Vibe: General
+     Reasoning: 🎯 Good Fit: Smooth motion flow
+     Vibe Match: ❌
+
+   Decision 3:
+     Timeline: 1.183s - 2.051s (0.868s)
+     Clip: clip_005.mp4
+     Source: 1.00s - 1.87s
+     Segment: Main | Medium/Dynamic | Vibe: General
+     Reasoning: 🎯 Good Fit: Smooth motion flow
+     Vibe Match: ❌
+
+================================================================================
+🎉 Watch the result: data\results\mimic_output_refrence2_vibes_test.mp4
+================================================================================
+================================================================================
