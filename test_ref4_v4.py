@@ -50,7 +50,7 @@ ref_duration = get_video_duration(str(REFERENCE))
 print(f"\n📹 Reference: {REFERENCE.name}")
 print(f"   Duration: {ref_duration:.2f}s")
 print(f"\n📎 Testing with {len(CLIP_PATHS)} clips")
-print(f"   Cache Version: 6.0 (will re-analyze clips for vibes)")
+print(f"   Cache Version: 6.1 (will re-analyze clips for vibes)")
 print()
 
 # Run pipeline

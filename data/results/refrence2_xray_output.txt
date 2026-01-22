@@ -6,7 +6,7 @@ TESTING REFRENCE2.MP4 WITH VIBES + DYNAMIC BPM
    Duration: 12.16s
 
 📎 Testing with 20 clips
-   Cache Version: 6.0 (will re-analyze clips for vibes)
+   Cache Version: 6.1 (will re-analyze clips for vibes)
 
 🚀 Starting pipeline...
    Step 1: Validating inputs
@@ -231,25 +231,25 @@ Segment 2: 2.37s-2.87s (0.50s, Medium/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Build-up energy | Vibe 'Friends' | Smooth motion flow
   📎 Selected: clip7.mp4 (Score: 35.0)
     ✂️ Cut 1: clip7.mp4 [1.00s-1.50s] (0.50s) → timeline [2.370000s-2.870000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=4.84
 
 Segment 3: 2.87s-3.37s (0.50s, Medium/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Build-up energy | Smooth motion flow
-  📎 Selected: clip9.mp4 (Score: 23.0)
-    ✂️ Cut 1: clip9.mp4 [2.50s-3.00s] (0.50s) → timeline [2.870000s-3.370000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
+  🧠 AI Thinking: ✨ Smart Match: Vibe 'Friends' | Smooth motion flow
+  📎 Selected: clip10.mp4 (Score: 20.0)
+    ✂️ Cut 1: clip10.mp4 [2.50s-3.00s] (0.50s) → timeline [2.870000s-3.370000s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=15.44
 
 Segment 4: 3.37s-3.87s (0.50s, Medium/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow
-  📎 Selected: clip13.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip13.mp4 [0.00s-0.50s] (0.50s) → timeline [3.370000s-3.870000s]
-    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.67
+  📎 Selected: clip14.mp4 (Score: 20.0)
+    ✂️ Cut 1: clip14.mp4 [0.50s-1.00s] (0.50s) → timeline [3.370000s-3.870000s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
 
 Segment 5: 3.87s-4.37s (0.50s, Medium/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip14.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip14.mp4 [0.50s-1.00s] (0.50s) → timeline [3.870000s-4.370000s]
-    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=15.44
+  📎 Selected: clip1.mp4 (Score: 20.0)
+    ✂️ Cut 1: clip1.mp4 [1.00s-1.50s] (0.50s) → timeline [3.870000s-4.370000s]
+    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.03
 
 Segment 6: 4.37s-4.87s (0.50s, Low/Static)
   🧠 AI Thinking: ⚙️ Constraint Relaxation: Vibe 'Travel' | ⚠️ Recently used (2.0s ago) | Smooth motion flow
@@ -270,16 +270,16 @@ Segment 8: 5.37s-5.87s (0.50s, Low/Static)
     [SKIP] Invalid clip state: clip_end=3.00, clip_start=3.00, duration=5.53
 
 Segment 9: 5.87s-6.37s (0.50s, Medium/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow
-  📎 Selected: clip10.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip10.mp4 [2.50s-3.00s] (0.50s) → timeline [5.870000s-6.370000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=14.47
+  🧠 AI Thinking: ✨ Smart Match: Build-up energy | Smooth motion flow
+  📎 Selected: clip9.mp4 (Score: 23.0)
+    ✂️ Cut 1: clip9.mp4 [2.50s-3.00s] (0.50s) → timeline [5.870000s-6.370000s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
 
 Segment 10: 6.37s-6.87s (0.50s, Medium/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip1.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip1.mp4 [1.00s-1.50s] (0.50s) → timeline [6.370000s-6.870000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=10.38
+  📎 Selected: clip13.mp4 (Score: 20.0)
+    ✂️ Cut 1: clip13.mp4 [0.00s-0.50s] (0.50s) → timeline [6.370000s-6.870000s]
+    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=7.87
 
 Segment 11: 6.87s-7.37s (0.50s, Low/Static)
   🧠 AI Thinking: ⚙️ Constraint Relaxation: Vibe 'Nature' | ⚠️ Recently used (1.0s ago) | Smooth motion flow | Used 4x
@@ -290,31 +290,30 @@ Segment 11: 6.87s-7.37s (0.50s, Low/Static)
 Segment 12: 7.37s-7.87s (0.50s, Medium/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Smooth motion flow
   📎 Selected: clip2.mp4 (Score: 23.0)
-    ✂️ Cut 1: clip2.mp4 [0.00s-0.18s] (0.18s) → timeline [7.370000s-7.553801s]
-    ✂️ Cut 2: clip12.mp4 [1.00s-1.32s] (0.32s) → timeline [7.553801s-7.870000s]
+    ✂️ Cut 1: clip2.mp4 [0.00s-0.26s] (0.26s) → timeline [7.370000s-7.634235s]
+    ✂️ Cut 2: clip12.mp4 [1.00s-1.24s] (0.24s) → timeline [7.634235s-7.870000s]
     [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=2.32
 
 Segment 13: 7.87s-8.37s (0.50s, High/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Smooth motion flow
-  📎 Selected: clip11.mp4 (Score: 23.0)
-    ✂️ Cut 1: clip11.mp4 [0.00s-0.29s] (0.29s) → timeline [7.870000s-8.159461s]
-    ✂️ Cut 2: clip18.mp4 [4.50s-4.71s] (0.21s) → timeline [8.159461s-8.370000s]
-    [SKIP] Invalid clip state: clip_end=10.50, clip_start=10.50, duration=14.81
+  📎 Selected: clip19.mp4 (Score: 23.0)
+    ✂️ Cut 1: clip19.mp4 [10.50s-10.67s] (0.17s) → timeline [7.870000s-8.042912s]
+    ✂️ Cut 2: clip11.mp4 [0.00s-0.33s] (0.33s) → timeline [8.042912s-8.370000s]
+    [SKIP] Invalid clip state: clip_end=4.50, clip_start=4.50, duration=8.50
 
 Segment 14: 8.37s-8.87s (0.50s, Medium/Dynamic)
   🧠 AI Thinking: ✨ Smart Match: Peak-intensity moment | Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip14.mp4 (Score: 27.0)
-    ✂️ Cut 1: clip14.mp4 [1.00s-1.21s] (0.21s) → timeline [8.370000s-8.577481s]
-    ✂️ Cut 2: clip9.mp4 [3.00s-3.29s] (0.29s) → timeline [8.577481s-8.870000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
+  📎 Selected: clip14.mp4 (Score: 32.0)
+    ✂️ Cut 1: clip14.mp4 [1.00s-1.16s] (0.16s) → timeline [8.370000s-8.527649s]
+    ✂️ Cut 2: clip10.mp4 [3.00s-3.34s] (0.34s) → timeline [8.527649s-8.870000s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=10.38
 
 Segment 15: 8.87s-9.37s (0.50s, Medium/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip13.mp4 (Score: 17.0)
-    ✂️ Cut 1: clip13.mp4 [0.50s-0.69s] (0.19s) → timeline [8.870000s-9.060217s]
-    ✂️ Cut 2: clip.mp4 [0.00s-0.18s] (0.18s) → timeline [9.060217s-9.236654s]
-    ✂️ Cut 3: clip7.mp4 [1.50s-1.63s] (0.13s) → timeline [9.236654s-9.370000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=10.38
+  🧠 AI Thinking: 🎯 Good Fit: Vibe 'Nature' | Smooth motion flow
+  📎 Selected: clip1.mp4 (Score: 12.0)
+    ✂️ Cut 1: clip1.mp4 [1.50s-1.72s] (0.22s) → timeline [8.870000s-9.089911s]
+    ✂️ Cut 2: clip3.mp4 [0.00s-0.28s] (0.28s) → timeline [9.089911s-9.370000s]
+    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=14.47
 
 Segment 16: 9.37s-9.87s (0.50s, Low/Static)
   🧠 AI Thinking: ⚙️ Constraint Relaxation: Vibe 'Nature' | ⚠️ Recently used (2.0s ago) | Smooth motion flow | Used 5x
@@ -348,7 +347,7 @@ Segment 20: 11.37s-12.16s (0.79s, Low/Static)
     [SKIP] Invalid clip state: clip_end=3.00, clip_start=3.00, duration=5.53
 
 ============================================================
-[OK] Matching complete: 26 edit decisions
+[OK] Matching complete: 25 edit decisions
 [OK] Total timeline duration: 12.16s (target: 12.16s)
 ============================================================
 
@@ -357,53 +356,52 @@ Segment 20: 11.37s-12.16s (0.79s, Low/Static)
 [EDL] EDIT DECISION LIST SUMMARY
 ============================================================
 
-Total decisions: 26
+Total decisions: 25
 Total segments: 20
 Available clips: 20
 
 Clip usage distribution:
   clip_019.mp4: 11 times
-  clip_018.mp4: 2 times
-  clip_020.mp4: 2 times
-  clip_006.mp4: 2 times
+  clip_003.mp4: 2 times
   clip_007.mp4: 2 times
-  clip_003.mp4: 1 times
-  clip_002.mp4: 1 times
+  clip_002.mp4: 2 times
+  clip_018.mp4: 1 times
+  clip_020.mp4: 1 times
+  clip_006.mp4: 1 times
   clip_013.mp4: 1 times
   clip_005.mp4: 1 times
+  clip_012.mp4: 1 times
   clip_004.mp4: 1 times
-  clip_011.mp4: 1 times
-  clip_001.mp4: 1 times
+  clip_014.mp4: 1 times
 
 
 [5/5] Rendering final video...
     [OK] Segment extracted: 3.00s - 5.37s
     [OK] Segment extracted: 1.00s - 1.50s
     [OK] Segment extracted: 2.50s - 3.00s
-    [OK] Segment extracted: 0.00s - 0.50s
     [OK] Segment extracted: 0.50s - 1.00s
+    [OK] Segment extracted: 1.00s - 1.50s
     [OK] Segment extracted: 5.37s - 5.53s
     [OK] Segment extracted: 3.00s - 3.50s
     [OK] Segment extracted: 3.50s - 4.00s
     [OK] Segment extracted: 2.50s - 3.00s
-    [OK] Segment extracted: 1.00s - 1.50s
+    [OK] Segment extracted: 0.00s - 0.50s
     [OK] Segment extracted: 4.00s - 4.50s
-    [OK] Segment extracted: 0.00s - 0.18s
-    [OK] Segment extracted: 1.00s - 1.32s
-    [OK] Segment extracted: 0.00s - 0.29s
-    [OK] Segment extracted: 4.50s - 4.71s
-    [OK] Segment extracted: 1.00s - 1.21s
-    [OK] Segment extracted: 3.00s - 3.29s
-    [OK] Segment extracted: 0.50s - 0.69s
-    [OK] Segment extracted: 0.00s - 0.18s
-    [OK] Segment extracted: 1.50s - 1.63s
+    [OK] Segment extracted: 0.00s - 0.26s
+    [OK] Segment extracted: 1.00s - 1.24s
+    [OK] Segment extracted: 10.50s - 10.67s
+    [OK] Segment extracted: 0.00s - 0.33s
+    [OK] Segment extracted: 1.00s - 1.16s
+    [OK] Segment extracted: 3.00s - 3.34s
+    [OK] Segment extracted: 1.50s - 1.72s
+    [OK] Segment extracted: 0.00s - 0.28s
     [OK] Segment extracted: 4.50s - 4.90s
     [OK] Segment extracted: 4.90s - 5.00s
     [OK] Segment extracted: 5.00s - 5.50s
     [OK] Segment extracted: 3.00s - 3.50s
     [OK] Segment extracted: 3.50s - 4.00s
     [OK] Segment extracted: 4.00s - 4.79s
-  [OK] Concatenated 26 segments (frame-perfect)
+  [OK] Concatenated 25 segments (frame-perfect)
   [OK] Audio extracted: ref_audio.aac
 [WARN] Removing existing output file: data\results\mimic_output_refrence2_vibes_test.mp4
   [OK] Audio merged onto video (optimized)
@@ -414,7 +412,7 @@ Clip usage distribution:
 Output: data\results\mimic_output_refrence2_vibes_test.mp4
 Duration: 12.16s
 Segments: 20
-Processing time: 161.4s
+Processing time: 171.8s
 ============================================================
 
 
@@ -425,7 +423,7 @@ Processing time: 161.4s
    Output: mimic_output_refrence2_vibes_test.mp4
    Duration: 12.10s (ref: 12.16s)
    Difference: 0.07s
-   Processing time: 161.4s
+   Processing time: 171.8s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -451,38 +449,38 @@ Processing time: 161.4s
 📎 Clip Usage Analysis:
    Unique clips used: 12/20
    Most used clips:
-     clip_019.mp4: 11 times (42.3%)
-     clip_018.mp4: 2 times (7.7%)
-     clip_020.mp4: 2 times (7.7%)
-     clip_006.mp4: 2 times (7.7%)
-     clip_007.mp4: 2 times (7.7%)
+     clip_019.mp4: 11 times (44.0%)
+     clip_003.mp4: 2 times (8.0%)
+     clip_007.mp4: 2 times (8.0%)
+     clip_002.mp4: 2 times (8.0%)
+     clip_018.mp4: 1 times (4.0%)
 
 🧠 AI Reasoning Breakdown:
-   ✨ Smart Match: 13 (50.0%)
-   🎯 Good Fit: 3 (11.5%)
-   ⚙️ Constraint Relaxation: 10 (38.5%)
+   ✨ Smart Match: 12 (48.0%)
+   🎯 Good Fit: 3 (12.0%)
+   ⚙️ Constraint Relaxation: 10 (40.0%)
 
 🎨 Vibe Matching:
-   Matches: 18/26 (69.2%)
+   Matches: 19/25 (76.0%)
 
 📏 Cut Statistics by Arc Stage:
    Intro: 1 cuts, avg 2.37s
    Build-up: 10 cuts, avg 0.50s
-   Peak: 11 cuts, avg 0.23s
+   Peak: 10 cuts, avg 0.25s
    Outro: 4 cuts, avg 0.57s
 
 📏 Overall Cut Statistics:
-   Total cuts: 26
-   Average cut: 0.47s
+   Total cuts: 25
+   Average cut: 0.49s
    Shortest cut: 0.10s
    Longest cut: 2.37s
 
 💭 Sample AI Reasoning (first 5 decisions):
    1. clip_019.mp4: 🎯 Good Fit: Vibe 'Nature'...
    2. clip_018.mp4: ✨ Smart Match: Build-up energy | Vibe 'Friends' | Smooth motion flow...
-   3. clip_020.mp4: ✨ Smart Match: Build-up energy | Smooth motion flow...
-   4. clip_006.mp4: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow...
-   5. clip_007.mp4: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow...
+   3. clip_003.mp4: ✨ Smart Match: Vibe 'Friends' | Smooth motion flow...
+   4. clip_007.mp4: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow...
+   5. clip_002.mp4: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow...
 
 📦 Clip Metadata Quality:
    Clips with best_moments: 20/20
@@ -495,16 +493,16 @@ Processing time: 161.4s
 📦 Material Efficiency:
    Total source duration available: 232.22s
    Total duration used in edit: 11.82s
-   Unique clip segments used: 24
+   Unique clip segments used: 23
    Utilization Ratio: 5.1%
    💡 Note: Low utilization suggests clips may not match reference vibes well
 
 📊 Selection Reasoning Breakdown:
-   Arc Stage Relevance: 3 decisions (11.5%)
-   Vibe Matching: 18 decisions (69.2%)
-   Visual Cooldown Warnings: 10 decisions (38.5%)
-   Smooth Transitions: 25 decisions (96.2%)
-   Usage Penalties Applied: 8 decisions (30.8%)
+   Arc Stage Relevance: 3 decisions (12.0%)
+   Vibe Matching: 19 decisions (76.0%)
+   Visual Cooldown Warnings: 10 decisions (40.0%)
+   Smooth Transitions: 24 decisions (96.0%)
+   Usage Penalties Applied: 8 decisions (32.0%)
 
 💭 Detailed Reasoning Examples (first 3 decisions):
 
@@ -526,11 +524,11 @@ Processing time: 161.4s
 
    Decision 3:
      Timeline: 2.870s - 3.370s (0.500s)
-     Clip: clip_020.mp4
+     Clip: clip_003.mp4
      Source: 2.50s - 3.00s
      Segment: Build-up | Medium/Dynamic | Vibe: Friends
-     Reasoning: ✨ Smart Match: Build-up energy | Smooth motion flow
-     Vibe Match: ❌
+     Reasoning: ✨ Smart Match: Vibe 'Friends' | Smooth motion flow
+     Vibe Match: ✅
 
 ================================================================================
 🎉 Watch the result: data\results\mimic_output_refrence2_vibes_test.mp4
