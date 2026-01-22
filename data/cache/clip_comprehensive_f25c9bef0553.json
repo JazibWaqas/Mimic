@@ -1,0 +1,30 @@
+{
+  "energy": "Low",
+  "motion": "Static",
+  "vibes": [
+    "Travel",
+    "Nature",
+    "Calm",
+    "Sunset"
+  ],
+  "content_description": "People and horses stroll along a beach at sunset, with the sun's reflection shimmering on the wet sand.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Initial movement of people and horses with upbeat background music."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 6.0,
+      "reason": "Steady movement of figures across the beach under the hazy sun."
+    },
+    "Low": {
+      "start": 5.0,
+      "end": 7.128526,
+      "reason": "A calmer segment focusing on the distant horizon and the sun's glow."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:03:33"
+}

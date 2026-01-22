@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Forest",
+    "Travel"
+  ],
+  "content_description": "A low-angle shot looking up at tall pine trees against a cloudy sky while moving through a forest.",
+  "best_moments": {
+    "High": {
+      "start": 5.0,
+      "end": 8.0,
+      "reason": "Increased camera rotation and faster movement of tree canopies across the frame."
+    },
+    "Medium": {
+      "start": 2.5,
+      "end": 5.0,
+      "reason": "Consistent movement through the forest with a clear, moderately paced view of the trees."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "The beginning of the clip with slightly more stable framing and slower initial motion."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:04:44"
+}

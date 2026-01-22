@@ -17,6 +17,8 @@ if sys.platform == 'win32':
         sys.stderr.reconfigure(encoding='utf-8', errors='replace')
     except:
         pass
+import hashlib
+import shutil
 from pathlib import Path
 from typing import Callable, List
 from models import PipelineResult, StyleBlueprint, ClipIndex, EDL
@@ -103,10 +105,14 @@ def run_mimic_pipeline(
         standardized_dir = temp_session_dir / "standardized"
         segments_dir = temp_session_dir / "segments"
         
+        # PERSISTENT CACHE FOR STANDARDIZED CLIPS
+        persistent_standardized_cache = BASE_DIR / "data" / "cache" / "standardized"
+        
         ensure_directory(temp_session_dir)
         ensure_directory(standardized_dir)
         ensure_directory(segments_dir)
         ensure_directory(output_dir)
+        ensure_directory(persistent_standardized_cache)
         
         # Note: Uploaded files stay in data/uploads/ (permanent)
         # Only temp/ files (standardized, segments) can be cleaned up
@@ -167,23 +173,39 @@ def run_mimic_pipeline(
                 ))
             clip_index = ClipIndex(clips=clips)
             
-        # 2. Standardize clips for rendering
+        # 2. Standardize clips for rendering (with persistent caching)
         standardized_paths = []
         for i, clip_path in enumerate(clip_paths, start=1):
+            input_p = Path(clip_path)
             output_path = standardized_dir / f"clip_{i:03d}.mp4"
-            print(f"  Standardizing clip {i}/{len(clip_paths)}...")
-            standardize_clip(clip_path, str(output_path))
+            
+            # Generate a unique cache key for this specific file state
+            # (path + scale_params + size + mtime)
+            file_stat = input_p.stat()
+            cache_key_source = f"{input_p.absolute()}_{file_stat.st_size}_{file_stat.st_mtime}"
+            cache_hash = hashlib.md5(cache_key_source.encode()).hexdigest()
+            cached_filename = f"std_{cache_hash}.mp4"
+            cached_path = persistent_standardized_cache / cached_filename
+            
+            if cached_path.exists():
+                print(f"  [CACHE] Using standardized clip {i}/{len(clip_paths)}: {input_p.name}")
+                shutil.copy2(str(cached_path), str(output_path))
+            else:
+                print(f"  Standardizing clip {i}/{len(clip_paths)}: {input_p.name}...")
+                standardize_clip(clip_path, str(output_path))
+                # Save to persistent cache
+                shutil.copy2(str(output_path), str(cached_path))
+                
             standardized_paths.append(str(output_path))
             
             # Update the filepath in the clip index to the standardized one
-            # Find the corresponding metadata and update path
-            original_filename = Path(clip_path).name
+            original_filename = input_p.name
             for clip_meta in clip_index.clips:
                 if clip_meta.filename == original_filename:
                     clip_meta.filepath = str(output_path)
                     break
         
-        print(f"[OK] All clips standardized and ready for render.")
+        print(f"[OK] All clips standardized (cached or new) and ready for render.")
         
         # ==================================================================
         # STEP 4: MATCH & EDIT

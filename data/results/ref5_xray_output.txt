@@ -5,8 +5,8 @@ TESTING REF5.MP4 WITH VIBES + DYNAMIC BPM
 📹 Reference: ref5.mp4
    Duration: 16.65s
 
-📎 Testing with 20 clips
-   Cache Version: 6.0 (will re-analyze clips for vibes)
+📎 Testing with 36 clips
+   Cache Version: 6.1 (will re-analyze clips for vibes)
 
 🚀 Starting pipeline...
    Step 1: Validating inputs
@@ -29,399 +29,277 @@ TESTING REF5.MP4 WITH VIBES + DYNAMIC BPM
 [BRAIN] Using 20 visual scene anchors.
 ============================================================
 
-[API KEY MANAGER] Loaded 28 API key(s)
-[API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
-[OK] Using model: gemini-3-flash-preview
-Uploading muted_d04cf94d4d8a.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/zvqt4sinress
-[OK] Preserved original cut rhythm: 21 segments (no subdivision)
-[OK] Analysis complete: 21 segments.
+[CACHE] Found cached analysis: ref_d04cf94d4d8a_h32e59bfd.json
+[OK] Loaded from cache: 21 segments (preserved original rhythm)
 [OK] Gemini successfully analyzed reference: 21 segments found.
 
 [3/5] Analyzing user clips with Gemini AI...
 
 ============================================================
-[BRAIN] ANALYZING USER CLIPS (20 total)
+[BRAIN] ANALYZING USER CLIPS (36 total)
 [BRAIN] Mode: COMPREHENSIVE (energy + best moments)
 ============================================================
 
 
-[1/20] Processing clip.mp4
+[1/36] Processing clip.mp4
+[API KEY MANAGER] Loaded 28 API key(s)
+[API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_db3625c36512.json'. Re-analyzing...
-Uploading clip.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/xfxeszv6q0ua
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 1.00s - 3.00s
-        Medium: 0.00s - 2.00s
-        Low: 2.50s - 4.50s
-    Vibes: Friends, Funny, Indoor
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Funny, Indoor
 
-[2/20] Processing clip1.mp4
+[2/36] Processing clip1.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip1.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_2f0d7a47e94e.json'. Re-analyzing...
-Uploading clip1.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/92uihyg8e13z
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 5.00s - 8.00s
-        Medium: 1.00s - 4.00s
-        Low: 12.00s - 15.00s
-    Vibes: Nature, Friends, Fun, Outdoors
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Friends, Fun, Outdoors
 
-[3/20] Processing clip10.mp4
+[3/36] Processing clip10.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip10.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_7af04715d624.json'. Re-analyzing...
-Uploading clip10.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/54fbvgcqnm2q
-    Requesting comprehensive analysis (attempt 1)...
-Uploading clip10.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/9z66nwujad4r
-    Requesting comprehensive analysis (attempt 2)...
-    [OK] Medium/Dynamic with best moments:
-        High: 5.00s - 7.67s
-        Medium: 2.50s - 5.00s
-        Low: 0.00s - 2.50s
-    Vibes: Nature, Friends, Dance
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Friends, Dance, Travel
 
-[4/20] Processing clip11.mp4
+[4/36] Processing clip11.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip11.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_38189676881d.json'. Re-analyzing...
-Uploading clip11.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/qipsd0kz2136
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] High/Dynamic with best moments:
-        High: 0.00s - 3.00s
-        Medium: 11.00s - 14.00s
-        Low: 4.50s - 7.50s
-    Vibes: Action, Travel, Thrill
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Travel, Thrill
 
-[5/20] Processing clip12.mp4
+[5/36] Processing clip12.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip12.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_7fe21e798900.json'. Re-analyzing...
-Uploading clip12.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/uqzrof3ptcxv
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 3.00s - 5.00s
-        Medium: 1.00s - 3.00s
-        Low: 5.00s - 7.00s
-    Vibes: Action, Outdoors, Travel
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Outdoor, Action, Fun
 
-[6/20] Processing clip13.mp4
+[6/36] Processing clip13.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip13.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_f7260a785223.json'. Re-analyzing...
-Uploading clip13.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/25kuervyrfgk
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 2.00s - 5.00s
-        Medium: 0.00s - 3.00s
-        Low: 4.50s - 7.00s
-    Vibes: Nature, Travel, Friends, Winter
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Winter, Friends
 
-[7/20] Processing clip14.mp4
+[7/36] Processing clip14.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip14.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_c01617269ebc.json'. Re-analyzing...
-Uploading clip14.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/10v7glw4yhzn
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 0.00s - 2.00s
-        Medium: 0.50s - 2.00s
-        Low: 0.00s - 1.00s
-    Vibes: Travel, Friends, Adventure
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Travel, Friends, Nature
 
-[8/20] Processing clip15.mp4
+[8/36] Processing clip15.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip15.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_42b8c596e4dd.json'. Re-analyzing...
-Uploading clip15.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/eeiob6ar4oce
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] High/Dynamic with best moments:
-        High: 0.00s - 3.00s
-        Medium: 12.00s - 15.00s
-        Low: 24.00s - 26.97s
-    Vibes: Friends, Funny, Travel, Lifestyle
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Funny, Travel, Lifestyle
 
-[9/20] Processing clip16.mp4
+[9/36] Processing clip16.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip16.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_336673aaa27e.json'. Re-analyzing...
-Uploading clip16.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/tse3ou4a17dm
-    Requesting comprehensive analysis (attempt 1)...
-[QUOTA] Rate limit detected during comprehensive clip analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during comprehensive clip analysis)
-[API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-Uploading clip16.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/td8kudx3y4gh
-    Requesting comprehensive analysis (attempt 2)...
-    [OK] High/Dynamic with best moments:
-        High: 26.00s - 29.00s
-        Medium: 1.00s - 4.00s
-        Low: 23.00s - 25.50s
-    Vibes: Friends, Nightlife, Music
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Music
 
-[10/20] Processing clip17.mp4
+[10/36] Processing clip17.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip17.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_d20c36eef384.json'. Re-analyzing...
-Uploading clip17.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/6u2z856kxvrs
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] High/Dynamic with best moments:
-        High: 1.50s - 4.00s
-        Medium: 0.00s - 2.00s
-        Low: 4.00s - 5.50s
-    Vibes: Friends, Nightlife, Party
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Party
 
-[11/20] Processing clip18.mp4
+[11/36] Processing clip18.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip18.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_bbd60cb03e77.json'. Re-analyzing...
-Uploading clip18.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/ynorwe7lccvj
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] High/Dynamic with best moments:
-        High: 5.00s - 8.00s
-        Medium: 2.00s - 5.00s
-        Low: 0.00s - 2.00s
-    Vibes: Urban, Friends, Action, Night
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Urban, Night, Friends, Action
 
-[12/20] Processing clip19.mp4
+[12/36] Processing clip19.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip19.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_24375f05b093.json'. Re-analyzing...
-Uploading clip19.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/fasttfw4auou
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] High/Dynamic with best moments:
-        High: 10.50s - 13.50s
-        Medium: 3.00s - 6.00s
-        Low: 0.00s - 2.50s
-    Vibes: Friends, Nightlife, Action
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Night, Friends, Action, Urban
 
-[13/20] Processing clip2.mp4
+[13/36] Processing clip2.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip2.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_d7296699a85c.json'. Re-analyzing...
-Uploading clip2.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/s82vka98h68t
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 2.00s - 5.00s
-        Medium: 0.00s - 3.00s
-        Low: 5.00s - 8.00s
-    Vibes: Fun, Friends, Action
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Fun
 
-[14/20] Processing clip3.mp4
+[14/36] Processing clip20.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip20.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Food, Friends, Calm
+
+[15/36] Processing clip21.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip21.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Nightlife, Fun
+
+[16/36] Processing clip22.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip22.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Fun, Music, Travel
+
+[17/36] Processing clip23.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip23.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Fun
+
+[18/36] Processing clip24.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip24.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Nightlife, Friends, Urban, Action
+
+[19/36] Processing clip25.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip25.mp4...
+    [CACHE] Loaded: Medium/Static with 3 best moments
+    [CACHE] Vibes: Food, Friends, Casual
+
+[20/36] Processing clip26.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip26.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Fun
+
+[21/36] Processing clip27.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip27.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Adventure, Animals
+
+[22/36] Processing clip28.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip28.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Hiking
+
+[23/36] Processing clip29.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip29.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Travel, Calm, Aerial
+
+[24/36] Processing clip3.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip3.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_7adc261afd20.json'. Re-analyzing...
-Uploading clip3.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/j3e1cdf5iabe
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 2.00s - 5.00s
-        Medium: 0.00s - 2.00s
-        Low: 7.00s - 10.00s
-    Vibes: Friends, Casual, Indoor
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Casual, Indoor
 
-[15/20] Processing clip4.mp4
+[25/36] Processing clip30.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip30.mp4...
+    [CACHE] Loaded: Low/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Calm, Travel
+
+[26/36] Processing clip31.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip31.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Travel, Nature, Calm, Sunset
+
+[27/36] Processing clip32.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip32.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Travel, Nature, Sunset, Aesthetic
+
+[28/36] Processing clip33.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip33.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Forest, Travel
+
+[29/36] Processing clip34.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip34.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Aviation, Sunset, Travel
+
+[30/36] Processing clip35.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip35.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Nature, Calm, Travel
+
+[31/36] Processing clip4.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip4.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_504b464ba615.json'. Re-analyzing...
-Uploading clip4.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/xjpl0lptt0al
-    Requesting comprehensive analysis (attempt 1)...
-[QUOTA] Rate limit detected during comprehensive clip analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyAjP3...SS5Pk (Rate limit during comprehensive clip analysis)
-[API KEY MANAGER] Rotated to key 3/28: AIzaSyCyiV...ASpNo
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-Uploading clip4.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/8n9k17sl8njl
-    Requesting comprehensive analysis (attempt 2)...
-    [OK] Medium/Dynamic with best moments:
-        High: 4.00s - 7.00s
-        Medium: 0.00s - 3.00s
-        Low: 8.00s - 11.00s
-    Vibes: Friends, Chill, Social
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Chill, Social
 
-[16/20] Processing clip5.mp4
+[32/36] Processing clip5.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip5.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_3b08050bfd24.json'. Re-analyzing...
-Uploading clip5.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/4zsyu5pvhy8w
-    Requesting comprehensive analysis (attempt 1)...
-Uploading clip5.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/woxal7yvyf9p
-    Requesting comprehensive analysis (attempt 2)...
-    [OK] High/Dynamic with best moments:
-        High: 11.00s - 14.00s
-        Medium: 4.00s - 7.00s
-        Low: 0.00s - 3.00s
-    Vibes: Friends, Music, Fun
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Music, Fun
 
-[17/20] Processing clip6.mp4
+[33/36] Processing clip6.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip6.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_7354744ad968.json'. Re-analyzing...
-Uploading clip6.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/gd7lcvp9g2rf
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] High/Dynamic with best moments:
-        High: 0.00s - 2.50s
-        Medium: 2.50s - 5.00s
-        Low: 5.00s - 6.90s
-    Vibes: Party, Friends, Celebration
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Celebration, Friends, Party, Wedding
 
-[18/20] Processing clip7.mp4
+[34/36] Processing clip7.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip7.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_9838b16045f5.json'. Re-analyzing...
-Uploading clip7.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/urde3pp3bzkg
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Medium/Dynamic with best moments:
-        High: 0.00s - 2.50s
-        Medium: 0.50s - 3.00s
-        Low: 1.50s - 4.00s
-    Vibes: Friends, Urban, Casual
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Urban, Casual
 
-[19/20] Processing clip8.mp4
+[35/36] Processing clip8.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip8.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_b3ee3b4e2f62.json'. Re-analyzing...
-Uploading clip8.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/na0b2ay90var
-    Requesting comprehensive analysis (attempt 1)...
-    [OK] Low/Dynamic with best moments:
-        High: 3.00s - 5.00s
-        Medium: 1.50s - 3.50s
-        Low: 0.00s - 2.00s
-    Vibes: Nature, Travel, Calm
+    [CACHE] Loaded: Low/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Calm
 
-[20/20] Processing clip9.mp4
+[36/36] Processing clip9.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip9.mp4...
-    [CACHE] Version mismatch (6.0 vs 6.1) - invalidating...
-    [WARN] Cache corrupted: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\clip_comprehensive_e74bceb69005.json'. Re-analyzing...
-Uploading clip9.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/z60c2405up7u
-    Requesting comprehensive analysis (attempt 1)...
-Uploading clip9.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/xrzrmsze0bz5
-    Requesting comprehensive analysis (attempt 2)...
-    [OK] Medium/Dynamic with best moments:
-        High: 0.00s - 2.50s
-        Medium: 2.50s - 4.50s
-        Low: 4.50s - 6.80s
-    Vibes: Action, Water Sports, Outdoors
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Water Sports, Outdoors
 
-[OK] All 20 clips analyzed
+[OK] All 36 clips analyzed
 [OK] Rate limiter status: 0 requests in last minute
 
-[OK] Gemini successfully analyzed 20 clips (using originals for cache).
-  Standardizing clip 1/20...
-  [OK] Standardized: clip_001.mp4
-  Standardizing clip 2/20...
-  [OK] Standardized: clip_002.mp4
-  Standardizing clip 3/20...
-  [OK] Standardized: clip_003.mp4
-  Standardizing clip 4/20...
-  [OK] Standardized: clip_004.mp4
-  Standardizing clip 5/20...
-  [OK] Standardized: clip_005.mp4
-  Standardizing clip 6/20...
-  [OK] Standardized: clip_006.mp4
-  Standardizing clip 7/20...
-  [OK] Standardized: clip_007.mp4
-  Standardizing clip 8/20...
-  [OK] Standardized: clip_008.mp4
-  Standardizing clip 9/20...
-  [OK] Standardized: clip_009.mp4
-  Standardizing clip 10/20...
-  [OK] Standardized: clip_010.mp4
-  Standardizing clip 11/20...
-  [OK] Standardized: clip_011.mp4
-  Standardizing clip 12/20...
-  [OK] Standardized: clip_012.mp4
-  Standardizing clip 13/20...
-  [OK] Standardized: clip_013.mp4
-  Standardizing clip 14/20...
-  [OK] Standardized: clip_014.mp4
-  Standardizing clip 15/20...
-  [OK] Standardized: clip_015.mp4
-  Standardizing clip 16/20...
-  [OK] Standardized: clip_016.mp4
-  Standardizing clip 17/20...
-  [OK] Standardized: clip_017.mp4
-  Standardizing clip 18/20...
-  [OK] Standardized: clip_018.mp4
-  Standardizing clip 19/20...
-  [OK] Standardized: clip_019.mp4
-  Standardizing clip 20/20...
-  [OK] Standardized: clip_020.mp4
-[OK] All clips standardized and ready for render.
+[OK] Gemini successfully analyzed 36 clips (using originals for cache).
+  [CACHE] Using standardized clip 1/36: clip.mp4
+  [CACHE] Using standardized clip 2/36: clip1.mp4
+  [CACHE] Using standardized clip 3/36: clip10.mp4
+  [CACHE] Using standardized clip 4/36: clip11.mp4
+  [CACHE] Using standardized clip 5/36: clip12.mp4
+  [CACHE] Using standardized clip 6/36: clip13.mp4
+  [CACHE] Using standardized clip 7/36: clip14.mp4
+  [CACHE] Using standardized clip 8/36: clip15.mp4
+  [CACHE] Using standardized clip 9/36: clip16.mp4
+  [CACHE] Using standardized clip 10/36: clip17.mp4
+  [CACHE] Using standardized clip 11/36: clip18.mp4
+  [CACHE] Using standardized clip 12/36: clip19.mp4
+  [CACHE] Using standardized clip 13/36: clip2.mp4
+  [CACHE] Using standardized clip 14/36: clip20.mp4
+  [CACHE] Using standardized clip 15/36: clip21.mp4
+  [CACHE] Using standardized clip 16/36: clip22.mp4
+  [CACHE] Using standardized clip 17/36: clip23.mp4
+  [CACHE] Using standardized clip 18/36: clip24.mp4
+  [CACHE] Using standardized clip 19/36: clip25.mp4
+  [CACHE] Using standardized clip 20/36: clip26.mp4
+  [CACHE] Using standardized clip 21/36: clip27.mp4
+  [CACHE] Using standardized clip 22/36: clip28.mp4
+  [CACHE] Using standardized clip 23/36: clip29.mp4
+  [CACHE] Using standardized clip 24/36: clip3.mp4
+  [CACHE] Using standardized clip 25/36: clip30.mp4
+  [CACHE] Using standardized clip 26/36: clip31.mp4
+  [CACHE] Using standardized clip 27/36: clip32.mp4
+  [CACHE] Using standardized clip 28/36: clip33.mp4
+  [CACHE] Using standardized clip 29/36: clip34.mp4
+  [CACHE] Using standardized clip 30/36: clip35.mp4
+  [CACHE] Using standardized clip 31/36: clip4.mp4
+  [CACHE] Using standardized clip 32/36: clip5.mp4
+  [CACHE] Using standardized clip 33/36: clip6.mp4
+  [CACHE] Using standardized clip 34/36: clip7.mp4
+  [CACHE] Using standardized clip 35/36: clip8.mp4
+  [CACHE] Using standardized clip 36/36: clip9.mp4
+[OK] All clips standardized (cached or new) and ready for render.
 
 [4/5] Creating edit sequence...
 
@@ -429,154 +307,143 @@ Upload complete: https://generativelanguage.googleapis.com/v1beta/files/xrzrmsze
 [EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)
 ============================================================
   Segments: 21
-  Clips: 20
-  Clips with pre-computed best moments: 20/20
+  Clips: 36
+  Clips with pre-computed best moments: 36/36
   🎵 Beat grid generated: 36 beats at 129.20 BPM
   DEBUG: First 5 beats: [0.0, 0.46511627906976744, 0.9302325581395349, 1.3953488372093024, 1.8604651162790697]
 
 
+📊 CLIP DEMAND ANALYSIS:
+   Reference needs: High=5, Medium=16, Low=0
+   You have:        High=13, Medium=17, Low=6
+   ✅ You have enough clips for a perfect edit!
+
+
 Segment 1: 0.00s-0.77s (0.77s, Medium/Dynamic)
-  🧠 AI Thinking: 🎯 Good Fit: Vibe 'Travel'
-  📎 Selected: clip13.mp4 (Score: 12.0)
-    ✂️ Cut 1: clip13.mp4 [0.00s-0.77s] (0.77s) → timeline [0.000000s-0.770000s]
-    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=7.87
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Travel
+  📎 Selected: clip33.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip33.mp4 [2.50s-3.27s] (0.77s) → timeline [0.000000s-0.770000s]
 
 Segment 2: 0.77s-1.73s (0.96s, Medium/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow
-  📎 Selected: clip14.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip14.mp4 [0.50s-1.46s] (0.96s) → timeline [0.770000s-1.730000s]
-    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=7.87
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Travel
+  📎 Selected: clip10.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip10.mp4 [2.50s-3.46s] (0.96s) → timeline [0.770000s-1.730000s]
 
 Segment 3: 1.73s-7.60s (5.87s, Medium/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip1.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip1.mp4 [1.00s-1.60s] (0.60s) → timeline [1.730000s-2.325581s]
-    ✂️ Cut 2: clip10.mp4 [2.50s-3.43s] (0.93s) → timeline [2.325581s-3.255814s]
-    ✂️ Cut 3: clip7.mp4 [0.50s-1.43s] (0.93s) → timeline [3.255814s-4.186047s]
-    ✂️ Cut 4: clip.mp4 [0.00s-0.77s] (0.77s) → timeline [4.186047s-4.957828s]
-    ✂️ Cut 5: clip3.mp4 [0.00s-0.81s] (0.81s) → timeline [4.957828s-5.767808s]
-    ✂️ Cut 6: clip13.mp4 [0.77s-1.98s] (1.21s) → timeline [5.767808s-6.976744s]
-    ✂️ Cut 7: clip1.mp4 [1.60s-2.22s] (0.62s) → timeline [6.976744s-7.600000s]
-    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.67
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Nature
+  📎 Selected: clip28.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip28.mp4 [5.00s-6.36s] (1.36s) → timeline [1.730000s-3.093262s]
+    ✂️ Cut 2: clip13.mp4 [0.00s-1.80s] (1.80s) → timeline [3.093262s-4.892505s]
+    ✂️ Cut 3: clip1.mp4 [1.00s-2.62s] (1.62s) → timeline [4.892505s-6.511628s]
+    ✂️ Cut 4: clip27.mp4 [16.00s-17.09s] (1.09s) → timeline [6.511628s-7.600000s]
 
 Segment 4: 7.60s-7.97s (0.37s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip12.mp4 (Score: 8.0)
-    ✂️ Cut 1: clip12.mp4 [1.00s-1.37s] (0.37s) → timeline [7.600000s-7.970000s]
-    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.67
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Nature
+  📎 Selected: clip32.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip32.mp4 [4.00s-4.37s] (0.37s) → timeline [7.600000s-7.970000s]
 
 Segment 5: 7.97s-8.30s (0.33s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip10.mp4 (Score: 14.1)
-    ✂️ Cut 1: clip10.mp4 [3.43s-3.76s] (0.33s) → timeline [7.970000s-8.300000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=8.80
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Nature
+  📎 Selected: clip14.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip14.mp4 [0.50s-0.83s] (0.33s) → timeline [7.970000s-8.300000s]
 
 Segment 6: 8.30s-9.00s (0.70s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip4.mp4 (Score: 8.0)
-    ✂️ Cut 1: clip4.mp4 [0.00s-0.54s] (0.54s) → timeline [8.300000s-8.837209s]
-    ✂️ Cut 2: clip7.mp4 [1.43s-1.59s] (0.16s) → timeline [8.837209s-9.000000s]
-    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.03
+  🧠 AI: 🌟 ✨ New | Medium
+  📎 Selected: clip34.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip34.mp4 [1.50s-2.20s] (0.70s) → timeline [8.300000s-9.000000s]
 
 Segment 7: 9.00s-9.43s (0.43s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip2.mp4 (Score: 8.0)
-    ✂️ Cut 1: clip2.mp4 [0.00s-0.43s] (0.43s) → timeline [9.000000s-9.430000s]
-    [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=2.32
+  🧠 AI: 🌟 ✨ New | ~Low | Vibe:Nature
+  📎 Selected: clip31.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip31.mp4 [3.00s-3.43s] (0.43s) → timeline [9.000000s-9.430000s]
 
 Segment 8: 9.43s-9.73s (0.30s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip9.mp4 (Score: 8.0)
-    ✂️ Cut 1: clip9.mp4 [2.50s-2.80s] (0.30s) → timeline [9.430000s-9.730000s]
-    [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=2.32
+  🧠 AI: 🌟 ✨ New | Medium
+  📎 Selected: clip25.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip25.mp4 [24.00s-24.30s] (0.30s) → timeline [9.430000s-9.730000s]
 
 Segment 9: 9.73s-10.10s (0.37s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip.mp4 (Score: 2.7)
-    ✂️ Cut 1: clip.mp4 [0.77s-1.14s] (0.37s) → timeline [9.730000s-10.100000s]
-    [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=2.32
+  🧠 AI: 🌟 ✨ New | Medium
+  📎 Selected: clip9.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip9.mp4 [2.50s-2.87s] (0.37s) → timeline [9.730000s-10.100000s]
 
 Segment 10: 10.10s-10.47s (0.37s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip14.mp4 (Score: 5.0)
-    ✂️ Cut 1: clip14.mp4 [1.46s-1.83s] (0.37s) → timeline [10.100000s-10.470000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
+  🧠 AI: 🌟 ✨ New | Medium
+  📎 Selected: clip7.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip7.mp4 [1.00s-1.37s] (0.37s) → timeline [10.100000s-10.470000s]
 
 Segment 11: 10.47s-10.80s (0.33s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Smooth motion flow
-  📎 Selected: clip3.mp4 (Score: 2.0)
-    ✂️ Cut 1: clip3.mp4 [0.81s-1.14s] (0.33s) → timeline [10.470000s-10.800000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=7.92
+  🧠 AI: 🌟 ✨ New | Medium
+  📎 Selected: clip2.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip2.mp4 [0.00s-0.33s] (0.33s) → timeline [10.470000s-10.800000s]
 
 Segment 12: 10.80s-11.20s (0.40s, Medium/Static)
-  🧠 AI Thinking: 🎯 Good Fit: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip13.mp4 (Score: 2.2)
-    ✂️ Cut 1: clip13.mp4 [1.98s-2.38s] (0.40s) → timeline [10.800000s-11.200000s]
-    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=15.44
+  🧠 AI: 🌟 ✨ New | ~Low | Vibe:Nature
+  📎 Selected: clip35.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip35.mp4 [2.00s-2.40s] (0.40s) → timeline [10.800000s-11.200000s]
 
 Segment 13: 11.20s-11.53s (0.33s, Medium/Static)
-  🧠 AI Thinking: ⚙️ Constraint Relaxation: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip1.mp4 (Score: -0.0)
-    ✂️ Cut 1: clip1.mp4 [2.22s-2.55s] (0.33s) → timeline [11.200000s-11.530000s]
-    [SKIP] Invalid clip state: clip_end=2.50, clip_start=2.50, duration=7.67
+  🧠 AI: 🌟 ✨ New | ~Low | Vibe:Nature
+  📎 Selected: clip30.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip30.mp4 [1.00s-1.33s] (0.33s) → timeline [11.200000s-11.530000s]
 
 Segment 14: 11.53s-11.90s (0.37s, Medium/Static)
-  🧠 AI Thinking: ⚙️ Constraint Relaxation: Vibe 'Nature' | Smooth motion flow
-  📎 Selected: clip10.mp4 (Score: -3.7)
-    ✂️ Cut 1: clip10.mp4 [3.76s-4.13s] (0.37s) → timeline [11.530000s-11.900000s]
-    [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=4.07
+  🧠 AI: 🌟 ✨ New | Medium
+  📎 Selected: clip4.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip4.mp4 [0.00s-0.37s] (0.37s) → timeline [11.530000s-11.900000s]
 
 Segment 15: 11.90s-12.27s (0.37s, Medium/Static)
-  🧠 AI Thinking: ⚙️ Constraint Relaxation: Build-up energy | Smooth motion flow
-  📎 Selected: clip7.mp4 (Score: -4.0)
-    ✂️ Cut 1: clip7.mp4 [1.59s-1.96s] (0.37s) → timeline [11.900000s-12.270000s]
-    [SKIP] Invalid clip state: clip_end=1.00, clip_start=1.00, duration=7.87
+  🧠 AI: 🌟 ✨ New | ~Low | Vibe:Nature
+  📎 Selected: clip8.mp4 (Score: 60.0)
+    ✂️ Cut 1: clip8.mp4 [0.00s-0.37s] (0.37s) → timeline [11.900000s-12.270000s]
 
 Segment 16: 12.27s-13.13s (0.86s, High/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Peak-intensity moment | Vibe 'Friends' | Smooth motion flow
-  📎 Selected: clip19.mp4 (Score: 55.0)
-    ✂️ Cut 1: clip19.mp4 [10.50s-10.79s] (0.29s) → timeline [12.270000s-12.558140s]
-    ✂️ Cut 2: clip18.mp4 [5.00s-5.16s] (0.16s) → timeline [12.558140s-12.715332s]
-    ✂️ Cut 3: clip17.mp4 [1.50s-1.81s] (0.31s) → timeline [12.715332s-13.023256s]
-    ✂️ Cut 4: clip15.mp4 [0.00s-0.11s] (0.11s) → timeline [13.023256s-13.130000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=6.90
+  🧠 AI: 🌟 ✨ New | High | Vibe:Friends
+  📎 Selected: clip26.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip26.mp4 [4.00s-4.86s] (0.86s) → timeline [12.270000s-13.130000s]
 
 Segment 17: 13.13s-13.53s (0.40s, High/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Smooth motion flow
-  📎 Selected: clip11.mp4 (Score: 23.0)
-    ✂️ Cut 1: clip11.mp4 [0.00s-0.40s] (0.40s) → timeline [13.130000s-13.530000s]
-    [SKIP] Invalid clip state: clip_end=11.00, clip_start=11.00, duration=19.43
+  🧠 AI: 🌟 ✨ New | High | Vibe:Friends
+  📎 Selected: clip15.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip15.mp4 [0.00s-0.40s] (0.40s) → timeline [13.130000s-13.530000s]
 
 Segment 18: 13.53s-14.20s (0.67s, High/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Vibe 'Friends' | Smooth motion flow
-  📎 Selected: clip16.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip16.mp4 [26.00s-26.19s] (0.19s) → timeline [13.530000s-13.716206s]
-    ✂️ Cut 2: clip6.mp4 [0.00s-0.24s] (0.24s) → timeline [13.716206s-13.953488s]
-    ✂️ Cut 3: clip19.mp4 [10.79s-11.03s] (0.25s) → timeline [13.953488s-14.200000s]
-    [SKIP] Invalid clip state: clip_end=11.00, clip_start=11.00, duration=19.43
+  🧠 AI: 🌟 ✨ New | High | Vibe:Friends
+  📎 Selected: clip6.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip6.mp4 [0.00s-0.67s] (0.67s) → timeline [13.530000s-14.200000s]
 
 Segment 19: 14.20s-14.73s (0.53s, High/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Vibe 'Friends' | Smooth motion flow
-  📎 Selected: clip5.mp4 (Score: 20.0)
-    ✂️ Cut 1: clip5.mp4 [11.00s-11.22s] (0.22s) → timeline [14.200000s-14.418605s]
-    ✂️ Cut 2: clip18.mp4 [5.16s-5.47s] (0.31s) → timeline [14.418605s-14.730000s]
-    [SKIP] Invalid clip state: clip_end=10.50, clip_start=10.50, duration=14.81
+  🧠 AI: 🌟 ✨ New | High | Vibe:Friends
+  📎 Selected: clip16.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip16.mp4 [26.00s-26.53s] (0.53s) → timeline [14.200000s-14.730000s]
 
 Segment 20: 14.73s-15.20s (0.47s, High/Dynamic)
-  🧠 AI Thinking: 🎯 Good Fit: Peak-intensity moment | Vibe 'Friends' | ⚠️ Recently used (0.5s ago) | Smooth motion flow
-  📎 Selected: clip19.mp4 (Score: 4.3)
-    ✂️ Cut 1: clip19.mp4 [11.03s-11.50s] (0.47s) → timeline [14.730000s-15.200000s]
-    [SKIP] Invalid clip state: clip_end=0.00, clip_start=0.00, duration=26.97
+  🧠 AI: 🌟 ✨ New | High | Vibe:Friends
+  📎 Selected: clip24.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip24.mp4 [0.00s-0.47s] (0.47s) → timeline [14.730000s-15.200000s]
 
 Segment 21: 15.20s-16.65s (1.45s, Medium/Dynamic)
-  🧠 AI Thinking: ✨ Smart Match: Outro-style shot | Vibe 'Friends' | Smooth motion flow
-  📎 Selected: clip.mp4 (Score: 34.0)
-    ✂️ Cut 1: clip.mp4 [1.14s-2.00s] (0.86s) → timeline [15.200000s-16.645850s]
-    [SKIP] Invalid clip state: clip_end=0.50, clip_start=0.50, duration=2.32
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Friends
+  📎 Selected: clip3.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip3.mp4 [0.00s-1.45s] (1.45s) → timeline [15.200000s-16.645850s]
 
 ============================================================
-[OK] Matching complete: 34 edit decisions
+[OK] Matching complete: 24 edit decisions
 [OK] Total timeline duration: 16.65s (target: 16.65s)
+
+📊 DIVERSITY REPORT:
+   Unique clips used: 24/36
+   ⚠️ 12 clips were not used.
+
+   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
+
+📋 ENERGY COMPROMISES: 4
+   (Used adjacent energy when exact wasn't available)
+      Medium→Low: 4 times
+
+💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
+
+   [Quality Improvements]
 ============================================================
 
 
@@ -584,69 +451,65 @@ Segment 21: 15.20s-16.65s (1.45s, Medium/Dynamic)
 [EDL] EDIT DECISION LIST SUMMARY
 ============================================================
 
-Total decisions: 34
+Total decisions: 24
 Total segments: 21
-Available clips: 20
+Available clips: 36
 
 Clip usage distribution:
-  clip_006.mp4: 3 times
-  clip_002.mp4: 3 times
-  clip_003.mp4: 3 times
-  clip_018.mp4: 3 times
-  clip_001.mp4: 3 times
-  clip_012.mp4: 3 times
-  clip_007.mp4: 2 times
-  clip_014.mp4: 2 times
-  clip_011.mp4: 2 times
-  clip_005.mp4: 1 times
-  clip_015.mp4: 1 times
+  clip_028.mp4: 1 times
+  clip_003.mp4: 1 times
+  clip_022.mp4: 1 times
+  clip_006.mp4: 1 times
+  clip_002.mp4: 1 times
+  clip_021.mp4: 1 times
+  clip_027.mp4: 1 times
+  clip_007.mp4: 1 times
+  clip_029.mp4: 1 times
+  clip_026.mp4: 1 times
+  clip_019.mp4: 1 times
+  clip_036.mp4: 1 times
+  clip_034.mp4: 1 times
   clip_013.mp4: 1 times
+  clip_030.mp4: 1 times
+  clip_025.mp4: 1 times
+  clip_031.mp4: 1 times
+  clip_035.mp4: 1 times
   clip_020.mp4: 1 times
-  clip_010.mp4: 1 times
   clip_008.mp4: 1 times
-  clip_004.mp4: 1 times
+  clip_033.mp4: 1 times
   clip_009.mp4: 1 times
-  clip_017.mp4: 1 times
-  clip_016.mp4: 1 times
+  clip_018.mp4: 1 times
+  clip_024.mp4: 1 times
 
 
 [5/5] Rendering final video...
-    [OK] Segment extracted: 0.00s - 0.77s
-    [OK] Segment extracted: 0.50s - 1.46s
-    [OK] Segment extracted: 1.00s - 1.60s
-    [OK] Segment extracted: 2.50s - 3.43s
-    [OK] Segment extracted: 0.50s - 1.43s
-    [OK] Segment extracted: 0.00s - 0.77s
-    [OK] Segment extracted: 0.00s - 0.81s
-    [OK] Segment extracted: 0.77s - 1.98s
-    [OK] Segment extracted: 1.60s - 2.22s
+    [OK] Segment extracted: 2.50s - 3.27s
+    [OK] Segment extracted: 2.50s - 3.46s
+    [OK] Segment extracted: 5.00s - 6.36s
+    [OK] Segment extracted: 0.00s - 1.80s
+    [OK] Segment extracted: 1.00s - 2.62s
+    [OK] Segment extracted: 16.00s - 17.09s
+    [OK] Segment extracted: 4.00s - 4.37s
+    [OK] Segment extracted: 0.50s - 0.83s
+    [OK] Segment extracted: 1.50s - 2.20s
+    [OK] Segment extracted: 3.00s - 3.43s
+    [OK] Segment extracted: 24.00s - 24.30s
+    [OK] Segment extracted: 2.50s - 2.87s
     [OK] Segment extracted: 1.00s - 1.37s
-    [OK] Segment extracted: 3.43s - 3.76s
-    [OK] Segment extracted: 0.00s - 0.54s
-    [OK] Segment extracted: 1.43s - 1.59s
-    [OK] Segment extracted: 0.00s - 0.43s
-    [OK] Segment extracted: 2.50s - 2.80s
-    [OK] Segment extracted: 0.77s - 1.14s
-    [OK] Segment extracted: 1.46s - 1.83s
-    [OK] Segment extracted: 0.81s - 1.14s
-    [OK] Segment extracted: 1.98s - 2.38s
-    [OK] Segment extracted: 2.22s - 2.55s
-    [OK] Segment extracted: 3.76s - 4.13s
-    [OK] Segment extracted: 1.59s - 1.96s
-    [OK] Segment extracted: 10.50s - 10.79s
-    [OK] Segment extracted: 5.00s - 5.16s
-    [OK] Segment extracted: 1.50s - 1.81s
-    [OK] Segment extracted: 0.00s - 0.11s
+    [OK] Segment extracted: 0.00s - 0.33s
+    [OK] Segment extracted: 2.00s - 2.40s
+    [OK] Segment extracted: 1.00s - 1.33s
+    [OK] Segment extracted: 0.00s - 0.37s
+    [OK] Segment extracted: 0.00s - 0.37s
+    [OK] Segment extracted: 4.00s - 4.86s
     [OK] Segment extracted: 0.00s - 0.40s
-    [OK] Segment extracted: 26.00s - 26.19s
-    [OK] Segment extracted: 0.00s - 0.24s
-    [OK] Segment extracted: 10.79s - 11.03s
-    [OK] Segment extracted: 11.00s - 11.22s
-    [OK] Segment extracted: 5.16s - 5.47s
-    [OK] Segment extracted: 11.03s - 11.50s
-    [OK] Segment extracted: 1.14s - 2.00s
-  [OK] Concatenated 34 segments (frame-perfect)
+    [OK] Segment extracted: 0.00s - 0.67s
+    [OK] Segment extracted: 26.00s - 26.53s
+    [OK] Segment extracted: 0.00s - 0.47s
+    [OK] Segment extracted: 0.00s - 1.45s
+  [OK] Concatenated 24 segments (frame-perfect)
   [OK] Audio extracted: ref_audio.aac
+[WARN] Removing existing output file: data\results\mimic_output_ref5_vibes_test.mp4
   [OK] Audio merged onto video (optimized)
 
 ============================================================
@@ -655,7 +518,7 @@ Clip usage distribution:
 Output: data\results\mimic_output_ref5_vibes_test.mp4
 Duration: 16.65s
 Segments: 21
-Processing time: 1610.0s
+Processing time: 15.8s
 ============================================================
 
 
@@ -666,7 +529,7 @@ Processing time: 1610.0s
    Output: mimic_output_ref5_vibes_test.mp4
    Duration: 16.60s (ref: 16.65s)
    Difference: 0.04s
-   Processing time: 1610.0s
+   Processing time: 15.8s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -677,6 +540,29 @@ Processing time: 1610.0s
    Emotional Intent: Dynamic
    Arc Description: Video with multiple scene changes
    Total Segments: 21
+
+📑 BLUEPRINT FULL SEGMENT LIST:
+   01:  0.00- 0.77s | Medium | Vibe: Travel     | Intro
+   02:  0.77- 1.73s | Medium | Vibe: Travel     | Intro
+   03:  1.73- 7.60s | Medium | Vibe: Nature     | Build-up
+   04:  7.60- 7.97s | Medium | Vibe: Nature     | Build-up
+   05:  7.97- 8.30s | Medium | Vibe: Nature     | Build-up
+   06:  8.30- 9.00s | Medium | Vibe: Nature     | Build-up
+   07:  9.00- 9.43s | Medium | Vibe: Nature     | Build-up
+   08:  9.43- 9.73s | Medium | Vibe: Nature     | Build-up
+   09:  9.73-10.10s | Medium | Vibe: Nature     | Build-up
+   10: 10.10-10.47s | Medium | Vibe: Nature     | Build-up
+   11: 10.47-10.80s | Medium | Vibe: Nature     | Build-up
+   12: 10.80-11.20s | Medium | Vibe: Nature     | Build-up
+   13: 11.20-11.53s | Medium | Vibe: Nature     | Build-up
+   14: 11.53-11.90s | Medium | Vibe: Nature     | Build-up
+   15: 11.90-12.27s | Medium | Vibe: Nature     | Build-up
+   16: 12.27-13.13s | High   | Vibe: Friends    | Peak
+   17: 13.13-13.53s | High   | Vibe: Friends    | Peak
+   18: 13.53-14.20s | High   | Vibe: Friends    | Peak
+   19: 14.20-14.73s | High   | Vibe: Friends    | Peak
+   20: 14.73-15.20s | High   | Vibe: Friends    | Peak
+   21: 15.20-16.65s | Medium | Vibe: Friends    | Outro
 
 📈 Arc Stage Distribution:
    Build-up: 13 segments (61.9%)
@@ -690,87 +576,124 @@ Processing time: 1610.0s
    Travel: 2 segments (9.5%)
 
 📎 Clip Usage Analysis:
-   Unique clips used: 19/20
+   Unique clips used: 24/36
    Most used clips:
-     clip_006.mp4: 3 times (8.8%)
-     clip_002.mp4: 3 times (8.8%)
-     clip_003.mp4: 3 times (8.8%)
-     clip_018.mp4: 3 times (8.8%)
-     clip_001.mp4: 3 times (8.8%)
+     clip_028.mp4: 1 times (4.2%)
+     clip_003.mp4: 1 times (4.2%)
+     clip_022.mp4: 1 times (4.2%)
+     clip_006.mp4: 1 times (4.2%)
+     clip_002.mp4: 1 times (4.2%)
 
 🧠 AI Reasoning Breakdown:
-   ✨ Smart Match: 16 (47.1%)
-   🎯 Good Fit: 14 (41.2%)
-   ⚙️ Constraint Relaxation: 4 (11.8%)
+   ✨ Smart Match: 0 (0.0%)
+   🎯 Good Fit: 0 (0.0%)
+   ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 21/34 (61.8%)
+   Matches: 18/24 (75.0%)
 
 📏 Cut Statistics by Arc Stage:
    Intro: 2 cuts, avg 0.86s
-   Build-up: 20 cuts, avg 0.53s
-   Peak: 11 cuts, avg 0.27s
+   Build-up: 16 cuts, avg 0.66s
+   Peak: 5 cuts, avg 0.59s
    Outro: 1 cuts, avg 1.45s
 
 📏 Overall Cut Statistics:
-   Total cuts: 34
-   Average cut: 0.49s
-   Shortest cut: 0.11s
-   Longest cut: 1.45s
+   Total cuts: 24
+   Average cut: 0.69s
+   Shortest cut: 0.30s
+   Longest cut: 1.80s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_006.mp4: 🎯 Good Fit: Vibe 'Travel'...
-   2. clip_007.mp4: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow...
-   3. clip_002.mp4: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow...
-   4. clip_003.mp4: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow...
-   5. clip_018.mp4: ✨ Smart Match: Build-up energy | Smooth motion flow...
+   1. clip_028.mp4: 🌟 ✨ New | Medium | Vibe:Travel...
+   2. clip_003.mp4: 🌟 ✨ New | Medium | Vibe:Travel...
+   3. clip_022.mp4: 🌟 ✨ New | Medium | Vibe:Nature...
+   4. clip_006.mp4: 🌟 ✨ New | Medium | Vibe:Nature...
+   5. clip_002.mp4: 🌟 ✨ New | Medium | Vibe:Nature...
 
-📦 Clip Metadata Quality:
-   Clips with best_moments: 20/20
-   Clips with vibes: 20/20
-   Clips with content_description: 20/20
+📦 CLIP REGISTRY (36 total):
+   01: clip.mp4        | Medium |   4.8s | Vibes: Friends, Funny, Indoor
+   02: clip1.mp4       | Medium |  15.4s | Vibes: Nature, Friends, Fun
+   03: clip10.mp4      | Medium |   7.7s | Vibes: Nature, Friends, Dance
+   04: clip11.mp4      | High   |  15.4s | Vibes: Action, Travel, Thrill
+   05: clip12.mp4      | Medium |   7.9s | Vibes: Outdoor, Action, Fun
+   06: clip13.mp4      | Medium |   7.9s | Vibes: Nature, Travel, Winter
+   07: clip14.mp4      | Medium |   2.3s | Vibes: Travel, Friends, Nature
+   08: clip15.mp4      | High   |  27.0s | Vibes: Friends, Funny, Travel
+   09: clip16.mp4      | High   |  38.3s | Vibes: Friends, Nightlife, Music
+   10: clip17.mp4      | High   |   5.5s | Vibes: Friends, Nightlife, Party
+   11: clip18.mp4      | High   |   8.5s | Vibes: Urban, Night, Friends
+   12: clip19.mp4      | High   |  14.8s | Vibes: Night, Friends, Action
+   13: clip2.mp4       | Medium |   8.8s | Vibes: Friends, Action, Fun
+   14: clip20.mp4      | Low    |   5.6s | Vibes: Food, Friends, Calm
+   15: clip21.mp4      | High   |  48.6s | Vibes: Friends, Action, Nightlife
+   16: clip22.mp4      | High   |  27.7s | Vibes: Friends, Fun, Music
+   17: clip23.mp4      | High   |  21.4s | Vibes: Friends, Action, Fun
+   18: clip24.mp4      | High   |  12.6s | Vibes: Nightlife, Friends, Urban
+   19: clip25.mp4      | Medium |  28.8s | Vibes: Food, Friends, Casual
+   20: clip26.mp4      | High   |   9.9s | Vibes: Friends, Nightlife, Fun
+   21: clip27.mp4      | Medium |  29.0s | Vibes: Nature, Travel, Adventure
+   22: clip28.mp4      | Medium |  38.9s | Vibes: Nature, Travel, Hiking
+   23: clip29.mp4      | Low    |   6.8s | Vibes: Travel, Calm, Aerial
+   24: clip3.mp4       | Medium |  10.4s | Vibes: Friends, Casual, Indoor
+   25: clip30.mp4      | Low    |   4.6s | Vibes: Nature, Calm, Travel
+   26: clip31.mp4      | Low    |   7.1s | Vibes: Travel, Nature, Calm
+   27: clip32.mp4      | Medium |  11.1s | Vibes: Travel, Nature, Sunset
+   28: clip33.mp4      | Medium |   9.3s | Vibes: Nature, Forest, Travel
+   29: clip34.mp4      | Medium |   9.2s | Vibes: Aviation, Sunset, Travel
+   30: clip35.mp4      | Low    |   6.9s | Vibes: Nature, Calm, Travel
+   31: clip4.mp4       | Medium |  14.5s | Vibes: Friends, Chill, Social
+   32: clip5.mp4       | High   |  19.4s | Vibes: Friends, Music, Fun
+   33: clip6.mp4       | High   |   6.9s | Vibes: Celebration, Friends, Party
+   34: clip7.mp4       | Medium |   4.1s | Vibes: Friends, Urban, Casual
+   35: clip8.mp4       | Low    |   5.5s | Vibes: Nature, Travel, Calm
+   36: clip9.mp4       | Medium |   7.0s | Vibes: Action, Water Sports, Outdoors
+
+📋 Metadata Coverage:
+   Best Moments: 36/36
+   Vibes: 36/36
 
 🔍 Temporal Precision Check:
    ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
 
 📦 Material Efficiency:
-   Total source duration available: 232.22s
-   Total duration used in edit: 16.06s
-   Unique clip segments used: 34
-   Utilization Ratio: 6.9%
+   Total source duration available: 509.84s
+   Total duration used in edit: 16.65s
+   Unique clip segments used: 24
+   Utilization Ratio: 3.3%
    💡 Note: Low utilization suggests clips may not match reference vibes well
 
 📊 Selection Reasoning Breakdown:
-   Arc Stage Relevance: 7 decisions (20.6%)
-   Vibe Matching: 21 decisions (61.8%)
-   Visual Cooldown Warnings: 3 decisions (8.8%)
-   Smooth Transitions: 33 decisions (97.1%)
+   Arc Stage Relevance: 0 decisions (0.0%)
+   Vibe Matching: 18 decisions (75.0%)
+   Visual Cooldown Warnings: 0 decisions (0.0%)
+   Smooth Transitions: 0 decisions (0.0%)
    Usage Penalties Applied: 0 decisions (0.0%)
 
 💭 Detailed Reasoning Examples (first 3 decisions):
 
    Decision 1:
      Timeline: 0.000s - 0.770s (0.770s)
-     Clip: clip_006.mp4
-     Source: 0.00s - 0.77s
+     Clip: clip_028.mp4
+     Source: 2.50s - 3.27s
      Segment: Intro | Medium/Dynamic | Vibe: Travel
-     Reasoning: 🎯 Good Fit: Vibe 'Travel'
+     Reasoning: 🌟 ✨ New | Medium | Vibe:Travel
      Vibe Match: ✅
 
    Decision 2:
      Timeline: 0.770s - 1.730s (0.960s)
-     Clip: clip_007.mp4
-     Source: 0.50s - 1.46s
+     Clip: clip_003.mp4
+     Source: 2.50s - 3.46s
      Segment: Intro | Medium/Dynamic | Vibe: Travel
-     Reasoning: ✨ Smart Match: Vibe 'Travel' | Smooth motion flow
+     Reasoning: 🌟 ✨ New | Medium | Vibe:Travel
      Vibe Match: ✅
 
    Decision 3:
-     Timeline: 1.730s - 2.326s (0.596s)
-     Clip: clip_002.mp4
-     Source: 1.00s - 1.60s
+     Timeline: 1.730s - 3.093s (1.363s)
+     Clip: clip_022.mp4
+     Source: 5.00s - 6.36s
      Segment: Build-up | Medium/Dynamic | Vibe: Nature
-     Reasoning: ✨ Smart Match: Vibe 'Nature' | Smooth motion flow
+     Reasoning: 🌟 ✨ New | Medium | Vibe:Nature
      Vibe Match: ✅
 
 ================================================================================

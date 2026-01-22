@@ -1,0 +1,585 @@
+================================================================================
+TESTING REF9.MP4 WITH VIBES + DYNAMIC BPM
+================================================================================
+
+📹 Reference: ref9.mp4
+   Duration: 16.28s
+
+📎 Testing with 36 clips
+   Cache Version: 6.1 (will re-analyze clips for vibes)
+
+🚀 Starting pipeline...
+   Step 1: Validating inputs
+   Step 2: Scene detection + BPM detection + Reference analysis
+   Step 3: Clip analysis (NEW: extracting vibes + content)
+   Step 4: Semantic matching (NEW: vibe-aware selection)
+   Step 5: Rendering with dynamic BPM sync
+
+
+[1/5] Validating inputs...
+
+[2/5] Detecting visual cuts and analyzing reference structure...
+  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.3)...
+  [OK] Detected 1 visual cuts.
+  [BEAT] Detecting BPM for ref_analysis_audio.wav...
+  [OK] Detected BPM: 95.70
+
+============================================================
+[BRAIN] ANALYZING REFERENCE VIDEO: ref9.mp4
+[BRAIN] Using 1 visual scene anchors.
+============================================================
+
+[CACHE] Found cached analysis: ref_68e4793d376b_hd9d18389.json
+[OK] Loaded from cache: 2 segments (preserved original rhythm)
+[OK] Gemini successfully analyzed reference: 2 segments found.
+
+[3/5] Analyzing user clips with Gemini AI...
+
+============================================================
+[BRAIN] ANALYZING USER CLIPS (36 total)
+[BRAIN] Mode: COMPREHENSIVE (energy + best moments)
+============================================================
+
+
+[1/36] Processing clip.mp4
+[API KEY MANAGER] Loaded 28 API key(s)
+[API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Funny, Indoor
+
+[2/36] Processing clip1.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip1.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Friends, Fun, Outdoors
+
+[3/36] Processing clip10.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip10.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Friends, Dance, Travel
+
+[4/36] Processing clip11.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip11.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Travel, Thrill
+
+[5/36] Processing clip12.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip12.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Outdoor, Action, Fun
+
+[6/36] Processing clip13.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip13.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Winter, Friends
+
+[7/36] Processing clip14.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip14.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Travel, Friends, Nature
+
+[8/36] Processing clip15.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip15.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Funny, Travel, Lifestyle
+
+[9/36] Processing clip16.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip16.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Music
+
+[10/36] Processing clip17.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip17.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Party
+
+[11/36] Processing clip18.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip18.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Urban, Night, Friends, Action
+
+[12/36] Processing clip19.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip19.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Night, Friends, Action, Urban
+
+[13/36] Processing clip2.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip2.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Fun
+
+[14/36] Processing clip20.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip20.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Food, Friends, Calm
+
+[15/36] Processing clip21.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip21.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Nightlife, Fun
+
+[16/36] Processing clip22.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip22.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Fun, Music, Travel
+
+[17/36] Processing clip23.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip23.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Action, Fun
+
+[18/36] Processing clip24.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip24.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Nightlife, Friends, Urban, Action
+
+[19/36] Processing clip25.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip25.mp4...
+    [CACHE] Loaded: Medium/Static with 3 best moments
+    [CACHE] Vibes: Food, Friends, Casual
+
+[20/36] Processing clip26.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip26.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Nightlife, Fun
+
+[21/36] Processing clip27.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip27.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Adventure, Animals
+
+[22/36] Processing clip28.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip28.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Hiking
+
+[23/36] Processing clip29.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip29.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Travel, Calm, Aerial
+
+[24/36] Processing clip3.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip3.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Casual, Indoor
+
+[25/36] Processing clip30.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip30.mp4...
+    [CACHE] Loaded: Low/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Calm, Travel
+
+[26/36] Processing clip31.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip31.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Travel, Nature, Calm, Sunset
+
+[27/36] Processing clip32.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip32.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Travel, Nature, Sunset, Aesthetic
+
+[28/36] Processing clip33.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip33.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Forest, Travel
+
+[29/36] Processing clip34.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip34.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Aviation, Sunset, Travel
+
+[30/36] Processing clip35.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip35.mp4...
+    [CACHE] Loaded: Low/Static with 3 best moments
+    [CACHE] Vibes: Nature, Calm, Travel
+
+[31/36] Processing clip4.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip4.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Chill, Social
+
+[32/36] Processing clip5.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip5.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Music, Fun
+
+[33/36] Processing clip6.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip6.mp4...
+    [CACHE] Loaded: High/Dynamic with 3 best moments
+    [CACHE] Vibes: Celebration, Friends, Party, Wedding
+
+[34/36] Processing clip7.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip7.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Friends, Urban, Casual
+
+[35/36] Processing clip8.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip8.mp4...
+    [CACHE] Loaded: Low/Dynamic with 3 best moments
+    [CACHE] Vibes: Nature, Travel, Calm
+
+[36/36] Processing clip9.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip9.mp4...
+    [CACHE] Loaded: Medium/Dynamic with 3 best moments
+    [CACHE] Vibes: Action, Water Sports, Outdoors
+
+[OK] All 36 clips analyzed
+[OK] Rate limiter status: 0 requests in last minute
+
+[OK] Gemini successfully analyzed 36 clips (using originals for cache).
+  [CACHE] Using standardized clip 1/36: clip.mp4
+  [CACHE] Using standardized clip 2/36: clip1.mp4
+  [CACHE] Using standardized clip 3/36: clip10.mp4
+  [CACHE] Using standardized clip 4/36: clip11.mp4
+  [CACHE] Using standardized clip 5/36: clip12.mp4
+  [CACHE] Using standardized clip 6/36: clip13.mp4
+  [CACHE] Using standardized clip 7/36: clip14.mp4
+  [CACHE] Using standardized clip 8/36: clip15.mp4
+  [CACHE] Using standardized clip 9/36: clip16.mp4
+  Standardizing clip 10/36: clip17.mp4...
+  [OK] Standardized: clip_010.mp4
+  Standardizing clip 11/36: clip18.mp4...
+  [OK] Standardized: clip_011.mp4
+  Standardizing clip 12/36: clip19.mp4...
+  [OK] Standardized: clip_012.mp4
+  Standardizing clip 13/36: clip2.mp4...
+  [OK] Standardized: clip_013.mp4
+  Standardizing clip 14/36: clip20.mp4...
+  [OK] Standardized: clip_014.mp4
+  Standardizing clip 15/36: clip21.mp4...
+  [OK] Standardized: clip_015.mp4
+  Standardizing clip 16/36: clip22.mp4...
+  [OK] Standardized: clip_016.mp4
+  Standardizing clip 17/36: clip23.mp4...
+  [OK] Standardized: clip_017.mp4
+  Standardizing clip 18/36: clip24.mp4...
+  [OK] Standardized: clip_018.mp4
+  Standardizing clip 19/36: clip25.mp4...
+  [OK] Standardized: clip_019.mp4
+  Standardizing clip 20/36: clip26.mp4...
+  [OK] Standardized: clip_020.mp4
+  Standardizing clip 21/36: clip27.mp4...
+  [OK] Standardized: clip_021.mp4
+  Standardizing clip 22/36: clip28.mp4...
+  [OK] Standardized: clip_022.mp4
+  Standardizing clip 23/36: clip29.mp4...
+  [OK] Standardized: clip_023.mp4
+  Standardizing clip 24/36: clip3.mp4...
+  [OK] Standardized: clip_024.mp4
+  Standardizing clip 25/36: clip30.mp4...
+  [OK] Standardized: clip_025.mp4
+  Standardizing clip 26/36: clip31.mp4...
+  [OK] Standardized: clip_026.mp4
+  Standardizing clip 27/36: clip32.mp4...
+  [OK] Standardized: clip_027.mp4
+  Standardizing clip 28/36: clip33.mp4...
+  [OK] Standardized: clip_028.mp4
+  Standardizing clip 29/36: clip34.mp4...
+  [OK] Standardized: clip_029.mp4
+  Standardizing clip 30/36: clip35.mp4...
+  [OK] Standardized: clip_030.mp4
+  Standardizing clip 31/36: clip4.mp4...
+  [OK] Standardized: clip_031.mp4
+  Standardizing clip 32/36: clip5.mp4...
+  [OK] Standardized: clip_032.mp4
+  Standardizing clip 33/36: clip6.mp4...
+  [OK] Standardized: clip_033.mp4
+  Standardizing clip 34/36: clip7.mp4...
+  [OK] Standardized: clip_034.mp4
+  Standardizing clip 35/36: clip8.mp4...
+  [OK] Standardized: clip_035.mp4
+  Standardizing clip 36/36: clip9.mp4...
+  [OK] Standardized: clip_036.mp4
+[OK] All clips standardized (cached or new) and ready for render.
+
+[4/5] Creating edit sequence...
+
+============================================================
+[EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)
+============================================================
+  Segments: 2
+  Clips: 36
+  Clips with pre-computed best moments: 36/36
+  🎵 Beat grid generated: 27 beats at 95.70 BPM
+  DEBUG: First 5 beats: [0.0, 0.625, 1.25, 1.875, 2.5]
+
+
+📊 CLIP DEMAND ANALYSIS:
+   Reference needs: High=1, Medium=1, Low=0
+   You have:        High=13, Medium=17, Low=6
+   ✅ You have enough clips for a perfect edit!
+
+
+Segment 1: 0.00s-11.43s (11.43s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | High | Vibe:Travel
+  📎 Selected: clip22.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip22.mp4 [1.00s-2.51s] (1.51s) → timeline [0.000000s-1.512694s]
+    ✂️ Cut 2: clip15.mp4 [0.00s-1.61s] (1.61s) → timeline [1.512694s-3.125000s]
+    ✂️ Cut 3: clip11.mp4 [0.00s-1.25s] (1.25s) → timeline [3.125000s-4.375000s]
+    ✂️ Cut 4: clip28.mp4 [31.00s-32.68s] (1.68s) → timeline [4.375000s-6.056002s]
+    ✂️ Cut 5: clip32.mp4 [7.50s-9.20s] (1.70s) → timeline [6.056002s-7.759324s]
+    ✂️ Cut 6: clip24.mp4 [0.00s-1.62s] (1.62s) → timeline [7.759324s-9.375000s]
+    ✂️ Cut 7: clip18.mp4 [4.50s-5.75s] (1.25s) → timeline [9.375000s-10.625000s]
+    ✂️ Cut 8: clip16.mp4 [26.00s-26.80s] (0.80s) → timeline [10.625000s-11.430000s]
+
+Segment 2: 11.43s-16.28s (4.85s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | Medium | Vibe:Nature
+  📎 Selected: clip13.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip13.mp4 [0.00s-3.00s] (3.00s) → timeline [11.430000s-16.275782s]
+
+============================================================
+[OK] Matching complete: 9 edit decisions
+[OK] Total timeline duration: 16.28s (target: 16.28s)
+
+📊 DIVERSITY REPORT:
+   Unique clips used: 9/36
+   ⚠️ 27 clips were not used.
+
+   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
+
+📋 ENERGY COMPROMISES: 2
+   (Used adjacent energy when exact wasn't available)
+      High→Medium: 2 times
+
+💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
+
+   [Quality Improvements]
+   → 2 segments wanted 'High' energy but used 'Medium'.
+     Add high-intensity clips with 'Urban' or 'Nightlife' vibes to fix this.
+============================================================
+
+
+============================================================
+[EDL] EDIT DECISION LIST SUMMARY
+============================================================
+
+Total decisions: 9
+Total segments: 2
+Available clips: 36
+
+Clip usage distribution:
+  clip_016.mp4: 1 times
+  clip_008.mp4: 1 times
+  clip_004.mp4: 1 times
+  clip_022.mp4: 1 times
+  clip_027.mp4: 1 times
+  clip_018.mp4: 1 times
+  clip_011.mp4: 1 times
+  clip_009.mp4: 1 times
+  clip_006.mp4: 1 times
+
+
+[5/5] Rendering final video...
+    [OK] Segment extracted: 1.00s - 2.51s
+    [OK] Segment extracted: 0.00s - 1.61s
+    [OK] Segment extracted: 0.00s - 1.25s
+    [OK] Segment extracted: 31.00s - 32.68s
+    [OK] Segment extracted: 7.50s - 9.20s
+    [OK] Segment extracted: 0.00s - 1.62s
+    [OK] Segment extracted: 4.50s - 5.75s
+    [OK] Segment extracted: 26.00s - 26.80s
+    [OK] Segment extracted: 0.00s - 3.00s
+  [OK] Concatenated 9 segments (frame-perfect)
+  [OK] Audio extracted: ref_audio.aac
+  [OK] Audio merged onto video (optimized)
+
+============================================================
+[OK] PIPELINE COMPLETE
+============================================================
+Output: data\results\mimic_output_ref9_vibes_test.mp4
+Duration: 16.28s
+Segments: 2
+Processing time: 225.8s
+============================================================
+
+
+================================================================================
+✅ SUCCESS!
+
+📊 Basic Results:
+   Output: mimic_output_ref9_vibes_test.mp4
+   Duration: 14.77s (ref: 16.28s)
+   Difference: 1.51s
+   Processing time: 225.8s
+
+================================================================================
+🧠 COMPREHENSIVE SYSTEM ANALYSIS
+================================================================================
+
+📹 Reference Analysis:
+   Editing Style: Cinematic Montage
+   Emotional Intent: Dynamic
+   Arc Description: A fast-paced montage capturing highlights of a trip with cousins, moving from daytime activities to ...
+   Total Segments: 2
+
+📑 BLUEPRINT FULL SEGMENT LIST:
+   01:  0.00-11.43s | High   | Vibe: Travel     | Build-up
+   02: 11.43-16.28s | Medium | Vibe: Nature     | Outro
+
+📈 Arc Stage Distribution:
+   Build-up: 1 segments (50.0%)
+   Outro: 1 segments (50.0%)
+
+🎨 Vibe Distribution:
+   Travel: 1 segments (50.0%)
+   Nature: 1 segments (50.0%)
+
+📎 Clip Usage Analysis:
+   Unique clips used: 9/36
+   Most used clips:
+     clip_016.mp4: 1 times (11.1%)
+     clip_008.mp4: 1 times (11.1%)
+     clip_004.mp4: 1 times (11.1%)
+     clip_022.mp4: 1 times (11.1%)
+     clip_027.mp4: 1 times (11.1%)
+
+🧠 AI Reasoning Breakdown:
+   ✨ Smart Match: 0 (0.0%)
+   🎯 Good Fit: 0 (0.0%)
+   ⚙️ Constraint Relaxation: 0 (0.0%)
+
+🎨 Vibe Matching:
+   Matches: 6/9 (66.7%)
+
+📏 Cut Statistics by Arc Stage:
+   Build-up: 8 cuts, avg 1.43s
+   Outro: 1 cuts, avg 4.85s
+
+📏 Overall Cut Statistics:
+   Total cuts: 9
+   Average cut: 1.81s
+   Shortest cut: 0.80s
+   Longest cut: 4.85s
+
+💭 Sample AI Reasoning (first 5 decisions):
+   1. clip_016.mp4: 🌟 ✨ New | High | Vibe:Travel...
+   2. clip_008.mp4: 🌟 ✨ New | High | Vibe:Travel...
+   3. clip_004.mp4: 🌟 ✨ New | High | Vibe:Travel...
+   4. clip_022.mp4: 🌟 ✨ New | ~Medium | Vibe:Travel...
+   5. clip_027.mp4: 🌟 ✨ New | ~Medium | Vibe:Travel...
+
+📦 CLIP REGISTRY (36 total):
+   01: clip.mp4        | Medium |   4.8s | Vibes: Friends, Funny, Indoor
+   02: clip1.mp4       | Medium |  15.4s | Vibes: Nature, Friends, Fun
+   03: clip10.mp4      | Medium |   7.7s | Vibes: Nature, Friends, Dance
+   04: clip11.mp4      | High   |  15.4s | Vibes: Action, Travel, Thrill
+   05: clip12.mp4      | Medium |   7.9s | Vibes: Outdoor, Action, Fun
+   06: clip13.mp4      | Medium |   7.9s | Vibes: Nature, Travel, Winter
+   07: clip14.mp4      | Medium |   2.3s | Vibes: Travel, Friends, Nature
+   08: clip15.mp4      | High   |  27.0s | Vibes: Friends, Funny, Travel
+   09: clip16.mp4      | High   |  38.3s | Vibes: Friends, Nightlife, Music
+   10: clip17.mp4      | High   |   5.5s | Vibes: Friends, Nightlife, Party
+   11: clip18.mp4      | High   |   8.5s | Vibes: Urban, Night, Friends
+   12: clip19.mp4      | High   |  14.8s | Vibes: Night, Friends, Action
+   13: clip2.mp4       | Medium |   8.8s | Vibes: Friends, Action, Fun
+   14: clip20.mp4      | Low    |   5.6s | Vibes: Food, Friends, Calm
+   15: clip21.mp4      | High   |  48.6s | Vibes: Friends, Action, Nightlife
+   16: clip22.mp4      | High   |  27.7s | Vibes: Friends, Fun, Music
+   17: clip23.mp4      | High   |  21.4s | Vibes: Friends, Action, Fun
+   18: clip24.mp4      | High   |  12.6s | Vibes: Nightlife, Friends, Urban
+   19: clip25.mp4      | Medium |  28.8s | Vibes: Food, Friends, Casual
+   20: clip26.mp4      | High   |   9.9s | Vibes: Friends, Nightlife, Fun
+   21: clip27.mp4      | Medium |  29.0s | Vibes: Nature, Travel, Adventure
+   22: clip28.mp4      | Medium |  38.9s | Vibes: Nature, Travel, Hiking
+   23: clip29.mp4      | Low    |   6.8s | Vibes: Travel, Calm, Aerial
+   24: clip3.mp4       | Medium |  10.4s | Vibes: Friends, Casual, Indoor
+   25: clip30.mp4      | Low    |   4.6s | Vibes: Nature, Calm, Travel
+   26: clip31.mp4      | Low    |   7.1s | Vibes: Travel, Nature, Calm
+   27: clip32.mp4      | Medium |  11.1s | Vibes: Travel, Nature, Sunset
+   28: clip33.mp4      | Medium |   9.3s | Vibes: Nature, Forest, Travel
+   29: clip34.mp4      | Medium |   9.2s | Vibes: Aviation, Sunset, Travel
+   30: clip35.mp4      | Low    |   6.9s | Vibes: Nature, Calm, Travel
+   31: clip4.mp4       | Medium |  14.5s | Vibes: Friends, Chill, Social
+   32: clip5.mp4       | High   |  19.4s | Vibes: Friends, Music, Fun
+   33: clip6.mp4       | High   |   6.9s | Vibes: Celebration, Friends, Party
+   34: clip7.mp4       | Medium |   4.1s | Vibes: Friends, Urban, Casual
+   35: clip8.mp4       | Low    |   5.5s | Vibes: Nature, Travel, Calm
+   36: clip9.mp4       | Medium |   7.0s | Vibes: Action, Water Sports, Outdoors
+
+📋 Metadata Coverage:
+   Best Moments: 36/36
+   Vibes: 36/36
+
+🔍 Temporal Precision Check:
+   ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
+
+📦 Material Efficiency:
+   Total source duration available: 509.84s
+   Total duration used in edit: 14.43s
+   Unique clip segments used: 9
+   Utilization Ratio: 2.8%
+   💡 Note: Low utilization suggests clips may not match reference vibes well
+
+📊 Selection Reasoning Breakdown:
+   Arc Stage Relevance: 0 decisions (0.0%)
+   Vibe Matching: 6 decisions (66.7%)
+   Visual Cooldown Warnings: 0 decisions (0.0%)
+   Smooth Transitions: 0 decisions (0.0%)
+   Usage Penalties Applied: 0 decisions (0.0%)
+
+💭 Detailed Reasoning Examples (first 3 decisions):
+
+   Decision 1:
+     Timeline: 0.000s - 1.513s (1.513s)
+     Clip: clip_016.mp4
+     Source: 1.00s - 2.51s
+     Segment: Build-up | High/Dynamic | Vibe: Travel
+     Reasoning: 🌟 ✨ New | High | Vibe:Travel
+     Vibe Match: ✅
+
+   Decision 2:
+     Timeline: 1.513s - 3.125s (1.612s)
+     Clip: clip_008.mp4
+     Source: 0.00s - 1.61s
+     Segment: Build-up | High/Dynamic | Vibe: Travel
+     Reasoning: 🌟 ✨ New | High | Vibe:Travel
+     Vibe Match: ✅
+
+   Decision 3:
+     Timeline: 3.125s - 4.375s (1.250s)
+     Clip: clip_004.mp4
+     Source: 0.00s - 1.25s
+     Segment: Build-up | High/Dynamic | Vibe: Travel
+     Reasoning: 🌟 ✨ New | High | Vibe:Travel
+     Vibe Match: ✅
+
+================================================================================
+🎉 Watch the result: data\results\mimic_output_ref9_vibes_test.mp4
+================================================================================
+================================================================================

@@ -102,6 +102,11 @@ if result.success:
         print(f"   Arc Description: {blueprint.arc_description[:100]}..." if len(blueprint.arc_description) > 100 else f"   Arc Description: {blueprint.arc_description}")
         print(f"   Total Segments: {len(blueprint.segments)}")
         
+        # 1.5. Blueprint Full Detail (NEW)
+        print(f"\n📑 BLUEPRINT FULL SEGMENT LIST:")
+        for i, seg in enumerate(blueprint.segments):
+            print(f"   {i+1:02d}: {seg.start:5.2f}-{seg.end:5.2f}s | {seg.energy.value:6} | Vibe: {seg.vibe:10} | {seg.arc_stage}")
+        
         # 2. Arc Stage Distribution
         arc_stages = Counter([seg.arc_stage for seg in blueprint.segments])
         print(f"\n📈 Arc Stage Distribution:")
@@ -183,14 +188,17 @@ if result.success:
         
         # 10. Clip Index Stats
         if result.clip_index:
+            print(f"\n📦 CLIP REGISTRY ({len(result.clip_index.clips)} total):")
+            for i, clip in enumerate(sorted(result.clip_index.clips, key=lambda x: x.filename)):
+                vibes_str = ", ".join(clip.vibes[:3])
+                print(f"   {i+1:02d}: {clip.filename:15} | {clip.energy.value:6} | {clip.duration:5.1f}s | Vibes: {vibes_str}")
+
             clips_with_moments = sum(1 for c in result.clip_index.clips if c.best_moments)
             clips_with_vibes = sum(1 for c in result.clip_index.clips if c.vibes)
-            clips_with_content = sum(1 for c in result.clip_index.clips if c.content_description)
             
-            print(f"\n📦 Clip Metadata Quality:")
-            print(f"   Clips with best_moments: {clips_with_moments}/{len(result.clip_index.clips)}")
-            print(f"   Clips with vibes: {clips_with_vibes}/{len(result.clip_index.clips)}")
-            print(f"   Clips with content_description: {clips_with_content}/{len(result.clip_index.clips)}")
+            print(f"\n📋 Metadata Coverage:")
+            print(f"   Best Moments: {clips_with_moments}/{len(result.clip_index.clips)}")
+            print(f"   Vibes: {clips_with_vibes}/{len(result.clip_index.clips)}")
         
         # 11. Temporal Drift Check (Float Precision Verification)
         gaps = []
@@ -273,7 +281,7 @@ if result.success:
                 print(f"     Segment: {segment.arc_stage} | {segment.energy.value}/{segment.motion.value} | Vibe: {segment.vibe}")
             print(f"     Reasoning: {decision.reasoning}")
             print(f"     Vibe Match: {'✅' if decision.vibe_match else '❌'}")
-        
+            
         print(f"\n{'='*80}")
         print(f"🎉 Watch the result: {output_path}")
         print(f"{'='*80}")

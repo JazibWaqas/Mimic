@@ -1,461 +1,494 @@
-# Next Session - Demo Preparation & Hackathon Submission
+# MIMIC - Next Session Action Plan
 
-**Created:** January 22, 2026, 11:35 PM PKT
-**Updated:** January 22, 2026 - Testing Phase Complete
-**Purpose:** Prepare demo materials and finalize hackathon submission
-**Priority:** DEMO PREPARATION → SUBMISSION
-
----
-
-## ✅ PREVIOUS BLOCKERS - ALL RESOLVED
-
-**All critical issues from the forensic analysis have been fixed:**
-
-1. ✅ **ZeroDivisionError crashes** - BPM safety guards and validation
-2. ✅ **Semantic reference gaps** - Vibe/arc_stage fields now generated with scene hints
-3. ✅ **Frame-accurate extraction** - Re-encoding instead of stream copy
-4. ✅ **API key rotation** - Model propagation across clips
-5. ✅ **Manual mode bugs** - Duration parameter correction
-6. ✅ **Error handling** - Cross-platform stderr and JSON parsing
-7. ✅ **Timeline drift** - Boundary enforcement and guards
-8. ✅ **Cache keying** - Hint-based hashing for invalidation
-
-**System is now hardened and semantically enhanced. Full pipeline testing complete - all 3 reference videos (ref4, ref5, refrence2) successfully tested and rendered.**
+**Last Updated:** January 23, 2026 01:45 AM  
+**Current Version:** V7.0 (Production Ready)  
+**Status:** ✅ Core pipeline complete, ready for frontend integration
 
 ---
 
-## ✅ TESTING PHASE - COMPLETE
+## 🎯 Session Objectives
 
-**All 3 reference videos successfully tested:**
-- ✅ **ref5.mp4** - Successfully rendered (12.0s output, timeline integrity verified)
-- ✅ **refrence2.mp4** - Successfully rendered (12.1s output, 69.2% vibe match rate)
-- ✅ **ref4.mp4** - Successfully rendered (14.2s output, semantic matching validated)
+### Primary Goal
+Prepare MIMIC for hackathon submission with frontend integration and demo materials.
 
-**Test Results Summary:**
-- Timeline integrity: ✅ No gaps/overlaps in all test runs
-- Semantic matching: ✅ Working (vibe_match flags accurate, 69%+ match rate)
-- Frame accuracy: ✅ Verified (re-encoding working correctly)
-- API key rotation: ✅ Working (28 keys loaded, rotation successful)
-- Cache efficiency: ✅ V6.1 versioning working correctly
-
-**Output Files:**
-- `data/results/mimic_output_ref5_vibes_test.mp4`
-- `data/results/mimic_output_refrence2_vibes_test.mp4`
-- `data/results/mimic_output_ref4_vibes_test.mp4`
-- Detailed xray logs available for all runs
+### Secondary Goals
+- Integrate smart recommendations into UI
+- Create demo video
+- Polish user experience
+- Final testing and validation
 
 ---
 
-## 🚀 Step 1: Demo Preparation (Previous: Full Pipeline Testing)
+## 📋 Immediate Tasks (Priority Order)
 
-### **Test Command:**
-```powershell
-cd c:\Users\OMNIBOOK\Documents\GitHub\Mimic
-python test_ref4_v4.py
-# Or with specific reference:
-$env:TEST_REFERENCE = "refrence2.mp4"; python test_ref4_v4.py
+### 1. Frontend Integration (HIGH PRIORITY)
+
+**Task:** Display smart recommendations in UI
+
+**Current State:**
+- Recommendations are generated in backend (`editor.py`)
+- Logged to console and X-Ray output
+- Not visible in frontend UI
+
+**Implementation:**
+```typescript
+// Add to PipelineResult interface
+interface PipelineResult {
+  // ... existing fields
+  recommendations?: {
+    inventory_gaps?: {
+      energy: string;  // "High", "Medium", "Low"
+      count: number;
+      examples: string;
+    }[];
+    quality_improvements?: {
+      type: string;  // "energy_compromise"
+      count: number;
+      suggestion: string;
+    }[];
+  };
+  diversity_report?: {
+    unique_clips_used: number;
+    total_clips: number;
+    repeated_clips?: {
+      name: string;
+      count: number;
+    }[];
+  };
+}
 ```
 
-### **What to Watch For:**
+**Files to Modify:**
+- `backend/models.py` - Add recommendation fields to PipelineResult
+- `backend/engine/orchestrator.py` - Include recommendations in return
+- `frontend/components/ResultsPanel.tsx` - Display recommendations
 
-**During Analysis:**
-- ✅ Reference analysis includes vibe/arc_stage/reasoning fields
-- ✅ Cache version 6.1 properly invalidates old caches
-- ✅ No ZeroDivisionError crashes (BPM guards working)
-- ✅ API key rotation works seamlessly
-
-**During Editing:**
-- ✅ Semantic matching occurs (vibe_match flags are accurate)
-- ✅ AI Thinking shows "Smart Match" with vibe reasoning
-- ✅ Visual cooldown prevents monotony (5-second gaps)
-- ✅ Adaptive pacing by arc stage (Intro slow, Peak rapid)
-- ✅ No timeline drift warnings
-
-**During Rendering:**
-- ✅ Frame-accurate segment extraction (no timestamp drift)
-- ✅ Timeline validation passes (mathematical continuity)
-- ✅ FFmpeg concat succeeds with re-encoded segments
-- ✅ Final video renders with proper audio sync
-
-### **Success Criteria:**
-- ✅ No crashes (ZeroDivisionError, import errors, etc.)
-- ✅ Semantic matching works (vibe/arc reasoning in logs)
-- ✅ Timeline integrity (no gaps/overlaps in EDL)
-- ✅ Frame accuracy (cuts align with intended timestamps)
-- ✅ Output quality matches reference rhythm and energy
-- ✅ Clip variety (cooldown system prevents repetition)
+**Estimated Time:** 2-3 hours
 
 ---
 
-## 🎬 Step 2: Quality Validation & Semantic Matching Assessment
+### 2. Real-Time Progress Updates (MEDIUM PRIORITY)
 
-**Compare output with reference and evaluate semantic improvements:**
+**Task:** Show live progress during pipeline execution
 
-### **Semantic Matching Validation:**
-- ✅ **Vibe matching rate** - What % of decisions have vibe_match=true?
-- ✅ **Arc stage coherence** - Do Intro segments use establishing shots?
-- ✅ **Reasoning quality** - Are AI explanations meaningful vs generic?
-- ✅ **Cache effectiveness** - Does V6.1 prevent unnecessary re-analysis?
-
-### **Technical Quality Check:**
-```powershell
-# Validate output integrity
-ffprobe data/results/mimic_output_*.mp4
-
-# Check timeline continuity (should show no gaps)
-# Verify semantic cache fields exist
-Get-Content data/cache/ref_*.json | ConvertFrom-Json | Select editing_style, emotional_intent
-
-# Confirm BPM handling
-# Check for error-free API key rotation
-```
-
-### **Comparative Analysis:**
-- **Before vs After:** Compare with pre-V6.1 outputs (more robotic vs semantic)
-- **Reference Fidelity:** Does output preserve original cut rhythm?
-- **Clip Utilization:** How much of each source clip is used? (Efficiency metric)
-
----
-
-## 🔧 Step 3: Iterative Refinement (If Needed)
-
-**Only if quality check reveals issues:**
-
-### **Common Adjustments:**
-
-**If cuts feel too fast/slow:**
-- Adjust adaptive pacing ranges in `editor.py` (lines ~195-210)
-- Modify arc stage duration multipliers
-
-**If clips repeat too much:**
-- Increase `MIN_CLIP_REUSE_GAP` (currently 5.0s)
-- Adjust usage penalty weight (currently 3.0 points per use)
-
-**If semantic matching isn't working:**
-- Check if clips have content_description in cache
-- Verify vibes are being extracted correctly
-- Review arc stage keyword matching logic
-
-**If transitions feel jarring:**
-- Increase transition smoothness weight (currently 8 points)
-- Add more motion continuity logic
-
----
-
-## 📊 Step 4: Test Multiple References
-
-**Validate system works across different editing styles:**
-
-```powershell
-# Test with each reference
-python test_real_pipeline.py --reference ref3.mp4
-python test_real_pipeline.py --reference ref4.mp4
-python test_real_pipeline.py --reference ref5.mp4
-python test_real_pipeline.py --reference refrence2.mp4
-```
-
-### **Expected Variations:**
-- **ref3.mp4** (Cinematic Montage): Slower, more emotional pacing
-- **ref4.mp4**: Dynamic, varied energy
-- **ref5.mp4**: Specific style analysis
-- **refrence2.mp4** (Social Media Montage): Rapid-fire, high energy
-
-### **Success Criteria:**
-- Each reference produces distinctly different edits
-- Editing style matches reference's emotional intent
-- Arc stages are respected (visible pacing changes)
-
----
-
-## 🎯 Step 3: Performance Optimization & Demo Preparation
-
-**Once semantic matching is validated:**
-
-### **A. Performance Metrics:**
-- **API Efficiency:** Measure calls per video, cache hit rates
-- **Processing Time:** Target <60s for demo (current: ~2-3 min with API)
-- **Memory Usage:** Optimize for consistent performance
-- **Error Resilience:** Test edge cases (corrupted files, network issues)
-
-### **B. Demo Video Creation:**
-1. **Reference showcase:** Demonstrate semantic understanding
-2. **Pipeline walkthrough:** Show AI reasoning and decision-making
-3. **Quality comparison:** Side-by-side with reference
-4. **Technical validation:** Prove timeline integrity and semantic matching
-
-### **C. Submission Materials:**
-- **README.md**: Updated with V6.1 semantic capabilities
-- **Technical Documentation:** Cache invalidation, BPM handling, timeline math
-- **Architecture Diagrams:** Semantic analysis pipeline, editing grammar system
-- **Performance Benchmarks:** Quality metrics, efficiency improvements
-
-### **D. Hackathon-Ready Checklist:**
-- [ ] Full pipeline completes without crashes
-- [ ] Semantic matching demonstrably improves quality
-- [ ] Cache system prevents redundant API calls
-- [ ] Error handling works across platforms
-- [ ] Demo video shows clear value proposition
-- [ ] Submission documentation complete
-
----
-
-## 📋 Session Checklist
-
-**Before Starting:**
-- [ ] Read `STATUS.md` for V6.1 current state
-- [ ] Review `FIXES_APPLIED.md` for all recent fixes
-- [ ] Check `data/cache/` for V6.1 reference caches with semantic fields
-- [ ] Verify crash prevention (BPM guards, import fixes)
-- [ ] Ensure adequate API quota for testing
-
-**During Testing:**
-- [ ] Run pipeline test with different references
-- [ ] Verify no crashes (ZeroDivisionError, import errors)
-- [ ] Check semantic matching in AI reasoning logs
-- [ ] Validate timeline integrity (no drift warnings)
-- [ ] Confirm frame-accurate extraction works
-- [ ] Monitor API key rotation effectiveness
-
-**Quality Assessment:**
-- [ ] Compare semantic vs non-semantic outputs
-- [ ] Measure vibe matching accuracy
-- [ ] Evaluate arc stage coherence
-- [ ] Assess clip variety and cooldown effectiveness
-- [ ] Verify reference rhythm preservation
-
-**Optimization Phase:**
-- [ ] Profile performance bottlenecks
-- [ ] Optimize cache hit rates
-- [ ] Improve error messaging
-- [ ] Test edge cases (corrupted files, network issues)
-
-**Demo Preparation:**
-- [ ] Create compelling demo video
-- [ ] Document technical achievements
-- [ ] Prepare performance metrics
-- [ ] Finalize submission materials
-
----
-
-## 🚨 Potential Issues & Solutions
-
-### **Issue: "Timeline gap/overlap" error**
-**Solution:** Check `subdivide_segments()` float snapping logic
-
-### **Issue: Clips repeating too much**
-**Solution:** Increase visual cooldown gap or usage penalty
-
-### **Issue: No semantic matching happening**
-**Solution:** Verify V6.0 cache has content_description and vibes
-
-### **Issue: Pacing feels wrong**
-**Solution:** Adjust adaptive pacing ranges for arc stages
-
-### **Issue: API quota exhausted**
-**Solution:** All analysis should be cached, rendering doesn't use API
-
----
-
-## 📚 Context for Next Developer
-
-**Current State (Post-Forensic Analysis):**
-- ✅ **V6.1 Semantic Reference Analysis:** Reference videos generate vibe/arc_stage/reasoning with scene hints
-- ✅ **System Hardening:** All crash scenarios prevented (BPM=0, import errors, timeline drift)
-- ✅ **Cache Enhancement:** V6.1 with hint-based invalidation, semantic fields preserved
-- ✅ **Quality Assurance:** Frame-accurate extraction, API rotation, cross-platform error handling
-
-**System Capabilities:**
-- **Semantic Understanding:** Analyzes reference videos for editing intent, not just technical metrics
-- **True Mimic Behavior:** Preserves original cut rhythm when scene hints exist
-- **Intelligent Matching:** 5-factor scoring (arc relevance, vibe matching, cooldown, transitions, usage)
-- **Robust Processing:** Handles edge cases gracefully, prevents timeline corruption
-- **Professional Quality:** Adaptive pacing, smooth transitions, variety optimization
-
-**Technical Achievements:**
-- **Forensic Methodology:** Systematic root cause analysis of crashes and quality issues
-- **Mathematical Precision:** Timeline continuity enforced, float drift prevented
-- **Cache Integrity:** Semantic data preserved, poisoning prevented
-- **Error Resilience:** Cross-platform compatibility, graceful degradation
-
-**Next Critical Goals:**
-- **Semantic Validation:** Prove vibe/arc matching improves output quality
-- **Performance Optimization:** Reduce demo runtime, improve cache efficiency
-- **Demo Excellence:** Showcase true AI-powered editing intelligence
-- **Hackathon Readiness:** Complete submission with compelling technical narrative
-
----
-
-**Next Session Focus:** Validate semantic improvements, optimize performance, create winning demo. System is now technically sound - time to prove the value proposition.
-
-
----
-
-## 🚨 CRITICAL BLOCKERS (MUST FIX FIRST)
-
-**The system cannot produce working videos until these 3 architectural issues are resolved:**
-
-1. **Timeline Primitive Mismatch** - Gemini moments ≠ Reference segments (causes gaps)
-2. **Float Precision Errors** - Accumulating micro-gaps break FFmpeg
-3. **Cache Poisoning** - Defaults permanently corrupt matching data
-
-**These are deeper than API issues - they're mathematical impossibilities that no amount of key rotation can fix.**
-
----
-
-## 🔧 Step 1: Fix Timeline Primitive Mismatch
-
-**Problem:** System matches variable-duration "best moments" to fixed-duration segments, creating gaps.
-
-**Required Change:** Modify Gemini prompts to return start points, not full moments. Code must force exact duration extraction.
-
-**Files to examine:**
-- `backend/engine/brain.py` - Clip analysis prompt (lines ~800-900)
-- `backend/engine/editor.py` - Matching logic (lines ~100-200)
-- `backend/engine/processors.py` - FFmpeg extraction commands
-
-**Success Criteria:**
-- Segments fill completely (no gaps)
-- Clip moments get trimmed to exact reference durations
-- Timeline validation passes
-
----
-
-## 🔧 Step 2: Fix Float Precision Boundary Enforcement
-
-**Problem:** Python floats accumulate precision errors, creating invisible gaps.
-
-**Required Change:** Add boundary enforcement in `EditDecision` creation.
-
-**Code Location:** `backend/engine/editor.py` - EditDecision creation loop
+**Current State:**
+- Progress callback exists but not used
+- Frontend shows loading spinner only
 
 **Implementation:**
 ```python
-# Force continuity regardless of float precision
-if i > 0:
-    decision.timeline_start = previous_decision.timeline_end
+# Backend: orchestrator.py
+def update_progress(step, total, message):
+    if progress_callback:
+        progress_callback({
+            "step": step,
+            "total": total,
+            "message": message,
+            "percentage": (step / total) * 100
+        })
 ```
 
-**Success Criteria:**
-- No micro-gaps in timeline
-- Consistent rendering across runs
-- Pydantic validation passes
-
----
-
-## 🔧 Step 3: Implement Cache Sanitation Policy
-
-**Problem:** System caches defaults as truth, permanently poisoning data.
-
-**Required Change:** Add "stale data" detection and rejection.
-
-**Implementation:**
-- Check for `vibes: null` or `"Medium"` defaults
-- Flag as "STALE" and never cache
-- Fail loudly instead of silently defaulting
-
-**Files:** `backend/engine/brain.py` - Cache saving logic (lines ~880-920)
-
-**Success Criteria:**
-- Cache contains only real Gemini responses
-- No "Medium/Dynamic" defaults in JSON files
-- Fresh analysis on corrupted cache entries
-
----
-
-## 🧪 Step 4: Validate Fixes (AFTER Implementation)
-
-**Only then proceed to API testing:**
-
-```powershell
-# Clear ALL cache (fresh start)
-Remove-Item data/cache/*.json -Force
-
-# Run minimal test (1-2 clips first)
-python test_minimal.py  # Create this - tests just ref4 + 2 clips
-
-# Check for timeline validation errors
-# Verify no gaps in EditDecision objects
-# Confirm cache has real data
+```typescript
+// Frontend: Use WebSocket or SSE
+const [progress, setProgress] = useState({
+  step: 0,
+  total: 5,
+  message: "Initializing...",
+  percentage: 0
+});
 ```
 
-**Expected Outcome:**
-- Timeline validation passes
-- FFmpeg renders successfully
-- Cache contains genuine analysis data
+**Files to Modify:**
+- `backend/main.py` - Add WebSocket endpoint
+- `frontend/app/page.tsx` - Connect to WebSocket
+- `frontend/components/ProgressBar.tsx` - Create component
+
+**Estimated Time:** 3-4 hours
 
 ---
 
-## 🎯 Step 5: API Testing (AFTER Architecture Fixes)
+### 3. Demo Video Recording (HIGH PRIORITY)
 
-**Only if Steps 1-3 work:**
+**Task:** Create compelling demo video for hackathon
 
-### **Check API Quota Status:**
-```powershell
-cd c:\Users\OMNIBOOK\Documents\GitHub\Mimic
-python test_api_keys.py
+**Script Outline:**
+1. **Intro (10s)**
+   - "Transform your raw clips into professional edits"
+   - Show MIMIC logo
+
+2. **Problem (15s)**
+   - "Editing videos is time-consuming"
+   - "Professional edits require skill and experience"
+
+3. **Solution (20s)**
+   - "MIMIC learns from professional examples"
+   - Show reference video upload
+   - Show clip upload
+
+4. **Magic (30s)**
+   - "AI analyzes the reference style"
+   - Show analysis visualization
+   - "Matches your clips to the rhythm"
+   - Show matching process
+
+5. **Result (20s)**
+   - Side-by-side comparison
+   - Show diversity report
+   - Show recommendations
+
+6. **Call to Action (5s)**
+   - "Try MIMIC today"
+   - GitHub link
+
+**Tools Needed:**
+- Screen recording (OBS Studio)
+- Video editing (DaVinci Resolve or similar)
+- Voiceover (optional)
+
+**Estimated Time:** 4-6 hours
+
+---
+
+### 4. UI Polish (MEDIUM PRIORITY)
+
+**Task:** Improve user experience and visual design
+
+**Improvements:**
+- [ ] Add drag-and-drop for file uploads
+- [ ] Show clip thumbnails in upload area
+- [ ] Display reference video preview
+- [ ] Add "Example References" section
+- [ ] Improve error messages
+- [ ] Add tooltips for technical terms
+
+**Files to Modify:**
+- `frontend/components/UploadSection.tsx`
+- `frontend/components/ResultsPanel.tsx`
+- `frontend/app/globals.css`
+
+**Estimated Time:** 3-4 hours
+
+---
+
+### 5. Final Testing (HIGH PRIORITY)
+
+**Task:** Comprehensive testing before submission
+
+**Test Cases:**
+```bash
+# Test all reference videos
+$env:TEST_REFERENCE = "ref4.mp4"; python test_ref.py
+$env:TEST_REFERENCE = "ref5.mp4"; python test_ref.py
+$env:TEST_REFERENCE = "ref6.mp4"; python test_ref.py
+$env:TEST_REFERENCE = "ref9.mp4"; python test_ref.py
+
+# Test with different clip counts
+# Test with edge cases (very short/long references)
+# Test error handling (missing files, invalid formats)
 ```
 
-### **Clear Cache & Test:**
-```powershell
-# Fresh analysis with fixed architecture
-Remove-Item data/cache/clip_comprehensive*.json -Force
-python test_ref4_v4.py
+**Validation Checklist:**
+- [ ] All references produce valid output
+- [ ] Diversity >90% on all tests
+- [ ] Vibe matching >70% on all tests
+- [ ] Timeline integrity maintained
+- [ ] Cache working correctly
+- [ ] API key rotation working
+- [ ] Error messages are helpful
+
+**Estimated Time:** 2-3 hours
+
+---
+
+## 🔧 Technical Debt (Optional)
+
+### Low Priority Improvements
+
+**1. Parallel Segment Extraction**
+- Current: Sequential FFmpeg calls (8-10s)
+- Potential: Parallel processing (2-3s)
+- Trade-off: CPU usage, complexity
+
+**2. Segment Cache**
+- Cache extracted segments
+- Reuse across edits
+- Trade-off: Disk space
+
+**3. GPU Acceleration**
+- Use NVENC for encoding
+- Potential 10x speedup
+- Trade-off: Requires NVIDIA GPU
+
+**Note:** These are not critical for hackathon submission
+
+---
+
+## 📝 Documentation Tasks
+
+### 1. Update README with Demo Link
+```markdown
+## 🎬 Demo
+
+Watch MIMIC in action: [YouTube Link]
+
+Try it yourself: [Live Demo Link] (if deployed)
 ```
 
-### **Success Indicators (Architecture + API):**
-- ✅ No timeline validation errors
-- ✅ No "Using default" messages
-- ✅ Vibes appear in logs and cache
-- ✅ FFmpeg concat succeeds
-- ✅ Output video renders
+### 2. Create SUBMISSION.md
+```markdown
+# Hackathon Submission
+
+## Project: MIMIC - AI-Powered Video Style Transfer
+
+### Category: Action Era - Creative Autopilot
+
+### Description:
+[Compelling description highlighting Gemini API usage]
+
+### Key Features:
+- Semantic video analysis
+- Vibe-aware matching
+- Smart recommendations
+
+### Technical Highlights:
+- 28 Gemini API keys for quota management
+- Tiered energy matching algorithm
+- Persistent caching for performance
+
+### Demo:
+[Link to demo video]
+
+### Try It:
+[Link to GitHub]
+```
 
 ---
 
-## 📋 Implementation Checklist
+## 🎯 Success Criteria
 
-**Before Coding Session:**
-- [ ] Read `DIAGNOSTIC_LOG.md` Bugs #8-10
-- [ ] Understand primitive mismatch concept
-- [ ] Review float precision issues
-- [ ] Plan cache sanitation logic
+### Must Have (For Submission)
+- ✅ Core pipeline working (DONE)
+- ✅ Consistent quality (DONE)
+- ✅ Documentation complete (DONE)
+- [ ] Demo video recorded
+- [ ] Frontend shows recommendations
+- [ ] All tests passing
 
-**During Coding:**
-- [ ] Modify Gemini prompts for start points
-- [ ] Add boundary enforcement in editor.py
-- [ ] Implement cache staleness checks
-- [ ] Test with minimal clips first
-
-**After Implementation:**
-- [ ] Run validation tests
-- [ ] Confirm timeline continuity
-- [ ] Verify cache integrity
-- [ ] Only then test full pipeline
+### Nice to Have
+- [ ] Real-time progress updates
+- [ ] Live deployment
+- [ ] Batch processing
+- [ ] Custom vibe definitions
 
 ---
 
-## 🚨 Why This Order Matters
+## 🚀 Deployment Checklist
 
-**Architecture fixes FIRST, API testing SECOND.**
+### If Deploying to Cloud
 
-- **If timeline math is broken:** No video output possible, even with working API
-- **If cache is poisoned:** API calls wasted on corrupted data
-- **If primitives don't match:** System fundamentally cannot work
+**Backend (Railway/Render):**
+```bash
+# Environment variables needed
+GEMINI_API_KEY=...
+# (all 28 keys)
 
-**Fix the math, then worry about API limits.**
+# Requirements
+python 3.10+
+ffmpeg
+librosa dependencies
+```
+
+**Frontend (Vercel):**
+```bash
+# Environment variables
+NEXT_PUBLIC_API_URL=https://api.mimic.app
+```
+
+**Storage:**
+- Consider cloud storage for cache (S3/GCS)
+- Or disable cache for cloud deployment
 
 ---
 
-## 📚 Context for Next Developer
+## 📊 Time Estimate
 
-**Must Read:**
-- `DIAGNOSTIC_LOG.md` - New architectural bugs #8-10
-- `STATUS.md` - Current system overview
-- Focus on `backend/engine/editor.py` and `backend/engine/brain.py`
+### Total Time: 14-20 hours
 
-**Key Concept:** The system was built assuming Gemini moments would perfectly fit reference segments. They don't. The architecture must force the fit.
+**Breakdown:**
+- Frontend Integration: 2-3h
+- Progress Updates: 3-4h
+- Demo Video: 4-6h
+- UI Polish: 3-4h
+- Final Testing: 2-3h
 
-**Goal:** Make the timeline math work reliably before optimizing AI usage.
+**Recommended Schedule:**
+- Day 1 (4-5h): Frontend integration + Testing
+- Day 2 (4-5h): Progress updates + UI polish
+- Day 3 (4-6h): Demo video + Final polish
+- Day 4 (2h): Submission preparation
 
 ---
 
-**Next Session Focus:** Fix architectural math issues. API testing comes after proven timeline continuity.
+## 🎬 Demo Video Script (Detailed)
+
+### Scene 1: Hook (0:00 - 0:10)
+**Visual:** MIMIC logo animation  
+**Text:** "What if AI could learn your editing style?"  
+**Voiceover:** "Introducing MIMIC - AI-powered video style transfer"
+
+### Scene 2: Problem (0:10 - 0:25)
+**Visual:** Frustrated person editing videos  
+**Text:** "Video editing is time-consuming and requires expertise"  
+**Voiceover:** "Creating professional edits takes hours of work and years of experience"
+
+### Scene 3: Solution (0:25 - 0:45)
+**Visual:** MIMIC interface  
+**Text:** "Upload a reference video"  
+**Action:** Drag ref4.mp4 into interface  
+**Text:** "Upload your raw clips"  
+**Action:** Drag 36 clips into interface  
+**Voiceover:** "MIMIC learns from professional examples and applies that style to your content"
+
+### Scene 4: Magic (0:45 - 1:15)
+**Visual:** Analysis visualization  
+**Text:** "AI analyzes the reference"  
+**Show:** Scene detection, BPM detection, energy levels  
+**Text:** "Understands your clips"  
+**Show:** Clip analysis with vibes  
+**Text:** "Matches them intelligently"  
+**Show:** Matching algorithm with scores  
+**Voiceover:** "Using Google's Gemini AI, MIMIC understands not just what's in the video, but the vibe and energy"
+
+### Scene 5: Result (1:15 - 1:35)
+**Visual:** Side-by-side comparison  
+**Left:** Reference video  
+**Right:** Generated edit  
+**Text:** "Same rhythm, your content"  
+**Show:** Diversity report (97% unique clips)  
+**Show:** Vibe matching (80% accuracy)  
+**Voiceover:** "The result? A professional edit that matches the reference's rhythm perfectly"
+
+### Scene 6: Smart Features (1:35 - 1:50)
+**Visual:** Recommendations panel  
+**Text:** "Get smart recommendations"  
+**Show:** "Add 5 more Medium-energy clips"  
+**Show:** "2 segments wanted High energy but used Medium"  
+**Voiceover:** "MIMIC even tells you what clips to add to improve your edit"
+
+### Scene 7: Call to Action (1:50 - 2:00)
+**Visual:** GitHub repo  
+**Text:** "Open Source on GitHub"  
+**Text:** "Built with Gemini API"  
+**Text:** "Try MIMIC today"  
+**Voiceover:** "Try MIMIC today and transform your video editing workflow"
+
+---
+
+## 🔍 Pre-Submission Checklist
+
+### Code Quality
+- [ ] All files have proper docstrings
+- [ ] No commented-out debug code
+- [ ] No hardcoded paths
+- [ ] Environment variables documented
+- [ ] Requirements.txt up to date
+
+### Documentation
+- [ ] README.md complete
+- [ ] ARCHITECTURE.md complete
+- [ ] STATUS.md up to date
+- [ ] Code comments clear
+- [ ] API documentation exists
+
+### Testing
+- [ ] All test references work
+- [ ] Error handling tested
+- [ ] Cache invalidation tested
+- [ ] API key rotation tested
+- [ ] Edge cases handled
+
+### Demo
+- [ ] Demo video recorded
+- [ ] Demo video uploaded
+- [ ] Screenshots taken
+- [ ] Example outputs ready
+
+### Submission
+- [ ] Hackathon form filled
+- [ ] Demo link added
+- [ ] GitHub repo public
+- [ ] README has demo section
+- [ ] License file present
+
+---
+
+## 💡 Ideas for Future Sessions
+
+### Feature Ideas
+1. **Style Presets**
+   - Pre-defined styles (TikTok, YouTube, Instagram)
+   - One-click application
+
+2. **Collaborative Editing**
+   - Share references
+   - Community clip library
+
+3. **Advanced Customization**
+   - Manual vibe definitions
+   - Custom energy thresholds
+   - Override individual matches
+
+4. **Analytics Dashboard**
+   - Edit history
+   - Clip usage stats
+   - Quality trends
+
+5. **Mobile App**
+   - iOS/Android support
+   - On-device processing
+   - Cloud sync
+
+---
+
+## 📞 Support & Resources
+
+### If Issues Arise
+
+**API Key Issues:**
+- Check `.env` file format
+- Verify keys are active
+- Test with `test_api_keys.py`
+
+**Cache Issues:**
+- Clear cache: `Remove-Item data/cache/* -Recurse -Force`
+- Check disk space
+- Verify write permissions
+
+**FFmpeg Issues:**
+- Verify FFmpeg in PATH: `ffmpeg -version`
+- Check video format compatibility
+- Review FFmpeg logs
+
+**Performance Issues:**
+- Check cache hit rate in logs
+- Verify SSD (not HDD) for cache
+- Monitor CPU/memory usage
+
+---
+
+## 🎉 Celebration Checklist
+
+### When Submission is Complete
+- [ ] Take screenshots of final product
+- [ ] Save all test outputs
+- [ ] Backup code to multiple locations
+- [ ] Document lessons learned
+- [ ] Celebrate! 🎊
+
+---
+
+**Next Session Start:** Review this document first  
+**First Task:** Frontend recommendation integration  
+**Goal:** Hackathon-ready in 14-20 hours
+
+**Good luck! 🚀**

@@ -1,0 +1,29 @@
+{
+  "energy": "Low",
+  "motion": "Static",
+  "vibes": [
+    "Nature",
+    "Calm",
+    "Travel"
+  ],
+  "content_description": "A slow pan across a rocky coastline overlooking a calm sea under an overcast sky.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Includes the most visual detail with the rocky shore and the building, providing more visual stimulation than the open sea."
+    },
+    "Medium": {
+      "start": 2.0,
+      "end": 4.5,
+      "reason": "A steady pan across the water, showing moderate movement and changing perspective."
+    },
+    "Low": {
+      "start": 3.5,
+      "end": 6.0,
+      "reason": "Focuses on the vast, calm sea and horizon with minimal visual changes."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:05:51"
+}

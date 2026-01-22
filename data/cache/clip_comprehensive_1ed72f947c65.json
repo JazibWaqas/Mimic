@@ -1,0 +1,30 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Travel",
+    "Nature",
+    "Sunset",
+    "Aesthetic"
+  ],
+  "content_description": "A handheld video taken from a moving vehicle capturing a vibrant sunset through the window and passing trees.",
+  "best_moments": {
+    "High": {
+      "start": 7.5,
+      "end": 10.0,
+      "reason": "Rapid motion passing trees and road barriers with significant camera shake."
+    },
+    "Medium": {
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "A clear but moving view of the colorful sunset sky through the trees."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "The most stable part of the clip, looking at the sunset through a window frame."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:04:08"
+}

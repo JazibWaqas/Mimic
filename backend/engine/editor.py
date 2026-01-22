@@ -99,6 +99,52 @@ def match_clips_to_blueprint(
     # Group clips by energy for fast lookup
     energy_pools = _create_energy_pools(clip_index)
     
+    # === PRE-EDIT DEMAND ANALYSIS ===
+    demand = {"High": 0, "Medium": 0, "Low": 0}
+    for seg in blueprint.segments:
+        demand[seg.energy.value] += 1
+    
+    supply = {"High": len(energy_pools.get(EnergyLevel.HIGH, [])),
+              "Medium": len(energy_pools.get(EnergyLevel.MEDIUM, [])),
+              "Low": len(energy_pools.get(EnergyLevel.LOW, []))}
+    
+    print(f"\n📊 CLIP DEMAND ANALYSIS:")
+    print(f"   Reference needs: High={demand['High']}, Medium={demand['Medium']}, Low={demand['Low']}")
+    print(f"   You have:        High={supply['High']}, Medium={supply['Medium']}, Low={supply['Low']}")
+    
+    deficits = {}
+    for energy in ["High", "Medium", "Low"]:
+        if demand[energy] > supply[energy]:
+            deficits[energy] = demand[energy] - supply[energy]
+            print(f"   ⚠️ DEFICIT: Need {deficits[energy]} more {energy}-energy clips")
+    
+    if not deficits:
+        print(f"   ✅ You have enough clips for a perfect edit!")
+    print()
+    
+    # === COMPROMISE TRACKER ===
+    compromises = []  # Track every time we use adjacent energy
+    
+    # === ENERGY ELIGIBILITY HELPER ===
+    def get_eligible_clips(segment_energy: EnergyLevel, all_clips: List[ClipMetadata]) -> List[ClipMetadata]:
+        """
+        Return clips that are ALLOWED for this segment's energy.
+        High segment → High + Medium (never Low)
+        Low segment → Low + Medium (never High)
+        Medium → Any
+        """
+        eligible = []
+        for clip in all_clips:
+            if segment_energy == EnergyLevel.HIGH:
+                if clip.energy in [EnergyLevel.HIGH, EnergyLevel.MEDIUM]:
+                    eligible.append(clip)
+            elif segment_energy == EnergyLevel.LOW:
+                if clip.energy in [EnergyLevel.LOW, EnergyLevel.MEDIUM]:
+                    eligible.append(clip)
+            else:  # Medium - any clip is OK
+                eligible.append(clip)
+        return eligible
+    
     decisions: List[EditDecision] = []
     timeline_position = 0.0
     last_used_clip = None  # Track to prevent back-to-back repeats
@@ -127,137 +173,100 @@ def match_clips_to_blueprint(
             if segment_remaining <= 0.05:
                 break
                 
-            # Find matching clips
-            matching_clips = energy_pools.get(segment.energy, [])
+            # === TIERED ELIGIBILITY SELECTION ===
+            # Step 1: Get only energy-compatible clips (no Low for High, no High for Low)
+            eligible_clips = get_eligible_clips(segment.energy, clip_index.clips)
             
-            # ENERGY POOL FLEXING: If pool is empty or too small, pull from nearby
-            if not matching_clips or (len(matching_clips) < 2 and len(clip_index.clips) > 4):
-                 # Add Medium if looking for High/Low
-                 if segment.energy != EnergyLevel.MEDIUM:
-                     matching_clips = matching_clips + energy_pools.get(EnergyLevel.MEDIUM, [])
-                 # Add Low if looking for Medium and results were poor
-                 elif segment.energy == EnergyLevel.MEDIUM:
-                     matching_clips = matching_clips + energy_pools.get(EnergyLevel.LOW, []) + energy_pools.get(EnergyLevel.HIGH, [])
-            
-            if not matching_clips:
-                print(f"  [WARN] No {segment.energy.value} clips available, using all clips")
-                matching_clips = clip_index.clips
-            
-            # CRITICAL: Switch clips for EVERY cut to maximize variety
-            # Exclude last 2 used clips to prevent repetition
+            # Step 2: Exclude recently used clips
             recently_used = [last_used_clip, second_last_clip] if second_last_clip else [last_used_clip]
-            available_clips = [c for c in matching_clips if c.filename not in recently_used]
+            available_clips = [c for c in eligible_clips if c.filename not in recently_used]
             
             if not available_clips:
-                # If we've exhausted all clips, use any clip
-                available_clips = matching_clips
+                available_clips = eligible_clips  # Fallback if all recently used
             
-            # EDITING GRAMMAR: Multi-dimensional clip scoring
             import random
-            
-            def score_clip_intelligence(clip: ClipMetadata, segment) -> tuple[float, str, bool]:
-                """
-                Score a clip based on professional editing principles.
-                Returns: (score, reasoning_snippet, vibe_matched)
-                """
+
+            def score_clip_smart(clip: ClipMetadata, segment) -> tuple[float, str, bool]:
                 score = 0.0
                 reasons = []
                 vibe_matched = False
 
-                # === A. ARC STAGE RELEVANCE (Highest Priority) ===
-                stage = segment.arc_stage.lower()
-                content = (clip.content_description or "").lower()
-                clip_tags = [v.lower() for v in clip.vibes]
+                # 1. DISCOVERY BONUS (unused clips get big push)
+                if clip_usage_count[clip.filename] == 0:
+                    score += 40.0
+                    reasons.append("✨ New")
 
-                if stage == "intro":
-                    if any(kw in content for kw in ["intro", "opening", "start", "establishing", "wide"]):
-                        score += 20.0
-                        reasons.append("Intro-style shot")
-                    if "intro" in clip_tags or "establishing" in clip_tags:
-                        score += 15.0
+                # 2. EXACT ENERGY MATCH (prefer exact over adjacent)
+                if clip.energy == segment.energy:
+                    score += 20.0
+                    reasons.append(f"{clip.energy.value}")
+                else:
+                    score += 5.0  # Adjacent energy (allowed but less ideal)
+                    reasons.append(f"~{clip.energy.value}")
 
-                elif stage == "peak":
-                    if any(kw in content for kw in ["action", "peak", "intensity", "fast", "climax", "jump"]):
-                        score += 20.0
-                        reasons.append("Peak-intensity moment")
-                    if any(tag in clip_tags for tag in ["action", "peak", "intense"]):
-                        score += 15.0
-
-                elif stage == "build-up":
-                    if any(kw in content for kw in ["building", "rising", "approaching", "moving"]):
-                        score += 15.0
-                        reasons.append("Build-up energy")
-
-                elif stage == "outro":
-                    if any(kw in content for kw in ["outro", "ending", "finish", "fading", "sunset", "closing"]):
-                        score += 20.0
-                        reasons.append("Outro-style shot")
-                    if "outro" in clip_tags or "ending" in clip_tags:
-                        score += 15.0
-
-                # === B. VIBE MATCHING (Semantic Alignment) ===
+                # 3. VIBE MATCHING
                 if segment.vibe and segment.vibe != "General":
                     for v in clip.vibes:
                         if v.lower() in segment.vibe.lower() or segment.vibe.lower() in v.lower():
-                            score += 12.0
-                            reasons.append(f"Vibe '{segment.vibe}'")
+                            score += 15.0
+                            reasons.append(f"Vibe:{segment.vibe}")
                             vibe_matched = True
                             break
 
-                # === C. VISUAL COOLDOWN (Anti-Monotony) ===
+                # 4. ARC STAGE ALIGNMENT
+                stage = segment.arc_stage.lower()
+                content = (clip.content_description or "").lower()
+                if stage == "intro" and any(kw in content for kw in ["intro", "opening", "wide"]):
+                    score += 10.0
+                    reasons.append("Intro")
+                elif stage == "peak" and any(kw in content for kw in ["action", "fast", "jump"]):
+                    score += 10.0
+                    reasons.append("Peak")
+
+                # 5. USAGE PENALTY (avoid repeats)
+                if clip_usage_count[clip.filename] > 0:
+                    score -= (clip_usage_count[clip.filename] * 25.0)
+                    reasons.append(f"Used:{clip_usage_count[clip.filename]}x")
+
+                # 6. RECENT COOLDOWN
                 time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
                 if time_since_last_use < MIN_CLIP_REUSE_GAP:
-                    # Heavy penalty for recent reuse
-                    cooldown_penalty = -50.0 * (1.0 - time_since_last_use / MIN_CLIP_REUSE_GAP)
-                    score += cooldown_penalty
-                    if cooldown_penalty < -25.0:
-                        reasons.append(f"⚠️ Recently used ({time_since_last_use:.1f}s ago)")
+                    score -= 40.0
 
-                # === D. TRANSITION SMOOTHNESS (Motion Continuity) ===
-                if last_clip_motion:
-                    if clip.motion == last_clip_motion:
-                        score += 8.0
-                        reasons.append("Smooth motion flow")
-                    else:
-                        # Motion change can be jarring, slight penalty
-                        score -= 3.0
-
-                # === E. USAGE PENALTY (Encourage Variety) ===
-                # High penalty to force use of wide clip library
-                usage_penalty = clip_usage_count[clip.filename] * 8.0
-                score -= usage_penalty
-                if clip_usage_count[clip.filename] > 0:
-                    reasons.append(f"Used {clip_usage_count[clip.filename]}x")
-
-                reasoning = " | ".join(reasons) if reasons else "Flow optimization"
+                reasoning = " | ".join(reasons)
                 return score, reasoning, vibe_matched
 
-            # Calculate scores for all available clips
+            # Calculate scores for eligible clips only
             scored_clips = []
             for c in available_clips:
-                total_score, reasoning, vibe_matched = score_clip_intelligence(c, segment)
+                total_score, reasoning, vibe_matched = score_clip_smart(c, segment)
                 scored_clips.append((c, total_score, reasoning, vibe_matched))
 
-            # Sort by total score (highest first)
+            # Sort by total score
             scored_clips.sort(key=lambda x: x[1], reverse=True)
 
-            # Pick from the top tier (clips with same highest score) to maintain variety
+            # Top tier selection
             max_score = scored_clips[0][1]
             top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if abs(s - max_score) < 5.0]
             random.shuffle(top_tier)
 
             selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
             
-            # Construct final reasoning for logs
-            if selected_score > 15.0:
-                thinking = f"✨ Smart Match: {selected_reasoning}"
-            elif selected_score > 0:
-                thinking = f"🎯 Good Fit: {selected_reasoning}"
-            else:
-                thinking = f"⚙️ Constraint Relaxation: {selected_reasoning}"
+            # Track compromise if we used adjacent energy
+            if selected_clip.energy != segment.energy:
+                compromises.append({
+                    "segment": segment.id,
+                    "wanted": segment.energy.value,
+                    "got": selected_clip.energy.value
+                })
+            
+            thinking = selected_reasoning
+            if selected_score > 35: thinking = "🌟 " + thinking
+            elif selected_score > 15: thinking = "🎯 " + thinking
+            else: thinking = "⚙️ " + thinking
 
-            if cuts_in_segment == 0:  # Only print once per segment
-                print(f"  🧠 AI Thinking: {thinking}")
+            if cuts_in_segment == 0:
+                print(f"  🧠 AI: {thinking}")
                 print(f"  📎 Selected: {selected_clip.filename} (Score: {selected_score:.1f})")
 
             # === PACING LOGIC: TRUE MIMIC BEHAVIOR ===
@@ -397,9 +406,73 @@ def match_clips_to_blueprint(
     
     edl = EDL(decisions=decisions)
     
+    # === POST-EDIT SUMMARY ===
+    unique_clips_used = len(set(d.clip_path for d in decisions))
+    total_clips = len(clip_index.clips)
+    
     print(f"\n{'='*60}")
     print(f"[OK] Matching complete: {len(decisions)} edit decisions")
     print(f"[OK] Total timeline duration: {timeline_position:.2f}s (target: {blueprint.total_duration:.2f}s)")
+    print(f"\n📊 DIVERSITY REPORT:")
+    print(f"   Unique clips used: {unique_clips_used}/{total_clips}")
+    
+    if unique_clips_used == total_clips:
+        print(f"   ✅ PERFECT! Every clip in your library was used.")
+    elif unique_clips_used >= total_clips * 0.9:
+        print(f"   ✅ EXCELLENT variety - {total_clips - unique_clips_used} clips unused.")
+    else:
+        print(f"   ⚠️ {total_clips - unique_clips_used} clips were not used.")
+    
+    # Check for repeats
+    from collections import Counter
+    clip_uses = Counter(d.clip_path for d in decisions)
+    repeats = [(path.split('\\')[-1], count) for path, count in clip_uses.items() if count > 1]
+    
+    if repeats:
+        print(f"\n   ⚠️ CLIPS REPEATED:")
+        for name, count in sorted(repeats, key=lambda x: -x[1])[:5]:
+            print(f"      {name}: {count}x")
+    else:
+        print(f"\n   ✅ NO CLIPS REPEATED! Perfect diversity achieved.")
+    
+    # Compromises
+    if compromises:
+        print(f"\n📋 ENERGY COMPROMISES: {len(compromises)}")
+        print(f"   (Used adjacent energy when exact wasn't available)")
+        # Count by type
+        compromise_summary = Counter(f"{c['wanted']}→{c['got']}" for c in compromises)
+        for swap, count in compromise_summary.most_common():
+            print(f"      {swap}: {count} times")
+    
+    # Recommendations
+    if deficits or compromises:
+        print(f"\n💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:")
+        
+        # 1. Direct Capacity Deficits
+        if deficits:
+            print(f"   [Inventory Gaps]")
+            for energy, count in deficits.items():
+                examples = {
+                    "High": "(dancing, sports, action, fast movement)",
+                    "Medium": "(walking, social, casual movement, city life)",
+                    "Low": "(scenic, calm, establishing shots, landscapes)"
+                }.get(energy, "")
+                print(f"   → Add {count} more {energy.upper()}-ENERGY clips {examples}")
+        
+        # 2. Quality/Energy Mismatch Recommendations
+        if compromises:
+            print(f"\n   [Quality Improvements]")
+            # Count specifically what we swapped TO what
+            high_compromise = sum(1 for c in compromises if c['wanted'] == "High")
+            if high_compromise > 0:
+                print(f"   → {high_compromise} segments wanted 'High' energy but used 'Medium'.")
+                print(f"     Add high-intensity clips with 'Urban' or 'Nightlife' vibes to fix this.")
+            
+            low_compromise = sum(1 for c in compromises if c['wanted'] == "Low")
+            if low_compromise > 0:
+                print(f"   → {low_compromise} segments wanted 'Low' energy but used 'Medium'.")
+                print(f"     Add more 'Nature' or 'Calm' clips to reduce jitter here.")
+    
     print(f"{'='*60}\n")
     
     return edl

@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Travel",
+    "Hiking"
+  ],
+  "content_description": "A first-person perspective of walking along a rocky, uneven trail through a pine forest.",
+  "best_moments": {
+    "High": {
+      "start": 31.0,
+      "end": 34.0,
+      "reason": "Navigating a rockier section with more camera movement and dynamic perspective."
+    },
+    "Medium": {
+      "start": 5.0,
+      "end": 8.0,
+      "reason": "Steady walking on the trail, representing the overall pace of the hike."
+    },
+    "Low": {
+      "start": 21.0,
+      "end": 24.0,
+      "reason": "A slightly flatter, more stable part of the walk with minimal camera shake."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:01:53"
+}

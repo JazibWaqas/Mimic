@@ -1,0 +1,39 @@
+{
+  "total_duration": 16.275782,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "A fast-paced montage capturing highlights of a trip with cousins, moving from daytime activities to evening fun.",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 11.43,
+      "duration": 11.43,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "This segment features a series of quick cuts showing various activities during a trip, including driving through snowy mountains, interacting with monkeys, and taking group selfies, establishing a high-energy travel atmosphere."
+    },
+    {
+      "id": 2,
+      "start": 11.43,
+      "end": 16.275782,
+      "duration": 4.845782,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "The final segment continues the montage with dancing and running in the snow, eventually slowing down to a scenic shot of trees, providing a natural conclusion to the trip highlights."
+    }
+  ],
+  "overall_reasoning": "The video is a classic social media montage style, using rapid cuts and a 'POV' text overlay to convey the feeling of a fun family trip. The energy remains consistently high until the very end.",
+  "ideal_material_suggestions": [
+    "More candid shots of the cousins laughing",
+    "Close-ups of local food or souvenirs",
+    "Slow-motion shots of the snow falling",
+    "A final group shot looking at the view"
+  ],
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:30:03"
+}

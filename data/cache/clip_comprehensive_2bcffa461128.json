@@ -1,0 +1,29 @@
+{
+  "energy": "Low",
+  "motion": "Static",
+  "vibes": [
+    "Travel",
+    "Calm",
+    "Aerial"
+  ],
+  "content_description": "A view from an airplane window showing the wing and clouds during flight.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 6.5,
+      "reason": "Slightly more visible movement in the clouds and camera vibration."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 4.5,
+      "reason": "Consistent view of the wing with moderate cloud movement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The most stable and calm part of the flight view."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:02:26"
+}

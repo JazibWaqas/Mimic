@@ -1,0 +1,29 @@
+{
+  "energy": "Low",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Calm",
+    "Travel"
+  ],
+  "content_description": "A slow pan across a scenic mountain landscape revealing a dirt hiking trail through a pine forest.",
+  "best_moments": {
+    "High": {
+      "start": 2.5,
+      "end": 4.5,
+      "reason": "The reveal of the winding path adds more visual direction and interest to the shot."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "Steady panning motion across the trees provides a sense of movement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "The initial view of the distant, misty mountains is the most serene part of the clip."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 01:02:58"
+}
