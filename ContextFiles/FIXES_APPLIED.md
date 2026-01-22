@@ -71,7 +71,7 @@
 **Problem:** Single CACHE_VERSION invalidated both reference and clip caches when only one needed updating, causing unnecessary API calls.
 
 **Fix:**
-- Split into `REFERENCE_CACHE_VERSION = "6.1"` and `CLIP_CACHE_VERSION = "6.0"`
+- Split into `REFERENCE_CACHE_VERSION = "6.1"` and `CLIP_CACHE_VERSION = "6.1"`
 - Reference caching uses REFERENCE_CACHE_VERSION
 - Clip caching uses CLIP_CACHE_VERSION
 
