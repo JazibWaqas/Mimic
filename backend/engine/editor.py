@@ -84,6 +84,10 @@ def match_clips_to_blueprint(
     # Track current position in each clip (for sequential fallback)
     clip_current_position = {clip.filename: 0.0 for clip in clip_index.clips}
     
+    # TRACKER: Areas of clips already used to prevent exact repetition
+    # Dict[filename, List[Tuple[start, end]]]
+    clip_used_intervals = defaultdict(list)
+    
     # VISUAL COOLDOWN SYSTEM: Track when each clip was last used on the timeline
     clip_last_used_at = {clip.filename: -999.0 for clip in clip_index.clips}
     MIN_CLIP_REUSE_GAP = 5.0  # Don't reuse a clip within 5 seconds
@@ -118,8 +122,22 @@ def match_clips_to_blueprint(
         max_cuts_per_segment = 20  # Prevent infinite loops
         
         while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
+            # Update remaining duration based on current timeline position
+            segment_remaining = max(0.0, segment.end - timeline_position)
+            if segment_remaining <= 0.05:
+                break
+                
             # Find matching clips
             matching_clips = energy_pools.get(segment.energy, [])
+            
+            # ENERGY POOL FLEXING: If pool is empty or too small, pull from nearby
+            if not matching_clips or (len(matching_clips) < 2 and len(clip_index.clips) > 4):
+                 # Add Medium if looking for High/Low
+                 if segment.energy != EnergyLevel.MEDIUM:
+                     matching_clips = matching_clips + energy_pools.get(EnergyLevel.MEDIUM, [])
+                 # Add Low if looking for Medium and results were poor
+                 elif segment.energy == EnergyLevel.MEDIUM:
+                     matching_clips = matching_clips + energy_pools.get(EnergyLevel.LOW, []) + energy_pools.get(EnergyLevel.HIGH, [])
             
             if not matching_clips:
                 print(f"  [WARN] No {segment.energy.value} clips available, using all clips")
@@ -205,13 +223,11 @@ def match_clips_to_blueprint(
                         score -= 3.0
 
                 # === E. USAGE PENALTY (Encourage Variety) ===
-                usage_penalty = clip_usage_count[clip.filename] * 3.0
+                # High penalty to force use of wide clip library
+                usage_penalty = clip_usage_count[clip.filename] * 8.0
                 score -= usage_penalty
-                if clip_usage_count[clip.filename] > 2:
+                if clip_usage_count[clip.filename] > 0:
                     reasons.append(f"Used {clip_usage_count[clip.filename]}x")
-
-                # === F. MOMENT FRESHNESS (Prefer Unused Portions) ===
-                # This will be evaluated per-moment, not per-clip
 
                 reasoning = " | ".join(reasons) if reasons else "Flow optimization"
                 return score, reasoning, vibe_matched
@@ -244,37 +260,31 @@ def match_clips_to_blueprint(
                 print(f"  🧠 AI Thinking: {thinking}")
                 print(f"  📎 Selected: {selected_clip.filename} (Score: {selected_score:.1f})")
 
-            # PHASE 1: Target Duration Selection
-            # Use Arc Stage to influence cut pacing
-            if segment.arc_stage == "Intro":
-                # Intros are usually longerestablishing shots
-                target_duration = random.uniform(2.0, 3.5)
-            elif segment.arc_stage == "Peak":
-                # Peaks are rapid fire
-                target_duration = random.uniform(0.15, 0.45)
-            elif segment.arc_stage == "Build-up":
-                # Accelerating
-                target_duration = random.uniform(0.5, 1.2)
-            else:
-                # Default by energy
-                if segment.energy == EnergyLevel.HIGH:
-                    target_duration = random.uniform(0.3, 0.6)
-                elif segment.energy == EnergyLevel.MEDIUM:
-                    target_duration = random.uniform(0.8, 1.5)
-                else:
-                    target_duration = random.uniform(1.5, 3.0)
+            # === PACING LOGIC: TRUE MIMIC BEHAVIOR ===
+            # Rule 1: Respect the pro-editor's original timing.
+            # Rule 2: Only subdivide if a segment is 'long' (> 2.0s) AND we are in an active stage.
             
-            # BUDGET CHECK: How much time is really left in this segment?
-            # We check relative to the segment's actual end on the global timeline
-            segment_remaining = max(0.0, segment.end - timeline_position)
+            should_subdivide = False
+            if segment.duration > 2.0 and segment.arc_stage.lower() in ["build-up", "peak"]:
+                should_subdivide = True
             
-            is_last_cut_of_segment = False
-            if target_duration >= segment_remaining - 0.1:
-                # If target is close to end, or this is the last available time, snap to end
+            if not should_subdivide:
+                # 1:1 Match - Use the exact remaining duration of the reference segment
                 use_duration = segment_remaining
                 is_last_cut_of_segment = True
             else:
-                use_duration = target_duration
+                # Subdivide long segments to keep energy up
+                if segment.arc_stage.lower() == "peak":
+                    target_duration = random.uniform(0.6, 1.0) # Faster cuts for peak
+                else:
+                    target_duration = random.uniform(1.2, 1.8) # Moderate cuts for build-up
+                
+                if target_duration >= segment_remaining - 0.2:
+                    use_duration = segment_remaining
+                    is_last_cut_of_segment = True
+                else:
+                    use_duration = target_duration
+                    is_last_cut_of_segment = False
 
             # PHASE 2: Beat Alignment (if audio exists)
             # We only align if we aren't snapping to the segment end (which is already a beat/cut point)
@@ -305,9 +315,8 @@ def match_clips_to_blueprint(
                     # End is clip_start + use_duration, capped by window end
                     clip_end = min(clip_start + use_duration, window_end)
                     
-                    # If the window is too small for the duration, just use whatever is left
+                    # If the window is too small for the duration, use sequential fallback
                     if clip_end - clip_start < 0.1:
-                         # Window exhausted, fallback to sequential from window_start
                          clip_start = window_start
                          clip_end = min(clip_start + use_duration, selected_clip.duration)
             
@@ -316,7 +325,7 @@ def match_clips_to_blueprint(
                 clip_start = clip_current_position[selected_clip.filename]
                 clip_end = min(clip_start + use_duration, selected_clip.duration)
             
-            # RECYCLE CHECK: If clip is exhausted, reset
+            # RECYCLE CHECK: If clip is exhausted, reset to start
             if clip_start >= selected_clip.duration - 0.1:
                 clip_start = 0.0
                 clip_end = min(use_duration, selected_clip.duration)
@@ -333,12 +342,6 @@ def match_clips_to_blueprint(
             # SAFETY: Ensure clip_end is always greater than clip_start
             if clip_end <= clip_start or clip_end <= 0:
                 print(f"    [SKIP] Invalid clip boundaries ({clip_start:.2f}s-{clip_end:.2f}s)")
-                cuts_in_segment += 1
-                continue
-            
-            # SAFETY: If somehow duration is tiny, skip if not last cut
-            if actual_duration < 0.05 and not is_last_cut_of_segment:
-                print(f"    [SKIP] Cut too short ({actual_duration:.2f}s)")
                 cuts_in_segment += 1
                 continue
 
@@ -368,6 +371,7 @@ def match_clips_to_blueprint(
             clip_current_position[selected_clip.filename] = clip_end
             clip_usage_count[selected_clip.filename] += 1
             clip_last_used_at[selected_clip.filename] = timeline_position  # Visual cooldown tracking
+            clip_used_intervals[selected_clip.filename].append((clip_start, clip_end))
             
             # Transition memory for next iteration
             last_clip_motion = selected_clip.motion

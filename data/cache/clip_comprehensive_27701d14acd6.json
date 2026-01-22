@@ -1,0 +1,29 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Nightlife",
+    "Fun"
+  ],
+  "content_description": "A group of friends energetically dancing and posing in front of a brightly lit Eiffel Tower replica at night.",
+  "best_moments": {
+    "High": {
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "Intense group movement including a kick and dynamic camera motion as the lights change color."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Initial posing and coordinated dance moves with moderate energy and steady camera work."
+    },
+    "Low": {
+      "start": 7.0,
+      "end": 9.0,
+      "reason": "The group relaxes and laughs after the main action, showing a more candid and less intense moment."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:24:53"
+}

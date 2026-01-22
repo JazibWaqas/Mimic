@@ -1,0 +1,30 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Action",
+    "Nightlife",
+    "Fun"
+  ],
+  "content_description": "A group of friends engages in a lively water gun fight at night in a park under bright artificial lighting.",
+  "best_moments": {
+    "High": {
+      "start": 38.5,
+      "end": 41.5,
+      "reason": "Peak intensity with multiple people spraying water simultaneously and high movement."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 4.5,
+      "reason": "Moderate action as the group actively engages in the water fight with steady movement."
+    },
+    "Low": {
+      "start": 8.5,
+      "end": 11.5,
+      "reason": "A brief pause in the action where participants are mostly standing and observing."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:21:09"
+}

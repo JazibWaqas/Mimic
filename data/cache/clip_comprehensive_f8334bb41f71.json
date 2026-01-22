@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Static",
+  "vibes": [
+    "Food",
+    "Friends",
+    "Casual"
+  ],
+  "content_description": "A group of friends sharing french fries and laughing while sitting at a wooden table.",
+  "best_moments": {
+    "High": {
+      "start": 5.0,
+      "end": 8.0,
+      "reason": "Laughter and active hand movement while picking up a fry."
+    },
+    "Medium": {
+      "start": 24.0,
+      "end": 27.0,
+      "reason": "A person picks up a fry and shows it to the camera with moderate movement."
+    },
+    "Low": {
+      "start": 19.0,
+      "end": 22.0,
+      "reason": "A relatively still shot of the fries in the container with minimal interaction."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:24:19"
+}

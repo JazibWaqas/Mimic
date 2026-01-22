@@ -1,0 +1,30 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Travel",
+    "Adventure",
+    "Animals"
+  ],
+  "content_description": "A first-person perspective of a horse ride through a wooded, hilly trail, following another rider and a guide.",
+  "best_moments": {
+    "High": {
+      "start": 8.0,
+      "end": 11.0,
+      "reason": "Increased camera shake and movement as the horse navigates uneven terrain."
+    },
+    "Medium": {
+      "start": 16.0,
+      "end": 19.0,
+      "reason": "Steady uphill climb with consistent motion and clear view of the trail ahead."
+    },
+    "Low": {
+      "start": 25.0,
+      "end": 28.0,
+      "reason": "Relatively smoother movement as the horse walks on a flatter section of the path."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:25:28"
+}

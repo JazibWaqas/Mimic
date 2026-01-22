@@ -1,0 +1,30 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Fun",
+    "Music",
+    "Travel"
+  ],
+  "content_description": "A group of friends singing and dancing enthusiastically inside a car while traveling.",
+  "best_moments": {
+    "High": {
+      "start": 1.0,
+      "end": 4.0,
+      "reason": "Peak energy with everyone dancing and hands in the air."
+    },
+    "Medium": {
+      "start": 7.0,
+      "end": 10.0,
+      "reason": "Consistent singing and moderate movement from the group."
+    },
+    "Low": {
+      "start": 24.0,
+      "end": 27.0,
+      "reason": "A more relaxed moment with laughter and less intense dancing."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:21:47"
+}

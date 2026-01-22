@@ -1,0 +1,29 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Action",
+    "Fun"
+  ],
+  "content_description": "A group of friends are playing and wrestling in an indoor paintball or laser tag arena.",
+  "best_moments": {
+    "High": {
+      "start": 8.0,
+      "end": 11.0,
+      "reason": "Intense physical interaction and fast camera movement as friends wrestle."
+    },
+    "Medium": {
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "Walking through the arena with moderate movement and clear visibility of the environment."
+    },
+    "Low": {
+      "start": 18.0,
+      "end": 21.0,
+      "reason": "Group standing relatively still and talking, minimal camera motion."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:22:45"
+}

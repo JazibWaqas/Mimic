@@ -1,0 +1,30 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nightlife",
+    "Friends",
+    "Urban",
+    "Action"
+  ],
+  "content_description": "A group of friends driving through a city at night, with one passenger screaming excitedly while filming.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Intense screaming and rapid camera movement at the start of the drive."
+    },
+    "Medium": {
+      "start": 7.5,
+      "end": 10.5,
+      "reason": "Steady driving through city streets with visible dashboard and city lights."
+    },
+    "Low": {
+      "start": 10.0,
+      "end": 12.0,
+      "reason": "The final moments of the clip where the camera stabilizes slightly as they continue driving."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:23:45"
+}

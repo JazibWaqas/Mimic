@@ -1,0 +1,29 @@
+{
+  "energy": "Low",
+  "motion": "Static",
+  "vibes": [
+    "Food",
+    "Friends",
+    "Calm"
+  ],
+  "content_description": "A person pours a hot beverage from a paper pouch into a small cup held by a friend at a green wooden table.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "Initial pouring action with visible liquid flow and hand movement."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 4.0,
+      "reason": "Steady pouring of the beverage into the cup."
+    },
+    "Low": {
+      "start": 3.5,
+      "end": 5.5,
+      "reason": "The pouring slows down and concludes as the cup fills up."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 00:20:32"
+}
