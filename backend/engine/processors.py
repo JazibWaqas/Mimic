@@ -95,30 +95,33 @@ def has_audio(video_path: str) -> bool:
 def get_beat_grid(duration: float, bpm: int = 120) -> List[float]:
     """
     Generate beat timestamps assuming fixed BPM.
-    
+
     This creates a "beat grid" for aligning cuts to music, even without
     real beat detection. Works well for most electronic/pop music.
-    
+
     Args:
         duration: Total video duration in seconds
         bpm: Beats per minute (default 120 = common pop/electronic tempo)
-    
+
     Returns:
         List of beat timestamps in seconds [0.0, 0.5, 1.0, 1.5, ...]
-    
+
     Examples:
         120 BPM = 0.5s per beat (2 beats/second)
         140 BPM = 0.428s per beat
         100 BPM = 0.6s per beat
     """
+    # Guardrail: avoid division by zero / nonsense BPMs
+    if bpm is None or bpm <= 0:
+        return []
     beat_interval = 60.0 / bpm
     timestamps = []
     t = 0.0
-    
+
     while t < duration:
         timestamps.append(t)
         t += beat_interval
-    
+
     return timestamps
 
 
@@ -204,7 +207,11 @@ def detect_bpm(audio_path: str) -> float:
             tempo = float(tempo[0])
         else:
             tempo = float(tempo)
-            
+
+        # Guardrail: librosa can yield 0.0 or NaN. Treat as invalid.
+        if not (tempo > 0 and tempo < 300):   # pick sane upper bound
+            raise ValueError(f"Invalid tempo {tempo}")
+
         print(f"  [OK] Detected BPM: {tempo:.2f}")
         return tempo
     except Exception as e:
@@ -212,9 +219,16 @@ def detect_bpm(audio_path: str) -> float:
         return 120.0
 
 
-def extract_audio(video_path: str, output_path: str) -> str:
+def extract_audio_wav(video_path: str, wav_output_path: str) -> bool:
     """
-    Extract audio from video to a WAV file for analysis.
+    Extract audio from video to a WAV file for BPM analysis.
+
+    Args:
+        video_path: Source video path
+        wav_output_path: Output WAV file path
+
+    Returns:
+        True if extraction succeeded, False if failed/no audio
     """
     cmd = [
         "ffmpeg",
@@ -224,14 +238,17 @@ def extract_audio(video_path: str, output_path: str) -> str:
         "-ar", "44100",
         "-ac", "2",
         "-y",
-        output_path
+        wav_output_path
     ]
     try:
         subprocess.run(cmd, check=True, capture_output=True)
-        return output_path
-    except Exception as e:
-        print(f"  [WARN] Audio extraction failed: {e}")
-        return ""
+        return True
+    except subprocess.CalledProcessError as e:
+        stderr = e.stderr.decode(errors="ignore") if isinstance(e.stderr, (bytes, bytearray)) else (e.stderr or "")
+        if "does not contain any stream" in stderr or "no audio" in stderr.lower():
+            return False
+        print(f"  [WARN] WAV audio extraction failed: {stderr}")
+        return False
 
 
 # ============================================================================
@@ -345,7 +362,7 @@ def extract_segment(
 ) -> None:
     """
     Extract a segment from a video (precise frame-accurate cutting).
-    
+
     Args:
         input_path: Source video
         output_path: Destination for segment
@@ -354,15 +371,19 @@ def extract_segment(
     """
     cmd = [
         "ffmpeg",
-        "-ss", str(start_time),  # Seek to start
+        "-y",
+        "-ss", str(start_time),  # Seek to start (before -i for accuracy)
         "-i", input_path,
         "-t", str(duration),  # Duration
-        "-c", "copy",  # Copy codec (no re-encode = faster)
+        "-c:v", "libx264",  # Re-encode for frame-accurate cuts
+        "-preset", "ultrafast",
+        "-crf", "23",
+        "-c:a", "aac",
+        "-b:a", "192k",
         "-avoid_negative_ts", "make_zero",
-        "-y",
         output_path
     ]
-    
+
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
         print(f"    [OK] Segment extracted: {start_time:.2f}s - {start_time + duration:.2f}s")

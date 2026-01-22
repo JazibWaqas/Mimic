@@ -4,27 +4,26 @@
   "vibes": [
     "Friends",
     "Nightlife",
-    "Fun",
     "Music"
   ],
-  "content_description": "A group of friends having a high-energy karaoke and dance session inside a car at night.",
+  "content_description": "A group of friends is energetically singing and dancing along to music inside a car at night.",
   "best_moments": {
     "High": {
-      "start": 26.5,
-      "end": 29.5,
-      "reason": "Peak energy with everyone singing and dancing enthusiastically to the music."
+      "start": 26.0,
+      "end": 29.0,
+      "reason": "Peak excitement and synchronized singing during the chorus."
     },
     "Medium": {
-      "start": 3.5,
-      "end": 6.5,
-      "reason": "Consistent rhythmic movement and positive expressions from the group."
+      "start": 1.0,
+      "end": 4.0,
+      "reason": "Consistent rhythmic dancing and hand movements."
     },
     "Low": {
-      "start": 12.5,
-      "end": 15.0,
-      "reason": "A brief moment of relatively calmer head bobbing and less frantic movement."
+      "start": 23.0,
+      "end": 25.5,
+      "reason": "A brief transition period with slightly less intense movement."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:30:46"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:15:28"
 }

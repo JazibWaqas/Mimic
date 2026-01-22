@@ -1,92 +1,98 @@
-# Next Session - Full Pipeline Testing & Demo Prep
+# Next Session - Full Pipeline Testing & Quality Validation
 
-**Created:** January 21, 2026, 02:08 AM PKT
-**Purpose:** Test V6.0 Deep Semantic Analysis + Editing Grammar Intelligence end-to-end
-**Priority:** VALIDATE FULL PIPELINE → PREPARE DEMO
+**Created:** January 22, 2026, 11:35 PM PKT
+**Purpose:** Test V6.1 Semantic Reference Analysis + System Hardening end-to-end
+**Priority:** VALIDATE SEMANTIC MATCHING → DEMO PREPARATION
 
 ---
 
 ## ✅ PREVIOUS BLOCKERS - ALL RESOLVED
 
-**All critical architectural issues from January 20 have been fixed:**
+**All critical issues from the forensic analysis have been fixed:**
 
-1. ✅ **Timeline Primitive Mismatch** - Fixed with boundary enforcement and float snapping
-2. ✅ **Float Precision Errors** - Fixed with segment subdivision snapping
-3. ✅ **Cache Poisoning** - Fixed with V6.0 cache version bump
-4. ✅ **Copyright Blocks** - Fixed with "Mute and Analyze" workaround
-5. ✅ **Generic Analysis** - Fixed with V6.0 Deep Semantic Analysis
-6. ✅ **Repetitive Edits** - Fixed with Editing Grammar Intelligence
+1. ✅ **ZeroDivisionError crashes** - BPM safety guards and validation
+2. ✅ **Semantic reference gaps** - Vibe/arc_stage fields now generated with scene hints
+3. ✅ **Frame-accurate extraction** - Re-encoding instead of stream copy
+4. ✅ **API key rotation** - Model propagation across clips
+5. ✅ **Manual mode bugs** - Duration parameter correction
+6. ✅ **Error handling** - Cross-platform stderr and JSON parsing
+7. ✅ **Timeline drift** - Boundary enforcement and guards
+8. ✅ **Cache keying** - Hint-based hashing for invalidation
 
-**System is now ready for full pipeline testing.**
+**System is now hardened and semantically enhanced. Ready for full pipeline testing.**
 
 ---
 
-## 🚀 Step 1: Full Pipeline Test
+## 🚀 Step 1: Full Pipeline Test with Adequate Quota
 
-**Goal:** Validate that V6.0 analysis + Editing Grammar produces professional, varied edits.
+**Goal:** Validate that V6.1 semantic analysis + hardened system produces consistent, high-quality edits.
 
 ### **Test Command:**
 ```powershell
 cd c:\Users\OMNIBOOK\Documents\GitHub\Mimic
-python test_real_pipeline.py
+python test_ref4_v4.py
+# Or with specific reference:
+$env:TEST_REFERENCE = "refrence2.mp4"; python test_ref4_v4.py
 ```
 
 ### **What to Watch For:**
 
 **During Analysis:**
-- ✅ Reference video creates muted copy
-- ✅ All segments have arc_stage, vibe, reasoning
-- ✅ All clips have content_description
-- ✅ No "Using default" messages
-- ✅ Cache saves V6.0 format
+- ✅ Reference analysis includes vibe/arc_stage/reasoning fields
+- ✅ Cache version 6.1 properly invalidates old caches
+- ✅ No ZeroDivisionError crashes (BPM guards working)
+- ✅ API key rotation works seamlessly
 
 **During Editing:**
-- ✅ AI Thinking shows "Smart Match" or "Good Fit" (not just "Flow Optimization")
-- ✅ Scores are positive (indicating semantic matches)
-- ✅ Visual cooldown warnings appear when clips reused too soon
-- ✅ Adaptive pacing (Intro cuts longer than Peak cuts)
-- ✅ No back-to-back repeats of same clip
+- ✅ Semantic matching occurs (vibe_match flags are accurate)
+- ✅ AI Thinking shows "Smart Match" with vibe reasoning
+- ✅ Visual cooldown prevents monotony (5-second gaps)
+- ✅ Adaptive pacing by arc stage (Intro slow, Peak rapid)
+- ✅ No timeline drift warnings
 
 **During Rendering:**
-- ✅ Timeline validation passes (no gap/overlap errors)
-- ✅ FFmpeg concat succeeds
-- ✅ Output video renders successfully
+- ✅ Frame-accurate segment extraction (no timestamp drift)
+- ✅ Timeline validation passes (mathematical continuity)
+- ✅ FFmpeg concat succeeds with re-encoded segments
+- ✅ Final video renders with proper audio sync
 
 ### **Success Criteria:**
-- Video renders without errors
-- Output duration matches reference (±0.5s)
-- Clips show variety (no single clip dominates)
-- Pacing feels dynamic and intentional
-- Transitions feel smooth
+- ✅ No crashes (ZeroDivisionError, import errors, etc.)
+- ✅ Semantic matching works (vibe/arc reasoning in logs)
+- ✅ Timeline integrity (no gaps/overlaps in EDL)
+- ✅ Frame accuracy (cuts align with intended timestamps)
+- ✅ Output quality matches reference rhythm and energy
+- ✅ Clip variety (cooldown system prevents repetition)
 
 ---
 
-## 🎬 Step 2: Quality Check
+## 🎬 Step 2: Quality Validation & Semantic Matching Assessment
 
-**Compare output with reference side-by-side:**
+**Compare output with reference and evaluate semantic improvements:**
 
-### **Visual Inspection:**
-- Does the pacing match the reference's energy?
-- Are cuts happening on or near beats?
-- Does the edit feel "alive" or robotic?
-- Are there any jarring transitions?
-- Does the arc progression feel natural (Intro → Build → Peak → Outro)?
+### **Semantic Matching Validation:**
+- ✅ **Vibe matching rate** - What % of decisions have vibe_match=true?
+- ✅ **Arc stage coherence** - Do Intro segments use establishing shots?
+- ✅ **Reasoning quality** - Are AI explanations meaningful vs generic?
+- ✅ **Cache effectiveness** - Does V6.1 prevent unnecessary re-analysis?
 
-### **Technical Validation:**
+### **Technical Quality Check:**
 ```powershell
-# Check output file
+# Validate output integrity
 ffprobe data/results/mimic_output_*.mp4
 
-# Verify duration
-# Verify audio sync
-# Check for visual glitches
+# Check timeline continuity (should show no gaps)
+# Verify semantic cache fields exist
+Get-Content data/cache/ref_*.json | ConvertFrom-Json | Select editing_style, emotional_intent
+
+# Confirm BPM handling
+# Check for error-free API key rotation
 ```
 
-### **If Issues Found:**
-- Check `data/results/edl_*.json` for edit decisions
-- Review AI reasoning in terminal logs
-- Verify cache has V6.0 metadata
-- Check for any error messages
+### **Comparative Analysis:**
+- **Before vs After:** Compare with pre-V6.1 outputs (more robotic vs semantic)
+- **Reference Fidelity:** Does output preserve original cut rhythm?
+- **Clip Utilization:** How much of each source clip is used? (Efficiency metric)
 
 ---
 
@@ -140,58 +146,73 @@ python test_real_pipeline.py --reference refrence2.mp4
 
 ---
 
-## 🎯 Step 5: Demo Preparation
+## 🎯 Step 3: Performance Optimization & Demo Preparation
 
-**Once pipeline is validated:**
+**Once semantic matching is validated:**
 
-### **A. Record Demo Video:**
-1. Show reference video
-2. Show user clips (raw material)
-3. Run pipeline (show AI reasoning in terminal)
-4. Show final output
-5. Play side-by-side comparison
+### **A. Performance Metrics:**
+- **API Efficiency:** Measure calls per video, cache hit rates
+- **Processing Time:** Target <60s for demo (current: ~2-3 min with API)
+- **Memory Usage:** Optimize for consistent performance
+- **Error Resilience:** Test edge cases (corrupted files, network issues)
 
-### **B. Prepare Submission Materials:**
-- **README.md**: Update with V6.0 features
-- **Demo Screenshots**: Show AI reasoning, semantic matching
-- **Architecture Diagram**: Illustrate Editing Grammar intelligence
-- **Performance Metrics**: API usage, processing time, cache efficiency
+### **B. Demo Video Creation:**
+1. **Reference showcase:** Demonstrate semantic understanding
+2. **Pipeline walkthrough:** Show AI reasoning and decision-making
+3. **Quality comparison:** Side-by-side with reference
+4. **Technical validation:** Prove timeline integrity and semantic matching
 
-### **C. Polish UI (If Time Permits):**
-- Display AI reasoning in frontend progress
-- Show material suggestions
-- Visualize arc stages and vibes
-- Real-time editing preview
+### **C. Submission Materials:**
+- **README.md**: Updated with V6.1 semantic capabilities
+- **Technical Documentation:** Cache invalidation, BPM handling, timeline math
+- **Architecture Diagrams:** Semantic analysis pipeline, editing grammar system
+- **Performance Benchmarks:** Quality metrics, efficiency improvements
+
+### **D. Hackathon-Ready Checklist:**
+- [ ] Full pipeline completes without crashes
+- [ ] Semantic matching demonstrably improves quality
+- [ ] Cache system prevents redundant API calls
+- [ ] Error handling works across platforms
+- [ ] Demo video shows clear value proposition
+- [ ] Submission documentation complete
 
 ---
 
 ## 📋 Session Checklist
 
 **Before Starting:**
-- [ ] Read `STATUS.md` for current state
-- [ ] Review `FIXES_APPLIED.md` for V6.0 changes
-- [ ] Ensure all 4 reference videos are cached (V6.0 format)
-- [ ] Verify clips are cached with content_description
+- [ ] Read `STATUS.md` for V6.1 current state
+- [ ] Review `FIXES_APPLIED.md` for all recent fixes
+- [ ] Check `data/cache/` for V6.1 reference caches with semantic fields
+- [ ] Verify crash prevention (BPM guards, import fixes)
+- [ ] Ensure adequate API quota for testing
 
 **During Testing:**
-- [ ] Run full pipeline test
-- [ ] Monitor AI reasoning output
-- [ ] Check for visual cooldown warnings
-- [ ] Verify semantic matching is working
-- [ ] Validate timeline continuity
+- [ ] Run pipeline test with different references
+- [ ] Verify no crashes (ZeroDivisionError, import errors)
+- [ ] Check semantic matching in AI reasoning logs
+- [ ] Validate timeline integrity (no drift warnings)
+- [ ] Confirm frame-accurate extraction works
+- [ ] Monitor API key rotation effectiveness
 
-**Quality Check:**
-- [ ] Watch output video
-- [ ] Compare with reference
-- [ ] Check for variety in clip usage
-- [ ] Verify pacing matches arc stages
-- [ ] Confirm no jarring transitions
+**Quality Assessment:**
+- [ ] Compare semantic vs non-semantic outputs
+- [ ] Measure vibe matching accuracy
+- [ ] Evaluate arc stage coherence
+- [ ] Assess clip variety and cooldown effectiveness
+- [ ] Verify reference rhythm preservation
 
-**If All Good:**
-- [ ] Test with multiple references
-- [ ] Record demo video
-- [ ] Update README.md
-- [ ] Prepare submission materials
+**Optimization Phase:**
+- [ ] Profile performance bottlenecks
+- [ ] Optimize cache hit rates
+- [ ] Improve error messaging
+- [ ] Test edge cases (corrupted files, network issues)
+
+**Demo Preparation:**
+- [ ] Create compelling demo video
+- [ ] Document technical achievements
+- [ ] Prepare performance metrics
+- [ ] Finalize submission materials
 
 ---
 
@@ -216,27 +237,34 @@ python test_real_pipeline.py --reference refrence2.mp4
 
 ## 📚 Context for Next Developer
 
-**Current State:**
-- V6.0 Deep Semantic Analysis: COMPLETE
-- Editing Grammar Intelligence: COMPLETE
-- All blockers: RESOLVED
-- Cache: V6.0 format with full metadata
+**Current State (Post-Forensic Analysis):**
+- ✅ **V6.1 Semantic Reference Analysis:** Reference videos generate vibe/arc_stage/reasoning with scene hints
+- ✅ **System Hardening:** All crash scenarios prevented (BPM=0, import errors, timeline drift)
+- ✅ **Cache Enhancement:** V6.1 with hint-based invalidation, semantic fields preserved
+- ✅ **Quality Assurance:** Frame-accurate extraction, API rotation, cross-platform error handling
 
 **System Capabilities:**
-- Understands narrative arc (Intro/Build/Peak/Outro)
-- Matches clips semantically (vibes + content descriptions)
-- Prevents visual monotony (5-second cooldown)
-- Creates smooth transitions (motion continuity)
-- Adapts pacing to arc stage
+- **Semantic Understanding:** Analyzes reference videos for editing intent, not just technical metrics
+- **True Mimic Behavior:** Preserves original cut rhythm when scene hints exist
+- **Intelligent Matching:** 5-factor scoring (arc relevance, vibe matching, cooldown, transitions, usage)
+- **Robust Processing:** Handles edge cases gracefully, prevents timeline corruption
+- **Professional Quality:** Adaptive pacing, smooth transitions, variety optimization
 
-**Next Goal:**
-- Validate full pipeline produces professional edits
-- Prepare demo materials
-- Deploy for hackathon submission
+**Technical Achievements:**
+- **Forensic Methodology:** Systematic root cause analysis of crashes and quality issues
+- **Mathematical Precision:** Timeline continuity enforced, float drift prevented
+- **Cache Integrity:** Semantic data preserved, poisoning prevented
+- **Error Resilience:** Cross-platform compatibility, graceful degradation
+
+**Next Critical Goals:**
+- **Semantic Validation:** Prove vibe/arc matching improves output quality
+- **Performance Optimization:** Reduce demo runtime, improve cache efficiency
+- **Demo Excellence:** Showcase true AI-powered editing intelligence
+- **Hackathon Readiness:** Complete submission with compelling technical narrative
 
 ---
 
-**Next Session Focus:** Test, validate, demo. The architecture is solid. Time to show what it can do.
+**Next Session Focus:** Validate semantic improvements, optimize performance, create winning demo. System is now technically sound - time to prove the value proposition.
 
 
 ---

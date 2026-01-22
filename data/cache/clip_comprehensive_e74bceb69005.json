@@ -3,27 +3,27 @@
   "motion": "Dynamic",
   "vibes": [
     "Action",
-    "Water",
+    "Water Sports",
     "Outdoors"
   ],
-  "content_description": "Two men riding a jet ski on a river near a sandy bank.",
+  "content_description": "Two men riding a jet ski on a river, with one man moving from the back to the front while the driver claps.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "Jet ski moving at speed with visible wake and spray."
+      "reason": "Initial movement with visible water spray and faster pace."
     },
     "Medium": {
       "start": 2.5,
       "end": 5.0,
-      "reason": "Jet ski slowing down and turning towards the camera."
+      "reason": "Steady cruising as the passenger shifts position on the jet ski."
     },
     "Low": {
       "start": 5.0,
       "end": 7.0,
-      "reason": "Jet ski coming to a near halt with minimal water disturbance."
+      "reason": "The jet ski slows down and the driver claps, showing minimal motion."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:43:34"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:24:34"
 }

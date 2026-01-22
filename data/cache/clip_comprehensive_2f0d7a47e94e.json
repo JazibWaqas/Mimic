@@ -1,29 +1,30 @@
 {
-  "energy": "High",
+  "energy": "Medium",
   "motion": "Dynamic",
   "vibes": [
     "Nature",
     "Friends",
-    "Fun"
+    "Fun",
+    "Outdoors"
   ],
-  "content_description": "A group of friends playfully running and dancing on a scenic hilltop with a mountain backdrop.",
+  "content_description": "A man stands still on a grassy hill while several people run and play in the background under a blue sky.",
   "best_moments": {
     "High": {
       "start": 5.0,
       "end": 8.0,
-      "reason": "Peak action with multiple people running across the frame and the main subject dancing."
+      "reason": "Multiple people running and jumping across the background creates peak visual activity."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "The opening sequence with moderate movement as the subject begins his performance."
+      "start": 1.0,
+      "end": 4.0,
+      "reason": "The subject poses while a few people run past, balancing stillness and motion."
     },
     "Low": {
-      "start": 12.5,
+      "start": 12.0,
       "end": 15.0,
-      "reason": "The subject stands relatively still at the end, providing a calm conclusion to the clip."
+      "reason": "The background action subsides, leaving a more stable and calm scene."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:24:12"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:09:50"
 }

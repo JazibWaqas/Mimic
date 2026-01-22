@@ -30,6 +30,7 @@ from engine.editor import match_clips_to_blueprint, validate_edl, print_edl_summ
 from engine.processors import (
     standardize_clip,
     extract_audio,
+    extract_audio_wav,
     extract_segment,
     concatenate_videos,
     merge_audio_video,
@@ -124,7 +125,7 @@ def run_mimic_pipeline(
             scene_timestamps = detect_scene_changes(reference_path)
             
             # 2b. Extract audio and detect BPM (Dynamic Rhythm)
-            if extract_audio(reference_path, str(audio_analysis_path)):
+            if extract_audio_wav(reference_path, str(audio_analysis_path)):
                 ref_bpm = detect_bpm(str(audio_analysis_path))
             
             # 2c. Analyze with Gemini using hints
@@ -230,7 +231,7 @@ def run_mimic_pipeline(
         
         # Handle audio
         audio_path = temp_session_dir / "ref_audio.aac"
-        has_audio = extract_audio(reference_path, str(audio_path))
+        audio_extracted = extract_audio(reference_path, str(audio_path))
         
         # Final output (use full session_id to prevent collisions)
         output_filename = f"mimic_output_{session_id}.mp4"
@@ -241,7 +242,7 @@ def run_mimic_pipeline(
             print(f"[WARN] Removing existing output file: {final_output_path}")
             final_output_path.unlink()
         
-        if has_audio:
+        if audio_extracted:
             merge_audio_video(
                 str(temp_video_path),
                 str(audio_path),
@@ -425,7 +426,7 @@ def run_mimic_pipeline_manual(
                 decision.clip_path,
                 str(segment_path),
                 decision.clip_start,
-                decision.clip_end
+                decision.clip_end - decision.clip_start
             )
             segment_files.append(str(segment_path))
             print(f"    [OK] Segment extracted: {decision.clip_start:.2f}s - {decision.clip_end:.2f}s")

@@ -13,8 +13,10 @@ from engine.orchestrator import run_mimic_pipeline
 from engine.processors import get_video_duration
 import os
 
-# Paths
-REFERENCE = Path("data/samples/reference/ref5.mp4")
+# Paths - can be overridden with environment variable
+import os
+default_ref = os.environ.get('TEST_REFERENCE', 'ref5.mp4')
+REFERENCE = Path(f"data/samples/reference/{default_ref}")
 CLIPS_DIR = Path("data/samples/clips")
 RESULTS_DIR = Path("data/results")
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)

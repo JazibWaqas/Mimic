@@ -1,8 +1,8 @@
 # MIMIC Project Status - Complete Context Document
 
-**Last Updated:** January 21, 2026, 02:04 AM PKT
-**Current Phase:** V6.0 Deep Semantic Analysis + Editing Grammar Intelligence COMPLETE
-**Next Milestone:** Full pipeline test → Demo preparation
+**Last Updated:** January 22, 2026, 11:30 PM PKT
+**Current Phase:** V6.1 Semantic Reference Analysis + System Hardening COMPLETE
+**Next Milestone:** Full pipeline testing with semantic matching validation
 
 ---
 
@@ -47,6 +47,16 @@
 - **Audio Analysis:** librosa (BPM detection)
 - **Frontend:** Next.js, React, TailwindCSS
 - **Data Models:** Pydantic (validation)
+
+### **Recent Critical Fixes (January 22, 2026)**
+- **✅ ZeroDivisionError Prevention:** Added BPM safety guards to prevent crashes when audio analysis fails
+- **✅ Semantic Reference Analysis:** Fixed reference video analysis to include vibe/arc_stage/reasoning fields even with scene hints
+- **✅ Frame-Accurate Segment Extraction:** Replaced stream copy with re-encoding for precise cut timestamps
+- **✅ API Key Rotation Propagation:** Fixed model reinitialization to work across all clips
+- **✅ Manual Mode Bug Fix:** Corrected segment duration parameter in run_mimic_pipeline_manual
+- **✅ Robust Error Handling:** Improved JSON parsing and stderr handling for cross-platform compatibility
+- **✅ Timeline Drift Protection:** Added guards against timeline accumulation errors
+- **✅ Cache Key Enhancement:** Improved reference cache invalidation with hint-based hashing
 
 ---
 
@@ -162,7 +172,7 @@
 - `data/cache/ref_*.json` - Reference video analysis (V6.0 format)
 - `data/cache/muted_*.mp4` - Muted reference videos for analysis
 - `data/cache/clip_comprehensive_*.json` - Clip analysis (V6.0 format)
-- **Cache Version:** 6.0 (deep semantic analysis)
+- **Cache Versions:** Reference v6.1 (semantic analysis), Clips v6.0 (deep semantic analysis)
 
 ### **Test Scripts:**
 - `analyze_references.py` - Batch analyze all reference videos
@@ -883,15 +893,15 @@ print(f"Beats: {beats}")
 - ✅ Timeline validation passes consistently
 
 **Demo-Ready When:**
-- ✅ Integration testing passes with real data
-- ✅ Golden reference (ref4.mp4) produces deterministic results
-- ✅ 20 test clips process without quota exhaustion
-- ✅ Video renders reliably for side-by-side playback
-- ✅ UI shows reasoning/thinking
-- ⏳ Material suggestions implemented
-- ⏳ Multiple reference videos tested
-- ⏳ Demo video recorded
-- ⏳ Submission docs written
+- ✅ Semantic reference analysis working (vibe/arc_stage/reasoning fields generated)
+- ✅ System hardening complete (no crashes on edge cases like BPM=0)
+- ✅ Cache invalidation working (version 6.1 properly updates analysis)
+- ✅ Multiple reference videos analyzed (ref4.mp4, refrence2.mp4, ref5.mp4)
+- ⏳ Full pipeline completion with adequate API quota
+- ⏳ Semantic matching validation (verify vibe/arc matching improves quality)
+- ⏳ Performance optimization for demo runtime
+- ⏳ UI integration with reasoning display
+- ⏳ Demo video recording and submission preparation
 
 ---
 

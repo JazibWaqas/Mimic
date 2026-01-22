@@ -7,24 +7,24 @@
     "Winter",
     "Friends"
   ],
-  "content_description": "A group of friends walks along a snowy mountain path surrounded by tall pine trees.",
+  "content_description": "A group of friends walks along a snowy path through a dense evergreen forest.",
   "best_moments": {
     "High": {
-      "start": 1.5,
-      "end": 3.5,
-      "reason": "Active walking with the camera following the group closely as they navigate the snowy path."
+      "start": 2.0,
+      "end": 5.0,
+      "reason": "The group moves together with more dynamic camera following as they navigate the snowy path."
     },
     "Medium": {
-      "start": 3.5,
-      "end": 5.5,
-      "reason": "Steady walking pace showing the group's progression and the surrounding snowy environment."
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Steady walking shot at the beginning of the clip showing the group's progression."
     },
     "Low": {
-      "start": 5.5,
-      "end": 7.5,
-      "reason": "The camera tilts up to capture the serene pine trees and sky, providing a calm conclusion."
+      "start": 4.5,
+      "end": 7.0,
+      "reason": "Camera pans up to the calm forest canopy, focusing on the serene landscape."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:27:09"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:13:16"
 }

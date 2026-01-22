@@ -3,7 +3,7 @@
   "motion": "Dynamic",
   "vibes": [
     "Travel",
-    "Adventure",
+    "Friends",
     "Nature"
   ],
   "content_description": "A group of friends enjoys a fast boat ride on a scenic lake surrounded by hills.",
@@ -11,19 +11,19 @@
     "High": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Fast boat movement with visible wind and water spray creating a sense of speed."
+      "reason": "Fast camera panning and visible wind effect on the passengers create a sense of speed."
     },
     "Medium": {
       "start": 0.5,
       "end": 2.318478,
-      "reason": "Steady shot of the passenger in the life jacket looking around during the ride."
+      "reason": "Clear shot of the passenger in the life jacket with steady boat motion and scenic background."
     },
     "Low": {
-      "start": 0.0,
-      "end": 1.5,
-      "reason": "Initial frames of the clip before the camera movement becomes more pronounced."
+      "start": 1.0,
+      "end": 2.318478,
+      "reason": "The camera stabilizes slightly on the passenger, offering a calmer view of the surroundings."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:28:55"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:14:36"
 }

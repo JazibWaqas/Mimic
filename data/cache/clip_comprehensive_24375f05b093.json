@@ -2,29 +2,29 @@
   "energy": "High",
   "motion": "Dynamic",
   "vibes": [
-    "Friends",
     "Night",
+    "Friends",
     "Action",
-    "Travel"
+    "Urban"
   ],
-  "content_description": "Two young men lean out of a moving car at night, cheering and enjoying a fast drive down a brightly lit road.",
+  "content_description": "Two young men enjoy a high-speed night drive while hanging out of a car's sunroof and windows, cheering as they pass streetlights.",
   "best_moments": {
     "High": {
-      "start": 10.0,
-      "end": 13.0,
-      "reason": "Peak excitement with loud cheering and a dynamic view of the fast-moving road."
+      "start": 10.5,
+      "end": 13.5,
+      "reason": "Peak excitement with loud cheering and fast-moving streetlights creating a sense of speed."
     },
     "Medium": {
       "start": 3.0,
       "end": 6.0,
-      "reason": "Steady car movement with moderate cheering and a clear view of the streetlights."
+      "reason": "Moderate movement as the subjects look out at the passing scenery with less intense shouting."
     },
     "Low": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "The beginning of the clip with less intense motion and lower volume before the main action."
+      "reason": "Relatively calm opening in lower light before the main action and shouting begins."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:33:03"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:17:35"
 }

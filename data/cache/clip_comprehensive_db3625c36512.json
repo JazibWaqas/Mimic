@@ -3,27 +3,27 @@
   "motion": "Dynamic",
   "vibes": [
     "Friends",
-    "Humor",
+    "Funny",
     "Indoor"
   ],
-  "content_description": "Two friends are playfully interacting in a room, laughing as one hugs the other from behind before they break apart.",
+  "content_description": "Two friends share a playful and humorous moment in a room, ending in laughter and movement.",
   "best_moments": {
     "High": {
       "start": 1.0,
       "end": 3.0,
-      "reason": "Sudden movement and laughter as they break the hug."
+      "reason": "Peak laughter and dynamic movement as the two friends separate and react to the joke."
     },
     "Medium": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Playful hug and initial reaction."
+      "reason": "The initial playful interaction and hug with moderate movement before the main laugh."
     },
     "Low": {
       "start": 2.5,
       "end": 4.5,
-      "reason": "The action settles as one person puts on a hat."
+      "reason": "The aftermath of the joke where the movement settles as they walk away and adjust their clothing."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:23:35"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:09:00"
 }

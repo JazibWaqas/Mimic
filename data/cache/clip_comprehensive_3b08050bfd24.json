@@ -6,7 +6,7 @@
     "Music",
     "Fun"
   ],
-  "content_description": "A group of friends enthusiastically singing along to a song while sitting inside a car.",
+  "content_description": "A group of young men enthusiastically singing along to music inside a car.",
   "best_moments": {
     "High": {
       "start": 11.0,
@@ -14,16 +14,16 @@
       "reason": "Peak enthusiasm with expressive singing and hand gestures from the entire group."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "Consistent singing and engagement as the group starts the chorus."
-    },
-    "Low": {
       "start": 4.0,
       "end": 7.0,
-      "reason": "Slightly more subdued singing with less intense physical movement compared to the peak."
+      "reason": "Consistent singing with moderate movement and engagement from the friends."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Relatively calmer start to the clip with less intense facial expressions and movement."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:38:40"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:21:13"
 }

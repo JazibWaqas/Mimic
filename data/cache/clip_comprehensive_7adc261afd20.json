@@ -4,26 +4,26 @@
   "vibes": [
     "Friends",
     "Casual",
-    "Humorous"
+    "Indoor"
   ],
-  "content_description": "Two friends lie on the floor while another friend leans over them, leading to a humorous interaction.",
+  "content_description": "Two young men lie on a wooden floor talking while a third person leans over them briefly.",
   "best_moments": {
     "High": {
       "start": 2.0,
       "end": 5.0,
-      "reason": "The third person leans in, causing a sudden burst of laughter and movement."
+      "reason": "A third person enters the frame and interacts with the two lying down, creating a more dynamic and engaging scene."
     },
     "Medium": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Initial conversation and setup with moderate movement."
+      "reason": "Initial shot of the two men lying on the floor, talking with some camera movement."
     },
     "Low": {
       "start": 7.0,
       "end": 10.0,
-      "reason": "The camera pans away and the scene settles down."
+      "reason": "The camera pans out and settles on the two men lying still on the floor."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:35:35"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:18:52"
 }

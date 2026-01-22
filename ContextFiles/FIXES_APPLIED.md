@@ -1,6 +1,83 @@
-# MIMIC - FIXES APPLIED (January 21, 2026 - 02:04 AM)
+# MIMIC - FIXES APPLIED (January 22, 2026 - 11:30 PM)
 
-## Latest Fixes (V6.0 Deep Semantic Analysis + Editing Grammar)
+## Latest Fixes (V6.1 Semantic Reference Analysis + System Hardening)
+
+### 12. **ZeroDivisionError Prevention** ✅
+**Problem:** System crashed with "float division by zero" when BPM detection returned 0.0 (happens with silent audio or failed analysis).
+
+**Fix:**
+- Added BPM safety guard in `get_beat_grid()`: `if bpm is None or bpm <= 0: return []`
+- Enhanced BPM validation in `detect_bpm()`: reject invalid tempo values < 0 or > 300
+- Added BPM check in editor before beat grid creation: `if bpm and bpm > 0`
+
+**Impact:** System gracefully handles audio analysis failures without crashing.
+
+### 13. **Semantic Reference Analysis with Scene Hints** ✅
+**Problem:** When scene hints existed, reference analysis only generated energy/motion codes, missing vibe/arc_stage/reasoning fields needed for intelligent matching.
+
+**Fix:**
+- Replaced scene-hint prompt with full JSON schema prompt that includes semantic fields
+- Preserved scene cut boundaries while adding semantic metadata
+- Updated cache version to 6.1 to invalidate existing caches
+
+**Impact:** Reference videos now generate complete semantic metadata (vibes, arc stages, reasoning) even when using visual scene detection.
+
+### 14. **Frame-Accurate Segment Extraction** ✅
+**Problem:** Segment extraction used stream copy, causing imprecise cut timestamps and timeline drift.
+
+**Fix:**
+- Replaced `-c copy` with re-encoding in `extract_segment()`
+- Added proper audio re-encoding for consistent behavior
+- Moved `-ss` before `-i` for better seeking accuracy
+
+**Impact:** Video cuts are now frame-accurate with no timestamp drift.
+
+### 15. **API Key Rotation Propagation** ✅
+**Problem:** When API quota exceeded, key rotation only updated the model instance locally, not for subsequent clips.
+
+**Fix:**
+- Moved model initialization inside per-clip loop in `analyze_all_clips()`
+- Ensures each clip gets a fresh model with the current active key
+
+**Impact:** API key rotation works reliably across all clips without manual intervention.
+
+### 16. **Manual Mode Segment Duration Bug** ✅
+**Problem:** `run_mimic_pipeline_manual()` passed `decision.clip_end` as duration parameter instead of `decision.clip_end - decision.clip_start`.
+
+**Fix:**
+- Corrected parameter: `decision.clip_end - decision.clip_start`
+
+**Impact:** Manual mode now generates segments with correct durations.
+
+### 17. **Robust Error Handling** ✅
+**Problem:** Various error handling issues with bytes vs strings, JSON parsing, and edge cases.
+
+**Fix:**
+- Added bytes-to-string conversion in error handling: `stderr.decode(errors="ignore")`
+- Improved JSON parsing with brace balancing for robustness
+- Added timeline drift protection guards
+
+**Impact:** System handles edge cases gracefully across different platforms and error conditions.
+
+### 18. **Enhanced Cache Keying** ✅
+**Problem:** Reference cache keys only considered file hash and hint count, not actual hint values.
+
+**Fix:**
+- Hash actual hint timestamps into cache key: `hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]`
+
+**Impact:** Cache invalidation works when scene cut boundaries change, not just counts.
+
+### 19. **Independent Cache Versioning** ✅
+**Problem:** Single CACHE_VERSION invalidated both reference and clip caches when only one needed updating, causing unnecessary API calls.
+
+**Fix:**
+- Split into `REFERENCE_CACHE_VERSION = "6.1"` and `CLIP_CACHE_VERSION = "6.0"`
+- Reference caching uses REFERENCE_CACHE_VERSION
+- Clip caching uses CLIP_CACHE_VERSION
+
+**Impact:** Changes to reference analysis don't require re-analyzing all clips, and vice versa. More efficient API usage.
+
+## Previous Fixes (V6.0 Deep Semantic Analysis + Editing Grammar)
 
 ### 9. **V6.0 Deep Semantic Analysis** ✅
 **Problem:** System only understood technical metrics (energy/motion) but not the "why" or "heart" of edits. Couldn't distinguish between a car chase and a dance (both High/Dynamic).

@@ -69,12 +69,12 @@ def match_clips_to_blueprint(
     
     # PHASE 2: Generate beat grid for audio sync
     beat_grid = None
-    if reference_path and has_audio(reference_path):
-        beat_grid = get_beat_grid(blueprint.total_duration, bpm=int(bpm))
+    if reference_path and has_audio(reference_path) and bpm and bpm > 0:
+        beat_grid = get_beat_grid(blueprint.total_duration, bpm=int(round(bpm)))
         print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at {bpm:.2f} BPM")
         print(f"  DEBUG: First 5 beats: {beat_grid[:5]}")
     else:
-        print(f"  🔇 No audio detected - using visual cuts only")
+        print(f"  🔇 No audio detected or invalid BPM - using visual cuts only")
     
     print()
     
@@ -104,7 +104,12 @@ def match_clips_to_blueprint(
     for segment in blueprint.segments:
         print(f"\nSegment {segment.id}: {segment.start:.2f}s-{segment.end:.2f}s "
               f"({segment.duration:.2f}s, {segment.energy.value}/{segment.motion.value})")
-        
+
+        # Guard against timeline drift
+        if abs(timeline_position - segment.start) > 0.05:
+            print(f"[WARN] Timeline drift: {timeline_position:.3f} vs segment.start {segment.start:.3f}, snapping.")
+            timeline_position = segment.start
+
         segment_remaining = segment.duration
         segment_start_time = timeline_position
         
@@ -132,53 +137,55 @@ def match_clips_to_blueprint(
             # EDITING GRAMMAR: Multi-dimensional clip scoring
             import random
             
-            def score_clip_intelligence(clip: ClipMetadata, segment) -> tuple[float, str]:
+            def score_clip_intelligence(clip: ClipMetadata, segment) -> tuple[float, str, bool]:
                 """
                 Score a clip based on professional editing principles.
-                Returns: (score, reasoning_snippet)
+                Returns: (score, reasoning_snippet, vibe_matched)
                 """
                 score = 0.0
                 reasons = []
-                
+                vibe_matched = False
+
                 # === A. ARC STAGE RELEVANCE (Highest Priority) ===
                 stage = segment.arc_stage.lower()
                 content = (clip.content_description or "").lower()
                 clip_tags = [v.lower() for v in clip.vibes]
-                
+
                 if stage == "intro":
                     if any(kw in content for kw in ["intro", "opening", "start", "establishing", "wide"]):
                         score += 20.0
                         reasons.append("Intro-style shot")
                     if "intro" in clip_tags or "establishing" in clip_tags:
                         score += 15.0
-                        
+
                 elif stage == "peak":
                     if any(kw in content for kw in ["action", "peak", "intensity", "fast", "climax", "jump"]):
                         score += 20.0
                         reasons.append("Peak-intensity moment")
                     if any(tag in clip_tags for tag in ["action", "peak", "intense"]):
                         score += 15.0
-                        
+
                 elif stage == "build-up":
                     if any(kw in content for kw in ["building", "rising", "approaching", "moving"]):
                         score += 15.0
                         reasons.append("Build-up energy")
-                        
+
                 elif stage == "outro":
                     if any(kw in content for kw in ["outro", "ending", "finish", "fading", "sunset", "closing"]):
                         score += 20.0
                         reasons.append("Outro-style shot")
                     if "outro" in clip_tags or "ending" in clip_tags:
                         score += 15.0
-                
+
                 # === B. VIBE MATCHING (Semantic Alignment) ===
                 if segment.vibe and segment.vibe != "General":
                     for v in clip.vibes:
                         if v.lower() in segment.vibe.lower() or segment.vibe.lower() in v.lower():
                             score += 12.0
                             reasons.append(f"Vibe '{segment.vibe}'")
+                            vibe_matched = True
                             break
-                
+
                 # === C. VISUAL COOLDOWN (Anti-Monotony) ===
                 time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
                 if time_since_last_use < MIN_CLIP_REUSE_GAP:
@@ -187,7 +194,7 @@ def match_clips_to_blueprint(
                     score += cooldown_penalty
                     if cooldown_penalty < -25.0:
                         reasons.append(f"⚠️ Recently used ({time_since_last_use:.1f}s ago)")
-                
+
                 # === D. TRANSITION SMOOTHNESS (Motion Continuity) ===
                 if last_clip_motion:
                     if clip.motion == last_clip_motion:
@@ -196,34 +203,34 @@ def match_clips_to_blueprint(
                     else:
                         # Motion change can be jarring, slight penalty
                         score -= 3.0
-                
+
                 # === E. USAGE PENALTY (Encourage Variety) ===
                 usage_penalty = clip_usage_count[clip.filename] * 3.0
                 score -= usage_penalty
                 if clip_usage_count[clip.filename] > 2:
                     reasons.append(f"Used {clip_usage_count[clip.filename]}x")
-                
+
                 # === F. MOMENT FRESHNESS (Prefer Unused Portions) ===
                 # This will be evaluated per-moment, not per-clip
-                
+
                 reasoning = " | ".join(reasons) if reasons else "Flow optimization"
-                return score, reasoning
+                return score, reasoning, vibe_matched
 
             # Calculate scores for all available clips
             scored_clips = []
             for c in available_clips:
-                total_score, reasoning = score_clip_intelligence(c, segment)
-                scored_clips.append((c, total_score, reasoning))
-            
+                total_score, reasoning, vibe_matched = score_clip_intelligence(c, segment)
+                scored_clips.append((c, total_score, reasoning, vibe_matched))
+
             # Sort by total score (highest first)
             scored_clips.sort(key=lambda x: x[1], reverse=True)
-            
+
             # Pick from the top tier (clips with same highest score) to maintain variety
             max_score = scored_clips[0][1]
-            top_tier = [(c, s, r) for c, s, r in scored_clips if abs(s - max_score) < 5.0]
+            top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if abs(s - max_score) < 5.0]
             random.shuffle(top_tier)
-            
-            selected_clip, selected_score, selected_reasoning = top_tier[0]
+
+            selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
             
             # Construct final reasoning for logs
             if selected_score > 15.0:
@@ -259,7 +266,7 @@ def match_clips_to_blueprint(
             
             # BUDGET CHECK: How much time is really left in this segment?
             # We check relative to the segment's actual end on the global timeline
-            segment_remaining = segment.end - timeline_position
+            segment_remaining = max(0.0, segment.end - timeline_position)
             
             is_last_cut_of_segment = False
             if target_duration >= segment_remaining - 0.1:
@@ -352,7 +359,7 @@ def match_clips_to_blueprint(
                 timeline_start=decision_start,
                 timeline_end=decision_end,
                 reasoning=thinking,
-                vibe_match=("Semantic Match" in thinking)
+                vibe_match=vibe_matched
             )
             decisions.append(decision)
             

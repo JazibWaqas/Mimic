@@ -5,26 +5,26 @@
     "Friends",
     "Funny",
     "Travel",
-    "Candid"
+    "Lifestyle"
   ],
   "content_description": "Two friends are laughing hysterically in a hotel room, with one lying on the bed and the other sitting on the floor.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Intense initial burst of laughter and dynamic camera movement between the two friends."
+      "reason": "Intense, loud laughter right at the beginning with high emotional energy."
     },
     "Medium": {
       "start": 12.0,
       "end": 15.0,
-      "reason": "One friend flexes his arm while laughing, showing moderate movement and engagement."
+      "reason": "Continued laughter with dynamic camera panning between the two friends."
     },
     "Low": {
       "start": 24.0,
       "end": 26.968917,
-      "reason": "The laughter begins to subside as one friend sits up and starts to speak, showing calmer motion."
+      "reason": "The laughter subsides as one friend sits up and catches his breath, showing a calmer moment."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:29:29"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:14:23"
 }

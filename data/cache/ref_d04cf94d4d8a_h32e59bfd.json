@@ -1,0 +1,248 @@
+{
+  "total_duration": 16.64585,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.77,
+      "duration": 0.77,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Intro",
+      "reasoning": "Intro shot from a moving bus, setting the travel theme."
+    },
+    {
+      "id": 2,
+      "start": 0.77,
+      "end": 1.73,
+      "duration": 0.96,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Intro",
+      "reasoning": "Transition to arriving at the destination, showing a person getting off the bus."
+    },
+    {
+      "id": 3,
+      "start": 1.73,
+      "end": 7.6,
+      "duration": 5.87,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Montage of travel activities and scenery, building the narrative of the trip."
+    },
+    {
+      "id": 4,
+      "start": 7.6,
+      "end": 7.97,
+      "duration": 0.37,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, part of a fast-paced sequence."
+    },
+    {
+      "id": 5,
+      "start": 7.97,
+      "end": 8.3,
+      "duration": 0.33,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, maintaining the rhythm."
+    },
+    {
+      "id": 6,
+      "start": 8.3,
+      "end": 9.0,
+      "duration": 0.7,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, continuing the visual build-up."
+    },
+    {
+      "id": 7,
+      "start": 9.0,
+      "end": 9.43,
+      "duration": 0.43,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, adding to the montage."
+    },
+    {
+      "id": 8,
+      "start": 9.43,
+      "end": 9.73,
+      "duration": 0.3,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, keeping the pace."
+    },
+    {
+      "id": 9,
+      "start": 9.73,
+      "end": 10.1,
+      "duration": 0.37,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, part of the rhythmic sequence."
+    },
+    {
+      "id": 10,
+      "start": 10.1,
+      "end": 10.47,
+      "duration": 0.37,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, continuing the fast edits."
+    },
+    {
+      "id": 11,
+      "start": 10.47,
+      "end": 10.8,
+      "duration": 0.33,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, maintaining visual interest."
+    },
+    {
+      "id": 12,
+      "start": 10.8,
+      "end": 11.2,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, part of the build-up."
+    },
+    {
+      "id": 13,
+      "start": 11.2,
+      "end": 11.53,
+      "duration": 0.33,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, continuing the sequence."
+    },
+    {
+      "id": 14,
+      "start": 11.53,
+      "end": 11.9,
+      "duration": 0.37,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut showing the landscape, nearing the end of the montage."
+    },
+    {
+      "id": 15,
+      "start": 11.9,
+      "end": 12.27,
+      "duration": 0.37,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Final rapid cut showing the landscape before the peak."
+    },
+    {
+      "id": 16,
+      "start": 12.27,
+      "end": 13.13,
+      "duration": 0.86,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "High energy scene of friends on a bus, marking the peak of the experience."
+    },
+    {
+      "id": 17,
+      "start": 13.13,
+      "end": 13.53,
+      "duration": 0.4,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Nighttime social gathering, continuing the high energy."
+    },
+    {
+      "id": 18,
+      "start": 13.53,
+      "end": 14.2,
+      "duration": 0.67,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Continued high energy bus scene with cheering."
+    },
+    {
+      "id": 19,
+      "start": 14.2,
+      "end": 14.73,
+      "duration": 0.53,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Continued high energy bus scene, maintaining the peak vibe."
+    },
+    {
+      "id": 20,
+      "start": 14.73,
+      "end": 15.2,
+      "duration": 0.47,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Visual of phone lights in the dark, a classic concert/party visual."
+    },
+    {
+      "id": 21,
+      "start": 15.2,
+      "end": 16.64585,
+      "duration": 1.44585,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Closing shots of the group activity, winding down the video."
+    }
+  ],
+  "overall_reasoning": "The video is a classic travel montage, starting with the journey, building up with scenic views and activities, and peaking with high-energy social moments among friends. The rapid-fire cuts in the middle create a rhythmic build-up to the final celebration.",
+  "ideal_material_suggestions": [
+    "More varied shots of the group interacting.",
+    "Close-ups of faces during the high-energy bus scenes.",
+    "B-roll of the local culture or food.",
+    "A clear concluding shot of the group together."
+  ],
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:08:24"
+}

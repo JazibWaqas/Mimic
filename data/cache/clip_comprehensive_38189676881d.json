@@ -6,24 +6,24 @@
     "Travel",
     "Thrill"
   ],
-  "content_description": "A person records their experience on a fast-swinging amusement park ride overlooking a valley.",
+  "content_description": "A POV video from a swinging amusement park ride, showing the rapid movement and the surrounding mountainous landscape.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Intense swinging motion with high-speed camera movement and loud reactions."
+      "reason": "Intense initial swing with fast motion and loud reactions."
     },
     "Medium": {
-      "start": 3.0,
-      "end": 6.0,
-      "reason": "The ride reaches its peak and starts to descend, showing the structure and sky."
+      "start": 11.0,
+      "end": 14.0,
+      "reason": "Sustained swinging motion with a clear view of the landscape."
     },
     "Low": {
-      "start": 12.0,
-      "end": 15.0,
-      "reason": "A slightly more stable view of the ride's structure and the surrounding landscape."
+      "start": 4.5,
+      "end": 7.5,
+      "reason": "Camera points towards the ride's structure and sky, offering more visual stability."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:25:39"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:11:54"
 }

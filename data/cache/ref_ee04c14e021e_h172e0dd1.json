@@ -1,0 +1,236 @@
+{
+  "total_duration": 12.164399,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 2.37,
+      "duration": 2.37,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Introductory split-screen shot establishing the snowy forest setting and the travel theme."
+    },
+    {
+      "id": 2,
+      "start": 2.37,
+      "end": 2.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Quick cut to a close-up of friends, emphasizing the 'besties edition' theme."
+    },
+    {
+      "id": 3,
+      "start": 2.87,
+      "end": 3.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Close-up of hands forming a heart, reinforcing the friendship bond."
+    },
+    {
+      "id": 4,
+      "start": 3.37,
+      "end": 3.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Shot of a campfire, adding a cozy travel atmosphere."
+    },
+    {
+      "id": 5,
+      "start": 3.87,
+      "end": 4.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Girl walking on a path, showing exploration of the environment."
+    },
+    {
+      "id": 6,
+      "start": 4.37,
+      "end": 4.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Interior shot of a dome tent, showcasing unique accommodation."
+    },
+    {
+      "id": 7,
+      "start": 4.87,
+      "end": 5.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Calm shot of the girl sitting by a river, focusing on the scenery."
+    },
+    {
+      "id": 8,
+      "start": 5.37,
+      "end": 5.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Upward shot of tall trees, emphasizing the scale of nature."
+    },
+    {
+      "id": 9,
+      "start": 5.87,
+      "end": 6.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Car driving through snow, highlighting the journey aspect."
+    },
+    {
+      "id": 10,
+      "start": 6.37,
+      "end": 6.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Girl walking through the woods, continuing the exploration theme."
+    },
+    {
+      "id": 11,
+      "start": 6.87,
+      "end": 7.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Scenic view of mountains through trees, building anticipation."
+    },
+    {
+      "id": 12,
+      "start": 7.37,
+      "end": 7.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Transition to more active shots in the snow, starting the peak sequence."
+    },
+    {
+      "id": 13,
+      "start": 7.87,
+      "end": 8.37,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "High energy shot of spinning in the snow, the emotional high point."
+    },
+    {
+      "id": 14,
+      "start": 8.37,
+      "end": 8.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Close-up reaction shot in the snow, maintaining the peak energy."
+    },
+    {
+      "id": 15,
+      "start": 8.87,
+      "end": 9.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Walking away in the snow, concluding the active peak sequence."
+    },
+    {
+      "id": 16,
+      "start": 9.37,
+      "end": 9.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Wide landscape shot of the snow, a moment of reflection at the peak."
+    },
+    {
+      "id": 17,
+      "start": 9.87,
+      "end": 10.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Transition to the outro with a calm shot of sitting in the snow."
+    },
+    {
+      "id": 18,
+      "start": 10.37,
+      "end": 10.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Detail shot of snow on branches, winding down the visual energy."
+    },
+    {
+      "id": 19,
+      "start": 10.87,
+      "end": 11.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Sunlight through trees, creating a peaceful closing atmosphere."
+    },
+    {
+      "id": 20,
+      "start": 11.37,
+      "end": 12.164399,
+      "duration": 0.794399,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Final scenic shot of the mountains, concluding the trip montage."
+    }
+  ],
+  "overall_reasoning": "The video is a fast-paced 'trip dump' montage using rapid cuts to showcase various moments from a vacation. It starts with an intro establishing the setting, builds up through various activities and scenic views, reaches a peak with high-energy snow interactions, and winds down with peaceful nature shots in the outro.",
+  "ideal_material_suggestions": [
+    "More shots of the friends interacting together to strengthen the 'besties' theme.",
+    "B-roll of local food or cultural elements to add depth to the travel narrative.",
+    "Slow-motion shots of the snow falling to contrast with the fast-paced editing."
+  ],
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:10:22"
+}

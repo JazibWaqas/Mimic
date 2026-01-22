@@ -4,26 +4,27 @@
   "vibes": [
     "Nature",
     "Friends",
-    "Dance"
+    "Dance",
+    "Travel"
   ],
-  "content_description": "Two friends walk down a rocky forest path, with one performing a lively dance towards the camera.",
+  "content_description": "Two friends walk down a rocky forest path, with one breaking into a dance as they approach the camera.",
   "best_moments": {
     "High": {
-      "start": 5.0,
+      "start": 5.5,
       "end": 7.666,
-      "reason": "Energetic dance moves and a kick towards the camera at close range."
+      "reason": "Energetic dance moves and a kick towards the camera."
     },
     "Medium": {
       "start": 2.5,
-      "end": 5.0,
-      "reason": "Walking towards the camera with rhythmic movement."
+      "end": 5.5,
+      "reason": "Walking closer with rhythmic arm movements."
     },
     "Low": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "Calm opening as the subjects walk in the distance."
+      "reason": "Calm opening as they walk from a distance."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:25:03"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:12:07"
 }

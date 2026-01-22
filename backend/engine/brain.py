@@ -20,8 +20,10 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 # CACHE VERSIONING
 # ============================================================================
 
-# Increment this when prompts change to invalidate old caches
-CACHE_VERSION = "6.0"  # v6.0: Deep Emotional and Arc analysis for references (Jan 21, 2026)
+# Separate cache versioning for reference vs clip analysis
+# Reference and clip analysis use different prompts and should be versioned independently
+REFERENCE_CACHE_VERSION = "6.1"  # v6.1: Fixed semantic analysis for scene-hinted references (Jan 22, 2026)
+CLIP_CACHE_VERSION = "6.1"        # v6.0: Deep semantic analysis + editing grammar intelligence (Jan 21, 2026)
 # v5.0: Fixed string corruption bug + vibes loading (Jan 21, 2026)
 # v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
 # v3.0: Comprehensive clip analysis with best moments (Jan 9, 2025)
@@ -422,39 +424,60 @@ def _upload_video_with_retry(video_path: str) -> genai.File:
 
 def _parse_json_response(response_text: str) -> dict:
     """
-    Parse Gemini's JSON response using regex to handle 'chatty' responses.
+    Parse Gemini's JSON response using brace balancing for robustness.
     """
     import re
     text = response_text.strip()
-    
-    # More robust extraction: find the outermost curly braces
-    # This handles preamble text, markdown fences, and trailing garbage
-    match = re.search(r'(\{.*\})', text, re.DOTALL)
+
+    # First try the simple regex for well-formed responses
+    match = re.search(r'\{.*\}', text, re.DOTALL)
     if match:
-        text = match.group(1)
-    
+        text = match.group(0)
+
+    # Use brace balancing to extract the outermost JSON object
+    start_idx = text.find('{')
+    if start_idx == -1:
+        raise ValueError("No JSON object found in response")
+
+    brace_count = 0
+    end_idx = start_idx
+
+    for i in range(start_idx, len(text)):
+        if text[i] == '{':
+            brace_count += 1
+        elif text[i] == '}':
+            brace_count -= 1
+            if brace_count == 0:
+                end_idx = i
+                break
+
+    if brace_count != 0:
+        raise ValueError(f"Unbalanced braces in JSON response. Final count: {brace_count}")
+
+    json_text = text[start_idx:end_idx + 1]
+
     try:
-        data = json.loads(text)
-        
+        data = json.loads(json_text)
+
         # Only clean the specific enum fields, NOT all strings
         # This prevents corrupting "reason" fields that contain words like "high" or "dynamic"
         from models import EnergyLevel, MotionType
         valid_energies = [e.value for e in EnergyLevel]
         valid_motions = [m.value for m in MotionType]
-        
+
         def clean_enum_value(value: str, valid_values: list) -> str:
             """Clean a single enum value, handling hallucinations like 'LowLow'."""
             for v in valid_values:
                 if v.lower() in value.lower():
                     return v
             return value
-        
+
         # Only clean the top-level energy and motion fields
         if "energy" in data and isinstance(data["energy"], str):
             data["energy"] = clean_enum_value(data["energy"], valid_energies)
         if "motion" in data and isinstance(data["motion"], str):
             data["motion"] = clean_enum_value(data["motion"], valid_motions)
-        
+
         # Clean energy/motion in segments if present (for reference analysis)
         if "segments" in data and isinstance(data["segments"], list):
             for seg in data["segments"]:
@@ -463,30 +486,10 @@ def _parse_json_response(response_text: str) -> dict:
                         seg["energy"] = clean_enum_value(seg["energy"], valid_energies)
                     if "motion" in seg:
                         seg["motion"] = clean_enum_value(seg["motion"], valid_motions)
-            
+
         return data
-    except json.JSONDecodeError:
-        # Emergency repair for "unterminated string" or cut-off JSON
-        print("[WARN] Attempting to repair malformed JSON...")
-        # If it ends with a comma or incomplete object, try to close it
-        text = text.strip()
-        if text.endswith(","):
-            text = text[:-1]
-        
-        # Count braces
-        open_braces = text.count("{")
-        close_braces = text.count("}")
-        open_brackets = text.count("[")
-        close_brackets = text.count("]")
-        
-        # Add missing closures
-        text += "]" * (open_brackets - close_brackets)
-        text += "}" * (open_braces - close_braces)
-        
-        try:
-            return json.loads(text)  # Just return parsed JSON, enum cleaning happens above
-        except Exception as e:
-            raise ValueError(f"Failed to parse or repair JSON: {e}\nRaw: {response_text}")
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Failed to parse JSON: {e}\nExtracted text: {json_text[:200]}...")
 
 
 # ============================================================================
@@ -585,9 +588,12 @@ def analyze_reference_video(
     with open(video_path, 'rb') as f:
         file_hash = hashlib.md5(f.read()).hexdigest()[:12]
     
-    num_hints = len(scene_timestamps) if scene_timestamps else 0
-    hint_suffix = f"_hints{num_hints}"
-    cache_file = cache_dir / f"ref_{file_hash}{hint_suffix}.json"
+    if scene_timestamps:
+        import hashlib
+        hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
+        cache_file = cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
+    else:
+        cache_file = cache_dir / f"ref_{file_hash}_hints0.json"
     
     if cache_file.exists():
         print(f"[CACHE] Found cached analysis: {cache_file.name}")
@@ -597,17 +603,21 @@ def analyze_reference_video(
                 
                 # Check cache version
                 cache_version = cache_data.get("_cache_version", "1.0")
-                if cache_version != CACHE_VERSION:
-                    print(f"[CACHE] Version mismatch. Re-analyzing...")
+                if cache_version != REFERENCE_CACHE_VERSION:
+                    print(f"[CACHE] Reference version mismatch ({cache_version} vs {REFERENCE_CACHE_VERSION}). Re-analyzing...")
                     cache_file.unlink()
                 else:
                     blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
                     blueprint = StyleBlueprint(**blueprint_data)
-                    
-                    # Apply subdivision (now defaults to 2.0s)
-                    blueprint = subdivide_segments(blueprint)
-                    
-                    print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments")
+
+                    # Apply subdivision only if cache was not created with scene hints
+                    # (preserve original rhythm when mimicking detected cuts)
+                    if "hints0" in cache_file.name:
+                        blueprint = subdivide_segments(blueprint)
+                        print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (subdivided)")
+                    else:
+                        print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (preserved original rhythm)")
+
                     return blueprint
         except Exception as e:
             print(f"[WARN] Cache issue: {e}. Re-analyzing...")
@@ -628,12 +638,44 @@ def analyze_reference_video(
     if scene_timestamps:
         rounded_hints = [round(t, 2) for t in scene_timestamps]
         prompt = f"""
-        Scene cuts: {rounded_hints}
-        Duration: {duration}
-        Task: Provide a comma-separated string of {len(rounded_hints) + 1} codes (one per segment).
-        Codes: H (High), M (Medium), L (Low) + D (Dynamic), S (Static). 
-        Format: {{ "total_duration": {duration}, "codes": "HD, MS, LS, ..." }}
-        """
+You are a professional video editor.
+
+You MUST use these exact cut boundaries to define segments.
+Cut boundaries (seconds): {rounded_hints}
+Total duration: {duration}
+
+Rules:
+- Create segments exactly between [0.0] + cut_boundaries + [total_duration].
+- Do NOT invent new cut times.
+- For each segment, fill: energy, motion, vibe, arc_stage, reasoning.
+- arc_stage must be one of: Intro, Build-up, Peak, Outro (choose best).
+- vibe must be a short keyword: Nature, Urban, Action, Calm, Friends, Travel, etc.
+- Output VALID JSON ONLY matching the schema below.
+- Last segment end must equal total_duration exactly.
+
+JSON schema:
+{{
+  "total_duration": {duration},
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {{
+      "id": 1,
+      "start": 0.0,
+      "end": 1.23,
+      "duration": 1.23,
+      "energy": "Low|Medium|High",
+      "motion": "Static|Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Intro|Build-up|Peak|Outro",
+      "reasoning": "Based on scene change detection"
+    }}
+  ],
+  "overall_reasoning": "Analysis based on visual scene changes",
+  "ideal_material_suggestions": ["Varied content matching detected segments"]
+}}
+"""
     else:
         prompt = REFERENCE_ANALYSIS_PROMPT
 
@@ -684,14 +726,18 @@ def analyze_reference_video(
                 del json_data["codes"]
 
             blueprint = StyleBlueprint(**json_data)
-            
-            # Apply subdivision (respects real cuts better)
-            blueprint = subdivide_segments(blueprint)
+
+            # Apply subdivision only if no scene hints (preserve original rhythm when mimicking)
+            if not scene_timestamps:
+                blueprint = subdivide_segments(blueprint)
+                print(f"[OK] Applied subdivision: {len(blueprint.segments)} segments")
+            else:
+                print(f"[OK] Preserved original cut rhythm: {len(blueprint.segments)} segments (no subdivision)")
             
             # Save ORIGINAL to cache
             cache_data = {
                 **json_data,
-                "_cache_version": CACHE_VERSION,
+                "_cache_version": REFERENCE_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
             with open(cache_file, 'w') as f:
@@ -849,19 +895,17 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None, use_com
     print(f"[BRAIN] ANALYZING USER CLIPS ({len(clip_paths)} total)")
     print(f"[BRAIN] Mode: {'COMPREHENSIVE (energy + best moments)' if use_comprehensive else 'SIMPLE (energy only)'}")
     print(f"{'='*60}\n")
-    
-    # Initialize model ONCE for all clips
-    model = initialize_gemini(api_key)
-    
+
     clip_metadata_list = []
-    
+
     for i, clip_path in enumerate(clip_paths):
         print(f"\n[{i+1}/{len(clip_paths)}] Processing {Path(clip_path).name}")
-        
+
         from engine.processors import get_video_duration
         duration = get_video_duration(clip_path)
-        
-        # Analyze with Gemini (reusing model instance)
+
+        # Initialize model for each clip to handle key rotation properly
+        model = initialize_gemini(api_key)
         try:
             if use_comprehensive:
                 clip_metadata = _analyze_single_clip_comprehensive(model, clip_path, duration)
@@ -920,8 +964,8 @@ def _analyze_single_clip_comprehensive(
                 
                 # Check cache version
                 cache_version = cache_data.get("_cache_version", "1.0")
-                if cache_version != CACHE_VERSION:
-                    print(f"    [CACHE] Version mismatch ({cache_version} vs {CACHE_VERSION}) - invalidating...")
+                if cache_version != CLIP_CACHE_VERSION:
+                    print(f"    [CACHE] Clip version mismatch ({cache_version} vs {CLIP_CACHE_VERSION}) - invalidating...")
                     cache_file.unlink()
                 else:
                     # Reconstruct ClipMetadata from cache
@@ -1022,7 +1066,7 @@ def _analyze_single_clip_comprehensive(
                     level: {"start": bm.start, "end": bm.end, "reason": bm.reason or ""}
                     for level, bm in best_moments.items()
                 },
-                "_cache_version": CACHE_VERSION,
+                "_cache_version": CLIP_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
             with open(cache_file, 'w') as f:
@@ -1079,7 +1123,7 @@ def _analyze_single_clip_simple(model: genai.GenerativeModel, clip_path: str) ->
             with open(cache_file) as f:
                 cache_data = json.load(f)
                 cache_version = cache_data.get("_cache_version", "1.0")
-                if cache_version != CACHE_VERSION:
+                if cache_version != CLIP_CACHE_VERSION:
                     cache_file.unlink()
                 else:
                     energy = EnergyLevel(cache_data["energy"])
@@ -1107,7 +1151,7 @@ def _analyze_single_clip_simple(model: genai.GenerativeModel, clip_path: str) ->
             cache_data = {
                 "energy": energy.value,
                 "motion": motion.value,
-                "_cache_version": CACHE_VERSION,
+                "_cache_version": CLIP_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
             with open(cache_file, 'w') as f:

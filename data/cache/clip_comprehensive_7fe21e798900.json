@@ -2,28 +2,28 @@
   "energy": "Medium",
   "motion": "Dynamic",
   "vibes": [
+    "Outdoor",
     "Action",
-    "Outdoors",
-    "Travel"
+    "Fun"
   ],
-  "content_description": "A man in a black coat aims and fires a rifle at a board of balloons in a mountainous outdoor area.",
+  "content_description": "A man aims and shoots an arrow at a target of balloons in an outdoor mountainous setting.",
   "best_moments": {
     "High": {
       "start": 3.0,
       "end": 5.0,
-      "reason": "The man fires the rifle and pops a balloon, creating a peak action moment."
+      "reason": "The moment the arrow is released and hits the balloon, representing the peak action."
     },
     "Medium": {
       "start": 1.0,
       "end": 3.0,
-      "reason": "The man takes aim and prepares to shoot, showing focused movement."
+      "reason": "The man drawing the bow and carefully aiming at the target."
     },
     "Low": {
       "start": 5.0,
       "end": 7.0,
-      "reason": "The action concludes as the man lowers the rifle and begins to walk away."
+      "reason": "The aftermath of the shot with minimal movement as they observe the result."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:26:34"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:12:39"
 }

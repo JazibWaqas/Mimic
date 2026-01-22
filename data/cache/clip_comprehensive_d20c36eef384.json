@@ -4,26 +4,26 @@
   "vibes": [
     "Friends",
     "Nightlife",
-    "Fun"
+    "Party"
   ],
-  "content_description": "A group of friends dancing and posing energetically in front of a blue-lit Eiffel Tower replica at night.",
+  "content_description": "A group of young men in black attire pose and cheer enthusiastically in front of a blue-lit structure at night.",
   "best_moments": {
     "High": {
-      "start": 1.5,
-      "end": 4.5,
-      "reason": "The group is actively dancing and jumping with high energy and excitement."
+      "start": 1.0,
+      "end": 3.5,
+      "reason": "The group starts cheering and moving energetically towards the camera with high-intensity reactions."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 2.0,
-      "reason": "Initial movement as the group gets into the frame and starts their performance."
+      "start": 3.5,
+      "end": 5.5,
+      "reason": "A person moves their arm across the frame to show a watch, creating a focused transition with moderate motion."
     },
     "Low": {
-      "start": 4.0,
-      "end": 5.504,
-      "reason": "The camera focuses on a watch, showing less group movement and a more stable shot."
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "The group is relatively still while posing for the initial shot before the main action begins."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:30:26"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:16:27"
 }

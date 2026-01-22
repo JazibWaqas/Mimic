@@ -3,28 +3,28 @@
   "motion": "Dynamic",
   "vibes": [
     "Urban",
-    "Friends",
     "Night",
+    "Friends",
     "Action"
   ],
-  "content_description": "A man runs alongside a moving car while another man stands out of the sunroof, both appearing to be part of a comedic or dramatic skit at night on a bridge.",
+  "content_description": "A man runs alongside a moving car while another man stands out of the sunroof on a brightly lit bridge at night.",
   "best_moments": {
     "High": {
-      "start": 5.0,
-      "end": 8.0,
-      "reason": "Intense running and shouting as part of the skit, creating high visual and auditory energy."
+      "start": 4.5,
+      "end": 7.5,
+      "reason": "Intense running and shouting while the car moves, creating a high-energy comedic or action sequence."
     },
     "Medium": {
-      "start": 2.0,
-      "end": 5.0,
-      "reason": "The car begins moving and the running starts, building momentum and interest."
+      "start": 1.5,
+      "end": 4.5,
+      "reason": "Moderate movement as the person starts running and interacting with the person in the car."
     },
     "Low": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Initial setup shot with minimal movement before the main action kicks off."
+      "reason": "The initial setup of the shot with relatively slower motion before the main action begins."
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:32:03"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:17:01"
 }

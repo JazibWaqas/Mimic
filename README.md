@@ -2,7 +2,9 @@
 
 **Transform your raw clips into professionally-edited videos by learning from examples.**
 
-MIMIC analyzes a reference video's editing style (cuts, pacing, energy, vibes) and automatically recreates that style using your clips. Think "Instagram Reels editor that learns from examples."
+MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrative arc) and automatically recreates that style using your clips. Think "Instagram Reels editor that understands the 'why' behind professional edits."
+
+**Version:** V6.1 - Semantic Reference Analysis + System Hardening (January 22, 2026)
 
 ---
 
@@ -25,19 +27,45 @@ MIMIC analyzes a reference video's editing style (cuts, pacing, energy, vibes) a
 ### **Intelligent Analysis**
 - **Scene Detection:** FFmpeg detects every visual cut in the reference
 - **BPM Detection:** librosa extracts the music tempo for beat-perfect cuts
-- **Semantic Understanding:** Gemini 3 identifies energy, motion, and content vibes
+- **Semantic Understanding:** Gemini 3 identifies energy, motion, content vibes, and narrative arc
+- **Narrative Arc Analysis:** Understands Intro/Build-up/Peak/Outro progression
 - **Best Moment Extraction:** Pre-computes optimal segments from each clip
 
 ### **Smart Matching**
-- **Vibe-Aware Selection:** Matches clips to segments based on content themes (Urban, Nature, Action, etc.)
-- **Energy Matching:** Pairs high-energy clips with high-energy segments
-- **Beat Synchronization:** Snaps cuts to the detected BPM for musical alignment
-- **Variety Optimization:** Rotates through clips to avoid repetition
+- **Semantic Matching:** Matches clips to segments based on content themes and arc relevance
+- **Vibe-Aware Selection:** Aligns Urban clips with Urban segments, Nature with Nature, etc.
+- **Arc Stage Coherence:** Uses establishing shots for Intros, rapid cuts for Peaks
+- **Beat Synchronization:** Snaps cuts to detected BPM for musical alignment
+- **Variety Optimization:** 5-second cooldown prevents visual monotony
 
 ### **Transparent AI**
 - **Reasoning Logs:** See why the AI chose each clip
 - **Material Suggestions:** Get feedback on missing clip types
 - **Thinking Display:** Watch the AI's decision-making process
+
+---
+
+## 📋 Recent Updates (V6.1 - January 22, 2026)
+
+### **Major Improvements**
+- **✅ Semantic Reference Analysis:** Reference videos now generate complete vibe/arc_stage/reasoning metadata even with scene hints
+- **✅ System Hardening:** Fixed ZeroDivisionError crashes, frame-accurate extraction, and API key rotation issues
+- **✅ Cache Enhancement:** V6.1 version with improved invalidation using hint-based hashing
+- **✅ Error Resilience:** Cross-platform error handling and timeline drift protection
+
+### **Technical Fixes**
+- **ZeroDivisionError Prevention:** BPM safety guards and validation
+- **Frame-Accurate Cutting:** Re-encoding instead of stream copy for precise timestamps
+- **API Key Rotation:** Model propagation across all clips
+- **Timeline Integrity:** Mathematical continuity enforcement
+- **Robust Parsing:** Improved JSON extraction and error handling
+- **Independent Cache Versioning:** Reference and clip caches versioned separately for efficiency
+
+### **Quality Improvements**
+- **Semantic Matching:** Vibe and arc stage alignment for better content coherence
+- **Reference Fidelity:** Preserves original cut rhythm when scene hints exist
+- **Variety Optimization:** Prevents repetition with cooldown system
+- **Professional Pacing:** Adaptive timing based on narrative arc stage
 
 ---
 

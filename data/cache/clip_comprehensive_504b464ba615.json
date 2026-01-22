@@ -3,27 +3,27 @@
   "motion": "Dynamic",
   "vibes": [
     "Friends",
-    "Casual",
-    "Fun"
+    "Chill",
+    "Social"
   ],
-  "content_description": "A group of friends hanging out and laughing together in an indoor setting.",
+  "content_description": "A group of friends are hanging out indoors, laughing and talking while one person rests their head on another's lap.",
   "best_moments": {
     "High": {
-      "start": 4.5,
-      "end": 7.5,
-      "reason": "Peak laughter and joyful interaction between friends."
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "Hearty laughter and dynamic camera movement"
     },
     "Medium": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Initial interaction with smiles and moderate movement."
+      "reason": "Initial interaction with moderate movement"
     },
     "Low": {
-      "start": 8.5,
-      "end": 10.5,
-      "reason": "A calm, stable shot of a person looking at the camera."
+      "start": 8.0,
+      "end": 11.0,
+      "reason": "Calm shot of a person looking at the camera"
     }
   },
-  "_cache_version": "6.0",
-  "_cached_at": "2026-01-21 18:37:16"
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-22 22:19:59"
 }
