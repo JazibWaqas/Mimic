@@ -507,6 +507,97 @@ async def delete_session(session_id: str):
     raise HTTPException(status_code=404, detail="Session not found")
 
 
+# Serve static files for previews
+app.mount("/previews/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="upload_previews")
+app.mount("/previews/results", StaticFiles(directory=str(RESULTS_DIR)), name="result_previews")
+app.mount("/previews/samples", StaticFiles(directory=str(DATA_DIR / "samples" / "reference")), name="sample_previews")
+
+@app.get("/api/references")
+async def list_reference_samples():
+    """
+    List all pre-provided reference clips in data/samples/reference.
+    """
+    ref_dir = DATA_DIR / "samples" / "reference"
+    if not ref_dir.exists():
+        return {"references": []}
+    
+    references = []
+    for ref_path in ref_dir.iterdir():
+        if ref_path.is_file() and not ref_path.name.startswith("."):
+             references.append({
+                "filename": ref_path.name,
+                "path": f"/previews/samples/{ref_path.name}",
+                "size": ref_path.stat().st_size,
+                "created_at": ref_path.stat().st_mtime
+            })
+    return {"references": references}
+
+@app.get("/api/clips")
+async def list_all_clips():
+    """
+    List all clips ever uploaded, organized by session.
+    Used for the 'Gallery' page.
+    """
+    all_clips = []
+    # Loop through session folders in uploads
+    for session_folder in UPLOADS_DIR.iterdir():
+        if session_folder.is_dir():
+            clips_dir = session_folder / "clips"
+            if clips_dir.exists():
+                for clip_path in clips_dir.iterdir():
+                    if clip_path.is_file() and not clip_path.name.startswith("."):
+                        all_clips.append({
+                            "session_id": session_folder.name,
+                            "filename": clip_path.name,
+                            "path": f"/previews/uploads/{session_folder.name}/clips/{clip_path.name}",
+                            "size": clip_path.stat().st_size,
+                            "created_at": clip_path.stat().st_mtime
+                        })
+    # Sort by newest first
+    all_clips.sort(key=lambda x: x["created_at"], reverse=True)
+    return {"clips": all_clips}
+
+@app.delete("/api/clips/{session_id}/{filename}")
+async def delete_specific_clip(session_id: str, filename: str):
+    """
+    Delete a specific clip from the gallery.
+    """
+    clip_path = UPLOADS_DIR / session_id / "clips" / filename
+    if clip_path.exists():
+        clip_path.unlink()
+        return {"status": "deleted"}
+    raise HTTPException(status_code=404, detail="Clip not found")
+
+@app.get("/api/results")
+async def list_all_results():
+    """
+    List all generated videos in the results folder.
+    Used for the 'Vault' page.
+    """
+    results = []
+    for result_path in RESULTS_DIR.glob("*.mp4"):
+        if result_path.is_file():
+            results.append({
+                "filename": result_path.name,
+                "url": f"/previews/results/{result_path.name}",
+                "size": result_path.stat().st_size,
+                "created_at": result_path.stat().st_mtime
+            })
+    # Sort by newest first
+    results.sort(key=lambda x: x["created_at"], reverse=True)
+    return {"results": results}
+
+@app.delete("/api/results/{filename}")
+async def delete_result(filename: str):
+    """
+    Delete a generated video from the vault.
+    """
+    result_path = RESULTS_DIR / filename
+    if result_path.exists():
+        result_path.unlink()
+        return {"status": "deleted"}
+    raise HTTPException(status_code=404, detail="Result not found")
+
 # Health check
 @app.get("/health")
 async def health():

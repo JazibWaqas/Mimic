@@ -1,55 +1,76 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// ============================================================================
+// CENTRALIZED API CLIENT
+// ============================================================================
+// All backend communication goes through here
+// Makes it easy to change endpoints, add error handling, etc.
+// ============================================================================
 
-export async function uploadFiles(reference: File, clips: File[]) {
-  const formData = new FormData();
-  formData.append("reference", reference);
-  clips.forEach((clip) => formData.append("clips", clip));
+const API_BASE = "http://localhost:8000";
 
-  const response = await fetch(`${API_BASE}/api/upload`, {
-    method: "POST",
-    body: formData,
-  });
+export const api = {
+  // ==================== UPLOAD ====================
+  uploadFiles: async (reference: File, clips: File[]) => {
+    const formData = new FormData();
+    formData.append("reference", reference);
+    clips.forEach((clip) => formData.append("clips", clip));
 
-  if (!response.ok) throw new Error("Upload failed");
-  return response.json();
-}
+    const res = await fetch(`${API_BASE}/api/upload`, {
+      method: "POST",
+      body: formData,
+    });
 
-export async function generateVideo(sessionId: string) {
-  const response = await fetch(`${API_BASE}/api/generate/${sessionId}`, {
-    method: "POST",
-  });
+    if (!res.ok) throw new Error("Upload failed");
+    return res.json();
+  },
 
-  if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(errorData.detail || `Generation failed: ${response.status} ${response.statusText}`);
-  }
-  return response.json();
-}
+  // ==================== GENERATION ====================
+  startGeneration: async (sessionId: string) => {
+    const res = await fetch(`${API_BASE}/api/generate/${sessionId}`, {
+      method: "POST",
+    });
 
-export async function getStatus(sessionId: string) {
-  const response = await fetch(`${API_BASE}/api/status/${sessionId}`);
-  if (!response.ok) throw new Error("Status check failed");
-  return response.json();
-}
+    if (!res.ok) throw new Error("Generation failed");
+    return res.json();
+  },
 
-export async function getHistory() {
-  const response = await fetch(`${API_BASE}/api/history`);
-  if (!response.ok) throw new Error("History fetch failed");
-  return response.json();
-}
+  connectProgress: (sessionId: string) => {
+    return new WebSocket(`ws://localhost:8000/ws/progress/${sessionId}`);
+  },
 
-export function getDownloadUrl(sessionId: string) {
-  // Add timestamp to prevent browser caching
-  const timestamp = Date.now();
-  return `${API_BASE}/api/download/${sessionId}?t=${timestamp}`;
-}
+  // ==================== CLIPS (Assets Page) ====================
+  fetchClips: async () => {
+    const res = await fetch(`${API_BASE}/api/clips`);
+    if (!res.ok) throw new Error("Failed to fetch clips");
+    return res.json();
+  },
 
-export function getWebSocketUrl(sessionId: string) {
-  const base = new URL(API_BASE);
-  base.protocol = base.protocol === "https:" ? "wss:" : "ws:";
-  base.pathname = `/ws/progress/${sessionId}`;
-  base.search = "";
-  return base.toString();
-}
+  deleteClip: async (sessionId: string, filename: string) => {
+    const res = await fetch(`${API_BASE}/api/clips/${sessionId}/${filename}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) throw new Error("Failed to delete clip");
+    return res.json();
+  },
 
+  // ==================== RESULTS (Projects Page) ====================
+  fetchResults: async () => {
+    const res = await fetch(`${API_BASE}/api/results`);
+    if (!res.ok) throw new Error("Failed to fetch results");
+    return res.json();
+  },
 
+  deleteResult: async (filename: string) => {
+    const res = await fetch(`${API_BASE}/api/results/${filename}`, {
+      method: "DELETE",
+    });
+    if (!res.ok) throw new Error("Failed to delete result");
+    return res.json();
+  },
+
+  // ==================== REFERENCES (Projects Page) ====================
+  fetchReferences: async () => {
+    const res = await fetch(`${API_BASE}/api/references`);
+    if (!res.ok) throw new Error("Failed to fetch references");
+    return res.json();
+  },
+};

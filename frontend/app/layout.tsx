@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { Header } from "@/components/header";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MIMIC",
+  title: "MIMIC | Surgical Cinematic Synthesis",
   description:
-    "MIMIC - AI video editing tool that matches your clips to a reference video's structure. Powered by Gemini 3.",
+    "An advanced AI editor that replicates the visual pacing and intent of any reference video.",
 };
 
 export default function RootLayout({
@@ -27,10 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-background text-foreground`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-foreground selection:bg-indigo-500 selection:text-white`}
       >
-        {children}
-        <Toaster />
+        <div className="bg-mesh" />
+        <Header />
+        <main className="relative z-10">
+          {children}
+        </main>
+        <Toaster position="bottom-right" theme="dark" />
       </body>
     </html>
   );
