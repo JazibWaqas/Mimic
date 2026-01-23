@@ -1,0 +1,30 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Night",
+    "Fun",
+    "Candid"
+  ],
+  "content_description": "A group of friends are sitting on a balcony at night, laughing and playing cards.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 6.5,
+      "reason": "Intense laughter and expressive gesturing from the person in the hoodie."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Initial conversation and camera panning between the friends."
+    },
+    "Low": {
+      "start": 5.0,
+      "end": 7.0,
+      "reason": "Camera pans away from the group towards the dark balcony view."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:11:54"
+}

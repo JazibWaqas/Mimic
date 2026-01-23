@@ -1,0 +1,30 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Travel",
+    "Music",
+    "Fun"
+  ],
+  "content_description": "Two friends are driving in a car while one sings along enthusiastically to music and records on his phone.",
+  "best_moments": {
+    "High": {
+      "start": 1.5,
+      "end": 4.5,
+      "reason": "Peak singing intensity with expressive hand gestures and high energy."
+    },
+    "Medium": {
+      "start": 4.5,
+      "end": 7.5,
+      "reason": "Continued singing with moderate camera movement and consistent energy."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "The beginning of the clip before the singing reaches its full intensity."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:25:37"
+}

@@ -1,0 +1,30 @@
+{
+  "energy": "Low",
+  "motion": "Static",
+  "vibes": [
+    "Urban",
+    "Calm",
+    "Travel",
+    "Sunset"
+  ],
+  "content_description": "A vertical shot of a road with curved streetlights against a colorful sunset sky.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Initial camera movement as the shot is framed, providing the most dynamic part of the short clip."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "Steady view of the road and the aesthetic streetlights under the changing sky."
+    },
+    "Low": {
+      "start": 2.0,
+      "end": 4.0,
+      "reason": "The most stable and calm part of the sunset view with minimal camera shake."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:48:12"
+}

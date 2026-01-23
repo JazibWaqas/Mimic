@@ -1,0 +1,29 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Travel",
+    "Fun"
+  ],
+  "content_description": "A group of friends are having a lively and humorous conversation while driving in a car with a sunroof.",
+  "best_moments": {
+    "High": {
+      "start": 28.5,
+      "end": 32.5,
+      "reason": "Peak laughter and animated gesturing from the passenger, creating a high-energy viral moment."
+    },
+    "Medium": {
+      "start": 6.0,
+      "end": 9.0,
+      "reason": "Active conversation with moderate hand gestures and consistent engagement."
+    },
+    "Low": {
+      "start": 16.0,
+      "end": 19.0,
+      "reason": "A calmer moment of steady conversation with minimal movement compared to the rest of the clip."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:44:30"
+}

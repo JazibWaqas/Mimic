@@ -1,0 +1,30 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Celebration",
+    "Friends",
+    "Dance",
+    "Joyful"
+  ],
+  "content_description": "A group of young men celebrating enthusiastically with music and dance, lifting one friend in the air.",
+  "best_moments": {
+    "High": {
+      "start": 1.5,
+      "end": 4.5,
+      "reason": "Peak of the celebration with the main subject being lifted and intense dancing."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Initial energetic dancing and clapping setting the scene."
+    },
+    "Low": {
+      "start": 4.0,
+      "end": 5.632922,
+      "reason": "Slightly more stable camera work as the group continues to dance."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:09:50"
+}

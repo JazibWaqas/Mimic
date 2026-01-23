@@ -1,0 +1,30 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Celebration",
+    "Friends",
+    "Culture",
+    "Energy"
+  ],
+  "content_description": "A group of young men celebrate by carrying a friend on their shoulders and dancing to the beat of traditional drums.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Intense celebration with a person being carried and energetic dancing."
+    },
+    "Medium": {
+      "start": 6.0,
+      "end": 9.0,
+      "reason": "Transition through a doorway with steady movement and drumming."
+    },
+    "Low": {
+      "start": 15.0,
+      "end": 18.0,
+      "reason": "Following the group from a distance with less chaotic motion."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:10:24"
+}

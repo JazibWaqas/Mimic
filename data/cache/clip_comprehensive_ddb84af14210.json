@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Travel",
+    "Nature",
+    "Beach"
+  ],
+  "content_description": "A decorated camel walks along a sunny beach with people swimming in the background.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 5.5,
+      "reason": "The camel is fully in frame walking across the beach with dynamic camera movement and bright sunlight."
+    },
+    "Medium": {
+      "start": 2.0,
+      "end": 4.0,
+      "reason": "The camera begins to pan as the camel enters the frame, creating a sense of movement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "A relatively calm opening shot of the ocean waves and the beach before the main action starts."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:47:24"
+}

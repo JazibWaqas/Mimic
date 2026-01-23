@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Travel",
+    "Adventure",
+    "Mystery"
+  ],
+  "content_description": "A person wearing a backpack walks through a long, arched stone tunnel lit by wall lamps.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "Initial entry into the tunnel with clear movement and a strong perspective shift as the camera follows closely."
+    },
+    "Medium": {
+      "start": 9.0,
+      "end": 12.0,
+      "reason": "Steady walking through a well-lit section of the arched tunnel, maintaining a consistent pace."
+    },
+    "Low": {
+      "start": 4.5,
+      "end": 7.5,
+      "reason": "Walking through a darker, more shadowed part of the tunnel where visual details are obscured and motion feels slower."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:39:19"
+}

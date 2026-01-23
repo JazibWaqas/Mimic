@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Night",
+    "Friends",
+    "Park"
+  ],
+  "content_description": "Three friends walk away from the camera along a park path at night under a bright streetlamp.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "One person starts running, adding a burst of energy and movement to the scene."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "The group walks away at a steady, consistent pace with moderate movement."
+    },
+    "Low": {
+      "start": 2.0,
+      "end": 3.62375,
+      "reason": "The subjects move further into the distance, making the motion appear slower and calmer."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:11:00"
+}

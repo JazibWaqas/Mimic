@@ -1,0 +1,30 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Night",
+    "Urban",
+    "Rain",
+    "Travel"
+  ],
+  "content_description": "A night drive inside a car during rain, featuring a view of the dashboard and the wet road ahead.",
+  "best_moments": {
+    "High": {
+      "start": 2.0,
+      "end": 5.0,
+      "reason": "Acceleration and bright car lights ahead create a more dynamic and visually intense scene."
+    },
+    "Medium": {
+      "start": 15.0,
+      "end": 18.0,
+      "reason": "Steady driving through the rain with consistent motion and clear dashboard visibility."
+    },
+    "Low": {
+      "start": 35.0,
+      "end": 38.0,
+      "reason": "Slowing down in traffic, resulting in a more static and calm view of the rainy street."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:14:56"
+}

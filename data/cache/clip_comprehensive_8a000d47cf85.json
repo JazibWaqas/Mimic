@@ -1,0 +1,30 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Travel",
+    "Friends",
+    "Calm"
+  ],
+  "content_description": "Two men are posing for photos and videos in a scenic, snowy forest area with a rustic building in the background.",
+  "best_moments": {
+    "High": {
+      "start": 15.0,
+      "end": 18.0,
+      "reason": "Camera pans back to the subject who begins walking, creating more dynamic movement."
+    },
+    "Medium": {
+      "start": 4.0,
+      "end": 7.0,
+      "reason": "A smooth pan across the landscape showing the subject and the background architecture."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "A relatively static shot of the subject posing in the forest."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:40:55"
+}

@@ -1,0 +1,29 @@
+{
+  "energy": "High",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Action",
+    "Fun"
+  ],
+  "content_description": "A group of friends jumping on a trampoline while one person in the center tries to stand up amidst the bouncing.",
+  "best_moments": {
+    "High": {
+      "start": 2.0,
+      "end": 5.0,
+      "reason": "Intense jumping and chaotic movement as the person in the middle is bounced around vigorously."
+    },
+    "Medium": {
+      "start": 8.5,
+      "end": 11.5,
+      "reason": "The person in the middle successfully stands up and the group celebrates with moderate movement."
+    },
+    "Low": {
+      "start": 5.5,
+      "end": 8.0,
+      "reason": "A brief moment of relative stability as the person in the middle prepares to stand up between jumps."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:09:01"
+}

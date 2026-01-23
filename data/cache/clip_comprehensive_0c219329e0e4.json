@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Urban",
+    "Walking",
+    "Casual"
+  ],
+  "content_description": "Two people walking away from the camera along a tiled corridor towards an outdoor area.",
+  "best_moments": {
+    "High": {
+      "start": 1.0,
+      "end": 3.0,
+      "reason": "Steady walking pace with consistent camera movement following the subjects."
+    },
+    "Medium": {
+      "start": 0.5,
+      "end": 2.5,
+      "reason": "Moderate movement as the subjects progress down the walkway."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Initial start of the walk with slightly less momentum."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:56:07"
+}

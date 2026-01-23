@@ -1,0 +1,29 @@
+{
+  "energy": "Low",
+  "motion": "Dynamic",
+  "vibes": [
+    "Nature",
+    "Travel",
+    "Calm"
+  ],
+  "content_description": "A slow, sweeping pan across a vast mountain range and valley under a clear blue sky.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "reason": "The initial movement reveals the scale of the landscape with a slight lens flare, providing the most visual change."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.5,
+      "reason": "Consistent panning motion showing the depth of the valley and the layers of the mountains."
+    },
+    "Low": {
+      "start": 2.5,
+      "end": 4.295692,
+      "reason": "The camera movement stabilizes as it captures the distant, hazy mountain peaks in a serene manner."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:27:39"
+}

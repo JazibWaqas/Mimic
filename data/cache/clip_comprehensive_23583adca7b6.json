@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Travel",
+    "Beach",
+    "Animals"
+  ],
+  "content_description": "A group of people and camels are gathered on a crowded beach under an overcast sky.",
+  "best_moments": {
+    "High": {
+      "start": 1.2,
+      "end": 3.2,
+      "reason": "Dynamic camera movement panning across people towards the camels, creating a sense of discovery."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Initial pan showing the beach environment and the scale of the crowd."
+    },
+    "Low": {
+      "start": 2.5,
+      "end": 4.272472,
+      "reason": "The camera movement slows down as it focuses on the camels standing on the sand."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:57:32"
+}

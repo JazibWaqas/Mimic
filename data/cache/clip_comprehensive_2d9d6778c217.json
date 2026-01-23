@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Outdoors",
+    "Fun"
+  ],
+  "content_description": "A group of friends hangs out outdoors, laughing and posing for the camera.",
+  "best_moments": {
+    "High": {
+      "start": 25.0,
+      "end": 28.0,
+      "reason": "The friends are all laughing and posing together with high energy."
+    },
+    "Medium": {
+      "start": 5.0,
+      "end": 8.0,
+      "reason": "The group is interacting and adjusting their appearance while talking."
+    },
+    "Low": {
+      "start": 15.0,
+      "end": 18.0,
+      "reason": "A calmer moment where the friends are standing still and looking at each other."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:54:55"
+}

@@ -1,0 +1,30 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Night Drive",
+    "Travel",
+    "Urban",
+    "Chill"
+  ],
+  "content_description": "A first-person perspective of a car driving along a well-lit highway at night, passing palm trees and other vehicles.",
+  "best_moments": {
+    "High": {
+      "start": 26.5,
+      "end": 29.5,
+      "reason": "Fastest visual motion with palm trees and streetlights streaking past as the car accelerates."
+    },
+    "Medium": {
+      "start": 11.5,
+      "end": 14.5,
+      "reason": "Steady highway driving with moderate traffic and clear road signs visible."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "reason": "The beginning of the clip with slower initial speed and darker surroundings before the main streetlights."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:15:54"
+}

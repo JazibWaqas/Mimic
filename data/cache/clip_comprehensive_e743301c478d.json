@@ -1,0 +1,29 @@
+{
+  "energy": "Medium",
+  "motion": "Dynamic",
+  "vibes": [
+    "Friends",
+    "Travel",
+    "Casual"
+  ],
+  "content_description": "Three friends walk down a paved path next to a tall wall, talking and gesturing.",
+  "best_moments": {
+    "High": {
+      "start": 0.5,
+      "end": 2.5,
+      "reason": "Animated walking with hand gestures and turning."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 2.0,
+      "reason": "Steady walking pace at the beginning of the clip."
+    },
+    "Low": {
+      "start": 2.0,
+      "end": 2.992517,
+      "reason": "Consistent walking away with fewer gestures."
+    }
+  },
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 15:26:49"
+}
