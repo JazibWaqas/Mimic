@@ -18,10 +18,10 @@ import {
 } from "lucide-react";
 
 const navItems = [
-    { label: "Mimic Engine", icon: PlusCircle, href: "/" },
-    { label: "Material Gallery", icon: Library, href: "/gallery" },
-    { label: "The Vault", icon: History, href: "/vault" },
-    { label: "Compare View", icon: GitCompare, href: "/compare" },
+    { label: "Studio", icon: PlusCircle, href: "/" },
+    { label: "Library", icon: Library, href: "/gallery" },
+    { label: "Projects", icon: History, href: "/vault" },
+    { label: "Compare", icon: GitCompare, href: "/compare" },
 ];
 
 const secondaryItems = [

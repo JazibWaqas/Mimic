@@ -42,6 +42,7 @@ from engine.processors import (
     detect_bpm
 )
 from utils import ensure_directory, cleanup_session
+from collections import defaultdict, Counter
 
 
 # ============================================================================
@@ -78,6 +79,44 @@ def run_mimic_pipeline(
         PipelineResult with success status and output path
     """
     start_time = time.time()
+    
+    # Setup file logging (like test_ref.py)
+    ref_name = Path(reference_path).stem
+    log_path = Path(output_dir) / f"{ref_name}_output_{session_id[:8]}.txt"
+    log_file = None
+    original_stdout = sys.stdout
+    
+    class Tee:
+        def __init__(self, *files):
+            self.files = files
+        def write(self, s):
+            for f in self.files:
+                f.write(s)
+                try: 
+                    f.flush()
+                except Exception: 
+                    pass
+        def flush(self):
+            for f in self.files:
+                try: 
+                    f.flush()
+                except Exception: 
+                    pass
+    
+    try:
+        log_file = open(log_path, 'w', encoding='utf-8')
+        sys.stdout = Tee(original_stdout, log_file)
+        print("=" * 80)
+        print(f"PIPELINE RUN: {Path(reference_path).name.upper()}")
+        print("=" * 80)
+        print(f"Session ID: {session_id}")
+        print(f"Reference: {Path(reference_path).name}")
+        print(f"Clips: {len(clip_paths)}")
+        print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        print()
+    except Exception as e:
+        print(f"[WARN] Could not create log file: {e}")
+        log_file = None
     
     def update_progress(step: int, total: int, message: str):
         """Helper to call progress callback if provided."""
@@ -256,7 +295,9 @@ def run_mimic_pipeline(
         audio_extracted = extract_audio(reference_path, str(audio_path))
         
         # Final output (use full session_id to prevent collisions)
-        output_filename = f"mimic_output_{session_id}.mp4"
+        # Generate filename with reference name for better organization
+        ref_name = Path(reference_path).stem
+        output_filename = f"{ref_name}_output_{session_id[:8]}.mp4"
         final_output_path = Path(output_dir) / output_filename
         
         # Remove old file if it exists (force regeneration)
@@ -283,16 +324,27 @@ def run_mimic_pipeline(
         # ==================================================================
         processing_time = time.time() - start_time
         
-        print(f"\n{'='*60}")
-        print(f"[OK] PIPELINE COMPLETE")
-        print(f"{'='*60}")
-        print(f"Output: {final_output_path}")
-        print(f"Duration: {blueprint.total_duration:.2f}s")
-        print(f"Segments: {len(blueprint.segments)}")
-        print(f"Processing time: {processing_time:.1f}s")
-        print(f"{'='*60}\n")
+        from engine.processors import get_video_duration
+        output_duration = get_video_duration(str(final_output_path))
+        ref_duration = blueprint.total_duration
         
-        return PipelineResult(
+        print(f"\n{'='*80}")
+        print("✅ SUCCESS!")
+        print(f"{'='*80}")
+        print(f"\n📊 Basic Results:")
+        print(f"   Output: {final_output_path.name}")
+        print(f"   Duration: {output_duration:.2f}s (ref: {ref_duration:.2f}s)")
+        print(f"   Difference: {abs(output_duration - ref_duration):.2f}s")
+        print(f"   Processing time: {processing_time:.1f}s")
+        
+        # Print comprehensive analysis (matching test_ref.py style)
+        _print_comprehensive_analysis(blueprint, edl, clip_index, clip_paths)
+        
+        print(f"\n{'='*80}")
+        print(f"🎉 Watch the result: {final_output_path}")
+        print(f"{'='*80}\n")
+        
+        result = PipelineResult(
             success=True,
             output_path=str(final_output_path),
             blueprint=blueprint,
@@ -301,14 +353,31 @@ def run_mimic_pipeline(
             processing_time_seconds=processing_time
         )
         
+        # Restore stdout and close log file
+        if log_file:
+            sys.stdout = original_stdout
+            log_file.close()
+            print(f"Analysis log saved: {log_path}")
+        
+        return result
+        
     except Exception as e:
         processing_time = time.time() - start_time
         
-        print(f"\n{'='*60}")
-        print(f"[ERROR] PIPELINE FAILED")
-        print(f"{'='*60}")
-        print(f"Error: {str(e)}")
-        print(f"{'='*60}\n")
+        print(f"\n{'='*80}")
+        print("❌ FAILED")
+        print(f"{'='*80}")
+        print(f"   Error: {str(e)}")
+        print(f"{'='*80}\n")
+        
+        import traceback
+        traceback.print_exc()
+        
+        # Restore stdout and close log file even on error
+        if log_file:
+            sys.stdout = original_stdout
+            log_file.close()
+            print(f"Error log saved: {log_path}")
         
         return PipelineResult(
             success=False,
@@ -320,6 +389,173 @@ def run_mimic_pipeline(
 # ============================================================================
 # VALIDATION
 # ============================================================================
+
+def _print_comprehensive_analysis(blueprint: StyleBlueprint, edl: EDL, clip_index: ClipIndex, clip_paths: List[str]) -> None:
+    """Print comprehensive debugging analysis matching test_ref.py style."""
+    if not blueprint or not edl:
+        return
+    
+    print(f"\n{'='*80}")
+    print("🧠 COMPREHENSIVE SYSTEM ANALYSIS")
+    print(f"{'='*80}")
+    
+    # 1. Reference Analysis Breakdown
+    print(f"\n📹 Reference Analysis:")
+    print(f"   Editing Style: {blueprint.editing_style}")
+    print(f"   Emotional Intent: {blueprint.emotional_intent}")
+    arc_desc = blueprint.arc_description[:100] + "..." if len(blueprint.arc_description) > 100 else blueprint.arc_description
+    print(f"   Arc Description: {arc_desc}")
+    print(f"   Total Segments: {len(blueprint.segments)}")
+    
+    # 1.5. Blueprint Full Detail
+    print(f"\n📑 BLUEPRINT FULL SEGMENT LIST:")
+    for i, seg in enumerate(blueprint.segments):
+        print(f"   {i+1:02d}: {seg.start:5.2f}-{seg.end:5.2f}s | {seg.energy.value:6} | Vibe: {seg.vibe:10} | {seg.arc_stage}")
+    
+    # 2. Arc Stage Distribution
+    arc_stages = Counter([seg.arc_stage for seg in blueprint.segments])
+    print(f"\n📈 Arc Stage Distribution:")
+    for stage, count in arc_stages.most_common():
+        pct = (count / len(blueprint.segments)) * 100
+        print(f"   {stage}: {count} segments ({pct:.1f}%)")
+    
+    # 3. Vibe Distribution
+    vibes = Counter([seg.vibe for seg in blueprint.segments if seg.vibe != "General"])
+    if vibes:
+        print(f"\n🎨 Vibe Distribution:")
+        for vibe, count in vibes.most_common():
+            pct = (count / len(blueprint.segments)) * 100
+            print(f"   {vibe}: {count} segments ({pct:.1f}%)")
+    
+    # 4. Clip Usage Analysis
+    clip_usage = defaultdict(int)
+    clip_reasoning = defaultdict(list)
+    for decision in edl.decisions:
+        clip_name = Path(decision.clip_path).name
+        clip_usage[clip_name] += 1
+        clip_reasoning[clip_name].append(decision.reasoning)
+    
+    print(f"\n📎 Clip Usage Analysis:")
+    print(f"   Unique clips used: {len(clip_usage)}/{len(clip_paths)}")
+    print(f"   Most used clips:")
+    for clip_name, count in sorted(clip_usage.items(), key=lambda x: x[1], reverse=True)[:5]:
+        pct = (count / len(edl.decisions)) * 100
+        print(f"     {clip_name}: {count} times ({pct:.1f}%)")
+    
+    # 5. Reasoning Breakdown
+    smart_matches = sum(1 for d in edl.decisions if "✨ Smart Match" in d.reasoning)
+    good_fits = sum(1 for d in edl.decisions if "🎯 Good Fit" in d.reasoning)
+    constraint_relax = sum(1 for d in edl.decisions if "⚙️ Constraint Relaxation" in d.reasoning)
+    
+    print(f"\n🧠 AI Reasoning Breakdown:")
+    if len(edl.decisions) > 0:
+        print(f"   ✨ Smart Match: {smart_matches} ({smart_matches/len(edl.decisions)*100:.1f}%)")
+        print(f"   🎯 Good Fit: {good_fits} ({good_fits/len(edl.decisions)*100:.1f}%)")
+        print(f"   ⚙️ Constraint Relaxation: {constraint_relax} ({constraint_relax/len(edl.decisions)*100:.1f}%)")
+    
+    # 6. Vibe Matching Stats
+    vibe_matches = sum(1 for d in edl.decisions if d.vibe_match)
+    print(f"\n🎨 Vibe Matching:")
+    if len(edl.decisions) > 0:
+        print(f"   Matches: {vibe_matches}/{len(edl.decisions)} ({vibe_matches/len(edl.decisions)*100:.1f}%)")
+    
+    # 7. Cut Statistics by Arc Stage
+    print(f"\n📏 Cut Statistics by Arc Stage:")
+    for stage in ["Intro", "Build-up", "Peak", "Outro", "Main"]:
+        stage_decisions = []
+        for decision in edl.decisions:
+            for seg in blueprint.segments:
+                if seg.start <= decision.timeline_start < seg.end:
+                    if seg.arc_stage == stage:
+                        stage_decisions.append(decision.timeline_end - decision.timeline_start)
+                    break
+        
+        if stage_decisions:
+            avg = sum(stage_decisions) / len(stage_decisions)
+            print(f"   {stage}: {len(stage_decisions)} cuts, avg {avg:.2f}s")
+    
+    # 8. Overall Cut Statistics
+    durations = [(d.timeline_end - d.timeline_start) for d in edl.decisions]
+    if durations:
+        avg_cut = sum(durations) / len(durations)
+        min_cut = min(durations)
+        max_cut = max(durations)
+        
+        print(f"\n📏 Overall Cut Statistics:")
+        print(f"   Total cuts: {len(edl.decisions)}")
+        print(f"   Average cut: {avg_cut:.2f}s")
+        print(f"   Shortest cut: {min_cut:.2f}s")
+        print(f"   Longest cut: {max_cut:.2f}s")
+    
+    # 9. Sample Reasoning Examples
+    print(f"\n💭 Sample AI Reasoning (first 5 decisions):")
+    for i, decision in enumerate(edl.decisions[:5], 1):
+        clip_name = Path(decision.clip_path).name
+        reasoning_preview = decision.reasoning[:80] + "..." if len(decision.reasoning) > 80 else decision.reasoning
+        print(f"   {i}. {clip_name}: {reasoning_preview}")
+    
+    # 10. Clip Index Stats
+    if clip_index:
+        print(f"\n📦 CLIP REGISTRY ({len(clip_index.clips)} total):")
+        for i, clip in enumerate(sorted(clip_index.clips, key=lambda x: x.filename)):
+            vibes_str = ", ".join(clip.vibes[:3]) if hasattr(clip, 'vibes') and clip.vibes else "N/A"
+            print(f"   {i+1:02d}: {clip.filename:15} | {clip.energy.value:6} | {clip.duration:5.1f}s | Vibes: {vibes_str}")
+        
+        clips_with_moments = sum(1 for c in clip_index.clips if hasattr(c, 'best_moments') and c.best_moments)
+        clips_with_vibes = sum(1 for c in clip_index.clips if hasattr(c, 'vibes') and c.vibes)
+        
+        print(f"\n📋 Metadata Coverage:")
+        print(f"   Best Moments: {clips_with_moments}/{len(clip_index.clips)}")
+        print(f"   Vibes: {clips_with_vibes}/{len(clip_index.clips)}")
+    
+    # 11. Temporal Drift Check
+    gaps = []
+    overlaps = []
+    for i in range(1, len(edl.decisions)):
+        gap = edl.decisions[i].timeline_start - edl.decisions[i-1].timeline_end
+        if abs(gap) > 0.001:
+            if gap > 0:
+                gaps.append((i, gap))
+            else:
+                overlaps.append((i, abs(gap)))
+    
+    print(f"\n🔍 Temporal Precision Check:")
+    if gaps:
+        print(f"   ⚠️ WARNING: Timeline Gaps Detected ({len(gaps)}):")
+        for i, gap in gaps[:5]:
+            print(f"     Gap after decision {i}: {gap:.6f}s")
+        if len(gaps) > 5:
+            print(f"     ... and {len(gaps) - 5} more gaps")
+    elif overlaps:
+        print(f"   ⚠️ WARNING: Timeline Overlaps Detected ({len(overlaps)}):")
+        for i, overlap in overlaps[:5]:
+            print(f"     Overlap after decision {i}: {overlap:.6f}s")
+        if len(overlaps) > 5:
+            print(f"     ... and {len(overlaps) - 5} more overlaps")
+    else:
+        print(f"   ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)")
+    
+    # 12. Material Efficiency Stats
+    if clip_index:
+        total_available_duration = sum(c.duration for c in clip_index.clips)
+        used_unique_duration = sum(d.clip_end - d.clip_start for d in edl.decisions)
+        
+        unique_segments = set()
+        for decision in edl.decisions:
+            clip_name = Path(decision.clip_path).name
+            segment_key = f"{clip_name}:{decision.clip_start:.2f}-{decision.clip_end:.2f}"
+            unique_segments.add(segment_key)
+        
+        print(f"\n📦 Material Efficiency:")
+        print(f"   Total source duration available: {total_available_duration:.2f}s")
+        print(f"   Total duration used in edit: {used_unique_duration:.2f}s")
+        print(f"   Unique clip segments used: {len(unique_segments)}")
+        if total_available_duration > 0:
+            utilization = (used_unique_duration / total_available_duration) * 100
+            print(f"   Utilization Ratio: {utilization:.1f}%")
+            if utilization < 10:
+                print(f"   💡 Note: Low utilization suggests clips may not match reference vibes well")
+
 
 def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
     """
@@ -358,145 +594,3 @@ def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
             get_video_duration(clip_path)
         except Exception as e:
             raise ValueError(f"Could not read clip {i}: {e}")
-
-
-def run_mimic_pipeline_manual(
-    blueprint: StyleBlueprint,
-    clip_index: ClipIndex,
-    clip_paths: List[str],
-    session_id: str,
-    output_dir: str,
-    progress_callback: Callable[[int, int, str], None] | None = None
-) -> PipelineResult:
-    """
-    MANUAL MODE: Run pipeline with pre-analyzed JSON from AI Studio.
-    Skips Gemini API calls entirely - only does matching + rendering.
-    
-    Args:
-        blueprint: Pre-analyzed reference structure (from AI Studio)
-        clip_index: Pre-analyzed clip metadata (from AI Studio)
-        clip_paths: Paths to user clips
-        session_id: Unique session identifier
-        output_dir: Where to save final video
-        progress_callback: Optional progress updates
-    
-    Returns:
-        PipelineResult with success/failure status
-    """
-    start_time = time.time()
-    
-    def update_progress(step: int, total: int, message: str):
-        if progress_callback:
-            progress_callback(step, total, message)
-        print(f"\n[{step}/{total}] {message}")
-    
-    TOTAL_STEPS = 3  # Standardize, Match, Render
-    
-    try:
-        print(f"\n{'='*60}")
-        print(f"[MANUAL MODE] Using pre-analyzed JSON")
-        print(f"{'='*60}\n")
-        
-        # Setup directories
-        BASE_DIR = Path(__file__).resolve().parent.parent.parent
-        temp_session_dir = BASE_DIR / "temp" / session_id
-        standardized_dir = temp_session_dir / "standardized"
-        segments_dir = temp_session_dir / "segments"
-        
-        ensure_directory(temp_session_dir)
-        ensure_directory(standardized_dir)
-        ensure_directory(segments_dir)
-        ensure_directory(output_dir)
-        
-        # STEP 1: STANDARDIZE CLIPS
-        update_progress(1, TOTAL_STEPS, "Standardizing clips...")
-        
-        standardized_paths = []
-        for i, clip_path in enumerate(clip_paths, start=1):
-            output_path = standardized_dir / f"clip_{i:03d}.mp4"
-            print(f"  Standardizing clip {i}/{len(clip_paths)}...")
-            standardize_clip(clip_path, str(output_path))
-            standardized_paths.append(str(output_path))
-        
-        # Update clip_index with standardized paths
-        for i, clip_meta in enumerate(clip_index.clips):
-            clip_meta.filepath = standardized_paths[i]
-        
-        # STEP 2: MATCH CLIPS TO BLUEPRINT
-        update_progress(2, TOTAL_STEPS, "Creating edit sequence...")
-        
-        # Manual mode - no best moment analysis (saves API calls)
-        edl = match_clips_to_blueprint(blueprint, clip_index, find_best_moments=False)
-        
-        # Validate EDL but don't fail - allow debugging even if timing is off
-        try:
-            validate_edl(edl, blueprint)
-        except ValueError as e:
-            print(f"[WARN] EDL validation failed: {e}")
-            print("[WARN] Continuing anyway to allow debugging...")
-        
-        print_edl_summary(edl, blueprint, clip_index)
-        
-        # STEP 3: RENDER
-        update_progress(3, TOTAL_STEPS, "Rendering final video...")
-        
-        # Extract segments
-        segment_files = []
-        for i, decision in enumerate(edl.decisions, start=1):
-            segment_path = segments_dir / f"segment_{i:03d}.mp4"
-            extract_segment(
-                decision.clip_path,
-                str(segment_path),
-                decision.clip_start,
-                decision.clip_end - decision.clip_start
-            )
-            segment_files.append(str(segment_path))
-            print(f"    [OK] Segment extracted: {decision.clip_start:.2f}s - {decision.clip_end:.2f}s")
-        
-        # Concatenate
-        stitched_path = temp_session_dir / "stitched.mp4"
-        concatenate_videos(segment_files, str(stitched_path))
-        
-        # Create silent output (no reference audio in manual mode)
-        output_filename = f"mimic_output_{session_id}.mp4"
-        output_path = Path(output_dir) / output_filename
-        
-        # Remove old file if it exists (force regeneration)
-        if output_path.exists():
-            print(f"[WARN] Removing existing output file: {output_path}")
-            output_path.unlink()
-        create_silent_video(str(stitched_path), str(output_path))
-        
-        # Validate
-        validate_output(str(output_path), blueprint.total_duration)
-        
-        elapsed = time.time() - start_time
-        
-        print(f"\n{'='*60}")
-        print(f"[OK] MANUAL MODE COMPLETE")
-        print(f"{'='*60}")
-        print(f"Output: {output_path}")
-        print(f"Duration: {blueprint.total_duration:.2f}s")
-        print(f"Segments: {len(edl.decisions)}")
-        print(f"Processing time: {elapsed:.1f}s")
-        print(f"{'='*60}\n")
-        
-        return PipelineResult(
-            success=True,
-            output_path=str(output_path),
-            blueprint=blueprint,
-            clip_index=clip_index,
-            edl=edl,
-            processing_time_seconds=elapsed
-        )
-        
-    except Exception as e:
-        print(f"\n[ERROR] Manual pipeline failed: {e}")
-        import traceback
-        traceback.print_exc()
-        
-        return PipelineResult(
-            success=False,
-            error=str(e),
-            processing_time_seconds=time.time() - start_time
-        )

@@ -7,7 +7,7 @@ import { Zap } from "lucide-react";
 
 const navItems = [
     { label: "Studio", href: "/" },
-    { label: "Assets", href: "/gallery" },
+    { label: "Library", href: "/gallery" },
     { label: "Projects", href: "/vault" },
 ];
 
@@ -51,13 +51,6 @@ export function Header() {
                     })}
                 </nav>
 
-                {/* System Status */}
-                <div className="hidden lg:flex items-center gap-6 pl-10 border-l border-white/5">
-                    <div className="flex items-center gap-3">
-                        <div className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_10px_rgba(34,211,238,0.5)]" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Neural Link Active</span>
-                    </div>
-                </div>
             </div>
         </header>
     );

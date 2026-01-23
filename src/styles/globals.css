@@ -1,0 +1,324 @@
+/* =============================
+   Base Styles (html, body, root)
+   ============================= */
+   html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll only when needed */
+    
+  }
+  
+  #root {
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto;
+  }
+  
+  /* =============================
+     Header Styles
+     ============================= */
+  /* Layout components */
+  .app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    background: #f0f2f5;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll */
+  }
+  
+  .app-content-row {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    background: #f0f2f5;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto; /* Allow vertical scroll */
+  }
+  
+  .main-content {
+    flex: 1 1 auto;
+    padding: 32px 40px;
+    background: linear-gradient(90deg, #85d8ce 0%, #085078,#2f3132 100%); 
+    min-height: calc(100vh - 64px);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Header styles */
+  .header {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(90deg, #85d8ce 0%, #085078,#2f3132 100%);
+    z-index: 1100;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .header-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: auto;
+    flex: 0 0 auto;
+  }
+  
+  .header-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  .header-title {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+  }
+  
+  .hamburger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem;
+    padding: 0;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #222;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  
+  /* Header navigation styles */
+  .header-nav {
+    flex: 0 1 auto;
+  }
+  
+  .header-nav-list {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  
+  .header-nav-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-nav-link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .header-nav-link .header-nav-icon {
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-nav-text-full {
+    display: inline;
+  }
+  
+  .header-nav-text-short {
+    display: none;
+  }
+  
+  .header-nav-link:hover,
+  .header-nav-link.active {
+    background: #ede9fe;
+    color: #0c4453;
+  }
+  
+  /* Header login button styles */
+  .header-login-btn {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 2rem;
+    padding: 0.5rem 1.25rem;
+    background: #21608a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(109,40,217,0.08);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-login-btn:hover {
+    background: #220e50;
+    color: #fff;
+  }
+  
+  /* Header user info styles */
+  .header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .header-user-name {
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  /* Responsive Header Styles */
+  @media (max-width: 960px) {
+    .header {
+      padding: 6px 8px;
+    }
+    .header-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 0.25rem;
+      width: 100%;
+    }
+    .header-logo-container {
+      flex: 0 0 auto;
+      margin-right: 0.5rem;
+    }
+    .header-logo {
+      height: 28px;
+      width: auto;
+    }
+    .header-nav {
+      flex: 1 1 auto;
+      margin: 0;
+      min-width: 0;
+    }
+    .header-nav-list {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .header-nav-link {
+      font-size: 13px;
+      padding: 0 4px;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .header-nav-icon,
+    .header-nav-text-full {
+      display: none;
+    }
+    .header-nav-text-short {
+      display: inline;
+    }
+    .header-login-btn {
+      font-size: 13px;
+      padding: 0.3rem 0.7rem;
+      margin-left: 0.5rem;
+      height: 28px;
+      display: flex;
+      align-items: center;
+    }
+    .header-user-info {
+      margin-left: 0.5rem;
+    }
+    .header-user-name {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      padding: 8px 10px;
+    }
+    .header-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 0;
+    }
+    .header-logo {
+      height: 22px;
+    }
+    .header-nav-list {
+      gap: 5px;
+    }
+    .header-nav-link {
+      font-size: 14px;
+      padding: 0 4px;
+    }
+    .header-login-btn {
+      font-size: 13px;
+      padding: 0.3rem 0.7rem;
+      margin-left: 0.5rem;
+      height: 22px;
+    }
+    .header-user-name {
+      display: none; /* Optionally hide user name on very small screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header-logo-container {
+      flex-grow: 0;
+    }
+    .header-login-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .app-root, .app-content-row {
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+  
+  

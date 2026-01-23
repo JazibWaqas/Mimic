@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import List
 import asyncio
 import json
+import hashlib
 
 from dotenv import load_dotenv
 from models import *
@@ -23,16 +24,19 @@ from utils import ensure_directory, cleanup_session
 # Load environment variables
 load_dotenv()
 
-# Root Directory Setup
+# Root Directory Setup - Matching test_ref.py structure
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMP_DIR = BASE_DIR / "temp"  # Only for intermediate processing files
 DATA_DIR = BASE_DIR / "data"
-UPLOADS_DIR = DATA_DIR / "uploads"  # Permanent storage for uploaded files
+SAMPLES_DIR = DATA_DIR / "samples"
+CLIPS_DIR = SAMPLES_DIR / "clips"  # All user clips go here
+REFERENCES_DIR = SAMPLES_DIR / "reference"  # All reference videos go here
 RESULTS_DIR = DATA_DIR / "results"  # Final output videos
 CACHE_DIR = DATA_DIR / "cache"      # Cached AI analyses
 
 # Ensure dirs exist
-UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
+CLIPS_DIR.mkdir(parents=True, exist_ok=True)
+REFERENCES_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
@@ -64,6 +68,7 @@ async def upload_files(
 ):
     """
     Upload reference video and user clips.
+    Saves directly to data/samples/ structure (matching test_ref.py).
     
     Returns:
         {
@@ -80,27 +85,86 @@ async def upload_files(
     print(f"[UPLOAD] Reference: {reference.filename}")
     print(f"[UPLOAD] Clips: {len(clips)} files")
     
-    # Save to permanent storage (data/uploads/)
-    session_uploads_dir = UPLOADS_DIR / session_id
-    ref_dir = ensure_directory(session_uploads_dir / "reference")
-    clips_dir = ensure_directory(session_uploads_dir / "clips")
+    # Read reference content and calculate hash
+    ref_content = await reference.read()
+    ref_hash = hashlib.md5(ref_content).hexdigest()[:12]
     
-    # Save reference (permanent)
-    ref_path = ref_dir / reference.filename
-    with open(ref_path, "wb") as f:
-        content = await reference.read()
-        f.write(content)
-    print(f"[UPLOAD] Reference saved to: {ref_path}")
+    # Check if file with same content already exists
+    existing_ref = None
+    for existing_file in REFERENCES_DIR.glob("*.mp4"):
+        if existing_file.is_file():
+            try:
+                with open(existing_file, 'rb') as f:
+                    existing_hash = hashlib.md5(f.read()).hexdigest()[:12]
+                if existing_hash == ref_hash:
+                    existing_ref = existing_file
+                    print(f"[UPLOAD] Reference content already exists: {existing_file.name} (reusing)")
+                    break
+            except Exception:
+                continue
     
-    # Save clips (permanent)
+    if existing_ref:
+        ref_path = existing_ref
+    else:
+        # Save new reference
+        ref_path = REFERENCES_DIR / reference.filename
+        if ref_path.exists():
+            base_name = ref_path.stem
+            counter = 1
+            while ref_path.exists():
+                ref_path = REFERENCES_DIR / f"{base_name}_{counter}{ref_path.suffix}"
+                counter += 1
+            print(f"[UPLOAD] Reference filename conflict, saved as: {ref_path.name}")
+        
+        with open(ref_path, "wb") as f:
+            f.write(ref_content)
+        print(f"[UPLOAD] Reference saved to: {ref_path}")
+    
+    # Save clips to data/samples/clips/ (matching test_ref.py)
     clip_paths = []
+    skipped_count = 0
+    
+    # Pre-calculate hashes for all existing files to avoid reading them multiple times
+    existing_hashes = {}
+    print(f"[UPLOAD] Checking {len(list(CLIPS_DIR.glob('*.mp4')))} existing clips for duplicates...")
+    for existing_file in CLIPS_DIR.glob("*.mp4"):
+        if existing_file.is_file():
+            try:
+                with open(existing_file, 'rb') as f:
+                    file_hash = hashlib.md5(f.read()).hexdigest()[:12]
+                existing_hashes[file_hash] = existing_file
+            except Exception as e:
+                print(f"[UPLOAD] Warning: Could not read {existing_file.name}: {e}")
+                continue
+    
     for clip in clips:
-        clip_path = clips_dir / clip.filename
+        clip_content = await clip.read()
+        clip_hash = hashlib.md5(clip_content).hexdigest()[:12]
+        
+        # Check if file with same content already exists
+        if clip_hash in existing_hashes:
+            existing_clip = existing_hashes[clip_hash]
+            print(f"[UPLOAD] Clip content already exists: {existing_clip.name} (skipping duplicate, will reuse)")
+            clip_paths.append(str(existing_clip))
+            skipped_count += 1
+            continue
+        
+        # Save new clip
+        clip_path = CLIPS_DIR / clip.filename
+        if clip_path.exists():
+            base_name = clip_path.stem
+            counter = 1
+            while clip_path.exists():
+                clip_path = CLIPS_DIR / f"{base_name}_{counter}{clip_path.suffix}"
+                counter += 1
+            print(f"[UPLOAD] Clip filename conflict, saved as: {clip_path.name}")
+        
         with open(clip_path, "wb") as f:
-            content = await clip.read()
-            f.write(content)
+            f.write(clip_content)
         clip_paths.append(str(clip_path))
-    print(f"[UPLOAD] {len(clip_paths)} clips saved to: {clips_dir}")
+        print(f"[UPLOAD] New clip saved: {clip_path.name}")
+    
+    print(f"[UPLOAD] {len(clips)} clips processed, {len(clip_paths)} clips will be used ({len(clip_paths) - skipped_count} new, {skipped_count} existing reused)")
     
     # Store session info
     active_sessions[session_id] = {
@@ -115,73 +179,13 @@ async def upload_files(
     return {
         "session_id": session_id,
         "reference": {
-            "filename": reference.filename,
+            "filename": ref_path.name,
             "size": ref_path.stat().st_size
         },
         "clips": [
             {"filename": Path(p).name, "size": Path(p).stat().st_size}
             for p in clip_paths
         ]
-    }
-
-
-@app.post("/api/upload-manual")
-async def upload_manual(
-    clips: List[UploadFile] = File(...),
-    blueprint: str = File(...),
-    clip_analysis: str = File(...)
-):
-    """
-    Manual mode: Upload clips with pre-analyzed JSON from AI Studio.
-    Bypasses Gemini API entirely - only runs matching + rendering.
-    
-    Returns:
-        {"session_id": "uuid", "mode": "manual"}
-    """
-    # Generate session ID
-    session_id = str(uuid.uuid4())
-    
-    # Save to permanent storage (data/uploads/)
-    session_uploads_dir = UPLOADS_DIR / session_id
-    clips_dir = ensure_directory(session_uploads_dir / "clips")
-    
-    # Save clips (permanent)
-    clip_paths = []
-    for clip in clips:
-        clip_path = clips_dir / clip.filename
-        with open(clip_path, "wb") as f:
-            content = await clip.read()
-            f.write(content)
-        clip_paths.append(str(clip_path))
-    print(f"[UPLOAD] {len(clip_paths)} clips saved to: {clips_dir}")
-    
-    # Parse and validate JSON
-    try:
-        blueprint_data = json.loads(blueprint)
-        clip_analysis_data = json.loads(clip_analysis)
-        
-        # Validate structure
-        from models import StyleBlueprint, ClipIndex
-        validated_blueprint = StyleBlueprint(**blueprint_data)
-        validated_clips = ClipIndex(**clip_analysis_data)
-        
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Invalid JSON: {str(e)}")
-    
-    # Store session info with manual mode flag
-    active_sessions[session_id] = {
-        "mode": "manual",
-        "clip_paths": clip_paths,
-        "blueprint": validated_blueprint.model_dump(),
-        "clip_index": validated_clips.model_dump(),
-        "status": "uploaded",
-        "progress": 0.0
-    }
-    
-    return {
-        "session_id": session_id,
-        "mode": "manual",
-        "clips": [{"filename": Path(p).name} for p in clip_paths]
     }
 
 
@@ -194,31 +198,9 @@ async def generate_video(session_id: str, background_tasks: BackgroundTasks):
     Returns:
         {"status": "processing", "session_id": "..."}
     """
-    # Try to recover session from disk if it doesn't exist in memory
+    # Session recovery not needed - files are in data/samples/ and session info is in memory
     if session_id not in active_sessions:
-        session_uploads_dir = UPLOADS_DIR / session_id
-        ref_dir = session_uploads_dir / "reference"
-        clips_dir = session_uploads_dir / "clips"
-        
-        # Check if upload directory exists (session was created before restart)
-        if session_uploads_dir.exists():
-            print(f"[GENERATE] Recovering session from disk: {session_id}")
-            ref_files = list(ref_dir.glob("*")) if ref_dir.exists() else []
-            clip_files = list(clips_dir.glob("*")) if clips_dir.exists() else []
-            
-            if ref_files and clip_files:
-                active_sessions[session_id] = {
-                    "reference_path": str(ref_files[0]),
-                    "clip_paths": [str(f) for f in clip_files],
-                    "status": "uploaded",
-                    "progress": 0.0,
-                    "created_at": ""
-                }
-                print(f"[GENERATE] Session recovered: {len(clip_files)} clips found")
-            else:
-                raise HTTPException(status_code=404, detail="Session files not found. Please re-upload.")
-        else:
-            raise HTTPException(status_code=404, detail="Session not found. Please upload files first.")
+        raise HTTPException(status_code=404, detail="Session not found. Please upload files first.")
     
     session = active_sessions[session_id]
     
@@ -247,7 +229,7 @@ async def generate_video(session_id: str, background_tasks: BackgroundTasks):
 def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: List[str] = None):
     """
     Run the MIMIC pipeline with progress updates.
-    Supports both Auto mode (with Gemini API) and Manual mode (pre-analyzed JSON).
+    Uses Gemini API for analysis.
     """
     import time
     start_time = time.time()
@@ -273,38 +255,16 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
             return
         
         session = active_sessions[session_id]
-        mode = session.get('mode', 'auto')
-        print(f"[PIPELINE] Mode: {mode}")
         
-        # Check if manual mode
-        if mode == "manual":
-            # Manual mode: Use pre-provided analysis
-            from models import StyleBlueprint, ClipIndex
-            from engine.orchestrator import run_mimic_pipeline_manual
-            
-            blueprint = StyleBlueprint(**session["blueprint"])
-            clip_index = ClipIndex(**session["clip_index"])
-            clip_paths = session["clip_paths"]
-            
-            print(f"[PIPELINE] Running MANUAL pipeline...")
-            result = run_mimic_pipeline_manual(
-                blueprint=blueprint,
-                clip_index=clip_index,
-                clip_paths=clip_paths,
-                session_id=session_id,
-                output_dir=str(RESULTS_DIR),
-                progress_callback=progress_callback
-            )
-        else:
-            # Auto mode: Full pipeline with Gemini
-            print(f"[PIPELINE] Running AUTO pipeline with Gemini...")
-            result = run_mimic_pipeline(
-                reference_path=ref_path,
-                clip_paths=clip_paths,
-                session_id=session_id,
-                output_dir=str(RESULTS_DIR),
-                progress_callback=progress_callback
-            )
+        # Run pipeline with Gemini API
+        print(f"[PIPELINE] Running pipeline with Gemini...")
+        result = run_mimic_pipeline(
+            reference_path=ref_path,
+            clip_paths=clip_paths,
+            session_id=session_id,
+            output_dir=str(RESULTS_DIR),
+            progress_callback=progress_callback
+        )
         
         elapsed = time.time() - start_time
         
@@ -507,64 +467,64 @@ async def delete_session(session_id: str):
     raise HTTPException(status_code=404, detail="Session not found")
 
 
-# Serve static files for previews
-app.mount("/previews/uploads", StaticFiles(directory=str(UPLOADS_DIR)), name="upload_previews")
-app.mount("/previews/results", StaticFiles(directory=str(RESULTS_DIR)), name="result_previews")
-app.mount("/previews/samples", StaticFiles(directory=str(DATA_DIR / "samples" / "reference")), name="sample_previews")
+# Serve static files for previews (using explicit endpoints instead)
+# Files are served via /api/files/ endpoints for better control
 
 @app.get("/api/references")
 async def list_reference_samples():
     """
-    List all pre-provided reference clips in data/samples/reference.
+    List all reference videos from data/samples/reference/ (matching test_ref.py structure).
     """
-    ref_dir = DATA_DIR / "samples" / "reference"
-    if not ref_dir.exists():
+    if not REFERENCES_DIR.exists():
         return {"references": []}
     
     references = []
-    for ref_path in ref_dir.iterdir():
-        if ref_path.is_file() and not ref_path.name.startswith("."):
+    for ref_path in REFERENCES_DIR.iterdir():
+        if ref_path.is_file() and ref_path.suffix.lower() == '.mp4':
              references.append({
                 "filename": ref_path.name,
-                "path": f"/previews/samples/{ref_path.name}",
+                "path": f"/api/files/references/{ref_path.name}",
                 "size": ref_path.stat().st_size,
                 "created_at": ref_path.stat().st_mtime
             })
+    # Sort by newest first
+    references.sort(key=lambda x: x["created_at"], reverse=True)
     return {"references": references}
 
 @app.get("/api/clips")
 async def list_all_clips():
     """
-    List all clips ever uploaded, organized by session.
+    List all clips from data/samples/clips/ (matching test_ref.py structure).
     Used for the 'Gallery' page.
     """
     all_clips = []
-    # Loop through session folders in uploads
-    for session_folder in UPLOADS_DIR.iterdir():
-        if session_folder.is_dir():
-            clips_dir = session_folder / "clips"
-            if clips_dir.exists():
-                for clip_path in clips_dir.iterdir():
-                    if clip_path.is_file() and not clip_path.name.startswith("."):
-                        all_clips.append({
-                            "session_id": session_folder.name,
-                            "filename": clip_path.name,
-                            "path": f"/previews/uploads/{session_folder.name}/clips/{clip_path.name}",
-                            "size": clip_path.stat().st_size,
-                            "created_at": clip_path.stat().st_mtime
-                        })
+    
+    # Read all clips from data/samples/clips/ (matching test_ref.py)
+    if CLIPS_DIR.exists():
+        for clip_path in CLIPS_DIR.iterdir():
+            if clip_path.is_file() and clip_path.suffix.lower() == '.mp4':
+                all_clips.append({
+                    "session_id": "samples",
+                    "filename": clip_path.name,
+                    "path": f"/api/files/samples/clips/{clip_path.name}",
+                    "size": clip_path.stat().st_size,
+                    "created_at": clip_path.stat().st_mtime
+                })
+    
     # Sort by newest first
     all_clips.sort(key=lambda x: x["created_at"], reverse=True)
+    print(f"[API] Returning {len(all_clips)} clips from {CLIPS_DIR}")
     return {"clips": all_clips}
 
 @app.delete("/api/clips/{session_id}/{filename}")
 async def delete_specific_clip(session_id: str, filename: str):
     """
-    Delete a specific clip from the gallery.
+    Delete a specific clip from data/samples/clips/.
     """
-    clip_path = UPLOADS_DIR / session_id / "clips" / filename
+    clip_path = CLIPS_DIR / filename
     if clip_path.exists():
         clip_path.unlink()
+        print(f"[API] Deleted clip: {clip_path}")
         return {"status": "deleted"}
     raise HTTPException(status_code=404, detail="Clip not found")
 
@@ -579,7 +539,7 @@ async def list_all_results():
         if result_path.is_file():
             results.append({
                 "filename": result_path.name,
-                "url": f"/previews/results/{result_path.name}",
+                "url": f"/api/files/results/{result_path.name}",
                 "size": result_path.stat().st_size,
                 "created_at": result_path.stat().st_mtime
             })
@@ -597,6 +557,52 @@ async def delete_result(filename: str):
         result_path.unlink()
         return {"status": "deleted"}
     raise HTTPException(status_code=404, detail="Result not found")
+
+# ============================================================================
+# FILE SERVING ENDPOINTS (Explicit file serving for reliability)
+# ============================================================================
+
+@app.get("/api/files/results/{filename}")
+async def serve_result_file(filename: str):
+    """
+    Serve a result video file explicitly.
+    """
+    result_path = RESULTS_DIR / filename
+    if not result_path.exists() or not result_path.is_file():
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(
+        path=str(result_path),
+        media_type="video/mp4",
+        filename=filename
+    )
+
+@app.get("/api/files/references/{filename}")
+async def serve_reference_file(filename: str):
+    """
+    Serve a reference video file explicitly.
+    """
+    ref_path = DATA_DIR / "samples" / "reference" / filename
+    if not ref_path.exists() or not ref_path.is_file():
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(
+        path=str(ref_path),
+        media_type="video/mp4",
+        filename=filename
+    )
+
+@app.get("/api/files/samples/clips/{filename}")
+async def serve_sample_clip_file(filename: str):
+    """
+    Serve a sample clip video file explicitly.
+    """
+    clip_path = DATA_DIR / "samples" / "clips" / filename
+    if not clip_path.exists() or not clip_path.is_file():
+        raise HTTPException(status_code=404, detail="File not found")
+    return FileResponse(
+        path=str(clip_path),
+        media_type="video/mp4",
+        filename=filename
+    )
 
 # Health check
 @app.get("/health")

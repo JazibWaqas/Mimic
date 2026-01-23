@@ -1,0 +1,38 @@
+.shiny-text {
+    color: #888; /* fallback */
+    background: linear-gradient(
+      200deg,
+      #173b37 0%,
+      #7fa9b0 30%,
+      #085078 45%,
+      #085078 55%,
+      #fff 70%,
+      #fff 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    animation: shine 1.8s linear infinite;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 1px 0 #f1f1f1;
+  }
+  
+  @keyframes shine {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+  
+  .shiny-text.files-section-title,
+  .shiny-text.all-files-title {
+    display: block;
+    font-size: 2.3rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  

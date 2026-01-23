@@ -1,0 +1,58 @@
+{
+  "total_duration": 31.949252,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.5,
+      "duration": 1.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Friends",
+      "arc_stage": "Intro",
+      "reasoning": "Friends gathering by the road in a scenic area."
+    },
+    {
+      "id": 2,
+      "start": 1.5,
+      "end": 2.43,
+      "duration": 0.93,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Friends dancing and laughing on the road."
+    },
+    {
+      "id": 3,
+      "start": 2.43,
+      "end": 8.97,
+      "duration": 6.54,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "High-energy dancing followed by bikers and a group shot at the beach."
+    },
+    {
+      "id": 4,
+      "start": 8.97,
+      "end": 31.949252,
+      "duration": 22.979252,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Outro",
+      "reasoning": "A long montage of travel moments, including car rides, beach walks, and group photos."
+    }
+  ],
+  "overall_reasoning": "Analysis based on visual scene changes",
+  "ideal_material_suggestions": [
+    "Varied content matching detected segments"
+  ],
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-23 21:41:39"
+}

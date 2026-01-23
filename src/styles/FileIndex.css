@@ -1,0 +1,856 @@
+/* =============================
+   File Index Layout & Structure
+   ============================= */
+   .app-content-row {
+    /* Main flex row for sidebar + content */
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    /* Inherit background and color from globals.css */
+    transition: all 0.3s;
+  }
+  
+  .app-content-row.sidebar-open .main-content {
+    /* Adjusts content when sidebar is open */
+    margin-left: 0;
+  }
+  
+  .main-content {
+    /* Main scrollable area (not sidebar) */
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+    transition: margin 0.3s;
+    padding-top: 0;
+    box-shadow: none;
+    width: 100vw;
+    max-width: 100vw;
+    /* Restore scrollable area for File Index page */
+    overflow-y: auto;
+    min-height: calc(100vh - 64px);
+    padding-left: 0rem;
+    /* Inherit background and color from globals.css */
+  }
+  
+  /* =============================
+       Flex Root for File Index Page
+       ============================= */
+  .file-index-flex-root {
+    /* Flex root for file index page */
+    display: flex;
+    min-height: calc(100vh - 64px);
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    /* Inherit background and color from globals.css */
+  }
+  
+  /* =============================
+       Page Header (inherits color)
+       ============================= */
+  .page-header {
+    /* Top title/subtitle area */
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .page-header h1 {
+    /* Main page title */
+    font-size: 2.5rem;
+    color: #6A89A7;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-header p {
+    /* Subtitle under title */
+    color: #BDDDFC;
+    font-size: 1.1rem;
+  }
+  
+  /* =============================
+       Search & Filter Bar (card style)
+       ============================= */
+  .search-filter-bar {
+    /* Search input and filter buttons */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px #38495922;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 105%;
+    box-sizing: border-box;
+    color: #384959;
+  }
+  
+  .search-container {
+    /* Container for search input */
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+  }
+  
+  .search-input {
+    /* Search text input */
+    background: #fff;
+    color: #222;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+  }
+  
+  /* =============================
+       Filter Buttons & Dropdowns
+       ============================= */
+  .filter-container {
+    /* Wrapper for each filter button */
+    position: relative;
+  }
+  
+  .filter-button {
+    /* Category/year filter button */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #3d77ae !important;
+    color: #d0e2ed !important;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .filter-button:hover,
+  .filter-button.active {
+    background: #2e5d8c !important;
+    color: #fefdff !important;
+    font-weight: bolder;
+    border-color: #4a90e2;
+  }
+  
+  .filter-dropdown {
+    /* Dropdown for filter options */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+  }
+  
+  .filter-option {
+    /* Each option in dropdown */
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #444;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .filter-option:hover {
+    background: #f8f9fa;
+  }
+  
+  .filter-option.selected {
+    background: #e9ecef;
+    color: #4a90e2;
+  }
+  
+  .clear-filters-button {
+    /* Button to clear all filters */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #ede9fe !important;
+    color: #3b2f7f !important;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .clear-filters-button:hover {
+    background: #a78bfa !important;
+    color: #1e1b4b !important;
+  }
+  
+  /* =============================
+       Files Section (Recent Files)
+       ============================= */
+  .files-section {
+    /* Recent Files container: no background, no shadow, no border-radius */
+    margin-bottom: 2rem;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    color: #384959;
+  }
+  
+  .files-section-title {
+    /* Title for Recent Files */
+    font-size: 2.3rem;
+    font-weight: 530;
+    margin-bottom: 1rem;
+    color: #000000;
+  }
+  
+  /* =============================
+       Files Scrollable Grid
+       ============================= */
+  .files-scroll-grid,
+  .all-files-scroll-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    /* color: #384959; */
+    color: #000000;
+  }
+  
+  /* =============================
+       File Card
+       ============================= */
+  .file-card {
+    /* The actual file card */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 50%, #bcccdc 100%);
+
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.7rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    min-width: 0;
+    min-height: 160px;
+    max-width: 260px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    color: #384959;
+  }
+  
+  .file-card:hover {
+    /* Hover effect for file card */
+    box-shadow: 0 4px 12px #38495933;
+    background: #f5faff;
+    color: #384959;
+    transform: translateY(-2px) scale(1.03);
+  }
+  
+  .file-card:hover .file-name {
+    animation: slide-left-then-right 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  
+  
+  .file-name {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    justify-content: center;
+  }
+  
+  .file-name-inner {
+    display: flex;
+    white-space: nowrap;
+    transform: translateX(0);
+    gap: 2rem;
+    text-align: center;
+    justify-content: flex-start;
+  }
+  
+  .file-name-single {
+    flex-shrink: 0;
+  
+  }
+  
+  .file-name-duplicate {
+    display: none;
+    flex-shrink: 0;
+  }
+  
+  .file-card:hover .file-name-duplicate {
+    display: inline;
+  }
+  
+  .file-card:hover .file-name {
+    justify-content: flex-start;
+    /* On hover, align left so scrolling starts smoothly */
+  }
+  
+  
+  .file-card:hover .file-name-inner {
+    animation: marquee 6s linear infinite;
+    /* Small delay before scrolling starts */
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  
+  
+  
+  .file-icon {
+    /* Icon in file card */
+    font-size: 1.5rem;
+    color: #4a90e2;
+    margin-bottom: 0.3rem;
+  }
+  
+  .file-info {
+    /* Text/info inside file card */
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+  
+  .file-info h4 {
+    /* File name/title */
+    margin: 0 0 0.25rem 0;
+    font-size: 1.05rem;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+  }
+  
+  .file-info p {
+    /* File details (category/year) */
+    margin: 0.1rem 0;
+    font-size: 0.92rem;
+    color: #666;
+    text-align: center;
+  }
+  
+  .file-actions {
+    /* View/download buttons in card */
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+  }
+  
+  /* =============================
+       File Card Buttons
+       ============================= */
+  .file-view-btn{
+      /* Buttons in file card */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 1 45%;
+      min-width: 77px;
+      max-width: 87%;
+      
+      background: #4fa7dd !important;
+      color: #1b0651 !important;
+      border: none;
+      border-radius: 6px;
+      font-weight: 550;
+      gap: 5px;
+      font-size: 0.93rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin: 2px 0;
+  }
+
+
+  .file-download-btn {
+    /* Buttons in file card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 45%;
+    min-width: 105px;
+    max-width: 110%;
+    padding: 8px 0;
+    gap: 5px;
+    
+    background: #1c5287 !important;
+    color: #deeefb !important;
+    border: none;
+    border-radius: 6px;
+    font-weight: 550;
+    font-size: 0.93rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin: 2px 0;
+  }
+  
+  .file-view-btn:hover {
+    background: #3b85b2 !important;
+    color: #000 !important;
+  }
+  .file-download-btn:hover {
+    background: #163f66 !important;
+    color: #fff !important;
+  }
+  /* =============================
+       Miscellaneous States
+       ============================= */
+  .loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 120px;
+    grid-column: 1 / -1;
+  }
+  
+  /* =============================
+       All Files Section
+       ============================= */
+  .all-files-section {
+    /* Container for All Files */
+    margin-top: 2.5rem;
+    background: transparent;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .all-files-title {
+    /* Title for All Files */
+    font-size: 2.7rem;
+    font-weight: 555;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  /* =============================
+       Load More Button
+       ============================= */
+  .load-more-container {
+    /* Container for load more button */
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  
+  .load-more-button {
+    /* Load more button */
+    background: #3d77ae !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+  }
+  
+  .load-more-button:hover {
+    background: #2e5d8c !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+    font-weight: 550;
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+  }
+  
+  .load-more-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+  }
+  
+  .load-more-icon {
+    /* Icon in load more button */
+    font-size: 1.1rem;
+  }
+  
+  /* =============================
+       Retry Button (Error State)
+       ============================= */
+  .retry-button {
+    /* Retry button for errors */
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #ede9fe !important;
+    color: #3b2f7f !important;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .retry-button:hover {
+    background: #a78bfa !important;
+    color: #1e1b4b !important;
+  }
+  
+  /* =============================
+       Error and Empty States
+       ============================= */
+  .error-container {
+    /* Error message container */
+    text-align: center;
+    padding: 3rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-container h2 {
+    /* Error title */
+    color: #dc3545;
+    margin-bottom: 1rem;
+  }
+  
+  /* =============================
+       Remove Top Padding/Margin for Content Flush with Header
+       ============================= */
+  .file-index-content-wrapper {
+    /* Removes top/bottom padding for flush layout */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  
+  /* =============================
+       Standardize Paddings to rem Units
+       ============================= */
+  .file-index-page,
+  .file-index-content {
+    /* Standardize width/padding for main page/content */
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: unset;
+    padding-left: 0.00000 !important;
+    padding-right: 0.0000 !important;
+  }
+  
+  .files-section {
+    /* Padding for Recent Files section */
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .all-files-section {
+    /* Margin for All Files section */
+    margin-top: 2.5rem;
+  }
+  
+  .page-header {
+    /* Margin for page header */
+    margin-bottom: 2rem;
+  }
+  
+  .search-filter-bar {
+    /* Padding for search/filter bar */
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* =============================
+       Media Queries (Responsive Design)
+       ============================= */
+  /* Align recent files and all files sections and unify card sizing */
+  .files-section {
+    padding: 0;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .files-scroll-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    align-items: stretch;
+  }
+  
+  /* Unify card sizing for both recent and all files */
+  .files-scroll-grid>.file-card,
+  .all-files-scroll-grid>.file-card {
+    min-height: 160px;
+    max-width: 260px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  
+
+    /* Restore sidebar to dynamic, non-fixed, responsive layout */
+    .sidebar-container {
+      width: auto;
+      min-width: 0;
+      max-width: none;
+      flex-shrink: 1;
+      background: none;
+      box-shadow: none;
+      z-index: auto;
+      height: auto;
+    }
+    
+    .file-index-layout {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    .file-index-page-content {
+      flex: 1 1 0;
+      width: auto;
+      min-width: 0;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+    }
+    
+    
+    
+    
+  
+  
+  
+  /* Responsive: match all-files-scroll-grid breakpoints */
+  @media (max-width: 1200px) {
+  
+    .files-scroll-grid,
+    .all-files-scroll-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 900px) {
+  
+    .files-scroll-grid,
+    .all-files-scroll-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+  }
+  
+  @media (max-width: 600px) {
+
+    .search-icon{align-items: left;}
+
+    .files-scroll-grid,
+    .all-files-scroll-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 0.7rem;
+    }
+  
+    .file-card {
+      max-width: 100% !important;
+      min-height: 120px !important;
+      padding: 0.7rem !important;
+    }
+  
+    .file-info h4 {
+      font-size: 0.9rem !important;
+    }
+  
+    .file-info p {
+      font-size: 0.7rem !important;
+      line-height: 1.2;
+    }
+  
+    .file-actions {
+      width: 100% !important;
+      gap: 0.4rem;
+    }
+  
+    .file-view-btn {
+    
+      flex: 1 1 45% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      font-size: 0.6rem !important;
+      align-items: left;
+      padding: 6px 2px   !important;
+    }
+    .file-download-btn {
+    
+      flex: 1 1 45% !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      font-size: 0.6rem !important;
+      padding: 6px 2px   !important;
+    }
+  }
+  
+  
+
+  @media (max-width: 768px) {
+    .sidebar-container {
+      position: fixed;
+      top: 0;
+      left: -90vw;
+      width: 100vw;
+      max-width: 90vw;
+      height: 100vh;
+      z-index: 2000;
+      transition: left 0.3s ease-in-out;
+      background: transparent;
+      box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+      border-top-right-radius: 1.5rem;
+      border-bottom-right-radius: 1.5rem;
+    }
+  
+    .file-index-layout.sidebar-open .sidebar-container {
+      left: 0;
+      
+    }
+    
+      .file-index-layout.sidebar-open .main-content,
+      .file-index-layout.sidebar-open .search-filter-bar {
+        opacity: 0;
+        pointer-events: none;
+      }
+    
+  
+    .sidebar-toggle-btn {
+      display: flex;
+      background-color: #05253e;
+      /* Show the button on mobile */
+      align-items: center;
+      color: #fff;
+      font-size: large;
+      font-weight: bold;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+      padding-right: 5px;
+      gap: 0.5rem;
+    }
+  
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1999;
+      display: block;
+    }
+  
+    .file-index-layout.sidebar-open .sidebar-overlay {
+      display: block;
+      /* Show overlay */
+    }
+  
+    /* Remove any z-index or position from .search-filter-bar */
+    .search-filter-bar {
+      position: static !important;
+      z-index: auto !important;
+      
+    }
+    
+  }
+  
+  /* =============================
+       Category Sidebar (if any)
+       ============================= */
+  
+  /* =============================
+       File Card & Grid
+       ============================= */
+  
+  /* =============================
+       File Index Actions & Buttons
+       ============================= */
+  
+  /* =============================
+       Responsive Styles
+       ============================= */
+  
+.sidebar {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3000;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #2c5364;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(44, 83, 100, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.sidebar:hover {
+  background: #203a43;
+  box-shadow: 0 6px 24px rgba(44, 83, 100, 0.22);
+}
+@media (min-width: 769px) {
+  .sidebar-toggle-btn {
+    display: none !important;
+  }
+}
+
