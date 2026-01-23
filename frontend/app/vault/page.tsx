@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import {
     Trash2,
     Play,
@@ -9,25 +9,12 @@ import {
     MonitorPlay,
     Video,
     Download,
-    ChevronRight,
-    Maximize2
+    ChevronRight
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-
-interface Result {
-    filename: string;
-    url: string;
-    size: number;
-    created_at: number;
-}
-
-interface Reference {
-    filename: string;
-    path: string;
-    size: number;
-    created_at: number;
-}
+import { api } from "@/lib/api";
+import type { Result, Reference } from "@/lib/types";
 
 export default function ProjectsPage() {
     const [results, setResults] = useState<Result[]>([]);
@@ -38,28 +25,32 @@ export default function ProjectsPage() {
 
     const fetchData = async () => {
         try {
-            const [resProjects, resRefs] = await Promise.all([
-                fetch("http://localhost:8000/api/results"),
-                fetch("http://localhost:8000/api/references")
+            const [dataProjects, dataRefs] = await Promise.all([
+                api.fetchResults(),
+                api.fetchReferences()
             ]);
-            const dataProjects = await resProjects.json();
-            const dataRefs = await resRefs.json();
             setResults(dataProjects.results || []);
             setReferences(dataRefs.references || []);
             if (!selectedResult) setSelectedResult(dataProjects.results?.[0] || null);
             if (!selectedRef) setSelectedRef(dataRefs.references?.[0] || null);
-        } catch (err) { toast.error("Archive Link Error"); }
-        finally { setLoading(false); }
+        } catch (err) {
+            toast.error("Failed to load projects");
+        } finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => { fetchData(); }, []);
 
     const deleteResult = async (filename: string) => {
-        if (!confirm("Confirm Purge?")) return;
+        if (!confirm("Delete this project?")) return;
         try {
-            const res = await fetch(`http://localhost:8000/api/results/${filename}`, { method: "DELETE" });
-            if (res.ok) { toast.success("Cleared"); fetchData(); }
-        } catch (err) { toast.error("Failed"); }
+            await api.deleteResult(filename);
+            toast.success("Project deleted");
+            fetchData();
+        } catch (err) {
+            toast.error("Delete failed");
+        }
     };
 
     const formatSize = (bytes: number) => (bytes / (1024 * 1024)).toFixed(1) + " MB";

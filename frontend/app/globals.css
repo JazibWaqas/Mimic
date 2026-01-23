@@ -269,3 +269,24 @@
   @apply h-2 w-2 rounded-full;
   animation: slowPulse 3s infinite ease-in-out;
 }
+
+/* ==================== REUSABLE COMPONENTS ==================== */
+.module {
+  @apply rounded-[2.5rem] p-10 border border-white/5 bg-black/40 transition-all duration-700;
+}
+
+.module:hover {
+  @apply border-white/10;
+}
+
+.module-active-indigo {
+  @apply border-indigo-500/30 bg-indigo-500/[0.02];
+}
+
+.module-active-cyan {
+  @apply border-cyan-500/30 bg-cyan-500/[0.02];
+}
+
+.module-progress {
+  @apply rounded-[2.5rem] p-10 bg-black/60 border border-indigo-500/30;
+}

@@ -12,21 +12,12 @@ import {
     Check,
     X,
     Eye,
-    Tag,
-    MonitorPlay,
-    FileVideo
+    Tag
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-
-interface Clip {
-    session_id: string;
-    filename: string;
-    path: string;
-    size: number;
-    created_at: number;
-    tags?: string[];
-}
+import { api } from "@/lib/api";
+import type { Clip } from "@/lib/types";
 
 const MOCK_TAGS = ["High Energy", "Aesthetic", "Nature", "Urban", "Cinematic", "Fast Pace", "Ambient"];
 
@@ -41,8 +32,7 @@ export default function AssetsPage() {
 
     const fetchClips = async () => {
         try {
-            const res = await fetch("http://localhost:8000/api/clips");
-            const data = await res.json();
+            const data = await api.fetchClips();
             const rawClips = data.clips || [];
             const clipsWithTags = rawClips.map((c: Clip, i: number) => ({
                 ...c,
@@ -51,7 +41,7 @@ export default function AssetsPage() {
             setClips(clipsWithTags);
             setFilteredClips(clipsWithTags);
         } catch (err) {
-            toast.error("Telemetry Error: Failed to acquire assets");
+            toast.error("Failed to load assets");
         } finally {
             setLoading(false);
         }
@@ -69,11 +59,14 @@ export default function AssetsPage() {
     }, [searchQuery, selectedTag, clips]);
 
     const deleteClip = async (sessionId: string, filename: string) => {
-        if (!confirm("Confirm Asset Deletion?")) return;
+        if (!confirm("Delete this asset?")) return;
         try {
-            const res = await fetch(`http://localhost:8000/api/clips/${sessionId}/${filename}`, { method: "DELETE" });
-            if (res.ok) { fetchClips(); toast.success("Asset Purged"); }
-        } catch (err) { toast.error("Purge Failed"); }
+            await api.deleteClip(sessionId, filename);
+            fetchClips();
+            toast.success("Asset deleted");
+        } catch (err) {
+            toast.error("Delete failed");
+        }
     };
 
     const handleRename = async (clip: Clip) => {
