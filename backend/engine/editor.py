@@ -174,80 +174,112 @@ def match_clips_to_blueprint(
                 break
                 
             # === TIERED ELIGIBILITY SELECTION ===
-            # Step 1: Get only energy-compatible clips (no Low for High, no High for Low)
+            # Step 1: Get energy-compatible clips (Soft constraints)
             eligible_clips = get_eligible_clips(segment.energy, clip_index.clips)
             
-            # Step 2: Exclude recently used clips
+            # Step 2: Variety maintenance (Avoid back-to-back repeats)
             recently_used = [last_used_clip, second_last_clip] if second_last_clip else [last_used_clip]
             available_clips = [c for c in eligible_clips if c.filename not in recently_used]
             
             if not available_clips:
-                available_clips = eligible_clips  # Fallback if all recently used
+                available_clips = eligible_clips  # Emergency fallback
             
             import random
 
-            def score_clip_smart(clip: ClipMetadata, segment) -> tuple[float, str, bool]:
+            # SEMANTIC NEIGHBORS (The "Artistic Neighbor" map)
+            # This prevents deficits by allowing similar vibes to count as matches
+            SEMANTIC_MAP = {
+                "nature": ["outdoors", "scenic", "landscape", "trees", "forest", "mountain", "beach", "sky", "view"],
+                "urban": ["city", "street", "architecture", "building", "lights", "night", "traffic", "walking"],
+                "travel": ["adventure", "road", "plane", "car", "explore", "vacation", "scenic"],
+                "friends": ["social", "laughing", "group", "candid", "casual", "fun", "lifestyle"],
+                "action": ["fast", "sport", "intense", "thrill", "dynamic", "movement", "energy"],
+                "calm": ["peaceful", "sunset", "lifestyle", "aesthetic", "still", "chill"]
+            }
+
+            def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe) -> tuple[float, str, bool]:
                 score = 0.0
                 reasons = []
                 vibe_matched = False
 
-                # 1. DISCOVERY BONUS (unused clips get big push)
-                if clip_usage_count[clip.filename] == 0:
-                    score += 40.0
+                # 1. DISCOVERY & REUSE (The "Greedy Utilization" Engine)
+                # We aggressively push the AI to use things it hasn't shown yet
+                usage = clip_usage_count[clip.filename]
+                if usage == 0:
+                    score += 50.0  # Massive bonus for discovery
                     reasons.append("✨ New")
+                else:
+                    score -= (usage * 20.0) # Penalty for reuse: Each time used, it becomes significantly less attractive
+                    reasons.append(f"Used:{usage}x")
 
-                # 2. EXACT ENERGY MATCH (prefer exact over adjacent)
+                # 2. SEMANTIC PROXIMITY (Soft Vibe Matching)
+                target_vibe = (segment.vibe or "general").lower()
+                clip_vibes = [v.lower() for v in clip.vibes]
+                
+                # Check for direct match
+                if any(target_vibe in v or v in target_vibe for v in clip_vibes):
+                    score += 30.0
+                    reasons.append(f"Vibe:{segment.vibe}")
+                    vibe_matched = True
+                else:
+                    # Check for semantic neighbor match
+                    neighbor_hit = False
+                    for category, neighbors in SEMANTIC_MAP.items():
+                        if target_vibe in neighbors or target_vibe == category:
+                            if any(v in neighbors for v in clip_vibes):
+                                score += 15.0 # Half bonus for being "in the neighborhood"
+                                reasons.append(f"Nearby:{category}")
+                                neighbor_hit = True
+                                vibe_matched = True
+                                break
+                
+                # 3. CINEMATIC FLOW (The "Motion & Lighting" Bridge)
+                content = (clip.content_description or "").lower()
+                
+                # Lighting moods
+                is_night_segment = any(kw in target_vibe for kw in ["night", "dark", "evening"])
+                is_night_clip = any(kw in content or kw in str(clip_vibes) for kw in ["night", "dark", "evening", "neon"])
+                
+                if is_night_segment == is_night_clip:
+                    score += 10.0
+                    reasons.append("LightMatch")
+                
+                # Motion continuity (Prefer keeping the flow state)
+                if last_motion and clip.motion == last_motion:
+                    score += 5.0
+                    reasons.append("Flow")
+
+                # 4. ENERGY ARC ALIGNMENT (Weighted Match)
                 if clip.energy == segment.energy:
-                    score += 20.0
+                    score += 15.0
                     reasons.append(f"{clip.energy.value}")
                 else:
-                    score += 5.0  # Adjacent energy (allowed but less ideal)
+                    # Penalty for adjacent energy compromises
+                    score -= 5.0
                     reasons.append(f"~{clip.energy.value}")
 
-                # 3. VIBE MATCHING
-                if segment.vibe and segment.vibe != "General":
-                    for v in clip.vibes:
-                        if v.lower() in segment.vibe.lower() or segment.vibe.lower() in v.lower():
-                            score += 15.0
-                            reasons.append(f"Vibe:{segment.vibe}")
-                            vibe_matched = True
-                            break
-
-                # 4. ARC STAGE ALIGNMENT
-                stage = segment.arc_stage.lower()
-                content = (clip.content_description or "").lower()
-                if stage == "intro" and any(kw in content for kw in ["intro", "opening", "wide"]):
-                    score += 10.0
-                    reasons.append("Intro")
-                elif stage == "peak" and any(kw in content for kw in ["action", "fast", "jump"]):
-                    score += 10.0
-                    reasons.append("Peak")
-
-                # 5. USAGE PENALTY (avoid repeats)
-                if clip_usage_count[clip.filename] > 0:
-                    score -= (clip_usage_count[clip.filename] * 25.0)
-                    reasons.append(f"Used:{clip_usage_count[clip.filename]}x")
-
-                # 6. RECENT COOLDOWN
+                # 5. RECENT COOLDOWN (Force temporal spacing)
                 time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
                 if time_since_last_use < MIN_CLIP_REUSE_GAP:
-                    score -= 40.0
+                    score -= 100.0 # Extreme penalty for near-simultaneous reuse
+                    reasons.append("Cooldown")
 
                 reasoning = " | ".join(reasons)
                 return score, reasoning, vibe_matched
 
-            # Calculate scores for eligible clips only
+            # Calculate scores for available clips
             scored_clips = []
             for c in available_clips:
-                total_score, reasoning, vibe_matched = score_clip_smart(c, segment)
+                # We pass the motion of the last selected clip to maintain flow
+                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, last_clip_motion, last_used_clip)
                 scored_clips.append((c, total_score, reasoning, vibe_matched))
 
             # Sort by total score
             scored_clips.sort(key=lambda x: x[1], reverse=True)
 
-            # Top tier selection
+            # Top tier selection (add a tiny bit of randomness among top scorers)
             max_score = scored_clips[0][1]
-            top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if abs(s - max_score) < 5.0]
+            top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if (max_score - s) < 5.0]
             random.shuffle(top_tier)
 
             selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
@@ -261,50 +293,62 @@ def match_clips_to_blueprint(
                 })
             
             thinking = selected_reasoning
-            if selected_score > 35: thinking = "🌟 " + thinking
-            elif selected_score > 15: thinking = "🎯 " + thinking
+            if selected_score > 60: thinking = "🌟 " + thinking
+            elif selected_score > 30: thinking = "🎯 " + thinking
             else: thinking = "⚙️ " + thinking
 
             if cuts_in_segment == 0:
                 print(f"  🧠 AI: {thinking}")
                 print(f"  📎 Selected: {selected_clip.filename} (Score: {selected_score:.1f})")
 
-            # === PACING LOGIC: TRUE MIMIC BEHAVIOR ===
-            # Rule 1: Respect the pro-editor's original timing.
-            # Rule 2: Only subdivide if a segment is 'long' (> 2.0s) AND we are in an active stage.
+            # === PACING LOGIC: BPM-RELATIVE MIMIC BEHAVIOR ===
+            # High quality editing snaps to beats or 1/2 beats.
+            
+            # MONTAGE MODE: If a segment is very long (>3s), it's likely a montage block 
+            # that needs dense internal cutting.
+            is_long_segment = segment.duration > 3.0
             
             should_subdivide = False
-            if segment.duration > 2.0 and segment.arc_stage.lower() in ["build-up", "peak"]:
+            if is_long_segment or (segment.duration > 1.5 and segment.arc_stage.lower() in ["build-up", "peak"]):
                 should_subdivide = True
             
             if not should_subdivide:
-                # 1:1 Match - Use the exact remaining duration of the reference segment
                 use_duration = segment_remaining
                 is_last_cut_of_segment = True
             else:
-                # Subdivide long segments to keep energy up
-                if segment.arc_stage.lower() == "peak":
-                    target_duration = random.uniform(0.6, 1.0) # Faster cuts for peak
+                # Subdivide based on BEAT VALUES
+                if beat_grid and bpm > 0:
+                    seconds_per_beat = 60.0 / bpm
+                    stage = segment.arc_stage.lower()
+                    
+                    if stage == "peak":
+                        # Aggressive: 1 beat
+                        use_duration = seconds_per_beat * 1
+                    elif stage == "build-up" or is_long_segment:
+                        # Energetic: 1 or 2 beats
+                        use_duration = seconds_per_beat * random.choice([1, 2])
+                    else:
+                        # Moderate
+                        use_duration = seconds_per_beat * 4
                 else:
-                    target_duration = random.uniform(1.2, 1.8) # Moderate cuts for build-up
+                    # Fallback to aggressive random
+                    use_duration = random.uniform(0.6, 1.1)
                 
-                if target_duration >= segment_remaining - 0.2:
+                # Check if we overshot the segment
+                if use_duration >= segment_remaining - 0.2:
                     use_duration = segment_remaining
                     is_last_cut_of_segment = True
                 else:
-                    use_duration = target_duration
                     is_last_cut_of_segment = False
 
-            # PHASE 2: Beat Alignment (if audio exists)
-            # We only align if we aren't snapping to the segment end (which is already a beat/cut point)
+            # PHASE 2: Beat Alignment (Snapping)
             if beat_grid and not is_last_cut_of_segment:
                 target_end = timeline_position + use_duration
                 aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.15)
                 
-                # Check if alignment is still within segment bounds and reasonable
                 if aligned_end > timeline_position + 0.1 and aligned_end < segment.end - 0.1:
                     use_duration = aligned_end - timeline_position
-            
+                        
             # PHASE 3: Clip Source Selection (start/end in the raw file)
             clip_start = None
             clip_end = None
