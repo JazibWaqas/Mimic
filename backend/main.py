@@ -126,28 +126,36 @@ async def upload_files(
     
     # Pre-calculate hashes for all existing files to avoid reading them multiple times
     existing_hashes = {}
-    print(f"[UPLOAD] Checking {len(list(CLIPS_DIR.glob('*.mp4')))} existing clips for duplicates...")
-    for existing_file in CLIPS_DIR.glob("*.mp4"):
+    existing_files_list = list(CLIPS_DIR.glob("*.mp4"))
+    print(f"[UPLOAD] Checking {len(existing_files_list)} existing clips for duplicates...")
+    for existing_file in existing_files_list:
         if existing_file.is_file():
             try:
                 with open(existing_file, 'rb') as f:
-                    file_hash = hashlib.md5(f.read()).hexdigest()[:12]
+                    file_content = f.read()
+                    file_hash = hashlib.md5(file_content).hexdigest()[:12]
                 existing_hashes[file_hash] = existing_file
+                print(f"[UPLOAD] Pre-calculated hash for existing file: {existing_file.name} -> {file_hash}")
             except Exception as e:
                 print(f"[UPLOAD] Warning: Could not read {existing_file.name}: {e}")
                 continue
     
+    print(f"[UPLOAD] Pre-calculated {len(existing_hashes)} existing clip hashes")
+    
     for clip in clips:
         clip_content = await clip.read()
         clip_hash = hashlib.md5(clip_content).hexdigest()[:12]
+        print(f"[UPLOAD] Incoming clip '{clip.filename}' hash: {clip_hash}")
         
         # Check if file with same content already exists
         if clip_hash in existing_hashes:
             existing_clip = existing_hashes[clip_hash]
-            print(f"[UPLOAD] Clip content already exists: {existing_clip.name} (skipping duplicate, will reuse)")
+            print(f"[UPLOAD] ✅ DUPLICATE DETECTED: Clip content already exists as '{existing_clip.name}' (skipping save, will reuse)")
             clip_paths.append(str(existing_clip))
             skipped_count += 1
             continue
+        
+        print(f"[UPLOAD] ⚠️ NEW CLIP: Hash {clip_hash} not found in existing files, saving...")
         
         # Save new clip
         clip_path = CLIPS_DIR / clip.filename
@@ -171,7 +179,8 @@ async def upload_files(
         "reference_path": str(ref_path),
         "clip_paths": clip_paths,
         "status": "uploaded",
-        "progress": 0.0
+        "progress": 0.0,
+        "logs": []
     }
     
     print(f"[UPLOAD] Upload complete - session created\n")
@@ -232,7 +241,45 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
     Uses Gemini API for analysis.
     """
     import time
+    import sys
+    from io import StringIO
     start_time = time.time()
+    
+    # Initialize logs list in session
+    if session_id in active_sessions:
+        active_sessions[session_id]["logs"] = []
+    
+    # Custom stdout handler to capture orchestrator output
+    class LogCapture:
+        def __init__(self, original_stdout, session_id):
+            self.original_stdout = original_stdout
+            self.session_id = session_id
+            self.buffer = ""
+        
+        def write(self, s):
+            # Write to original stdout (console)
+            self.original_stdout.write(s)
+            self.original_stdout.flush()
+            
+            # Store in session logs
+            if self.session_id in active_sessions:
+                if s.strip():  # Only store non-empty lines
+                    # Split by newlines and add each line
+                    lines = s.split('\n')
+                    for line in lines:
+                        if line.strip():
+                            active_sessions[self.session_id]["logs"].append(line.strip())
+                            # Keep only last 500 lines to avoid memory issues
+                            if len(active_sessions[self.session_id]["logs"]) > 500:
+                                active_sessions[self.session_id]["logs"].pop(0)
+        
+        def flush(self):
+            self.original_stdout.flush()
+    
+    # Capture stdout
+    log_capture = LogCapture(sys.stdout, session_id)
+    original_stdout = sys.stdout
+    sys.stdout = log_capture
     
     print(f"\n{'='*60}")
     print(f"[PIPELINE] STARTING NEW PIPELINE RUN")
@@ -287,6 +334,9 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
         traceback.print_exc()
         active_sessions[session_id]["status"] = "error"
         active_sessions[session_id]["error"] = str(e)
+    finally:
+        # Restore stdout
+        sys.stdout = original_stdout
 
 
 @app.get("/api/status/{session_id}")
@@ -397,7 +447,8 @@ async def websocket_progress(websocket: WebSocket, session_id: str):
                 await websocket.send_json({
                     "status": session["status"],
                     "progress": session.get("progress", 0.0),
-                    "message": session.get("current_step", "")
+                    "message": session.get("current_step", ""),
+                    "logs": session.get("logs", [])
                 })
                 
                 # Stop sending if complete or error

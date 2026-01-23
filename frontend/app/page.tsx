@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Upload, Video, ArrowRight, MonitorPlay, X, Plus, Sparkles } from "lucide-react";
+import { Upload, Video, ArrowRight, MonitorPlay, X, Plus, Sparkles, Download, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 
 export default function StudioPage() {
+  const router = useRouter();
   const [refFile, setRefFile] = useState<File | null>(null);
   const [materialFiles, setMaterialFiles] = useState<File[]>([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -13,6 +15,8 @@ export default function StudioPage() {
   const [statusMsg, setStatusMsg] = useState("");
   const [resultVideoUrl, setResultVideoUrl] = useState<string | null>(null);
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
+  const [resultFilename, setResultFilename] = useState<string | null>(null);
+  const [logMessages, setLogMessages] = useState<string[]>([]);
 
   const handleRefUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) {
@@ -38,24 +42,29 @@ export default function StudioPage() {
       const status = await res.json();
       
       setProgress(status.progress * 100);
-      setStatusMsg(status.current_step || status.message || "");
+      const currentStep = status.current_step || status.message || "";
+      if (currentStep && currentStep !== statusMsg) {
+        setStatusMsg(currentStep);
+      }
+      
+      // Update logs from orchestrator output
+      if (status.logs && Array.isArray(status.logs)) {
+        setLogMessages(status.logs);
+      }
       
       if (status.status === "complete") {
         setIsGenerating(false);
         setProgress(100);
         setStatusMsg("Complete!");
-        // Set result video URL
+        toast.success("Synthesis Complete!");
+        // Auto-redirect to Projects page with the result selected
         if (status.output_path) {
           const filename = status.output_path.split('/').pop() || status.output_path.split('\\').pop();
-          const videoUrl = `http://localhost:8000/api/files/results/${filename}`;
-          setResultVideoUrl(videoUrl);
+          router.push(`/vault?filename=${filename}&type=results`);
         } else {
-          // Fallback: try to find the output file
-          // The backend now uses reference_name_output_sessionid.mp4 format
-          const videoUrl = `http://localhost:8000/api/files/results/mimic_output_${sessionId}.mp4`;
-          setResultVideoUrl(videoUrl);
+          const filename = `mimic_output_${sessionId}.mp4`;
+          router.push(`/vault?filename=${filename}&type=results`);
         }
-        toast.success("Synthesis Complete!");
       } else if (status.status === "error") {
         setIsGenerating(false);
         toast.error(`Error: ${status.error || status.message}`);
@@ -75,6 +84,7 @@ export default function StudioPage() {
     setStatusMsg("Initializing...");
     setProgress(10);
     setResultVideoUrl(null);
+    setLogMessages(["Starting generation..."]);
 
     try {
       const { session_id } = await api.uploadFiles(refFile, materialFiles);
@@ -89,7 +99,15 @@ export default function StudioPage() {
       ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
         setProgress(data.progress * 100);
-        setStatusMsg(data.message);
+        const message = data.message || "";
+        setStatusMsg(message);
+        
+        // Update logs from orchestrator output
+        if (data.logs && Array.isArray(data.logs)) {
+          setLogMessages(data.logs);
+        } else if (message && message !== statusMsg) {
+          addLogMessage(message);
+        }
 
         if (data.status === "complete") {
           setIsGenerating(false);
@@ -117,6 +135,10 @@ export default function StudioPage() {
     }
   };
 
+  const addLogMessage = (message: string) => {
+    setLogMessages(prev => [...prev, `${new Date().toLocaleTimeString()}: ${message}`]);
+  };
+
   return (
     <div className="min-h-[calc(100vh-80px)] flex flex-col bg-black/20 mx-auto max-w-[1600px] border-x border-white/5 shadow-2xl">
       <div className="flex-1 flex flex-col p-8 space-y-6">
@@ -139,23 +161,24 @@ export default function StudioPage() {
           </div>
         </div>
 
-        {/* Upload Modules */}
-        <div className="flex-1 min-h-0 space-y-6">
+        {/* Upload Modules & Logs */}
+        <div className="flex-1 min-h-0 flex gap-6">
+          <div className="flex-1 min-h-0 space-y-6">
 
-          {/* Reference */}
-          <div className={`module ${refFile ? 'module-active-indigo' : ''}`}>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-56 space-y-3">
-                <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                  <Video className="h-4 w-4 text-indigo-400" />
+            {/* Reference */}
+            <div className={`module ${refFile ? 'module-active-indigo' : ''}`}>
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="md:w-56 space-y-3">
+                  <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+                    <Video className="h-4 w-4 text-indigo-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-black uppercase text-white">01. Reference Video</h3>
+                    <p className="text-[9px] text-slate-500 uppercase tracking-wider mt-1.5">
+                      Blueprint for synthesis
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xs font-black uppercase text-white">01. Reference Video</h3>
-                  <p className="text-[9px] text-slate-500 uppercase tracking-wider mt-1.5">
-                    Blueprint for synthesis
-                  </p>
-                </div>
-              </div>
 
               <div className="flex-1 min-w-0">
                 <div className="h-[240px] rounded-2xl border-2 border-dashed border-white/10 bg-white/[0.02] hover:bg-indigo-500/[0.03] hover:border-indigo-500/20 transition-all flex flex-col items-center justify-center cursor-pointer relative group overflow-hidden">
@@ -182,28 +205,28 @@ export default function StudioPage() {
                   )}
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* Source Clips */}
-          <div className={`module ${materialFiles.length > 0 ? 'module-active-cyan' : ''}`}>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-56 space-y-3">
-                <div className="h-10 w-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
-                  <MonitorPlay className="h-4 w-4 text-cyan-400" />
-                </div>
-                <div>
-                  <h3 className="text-xs font-black uppercase text-white">02. Source Clips</h3>
-                  <p className="text-[9px] text-slate-500 uppercase tracking-wider mt-1.5">
-                    Raw material for synthesis
-                  </p>
-                  {materialFiles.length > 0 && (
-                    <span className="inline-block mt-2 text-[9px] font-black text-white/40 bg-white/5 px-3 py-1 rounded-full">
-                      {materialFiles.length} Staged
-                    </span>
-                  )}
-                </div>
               </div>
+            </div>
+
+            {/* Source Clips */}
+            <div className={`module ${materialFiles.length > 0 ? 'module-active-cyan' : ''}`}>
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="md:w-56 space-y-3">
+                  <div className="h-10 w-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                    <MonitorPlay className="h-4 w-4 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-black uppercase text-white">02. Source Clips</h3>
+                    <p className="text-[9px] text-slate-500 uppercase tracking-wider mt-1.5">
+                      Raw material for synthesis
+                    </p>
+                    {materialFiles.length > 0 && (
+                      <span className="inline-block mt-2 text-[9px] font-black text-white/40 bg-white/5 px-3 py-1 rounded-full">
+                        {materialFiles.length} Staged
+                      </span>
+                    )}
+                  </div>
+                </div>
 
               <div className="flex-1 min-w-0">
                 <div className="h-[240px] rounded-2xl border-2 border-dashed border-white/10 bg-white/[0.02] hover:bg-cyan-500/[0.03] hover:border-cyan-500/20 transition-all flex flex-col items-center justify-center cursor-pointer relative group overflow-hidden">
@@ -239,6 +262,32 @@ export default function StudioPage() {
                   )}
                 </div>
               </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Logs Box */}
+          <div className="w-80 shrink-0">
+            <div className="module h-full flex flex-col">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
+                <h3 className="text-xs font-black uppercase text-white">Show Thinking</h3>
+              </div>
+              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2">
+                <div className="space-y-2">
+                  {logMessages.length === 0 ? (
+                    <div className="text-[9px] text-slate-500 uppercase tracking-wider">
+                      Waiting for activity...
+                    </div>
+                  ) : (
+                    logMessages.map((msg, i) => (
+                      <div key={i} className="text-[9px] text-slate-400 font-mono leading-relaxed">
+                        {msg}
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -261,17 +310,6 @@ export default function StudioPage() {
           </div>
         )}
 
-        {/* Result Video */}
-        {resultVideoUrl && (
-          <div className="module">
-            <div className="space-y-4">
-              <h3 className="text-xs font-black uppercase text-white">Generated Video</h3>
-              <div className="rounded-2xl bg-black border border-indigo-500/20 overflow-hidden">
-                <video src={resultVideoUrl} className="w-full aspect-video object-contain" controls />
-              </div>
-            </div>
-          </div>
-        )}
 
       </div>
     </div>
