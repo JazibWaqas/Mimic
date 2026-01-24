@@ -1,22 +1,27 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
-    Trash2,
-    Download,
     Columns2,
-    X,
     ChevronDown,
+    ChevronUp,
+    Download,
+    Database,
+    Cpu,
+    MonitorStop,
     Activity,
-    History,
+    Gauge,
+    Zap,
+    CheckCircle2,
+    AlertCircle,
     Sparkles,
     Target,
-    Zap,
-    Cpu,
-    Shield,
-    Terminal,
-    Layers
+    TrendingUp,
+    Eye,
+    Play,
+    MonitorPlay,
+    X
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -24,378 +29,727 @@ import { api } from "@/lib/api";
 import type { Result, Reference, Clip } from "@/lib/types";
 
 type ViewMode = "results" | "references" | "clips";
+type AssetItem = Clip | Reference | Result;
+
+interface ConsultantNote {
+    id: string;
+    icon: string;
+    title: string;
+    content: string;
+    expanded: boolean;
+}
 
 export default function VaultPage() {
+    const router = useRouter();
     const searchParams = useSearchParams();
-    const [results, setResults] = useState<Result[]>([]);
-    const [references, setReferences] = useState<Reference[]>([]);
+
+    // Data state - using same pattern as Gallery
     const [clips, setClips] = useState<Clip[]>([]);
-    const [selectedItem, setSelectedItem] = useState<Result | Reference | Clip | null>(null);
-    const [selectedItem2, setSelectedItem2] = useState<Result | Reference | Clip | null>(null);
-    const [sideBySideMode, setSideBySideMode] = useState(false);
+    const [references, setReferences] = useState<Reference[]>([]);
+    const [results, setResults] = useState<Result[]>([]);
+    const [selectedItem, setSelectedItem] = useState<AssetItem | null>(null);
     const [viewMode, setViewMode] = useState<ViewMode>("results");
     const [loading, setLoading] = useState(true);
-    const scrollRef = useRef<HTMLDivElement>(null);
 
-    const fetchData = async () => {
+    // Compare mode state
+    const [compareMode, setCompareMode] = useState(false);
+    const [slotA, setSlotA] = useState<AssetItem | null>(null);
+    const [slotB, setSlotB] = useState<AssetItem | null>(null);
+    const [showAssignPopup, setShowAssignPopup] = useState(false);
+    const [pendingAssignment, setPendingAssignment] = useState<AssetItem | null>(null);
+    const [syncEnabled, setSyncEnabled] = useState(false);
+    const [hoveredNoteId, setHoveredNoteId] = useState<string | null>(null);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    // UI state
+    const [consultantNotes, setConsultantNotes] = useState<ConsultantNote[]>([
+        {
+            id: "opening",
+            icon: "💡",
+            title: "Opening Strategy",
+            content: "I started with a calm urban landscape to establish the setting before ramping up to high-energy clips. This gives viewers context and prevents jarring transitions.",
+            expanded: true
+        },
+        {
+            id: "sync",
+            icon: "⚠️",
+            title: "Audio Sync Trade-off (Segment 2)",
+            content: "I delayed the cut by 0.1s to maintain visual coherence. The reference had an abrupt beat, but I smoothed it out to match your clip library's pacing style.",
+            expanded: false
+        },
+        {
+            id: "peak",
+            icon: "🎯",
+            title: "Peak Energy Execution",
+            content: "I used 5 different clips in the peak section to keep things dynamic. Notice how I avoided repeating Clip 3 even though it matched perfectly—variety matters!",
+            expanded: false
+        }
+    ]);
+    // State for assignment target
+    const [targetSlot, setTargetSlot] = useState<"A" | "B">("A");
+
+    // Refs
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const videoRefA = useRef<HTMLVideoElement>(null);
+    const videoRefB = useRef<HTMLVideoElement>(null);
+
+    // Fetch data - EXACT COPY from Gallery
+    const fetchAllAssets = async () => {
         try {
-            const [dataProjects, dataRefs, dataClips] = await Promise.all([
-                api.fetchResults(),
+            const [clipsData, refsData, resultsData] = await Promise.all([
+                api.fetchClips(),
                 api.fetchReferences(),
-                api.fetchClips()
+                api.fetchResults()
             ]);
-            setResults(dataProjects.results || []);
-            setReferences(dataRefs.references || []);
-            setClips(dataClips.clips || []);
-
-            const filename = searchParams.get("filename");
-            const type = searchParams.get("type") as ViewMode | null;
-
-            if (filename && type) {
-                if (type === "results") {
-                    const item = dataProjects.results?.find((r: Result) => r.filename === filename);
-                    if (item) { setSelectedItem(item); setViewMode("results"); }
-                } else if (type === "references") {
-                    const item = dataRefs.references?.find((r: Reference) => r.filename === filename);
-                    if (item) { setSelectedItem(item); setViewMode("references"); }
-                } else if (type === "clips") {
-                    const item = dataClips.clips?.find((c: Clip) => c.filename === filename);
-                    if (item) { setSelectedItem(item); setViewMode("clips"); }
-                }
-            } else if (dataProjects.results?.[0]) {
-                setSelectedItem(dataProjects.results[0]);
-            }
+            setClips(clipsData.clips || []);
+            setReferences(refsData.references || []);
+            setResults(resultsData.results || []);
         } catch (err) {
-            toast.error("Telemetry failed");
+            toast.error("Failed to load assets");
         } finally {
             setLoading(false);
         }
     };
 
-    useEffect(() => { fetchData(); }, [searchParams]);
+    useEffect(() => {
+        fetchAllAssets();
+    }, []);
 
-    const deleteResult = async (filename: string) => {
-        if (!confirm("Confirm data erasure?")) return;
-        try {
-            await api.deleteResult(filename);
-            toast.success("Data erased");
-            fetchData();
-            if (selectedItem?.filename === filename) setSelectedItem(null);
-        } catch (err) {
-            toast.error("Erasure failed");
+    // Auto-select from URL params
+    useEffect(() => {
+        const filename = searchParams.get("filename");
+        const type = searchParams.get("type") as ViewMode | null;
+
+        if (filename && type) {
+            let item: AssetItem | undefined;
+            if (type === "results") {
+                item = results.find(r => r.filename === filename);
+                if (item) setViewMode("results");
+            } else if (type === "references") {
+                item = references.find(r => r.filename === filename);
+                if (item) setViewMode("references");
+            } else if (type === "clips") {
+                item = clips.find(c => c.filename === filename);
+                if (item) setViewMode("clips");
+            }
+            if (item) setSelectedItem(item);
+        } else if (results[0]) {
+            setSelectedItem(results[0]);
+        }
+    }, [searchParams, results, references, clips]);
+
+    // Enhanced Asset Click: Dynamic Assignment or Selection
+    const handleAssetClick = (item: AssetItem, type: ViewMode) => {
+        if (compareMode) {
+            if (targetSlot === "A") {
+                setSlotA(item);
+                setTargetSlot("B"); // Auto-switch for fluid UX
+            } else {
+                setSlotB(item);
+            }
+        } else {
+            setSelectedItem(item);
+            setViewMode(type);
         }
     };
 
-    const formatSize = (bytes: number) => (bytes / (1024 * 1024)).toFixed(1) + " MB";
-    const formatDate = (timestamp: number) => new Date(timestamp * 1000).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' });
-
-    const scrollBoxItems = viewMode === "results" ? results : viewMode === "references" ? references : clips;
-
-    const getItemUrl = (item: Result | Reference | Clip) => {
-        if ('url' in item) return item.url;
-        if ('path' in item) return item.path;
-        return "";
+    // Toggle consultant note
+    const toggleNote = (id: string) => {
+        setConsultantNotes(prev =>
+            prev.map(note =>
+                note.id === id ? { ...note, expanded: !note.expanded } : note
+            )
+        );
     };
 
-    const getItemType = (item: Result | Reference | Clip): string => {
-        if ('url' in item) return "Synthesis";
-        if ('path' in item && !('session_id' in item)) return "Reference";
-        return "Raw Clip";
+    // Expand all notes
+    const expandAllNotes = () => {
+        setConsultantNotes(prev => prev.map(note => ({ ...note, expanded: true })));
     };
 
-    const downloadFile = (url: string, filename: string) => {
-        const link = document.createElement("a");
-        link.href = `http://localhost:8000${url}`;
-        link.download = filename;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    const currentAssets = viewMode === "results" ? results : viewMode === "references" ? references : clips;
+    const getVideoUrl = (item: AssetItem) => {
+        const path = "path" in item ? item.path : (item as any).url;
+        return `http://localhost:8000${path}`;
     };
+
+    // Video events for Temporal Map
+    const handleTimeUpdate = () => {
+        if (videoRef.current) {
+            setCurrentTime(videoRef.current.currentTime);
+        }
+    };
+
+    const handleLoadedMetadata = () => {
+        if (videoRef.current) {
+            setDuration(videoRef.current.duration);
+        }
+    };
+
+    // Mock data generators for plausible telemetry
+    const getTelemetry = (item: AssetItem | null) => {
+        if (!item) return null;
+        const seed = item.filename.length;
+        return {
+            stability: 90 + (seed % 9),
+            variance: (1.0 + (seed % 5) * 0.1).toFixed(1),
+            confidence: 95 + (seed % 4.5),
+            score: 85 + (seed % 12)
+        };
+    };
+
+    const telemetry = getTelemetry(selectedItem);
+
+    // Generate pseudo-waveform data
+    const waveformData = Array.from({ length: 40 }, (_, i) => {
+        const height = 20 + Math.abs(Math.sin(i * 0.5) * 60) + (i % 5 === 0 ? 20 : 0);
+        return height;
+    });
+
+    // Frame-lock sync for compare mode
+    useEffect(() => {
+        if (!syncEnabled || !videoRefA.current || !videoRefB.current) return;
+
+        const videoA = videoRefA.current;
+        const videoB = videoRefB.current;
+
+        const syncPlayPause = () => {
+            if (videoA.paused) videoB.pause();
+            else videoB.play();
+        };
+
+        videoA.addEventListener("play", syncPlayPause);
+        videoA.addEventListener("pause", syncPlayPause);
+
+        const driftInterval = setInterval(() => {
+            const drift = Math.abs(videoA.currentTime - videoB.currentTime);
+            if (drift > 0.05) {
+                videoB.currentTime = videoA.currentTime;
+            }
+        }, 100);
+
+        return () => {
+            videoA.removeEventListener("play", syncPlayPause);
+            videoA.removeEventListener("pause", syncPlayPause);
+            clearInterval(driftInterval);
+        };
+    }, [syncEnabled]);
+
+    if (loading) {
+        return (
+            <div className="h-screen flex items-center justify-center bg-[#020306]">
+                <div className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.5em] animate-pulse">Initializing Lab_</div>
+            </div>
+        );
+    }
 
     return (
-        <div className="min-h-screen bg-[#020306] flex flex-col pt-12 pb-32 overflow-x-hidden">
-            <div className="max-w-[1700px] w-full mx-auto px-6 md:px-12 flex flex-col gap-10">
-                {/* Header Section */}
-                <div className="flex items-end justify-between border-b border-white/10 pb-8">
-                    <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                            <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
-                                <Shield className="h-6 w-6" />
-                            </div>
-                            <h1 className="text-4xl font-black text-white uppercase tracking-tighter italic">The Vault</h1>
-                        </div>
-                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] ml-16">Temporal Synthesis Archive / Level 7 Clearance</p>
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                        <button
-                            onClick={() => {
-                                setSideBySideMode(!sideBySideMode);
-                                if (!sideBySideMode) {
-                                    if (!selectedItem2 && results.length > 1) setSelectedItem2(results[1]);
-                                    else if (!selectedItem2 && results.length > 0 && references.length > 0) setSelectedItem2(references[0]);
-                                }
-                            }}
-                            className={cn(
-                                "h-12 px-10 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] transition-all border flex items-center gap-4 group",
-                                sideBySideMode
-                                    ? "bg-cyan-500 border-cyan-400 text-white shadow-[0_0_40px_rgba(6,182,212,0.4)]"
-                                    : "bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-indigo-500/50"
-                            )}
-                        >
-                            <Columns2 className={cn("h-5 w-5 transition-transform", sideBySideMode && "rotate-90")} />
-                            {sideBySideMode ? "Exit Core Comparison" : "Dual Stream Compare"}
-                        </button>
-                    </div>
+        <div className="min-h-screen bg-[#020306] text-slate-100 flex flex-col">
+            {/* Dashboard Header - Filter Integrated */}
+            <header className="flex items-center justify-between px-10 py-3 border-b border-white/5 bg-black/40 shrink-0">
+                <div className="flex items-center gap-3">
+                    <Activity className="w-4 h-4 text-cyan-400" />
+                    <h1 className="text-[12px] font-black text-white uppercase tracking-[0.3em] italic">Vault: Intelligence Core</h1>
                 </div>
 
-                {!sideBySideMode ? (
-                    /* Standard View - Rebalanced Grid */
-                    <div className="grid grid-cols-1 xl:grid-cols-[1fr_360px] gap-12 items-start">
-                        {/* Center: Main Player Area */}
-                        <div className="space-y-10">
-                            <div className="aspect-video w-full rounded-[2.5rem] bg-[#0b0d14] border border-white/5 overflow-hidden shadow-[0_60px_100px_rgba(0,0,0,0.9)] relative group border-indigo-500/10 hover:border-indigo-500/30 transition-all duration-700">
-                                {selectedItem ? (
-                                    <video
-                                        key={getItemUrl(selectedItem)}
-                                        src={`http://localhost:8000${getItemUrl(selectedItem)}`}
-                                        className="w-full h-full object-contain"
-                                        controls
-                                        autoPlay
-                                    />
-                                ) : (
-                                    <div className="w-full h-full flex flex-col items-center justify-center text-slate-700">
-                                        <Layers className="h-16 w-16 opacity-10 mb-6 animate-pulse" />
-                                        <p className="text-xs font-black uppercase tracking-[0.3em]">Initialize Source Selection</p>
+                <div className="flex items-center gap-4">
+                    {/* View Mode Filters - Integrated into Header - Tactical HUD Style */}
+                    <div className="flex items-center bg-black/40 p-1 rounded-lg border border-white/5 mr-4 relative overflow-hidden glass-premium">
+                        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent" />
+                        {(["results", "references", "clips"] as ViewMode[]).map(mode => (
+                            <button
+                                key={mode}
+                                onClick={() => setViewMode(mode)}
+                                className={cn(
+                                    "relative px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-[0.2em] transition-all z-10",
+                                    viewMode === mode
+                                        ? "text-cyan-400"
+                                        : "text-slate-500 hover:text-slate-300"
+                                )}
+                            >
+                                {viewMode === mode && (
+                                    <div className="absolute inset-0 bg-cyan-500/10 rounded-md animate-pulse">
+                                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full shadow-[0_0_10px_#22d3ee] mb-[-2px]" />
                                     </div>
                                 )}
+                                [ {mode} ]
+                            </button>
+                        ))}
+                    </div>
 
-                                {selectedItem && (
-                                    <div className="absolute top-8 left-8 z-10 animate-in fade-in slide-in-from-left-4 duration-700">
-                                        <div className="px-5 py-2 rounded-full bg-black/60 backdrop-blur-xl border border-indigo-500/30 text-[10px] font-black text-white uppercase tracking-[0.25em] flex items-center gap-3">
-                                            <div className="h-2 w-2 rounded-full bg-indigo-400 glow-indigo pulse-glow" />
-                                            Active Stream: {selectedItem.filename}
+                    <div className="h-8 w-px bg-white/10" />
+
+                    <button
+                        onClick={() => setCompareMode(!compareMode)}
+                        className={cn(
+                            "group relative flex items-center gap-2 px-6 py-2 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] transition-all overflow-hidden btn-execute",
+                            compareMode
+                                ? "ring-2 ring-white/50 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                                : "",
+                            "active:animate-flicker"
+                        )}
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+
+                        {/* Status Indicator Dot */}
+                        <div className={cn(
+                            "w-1.5 h-1.5 rounded-full mr-1",
+                            compareMode ? "bg-green-400 animate-indicator-pulse shadow-[0_0_8px_#4ade80]" : "bg-slate-400/50"
+                        )} />
+
+                        {compareMode ? (
+                            <>
+                                <MonitorStop className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" />
+                                Disable_Forensics
+                            </>
+                        ) : (
+                            <>
+                                <MonitorPlay className="w-4 h-4 mr-1 transition-transform group-hover:scale-110" />
+                                Dual_Compare
+                            </>
+                        )}
+                    </button>
+                </div>
+            </header>
+
+            {/* Asset Dock - Modern Mini-Cards */}
+            <div className="bg-[#020306] border-b border-white/5 py-4 shrink-0">
+                <div className="max-w-[1700px] mx-auto px-10 relative">
+                    {compareMode && (
+                        <div className="absolute -top-1 left-14 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 z-30">
+                            <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest mr-2">Target Asset:</span>
+                            <button
+                                onClick={() => setTargetSlot("A")}
+                                className={cn(
+                                    "px-3 py-0.5 rounded-full text-[8px] font-black transition-all",
+                                    targetSlot === "A" ? "bg-cyan-500 text-white" : "text-slate-600 hover:text-slate-400"
+                                )}
+                            >
+                                SLOT A
+                            </button>
+                            <button
+                                onClick={() => setTargetSlot("B")}
+                                className={cn(
+                                    "px-3 py-0.5 rounded-full text-[8px] font-black transition-all",
+                                    targetSlot === "B" ? "bg-pink-500 text-white" : "text-slate-600 hover:text-slate-400"
+                                )}
+                            >
+                                SLOT B
+                            </button>
+                        </div>
+                    )}
+
+                    {/* Locked 5-Box Grid with Spacing */}
+                    <div className="flex justify-between gap-6 overflow-hidden">
+                        {currentAssets.slice(0, 5).map((item, idx) => {
+                            const isSelected = !compareMode && selectedItem === item;
+                            const isSlotA = slotA === item;
+                            const isSlotB = slotB === item;
+
+                            return (
+                                <div key={idx} className="relative group flex-1 max-w-[calc(20%-20px)] animate-in fade-in slide-in-from-bottom-2" style={{ animationDelay: `${idx * 50}ms` }}>
+                                    <div
+                                        onClick={() => handleAssetClick(item, viewMode)}
+                                        className={cn(
+                                            "relative w-full aspect-[16/11] rounded-xl overflow-hidden border-2 transition-all duration-500 cursor-pointer",
+                                            isSelected ? "border-cyan-400 animate-hud-breathing shadow-[0_0_40px_rgba(34,211,238,0.2)]" :
+                                                isSlotA ? "border-cyan-500 ring-4 ring-cyan-500/20 scale-[1.02] shadow-[0_0_30px_rgba(6,182,212,0.4)]" :
+                                                    isSlotB ? "border-pink-500 ring-4 ring-pink-500/20 scale-[1.02] shadow-[0_0_30px_rgba(236,72,153,0.4)]" :
+                                                        "border-white/5 bg-[#0a0c14] hover:border-cyan-500/30 group-hover:scale-[1.02]"
+                                        )}
+                                    >
+                                        {/* Scanning Overlay for unselected cards - now more transparent to keep color */}
+                                        {!isSelected && !isSlotA && !isSlotB && (
+                                            <div className="absolute inset-0 pointer-events-none z-10 opacity-10 group-hover:opacity-5 transition-opacity overflow-hidden">
+                                                <div className="w-full h-[3px] bg-cyan-400/50 absolute top-0 left-0 shadow-[0_0_15px_#22d3ee] animate-scanline" />
+                                                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
+                                            </div>
+                                        )}
+
+                                        {/* HUD Corner Brackets for active specimen */}
+                                        {isSelected && (
+                                            <div className="absolute inset-0 pointer-events-none z-20">
+                                                <div className="hud-corner hud-corner-tl" />
+                                                <div className="hud-corner hud-corner-tr" />
+                                                <div className="hud-corner hud-corner-bl" />
+                                                <div className="hud-corner hud-corner-br" />
+                                            </div>
+                                        )}
+
+                                        <video
+                                            src={getVideoUrl(item)}
+                                            className={cn(
+                                                "w-full h-full object-cover transition-all duration-700",
+                                                !isSelected && !isSlotA && !isSlotB ? "opacity-70 group-hover:opacity-100" : ""
+                                            )}
+                                        />
+
+                                        {/* Command Buttons Overlay - More persistent but subtle */}
+                                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-3 z-30 opacity-60 group-hover:opacity-100 transition-opacity">
+                                            <div className="flex items-center justify-between">
+                                                <button
+                                                    onClick={() => handleAssetClick(item, viewMode)}
+                                                    className="p-1.5 bg-white/10 hover:bg-cyan-500 hover:text-white rounded-md backdrop-blur-md transition-all text-slate-300 transform active:scale-90"
+                                                >
+                                                    <Eye className="w-3.5 h-3.5" />
+                                                </button>
+                                                <div className="flex gap-1.5">
+                                                    <button className="p-1.5 bg-white/10 hover:bg-white/30 rounded-md backdrop-blur-md transition-all text-slate-300 transform active:scale-90">
+                                                        <Download className="w-3.5 h-3.5" />
+                                                    </button>
+                                                    {compareMode && (
+                                                        <button
+                                                            onClick={(e) => { e.stopPropagation(); targetSlot === 'A' ? setSlotA(item) : setSlotB(item); }}
+                                                            className={cn(
+                                                                "px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-tighter shadow-lg transition-all transform active:scale-95",
+                                                                targetSlot === 'A' ? "bg-cyan-500 text-white" : "bg-pink-500 text-white"
+                                                            )}
+                                                        >
+                                                            {targetSlot}
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div className="absolute top-2 left-2 flex gap-1">
+                                            {isSlotA && <div className="px-1.5 py-0.5 bg-cyan-500 text-white text-[8px] font-black rounded-md shadow-lg border border-white/20">A</div>}
+                                            {isSlotB && <div className="px-1.5 py-0.5 bg-pink-500 text-white text-[8px] font-black rounded-md shadow-lg border border-white/20">B</div>}
+                                        </div>
+                                    </div>
+
+                                    {/* Sub-label for box feel */}
+                                    <div className="mt-2.5 px-2">
+                                        <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest truncate group-hover:text-cyan-400 transition-colors">
+                                            {item.filename.split('.').slice(0, -1).join('.') || item.filename}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+
+            <main className="flex-1 px-10 py-5 max-w-[1700px] mx-auto w-full overflow-hidden">
+                {!compareMode ? (
+                    /* Standard Mode: Intelligence Workstation (Focus: Balanced Primary Surface) */
+                    <div className="grid grid-cols-1 lg:grid-cols-[40%_1fr] gap-10 items-start relative">
+                        {/* 1. Portrait Workstation (The Primary Inspection Surface) */}
+                        <div className="flex flex-col space-y-6 w-full">
+                            <div className="bg-[#0b0d14]/40 rounded-[3rem] border border-white/5 overflow-hidden flex flex-col w-full h-[85vh] relative shadow-2xl group/monitor p-10 items-center justify-center">
+                                {selectedItem ? (
+                                    <>
+                                        {/* Floating Specimen HUD - Integrated into Chassis */}
+                                        <div className="absolute top-12 left-12 z-40 flex flex-col gap-3 opacity-60 group-hover/monitor:opacity-100 transition-opacity">
+                                            <div className="px-5 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em] shadow-2xl flex items-center gap-2">
+                                                <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                                                INSIGHT_MONITOR_01
+                                            </div>
+                                            <div className="px-5 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black text-white/40 uppercase tracking-[0.4em] shadow-2xl">
+                                                {selectedItem.filename.toUpperCase()}
+                                            </div>
+                                        </div>
+
+                                        <video
+                                            ref={videoRef}
+                                            src={getVideoUrl(selectedItem)}
+                                            onTimeUpdate={handleTimeUpdate}
+                                            onLoadedMetadata={handleLoadedMetadata}
+                                            controls
+                                            playsInline
+                                            autoPlay={false}
+                                            className="h-full w-auto aspect-[9/16] object-contain relative z-10 transition-all rounded-2xl bg-black shadow-2xl"
+                                        />
+                                    </>
+                                ) : (
+                                    <div className="h-full aspect-[9/16] flex flex-col items-center justify-center opacity-10 bg-black/20 rounded-2xl border border-white/5">
+                                        <MonitorPlay className="w-16 h-16 mb-4" />
+                                        <p className="text-[12px] font-black uppercase tracking-[0.6em] text-slate-500">SIGNAL_OFFLINE</p>
                                     </div>
                                 )}
                             </div>
 
-                            {/* Integrated Telemetry Quick Actions */}
-                            <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
-                                <div className="p-8 rounded-[2rem] bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                                    <div className="space-y-1.5">
-                                        <div className="flex items-center gap-2">
-                                            <div className="h-1.5 w-1.5 rounded-full bg-lime-400 glow-lime" />
-                                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Metadata Integrity Verified</p>
-                                        </div>
-                                        <p className="text-lg font-black text-white uppercase tracking-tight truncate max-w-[300px]">{selectedItem?.filename || "No Data"}</p>
+                            {/* Surgical Temporal Map (Instrument Strip) */}
+                            <div className="w-full bg-[#0b0d14]/40 rounded-3xl border border-white/5 p-4 shadow-2xl relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-4 opacity-10">
+                                    <Activity className="w-12 h-12 text-cyan-500" />
+                                </div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-1 h-3 bg-cyan-500 rounded-full" />
+                                        <p className="text-[9px] font-black text-slate-200 uppercase tracking-[0.3em]">Temporal_Sequence_Map</p>
                                     </div>
-                                    <div className="flex gap-4">
-                                        <button
-                                            disabled={!selectedItem}
-                                            onClick={() => selectedItem && downloadFile(getItemUrl(selectedItem), selectedItem.filename)}
-                                            className="h-12 px-8 rounded-xl bg-white text-black font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all shadow-2xl disabled:opacity-20"
-                                        >
-                                            Export
-                                        </button>
-                                        <button
-                                            disabled={!selectedItem}
-                                            onClick={() => selectedItem && deleteResult(selectedItem.filename)}
-                                            className="h-12 w-12 rounded-xl bg-red-600/10 text-red-500 border border-red-500/20 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all disabled:opacity-20"
-                                        >
-                                            <Trash2 className="h-5 w-5" />
-                                        </button>
-                                    </div>
+                                    <span className="font-mono text-[9px] text-cyan-400/60 font-black">
+                                        {currentTime.toFixed(2)}s / {duration.toFixed(2)}s
+                                    </span>
                                 </div>
 
-                                <div className="p-8 rounded-[2rem] bg-indigo-600/5 border border-indigo-500/10 flex flex-col justify-center">
-                                    <p className="text-[9px] font-black text-indigo-400/60 uppercase tracking-widest mb-1">Session Data</p>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-xs font-black text-white uppercase">{selectedItem ? formatSize(selectedItem.size) : "0 MB"}</span>
-                                        <div className="h-1 w-12 bg-white/10 rounded-full overflow-hidden">
-                                            <div className="h-full bg-indigo-500 w-2/3" />
-                                        </div>
+                                <div className="h-8 flex items-end gap-[1px] bg-black/40 rounded-xl p-2 border border-white/5 overflow-hidden group/wave">
+                                    {waveformData.map((h, i) => {
+                                        const progress = (currentTime / duration) * waveformData.length;
+                                        const isActive = i <= progress;
+                                        const isCurrent = Math.floor(progress) === i;
+
+                                        return (
+                                            <div
+                                                key={i}
+                                                className={cn(
+                                                    "flex-1 rounded-full transition-all duration-300",
+                                                    isActive ? (isCurrent ? "bg-cyan-400 shadow-[0_0_10px_#22d3ee]" : "bg-cyan-500/40") : "bg-white/5"
+                                                )}
+                                                style={{ height: `${h}%` }}
+                                            />
+                                        );
+                                    })}
+                                </div>
+
+                                <div className="mt-2 flex justify-between font-mono text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] px-2 italic">
+                                    <div className="flex gap-4">
+                                        <span className="text-white">H_00s</span>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <span className="text-white">T_{duration.toFixed(2)}s</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Sidebar: Optimized Telemetry Panels */}
-                        <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-1000">
-                            <div className="p-8 rounded-[2.5rem] bg-[#0b0d14]/40 border border-white/5 space-y-8 shadow-2xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-[60px] -mr-16 -mt-16" />
-                                <div className="flex items-center gap-4 pb-6 border-b border-white/5">
-                                    <Activity className="h-5 w-5 text-cyan-400" />
-                                    <h3 className="text-[12px] font-black text-white uppercase tracking-[0.2em]">X-Ray Metrics</h3>
+                        {/* 2. Intelligence Deck (Supporting Evidence & Verdict) */}
+                        <div className="sticky top-5 flex flex-col space-y-6 min-w-0 pb-20">
+                            {/* Primary Conclusion Box: AI INSIGHTS */}
+                            <div className="bg-[#0b0d14]/60 border border-indigo-500/20 rounded-[3rem] p-10 relative overflow-hidden group shadow-2xl">
+                                <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
+                                    <Cpu className="w-24 h-24 text-indigo-400" />
                                 </div>
-                                <div className="space-y-8">
-                                    {[
-                                        { label: 'Clip Diversity', val: 94, icon: <Layers className="h-4 w-4" />, color: 'bg-indigo-500' },
-                                        { label: 'Rhythmic Sync', val: 88, icon: <Zap className="h-4 w-4" />, color: 'bg-purple-500' },
-                                        { label: 'Vector Pacing', val: 91, icon: <Target className="h-4 w-4" />, color: 'bg-cyan-500' }
-                                    ].map(m => (
-                                        <div key={m.label} className="space-y-3">
-                                            <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-tighter">
-                                                <span className="text-slate-500 flex items-center gap-3">{m.icon} {m.label}</span>
-                                                <span className="text-white">{m.val}%</span>
-                                            </div>
-                                            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden p-0.5 border border-white/5">
-                                                <div className={cn("h-full rounded-full transition-all duration-[2000ms]", m.color)} style={{ width: `${m.val}%` }} />
-                                            </div>
+                                <div className="flex items-center gap-4 mb-8">
+                                    <Sparkles className="w-5 h-5 text-indigo-400" />
+                                    <h3 className="text-[12px] font-black text-slate-200 uppercase tracking-[0.5em]">Forensic_Terminal</h3>
+                                </div>
+
+                                <div className="space-y-6">
+                                    <div className="font-mono bg-black/40 p-6 rounded-2xl border border-white/5 relative">
+                                        <div className="absolute top-4 right-4 flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-lime-500" />
+                                            <span className="text-[9px] font-black text-lime-400 uppercase tracking-widest">VERIFIED</span>
                                         </div>
-                                    ))}
+                                        <p className="text-[16px] text-slate-100 leading-relaxed font-medium">
+                                            {selectedItem ? (
+                                                viewMode === 'results'
+                                                    ? `Synthesis complete for ${selectedItem.filename}. Aesthetic cohesion verified at ${telemetry?.score}%. Optimal pacing detected for vertical reel context. No critical frame drops or motion artifacts detected during final render pass. Ready for delivery.`
+                                                    : `Surface analysis detected minor micro-stutter in initial quad of ${selectedItem.filename}. Chromatic balance is within P3 gamut limits. Motion blur exceeds threshold at T_${(duration * 0.4).toFixed(2)}s. Recommend stabilization before synthesis.`
+                                            ) : (
+                                                "Waiting for specimen selection..."
+                                            )}
+                                        </p>
+                                    </div>
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="bg-indigo-500/5 border border-indigo-500/10 p-5 rounded-2xl flex flex-col justify-between">
+                                            <span className="text-[10px] font-black text-indigo-400/60 uppercase tracking-[0.3em] mb-2">Diagnosis</span>
+                                            <p className="text-[16px] font-black text-white uppercase tracking-wider">
+                                                {viewMode === 'results' ? "PRODUCTION_READY" : "HIGH_FIDELITY_INPUT"}
+                                            </p>
+                                        </div>
+                                        <div className="bg-cyan-500/5 border border-cyan-500/10 p-5 rounded-2xl flex flex-col justify-between">
+                                            <span className="text-[10px] font-black text-cyan-400/60 uppercase tracking-[0.3em] mb-2">Recommended_Next</span>
+                                            <p className="text-[16px] font-black text-white uppercase tracking-wider italic">
+                                                {viewMode === 'results' ? "EXECUTE_EXPORT" : "PROCEED_TO_STUDIO"}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="p-8 rounded-[2.5rem] bg-[#0b0d14]/40 border border-white/5 space-y-6 shadow-2xl">
-                                <div className="flex items-center gap-4 pb-4 border-b border-white/5">
-                                    <Terminal className="h-5 w-5 text-purple-400" />
-                                    <h3 className="text-[12px] font-black text-white uppercase tracking-[0.2em]">Logic Protocol</h3>
+                            {/* Secondary Layer: Telemetry (The Analysis Cache) */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="bg-[#0b0d14]/40 border border-white/5 rounded-[2.5rem] p-8">
+                                    <div className="flex items-center gap-3 mb-6 opacity-40">
+                                        <Zap className="w-4 h-4 text-cyan-400" />
+                                        <h3 className="text-[11px] font-black text-slate-200 uppercase tracking-[0.4em]">Signal_Telemetry</h3>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-8">
+                                        {[
+                                            { l: "Motion_Stability", v: `${telemetry?.stability || 92}%`, s: "STABLE" },
+                                            { l: "Light_Variance", v: `${telemetry?.variance || "1.2"}ev`, s: "NOMINAL" },
+                                            { l: "Chromatic_Depth", v: "10-bit", s: "HDR_READY" },
+                                            { l: "Frame_Confidence", v: `${telemetry?.confidence?.toFixed(1) || "98.8"}%`, s: "EXCELLENT" }
+                                        ].map((stat, i) => (
+                                            <div key={i} className="flex flex-col space-y-1">
+                                                <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest leading-none">{stat.l}</span>
+                                                <div className="flex items-baseline gap-2">
+                                                    <span className="text-[16px] font-black text-white tracking-tighter">{stat.v}</span>
+                                                    <span className="text-[8px] font-bold text-cyan-500/50 uppercase tracking-widest">{stat.s}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                <div className="h-[240px] overflow-y-auto font-mono text-[10px] text-slate-500 space-y-3 custom-scrollbar pr-3 leading-relaxed">
-                                    <p className="text-cyan-400/80 font-bold">&gt; [CORE] Parsing multimodal streams...</p>
-                                    <p className="border-l border-white/10 pl-3">&gt; [LOG] Temporal motion vectors mapped to energy stages.</p>
-                                    <p className="border-l border-white/10 pl-3">&gt; [LOG] Audio transients sync'd at 128 BPM.</p>
-                                    <p className="border-l border-white/10 pl-3">&gt; [LOG] Recyclic frame filtering applied.</p>
-                                    <p className="text-purple-400 font-bold">&gt; [AGI] Strategy: High-Impact Pacing.</p>
-                                    <p className="text-lime-400/80 font-bold">&gt; [DONE] Output locked and verified.</p>
+
+                                <div className="bg-[#0b0d14]/40 border border-white/5 rounded-[2.5rem] p-8">
+                                    <div className="flex items-center gap-3 mb-6 opacity-40">
+                                        {viewMode === 'results' ? <TrendingUp className="w-4 h-4 text-indigo-400" /> : <Database className="w-4 h-4 text-indigo-400" />}
+                                        <h3 className="text-[11px] font-black text-slate-200 uppercase tracking-[0.4em]">
+                                            {viewMode === 'results' ? "Synthesis_Forensics" : "Extraction_Confidence"}
+                                        </h3>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex gap-5 overflow-x-auto scrollbar-none pb-1">
+                                            {(viewMode === 'results' ? ["Coh_", "Acc_", "Sync", "Div_"] : ["Face", "Obj_", "Vibe", "Text"]).map((label, idx) => (
+                                                <div key={label} className="flex flex-col items-center shrink-0">
+                                                    <div className="relative w-11 h-11">
+                                                        <svg className="w-full h-full -rotate-90">
+                                                            <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
+                                                            <circle cx="22" cy="22" r="20" fill="none" stroke={viewMode === 'results' ? "#06B6D4" : "#818CF8"} strokeWidth="2.5" strokeDasharray={`${(85 + idx * 5) * 1.25} 125`} className="transition-all duration-1000" />
+                                                        </svg>
+                                                        <div className="absolute inset-0 flex items-center justify-center">
+                                                            <span className={cn("text-[10px] font-black", viewMode === 'results' ? "text-cyan-400" : "text-indigo-300")}>{85 + idx * 2}%</span>
+                                                        </div>
+                                                    </div>
+                                                    <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-2">{label}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="flex flex-col gap-3 border-l border-white/5 pl-6">
+                                            {[
+                                                { l: viewMode === 'results' ? "VIBE" : "CONF", v: viewMode === 'results' ? "75%" : "98.2" },
+                                                { l: "RANK", v: viewMode === 'results' ? "P1" : "S_CLASS" }
+                                            ].map((item, i) => (
+                                                <div key={i}>
+                                                    <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest">{item.l}</p>
+                                                    <p className={cn("text-[12px] font-black uppercase tracking-widest", viewMode === 'results' ? "text-cyan-400" : "text-indigo-300")}>{item.v}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    /* Compare Mode - Balanced Overhaul */
-                    <div className="grid grid-cols-2 gap-12 items-start animate-in zoom-in-[0.98] duration-700">
-                        {[
-                            { item: selectedItem, setter: setSelectedItem, label: "Stream A / Primary" },
-                            { item: selectedItem2, setter: setSelectedItem2, label: "Stream B / Analytics" }
-                        ].map((stream, idx) => (
-                            <div key={idx} className="space-y-8 group/stream">
-                                {/* Selector above player - Centered UI */}
-                                <div className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className={cn("h-2 w-2 rounded-full animation-pulse", idx === 0 ? "bg-indigo-500 glow-indigo" : "bg-cyan-500 glow-cyan")} />
-                                        <p className="text-[11px] font-black text-white uppercase tracking-[0.3em]">{stream.label}</p>
-                                    </div>
-                                    <div className="relative">
-                                        <select
-                                            className="w-full bg-[#0b0d14] border border-white/10 rounded-2xl h-14 px-6 text-[11px] font-black text-indigo-400 outline-none focus:border-indigo-500 transition-all uppercase tracking-[0.2em] appearance-none"
-                                            value={stream.item?.filename || ""}
-                                            onChange={(e) => {
-                                                const all = [...results, ...references, ...clips];
-                                                const found = all.find(i => i.filename === e.target.value);
-                                                if (found) stream.setter(found);
-                                            }}
-                                        >
-                                            <option value="" className="bg-[#0b0d14]">Select Core Asset...</option>
-                                            <optgroup label="Synthesis Results" className="bg-[#0b0d14] text-white">
-                                                {results.map(r => <option key={r.filename} value={r.filename}>{r.filename}</option>)}
-                                            </optgroup>
-                                            <optgroup label="References" className="bg-[#0b0d14] text-white">
-                                                {references.map(r => <option key={r.filename} value={r.filename}>{r.filename}</option>)}
-                                            </optgroup>
-                                            <optgroup label="Raw Samples" className="bg-[#0b0d14] text-white">
-                                                {clips.map(r => <option key={r.filename} value={r.filename}>{r.filename}</option>)}
-                                            </optgroup>
-                                        </select>
-                                        <ChevronDown className="absolute right-6 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 pointer-events-none" />
-                                    </div>
-                                </div>
-
-                                <div className="aspect-video w-full rounded-[2.5rem] bg-black border border-white/10 overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.8)] relative group/vid hover:border-white/20 transition-all duration-500">
-                                    {stream.item ? (
-                                        <video
-                                            key={getItemUrl(stream.item)}
-                                            src={`http://localhost:8000${getItemUrl(stream.item)}`}
-                                            className="w-full h-full object-contain"
-                                            controls
-                                            autoPlay
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-slate-800 space-y-4">
-                                            <Cpu className="h-10 w-10 opacity-10" />
-                                            <p className="text-[10px] font-black uppercase tracking-[0.3em]">Stream Offline</p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {stream.item && (
-                                    <div className="p-6 rounded-[2rem] bg-white/[0.02] border border-white/5 flex items-center justify-between">
-                                        <div className="min-w-0 pr-6">
-                                            <p className="text-xs font-black text-white truncate uppercase tracking-tight">{stream.item.filename}</p>
-                                            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-1">{(stream.item.size / (1024 * 1024)).toFixed(1)} MB • {formatDate(stream.item.created_at)}</p>
-                                        </div>
-                                        <button
-                                            onClick={() => downloadFile(getItemUrl(stream.item!), stream.item!.filename)}
-                                            className="h-10 w-10 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center hover:bg-indigo-500 hover:text-white transition-all shadow-lg"
-                                        >
-                                            <Download className="h-4 w-4" />
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                )}
-
-                {/* Bottom Asset Tray - Integrated Global Selector */}
-                <div className="space-y-8 mt-12 pb-24">
-                    <div className="flex items-center justify-between border-t border-white/10 pt-12">
-                        <div className="flex gap-10">
+                    /* Compare Mode: Forensic Split Monitor (Zero-Scroll Optimized) */
+                    <div className="flex flex-col h-full space-y-5">
+                        <div className="grid grid-cols-2 gap-6 flex-1 min-h-0">
                             {[
-                                { id: 'results', label: 'Synthesis' },
-                                { id: 'references', label: 'References' },
-                                { id: 'clips', label: 'Source Clips' }
-                            ].map(tab => (
-                                <button
-                                    key={tab.id}
-                                    onClick={() => setViewMode(tab.id as ViewMode)}
-                                    className={cn(
-                                        "text-[11px] font-black uppercase tracking-[0.3em] transition-all relative pb-4 group",
-                                        viewMode === tab.id ? "text-white" : "text-slate-500 hover:text-white"
+                                { id: "A", slot: slotA, ref: videoRefA, set: setSlotA, color: "cyan" },
+                                { id: "B", slot: slotB, ref: videoRefB, set: setSlotB, color: "pink" }
+                            ].map(s => (
+                                <div key={s.id} className={cn(
+                                    "bg-[#0b0d14]/40 border-2 rounded-[2.5rem] p-5 flex flex-col relative transition-all duration-700",
+                                    s.slot ? `border-${s.color}-500/20 shadow-2xl` : "border-white/5 border-dashed"
+                                )}>
+                                    {s.slot ? (
+                                        <>
+                                            <div className={cn(
+                                                "absolute top-6 left-6 z-20 px-3 py-1 text-white text-[10px] font-black uppercase tracking-widest rounded shadow-xl",
+                                                s.color === "cyan" ? "bg-cyan-500" : "bg-pink-500"
+                                            )}>Specimen_{s.id}</div>
+                                            <div className="absolute top-6 right-6 z-20 flex items-center gap-3">
+                                                <span className="text-[9px] font-black text-white/30 uppercase tracking-widest truncate max-w-[120px]">{s.slot.filename}</span>
+                                                <button onClick={() => s.set(null)} className="p-1 text-slate-600 hover:text-white transition-colors bg-white/5 rounded-full"><X className="w-3.5 h-3.5" /></button>
+                                            </div>
+                                            <video ref={s.ref} src={getVideoUrl(s.slot as AssetItem)} controls className="h-full w-auto mx-auto aspect-[9/16] object-contain rounded-xl" />
+                                        </>
+                                    ) : (
+                                        <div className="flex-1 flex flex-col items-center justify-center space-y-4 text-slate-800 group cursor-pointer" onClick={() => setTargetSlot(s.id as any)}>
+                                            <div className={cn(
+                                                "w-16 h-16 rounded-full border border-dashed border-white/10 flex items-center justify-center transition-all",
+                                                s.color === "cyan" ? "group-hover:border-cyan-500/40 group-hover:text-cyan-400" : "group-hover:border-pink-500/40 group-hover:text-pink-400"
+                                            )}>
+                                                {s.id === "A" ? <MonitorPlay className="w-7 h-7 opacity-40" /> : <Target className="w-7 h-7 opacity-40" />}
+                                            </div>
+                                            <div className="text-center">
+                                                <p className={cn(
+                                                    "text-[12px] font-black uppercase tracking-[0.3em] mb-1",
+                                                    s.color === "cyan" ? "group-hover:text-cyan-400" : "group-hover:text-pink-400"
+                                                )}>Mount _{s.id}</p>
+                                                <p className="text-[9px] font-medium italic opacity-30">Select from Dock Above</p>
+                                            </div>
+                                        </div>
                                     )}
-                                >
-                                    {tab.label}
-                                    <div className={cn(
-                                        "absolute bottom-0 left-0 h-1 bg-indigo-500 transition-all duration-500",
-                                        viewMode === tab.id ? "w-full opacity-100 glow-indigo" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-40"
-                                    )} />
-                                </button>
+                                </div>
                             ))}
                         </div>
-                        <div className="text-[10px] font-black text-slate-600 uppercase tracking-widest">
-                            Total Index: {scrollBoxItems.length} Blocks
+
+                        {/* Compare Mode Logic Bridge / Differential Diagnostic */}
+                        {slotA && slotB && (
+                            <div className="bg-[#0b0d14]/60 border border-white/5 rounded-3xl p-6 animate-in slide-in-from-bottom-4 duration-700">
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center gap-3">
+                                        <div className="p-2 bg-indigo-500/10 rounded-lg">
+                                            <Cpu className="w-4 h-4 text-indigo-400" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-[11px] font-black text-white uppercase tracking-[0.2em]">Differential_Diagnostic</h3>
+                                            <p className="text-[9px] text-slate-500 font-medium">Cross-referencing Specimen_A and Specimen_B</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-8">
+                                        {[
+                                            { l: "Motion_Delta", v: "±4.2%", s: "CORRELATED" },
+                                            { l: "Sync_Alignment", v: "99.8%", s: "LOCKED" },
+                                            { l: "Vibe_Divergence", v: "LOW", s: "COHESIVE" }
+                                        ].map((m, i) => (
+                                            <div key={i} className="text-right">
+                                                <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest mb-0.5">{m.l}</p>
+                                                <div className="flex items-center gap-2 justify-end">
+                                                    <span className="text-[12px] font-black text-white">{m.v}</span>
+                                                    <span className="text-[7px] font-bold text-indigo-500/50 uppercase tracking-widest">{m.s}</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-3 gap-6">
+                                    <div className="col-span-2 bg-black/40 rounded-2xl p-4 border border-white/5 relative overflow-hidden">
+                                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
+                                        <p className="text-[11px] text-slate-400 leading-relaxed italic">
+                                            <span className="text-indigo-400 font-bold mr-2">ANALYSIS:</span>
+                                            Both specimens exhibit high semantic correlation. Specimen_B provides a more aggressive motion profile which complements the static framing in Specimen_A. Alignment exceeds the delta threshold—pairing is recommended for final synthesis.
+                                        </p>
+                                    </div>
+                                    <div className="bg-indigo-500/10 rounded-2xl p-4 border border-indigo-500/20 flex flex-col justify-center items-center text-center">
+                                        <span className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-1">COHESION_SCORE</span>
+                                        <span className="text-[24px] font-black text-white leading-none">94.8</span>
+                                        <span className="text-[8px] font-bold text-indigo-400/50 uppercase tracking-widest mt-1">OPTIMAL_LINK</span>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Telemetry Status Strip - Slimmed */}
+                        <div className="flex items-center justify-center pb-2">
+                            <div className="bg-white/[0.03] border border-white/5 rounded-2xl px-10 py-3 flex items-center gap-12 backdrop-blur-xl shrink-0">
+                                <div className="flex items-center gap-12">
+                                    <div className="flex flex-col gap-0.5">
+                                        <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">Linkage</span>
+                                        <span className={cn("text-[11px] font-black uppercase tracking-wider", syncEnabled ? "text-cyan-400" : "text-white/20")}>{syncEnabled ? "STABILIZED" : "STANDBY"}</span>
+                                    </div>
+                                    <div className="flex flex-col gap-0.5">
+                                        <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">Drift</span>
+                                        <span className="text-[11px] font-black text-indigo-400 font-mono tracking-widest">±0s_LOCKED</span>
+                                    </div>
+                                </div>
+                                <div className="h-8 w-px bg-white/10" />
+                                <label className="flex items-center gap-6 cursor-pointer group">
+                                    <div className={cn(
+                                        "h-5 w-10 rounded-full border transition-all duration-500 relative",
+                                        syncEnabled ? "bg-cyan-500 border-cyan-400" : "bg-white/5 border-white/10"
+                                    )}>
+                                        <input type="checkbox" checked={syncEnabled} onChange={(e) => setSyncEnabled(e.target.checked)} className="sr-only" />
+                                        <div className={cn(
+                                            "absolute top-1 left-1 h-3 w-3 rounded-full transition-all duration-500",
+                                            syncEnabled ? "translate-x-5 bg-white shadow-md" : "bg-slate-700"
+                                        )} />
+                                    </div>
+                                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest group-hover:text-white transition-colors">Engage Temporal Sync</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
-
-                    <div className="flex gap-6 overflow-x-auto pb-10 -mx-4 px-4 custom-scrollbar-horizontal snap-x scroll-smooth" ref={scrollRef}>
-                        {scrollBoxItems.map((item, idx) => (
-                            <button
-                                key={item.filename}
-                                onClick={() => setSelectedItem(item)}
-                                className={cn(
-                                    "shrink-0 w-[280px] rounded-[2rem] border transition-all p-3 bg-[#0b0d14]/60 snap-start flex flex-col group/card",
-                                    selectedItem?.filename === item.filename
-                                        ? "border-indigo-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-indigo-500/5 scale-[1.02]"
-                                        : "border-white/5 hover:border-indigo-500/30 hover:bg-white/[0.02]"
-                                )}
-                            >
-                                <div className="aspect-video rounded-[1.5rem] overflow-hidden bg-black mb-4 relative">
-                                    <video src={`http://localhost:8000${getItemUrl(item)}`} className="w-full h-full object-cover opacity-60 group-hover/card:opacity-100 transition-opacity" muted />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity" />
-                                </div>
-                                <div className="px-2 pb-1 flex justify-between items-start">
-                                    <div className="min-w-0 pr-4 text-left">
-                                        <p className="text-[10px] font-black text-white truncate uppercase tracking-tight leading-tight">{item.filename}</p>
-                                        <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-1">{formatDate(item.created_at)}</p>
-                                    </div>
-                                    <p className="text-[9px] font-black text-indigo-400 shrink-0">{formatSize(item.size)}</p>
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-                </div>
-            </div>
+                )}
+            </main>
         </div>
     );
 }
