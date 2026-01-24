@@ -434,24 +434,79 @@ export default function VaultPage() {
 
             <main className="flex-1 px-10 py-5 max-w-[1700px] mx-auto w-full overflow-hidden">
                 {!compareMode ? (
-                    /* Standard Mode: Intelligence Workstation (Focus: Balanced Primary Surface) */
-                    <div className="grid grid-cols-1 lg:grid-cols-[40%_1fr] gap-10 items-start relative">
-                        {/* 1. Portrait Workstation (The Primary Inspection Surface) */}
-                        <div className="flex flex-col space-y-6 w-full">
-                            <div className="bg-[#0b0d14]/40 rounded-[3rem] border border-white/5 overflow-hidden flex flex-col w-full h-[85vh] relative shadow-2xl group/monitor p-10 items-center justify-center">
-                                {selectedItem ? (
-                                    <>
-                                        {/* Floating Specimen HUD - Integrated into Chassis */}
-                                        <div className="absolute top-12 left-12 z-40 flex flex-col gap-3 opacity-60 group-hover/monitor:opacity-100 transition-opacity">
-                                            <div className="px-5 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em] shadow-2xl flex items-center gap-2">
-                                                <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                                                INSIGHT_MONITOR_01
-                                            </div>
-                                            <div className="px-5 py-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-full text-[10px] font-black text-white/40 uppercase tracking-[0.4em] shadow-2xl">
-                                                {selectedItem.filename.toUpperCase()}
+                    /* Standard Mode: Centered Video Hero with Orbital Analysis */
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 items-start relative">
+                        {/* Left Column: Diagnostic Context */}
+                        <div className="flex flex-col gap-6 max-w-[420px]">
+                            {/* Signal Telemetry */}
+                            <div className="bg-[#0b0d14]/40 border border-white/5 rounded-2xl p-5">
+                                <div className="flex items-center gap-2 mb-4 opacity-40">
+                                    <Zap className="w-3.5 h-3.5 text-cyan-400" />
+                                    <h3 className="text-[10px] font-black text-slate-200 uppercase tracking-[0.4em]">Signal_Telemetry</h3>
+                                </div>
+                                <div className="grid grid-cols-2 gap-6">
+                                    {[
+                                        { l: "Motion_Stability", v: `${telemetry?.stability || 92}%`, s: "STABLE" },
+                                        { l: "Light_Variance", v: `${telemetry?.variance || "1.2"}ev`, s: "NOMINAL" },
+                                        { l: "Chromatic_Depth", v: "10-bit", s: "HDR_READY" },
+                                        { l: "Frame_Confidence", v: `${telemetry?.confidence?.toFixed(1) || "98.8"}%`, s: "EXCELLENT" }
+                                    ].map((stat, i) => (
+                                        <div key={i} className="flex flex-col space-y-1">
+                                            <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest leading-none">{stat.l}</span>
+                                            <div className="flex items-baseline gap-2">
+                                                <span className="text-[13px] font-black text-white tracking-tighter">{stat.v}</span>
+                                                <span className="text-[8px] font-bold text-cyan-500/50 uppercase tracking-widest">{stat.s}</span>
                                             </div>
                                         </div>
+                                    ))}
+                                </div>
+                            </div>
 
+                            {/* Synthesis Forensics */}
+                            <div className="bg-[#0b0d14]/40 border border-white/5 rounded-2xl p-5">
+                                <div className="flex items-center gap-2 mb-4 opacity-40">
+                                    {viewMode === 'results' ? <TrendingUp className="w-3.5 h-3.5 text-indigo-400" /> : <Database className="w-3.5 h-3.5 text-indigo-400" />}
+                                    <h3 className="text-[10px] font-black text-slate-200 uppercase tracking-[0.4em]">
+                                        {viewMode === 'results' ? "Synthesis_Forensics" : "Extraction_Confidence"}
+                                    </h3>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex gap-5 overflow-x-auto scrollbar-none pb-1">
+                                        {(viewMode === 'results' ? ["Coh_", "Acc_", "Sync", "Div_"] : ["Face", "Obj_", "Vibe", "Text"]).map((label, idx) => (
+                                            <div key={label} className="flex flex-col items-center shrink-0">
+                                                <div className="relative w-11 h-11">
+                                                    <svg className="w-full h-full -rotate-90">
+                                                        <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
+                                                        <circle cx="22" cy="22" r="20" fill="none" stroke={viewMode === 'results' ? "#06B6D4" : "#818CF8"} strokeWidth="2.5" strokeDasharray={`${(85 + idx * 5) * 1.25} 125`} className="transition-all duration-1000" />
+                                                    </svg>
+                                                    <div className="absolute inset-0 flex items-center justify-center">
+                                                        <span className={cn("text-[10px] font-black", viewMode === 'results' ? "text-cyan-400" : "text-indigo-300")}>{85 + idx * 2}%</span>
+                                                    </div>
+                                                </div>
+                                                <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-2">{label}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="flex flex-col gap-3 border-l border-white/5 pl-6">
+                                        {[
+                                            { l: viewMode === 'results' ? "VIBE" : "CONF", v: viewMode === 'results' ? "75%" : "98.2" },
+                                            { l: "RANK", v: viewMode === 'results' ? "P1" : "S_CLASS" }
+                                        ].map((item, i) => (
+                                            <div key={i}>
+                                                <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest">{item.l}</p>
+                                                <p className={cn("text-[12px] font-black uppercase tracking-widest", viewMode === 'results' ? "text-cyan-400" : "text-indigo-300")}>{item.v}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Center Column: Video Hero */}
+                        <div className="flex flex-col items-center gap-4">
+                            <div className="relative h-[88vh] w-[420px] max-w-[440px]">
+                                <div className="absolute inset-0 rounded-[3rem] bg-black/40 border border-white/5 shadow-2xl overflow-hidden">
+                                    {selectedItem ? (
                                         <video
                                             ref={videoRef}
                                             src={getVideoUrl(selectedItem)}
@@ -460,22 +515,26 @@ export default function VaultPage() {
                                             controls
                                             playsInline
                                             autoPlay={false}
-                                            className="h-full w-auto aspect-[9/16] object-contain relative z-10 transition-all rounded-2xl bg-black shadow-2xl"
+                                            className="h-full w-full object-contain"
                                         />
-                                    </>
-                                ) : (
-                                    <div className="h-full aspect-[9/16] flex flex-col items-center justify-center opacity-10 bg-black/20 rounded-2xl border border-white/5">
-                                        <MonitorPlay className="w-16 h-16 mb-4" />
-                                        <p className="text-[12px] font-black uppercase tracking-[0.6em] text-slate-500">SIGNAL_OFFLINE</p>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Surgical Temporal Map (Instrument Strip) */}
-                            <div className="w-full bg-[#0b0d14]/40 rounded-3xl border border-white/5 p-4 shadow-2xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-4 opacity-10">
-                                    <Activity className="w-12 h-12 text-cyan-500" />
+                                    ) : (
+                                        <div className="w-full h-full flex flex-col items-center justify-center opacity-10 bg-black/20">
+                                            <MonitorPlay className="w-16 h-16 mb-4" />
+                                            <p className="text-[12px] font-black uppercase tracking-[0.6em] text-slate-500">SIGNAL_OFFLINE</p>
+                                        </div>
+                                    )}
                                 </div>
+                            </div>
+                            
+                            {/* Filename Below Video */}
+                            {selectedItem && (
+                                <p className="text-xs text-white/40 font-mono text-center max-w-[420px] truncate">
+                                    {selectedItem.filename}
+                                </p>
+                            )}
+
+                            {/* Temporal Sequence Map */}
+                            <div className="w-[420px] bg-[#0b0d14]/40 rounded-3xl border border-white/5 p-4 shadow-2xl relative overflow-hidden">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2">
                                         <div className="w-1 h-3 bg-cyan-500 rounded-full" />
@@ -485,13 +544,11 @@ export default function VaultPage() {
                                         {currentTime.toFixed(2)}s / {duration.toFixed(2)}s
                                     </span>
                                 </div>
-
-                                <div className="h-8 flex items-end gap-[1px] bg-black/40 rounded-xl p-2 border border-white/5 overflow-hidden group/wave">
+                                <div className="h-8 flex items-end gap-[1px] bg-black/40 rounded-xl p-2 border border-white/5 overflow-hidden">
                                     {waveformData.map((h, i) => {
                                         const progress = (currentTime / duration) * waveformData.length;
                                         const isActive = i <= progress;
                                         const isCurrent = Math.floor(progress) === i;
-
                                         return (
                                             <div
                                                 key={i}
@@ -504,22 +561,17 @@ export default function VaultPage() {
                                         );
                                     })}
                                 </div>
-
                                 <div className="mt-2 flex justify-between font-mono text-[9px] font-bold text-slate-500 uppercase tracking-[0.3em] px-2 italic">
-                                    <div className="flex gap-4">
-                                        <span className="text-white">H_00s</span>
-                                    </div>
-                                    <div className="flex gap-4">
-                                        <span className="text-white">T_{duration.toFixed(2)}s</span>
-                                    </div>
+                                    <span className="text-white">H_00s</span>
+                                    <span className="text-white">T_{duration.toFixed(2)}s</span>
                                 </div>
                             </div>
                         </div>
 
-                        {/* 2. Intelligence Deck (Supporting Evidence & Verdict) */}
-                        <div className="sticky top-5 flex flex-col space-y-6 min-w-0 pb-20">
+                        {/* Right Column: Action & Summary */}
+                        <div className="sticky top-5 flex flex-col gap-6 max-w-[520px] pb-20">
                             {/* Primary Conclusion Box: AI INSIGHTS */}
-                            <div className="bg-[#0b0d14]/60 border border-indigo-500/20 rounded-[3rem] p-10 relative overflow-hidden group shadow-2xl">
+                            <div className="bg-[#0b0d14]/60 border border-indigo-500/20 rounded-[2.5rem] p-6 relative overflow-hidden group shadow-2xl">
                                 <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:opacity-10 transition-opacity">
                                     <Cpu className="w-24 h-24 text-indigo-400" />
                                 </div>
@@ -528,13 +580,13 @@ export default function VaultPage() {
                                     <h3 className="text-[12px] font-black text-slate-200 uppercase tracking-[0.5em]">Forensic_Terminal</h3>
                                 </div>
 
-                                <div className="space-y-6">
-                                    <div className="font-mono bg-black/40 p-6 rounded-2xl border border-white/5 relative">
-                                        <div className="absolute top-4 right-4 flex items-center gap-2">
+                                <div className="space-y-4">
+                                    <div className="font-mono bg-black/40 p-4 rounded-2xl border border-white/5 relative">
+                                        <div className="absolute top-3 right-3 flex items-center gap-2">
                                             <div className="w-1.5 h-1.5 rounded-full bg-lime-500" />
                                             <span className="text-[9px] font-black text-lime-400 uppercase tracking-widest">VERIFIED</span>
                                         </div>
-                                        <p className="text-[16px] text-slate-100 leading-relaxed font-medium">
+                                        <p className="text-[13px] text-slate-100 leading-relaxed font-medium">
                                             {selectedItem ? (
                                                 viewMode === 'results'
                                                     ? `Synthesis complete for ${selectedItem.filename}. Aesthetic cohesion verified at ${telemetry?.score}%. Optimal pacing detected for vertical reel context. No critical frame drops or motion artifacts detected during final render pass. Ready for delivery.`
@@ -545,82 +597,18 @@ export default function VaultPage() {
                                         </p>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div className="bg-indigo-500/5 border border-indigo-500/10 p-5 rounded-2xl flex flex-col justify-between">
-                                            <span className="text-[10px] font-black text-indigo-400/60 uppercase tracking-[0.3em] mb-2">Diagnosis</span>
-                                            <p className="text-[16px] font-black text-white uppercase tracking-wider">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="bg-indigo-500/5 border border-indigo-500/10 p-4 rounded-xl flex flex-col justify-between">
+                                            <span className="text-[9px] font-black text-indigo-400/60 uppercase tracking-[0.3em] mb-1.5">Diagnosis</span>
+                                            <p className="text-[13px] font-black text-white uppercase tracking-wider">
                                                 {viewMode === 'results' ? "PRODUCTION_READY" : "HIGH_FIDELITY_INPUT"}
                                             </p>
                                         </div>
-                                        <div className="bg-cyan-500/5 border border-cyan-500/10 p-5 rounded-2xl flex flex-col justify-between">
-                                            <span className="text-[10px] font-black text-cyan-400/60 uppercase tracking-[0.3em] mb-2">Recommended_Next</span>
-                                            <p className="text-[16px] font-black text-white uppercase tracking-wider italic">
+                                        <div className="bg-cyan-500/5 border border-cyan-500/10 p-4 rounded-xl flex flex-col justify-between">
+                                            <span className="text-[9px] font-black text-cyan-400/60 uppercase tracking-[0.3em] mb-1.5">Recommended_Next</span>
+                                            <p className="text-[13px] font-black text-white uppercase tracking-wider italic">
                                                 {viewMode === 'results' ? "EXECUTE_EXPORT" : "PROCEED_TO_STUDIO"}
                                             </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Secondary Layer: Telemetry (The Analysis Cache) */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="bg-[#0b0d14]/40 border border-white/5 rounded-[2.5rem] p-8">
-                                    <div className="flex items-center gap-3 mb-6 opacity-40">
-                                        <Zap className="w-4 h-4 text-cyan-400" />
-                                        <h3 className="text-[11px] font-black text-slate-200 uppercase tracking-[0.4em]">Signal_Telemetry</h3>
-                                    </div>
-                                    <div className="grid grid-cols-2 gap-8">
-                                        {[
-                                            { l: "Motion_Stability", v: `${telemetry?.stability || 92}%`, s: "STABLE" },
-                                            { l: "Light_Variance", v: `${telemetry?.variance || "1.2"}ev`, s: "NOMINAL" },
-                                            { l: "Chromatic_Depth", v: "10-bit", s: "HDR_READY" },
-                                            { l: "Frame_Confidence", v: `${telemetry?.confidence?.toFixed(1) || "98.8"}%`, s: "EXCELLENT" }
-                                        ].map((stat, i) => (
-                                            <div key={i} className="flex flex-col space-y-1">
-                                                <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest leading-none">{stat.l}</span>
-                                                <div className="flex items-baseline gap-2">
-                                                    <span className="text-[16px] font-black text-white tracking-tighter">{stat.v}</span>
-                                                    <span className="text-[8px] font-bold text-cyan-500/50 uppercase tracking-widest">{stat.s}</span>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="bg-[#0b0d14]/40 border border-white/5 rounded-[2.5rem] p-8">
-                                    <div className="flex items-center gap-3 mb-6 opacity-40">
-                                        {viewMode === 'results' ? <TrendingUp className="w-4 h-4 text-indigo-400" /> : <Database className="w-4 h-4 text-indigo-400" />}
-                                        <h3 className="text-[11px] font-black text-slate-200 uppercase tracking-[0.4em]">
-                                            {viewMode === 'results' ? "Synthesis_Forensics" : "Extraction_Confidence"}
-                                        </h3>
-                                    </div>
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex gap-5 overflow-x-auto scrollbar-none pb-1">
-                                            {(viewMode === 'results' ? ["Coh_", "Acc_", "Sync", "Div_"] : ["Face", "Obj_", "Vibe", "Text"]).map((label, idx) => (
-                                                <div key={label} className="flex flex-col items-center shrink-0">
-                                                    <div className="relative w-11 h-11">
-                                                        <svg className="w-full h-full -rotate-90">
-                                                            <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
-                                                            <circle cx="22" cy="22" r="20" fill="none" stroke={viewMode === 'results' ? "#06B6D4" : "#818CF8"} strokeWidth="2.5" strokeDasharray={`${(85 + idx * 5) * 1.25} 125`} className="transition-all duration-1000" />
-                                                        </svg>
-                                                        <div className="absolute inset-0 flex items-center justify-center">
-                                                            <span className={cn("text-[10px] font-black", viewMode === 'results' ? "text-cyan-400" : "text-indigo-300")}>{85 + idx * 2}%</span>
-                                                        </div>
-                                                    </div>
-                                                    <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest mt-2">{label}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <div className="flex flex-col gap-3 border-l border-white/5 pl-6">
-                                            {[
-                                                { l: viewMode === 'results' ? "VIBE" : "CONF", v: viewMode === 'results' ? "75%" : "98.2" },
-                                                { l: "RANK", v: viewMode === 'results' ? "P1" : "S_CLASS" }
-                                            ].map((item, i) => (
-                                                <div key={i}>
-                                                    <p className="text-[8px] font-black text-slate-600 uppercase tracking-widest">{item.l}</p>
-                                                    <p className={cn("text-[12px] font-black uppercase tracking-widest", viewMode === 'results' ? "text-cyan-400" : "text-indigo-300")}>{item.v}</p>
-                                                </div>
-                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -649,7 +637,7 @@ export default function VaultPage() {
                                                 <span className="text-[9px] font-black text-white/30 uppercase tracking-widest truncate max-w-[120px]">{s.slot.filename}</span>
                                                 <button onClick={() => s.set(null)} className="p-1 text-slate-600 hover:text-white transition-colors bg-white/5 rounded-full"><X className="w-3.5 h-3.5" /></button>
                                             </div>
-                                            <video ref={s.ref} src={getVideoUrl(s.slot as AssetItem)} controls className="h-full w-auto mx-auto aspect-[9/16] object-contain rounded-xl" />
+                                            <video ref={s.ref} src={getVideoUrl(s.slot as AssetItem)} controls className="w-full h-full object-contain rounded-xl" />
                                         </>
                                     ) : (
                                         <div className="flex-1 flex flex-col items-center justify-center space-y-4 text-slate-800 group cursor-pointer" onClick={() => setTargetSlot(s.id as any)}>
