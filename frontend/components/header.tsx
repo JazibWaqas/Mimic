@@ -54,13 +54,29 @@ export function Header() {
                 </nav>
 
                 {/* Account Section - Premium Indigo */}
-                <div className="flex items-center gap-4 py-2 px-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group shadow-2xl">
-                    <div className="flex flex-col items-end">
-                        <span className="text-[11px] font-black text-white uppercase tracking-tight">Jazib Waqas</span>
-                        <span className="text-[9px] font-bold text-indigo-400 uppercase tracking-widest leading-none mt-1">Pro Account</span>
+                <div className="flex items-center gap-6">
+                    {/* Status Info (Studio Only or Global) */}
+                    <div className="hidden xl:flex items-center gap-6 border-r border-white/5 pr-6">
+                        <div className="flex flex-col items-end gap-1">
+                            <div className="flex items-center gap-1.5">
+                                <span className="text-[10px] font-black text-white uppercase tracking-tighter">System: <span className="text-[#ccff00]">Operational</span></span>
+                                <div className="h-1.5 w-1.5 rounded-full bg-[#ccff00] shadow-[0_0_10px_#ccff00] pulse-glow" />
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                                <span className="text-[10px] font-black text-white uppercase tracking-tighter">Gemini 3: <span className="text-cyan-400">Active</span></span>
+                                <div className="h-1.5 w-1.5 rounded-full bg-cyan-400 glow-cyan pulse-glow" />
+                            </div>
+                        </div>
                     </div>
-                    <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                        <UserCircle className="h-6 w-6 text-indigo-400 group-hover:text-white" />
+
+                    <div className="flex items-center gap-4 py-2 px-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group shadow-2xl">
+                        <div className="flex flex-col items-end">
+                            <span className="text-[11px] font-black text-white uppercase tracking-tight">Jazib Waqas</span>
+                            <span className="text-[9px] font-bold text-indigo-400 uppercase tracking-widest leading-none mt-1">Pro Account</span>
+                        </div>
+                        <div className="h-10 w-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                            <UserCircle className="h-6 w-6 text-indigo-400 group-hover:text-white" />
+                        </div>
                     </div>
                 </div>
             </div>

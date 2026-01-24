@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/header";
+import { SystemStatusBar } from "@/components/SystemStatusBar";
 
 const inter = Inter({
   variable: "--font-inter",
