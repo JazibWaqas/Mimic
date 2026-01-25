@@ -1,0 +1,196 @@
+{
+  "decisions": [
+    {
+      "segment_id": 1,
+      "clip": "clip28.mp4",
+      "reasoning": "Matches Nature vibe and Medium energy with dynamic POV motion for the intro."
+    },
+    {
+      "segment_id": 2,
+      "clip": "clip47.mp4",
+      "reasoning": "Travel vibe with dynamic motion through a tunnel fits the intro sequence."
+    },
+    {
+      "segment_id": 3,
+      "clip": "clip24.mp4",
+      "reasoning": "High energy Friends vibe matches the segment's requirement for a dynamic intro peak."
+    },
+    {
+      "segment_id": 4,
+      "clip": "clip32.mp4",
+      "reasoning": "Travel vibe with dynamic motion from a moving vehicle builds momentum."
+    },
+    {
+      "segment_id": 5,
+      "clip": "clip33.mp4",
+      "reasoning": "Nature vibe with dynamic low-angle forest motion continues the build-up."
+    },
+    {
+      "segment_id": 6,
+      "clip": "clip29.mp4",
+      "reasoning": "Static motion and Travel vibe (airplane window) provides a brief pause in the build-up."
+    },
+    {
+      "segment_id": 7,
+      "clip": "clip30.mp4",
+      "reasoning": "Nature vibe with a dynamic pan across a landscape fits the build-up arc."
+    },
+    {
+      "segment_id": 8,
+      "clip": "clip56.mp4",
+      "reasoning": "Travel vibe with dynamic beach activity maintains the build-up energy."
+    },
+    {
+      "segment_id": 9,
+      "clip": "clip42.mp4",
+      "reasoning": "Dynamic night drive Travel vibe leads perfectly into the peak section."
+    },
+    {
+      "segment_id": 10,
+      "clip": "clip50.mp4",
+      "reasoning": "High energy Friends vibe in a car matches the start of the Peak arc."
+    },
+    {
+      "segment_id": 11,
+      "clip": "clip35.mp4",
+      "reasoning": "Static Nature vibe (coastline) provides a cinematic contrast during the peak."
+    },
+    {
+      "segment_id": 12,
+      "clip": "clip45.mp4",
+      "reasoning": "Dynamic Nature pan across mountains maintains the high-scale peak feel."
+    },
+    {
+      "segment_id": 13,
+      "clip": "clip19.mp4",
+      "reasoning": "High energy Friends action (sunroof) fits the peak intensity."
+    },
+    {
+      "segment_id": 14,
+      "clip": "clip26.mp4",
+      "reasoning": "High energy Friends dancing at the Eiffel Tower replica is a classic peak moment."
+    },
+    {
+      "segment_id": 15,
+      "clip": "clip12.mp4",
+      "reasoning": "Action vibe (archery) with dynamic motion fits the peak variety."
+    },
+    {
+      "segment_id": 16,
+      "clip": "clip14.mp4",
+      "reasoning": "Travel vibe with dynamic boat movement keeps the energy high."
+    },
+    {
+      "segment_id": 17,
+      "clip": "clip37.mp4",
+      "reasoning": "High energy Friends celebration is a strong peak emotional beat."
+    },
+    {
+      "segment_id": 18,
+      "clip": "clip51.mp4",
+      "reasoning": "Travel vibe with a camel on a beach provides a unique dynamic visual for the peak."
+    },
+    {
+      "segment_id": 19,
+      "clip": "clip13.mp4",
+      "reasoning": "Nature vibe with friends walking in snow adds environmental diversity to the peak."
+    },
+    {
+      "segment_id": 20,
+      "clip": "clip52.mp4",
+      "reasoning": "Static Travel vibe (sunset road) provides a visual breather during the peak."
+    },
+    {
+      "segment_id": 21,
+      "clip": "clip10.mp4",
+      "reasoning": "Nature/Friends vibe with a dance on a forest path fits the dynamic peak arc."
+    },
+    {
+      "segment_id": 22,
+      "clip": "clip41.mp4",
+      "reasoning": "Travel vibe with dynamic rain drive adds mood to the peak sequence."
+    },
+    {
+      "segment_id": 23,
+      "clip": "clip44.mp4",
+      "reasoning": "Travel/Friends vibe with walking and gesturing fits the medium energy peak."
+    },
+    {
+      "segment_id": 24,
+      "clip": "clip16.mp4",
+      "reasoning": "High energy Friends singing in a car is a high-impact peak moment."
+    },
+    {
+      "segment_id": 25,
+      "clip": "clip31.mp4",
+      "reasoning": "Static Nature vibe (sunset beach) provides a beautiful cinematic beat."
+    },
+    {
+      "segment_id": 26,
+      "clip": "clip8.mp4",
+      "reasoning": "Nature vibe with dynamic pointing at mountains fits the peak's scale."
+    },
+    {
+      "segment_id": 27,
+      "clip": "clip22.mp4",
+      "reasoning": "High energy Friends singing/dancing in a car drives the final peak moments."
+    },
+    {
+      "segment_id": 28,
+      "clip": "clip6.mp4",
+      "reasoning": "High energy Friends celebration/dancing serves as the final peak climax."
+    },
+    {
+      "segment_id": 29,
+      "clip": "clip9.mp4",
+      "reasoning": "Action vibe (jet ski) provides a high-motion transition into the outro."
+    },
+    {
+      "segment_id": 30,
+      "clip": "clip27.mp4",
+      "reasoning": "Travel/Nature vibe (horseback riding) provides a scenic and dynamic conclusion."
+    }
+  ],
+  "analysis": {
+    "total_decisions": 30,
+    "unique_clips_used": 30,
+    "vibe_match_percent": 100.0,
+    "energy_match_percent": 76.66666666666667,
+    "energy_compatible_percent": 100.0,
+    "clip_usage": {
+      "clip28.mp4": 1,
+      "clip47.mp4": 1,
+      "clip24.mp4": 1,
+      "clip32.mp4": 1,
+      "clip33.mp4": 1,
+      "clip29.mp4": 1,
+      "clip30.mp4": 1,
+      "clip56.mp4": 1,
+      "clip42.mp4": 1,
+      "clip50.mp4": 1,
+      "clip35.mp4": 1,
+      "clip45.mp4": 1,
+      "clip19.mp4": 1,
+      "clip26.mp4": 1,
+      "clip12.mp4": 1,
+      "clip14.mp4": 1,
+      "clip37.mp4": 1,
+      "clip51.mp4": 1,
+      "clip13.mp4": 1,
+      "clip52.mp4": 1,
+      "clip10.mp4": 1,
+      "clip41.mp4": 1,
+      "clip44.mp4": 1,
+      "clip16.mp4": 1,
+      "clip31.mp4": 1,
+      "clip8.mp4": 1,
+      "clip22.mp4": 1,
+      "clip6.mp4": 1,
+      "clip9.mp4": 1,
+      "clip27.mp4": 1
+    },
+    "max_clip_reuse": 1
+  },
+  "raw_response": "[\n  {\"segment_id\": 1, \"clip\": \"clip28.mp4\", \"reasoning\": \"Matches Nature vibe and Medium energy with dynamic POV motion for the intro.\"},\n  {\"segment_id\": 2, \"clip\": \"clip47.mp4\", \"reasoning\": \"Travel vibe with dynamic motion through a tunnel fits the intro sequence.\"},\n  {\"segment_id\": 3, \"clip\": \"clip24.mp4\", \"reasoning\": \"High energy Friends vibe matches the segment's requirement for a dynamic intro peak.\"},\n  {\"segment_id\": 4, \"clip\": \"clip32.mp4\", \"reasoning\": \"Travel vibe with dynamic motion from a moving vehicle builds momentum.\"},\n  {\"segment_id\": 5, \"clip\": \"clip33.mp4\", \"reasoning\": \"Nature vibe with dynamic low-angle forest motion continues the build-up.\"},\n  {\"segment_id\": 6, \"clip\": \"clip29.mp4\", \"reasoning\": \"Static motion and Travel vibe (airplane window) provides a brief pause in the build-up.\"},\n  {\"segment_id\": 7, \"clip\": \"clip30.mp4\", \"reasoning\": \"Nature vibe with a dynamic pan across a landscape fits the build-up arc.\"},\n  {\"segment_id\": 8, \"clip\": \"clip56.mp4\", \"reasoning\": \"Travel vibe with dynamic beach activity maintains the build-up energy.\"},\n  {\"segment_id\": 9, \"clip\": \"clip42.mp4\", \"reasoning\": \"Dynamic night drive Travel vibe leads perfectly into the peak section.\"},\n  {\"segment_id\": 10, \"clip\": \"clip50.mp4\", \"reasoning\": \"High energy Friends vibe in a car matches the start of the Peak arc.\"},\n  {\"segment_id\": 11, \"clip\": \"clip35.mp4\", \"reasoning\": \"Static Nature vibe (coastline) provides a cinematic contrast during the peak.\"},\n  {\"segment_id\": 12, \"clip\": \"clip45.mp4\", \"reasoning\": \"Dynamic Nature pan across mountains maintains the high-scale peak feel.\"},\n  {\"segment_id\": 13, \"clip\": \"clip19.mp4\", \"reasoning\": \"High energy Friends action (sunroof) fits the peak intensity.\"},\n  {\"segment_id\": 14, \"clip\": \"clip26.mp4\", \"reasoning\": \"High energy Friends dancing at the Eiffel Tower replica is a classic peak moment.\"},\n  {\"segment_id\": 15, \"clip\": \"clip12.mp4\", \"reasoning\": \"Action vibe (archery) with dynamic motion fits the peak variety.\"},\n  {\"segment_id\": 16, \"clip\": \"clip14.mp4\", \"reasoning\": \"Travel vibe with dynamic boat movement keeps the energy high.\"},\n  {\"segment_id\": 17, \"clip\": \"clip37.mp4\", \"reasoning\": \"High energy Friends celebration is a strong peak emotional beat.\"},\n  {\"segment_id\": 18, \"clip\": \"clip51.mp4\", \"reasoning\": \"Travel vibe with a camel on a beach provides a unique dynamic visual for the peak.\"},\n  {\"segment_id\": 19, \"clip\": \"clip13.mp4\", \"reasoning\": \"Nature vibe with friends walking in snow adds environmental diversity to the peak.\"},\n  {\"segment_id\": 20, \"clip\": \"clip52.mp4\", \"reasoning\": \"Static Travel vibe (sunset road) provides a visual breather during the peak.\"},\n  {\"segment_id\": 21, \"clip\": \"clip10.mp4\", \"reasoning\": \"Nature/Friends vibe with a dance on a forest path fits the dynamic peak arc.\"},\n  {\"segment_id\": 22, \"clip\": \"clip41.mp4\", \"reasoning\": \"Travel vibe with dynamic rain drive adds mood to the peak sequence.\"},\n  {\"segment_id\": 23, \"clip\": \"clip44.mp4\", \"reasoning\": \"Travel/Friends vibe with walking and gesturing fits the medium energy peak.\"},\n  {\"segment_id\": 24, \"clip\": \"clip16.mp4\", \"reasoning\": \"High energy Friends singing in a car is a high-impact peak moment.\"},\n  {\"segment_id\": 25, \"clip\": \"clip31.mp4\", \"reasoning\": \"Static Nature vibe (sunset beach) provides a beautiful cinematic beat.\"},\n  {\"segment_id\": 26, \"clip\": \"clip8.mp4\", \"reasoning\": \"Nature vibe with dynamic pointing at mountains fits the peak's scale.\"},\n  {\"segment_id\": 27, \"clip\": \"clip22.mp4\", \"reasoning\": \"High energy Friends singing/dancing in a car drives the final peak moments.\"},\n  {\"segment_id\": 28, \"clip\": \"clip6.mp4\", \"reasoning\": \"High energy Friends celebration/dancing serves as the final peak climax.\"},\n  {\"segment_id\": 29, \"clip\": \"clip9.mp4\", \"reasoning\": \"Action vibe (jet ski) provides a high-motion transition into the outro.\"},\n  {\"segment_id\": 30, \"clip\": \"clip27.mp4\", \"reasoning\": \"Travel/Nature vibe (horseback riding) provides a scenic and dynamic conclusion.\"}\n]",
+  "prompt": "You are a professional video editor. Design the complete edit.\n\nREFERENCE VIDEO STRUCTURE:\nTotal Duration: 14.23 seconds\nEditing Style: Cinematic Montage\nEmotional Intent: Dynamic\n\nSEGMENTS (30 total):\nSegment 1: 0.00s-0.53s (0.53s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Intro\nSegment 2: 0.53s-0.93s (0.40s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Intro\nSegment 3: 0.93s-1.40s (0.47s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Intro\nSegment 4: 1.40s-1.87s (0.47s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Build-up\nSegment 5: 1.87s-2.27s (0.40s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Build-up\nSegment 6: 2.27s-2.77s (0.50s) | Energy: Medium | Motion: Static | Vibe: Travel | Arc: Build-up\nSegment 7: 2.77s-3.27s (0.50s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Build-up\nSegment 8: 3.27s-3.67s (0.40s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Build-up\nSegment 9: 3.67s-4.07s (0.40s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Build-up\nSegment 10: 4.07s-4.57s (0.50s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 11: 4.57s-4.97s (0.40s) | Energy: Medium | Motion: Static | Vibe: Nature | Arc: Peak\nSegment 12: 4.97s-5.40s (0.43s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Peak\nSegment 13: 5.40s-5.77s (0.37s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 14: 5.77s-6.10s (0.33s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 15: 6.10s-6.63s (0.53s) | Energy: Medium | Motion: Dynamic | Vibe: Action | Arc: Peak\nSegment 16: 6.63s-7.13s (0.50s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Peak\nSegment 17: 7.13s-7.53s (0.40s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 18: 7.53s-7.93s (0.40s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Peak\nSegment 19: 7.93s-8.47s (0.54s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Peak\nSegment 20: 8.47s-8.90s (0.43s) | Energy: Medium | Motion: Static | Vibe: Travel | Arc: Peak\nSegment 21: 8.90s-9.83s (0.93s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Peak\nSegment 22: 9.83s-10.27s (0.44s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Peak\nSegment 23: 10.27s-10.73s (0.46s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Peak\nSegment 24: 10.73s-11.37s (0.64s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 25: 11.37s-11.83s (0.46s) | Energy: Medium | Motion: Static | Vibe: Nature | Arc: Peak\nSegment 26: 11.83s-12.27s (0.44s) | Energy: Medium | Motion: Dynamic | Vibe: Nature | Arc: Peak\nSegment 27: 12.27s-12.73s (0.46s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 28: 12.73s-13.20s (0.47s) | Energy: High | Motion: Dynamic | Vibe: Friends | Arc: Peak\nSegment 29: 13.20s-13.67s (0.47s) | Energy: Medium | Motion: Dynamic | Vibe: Action | Arc: Outro\nSegment 30: 13.67s-14.23s (0.56s) | Energy: Medium | Motion: Dynamic | Vibe: Travel | Arc: Outro\n\nAVAILABLE CLIPS (55 total):\nclip28.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Travel, Hiking], Content=\"A first-person perspective of walking along a rocky, uneven trail through a pine forest.\"\nclip39.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Night, Friends, Park], Content=\"Three friends walk away from the camera along a park path at night under a bright streetlamp.\"\nclip54.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Urban, Walking, Casual], Content=\"Two people walking away from the camera along a tiled corridor towards an outdoor area.\"\nclip47.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Travel, Adventure, Mystery], Content=\"A person wearing a backpack walks through a long, arched stone tunnel lit by wall lamps.\"\nclip24.mp4: Energy=High, Motion=Dynamic, Vibes=[Nightlife, Friends, Urban, Action], Content=\"A group of friends driving through a city at night, with one passenger screaming excitedly while fil\"\nclip50.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Travel, Fun], Content=\"A group of friends are having a lively and humorous conversation while driving in a car with a sunro\"\nclip55.mp4: Energy=High, Motion=Dynamic, Vibes=[Nature, Beach, Action], Content=\"A wave crashes onto a beach, eventually splashing over the camera lens.\"\nclip32.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Travel, Nature, Sunset, Aesthetic], Content=\"A handheld video taken from a moving vehicle capturing a vibrant sunset through the window and passi\"\nclip56.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Travel, Beach, Animals], Content=\"A group of people and camels are gathered on a crowded beach under an overcast sky.\"\nclip19.mp4: Energy=High, Motion=Dynamic, Vibes=[Night, Friends, Action, Urban], Content=\"Two young men enjoy a high-speed night drive while hanging out of a car's sunroof and windows, cheer\"\nclip26.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Nightlife, Fun], Content=\"A group of friends energetically dancing and posing in front of a brightly lit Eiffel Tower replica \"\nclip29.mp4: Energy=Low, Motion=Static, Vibes=[Travel, Calm, Aerial], Content=\"A view from an airplane window showing the wing and clouds during flight.\"\nclip53.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Outdoors, Fun], Content=\"A group of friends hangs out outdoors, laughing and posing for the camera.\"\nclip1.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Friends, Fun, Outdoors], Content=\"A man stands still on a grassy hill while several people run and play in the background under a blue\"\nclip30.mp4: Energy=Low, Motion=Dynamic, Vibes=[Nature, Calm, Travel], Content=\"A slow pan across a scenic mountain landscape revealing a dirt hiking trail through a pine forest.\"\nclip37.mp4: Energy=High, Motion=Dynamic, Vibes=[Celebration, Friends, Dance, Joyful], Content=\"A group of young men celebrating enthusiastically with music and dance, lifting one friend in the ai\"\nclip16.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Nightlife, Music], Content=\"A group of friends is energetically singing and dancing along to music inside a car at night.\"\nclip33.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Forest, Travel], Content=\"A low-angle shot looking up at tall pine trees against a cloudy sky while moving through a forest.\"\nclip11.mp4: Energy=High, Motion=Dynamic, Vibes=[Action, Travel, Thrill], Content=\"A POV video from a swinging amusement park ride, showing the rapid movement and the surrounding moun\"\nclip5.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Music, Fun], Content=\"A group of young men enthusiastically singing along to music inside a car.\"\nclip15.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Funny, Travel, Lifestyle], Content=\"Two friends are laughing hysterically in a hotel room, with one lying on the bed and the other sitti\"\nclip22.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Fun, Music, Travel], Content=\"A group of friends singing and dancing enthusiastically inside a car while traveling.\"\nclip41.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Night, Urban, Rain, Travel], Content=\"A night drive inside a car during rain, featuring a view of the dashboard and the wet road ahead.\"\nclip20.mp4: Energy=Low, Motion=Static, Vibes=[Food, Friends, Calm], Content=\"A person pours a hot beverage from a paper pouch into a small cup held by a friend at a green wooden\"\nclip52.mp4: Energy=Low, Motion=Static, Vibes=[Urban, Calm, Travel, Sunset], Content=\"A vertical shot of a road with curved streetlights against a colorful sunset sky.\"\nclip45.mp4: Energy=Low, Motion=Dynamic, Vibes=[Nature, Travel, Calm], Content=\"A slow, sweeping pan across a vast mountain range and valley under a clear blue sky.\"\nclip6.mp4: Energy=High, Motion=Dynamic, Vibes=[Celebration, Friends, Party, Wedding], Content=\"A group of young men are dancing and celebrating at a festive event with upbeat music and vibrant li\"\nclip43.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Travel, Music, Fun], Content=\"Two friends are driving in a car while one sings along enthusiastically to music and records on his \"\nclip3.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Casual, Indoor], Content=\"Two young men lie on a wooden floor talking while a third person leans over them briefly.\"\nclip10.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Friends, Dance, Travel], Content=\"Two friends walk down a rocky forest path, with one breaking into a dance as they approach the camer\"\nclip38.mp4: Energy=High, Motion=Dynamic, Vibes=[Celebration, Friends, Culture, Energy], Content=\"A group of young men celebrate by carrying a friend on their shoulders and dancing to the beat of tr\"\nclip12.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Outdoor, Action, Fun], Content=\"A man aims and shoots an arrow at a target of balloons in an outdoor mountainous setting.\"\nclip36.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Action, Fun], Content=\"A group of friends jumping on a trampoline while one person in the center tries to stand up amidst t\"\nclip48.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Travel, Friends, Calm], Content=\"Two men are posing for photos and videos in a scenic, snowy forest area with a rustic building in th\"\nclip7.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Urban, Casual], Content=\"A group of young men walking together towards the entrance of a modern building.\"\nclip49.mp4: Energy=Low, Motion=Static, Vibes=[Night, Urban, Calm], Content=\"A nighttime view of a roadside area with streetlights and distant traffic lights.\"\nclip21.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Action, Nightlife, Fun], Content=\"A group of friends engages in a lively water gun fight at night in a park under bright artificial li\"\nclip27.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Travel, Adventure, Animals], Content=\"A first-person perspective of a horse ride through a wooded, hilly trail, following another rider an\"\nclip8.mp4: Energy=Low, Motion=Dynamic, Vibes=[Nature, Travel, Calm], Content=\"A person points at a distant mountain range while standing on a grassy hill under a bright blue sky.\"\nclip18.mp4: Energy=High, Motion=Dynamic, Vibes=[Urban, Night, Friends, Action], Content=\"A man runs alongside a moving car while another man stands out of the sunroof on a brightly lit brid\"\nclip14.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Travel, Friends, Nature], Content=\"A group of friends enjoys a fast boat ride on a scenic lake surrounded by hills.\"\nclip17.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Nightlife, Party], Content=\"A group of young men in black attire pose and cheer enthusiastically in front of a blue-lit structur\"\nclip34.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Aviation, Sunset, Travel], Content=\"A plane flies across a sunset sky while a person in the foreground throws an object.\"\nclip23.mp4: Energy=High, Motion=Dynamic, Vibes=[Friends, Action, Fun], Content=\"A group of friends are playing and wrestling in an indoor paintball or laser tag arena.\"\nclip35.mp4: Energy=Low, Motion=Static, Vibes=[Nature, Calm, Travel], Content=\"A slow pan across a rocky coastline overlooking a calm sea under an overcast sky.\"\nclip2.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Action, Fun], Content=\"Two people enjoy driving bumper cars in an indoor amusement area.\"\nclip.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Funny, Indoor], Content=\"Two friends share a playful and humorous moment in a room, ending in laughter and movement.\"\nclip51.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Travel, Nature, Beach], Content=\"A decorated camel walks along a sunny beach with people swimming in the background.\"\nclip40.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Night, Fun, Candid], Content=\"A group of friends are sitting on a balcony at night, laughing and playing cards.\"\nclip44.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Friends, Travel, Casual], Content=\"Three friends walk down a paved path next to a tall wall, talking and gesturing.\"\nclip9.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Action, Water Sports, Outdoors], Content=\"Two men riding a jet ski on a river, with one man moving from the back to the front while the driver\"\nclip42.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Night Drive, Travel, Urban, Chill], Content=\"A first-person perspective of a car driving along a well-lit highway at night, passing palm trees an\"\nclip31.mp4: Energy=Low, Motion=Static, Vibes=[Travel, Nature, Calm, Sunset], Content=\"People and horses stroll along a beach at sunset, with the sun's reflection shimmering on the wet sa\"\nclip13.mp4: Energy=Medium, Motion=Dynamic, Vibes=[Nature, Travel, Winter, Friends], Content=\"A group of friends walks along a snowy path through a dense evergreen forest.\"\nclip25.mp4: Energy=Medium, Motion=Static, Vibes=[Food, Friends, Casual], Content=\"A group of friends sharing french fries and laughing while sitting at a wooden table.\"\n\nYOUR TASK:\nFor each segment, choose the best clip. Maximize vibe matching and diversity.\n\nCONSTRAINTS:\n- Use each clip maximum once (aim for diversity)\n- Respect energy compatibility (High segment \u2192 High/Medium clip, Medium \u2192 Medium/High/Low, Low \u2192 Low/Medium)\n- Maximize vibe match between segment vibe and clip vibes\n- Provide brief reasoning for each choice\n\nOUTPUT FORMAT (JSON array only):\n[\n  {\"segment_id\": 1, \"clip\": \"clip28.mp4\", \"reasoning\": \"Matches Nature vibe and Medium energy\"},\n  {\"segment_id\": 2, \"clip\": \"clip12.mp4\", \"reasoning\": \"Travel vibe aligns with segment\"},\n  ...\n]\n\nRespond ONLY with valid JSON array."
+}
