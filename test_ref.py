@@ -200,6 +200,63 @@ if result.success:
             print(f"   Best Moments: {clips_with_moments}/{len(result.clip_index.clips)}")
             print(f"   Vibes: {clips_with_vibes}/{len(result.clip_index.clips)}")
         
+        # 15. ENHANCED LOGGING OUTPUT
+        if result.edl and hasattr(result.edl, '_enhanced_logging'):
+            enhanced = result.edl._enhanced_logging
+            import json
+            
+            print(f"\n{'='*80}")
+            print("🔍 ENHANCED LOGGING DATA")
+            print(f"{'='*80}")
+            
+            # A. Candidate Rankings (sample 5-10 segments)
+            print(f"\nA. PER-SEGMENT CANDIDATE RANKINGS (Top 3):")
+            sample_segments = enhanced['candidate_rankings'][:10]
+            for seg_data in sample_segments:
+                print(f"\n   Segment {seg_data['segment_id']}:")
+                for cand in seg_data['candidates']:
+                    winner_marker = " ✅ WINNER" if cand['won'] else ""
+                    print(f"     Rank {cand['rank']}: {cand['clip']} | Score: {cand['score']:.1f} | {cand['reasoning']}{winner_marker}")
+                    if not cand['won']:
+                        print(f"       Why lost: Score {cand['score']:.1f} vs winner {seg_data['candidates'][0]['score']:.1f} (diff: {seg_data['candidates'][0]['score'] - cand['score']:.1f})")
+            
+            # B. Eligibility Breakdowns
+            print(f"\nB. ELIGIBILITY BREAKDOWNS (Sample segments):")
+            for breakdown in enhanced['eligibility_breakdowns'][:5]:
+                print(f"   Segment {breakdown['segment_id']} ({breakdown['segment_energy']} energy):")
+                print(f"     Eligible: {breakdown['eligible_count']}/{breakdown['total_clips']}")
+                print(f"     Filtered out: {breakdown['ineligible_count']} clips (energy mismatch)")
+            
+            # C. Semantic Neighbor Events
+            print(f"\nC. SEMANTIC NEIGHBOR EVENTS:")
+            print(f"   Total: {len(enhanced['semantic_neighbor_events'])} segments used semantic neighbors")
+            if enhanced['semantic_neighbor_events']:
+                neighbor_counts = {}
+                for event in enhanced['semantic_neighbor_events']:
+                    cat = event.get('matched_category', 'unknown')
+                    neighbor_counts[cat] = neighbor_counts.get(cat, 0) + 1
+                for cat, count in sorted(neighbor_counts.items(), key=lambda x: -x[1]):
+                    print(f"     '{cat}': {count} times")
+                print(f"\n   Sample events:")
+                for event in enhanced['semantic_neighbor_events'][:5]:
+                    print(f"     Segment {event['segment_id']}: '{event['segment_vibe']}' → matched '{event['matched_category']}' via {event['clip']}")
+            
+            # D. Unused Clips
+            print(f"\nD. UNUSED CLIPS:")
+            unused_data = enhanced['unused_clips']
+            print(f"   Never eligible: {len(unused_data['never_eligible'])} clips")
+            if unused_data['never_eligible']:
+                print(f"     {', '.join(unused_data['never_eligible'][:10])}")
+            print(f"   Eligible but never selected: {len(unused_data['eligible_but_not_selected'])} clips")
+            if unused_data['eligible_but_not_selected']:
+                print(f"     {', '.join(unused_data['eligible_but_not_selected'][:10])}")
+            
+            # Save enhanced data to JSON
+            enhanced_file = RESULTS_DIR / f"{REFERENCE.stem}_enhanced_logging.json"
+            with open(enhanced_file, 'w') as f:
+                json.dump(enhanced, f, indent=2)
+            print(f"\n   [OK] Full enhanced logging saved to: {enhanced_file}")
+        
         # 11. Temporal Drift Check (Float Precision Verification)
         gaps = []
         overlaps = []

@@ -11,6 +11,7 @@ FIXES APPLIED:
 
 from typing import List, Dict
 from collections import defaultdict
+from pathlib import Path
 from models import (
     StyleBlueprint,
     ClipIndex,
@@ -125,6 +126,12 @@ def match_clips_to_blueprint(
     # === COMPROMISE TRACKER ===
     compromises = []  # Track every time we use adjacent energy
     
+    # === ENHANCED LOGGING (for explainability) ===
+    candidate_rankings = []  # Top 3 candidates per segment
+    eligibility_breakdowns = []  # Eligibility stats per segment
+    semantic_neighbor_events = []  # When semantic neighbors were used
+    beat_alignment_logs = []  # Beat snap decisions
+    
     # === ENERGY ELIGIBILITY HELPER ===
     def get_eligible_clips(segment_energy: EnergyLevel, all_clips: List[ClipMetadata]) -> List[ClipMetadata]:
         """
@@ -176,6 +183,17 @@ def match_clips_to_blueprint(
             # === TIERED ELIGIBILITY SELECTION ===
             # Step 1: Get energy-compatible clips (Soft constraints)
             eligible_clips = get_eligible_clips(segment.energy, clip_index.clips)
+            
+            # ENHANCED LOGGING: Eligibility breakdown
+            if cuts_in_segment == 0:  # Only log once per segment
+                ineligible_count = len(clip_index.clips) - len(eligible_clips)
+                eligibility_breakdowns.append({
+                    "segment_id": segment.id,
+                    "eligible_count": len(eligible_clips),
+                    "ineligible_count": ineligible_count,
+                    "total_clips": len(clip_index.clips),
+                    "segment_energy": segment.energy.value
+                })
             
             # Step 2: Variety maintenance (Avoid back-to-back repeats)
             recently_used = [last_used_clip, second_last_clip] if second_last_clip else [last_used_clip]
@@ -284,6 +302,24 @@ def match_clips_to_blueprint(
 
             selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
             
+            # ENHANCED LOGGING: Candidate rankings (top 3)
+            if cuts_in_segment == 0:  # Only log once per segment
+                top_3 = scored_clips[:3]
+                candidates = []
+                for idx, (c, score, reason, vm) in enumerate(top_3):
+                    candidates.append({
+                        "rank": idx + 1,
+                        "clip": c.filename,
+                        "score": score,
+                        "reasoning": reason,
+                        "vibe_match": vm,
+                        "won": (idx == 0)
+                    })
+                candidate_rankings.append({
+                    "segment_id": segment.id,
+                    "candidates": candidates
+                })
+            
             # Track compromise if we used adjacent energy
             if selected_clip.energy != segment.energy:
                 compromises.append({
@@ -342,12 +378,25 @@ def match_clips_to_blueprint(
                     is_last_cut_of_segment = False
 
             # PHASE 2: Beat Alignment (Snapping)
+            original_duration = use_duration
+            beat_aligned = False
+            beat_target = None
             if beat_grid and not is_last_cut_of_segment:
                 target_end = timeline_position + use_duration
                 aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.15)
                 
                 if aligned_end > timeline_position + 0.1 and aligned_end < segment.end - 0.1:
+                    beat_target = aligned_end
                     use_duration = aligned_end - timeline_position
+                    beat_aligned = True
+                    # ENHANCED LOGGING: Beat alignment
+                    beat_alignment_logs.append({
+                        "segment_id": segment.id,
+                        "original_duration": original_duration,
+                        "aligned_duration": use_duration,
+                        "beat_target": beat_target,
+                        "timeline_position": timeline_position
+                    })
                         
             # PHASE 3: Clip Source Selection (start/end in the raw file)
             clip_start = None
@@ -517,7 +566,41 @@ def match_clips_to_blueprint(
                 print(f"   → {low_compromise} segments wanted 'Low' energy but used 'Medium'.")
                 print(f"     Add more 'Nature' or 'Calm' clips to reduce jitter here.")
     
+    # ENHANCED LOGGING: Unused clips
+    used_clip_names = set(Path(d.clip_path).name for d in decisions)
+    all_clip_names = set(c.filename for c in clip_index.clips)
+    unused_clips = list(all_clip_names - used_clip_names)
+    
+    # Find clips that were never eligible (energy mismatch)
+    never_eligible = []
+    for clip in clip_index.clips:
+        if clip.filename in unused_clips:
+            # Check if it would be eligible for ANY segment
+            was_eligible_anywhere = False
+            for seg in blueprint.segments:
+                eligible = get_eligible_clips(seg.energy, [clip])
+                if eligible:
+                    was_eligible_anywhere = True
+                    break
+            if not was_eligible_anywhere:
+                never_eligible.append(clip.filename)
+    
+    unused_data = {
+        "unused_clips": unused_clips,
+        "never_eligible": never_eligible,
+        "eligible_but_not_selected": [c for c in unused_clips if c not in never_eligible]
+    }
+    
     print(f"{'='*60}\n")
+    
+    # Attach enhanced logging to EDL (hack: store in a custom attribute)
+    edl._enhanced_logging = {
+        "candidate_rankings": candidate_rankings,
+        "eligibility_breakdowns": eligibility_breakdowns,
+        "semantic_neighbor_events": semantic_neighbor_events,
+        "beat_alignment_logs": beat_alignment_logs,
+        "unused_clips": unused_data
+    }
     
     return edl
 
