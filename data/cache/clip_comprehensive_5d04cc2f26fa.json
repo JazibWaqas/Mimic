@@ -3,7 +3,8 @@
   "motion": "Gentle",
   "intensity": 1,
   "primary_subject": [
-    "Place-Nature"
+    "Place-Nature",
+    "Object-Animal"
   ],
   "narrative_utility": [
     "Establishing",
@@ -11,42 +12,43 @@
   ],
   "emotional_tone": [
     "Peaceful",
-    "Adventurous"
+    "Nostalgic"
   ],
   "clip_quality": 3,
   "best_for": [
     "Opening establishing shots",
+    "Calm reflective moments",
     "Nature montages"
   ],
   "avoid_for": [
     "High-energy peaks",
-    "Fast-paced action"
+    "Action sequences"
   ],
   "vibes": [],
-  "content_description": "A slow camera pan across a misty mountain landscape with pine trees and a dirt path.",
+  "content_description": "Birds flying across a blue sky with a palm tree in the foreground.",
   "best_moments": {
     "High": {
-      "start": 2.0,
+      "start": 2.5,
       "end": 4.5,
       "moment_role": "Transition",
       "stable_moment": true,
-      "reason": "Most visual change as the camera pans across foreground trees and the path."
+      "reason": "Peak movement as birds fly across the center of the frame."
     },
     "Medium": {
       "start": 1.0,
-      "end": 3.5,
+      "end": 3.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Steady panning motion revealing more of the mountain trail."
+      "reason": "Birds entering the frame, adding visual interest to the sky."
     },
     "Low": {
-      "start": 0.0,
-      "end": 2.5,
-      "moment_role": "Establishing",
+      "start": 5.0,
+      "end": 7.5,
+      "moment_role": "Reflection",
       "stable_moment": true,
-      "reason": "Calm setup showing the distant misty mountains and valley."
+      "reason": "Calm, empty sky after the birds have passed."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:08:56"
+  "_cached_at": "2026-01-28 02:27:36"
 }

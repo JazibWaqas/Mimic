@@ -1,29 +1,53 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Action",
-    "Water Sports",
-    "Outdoors"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "Two men riding a jet ski on a river, with one man moving from the back to the front while the driver claps.",
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Adventure montages",
+    "Travel vlogs"
+  ],
+  "avoid_for": [
+    "Calm reflective moments",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "Two men riding a jet ski on a river near a sandy bank.",
   "best_moments": {
     "High": {
       "start": 0.0,
-      "end": 2.5,
-      "reason": "Initial movement with visible water spray and faster pace."
+      "end": 3.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Fastest movement with visible water spray and active engagement."
     },
     "Medium": {
-      "start": 2.5,
+      "start": 3.0,
       "end": 5.0,
-      "reason": "Steady cruising as the passenger shifts position on the jet ski."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Controlled deceleration and turning as the jet ski approaches the camera."
     },
     "Low": {
       "start": 5.0,
-      "end": 7.0,
-      "reason": "The jet ski slows down and the driver claps, showing minimal motion."
+      "end": 6.5,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "The jet ski comes to a near halt, showing the subjects more clearly."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:24:34"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:30:38"
 }

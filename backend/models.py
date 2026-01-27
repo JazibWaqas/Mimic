@@ -137,6 +137,46 @@ class StyleBlueprint(BaseModel):
 
 
 # ============================================================================
+# GEMINI ADVISOR (v7.0+)
+# ============================================================================
+
+class ArcStageSuggestion(BaseModel):
+    """
+    Gemini's recommendations for clips to use in a specific arc stage.
+    """
+    recommended_clips: List[str] = Field(default_factory=list, description="3-5 clip filenames recommended for this arc stage")
+    reasoning: str = Field("", description="Why these clips work for this arc stage")
+    content_alignment: List[str] = Field(default_factory=list, description="Which must_have/should_have content they satisfy")
+
+
+class LibraryAssessment(BaseModel):
+    """
+    Gemini's overall assessment of the user's clip library.
+    """
+    strengths: List[str] = Field(default_factory=list, description="What types of content are well-represented")
+    gaps: List[str] = Field(default_factory=list, description="What types of content are missing or weak")
+    confidence: str = Field("Medium", description="High, Medium, or Low confidence in library coverage")
+
+
+class AdvisorHints(BaseModel):
+    """
+    Complete Gemini Advisor output containing strategic clip suggestions.
+    
+    This is generated once per reference+library combination and cached.
+    The hints influence scoring but do not control the matcher.
+    """
+    arc_stage_suggestions: dict[str, ArcStageSuggestion] = Field(
+        default_factory=dict,
+        description="Suggestions keyed by arc stage: Intro, Build-up, Peak, Outro"
+    )
+    library_assessment: LibraryAssessment = Field(default_factory=LibraryAssessment)
+    overall_strategy: str = Field("", description="One-sentence overall editing strategy")
+    
+    _cache_version: str = Field("1.0", description="Advisor cache version")
+    _cached_at: str = Field("", description="ISO timestamp when cached")
+
+
+# ============================================================================
 # USER CLIP ANALYSIS
 # ============================================================================
 
@@ -147,11 +187,15 @@ class BestMoment(BaseModel):
     Example: {
         "start": 8.2,
         "end": 10.5,
+        "moment_role": "Climax",
+        "stable_moment": true,
         "reason": "Peak action moment with fast motion"
     }
     """
     start: float = Field(..., ge=0, description="Start time in seconds")
     end: float = Field(..., gt=0, description="End time in seconds")
+    moment_role: str = Field("", description="Establishing, Build, Climax, Transition, or Reflection")
+    stable_moment: bool = Field(True, description="Whether moment is visually stable for full duration")
     reason: str | None = Field(None, description="Why this moment was selected")
     
     @field_validator('end')
@@ -188,6 +232,21 @@ class ClipMetadata(BaseModel):
     duration: float = Field(..., gt=0)
     energy: EnergyLevel
     motion: MotionType
+    
+    # Enhanced classification (v7.0+)
+    intensity: int = Field(2, ge=1, le=3, description="Intensity within energy level (1=mild, 2=clear, 3=strong)")
+    
+    # Semantic content analysis (v7.0+)
+    primary_subject: List[str] = Field(default_factory=list, description="1-2 primary subject categories")
+    narrative_utility: List[str] = Field(default_factory=list, description="1-3 narrative roles this clip can serve")
+    emotional_tone: List[str] = Field(default_factory=list, description="1-2 emotional tones")
+    
+    # Editing usability (v7.0+)
+    clip_quality: int = Field(3, ge=1, le=5, description="Visual appeal and usefulness (1-5 scale)")
+    best_for: List[str] = Field(default_factory=list, description="2-3 editing contexts where clip excels")
+    avoid_for: List[str] = Field(default_factory=list, description="1-2 contexts to avoid")
+    
+    # Legacy fields (maintained for backward compatibility)
     vibes: List[str] = Field(default_factory=list, description="Aesthetic/Content tags for semantic matching")
     content_description: str | None = Field(None, description="Detailed AI description of what is happening in the clip")
     

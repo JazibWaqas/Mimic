@@ -1,29 +1,54 @@
 {
   "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Aviation",
-    "Sunset",
-    "Travel"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Object-Vehicle",
+    "Activity-Travel"
   ],
-  "content_description": "A plane flies across a sunset sky while a person in the foreground throws an object.",
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Establishing shots",
+    "Transitions"
+  ],
+  "avoid_for": [
+    "High-energy action peaks",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A plane flies across a sunset sky, tracked by a panning camera near an airport fence.",
   "best_moments": {
     "High": {
-      "start": 4.0,
-      "end": 7.0,
-      "reason": "The person throws an object into the air as the plane passes, creating a dynamic interaction."
+      "start": 5.0,
+      "end": 8.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "The plane moves most dynamically across the frame with clear tracking motion."
     },
     "Medium": {
-      "start": 1.5,
-      "end": 4.5,
-      "reason": "The plane moves steadily across the frame against the colorful sunset sky."
+      "start": 2.5,
+      "end": 5.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady tracking of the aircraft as it crosses the center of the frame."
     },
     "Low": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "The opening of the clip with the plane just entering the frame and minimal foreground movement."
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup showing the plane entering the frame against the sunset."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 01:05:20"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:11:51"
 }

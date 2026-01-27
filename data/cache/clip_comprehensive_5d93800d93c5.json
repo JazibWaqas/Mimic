@@ -1,29 +1,53 @@
 {
-  "energy": "Low",
-  "motion": "Static",
-  "vibes": [
-    "Food",
-    "Friends",
-    "Calm"
+  "energy": "Medium",
+  "motion": "Gentle",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "A person pours a hot beverage from a paper pouch into a small cup held by a friend at a green wooden table.",
+  "narrative_utility": [
+    "Transition",
+    "Reflection"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Intimate"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Lifestyle montages",
+    "Food and drink transitions"
+  ],
+  "avoid_for": [
+    "High-action sequences",
+    "Wide establishing shots"
+  ],
+  "vibes": [],
+  "content_description": "A person pours a brown liquid into a cup held by another person on a green picnic table.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "Initial pouring action with visible liquid flow and hand movement."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Initial pouring action with the most camera movement."
     },
     "Medium": {
-      "start": 1.5,
-      "end": 4.0,
-      "reason": "Steady pouring of the beverage into the cup."
+      "start": 1.0,
+      "end": 3.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady pouring of the liquid into the cup."
     },
     "Low": {
-      "start": 3.5,
-      "end": 5.5,
-      "reason": "The pouring slows down and concludes as the cup fills up."
+      "start": 3.0,
+      "end": 5.0,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "The pouring action slows down as the cup fills."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 00:20:32"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:00:11"
 }

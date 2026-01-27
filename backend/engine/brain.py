@@ -23,7 +23,7 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 # Separate cache versioning for reference vs clip analysis
 # Reference and clip analysis use different prompts and should be versioned independently
 REFERENCE_CACHE_VERSION = "7.0"  # v7.0: Enhanced narrative analysis with text overlay, content requirements, and experience goals (Jan 27, 2026)
-CLIP_CACHE_VERSION = "6.1"        # v6.0: Deep semantic analysis + editing grammar intelligence (Jan 21, 2026)
+CLIP_CACHE_VERSION = "7.0"        # v7.0: Enhanced analysis with intensity, motion granularity, semantic content, and moment roles (Jan 27, 2026)
 # v5.0: Fixed string corruption bug + vibes loading (Jan 21, 2026)
 # v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
 # v3.0: Comprehensive clip analysis with best moments (Jan 9, 2025)
@@ -256,62 +256,209 @@ Respond ONLY with valid JSON. Do not include explanations, markdown, or any othe
 # This is the KEY optimization: instead of calling API per-segment,
 # we analyze each clip ONCE and get best moments for ALL energy profiles
 CLIP_COMPREHENSIVE_PROMPT = """
-You are a professional video editor analyzing a clip to understand its energy profile and find the BEST MOMENTS for different editing needs.
+You are a professional video editor analyzing a USER-UPLOADED CLIP.
 
-WATCH THE ENTIRE CLIP carefully and provide:
+Your goal is to extract EDITING-RELEVANT INTELLIGENCE so this clip can be
+used correctly inside an automated video editing system.
 
-1. **OVERALL CLASSIFICATION:**
-   - Energy: The DOMINANT energy level (Low/Medium/High)
-   - Motion: The DOMINANT motion type (Static/Dynamic)
-   - Content Description: A brief 1-sentence description of what is happening in the clip
-   - Vibes: 2-4 aesthetic/content tags (e.g., "Nature", "Urban", "Action", "Calm", "Friends", "Food", "Travel")
+You are NOT judging artistic taste.
+You are NOT comparing to other clips.
+You are extracting structure, usability, and constraints.
 
-2. **BEST MOMENTS FOR EACH ENERGY LEVEL:**
-   For each energy level, identify the SINGLE BEST continuous moment (2-4 seconds):
-   
-   - **High Energy Moment:** The most intense, action-packed, viral-worthy part
-   - **Medium Energy Moment:** A moderately paced but visually interesting part
-   - **Low Energy Moment:** The calmest, most stable, least dynamic part
+---
 
-WHAT MAKES A "BEST MOMENT":
-- Visually compelling and suitable for that energy level
-- Continuous footage (no cuts within the moment)
-- Representative of that energy profile
-- If clip doesn't have a perfect match, pick the closest available
+## 1. ENERGY & MOTION CLASSIFICATION
 
-OUTPUT FORMAT (JSON only, no markdown):
+### ENERGY (choose ONE based on PEAK visual intensity):
+
+- LOW:
+  Minimal visual change. Calm landscapes, still moments, slow movement,
+  contemplative or quiet scenes.
+
+- MEDIUM:
+  Noticeable but controlled activity. Walking, casual interaction,
+  steady camera movement, moderate pacing.
+
+- HIGH:
+  Intense visual activity or rapid change. Dancing, running, laughter,
+  celebrations, action, fast camera movement.
+
+IMPORTANT RULE:
+If the clip contains ANY clear burst of HIGH energy, classify the clip as HIGH.
+Do NOT default to MEDIUM when uncertain — lean toward LOW or HIGH.
+
+### INTENSITY (within the chosen ENERGY level):
+Choose ONE of: 1 | 2 | 3
+
+- 1 = Mild / restrained
+- 2 = Clear / expressive
+- 3 = Strong / chaotic / peak-level
+
+Intensity is ONLY used to compare clips within the SAME energy level.
+
+---
+
+### MOTION PROFILE (choose ONE based on DOMINANT motion source):
+
+- STILL:
+  Completely fixed camera with NO camera movement at all.
+  Subjects may move minimally, but the camera frame is locked.
+
+- GENTLE:
+  Slow camera movement (pans, tilts, drifts) OR calm subject motion (walking).
+  IMPORTANT: Even VERY SLOW camera movement counts as GENTLE, not STILL.
+
+- ACTIVE:
+  Energetic subject movement OR noticeable camera movement
+  (running, dancing, tracking shots).
+
+- KINETIC:
+  Rapid camera movement and/or chaotic subject action.
+  Highly unstable, intense, or visually aggressive motion.
+
+CRITICAL RULE:
+If you observe ANY camera movement (even subtle panning or tilting),
+the motion CANNOT be STILL. Choose at least GENTLE.
+
+---
+
+## 2. SEMANTIC CONTENT ANALYSIS
+
+### PRIMARY SUBJECT (choose 1–2 max):
+
+- People-Solo
+- People-Group
+- People-Crowd
+- Place-Nature
+- Place-Urban
+- Place-Indoor
+- Activity-Travel
+- Activity-Celebration
+- Activity-Leisure
+- Object-Animal
+- Object-Vehicle
+- Object-Landmark
+
+### NARRATIVE UTILITY (choose 1–3 roles this clip can serve):
+
+- Establishing (sets context or location)
+- Transition (connects moments or movement)
+- Build (increases engagement or anticipation)
+- Peak (climactic, memorable moment)
+- Reflection (calm, closing, or emotional pause)
+
+### EMOTIONAL TONE (choose 1–2):
+
+- Joyful
+- Nostalgic
+- Energetic
+- Peaceful
+- Adventurous
+- Intimate
+- Dramatic
+
+---
+
+## 3. EDITING USABILITY
+
+### CLIP_QUALITY:
+Rate overall visual appeal and usefulness for editing on a 1–5 scale.
+
+- 1 = Unusable (blurry, extremely shaky, poor framing)
+- 2 = Weak (acceptable but not compelling)
+- 3 = Usable (solid, fits purpose)
+- 4 = Strong (visually appealing, well-composed)
+- 5 = Exceptional (standout, viral-worthy)
+
+IMPORTANT:
+Reserve 5 for truly exceptional clips.
+Most clips should fall in the 3–4 range.
+
+### BEST_FOR:
+List 2–3 specific editing contexts where this clip excels.
+Examples: "High-energy peaks", "Opening establishing shots", "Transitions"
+
+### AVOID_FOR:
+List 1–2 contexts that would clash with this clip's characteristics.
+Examples: "Calm reflective outros", "Intimate close-up moments"
+
+### CONTENT_DESCRIPTION:
+ONE short sentence describing what is visibly happening.
+Describe content, not interpretation.
+
+---
+
+## 4. BEST MOMENTS (TEMPORAL SELECTION)
+
+For EACH energy level (High / Medium / Low),
+identify the SINGLE BEST continuous moment lasting approximately 2–4 seconds.
+
+For each moment, provide:
+- start (seconds, decimal)
+- end (seconds, decimal)
+- moment_role: Establishing | Build | Climax | Transition | Reflection
+- stable_moment: true if visually consistent for full duration, false otherwise
+- reason: Brief explanation (max 20 words)
+
+RULES:
+- All timestamps in SECONDS
+- start >= 0, end > start, end <= clip duration
+- ALL three energy levels MUST be present
+- If no perfect match exists, choose the closest available moment
+
+---
+
+## OUTPUT REQUIREMENTS
+
+- Output VALID JSON ONLY.
+- No markdown, no extra text.
+- Do NOT assume future footage.
+- Do NOT reference other clips.
+- Be consistent and deterministic.
+
+---
+
+## JSON SCHEMA
+
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "content_description": "A person dancing energetically in a neon-lit urban setting",
-  "vibes": ["Urban", "Action", "Nightlife"],
+  "intensity": 3,
+  "motion": "Active",
+
+  "primary_subject": ["People-Group", "Activity-Celebration"],
+  "narrative_utility": ["Peak", "Build"],
+  "emotional_tone": ["Joyful", "Energetic"],
+
+  "clip_quality": 4,
+  "best_for": ["High-energy peaks", "Celebration montages"],
+  "avoid_for": ["Calm reflective outros"],
+
+  "content_description": "Friends laughing and celebrating together outdoors",
+
   "best_moments": {
     "High": {
       "start": 8.2,
-      "end": 10.5,
-      "reason": "Peak dance move with fast motion"
+      "end": 11.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak movement and expressive action"
     },
     "Medium": {
       "start": 4.0,
-      "end": 6.2,
-      "reason": "Walking transition with moderate movement"
+      "end": 6.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained motion with moderate intensity"
     },
     "Low": {
-      "start": 0.0,
-      "end": 2.0,
-      "reason": "Calm opening with minimal motion"
+      "start": 0.5,
+      "end": 2.8,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Calm setup with minimal motion"
     }
   }
 }
-
-RULES:
-- All timestamps in SECONDS (decimal like 8.2, not 8:12)
-- start >= 0, end > start, end <= clip duration
-- Each moment should be 2-4 seconds (adjust if clip is shorter)
-- ALL three energy levels MUST have a best moment entry
-- Choose the most visually interesting/compelling parts
-
-Respond ONLY with valid JSON.
 """
 
 
@@ -1089,13 +1236,22 @@ def _analyze_single_clip_comprehensive(
                             for level, moment_data in cache_data["best_moments"].items()
                         }
                     
-                    # Load vibes and content_description from cache
+                    # Load v7.0+ fields (with fallbacks for backward compatibility)
+                    intensity = cache_data.get("intensity", 2)
+                    primary_subject = cache_data.get("primary_subject", [])
+                    narrative_utility = cache_data.get("narrative_utility", [])
+                    emotional_tone = cache_data.get("emotional_tone", [])
+                    clip_quality = cache_data.get("clip_quality", 3)
+                    best_for = cache_data.get("best_for", [])
+                    avoid_for = cache_data.get("avoid_for", [])
+                    
+                    # Legacy fields
                     vibes = cache_data.get("vibes", [])
                     content_description = cache_data.get("content_description", "")
                     
-                    print(f"    [CACHE] Loaded: {energy.value}/{motion.value} with {len(best_moments) if best_moments else 0} best moments")
-                    if vibes:
-                        print(f"    [CACHE] Vibes: {', '.join(vibes)}")
+                    print(f"    [CACHE] Loaded: {energy.value}/{motion.value}/intensity={intensity} with {len(best_moments) if best_moments else 0} best moments")
+                    if primary_subject:
+                        print(f"    [CACHE] Subject: {', '.join(primary_subject)}")
                     
                     return ClipMetadata(
                         filename=Path(clip_path).name,
@@ -1103,6 +1259,13 @@ def _analyze_single_clip_comprehensive(
                         duration=duration,
                         energy=energy,
                         motion=motion,
+                        intensity=intensity,
+                        primary_subject=primary_subject,
+                        narrative_utility=narrative_utility,
+                        emotional_tone=emotional_tone,
+                        clip_quality=clip_quality,
+                        best_for=best_for,
+                        avoid_for=avoid_for,
                         vibes=vibes,
                         content_description=content_description,
                         best_moments=best_moments
@@ -1125,13 +1288,33 @@ def _analyze_single_clip_comprehensive(
             
             # Parse overall classification
             energy = EnergyLevel(json_data["energy"])
-            motion = MotionType(json_data["motion"])
+            motion_str = json_data.get("motion", "Dynamic")
             
-            # Parse vibes and content (NEW)
+            # Map new motion types to legacy enum for backward compatibility
+            motion_map = {
+                "STILL": "Static",
+                "GENTLE": "Dynamic",
+                "ACTIVE": "Dynamic", 
+                "KINETIC": "Dynamic",
+                "Static": "Static",
+                "Dynamic": "Dynamic"
+            }
+            motion = MotionType(motion_map.get(motion_str, "Dynamic"))
+            
+            # Parse v7.0+ enhanced fields
+            intensity = json_data.get("intensity", 2)
+            primary_subject = json_data.get("primary_subject", [])
+            narrative_utility = json_data.get("narrative_utility", [])
+            emotional_tone = json_data.get("emotional_tone", [])
+            clip_quality = json_data.get("clip_quality", 3)
+            best_for = json_data.get("best_for", [])
+            avoid_for = json_data.get("avoid_for", [])
+            
+            # Legacy fields (maintained for backward compatibility)
             vibes = json_data.get("vibes", [])
             content_description = json_data.get("content_description", "")
             
-            # Parse best moments
+            # Parse best moments with enhanced fields
             best_moments = {}
             if "best_moments" in json_data:
                 for level_name, moment_data in json_data["best_moments"].items():
@@ -1146,6 +1329,8 @@ def _analyze_single_clip_comprehensive(
                     best_moments[level_name] = BestMoment(
                         start=start,
                         end=end,
+                        moment_role=moment_data.get("moment_role", ""),
+                        stable_moment=moment_data.get("stable_moment", True),
                         reason=moment_data.get("reason", "")
                     )
             
@@ -1163,17 +1348,32 @@ def _analyze_single_clip_comprehensive(
                     best_moments[level] = BestMoment(
                         start=start,
                         end=end,
+                        moment_role="Transition",
+                        stable_moment=True,
                         reason=f"Fallback: {level} moment not detected"
                     )
             
-            # Save to cache (INCLUDING vibes and content!)
+            # Save to cache (v7.0+ enhanced format)
             cache_data = {
                 "energy": energy.value,
-                "motion": motion.value,
+                "motion": motion_str,  # Save the raw motion string (STILL/GENTLE/ACTIVE/KINETIC)
+                "intensity": intensity,
+                "primary_subject": primary_subject,
+                "narrative_utility": narrative_utility,
+                "emotional_tone": emotional_tone,
+                "clip_quality": clip_quality,
+                "best_for": best_for,
+                "avoid_for": avoid_for,
                 "vibes": vibes,
                 "content_description": content_description,
                 "best_moments": {
-                    level: {"start": bm.start, "end": bm.end, "reason": bm.reason or ""}
+                    level: {
+                        "start": bm.start, 
+                        "end": bm.end, 
+                        "moment_role": bm.moment_role,
+                        "stable_moment": bm.stable_moment,
+                        "reason": bm.reason or ""
+                    }
                     for level, bm in best_moments.items()
                 },
                 "_cache_version": CLIP_CACHE_VERSION,
@@ -1182,11 +1382,11 @@ def _analyze_single_clip_comprehensive(
             with open(cache_file, 'w') as f:
                 json.dump(cache_data, f, indent=2)
             
-            print(f"    [OK] {energy.value}/{motion.value} with best moments:")
+            print(f"    [OK] {energy.value}/{motion_str}/intensity={intensity} with best moments:")
             for level, bm in best_moments.items():
-                print(f"        {level}: {bm.start:.2f}s - {bm.end:.2f}s")
-            if vibes:
-                print(f"    Vibes: {', '.join(vibes)}")
+                print(f"        {level}: {bm.start:.2f}s - {bm.end:.2f}s ({bm.moment_role})")
+            if primary_subject:
+                print(f"    Subject: {', '.join(primary_subject)}")
             
             return ClipMetadata(
                 filename=Path(clip_path).name,
@@ -1194,6 +1394,13 @@ def _analyze_single_clip_comprehensive(
                 duration=duration,
                 energy=energy,
                 motion=motion,
+                intensity=intensity,
+                primary_subject=primary_subject,
+                narrative_utility=narrative_utility,
+                emotional_tone=emotional_tone,
+                clip_quality=clip_quality,
+                best_for=best_for,
+                avoid_for=avoid_for,
                 vibes=vibes,
                 content_description=content_description,
                 best_moments=best_moments

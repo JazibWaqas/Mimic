@@ -1,30 +1,54 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Fun",
-    "Music",
-    "Travel"
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "A group of friends singing and dancing enthusiastically inside a car while traveling.",
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Friendship montages",
+    "Travel vlogs"
+  ],
+  "avoid_for": [
+    "Calm reflective moments",
+    "Professional corporate settings"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men singing and dancing enthusiastically inside a car with a sunroof.",
   "best_moments": {
     "High": {
-      "start": 1.0,
-      "end": 4.0,
-      "reason": "Peak energy with everyone dancing and hands in the air."
+      "start": 17.5,
+      "end": 20.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak group enthusiasm and synchronized movement with hands in the air."
     },
     "Medium": {
-      "start": 7.0,
-      "end": 10.0,
-      "reason": "Consistent singing and moderate movement from the group."
+      "start": 4.5,
+      "end": 7.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Consistent singing and moderate hand gestures throughout the group."
     },
     "Low": {
-      "start": 24.0,
-      "end": 27.0,
-      "reason": "A more relaxed moment with laughter and less intense dancing."
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial scene setup with lower relative physical activity compared to later peaks."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 00:21:47"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:01:52"
 }

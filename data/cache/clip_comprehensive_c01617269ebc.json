@@ -1,29 +1,54 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Travel",
-    "Friends",
-    "Nature"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
   ],
-  "content_description": "A group of friends enjoys a fast boat ride on a scenic lake surrounded by hills.",
+  "narrative_utility": [
+    "Transition",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Adventure sequences",
+    "Action transitions"
+  ],
+  "avoid_for": [
+    "Calm reflective intros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men wearing life jackets ride a motorboat across a lake during the day.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "Fast camera panning and visible wind effect on the passengers create a sense of speed."
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Fast camera panning and high-speed boat motion creating a dynamic feel."
     },
     "Medium": {
-      "start": 0.5,
+      "start": 2.0,
       "end": 2.318478,
-      "reason": "Clear shot of the passenger in the life jacket with steady boat motion and scenic background."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained motion with a clearer focus on the primary subject in the foreground."
     },
     "Low": {
-      "start": 1.0,
+      "start": 2.2184779999999997,
       "end": 2.318478,
-      "reason": "The camera stabilizes slightly on the passenger, offering a calmer view of the surroundings."
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "The final moments of the clip where the camera movement stabilizes slightly."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:14:36"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:55:43"
 }

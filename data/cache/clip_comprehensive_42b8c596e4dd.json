@@ -1,30 +1,53 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Funny",
-    "Travel",
-    "Lifestyle"
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "Two friends are laughing hysterically in a hotel room, with one lying on the bed and the other sitting on the floor.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Candid laughter moments",
+    "Friendship montages"
+  ],
+  "avoid_for": [
+    "Professional interviews",
+    "Calm reflective moments"
+  ],
+  "vibes": [],
+  "content_description": "Two friends share a fit of uncontrollable laughter in a hotel room.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Intense, loud laughter right at the beginning with high emotional energy."
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak laughter and rapid camera movement at the start."
     },
     "Medium": {
-      "start": 12.0,
-      "end": 15.0,
-      "reason": "Continued laughter with dynamic camera panning between the two friends."
+      "start": 18.0,
+      "end": 21.0,
+      "moment_role": "Build",
+      "stable_moment": false,
+      "reason": "Sustained laughter with moderate camera motion as the scene continues."
     },
     "Low": {
-      "start": 24.0,
-      "end": 26.968917,
-      "reason": "The laughter subsides as one friend sits up and catches his breath, showing a calmer moment."
+      "start": 7.0,
+      "end": 10.0,
+      "moment_role": "Reflection",
+      "stable_moment": false,
+      "reason": "Subject on floor is momentarily still during a brief lull in laughter."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:14:23"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:56:24"
 }

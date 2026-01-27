@@ -1,29 +1,53 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Nightlife",
-    "Party"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Celebration"
   ],
-  "content_description": "A group of young men in black attire pose and cheer enthusiastically in front of a blue-lit structure at night.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Celebration montages",
+    "High-energy peaks"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men in black outfits laugh and dance together in front of a blue-lit structure.",
   "best_moments": {
     "High": {
-      "start": 1.0,
-      "end": 3.5,
-      "reason": "The group starts cheering and moving energetically towards the camera with high-intensity reactions."
+      "start": 2.5,
+      "end": 5.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and expressive dancing from the group."
     },
     "Medium": {
-      "start": 3.5,
-      "end": 5.5,
-      "reason": "A person moves their arm across the frame to show a watch, creating a focused transition with moderate motion."
+      "start": 1.0,
+      "end": 3.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Transition from posing to active laughter and movement."
     },
     "Low": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "The group is relatively still while posing for the initial shot before the main action begins."
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial group pose before the main action begins."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:16:27"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:57:42"
 }

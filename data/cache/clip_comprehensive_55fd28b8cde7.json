@@ -1,30 +1,54 @@
 {
   "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Night",
-    "Urban",
-    "Rain",
-    "Travel"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Activity-Travel",
+    "Object-Vehicle"
   ],
-  "content_description": "A night drive inside a car during rain, featuring a view of the dashboard and the wet road ahead.",
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Nostalgic",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Night travel sequences",
+    "Rainy atmosphere montages",
+    "Lo-fi music backgrounds"
+  ],
+  "avoid_for": [
+    "High-action sports",
+    "Bright daytime scenes"
+  ],
+  "vibes": [],
+  "content_description": "A first-person perspective of driving through city traffic at night during a rainstorm.",
   "best_moments": {
     "High": {
-      "start": 2.0,
-      "end": 5.0,
-      "reason": "Acceleration and bright car lights ahead create a more dynamic and visually intense scene."
+      "start": 24.5,
+      "end": 27.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Increased visual activity from windshield wipers and bright light reflections on the wet road."
     },
     "Medium": {
-      "start": 15.0,
-      "end": 18.0,
-      "reason": "Steady driving through the rain with consistent motion and clear dashboard visibility."
+      "start": 10.0,
+      "end": 13.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady driving pace through traffic with consistent motion and lighting."
     },
     "Low": {
-      "start": 35.0,
-      "end": 38.0,
-      "reason": "Slowing down in traffic, resulting in a more static and calm view of the rainy street."
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Darker, slower start to the drive with minimal external light interference."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:14:56"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:17:04"
 }

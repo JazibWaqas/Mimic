@@ -1,30 +1,56 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Travel",
-    "Nature",
-    "Sunset",
-    "Aesthetic"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Place-Nature",
+    "Activity-Travel"
   ],
-  "content_description": "A handheld video taken from a moving vehicle capturing a vibrant sunset through the window and passing trees.",
+  "narrative_utility": [
+    "Transition",
+    "Establishing",
+    "Reflection"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel transitions",
+    "Atmospheric montages",
+    "Mood-setting sequences"
+  ],
+  "avoid_for": [
+    "Static scenes",
+    "High-action sports",
+    "Professional horizontal documentaries"
+  ],
+  "vibes": [],
+  "content_description": "A vibrant sunset with orange and pink clouds seen through a moving car window passing trees.",
   "best_moments": {
     "High": {
       "start": 7.5,
       "end": 10.0,
-      "reason": "Rapid motion passing trees and road barriers with significant camera shake."
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Rapid camera movement and motion blur from the moving vehicle create high visual change."
     },
     "Medium": {
       "start": 4.0,
       "end": 7.0,
-      "reason": "A clear but moving view of the colorful sunset sky through the trees."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Consistent movement showing the sunset through passing trees with moderate pacing."
     },
     "Low": {
       "start": 0.0,
-      "end": 2.5,
-      "reason": "The most stable part of the clip, looking at the sunset through a window frame."
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Framed view of the sunset with minimal camera movement at the start."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 01:04:08"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:10:29"
 }

@@ -1,29 +1,54 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Nightlife",
-    "Music"
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Celebration"
   ],
-  "content_description": "A group of friends is energetically singing and dancing along to music inside a car at night.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Social media montages",
+    "Travel celebration scenes"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional corporate interviews"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends singing and dancing enthusiastically inside a car at night.",
   "best_moments": {
     "High": {
-      "start": 26.0,
-      "end": 29.0,
-      "reason": "Peak excitement and synchronized singing during the chorus."
+      "start": 26.5,
+      "end": 29.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak expressive action with all friends dancing and laughing together."
     },
     "Medium": {
-      "start": 1.0,
-      "end": 4.0,
-      "reason": "Consistent rhythmic dancing and hand movements."
+      "start": 12.0,
+      "end": 15.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained rhythmic movement and singing with moderate intensity."
     },
     "Low": {
-      "start": 23.0,
-      "end": 25.5,
-      "reason": "A brief transition period with slightly less intense movement."
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup and lower intensity movement as the scene begins."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:15:28"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:57:04"
 }

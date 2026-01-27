@@ -1,29 +1,51 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nature",
-    "Beach",
-    "Action"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Place-Nature"
   ],
-  "content_description": "A wave crashes onto a beach, eventually splashing over the camera lens.",
+  "narrative_utility": [
+    "Transition",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Transitions",
+    "Nature montages"
+  ],
+  "avoid_for": [
+    "Calm reflective outros"
+  ],
+  "vibes": [],
+  "content_description": "A wave rolls in and crashes over the camera on a beach.",
   "best_moments": {
     "High": {
-      "start": 5.0,
-      "end": 8.0,
-      "reason": "The wave crashes directly into the camera, creating a high-energy splash and white foam."
+      "start": 4.5,
+      "end": 7.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Wave crashes directly into the camera lens"
     },
     "Medium": {
-      "start": 2.5,
-      "end": 5.0,
-      "reason": "The wave builds up and begins to break, showing moderate motion and anticipation."
+      "start": 2.0,
+      "end": 4.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Wave approaches the shore with increasing speed"
     },
     "Low": {
       "start": 0.0,
-      "end": 2.5,
-      "reason": "The opening shot shows relatively calm water before the main wave reaches the camera."
+      "end": 2.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Calm view of the ocean horizon and receding water"
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:56:39"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:26:07"
 }

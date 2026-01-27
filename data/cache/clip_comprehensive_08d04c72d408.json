@@ -1,29 +1,54 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Night",
-    "Friends",
-    "Park"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "Three friends walk away from the camera along a park path at night under a bright streetlamp.",
+  "narrative_utility": [
+    "Transition",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Nighttime montages",
+    "Friendship highlights",
+    "Transition sequences"
+  ],
+  "avoid_for": [
+    "Static backgrounds",
+    "Close-up emotional scenes"
+  ],
+  "vibes": [],
+  "content_description": "Three friends walk and then run away from the camera along a park path at night.",
   "best_moments": {
     "High": {
-      "start": 0.0,
-      "end": 2.0,
-      "reason": "One person starts running, adding a burst of energy and movement to the scene."
+      "start": 1.5,
+      "end": 3.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Subjects begin running, increasing visual energy and movement."
     },
     "Medium": {
-      "start": 1.0,
-      "end": 3.0,
-      "reason": "The group walks away at a steady, consistent pace with moderate movement."
+      "start": 0.5,
+      "end": 2.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady walking pace transitioning into a faster movement."
     },
     "Low": {
-      "start": 2.0,
-      "end": 3.62375,
-      "reason": "The subjects move further into the distance, making the motion appear slower and calmer."
+      "start": 0.0,
+      "end": 1.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial walking movement with the least amount of camera shake."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:11:00"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:15:16"
 }

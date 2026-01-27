@@ -1,29 +1,54 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Action",
-    "Fun"
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "A group of friends jumping on a trampoline while one person in the center tries to stand up amidst the bouncing.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Friendship montages",
+    "Action sequences"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional corporate videos"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends jumping energetically on a trampoline while one person rolls in the middle.",
   "best_moments": {
     "High": {
-      "start": 2.0,
-      "end": 5.0,
-      "reason": "Intense jumping and chaotic movement as the person in the middle is bounced around vigorously."
+      "start": 3.0,
+      "end": 6.0,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak jumping intensity and chaotic group interaction."
     },
     "Medium": {
       "start": 8.5,
       "end": 11.5,
-      "reason": "The person in the middle successfully stands up and the group celebrates with moderate movement."
+      "moment_role": "Build",
+      "stable_moment": false,
+      "reason": "Sustained movement as the group begins to slow down and laugh."
     },
     "Low": {
-      "start": 5.5,
-      "end": 8.0,
-      "reason": "A brief moment of relative stability as the person in the middle prepares to stand up between jumps."
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Establishing",
+      "stable_moment": false,
+      "reason": "Initial setup of the scene before the most intense jumping begins."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:09:01"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:13:09"
 }

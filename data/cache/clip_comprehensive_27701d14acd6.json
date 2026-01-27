@@ -1,29 +1,53 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Nightlife",
-    "Fun"
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Celebration"
   ],
-  "content_description": "A group of friends energetically dancing and posing in front of a brightly lit Eiffel Tower replica at night.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Social media montages"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional corporate videos"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends dancing and laughing under a red-lit architectural structure.",
   "best_moments": {
     "High": {
-      "start": 4.0,
-      "end": 7.0,
-      "reason": "Intense group movement including a kick and dynamic camera motion as the lights change color."
+      "start": 5.0,
+      "end": 8.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and expressive group dancing."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "Initial posing and coordinated dance moves with moderate energy and steady camera work."
+      "start": 2.5,
+      "end": 5.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Transitioning into a coordinated dance pose."
     },
     "Low": {
-      "start": 7.0,
-      "end": 9.0,
-      "reason": "The group relaxes and laughs after the main action, showing a more candid and less intense moment."
+      "start": 0.0,
+      "end": 2.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup and start of movement."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 00:24:53"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:05:00"
 }

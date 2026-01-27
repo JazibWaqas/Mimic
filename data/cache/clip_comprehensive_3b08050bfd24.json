@@ -1,29 +1,53 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Music",
-    "Fun"
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
   ],
-  "content_description": "A group of young men enthusiastically singing along to music inside a car.",
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Travel montages"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men singing along loudly to music inside a car with a sunroof.",
   "best_moments": {
     "High": {
-      "start": 11.0,
-      "end": 14.0,
-      "reason": "Peak enthusiasm with expressive singing and hand gestures from the entire group."
+      "start": 11.5,
+      "end": 14.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak vocal intensity and expressive gestures from the group."
     },
     "Medium": {
       "start": 4.0,
       "end": 7.0,
-      "reason": "Consistent singing with moderate movement and engagement from the friends."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained singing with moderate movement and engagement."
     },
     "Low": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Relatively calmer start to the clip with less intense facial expressions and movement."
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup of the group singing at a lower relative intensity."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:21:13"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:22:01"
 }

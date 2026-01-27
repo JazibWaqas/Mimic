@@ -1,29 +1,53 @@
 {
   "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Travel",
-    "Adventure",
-    "Mystery"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Solo",
+    "Activity-Travel"
   ],
-  "content_description": "A person wearing a backpack walks through a long, arched stone tunnel lit by wall lamps.",
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Dramatic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Transitions",
+    "Travel montages"
+  ],
+  "avoid_for": [
+    "High-energy peaks",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A person with a backpack walks through a dimly lit stone tunnel.",
   "best_moments": {
     "High": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "Initial entry into the tunnel with clear movement and a strong perspective shift as the camera follows closely."
+      "start": 8.0,
+      "end": 11.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Increased visual change as the subject moves through the archway."
     },
     "Medium": {
-      "start": 9.0,
-      "end": 12.0,
-      "reason": "Steady walking through a well-lit section of the arched tunnel, maintaining a consistent pace."
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Steady tracking shot of the subject walking at the start."
     },
     "Low": {
-      "start": 4.5,
-      "end": 7.5,
-      "reason": "Walking through a darker, more shadowed part of the tunnel where visual details are obscured and motion feels slower."
+      "start": 4.0,
+      "end": 7.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Subject moves into a darker area, creating a sense of mystery and slower pacing."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:39:19"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:20:36"
 }

@@ -1,30 +1,54 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Celebration",
-    "Friends",
-    "Culture",
-    "Energy"
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Crowd",
+    "Activity-Celebration"
   ],
-  "content_description": "A group of young men celebrate by carrying a friend on their shoulders and dancing to the beat of traditional drums.",
+  "narrative_utility": [
+    "Peak",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Celebration montages",
+    "Cultural event highlights"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men celebrates boisterously with drums, carrying one person on their shoulders through a building.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "Intense celebration with a person being carried and energetic dancing."
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak celebration with a person being carried and high-energy cheering."
     },
     "Medium": {
-      "start": 6.0,
-      "end": 9.0,
-      "reason": "Transition through a doorway with steady movement and drumming."
-    },
-    "Low": {
       "start": 15.0,
       "end": 18.0,
-      "reason": "Following the group from a distance with less chaotic motion."
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Sustained rhythmic movement as the group enters a larger hall."
+    },
+    "Low": {
+      "start": 5.5,
+      "end": 8.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "A brief moment of steadier tracking along a wall before entering the next room."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:10:24"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:14:36"
 }

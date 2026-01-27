@@ -1,30 +1,54 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nightlife",
-    "Friends",
-    "Urban",
-    "Action"
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "A group of friends driving through a city at night, with one passenger screaming excitedly while filming.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Joyful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Night-out montages",
+    "Travel vlogs"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional corporate content"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends shouting and laughing energetically while driving in a car at night.",
   "best_moments": {
     "High": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "Intense screaming and rapid camera movement at the start of the drive."
+      "start": 3.0,
+      "end": 6.5,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak shouting and chaotic camera movement capturing high-energy excitement."
     },
     "Medium": {
       "start": 7.5,
-      "end": 10.5,
-      "reason": "Steady driving through city streets with visible dashboard and city lights."
+      "end": 11.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained energy as the camera pans back to the driver with music playing."
     },
     "Low": {
-      "start": 10.0,
-      "end": 12.0,
-      "reason": "The final moments of the clip where the camera stabilizes slightly as they continue driving."
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup of the car interior before the peak intensity begins."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 00:23:45"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:03:32"
 }

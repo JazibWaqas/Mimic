@@ -1,30 +1,53 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Celebration",
-    "Friends",
-    "Party",
-    "Wedding"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Celebration"
   ],
-  "content_description": "A group of young men are dancing and celebrating at a festive event with upbeat music and vibrant lighting.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Celebration montages"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Serious narratives"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men are dancing and celebrating together at an indoor event with music.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "Intense dancing and hand-spinning at the start with high camera motion."
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Dynamic camera pan across a group of people clapping and celebrating."
     },
     "Medium": {
-      "start": 3.0,
-      "end": 5.5,
-      "reason": "Camera panning across guests smiling and moving moderately to the music."
+      "start": 2.5,
+      "end": 4.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Closer shots of individuals smiling and engaging with the camera."
     },
     "Low": {
-      "start": 5.5,
-      "end": 6.899063,
-      "reason": "Relatively stable shot of guests standing and watching the festivities with minimal movement."
+      "start": 4.5,
+      "end": 6.5,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "A relatively more stable shot of two men interacting at the end."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:22:08"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:29:10"
 }

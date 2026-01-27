@@ -1,30 +1,53 @@
 {
   "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nature",
-    "Travel",
-    "Friends",
-    "Calm"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Solo",
+    "Activity-Travel"
   ],
-  "content_description": "Two men are posing for photos and videos in a scenic, snowy forest area with a rustic building in the background.",
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Establishing shots"
+  ],
+  "avoid_for": [
+    "High-energy action",
+    "Intimate close-ups"
+  ],
+  "vibes": [],
+  "content_description": "Two men explore a snowy forest landscape near a mountain lodge.",
   "best_moments": {
     "High": {
-      "start": 15.0,
-      "end": 18.0,
-      "reason": "Camera pans back to the subject who begins walking, creating more dynamic movement."
+      "start": 14.5,
+      "end": 17.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Subject walking towards the camera creates the most dynamic movement in the clip."
     },
     "Medium": {
-      "start": 4.0,
-      "end": 7.0,
-      "reason": "A smooth pan across the landscape showing the subject and the background architecture."
-    },
-    "Low": {
       "start": 0.0,
       "end": 3.0,
-      "reason": "A relatively static shot of the subject posing in the forest."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Controlled walking and camera panning establish the scene's moderate pace."
+    },
+    "Low": {
+      "start": 8.0,
+      "end": 11.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Slow pan across the mountain house provides a calm, contextual view of the location."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 15:40:55"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:21:23"
 }

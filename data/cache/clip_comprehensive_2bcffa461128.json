@@ -1,29 +1,55 @@
 {
   "energy": "Low",
-  "motion": "Static",
-  "vibes": [
-    "Travel",
-    "Calm",
-    "Aerial"
+  "motion": "GENTLE",
+  "intensity": 1,
+  "primary_subject": [
+    "Activity-Travel",
+    "Object-Vehicle"
   ],
-  "content_description": "A view from an airplane window showing the wing and clouds during flight.",
+  "narrative_utility": [
+    "Establishing",
+    "Transition",
+    "Reflection"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel vlogs",
+    "Establishing shots",
+    "Transition sequences"
+  ],
+  "avoid_for": [
+    "Action scenes",
+    "Fast-paced montages"
+  ],
+  "vibes": [],
+  "content_description": "A view of an airplane wing against a dark blue sky during flight.",
   "best_moments": {
     "High": {
-      "start": 3.5,
-      "end": 6.5,
-      "reason": "Slightly more visible movement in the clouds and camera vibration."
+      "start": 4.0,
+      "end": 6.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Relative peak in camera drift and subtle vibration at the end of the clip."
     },
     "Medium": {
-      "start": 1.5,
-      "end": 4.5,
-      "reason": "Consistent view of the wing with moderate cloud movement."
+      "start": 2.0,
+      "end": 4.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Consistent gentle motion as the camera tracks the wing's position."
     },
     "Low": {
       "start": 0.0,
-      "end": 3.0,
-      "reason": "The most stable and calm part of the flight view."
+      "end": 2.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Stable opening shot providing a clear view of the aircraft wing."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 01:02:26"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:07:36"
 }

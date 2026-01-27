@@ -1,30 +1,54 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nature",
-    "Friends",
-    "Fun",
-    "Outdoors"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "A man stands still on a grassy hill while several people run and play in the background under a blue sky.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy montages",
+    "Fun travel clips",
+    "Social media reels"
+  ],
+  "avoid_for": [
+    "Serious documentaries",
+    "Calm reflective scenes"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends playfully runs and dances around a man standing still on a grassy hill under a blue sky.",
   "best_moments": {
     "High": {
       "start": 5.0,
-      "end": 8.0,
-      "reason": "Multiple people running and jumping across the background creates peak visual activity."
+      "end": 8.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak chaotic movement with multiple people running and jumping across the frame."
     },
     "Medium": {
-      "start": 1.0,
-      "end": 4.0,
-      "reason": "The subject poses while a few people run past, balancing stillness and motion."
+      "start": 2.2,
+      "end": 4.8,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Initial movement as the first few people begin running behind the central subject."
     },
     "Low": {
-      "start": 12.0,
-      "end": 15.0,
-      "reason": "The background action subsides, leaving a more stable and calm scene."
+      "start": 0.0,
+      "end": 2.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "The central subject stands still before the group activity begins."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:09:50"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:52:14"
 }

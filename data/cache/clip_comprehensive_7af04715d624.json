@@ -1,30 +1,53 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nature",
-    "Friends",
-    "Dance",
-    "Travel"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "Two friends walk down a rocky forest path, with one breaking into a dance as they approach the camera.",
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 4,
+  "best_for": [
+    "High-energy peaks",
+    "Travel montages"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Serious dramatic scenes"
+  ],
+  "vibes": [],
+  "content_description": "Two men walk down a rocky forest path and perform a synchronized dance move towards the camera.",
   "best_moments": {
     "High": {
-      "start": 5.5,
-      "end": 7.666,
-      "reason": "Energetic dance moves and a kick towards the camera."
+      "start": 5.0,
+      "end": 7.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak energetic dance move and close-up interaction with the camera."
     },
     "Medium": {
       "start": 2.5,
-      "end": 5.5,
-      "reason": "Walking closer with rhythmic arm movements."
+      "end": 5.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Approaching the camera with rhythmic walking and increasing engagement."
     },
     "Low": {
       "start": 0.0,
       "end": 2.5,
-      "reason": "Calm opening as they walk from a distance."
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial walking shot setting the forest location and subjects."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:12:07"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:52:52"
 }

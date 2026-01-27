@@ -1,29 +1,53 @@
 {
-  "energy": "Medium",
-  "motion": "Static",
-  "vibes": [
-    "Food",
-    "Friends",
-    "Casual"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "A group of friends sharing french fries and laughing while sitting at a wooden table.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Casual lifestyle montages",
+    "Social gathering highlights"
+  ],
+  "avoid_for": [
+    "Professional food commercials",
+    "Serious dramatic narratives"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends laughs while playfully picking up french fries from a container on a wooden table.",
   "best_moments": {
     "High": {
       "start": 5.0,
       "end": 8.0,
-      "reason": "Laughter and active hand movement while picking up a fry."
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and expressive hand modeling with the fry."
     },
     "Medium": {
-      "start": 24.0,
-      "end": 27.0,
-      "reason": "A person picks up a fry and shows it to the camera with moderate movement."
+      "start": 24.5,
+      "end": 27.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained interaction with moderate laughter while picking up food."
     },
     "Low": {
-      "start": 19.0,
-      "end": 22.0,
-      "reason": "A relatively still shot of the fries in the container with minimal interaction."
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup showing the food on the table with minimal movement."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 00:24:19"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:04:13"
 }

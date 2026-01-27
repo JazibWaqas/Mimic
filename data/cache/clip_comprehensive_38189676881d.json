@@ -1,29 +1,54 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Action",
-    "Travel",
-    "Thrill"
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Solo",
+    "Activity-Leisure"
   ],
-  "content_description": "A POV video from a swinging amusement park ride, showing the rapid movement and the surrounding mountainous landscape.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Adventure montages",
+    "Travel vlogs"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A person sits on a large swinging amusement park ride overlooking a valley and construction site.",
   "best_moments": {
     "High": {
-      "start": 0.0,
-      "end": 3.0,
-      "reason": "Intense initial swing with fast motion and loud reactions."
+      "start": 0.5,
+      "end": 3.5,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak of the swing with maximum height and rapid camera movement."
     },
     "Medium": {
-      "start": 11.0,
-      "end": 14.0,
-      "reason": "Sustained swinging motion with a clear view of the landscape."
+      "start": 4.0,
+      "end": 7.0,
+      "moment_role": "Build",
+      "stable_moment": false,
+      "reason": "Sustained motion as the ride swings back through the center."
     },
     "Low": {
-      "start": 4.5,
-      "end": 7.5,
-      "reason": "Camera points towards the ride's structure and sky, offering more visual stability."
+      "start": 7.5,
+      "end": 10.0,
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Brief moment of relative stability while focusing on the passenger."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:11:54"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:53:32"
 }

@@ -1,30 +1,53 @@
 {
   "energy": "High",
-  "motion": "Dynamic",
-  "vibes": [
-    "Urban",
-    "Night",
-    "Friends",
-    "Action"
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Object-Vehicle"
   ],
-  "content_description": "A man runs alongside a moving car while another man stands out of the sunroof on a brightly lit bridge at night.",
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy montages",
+    "Social media vlogs"
+  ],
+  "avoid_for": [
+    "Calm reflective moments",
+    "Professional interviews"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men interact energetically around a car parked on a bridge at night.",
   "best_moments": {
     "High": {
       "start": 4.5,
       "end": 7.5,
-      "reason": "Intense running and shouting while the car moves, creating a high-energy comedic or action sequence."
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak action with running and shouting."
     },
     "Medium": {
-      "start": 1.5,
+      "start": 2.0,
       "end": 4.5,
-      "reason": "Moderate movement as the person starts running and interacting with the person in the car."
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Gesturing from the sunroof with moderate intensity."
     },
     "Low": {
       "start": 0.0,
       "end": 2.0,
-      "reason": "The initial setup of the shot with relatively slower motion before the main action begins."
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial scene setup with minimal movement."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:17:01"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 01:58:21"
 }

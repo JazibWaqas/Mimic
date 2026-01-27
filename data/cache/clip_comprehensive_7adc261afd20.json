@@ -1,29 +1,54 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Friends",
-    "Casual",
-    "Indoor"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
   ],
-  "content_description": "Two young men lie on a wooden floor talking while a third person leans over them briefly.",
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Candid group moments",
+    "Comedy highlights",
+    "Vlog transitions"
+  ],
+  "avoid_for": [
+    "Formal presentations",
+    "Calm reflective outros"
+  ],
+  "vibes": [],
+  "content_description": "Two men lie on a wooden floor laughing while a third man interacts with them.",
   "best_moments": {
     "High": {
-      "start": 2.0,
-      "end": 5.0,
-      "reason": "A third person enters the frame and interacts with the two lying down, creating a more dynamic and engaging scene."
+      "start": 3.5,
+      "end": 6.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and expressive facial reactions with dynamic camera zoom."
     },
     "Medium": {
-      "start": 0.0,
-      "end": 2.0,
-      "reason": "Initial shot of the two men lying on the floor, talking with some camera movement."
+      "start": 0.5,
+      "end": 3.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Initial conversation and smiling before the main laughter begins."
     },
     "Low": {
-      "start": 7.0,
+      "start": 7.5,
       "end": 10.0,
-      "reason": "The camera pans out and settles on the two men lying still on the floor."
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Camera pans away as the scene concludes and energy dissipates."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-22 22:18:52"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:08:19"
 }

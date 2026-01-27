@@ -1,29 +1,54 @@
 {
   "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nature",
-    "Travel",
-    "Hiking"
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Place-Nature",
+    "Activity-Travel"
   ],
-  "content_description": "A first-person perspective of walking along a rocky, uneven trail through a pine forest.",
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Hiking sequences",
+    "Nature travelogues",
+    "POV transitions"
+  ],
+  "avoid_for": [
+    "Static establishing shots",
+    "High-speed action peaks"
+  ],
+  "vibes": [],
+  "content_description": "First-person view of hiking on a rocky trail through a pine forest.",
   "best_moments": {
     "High": {
-      "start": 31.0,
-      "end": 34.0,
-      "reason": "Navigating a rockier section with more camera movement and dynamic perspective."
+      "start": 28.5,
+      "end": 31.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Increased camera bobbing while navigating larger rocks on the path."
     },
     "Medium": {
-      "start": 5.0,
-      "end": 8.0,
-      "reason": "Steady walking on the trail, representing the overall pace of the hike."
+      "start": 12.0,
+      "end": 15.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady walking pace on a relatively clear section of the trail."
     },
     "Low": {
-      "start": 21.0,
-      "end": 24.0,
-      "reason": "A slightly flatter, more stable part of the walk with minimal camera shake."
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial slow movement entering the forest path setup."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 01:01:53"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:07:00"
 }

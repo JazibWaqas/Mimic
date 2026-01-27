@@ -1,30 +1,53 @@
 {
-  "energy": "Medium",
-  "motion": "Dynamic",
-  "vibes": [
-    "Nature",
-    "Travel",
-    "Adventure",
-    "Animals"
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
   ],
-  "content_description": "A first-person perspective of a horse ride through a wooded, hilly trail, following another rider and a guide.",
+  "narrative_utility": [
+    "Transition",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "POV adventure sequences"
+  ],
+  "avoid_for": [
+    "Stable cinematic shots",
+    "Calm reflective outros"
+  ],
+  "vibes": [],
+  "content_description": "A group of people riding horses along a wooded mountain trail, filmed from a first-person perspective.",
   "best_moments": {
     "High": {
-      "start": 8.0,
-      "end": 11.0,
-      "reason": "Increased camera shake and movement as the horse navigates uneven terrain."
+      "start": 9.0,
+      "end": 12.0,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak movement and camera shake during the ride."
     },
     "Medium": {
-      "start": 16.0,
-      "end": 19.0,
-      "reason": "Steady uphill climb with consistent motion and clear view of the trail ahead."
+      "start": 4.0,
+      "end": 7.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady movement along the trail with clear subjects."
     },
     "Low": {
-      "start": 25.0,
-      "end": 28.0,
-      "reason": "Relatively smoother movement as the horse walks on a flatter section of the path."
+      "start": 14.0,
+      "end": 16.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Brief pan to the side showing the forest scenery."
     }
   },
-  "_cache_version": "6.1",
-  "_cached_at": "2026-01-23 00:25:28"
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:06:11"
 }
