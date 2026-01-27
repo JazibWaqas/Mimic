@@ -9,7 +9,7 @@ FIXES APPLIED:
 5. Prevents back-to-back repeats of same clip
 """
 
-from typing import List, Dict
+from typing import List, Dict, Optional
 from collections import defaultdict
 from pathlib import Path
 from models import (
@@ -19,9 +19,11 @@ from models import (
     EditDecision,
     EnergyLevel,
     MotionType,
-    ClipMetadata
+    ClipMetadata,
+    AdvisorHints
 )
 from engine.processors import has_audio, get_beat_grid, align_to_nearest_beat
+from engine.gemini_advisor import get_advisor_suggestions, compute_advisor_bonus
 
 
 def match_clips_to_blueprint(
@@ -30,7 +32,8 @@ def match_clips_to_blueprint(
     find_best_moments: bool = False,  # Ignored - best moments come from comprehensive analysis
     api_key: str | None = None,
     reference_path: str | None = None,  # NEW: For beat detection
-    bpm: float = 120.0  # NEW: Dynamic BPM detection
+    bpm: float = 120.0,  # NEW: Dynamic BPM detection
+    use_advisor: bool = True  # NEW: Enable Gemini Advisor for strategic guidance
 ) -> EDL:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
@@ -67,6 +70,21 @@ def match_clips_to_blueprint(
     # Check if clips have pre-computed best moments
     clips_with_moments = sum(1 for c in clip_index.clips if c.best_moments)
     print(f"  Clips with pre-computed best moments: {clips_with_moments}/{len(clip_index.clips)}")
+    
+    # Get Gemini Advisor suggestions (optional, degrades gracefully)
+    advisor_hints: Optional[AdvisorHints] = None
+    if use_advisor:
+        try:
+            advisor_hints = get_advisor_suggestions(blueprint, clip_index)
+            if advisor_hints:
+                print(f"  ✅ Advisor enabled: Strategic guidance active")
+            else:
+                print(f"  ⚙️ Advisor disabled: Using base matcher only")
+        except Exception as e:
+            print(f"  ⚠️ Advisor failed, continuing without: {e}")
+            advisor_hints = None
+    else:
+        print(f"  ⚙️ Advisor disabled by config")
     
     # PHASE 2: Generate beat grid for audio sync
     beat_grid = None
@@ -215,7 +233,7 @@ def match_clips_to_blueprint(
                 "calm": ["peaceful", "sunset", "lifestyle", "aesthetic", "still", "chill"]
             }
 
-            def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe) -> tuple[float, str, bool]:
+            def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
                 score = 0.0
                 reasons = []
                 vibe_matched = False
@@ -229,6 +247,16 @@ def match_clips_to_blueprint(
                 else:
                     score -= (usage * 20.0) # Penalty for reuse: Each time used, it becomes significantly less attractive
                     reasons.append(f"Used:{usage}x")
+                
+                # ADVISOR BONUS (NEW: Strategic guidance from Gemini)
+                if advisor:
+                    advisor_bonus = compute_advisor_bonus(clip, segment, blueprint, advisor)
+                    if advisor_bonus != 0:
+                        score += advisor_bonus
+                        if advisor_bonus > 0:
+                            reasons.append(f"🧠+{advisor_bonus}")
+                        else:
+                            reasons.append(f"🚫{advisor_bonus}")
 
                 # 2. SEMANTIC PROXIMITY (Soft Vibe Matching)
                 target_vibe = (segment.vibe or "general").lower()
@@ -289,7 +317,7 @@ def match_clips_to_blueprint(
             scored_clips = []
             for c in available_clips:
                 # We pass the motion of the last selected clip to maintain flow
-                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, last_clip_motion, last_used_clip)
+                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, last_clip_motion, last_used_clip, advisor_hints)
                 scored_clips.append((c, total_score, reasoning, vibe_matched))
 
             # Sort by total score

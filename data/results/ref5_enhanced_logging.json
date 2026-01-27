@@ -1,0 +1,449 @@
+{
+  "candidate_rankings": [
+    {
+      "segment_id": 1,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip13.mp4",
+          "score": 75.0,
+          "reasoning": "\u2728 New | LightMatch | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip20.mp4",
+          "score": 75.0,
+          "reasoning": "\u2728 New | LightMatch | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip28.mp4",
+          "score": 75.0,
+          "reasoning": "\u2728 New | LightMatch | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 2,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip13.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip28.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip33.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 3,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip13.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip28.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip33.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 4,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip13.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip28.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip33.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 5,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip13.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip33.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip34.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 6,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip33.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip34.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip48.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 7,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip34.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip48.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip51.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 8,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip34.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip48.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip51.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    },
+    {
+      "segment_id": 9,
+      "candidates": [
+        {
+          "rank": 1,
+          "clip": "clip34.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": true
+        },
+        {
+          "rank": 2,
+          "clip": "clip48.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        },
+        {
+          "rank": 3,
+          "clip": "clip51.mp4",
+          "score": 80.0,
+          "reasoning": "\u2728 New | LightMatch | Flow | Medium",
+          "vibe_match": false,
+          "won": false
+        }
+      ]
+    }
+  ],
+  "eligibility_breakdowns": [
+    {
+      "segment_id": 1,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 2,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 3,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 4,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 5,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 6,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 7,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 8,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    },
+    {
+      "segment_id": 9,
+      "eligible_count": 55,
+      "ineligible_count": 0,
+      "total_clips": 55,
+      "segment_energy": "Medium"
+    }
+  ],
+  "semantic_neighbor_events": [],
+  "beat_alignment_logs": [],
+  "unused_clips": {
+    "unused_clips": [
+      "clip31.mp4",
+      "clip21.mp4",
+      "clip40.mp4",
+      "clip43.mp4",
+      "clip10.mp4",
+      "clip35.mp4",
+      "clip33.mp4",
+      "clip16.mp4",
+      "clip11.mp4",
+      "clip25.mp4",
+      "clip56.mp4",
+      "clip41.mp4",
+      "clip52.mp4",
+      "clip36.mp4",
+      "clip20.mp4",
+      "clip38.mp4",
+      "clip58.mp4",
+      "clip29.mp4",
+      "clip24.mp4",
+      "clip27.mp4",
+      "clip34.mp4",
+      "clip22.mp4",
+      "clip17.mp4",
+      "clip18.mp4",
+      "clip39.mp4",
+      "clip51.mp4",
+      "clip2.mp4",
+      "clip28.mp4",
+      "clip54.mp4",
+      "clip6.mp4",
+      "clip45.mp4",
+      "clip42.mp4",
+      "clip15.mp4",
+      "clip50.mp4",
+      "clip7.mp4",
+      "clip37.mp4",
+      "clip57.mp4",
+      "clip47.mp4",
+      "clip55.mp4",
+      "clip9.mp4",
+      "clip53.mp4",
+      "clip48.mp4",
+      "clip23.mp4",
+      "clip.mp4",
+      "clip5.mp4",
+      "clip3.mp4",
+      "clip44.mp4",
+      "clip13.mp4",
+      "clip1.mp4",
+      "clip32.mp4",
+      "clip14.mp4",
+      "clip30.mp4",
+      "clip26.mp4",
+      "clip19.mp4",
+      "clip12.mp4"
+    ],
+    "never_eligible": [],
+    "eligible_but_not_selected": [
+      "clip31.mp4",
+      "clip21.mp4",
+      "clip40.mp4",
+      "clip43.mp4",
+      "clip10.mp4",
+      "clip35.mp4",
+      "clip33.mp4",
+      "clip16.mp4",
+      "clip11.mp4",
+      "clip25.mp4",
+      "clip56.mp4",
+      "clip41.mp4",
+      "clip52.mp4",
+      "clip36.mp4",
+      "clip20.mp4",
+      "clip38.mp4",
+      "clip58.mp4",
+      "clip29.mp4",
+      "clip24.mp4",
+      "clip27.mp4",
+      "clip34.mp4",
+      "clip22.mp4",
+      "clip17.mp4",
+      "clip18.mp4",
+      "clip39.mp4",
+      "clip51.mp4",
+      "clip2.mp4",
+      "clip28.mp4",
+      "clip54.mp4",
+      "clip6.mp4",
+      "clip45.mp4",
+      "clip42.mp4",
+      "clip15.mp4",
+      "clip50.mp4",
+      "clip7.mp4",
+      "clip37.mp4",
+      "clip57.mp4",
+      "clip47.mp4",
+      "clip55.mp4",
+      "clip9.mp4",
+      "clip53.mp4",
+      "clip48.mp4",
+      "clip23.mp4",
+      "clip.mp4",
+      "clip5.mp4",
+      "clip3.mp4",
+      "clip44.mp4",
+      "clip13.mp4",
+      "clip1.mp4",
+      "clip32.mp4",
+      "clip14.mp4",
+      "clip30.mp4",
+      "clip26.mp4",
+      "clip19.mp4",
+      "clip12.mp4"
+    ]
+  }
+}

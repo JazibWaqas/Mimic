@@ -4,51 +4,51 @@
   "intensity": 3,
   "primary_subject": [
     "People-Group",
-    "Activity-Leisure"
+    "Activity-Celebration"
   ],
   "narrative_utility": [
-    "Build",
-    "Peak"
+    "Peak",
+    "Build"
   ],
   "emotional_tone": [
     "Joyful",
     "Energetic"
   ],
-  "clip_quality": 3,
+  "clip_quality": 4,
   "best_for": [
     "High-energy peaks",
-    "Friendship montages",
+    "Celebration montages",
     "Travel vlogs"
   ],
   "avoid_for": [
-    "Calm reflective moments",
-    "Professional corporate settings"
+    "Calm reflective outros",
+    "Serious dramatic scenes"
   ],
   "vibes": [],
-  "content_description": "A group of young men singing and dancing enthusiastically inside a car with a sunroof.",
+  "content_description": "A group of young men enthusiastically singing and dancing inside a car with an open sunroof.",
   "best_moments": {
     "High": {
-      "start": 17.5,
-      "end": 20.5,
+      "start": 1.5,
+      "end": 4.5,
       "moment_role": "Climax",
       "stable_moment": true,
-      "reason": "Peak group enthusiasm and synchronized movement with hands in the air."
+      "reason": "Peak celebration with hands in the air and high physical activity."
     },
     "Medium": {
-      "start": 4.5,
-      "end": 7.5,
+      "start": 8.0,
+      "end": 11.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Consistent singing and moderate hand gestures throughout the group."
+      "reason": "Sustained group singing with moderate movement."
     },
     "Low": {
-      "start": 0.0,
-      "end": 2.5,
-      "moment_role": "Establishing",
+      "start": 24.5,
+      "end": 27.5,
+      "moment_role": "Reflection",
       "stable_moment": true,
-      "reason": "Initial scene setup with lower relative physical activity compared to later peaks."
+      "reason": "Post-celebration laughter and relaxed interaction."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:01:52"
+  "_cached_at": "2026-01-28 03:09:04"
 }

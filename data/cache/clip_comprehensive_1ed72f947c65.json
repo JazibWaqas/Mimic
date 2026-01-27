@@ -8,49 +8,46 @@
   ],
   "narrative_utility": [
     "Transition",
-    "Establishing",
-    "Reflection"
+    "Establishing"
   ],
   "emotional_tone": [
-    "Peaceful",
-    "Adventurous"
+    "Adventurous",
+    "Peaceful"
   ],
   "clip_quality": 3,
   "best_for": [
-    "Travel transitions",
-    "Atmospheric montages",
-    "Mood-setting sequences"
+    "Travel montages",
+    "Transitions"
   ],
   "avoid_for": [
     "Static scenes",
-    "High-action sports",
-    "Professional horizontal documentaries"
+    "Interviews"
   ],
   "vibes": [],
-  "content_description": "A vibrant sunset with orange and pink clouds seen through a moving car window passing trees.",
+  "content_description": "A sunset view through a moving vehicle window with silhouettes of trees passing by.",
   "best_moments": {
     "High": {
       "start": 7.5,
-      "end": 10.0,
+      "end": 10.5,
       "moment_role": "Transition",
       "stable_moment": false,
-      "reason": "Rapid camera movement and motion blur from the moving vehicle create high visual change."
+      "reason": "Fastest motion and most vibrant colors as the vehicle speeds up."
     },
     "Medium": {
       "start": 4.0,
       "end": 7.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Consistent movement showing the sunset through passing trees with moderate pacing."
+      "reason": "Steady movement showing the sunset clearly through the window."
     },
     "Low": {
       "start": 0.0,
       "end": 3.0,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Framed view of the sunset with minimal camera movement at the start."
+      "reason": "Initial dark framing providing a slow reveal of the scene."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:10:29"
+  "_cached_at": "2026-01-28 03:08:04"
 }

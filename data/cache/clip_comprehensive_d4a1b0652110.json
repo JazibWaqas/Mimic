@@ -1,10 +1,10 @@
 {
   "energy": "High",
-  "motion": "Active",
-  "intensity": 2,
+  "motion": "Kinetic",
+  "intensity": 3,
   "primary_subject": [
     "People-Group",
-    "Activity-Leisure"
+    "Place-Indoor"
   ],
   "narrative_utility": [
     "Peak",
@@ -16,39 +16,40 @@
   ],
   "clip_quality": 3,
   "best_for": [
-    "Action montages",
-    "Group activity highlights",
-    "Energetic transitions"
+    "High-energy montages",
+    "Friendship highlights",
+    "Action sequences"
   ],
   "avoid_for": [
-    "Calm reflective outros",
-    "Steady professional shots"
+    "Calm reflective intros",
+    "Professional corporate content",
+    "Static backgrounds"
   ],
   "vibes": [],
-  "content_description": "A group of young men in protective gear laugh and interact playfully in an indoor activity arena.",
+  "content_description": "A group of friends laughing and playing in an indoor paintball arena.",
   "best_moments": {
     "High": {
-      "start": 8.0,
-      "end": 11.0,
+      "start": 9.2,
+      "end": 12.0,
       "moment_role": "Climax",
       "stable_moment": false,
-      "reason": "Peak laughter and physical interaction between the subjects."
+      "reason": "Peak chaotic interaction and laughter among the group."
     },
     "Medium": {
-      "start": 3.0,
-      "end": 6.0,
+      "start": 6.5,
+      "end": 9.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Steady movement through the arena towards the group."
+      "reason": "Subject walks towards the camera with a clear, expressive smile."
     },
     "Low": {
       "start": 18.0,
       "end": 21.0,
       "moment_role": "Transition",
       "stable_moment": true,
-      "reason": "Walking away from the main action with reduced intensity."
+      "reason": "The action subsides as the group walks away, offering a calmer moment."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:02:30"
+  "_cached_at": "2026-01-28 03:03:21"
 }

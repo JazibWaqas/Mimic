@@ -1,54 +1,54 @@
 {
   "energy": "High",
-  "motion": "Active",
+  "motion": "ACTIVE",
   "intensity": 2,
   "primary_subject": [
     "People-Group",
     "Activity-Travel"
   ],
   "narrative_utility": [
-    "Transition",
-    "Build"
+    "Establishing",
+    "Transition"
   ],
   "emotional_tone": [
     "Adventurous",
-    "Energetic"
+    "Peaceful"
   ],
   "clip_quality": 3,
   "best_for": [
     "Travel montages",
     "Adventure sequences",
-    "Action transitions"
+    "Transition shots"
   ],
   "avoid_for": [
-    "Calm reflective intros",
-    "Intimate close-up moments"
+    "Calm reflective outros",
+    "Still photography style shots"
   ],
   "vibes": [],
-  "content_description": "A group of young men wearing life jackets ride a motorboat across a lake during the day.",
+  "content_description": "People wearing life jackets ride a motorboat across a lake during the day.",
   "best_moments": {
     "High": {
       "start": 0.0,
       "end": 2.0,
       "moment_role": "Transition",
       "stable_moment": false,
-      "reason": "Fast camera panning and high-speed boat motion creating a dynamic feel."
+      "reason": "Fast camera pan combined with the boat's high-speed motion."
     },
     "Medium": {
-      "start": 2.0,
+      "start": 0.5,
       "end": 2.318478,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Sustained motion with a clearer focus on the primary subject in the foreground."
+      "reason": "Consistent tracking of the passenger while maintaining a sense of travel."
     },
     "Low": {
-      "start": 2.2184779999999997,
+      "start": 1.0,
       "end": 2.318478,
-      "moment_role": "Reflection",
+      "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "The final moments of the clip where the camera movement stabilizes slightly."
+      "reason": "The most stable portion of the clip focusing on the subject's expression."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 01:55:43"
+  "_cached_at": "2026-01-28 03:00:13"
 }

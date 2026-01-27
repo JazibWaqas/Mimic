@@ -1,7 +1,7 @@
 {
   "energy": "Low",
   "motion": "Gentle",
-  "intensity": 1,
+  "intensity": 2,
   "primary_subject": [
     "People-Crowd",
     "Place-Nature"
@@ -17,38 +17,37 @@
   "clip_quality": 3,
   "best_for": [
     "Atmospheric transitions",
-    "Travel montages",
-    "Peaceful outros"
+    "Travel montages"
   ],
   "avoid_for": [
-    "High-energy action sequences",
-    "Fast-paced cuts"
+    "High-energy action",
+    "Fast-paced sequences"
   ],
   "vibes": [],
-  "content_description": "Silhouetted people walk along a hazy beach at sunset with the sun reflecting on the wet sand.",
+  "content_description": "A hazy sunset scene on a crowded beach with people and horses walking along the shore.",
   "best_moments": {
     "High": {
-      "start": 4.0,
-      "end": 7.0,
-      "moment_role": "Transition",
-      "stable_moment": true,
-      "reason": "Relative peak of movement as more silhouetted figures cross the frame."
-    },
-    "Medium": {
-      "start": 2.0,
-      "end": 5.0,
+      "start": 3.5,
+      "end": 6.5,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Steady walking pace with consistent visual flow and reflection."
+      "reason": "Relative peak in movement as more figures cross the frame."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 4.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Consistent walking pace and steady visual flow."
     },
     "Low": {
       "start": 0.0,
       "end": 3.0,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Quiet opening shot establishing the hazy sunset atmosphere."
+      "reason": "Calm opening focusing on the sun and the horizon."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:09:37"
+  "_cached_at": "2026-01-28 03:07:21"
 }

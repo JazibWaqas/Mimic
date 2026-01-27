@@ -14,40 +14,40 @@
     "Joyful",
     "Energetic"
   ],
-  "clip_quality": 3,
+  "clip_quality": 4,
   "best_for": [
     "High-energy peaks",
     "Social media montages"
   ],
   "avoid_for": [
-    "Calm reflective outros",
-    "Professional corporate videos"
+    "Calm reflective moments",
+    "Serious documentary segments"
   ],
   "vibes": [],
-  "content_description": "A group of friends dancing and laughing under a red-lit architectural structure.",
+  "content_description": "A group of friends dancing and laughing under a red-lit architectural structure resembling the Eiffel Tower.",
   "best_moments": {
     "High": {
-      "start": 5.0,
-      "end": 8.0,
+      "start": 4.5,
+      "end": 7.5,
       "moment_role": "Climax",
       "stable_moment": true,
-      "reason": "Peak laughter and expressive group dancing."
+      "reason": "Peak action featuring a kick, a group pose, and a dynamic color shift."
     },
     "Medium": {
-      "start": 2.5,
-      "end": 5.0,
+      "start": 2.0,
+      "end": 4.5,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Transitioning into a coordinated dance pose."
+      "reason": "Coordinated dancing and movement building anticipation for the main pose."
     },
     "Low": {
       "start": 0.0,
       "end": 2.0,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Initial setup and start of movement."
+      "reason": "Initial group setup with relatively lower intensity before the main action begins."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:05:00"
+  "_cached_at": "2026-01-28 03:06:51"
 }

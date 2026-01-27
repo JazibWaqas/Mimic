@@ -849,8 +849,15 @@ def analyze_reference_video(
         import hashlib
         hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
         cache_file = cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
+        fallback_cache_file = cache_dir / f"ref_{file_hash}_hints0.json"
     else:
         cache_file = cache_dir / f"ref_{file_hash}_hints0.json"
+        fallback_cache_file = None
+    
+    # Try primary cache first, then fallback to hints0 if available
+    if not cache_file.exists() and fallback_cache_file and fallback_cache_file.exists():
+        print(f"[CACHE] Hash-based cache not found, using fallback: {fallback_cache_file.name}")
+        cache_file = fallback_cache_file
     
     if cache_file.exists():
         print(f"[CACHE] Found cached analysis: {cache_file.name}")
@@ -1171,7 +1178,7 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None, use_com
                 energy, motion = _analyze_single_clip_simple(model, clip_path)
                 clip_metadata = ClipMetadata(
                     filename=Path(clip_path).name,
-                    filepath=clip_path,
+                    filepath=str(clip_path),
                     duration=duration,
                     energy=energy,
                     motion=motion
@@ -1227,7 +1234,18 @@ def _analyze_single_clip_comprehensive(
                 else:
                     # Reconstruct ClipMetadata from cache
                     energy = EnergyLevel(cache_data["energy"])
-                    motion = MotionType(cache_data["motion"])
+                    
+                    # Map new motion types to legacy enum (for v7.0 cache compatibility)
+                    motion_str = cache_data.get("motion", "Dynamic")
+                    motion_map = {
+                        "STILL": "Static",
+                        "GENTLE": "Dynamic",
+                        "ACTIVE": "Dynamic",
+                        "KINETIC": "Dynamic",
+                        "Static": "Static",
+                        "Dynamic": "Dynamic"
+                    }
+                    motion = MotionType(motion_map.get(motion_str, "Dynamic"))
                     
                     best_moments = None
                     if "best_moments" in cache_data:
@@ -1390,7 +1408,7 @@ def _analyze_single_clip_comprehensive(
             
             return ClipMetadata(
                 filename=Path(clip_path).name,
-                filepath=clip_path,
+                filepath=str(clip_path),
                 duration=duration,
                 energy=energy,
                 motion=motion,

@@ -18,37 +18,37 @@
   "best_for": [
     "High-energy montages",
     "Fun travel clips",
-    "Social media reels"
+    "Action-oriented social media content"
   ],
   "avoid_for": [
-    "Serious documentaries",
-    "Calm reflective scenes"
+    "Calm reflective outros",
+    "Serious dramatic scenes"
   ],
   "vibes": [],
-  "content_description": "A group of friends playfully runs and dances around a man standing still on a grassy hill under a blue sky.",
+  "content_description": "A group of friends playfully runs and chases each other on a grassy hilltop under a clear sky.",
   "best_moments": {
     "High": {
-      "start": 5.0,
+      "start": 5.5,
       "end": 8.5,
       "moment_role": "Climax",
       "stable_moment": true,
-      "reason": "Peak chaotic movement with multiple people running and jumping across the frame."
+      "reason": "Peak chaotic movement with multiple people running across the frame and expressive gestures."
     },
     "Medium": {
-      "start": 2.2,
-      "end": 4.8,
+      "start": 2.5,
+      "end": 5.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Initial movement as the first few people begin running behind the central subject."
+      "reason": "Initial movement as the first person runs past the main subject, building anticipation."
     },
     "Low": {
       "start": 0.0,
       "end": 2.0,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "The central subject stands still before the group activity begins."
+      "reason": "Calm opening shot with the subject standing still against the landscape before action begins."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 01:52:14"
+  "_cached_at": "2026-01-28 03:06:59"
 }

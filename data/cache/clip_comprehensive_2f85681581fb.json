@@ -1,9 +1,10 @@
 {
   "energy": "Low",
-  "motion": "Gentle",
+  "motion": "GENTLE",
   "intensity": 1,
   "primary_subject": [
-    "Place-Nature"
+    "Place-Nature",
+    "Activity-Travel"
   ],
   "narrative_utility": [
     "Establishing",
@@ -15,38 +16,39 @@
   ],
   "clip_quality": 3,
   "best_for": [
-    "Opening establishing shots",
-    "Nature montages"
+    "Establishing shots",
+    "Nature montages",
+    "Travel vlogs"
   ],
   "avoid_for": [
-    "High-energy peaks",
-    "Fast-paced action"
+    "High-energy action",
+    "Fast-paced transitions"
   ],
   "vibes": [],
-  "content_description": "A slow camera pan across a misty mountain landscape with pine trees and a dirt path.",
+  "content_description": "A slow camera pan across a misty mountain landscape and a dirt hiking trail.",
   "best_moments": {
     "High": {
-      "start": 2.0,
+      "start": 2.5,
       "end": 4.5,
-      "moment_role": "Transition",
+      "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Most visual change as the camera pans across foreground trees and the path."
+      "reason": "Relative peak of visual information as the trail is revealed"
     },
     "Medium": {
       "start": 1.0,
-      "end": 3.5,
-      "moment_role": "Build",
+      "end": 3.0,
+      "moment_role": "Transition",
       "stable_moment": true,
-      "reason": "Steady panning motion revealing more of the mountain trail."
+      "reason": "Steady panning motion across the landscape"
     },
     "Low": {
       "start": 0.0,
-      "end": 2.5,
+      "end": 2.0,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Calm setup showing the distant misty mountains and valley."
+      "reason": "Calm opening view of the misty valley"
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:08:56"
+  "_cached_at": "2026-01-28 03:06:38"
 }

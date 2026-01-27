@@ -16,38 +16,39 @@
   ],
   "clip_quality": 3,
   "best_for": [
-    "Reaction compilations",
-    "Social media montages"
+    "Humorous montages",
+    "Casual vlogs",
+    "Behind-the-scenes clips"
   ],
   "avoid_for": [
-    "Calm reflective outros",
-    "Professional documentaries"
+    "Formal documentaries",
+    "Serious dramatic scenes"
   ],
   "vibes": [],
-  "content_description": "Two men laughing and joking around in a room.",
+  "content_description": "Two men laughing and joking around in a room as one puts on a hat.",
   "best_moments": {
     "High": {
-      "start": 1.5,
-      "end": 4.5,
+      "start": 0.8,
+      "end": 3.3,
       "moment_role": "Climax",
       "stable_moment": true,
-      "reason": "Peak laughter and expressive movement as the subjects react."
+      "reason": "Peak laughter and physical interaction as the subjects break apart."
     },
     "Medium": {
-      "start": 0.8,
-      "end": 2.8,
+      "start": 2.5,
+      "end": 4.5,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Transition from the initial setup to the start of the reaction."
+      "reason": "Subject walking towards the camera while adjusting his hat."
     },
     "Low": {
       "start": 0.0,
-      "end": 1.5,
+      "end": 1.2,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Initial setup with minimal movement before the main action begins."
+      "reason": "Initial static pose before the main movement and laughter begins."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 01:51:27"
+  "_cached_at": "2026-01-28 03:06:22"
 }

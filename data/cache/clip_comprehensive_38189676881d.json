@@ -11,44 +11,44 @@
     "Build"
   ],
   "emotional_tone": [
-    "Energetic",
-    "Adventurous"
+    "Adventurous",
+    "Energetic"
   ],
   "clip_quality": 3,
   "best_for": [
+    "POV action sequences",
     "High-energy peaks",
-    "Adventure montages",
-    "Travel vlogs"
+    "Adventure montages"
   ],
   "avoid_for": [
-    "Calm reflective outros",
-    "Intimate close-up moments"
+    "Calm reflective intros",
+    "Steady establishing shots"
   ],
   "vibes": [],
-  "content_description": "A person sits on a large swinging amusement park ride overlooking a valley and construction site.",
+  "content_description": "A person on a high-swinging amusement park ride overlooking a valley.",
   "best_moments": {
     "High": {
-      "start": 0.5,
-      "end": 3.5,
+      "start": 1.0,
+      "end": 4.0,
       "moment_role": "Climax",
       "stable_moment": false,
-      "reason": "Peak of the swing with maximum height and rapid camera movement."
+      "reason": "Peak swing speed and intense camera movement with audible excitement."
     },
     "Medium": {
       "start": 4.0,
-      "end": 7.0,
+      "end": 6.5,
       "moment_role": "Build",
       "stable_moment": false,
-      "reason": "Sustained motion as the ride swings back through the center."
+      "reason": "Transitioning through the swing arc with sustained but slightly less chaotic motion."
     },
     "Low": {
-      "start": 7.5,
-      "end": 10.0,
-      "moment_role": "Transition",
+      "start": 7.0,
+      "end": 9.0,
+      "moment_role": "Reflection",
       "stable_moment": false,
-      "reason": "Brief moment of relative stability while focusing on the passenger."
+      "reason": "Brief moment of reduced relative motion as the ride reaches its apex."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 01:53:32"
+  "_cached_at": "2026-01-28 03:08:16"
 }

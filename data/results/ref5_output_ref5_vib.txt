@@ -1,0 +1,882 @@
+================================================================================
+PIPELINE RUN: REF5.MP4
+================================================================================
+Session ID: ref5_vibes_test
+Reference: ref5.mp4
+Clips: 55
+Timestamp: 2026-01-28 03:16:59
+
+
+[1/5] Validating inputs...
+
+[2/5] Detecting visual cuts and analyzing reference structure...
+  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.3)...
+  [OK] Detected 20 visual cuts.
+  [BEAT] Detecting BPM for ref_analysis_audio.wav...
+  [OK] Detected BPM: 129.20
+
+============================================================
+[BRAIN] ANALYZING REFERENCE VIDEO: ref5.mp4
+[BRAIN] Using 20 visual scene anchors.
+============================================================
+
+[CACHE] Found cached analysis: ref_d04cf94d4d8a_h32e59bfd.json
+[CACHE] Reference version mismatch (6.1 vs 7.0). Re-analyzing...
+[WARN] Cache issue: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\ref_d04cf94d4d8a_h32e59bfd.json'. Re-analyzing...
+[API KEY MANAGER] Loaded 28 API key(s)
+[API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_d04cf94d4d8a.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/lnwyhqinmdau
+[RETRY DEBUG] Reference analysis attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 24.395941877s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 24
+}
+]
+[QUOTA] Rate limit detected during reference analysis
+[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during reference analysis)
+[API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_d04cf94d4d8a.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/a7b86gd401ls
+[RETRY DEBUG] Reference analysis attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 56.162950771s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 56
+}
+]
+[QUOTA] Rate limit detected during reference analysis
+[API KEY MANAGER] Marking key as exhausted: AIzaSyAjP3...SS5Pk (Rate limit during reference analysis)
+[API KEY MANAGER] Rotated to key 3/28: AIzaSyCyiV...ASpNo
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_d04cf94d4d8a.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/qvnkt6ojjcu8
+[RETRY DEBUG] Reference analysis attempt 3 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 28.831562907s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 28
+}
+]
+[QUOTA] Rate limit detected during reference analysis
+[API KEY MANAGER] Marking key as exhausted: AIzaSyCyiV...ASpNo (Rate limit during reference analysis)
+[API KEY MANAGER] Rotated to key 4/28: AIzaSyCuGa...Nb5WU
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_d04cf94d4d8a.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/blvy6s4vlzr1
+[RETRY DEBUG] Reference analysis attempt 4 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 2.964292631s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 2
+}
+]
+[QUOTA] Rate limit detected during reference analysis
+[API KEY MANAGER] Marking key as exhausted: AIzaSyCuGa...Nb5WU (Rate limit during reference analysis)
+[API KEY MANAGER] Rotated to key 5/28: AIzaSyAJil...nqKGA
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+Uploading muted_d04cf94d4d8a.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/hbfcpk7rdn2u
+[RETRY DEBUG] Reference analysis attempt 5 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 36.031037647s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 36
+}
+]
+[QUOTA] Rate limit detected during reference analysis
+[API KEY MANAGER] Marking key as exhausted: AIzaSyAJil...nqKGA (Rate limit during reference analysis)
+[API KEY MANAGER] Rotated to key 6/28: AIzaSyAh7d...v9jZA
+[QUOTA] Rotated to new API key, re-initializing genai...
+[ERROR] Gemini reference analysis failed: Failed to analyze reference video after all retries and key rotations.
+    FALLING BACK to linear 2-second segments. Results will be generic.
+[WARN] Using fallback mode: Linear 2-second segments
+
+[3/5] Analyzing user clips with Gemini AI...
+
+============================================================
+[BRAIN] ANALYZING USER CLIPS (55 total)
+[BRAIN] Mode: COMPREHENSIVE (energy + best moments)
+============================================================
+
+
+[1/55] Processing clip.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Place-Indoor
+
+[2/55] Processing clip1.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip1.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[3/55] Processing clip10.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip10.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[4/55] Processing clip11.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip11.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Solo, Activity-Leisure
+
+[5/55] Processing clip12.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip12.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[6/55] Processing clip13.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip13.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[7/55] Processing clip14.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip14.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[8/55] Processing clip15.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip15.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[9/55] Processing clip16.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip16.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[10/55] Processing clip17.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip17.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[11/55] Processing clip18.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip18.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Object-Vehicle
+
+[12/55] Processing clip19.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip19.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[13/55] Processing clip2.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip2.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[14/55] Processing clip20.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip20.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[15/55] Processing clip21.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip21.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[16/55] Processing clip22.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip22.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[17/55] Processing clip23.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip23.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Place-Indoor
+
+[18/55] Processing clip24.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip24.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[19/55] Processing clip25.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip25.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[20/55] Processing clip26.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip26.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[21/55] Processing clip27.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip27.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[22/55] Processing clip28.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip28.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Place-Nature, Activity-Travel
+
+[23/55] Processing clip29.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip29.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: Activity-Travel, Object-Vehicle
+
+[24/55] Processing clip3.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip3.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[25/55] Processing clip30.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip30.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: Place-Nature, Activity-Travel
+
+[26/55] Processing clip31.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip31.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Crowd, Place-Nature
+
+[27/55] Processing clip32.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip32.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Place-Nature, Activity-Travel
+
+[28/55] Processing clip33.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip33.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Place-Nature, Activity-Travel
+
+[29/55] Processing clip34.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip34.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Object-Vehicle, Activity-Travel
+
+[30/55] Processing clip35.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip35.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: Place-Nature
+
+[31/55] Processing clip36.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip36.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[32/55] Processing clip37.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip37.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[33/55] Processing clip38.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip38.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Crowd, Activity-Celebration
+
+[34/55] Processing clip39.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip39.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[35/55] Processing clip40.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip40.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[36/55] Processing clip41.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip41.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Activity-Travel, Object-Vehicle
+
+[37/55] Processing clip42.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip42.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Activity-Travel, Object-Vehicle
+
+[38/55] Processing clip43.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip43.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[39/55] Processing clip44.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip44.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[40/55] Processing clip45.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip45.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: Place-Nature
+
+[41/55] Processing clip47.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip47.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Activity-Travel
+
+[42/55] Processing clip48.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip48.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Activity-Travel
+
+[43/55] Processing clip5.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip5.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[44/55] Processing clip50.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip50.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[45/55] Processing clip51.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip51.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Object-Animal, Place-Nature
+
+[46/55] Processing clip52.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip52.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Place-Urban, Activity-Travel
+
+[47/55] Processing clip53.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip53.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[48/55] Processing clip54.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip54.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Travel
+
+[49/55] Processing clip55.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip55.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Place-Nature
+
+[50/55] Processing clip56.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip56.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Crowd, Object-Animal
+
+[51/55] Processing clip57.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip57.mp4...
+    [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: Place-Nature, Object-Animal
+
+[52/55] Processing clip58.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip58.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: Place-Indoor, Activity-Leisure
+
+[53/55] Processing clip6.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip6.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+
+[54/55] Processing clip7.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip7.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Place-Urban
+
+[55/55] Processing clip9.mp4
+[OK] Using model: gemini-3-flash-preview
+  Analyzing comprehensively: clip9.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+
+[OK] All 55 clips analyzed
+[OK] Rate limiter status: 0 requests in last minute
+
+[OK] Gemini successfully analyzed 55 clips (using originals for cache).
+  [CACHE] Using standardized clip 1/55: clip.mp4
+  [CACHE] Using standardized clip 2/55: clip1.mp4
+  [CACHE] Using standardized clip 3/55: clip10.mp4
+  [CACHE] Using standardized clip 4/55: clip11.mp4
+  [CACHE] Using standardized clip 5/55: clip12.mp4
+  [CACHE] Using standardized clip 6/55: clip13.mp4
+  [CACHE] Using standardized clip 7/55: clip14.mp4
+  [CACHE] Using standardized clip 8/55: clip15.mp4
+  [CACHE] Using standardized clip 9/55: clip16.mp4
+  [CACHE] Using standardized clip 10/55: clip17.mp4
+  [CACHE] Using standardized clip 11/55: clip18.mp4
+  [CACHE] Using standardized clip 12/55: clip19.mp4
+  [CACHE] Using standardized clip 13/55: clip2.mp4
+  [CACHE] Using standardized clip 14/55: clip20.mp4
+  [CACHE] Using standardized clip 15/55: clip21.mp4
+  [CACHE] Using standardized clip 16/55: clip22.mp4
+  [CACHE] Using standardized clip 17/55: clip23.mp4
+  [CACHE] Using standardized clip 18/55: clip24.mp4
+  [CACHE] Using standardized clip 19/55: clip25.mp4
+  [CACHE] Using standardized clip 20/55: clip26.mp4
+  [CACHE] Using standardized clip 21/55: clip27.mp4
+  [CACHE] Using standardized clip 22/55: clip28.mp4
+  [CACHE] Using standardized clip 23/55: clip29.mp4
+  [CACHE] Using standardized clip 24/55: clip3.mp4
+  [CACHE] Using standardized clip 25/55: clip30.mp4
+  [CACHE] Using standardized clip 26/55: clip31.mp4
+  [CACHE] Using standardized clip 27/55: clip32.mp4
+  [CACHE] Using standardized clip 28/55: clip33.mp4
+  [CACHE] Using standardized clip 29/55: clip34.mp4
+  [CACHE] Using standardized clip 30/55: clip35.mp4
+  [CACHE] Using standardized clip 31/55: clip36.mp4
+  [CACHE] Using standardized clip 32/55: clip37.mp4
+  [CACHE] Using standardized clip 33/55: clip38.mp4
+  [CACHE] Using standardized clip 34/55: clip39.mp4
+  [CACHE] Using standardized clip 35/55: clip40.mp4
+  [CACHE] Using standardized clip 36/55: clip41.mp4
+  [CACHE] Using standardized clip 37/55: clip42.mp4
+  [CACHE] Using standardized clip 38/55: clip43.mp4
+  [CACHE] Using standardized clip 39/55: clip44.mp4
+  [CACHE] Using standardized clip 40/55: clip45.mp4
+  [CACHE] Using standardized clip 41/55: clip47.mp4
+  [CACHE] Using standardized clip 42/55: clip48.mp4
+  [CACHE] Using standardized clip 43/55: clip5.mp4
+  [CACHE] Using standardized clip 44/55: clip50.mp4
+  [CACHE] Using standardized clip 45/55: clip51.mp4
+  [CACHE] Using standardized clip 46/55: clip52.mp4
+  [CACHE] Using standardized clip 47/55: clip53.mp4
+  [CACHE] Using standardized clip 48/55: clip54.mp4
+  [CACHE] Using standardized clip 49/55: clip55.mp4
+  [CACHE] Using standardized clip 50/55: clip56.mp4
+  Standardizing clip 51/55: clip57.mp4...
+  [OK] Standardized: clip_051.mp4
+  Standardizing clip 52/55: clip58.mp4...
+  [OK] Standardized: clip_052.mp4
+  [CACHE] Using standardized clip 53/55: clip6.mp4
+  [CACHE] Using standardized clip 54/55: clip7.mp4
+  [CACHE] Using standardized clip 55/55: clip9.mp4
+[OK] All clips standardized (cached or new) and ready for render.
+
+[4/5] Creating edit sequence...
+
+============================================================
+[EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)
+============================================================
+  Segments: 9
+  Clips: 55
+  Clips with pre-computed best moments: 55/55
+
+============================================================
+[ADVISOR] GENERATING STRATEGIC GUIDANCE
+============================================================
+  🧠 Calling Gemini for strategic guidance...
+[OK] Using model: gemini-3-flash-preview
+  ⚠️ Advisor attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 24.440128072s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 24
+}
+]
+[QUOTA] Rate limit detected during advisor
+[API KEY MANAGER] Marking key as exhausted: AIzaSyAh7d...v9jZA (Rate limit during advisor)
+[API KEY MANAGER] Rotated to key 7/28: AIzaSyDHpI...3rkwY
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+  ⚠️ Advisor attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+[QUOTA] Rate limit detected during advisor
+[API KEY MANAGER] Marking key as exhausted: AIzaSyDHpI...3rkwY (Rate limit during advisor)
+[API KEY MANAGER] Rotated to key 8/28: AIzaSyAQju...4ax4w
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using model: gemini-3-flash-preview
+  ✅ Advisor hints generated and cached
+  📊 Confidence: High
+  💡 Strategy: Drive the narrative using high-intensity group joy and car-ride celebrations as the core energy, bookended by scenic travel establishing shots and beach-themed resolutions.
+  ✅ Advisor enabled: Strategic guidance active
+  🎵 Beat grid generated: 36 beats at 129.20 BPM
+  DEBUG: First 5 beats: [0.0, 0.46511627906976744, 0.9302325581395349, 1.3953488372093024, 1.8604651162790697]
+
+
+📊 CLIP DEMAND ANALYSIS:
+   Reference needs: High=0, Medium=9, Low=0
+   You have:        High=35, Medium=13, Low=7
+   ✅ You have enough clips for a perfect edit!
+
+
+Segment 1: 0.00s-2.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Medium
+  📎 Selected: clip20.mp4 (Score: 75.0)
+    ✂️ Cut 1: clip20.mp4 [0.00s-2.00s] (2.00s) → timeline [0.000000s-2.000000s]
+
+Segment 2: 2.00s-4.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip47.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip47.mp4 [0.00s-2.00s] (2.00s) → timeline [2.000000s-4.000000s]
+
+Segment 3: 4.00s-6.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip58.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip58.mp4 [1.50s-3.00s] (1.50s) → timeline [4.000000s-6.000000s]
+
+Segment 4: 6.00s-8.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip28.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip28.mp4 [10.00s-12.00s] (2.00s) → timeline [6.000000s-8.000000s]
+
+Segment 5: 8.00s-10.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip13.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip13.mp4 [3.00s-5.00s] (2.00s) → timeline [8.000000s-10.000000s]
+
+Segment 6: 10.00s-12.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip33.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip33.mp4 [3.00s-5.00s] (2.00s) → timeline [10.000000s-12.000000s]
+
+Segment 7: 12.00s-14.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip56.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip56.mp4 [1.00s-3.00s] (2.00s) → timeline [12.000000s-14.000000s]
+
+Segment 8: 14.00s-16.00s (2.00s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip7.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip7.mp4 [2.00s-4.00s] (2.00s) → timeline [14.000000s-16.000000s]
+
+Segment 9: 16.00s-16.65s (0.65s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip54.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip54.mp4 [0.00s-0.65s] (0.65s) → timeline [16.000000s-16.645850s]
+
+============================================================
+[OK] Matching complete: 9 edit decisions
+[OK] Total timeline duration: 16.65s (target: 16.65s)
+
+📊 DIVERSITY REPORT:
+   Unique clips used: 9/55
+   ⚠️ 46 clips were not used.
+
+   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
+============================================================
+
+
+============================================================
+[EDL] EDIT DECISION LIST SUMMARY
+============================================================
+
+Total decisions: 9
+Total segments: 9
+Available clips: 55
+
+Clip usage distribution:
+  clip_014.mp4: 1 times
+  clip_041.mp4: 1 times
+  clip_052.mp4: 1 times
+  clip_022.mp4: 1 times
+  clip_006.mp4: 1 times
+  clip_028.mp4: 1 times
+  clip_050.mp4: 1 times
+  clip_054.mp4: 1 times
+  clip_048.mp4: 1 times
+
+
+[5/5] Rendering final video...
+    [OK] Segment extracted: 0.00s - 2.00s
+    [OK] Segment extracted: 0.00s - 2.00s
+    [OK] Segment extracted: 1.50s - 3.00s
+    [OK] Segment extracted: 10.00s - 12.00s
+    [OK] Segment extracted: 3.00s - 5.00s
+    [OK] Segment extracted: 3.00s - 5.00s
+    [OK] Segment extracted: 1.00s - 3.00s
+    [OK] Segment extracted: 2.00s - 4.00s
+    [OK] Segment extracted: 0.00s - 0.65s
+  [OK] Concatenated 9 segments (frame-perfect)
+  [OK] Audio extracted: ref_audio.aac
+  [OK] Audio merged onto video (optimized)
+
+================================================================================
+✅ SUCCESS!
+================================================================================
+
+📊 Basic Results:
+   Output: ref5_output_ref5_vib.mp4
+   Duration: 16.37s (ref: 16.65s)
+   Difference: 0.28s
+   Processing time: 185.7s
+
+================================================================================
+🧠 COMPREHENSIVE SYSTEM ANALYSIS
+================================================================================
+
+📹 Reference Analysis:
+   Editing Style: General
+   Emotional Intent: Dynamic
+   Arc Description: 
+   Total Segments: 9
+
+📑 BLUEPRINT FULL SEGMENT LIST:
+   01:  0.00- 2.00s | Medium | Vibe: General    | Main
+   02:  2.00- 4.00s | Medium | Vibe: General    | Main
+   03:  4.00- 6.00s | Medium | Vibe: General    | Main
+   04:  6.00- 8.00s | Medium | Vibe: General    | Main
+   05:  8.00-10.00s | Medium | Vibe: General    | Main
+   06: 10.00-12.00s | Medium | Vibe: General    | Main
+   07: 12.00-14.00s | Medium | Vibe: General    | Main
+   08: 14.00-16.00s | Medium | Vibe: General    | Main
+   09: 16.00-16.65s | Medium | Vibe: General    | Main
+
+📈 Arc Stage Distribution:
+   Main: 9 segments (100.0%)
+
+📎 Clip Usage Analysis:
+   Unique clips used: 9/55
+   Most used clips:
+     clip_014.mp4: 1 times (11.1%)
+     clip_041.mp4: 1 times (11.1%)
+     clip_052.mp4: 1 times (11.1%)
+     clip_022.mp4: 1 times (11.1%)
+     clip_006.mp4: 1 times (11.1%)
+
+🧠 AI Reasoning Breakdown:
+   ✨ Smart Match: 0 (0.0%)
+   🎯 Good Fit: 0 (0.0%)
+   ⚙️ Constraint Relaxation: 0 (0.0%)
+
+🎨 Vibe Matching:
+   Matches: 0/9 (0.0%)
+
+📏 Cut Statistics by Arc Stage:
+   Main: 9 cuts, avg 1.85s
+
+📏 Overall Cut Statistics:
+   Total cuts: 9
+   Average cut: 1.85s
+   Shortest cut: 0.65s
+   Longest cut: 2.00s
+
+💭 Sample AI Reasoning (first 5 decisions):
+   1. clip_014.mp4: 🌟 ✨ New | LightMatch | Medium
+   2. clip_041.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
+   3. clip_052.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
+   4. clip_022.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
+   5. clip_006.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
+
+📦 CLIP REGISTRY (55 total):
+   01: clip.mp4        | High   |   4.8s | Vibes: N/A
+   02: clip1.mp4       | High   |  15.4s | Vibes: N/A
+   03: clip10.mp4      | High   |   7.7s | Vibes: N/A
+   04: clip11.mp4      | High   |  15.4s | Vibes: N/A
+   05: clip12.mp4      | High   |   7.9s | Vibes: N/A
+   06: clip13.mp4      | Medium |   7.9s | Vibes: N/A
+   07: clip14.mp4      | High   |   2.3s | Vibes: N/A
+   08: clip15.mp4      | High   |  27.0s | Vibes: N/A
+   09: clip16.mp4      | High   |  38.3s | Vibes: N/A
+   10: clip17.mp4      | High   |   5.5s | Vibes: N/A
+   11: clip18.mp4      | High   |   8.5s | Vibes: N/A
+   12: clip19.mp4      | High   |  14.8s | Vibes: N/A
+   13: clip2.mp4       | High   |   8.8s | Vibes: N/A
+   14: clip20.mp4      | Medium |   5.6s | Vibes: N/A
+   15: clip21.mp4      | High   |  48.6s | Vibes: N/A
+   16: clip22.mp4      | High   |  27.7s | Vibes: N/A
+   17: clip23.mp4      | High   |  21.4s | Vibes: N/A
+   18: clip24.mp4      | High   |  12.6s | Vibes: N/A
+   19: clip25.mp4      | High   |  28.8s | Vibes: N/A
+   20: clip26.mp4      | High   |   9.9s | Vibes: N/A
+   21: clip27.mp4      | High   |  29.0s | Vibes: N/A
+   22: clip28.mp4      | Medium |  38.9s | Vibes: N/A
+   23: clip29.mp4      | Low    |   6.8s | Vibes: N/A
+   24: clip3.mp4       | High   |  10.4s | Vibes: N/A
+   25: clip30.mp4      | Low    |   4.6s | Vibes: N/A
+   26: clip31.mp4      | Low    |   7.1s | Vibes: N/A
+   27: clip32.mp4      | High   |  11.1s | Vibes: N/A
+   28: clip33.mp4      | Medium |   9.3s | Vibes: N/A
+   29: clip34.mp4      | Medium |   9.2s | Vibes: N/A
+   30: clip35.mp4      | Low    |   6.9s | Vibes: N/A
+   31: clip36.mp4      | High   |  12.9s | Vibes: N/A
+   32: clip37.mp4      | High   |   5.6s | Vibes: N/A
+   33: clip38.mp4      | High   |  18.2s | Vibes: N/A
+   34: clip39.mp4      | High   |   3.6s | Vibes: N/A
+   35: clip40.mp4      | High   |   7.6s | Vibes: N/A
+   36: clip41.mp4      | Medium |  38.2s | Vibes: N/A
+   37: clip42.mp4      | High   |  33.1s | Vibes: N/A
+   38: clip43.mp4      | High   |  10.3s | Vibes: N/A
+   39: clip44.mp4      | High   |   3.0s | Vibes: N/A
+   40: clip45.mp4      | Low    |   4.3s | Vibes: N/A
+   41: clip47.mp4      | Medium |  13.1s | Vibes: N/A
+   42: clip48.mp4      | Medium |  21.5s | Vibes: N/A
+   43: clip5.mp4       | High   |  19.4s | Vibes: N/A
+   44: clip50.mp4      | High   |  33.1s | Vibes: N/A
+   45: clip51.mp4      | Medium |   6.8s | Vibes: N/A
+   46: clip52.mp4      | Low    |   4.2s | Vibes: N/A
+   47: clip53.mp4      | High   |  29.3s | Vibes: N/A
+   48: clip54.mp4      | Medium |   3.4s | Vibes: N/A
+   49: clip55.mp4      | High   |   8.9s | Vibes: N/A
+   50: clip56.mp4      | Medium |   4.3s | Vibes: N/A
+   51: clip57.mp4      | Low    |   7.6s | Vibes: N/A
+   52: clip58.mp4      | Medium |   4.8s | Vibes: N/A
+   53: clip6.mp4       | High   |   6.9s | Vibes: N/A
+   54: clip7.mp4       | Medium |   4.1s | Vibes: N/A
+   55: clip9.mp4       | High   |   7.0s | Vibes: N/A
+
+📋 Metadata Coverage:
+   Best Moments: 55/55
+   Vibes: 0/55
+
+🔍 Temporal Precision Check:
+   ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
+
+📦 Material Efficiency:
+   Total source duration available: 763.74s
+   Total duration used in edit: 16.15s
+   Unique clip segments used: 9
+   Utilization Ratio: 2.1%
+   💡 Note: Low utilization suggests clips may not match reference vibes well
+
+================================================================================
+🎉 Watch the result: data\results\ref5_output_ref5_vib.mp4
+================================================================================
+

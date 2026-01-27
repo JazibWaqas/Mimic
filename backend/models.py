@@ -172,8 +172,8 @@ class AdvisorHints(BaseModel):
     library_assessment: LibraryAssessment = Field(default_factory=LibraryAssessment)
     overall_strategy: str = Field("", description="One-sentence overall editing strategy")
     
-    _cache_version: str = Field("1.0", description="Advisor cache version")
-    _cached_at: str = Field("", description="ISO timestamp when cached")
+    cache_version: str = Field("1.0", description="Advisor cache version")
+    cached_at: str = Field("", description="ISO timestamp when cached")
 
 
 # ============================================================================

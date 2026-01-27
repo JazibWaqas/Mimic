@@ -1,6 +1,6 @@
 {
   "energy": "High",
-  "motion": "Kinetic",
+  "motion": "Active",
   "intensity": 3,
   "primary_subject": [
     "People-Group",
@@ -8,47 +8,46 @@
   ],
   "narrative_utility": [
     "Peak",
-    "Transition"
+    "Build"
   ],
   "emotional_tone": [
     "Joyful",
-    "Adventurous"
+    "Energetic"
   ],
   "clip_quality": 3,
   "best_for": [
-    "High-energy travel montages",
-    "Night-out sequences",
-    "Youth-oriented lifestyle videos"
+    "High-energy peaks",
+    "Travel montages"
   ],
   "avoid_for": [
     "Calm reflective outros",
-    "Professional corporate presentations"
+    "Intimate close-up moments"
   ],
   "vibes": [],
-  "content_description": "Two young men cheer and laugh while hanging out of a car sunroof on a brightly lit road at night.",
+  "content_description": "Two young men shouting and laughing while leaning out of a car sunroof on a highway at night.",
   "best_moments": {
     "High": {
       "start": 10.5,
       "end": 13.5,
       "moment_role": "Climax",
-      "stable_moment": false,
-      "reason": "Peak shouting and excitement with fast-moving streetlights creating high visual energy."
+      "stable_moment": true,
+      "reason": "Peak shouting and expressive joy with bright streetlights."
     },
     "Medium": {
       "start": 4.0,
       "end": 7.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Sustained movement and interaction as they look around, building anticipation."
+      "reason": "Transition from sitting to looking out at the road with moderate excitement."
     },
     "Low": {
       "start": 0.0,
-      "end": 3.0,
+      "end": 2.5,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Initial setup with lower light and less intense movement before the main action."
+      "reason": "Initial dark shot before the main action and shouting begins."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 01:58:56"
+  "_cached_at": "2026-01-28 03:03:38"
 }

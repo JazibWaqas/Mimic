@@ -7,8 +7,9 @@
     "Activity-Travel"
   ],
   "narrative_utility": [
+    "Establishing",
     "Transition",
-    "Establishing"
+    "Reflection"
   ],
   "emotional_tone": [
     "Peaceful",
@@ -16,39 +17,39 @@
   ],
   "clip_quality": 3,
   "best_for": [
-    "Travel montages",
-    "Nature transitions",
-    "Atmospheric b-roll"
+    "Nature montages",
+    "Travel transitions",
+    "Establishing forest settings"
   ],
   "avoid_for": [
-    "Static scenes",
-    "Intimate close-up moments"
+    "Intimate close-up moments",
+    "High-action peaks"
   ],
   "vibes": [],
   "content_description": "A low-angle tracking shot looking up at tall pine trees against a cloudy sky.",
   "best_moments": {
     "High": {
-      "start": 5.0,
-      "end": 8.0,
+      "start": 6.0,
+      "end": 8.5,
       "moment_role": "Transition",
       "stable_moment": true,
-      "reason": "Peak perceived speed of trees passing through the frame."
+      "reason": "Peak visual flow as camera moves past dense tree tops."
     },
     "Medium": {
-      "start": 2.0,
-      "end": 5.0,
-      "moment_role": "Build",
+      "start": 3.0,
+      "end": 6.0,
+      "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Consistent tracking motion through the forest canopy."
+      "reason": "Consistent movement through the forest canopy."
     },
     "Low": {
       "start": 0.0,
-      "end": 2.0,
-      "moment_role": "Establishing",
+      "end": 3.0,
+      "moment_role": "Reflection",
       "stable_moment": true,
-      "reason": "Initial entry into the forest view with slightly slower motion."
+      "reason": "Slower initial movement providing a calm perspective."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:11:08"
+  "_cached_at": "2026-01-28 03:08:42"
 }

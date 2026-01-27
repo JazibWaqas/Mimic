@@ -1,6 +1,6 @@
 {
   "energy": "Low",
-  "motion": "GENTLE",
+  "motion": "Gentle",
   "intensity": 1,
   "primary_subject": [
     "Activity-Travel",
@@ -8,8 +8,7 @@
   ],
   "narrative_utility": [
     "Establishing",
-    "Transition",
-    "Reflection"
+    "Transition"
   ],
   "emotional_tone": [
     "Peaceful",
@@ -17,39 +16,38 @@
   ],
   "clip_quality": 3,
   "best_for": [
-    "Travel vlogs",
-    "Establishing shots",
-    "Transition sequences"
+    "Travel transitions",
+    "Establishing flight context"
   ],
   "avoid_for": [
-    "Action scenes",
-    "Fast-paced montages"
+    "High-energy action sequences",
+    "Intimate close-up moments"
   ],
   "vibes": [],
-  "content_description": "A view of an airplane wing against a dark blue sky during flight.",
+  "content_description": "View of an airplane wing and engine from a window seat during flight.",
   "best_moments": {
     "High": {
-      "start": 4.0,
-      "end": 6.0,
-      "moment_role": "Transition",
+      "start": 5.0,
+      "end": 6.757007,
+      "moment_role": "Climax",
       "stable_moment": true,
-      "reason": "Relative peak in camera drift and subtle vibration at the end of the clip."
+      "reason": "Most stable and clear view of the wing and engine."
     },
     "Medium": {
-      "start": 2.0,
-      "end": 4.0,
+      "start": 2.5,
+      "end": 5.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Consistent gentle motion as the camera tracks the wing's position."
+      "reason": "Steady flight with consistent visual framing."
     },
     "Low": {
       "start": 0.0,
-      "end": 2.0,
+      "end": 2.5,
       "moment_role": "Establishing",
       "stable_moment": true,
-      "reason": "Stable opening shot providing a clear view of the aircraft wing."
+      "reason": "Initial setup of the aerial perspective."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:07:36"
+  "_cached_at": "2026-01-28 03:08:49"
 }

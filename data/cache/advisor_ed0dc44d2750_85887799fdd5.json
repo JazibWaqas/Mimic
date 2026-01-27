@@ -1,0 +1,76 @@
+{
+  "arc_stage_suggestions": {
+    "Intro": {
+      "recommended_clips": [
+        "clip29.mp4",
+        "clip30.mp4",
+        "clip45.mp4",
+        "clip52.mp4",
+        "clip57.mp4"
+      ],
+      "reasoning": "Low-energy establishing shots featuring aerial views, mountain landscapes, and atmospheric sunsets set a clear travel-oriented context.",
+      "content_alignment": [
+        "must_have: Scenic establishing shots",
+        "should_have: Travel context"
+      ]
+    },
+    "Build-up": {
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip27.mp4",
+        "clip28.mp4",
+        "clip32.mp4",
+        "clip42.mp4"
+      ],
+      "reasoning": "Dynamic motion clips focusing on transit—such as horse riding, hiking, and driving—create a sense of progression and increasing momentum.",
+      "content_alignment": [
+        "must_have: Movement-based transit",
+        "should_have: First-person perspective"
+      ]
+    },
+    "Peak": {
+      "recommended_clips": [
+        "clip1.mp4",
+        "clip16.mp4",
+        "clip21.mp4",
+        "clip22.mp4",
+        "clip37.mp4"
+      ],
+      "reasoning": "High-intensity group activities and celebrations provide the necessary emotional payoff and energy required for a dynamic peak.",
+      "content_alignment": [
+        "must_have: High-energy group interaction",
+        "should_have: Celebratory atmosphere"
+      ]
+    },
+    "Outro": {
+      "recommended_clips": [
+        "clip31.mp4",
+        "clip34.mp4",
+        "clip35.mp4",
+        "clip55.mp4",
+        "clip56.mp4"
+      ],
+      "reasoning": "Scenic beach and sunset imagery with natural motion like waves provides a satisfying and reflective resolution to the high-energy narrative.",
+      "content_alignment": [
+        "must_have: Environmental resolution",
+        "should_have: Sunset/Golden hour"
+      ]
+    }
+  },
+  "library_assessment": {
+    "strengths": [
+      "Strong collection of high-energy group celebrations",
+      "Excellent variety of car-based travel and singing clips",
+      "Good selection of outdoor adventure and transit shots"
+    ],
+    "gaps": [
+      "Limited close-up emotional solo shots",
+      "Few quiet or intimate indoor moments",
+      "Lack of high-quality cinematic slow-motion"
+    ],
+    "confidence": "High"
+  },
+  "overall_strategy": "Drive the narrative using high-intensity group joy and car-ride celebrations as the core energy, bookended by scenic travel establishing shots and beach-themed resolutions.",
+  "cache_version": "1.0",
+  "cached_at": "2026-01-27T22:19:59.343146"
+}

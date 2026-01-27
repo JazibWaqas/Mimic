@@ -1,6 +1,6 @@
 {
   "energy": "High",
-  "motion": "Active",
+  "motion": "Kinetic",
   "intensity": 2,
   "primary_subject": [
     "People-Group",
@@ -16,38 +16,38 @@
   ],
   "clip_quality": 3,
   "best_for": [
-    "Travel montages",
-    "POV adventure sequences"
+    "Adventure travel montages",
+    "POV action sequences"
   ],
   "avoid_for": [
     "Stable cinematic shots",
-    "Calm reflective outros"
+    "Quiet reflective scenes"
   ],
   "vibes": [],
-  "content_description": "A group of people riding horses along a wooded mountain trail, filmed from a first-person perspective.",
+  "content_description": "A first-person perspective of riding a horse on a rugged forest trail with other riders ahead.",
   "best_moments": {
     "High": {
-      "start": 9.0,
-      "end": 12.0,
+      "start": 7.5,
+      "end": 10.5,
       "moment_role": "Climax",
       "stable_moment": false,
-      "reason": "Peak movement and camera shake during the ride."
+      "reason": "Peak movement intensity and clear view of the lead rider during a fast trot."
     },
     "Medium": {
-      "start": 4.0,
-      "end": 7.0,
+      "start": 1.0,
+      "end": 4.0,
       "moment_role": "Build",
-      "stable_moment": true,
-      "reason": "Steady movement along the trail with clear subjects."
+      "stable_moment": false,
+      "reason": "Steady movement at the start of the sequence establishing the group's pace."
     },
     "Low": {
-      "start": 14.0,
-      "end": 16.5,
+      "start": 13.5,
+      "end": 16.0,
       "moment_role": "Transition",
-      "stable_moment": true,
-      "reason": "Brief pan to the side showing the forest scenery."
+      "stable_moment": false,
+      "reason": "Camera pans away from the horse to the surrounding forest, reducing visual intensity."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:06:11"
+  "_cached_at": "2026-01-28 03:07:34"
 }

@@ -1,53 +1,52 @@
 {
   "energy": "High",
-  "motion": "Active",
+  "motion": "Gentle",
   "intensity": 2,
   "primary_subject": [
     "People-Group",
     "Activity-Leisure"
   ],
   "narrative_utility": [
-    "Peak",
-    "Build"
+    "Build",
+    "Peak"
   ],
   "emotional_tone": [
-    "Joyful",
-    "Energetic"
+    "Joyful"
   ],
   "clip_quality": 3,
   "best_for": [
-    "Casual lifestyle montages",
-    "Social gathering highlights"
+    "Casual social montages",
+    "Food-sharing moments"
   ],
   "avoid_for": [
-    "Professional food commercials",
-    "Serious dramatic narratives"
+    "Professional product shots",
+    "Serious narratives"
   ],
   "vibes": [],
-  "content_description": "A group of friends laughs while playfully picking up french fries from a container on a wooden table.",
+  "content_description": "Friends laugh and joke while sharing a container of french fries on a wooden table.",
   "best_moments": {
     "High": {
-      "start": 5.0,
-      "end": 8.0,
+      "start": 8.5,
+      "end": 11.5,
       "moment_role": "Climax",
       "stable_moment": true,
-      "reason": "Peak laughter and expressive hand modeling with the fry."
+      "reason": "Peak laughter and expressive hand movement with the fry."
     },
     "Medium": {
-      "start": 24.5,
-      "end": 27.5,
+      "start": 4.0,
+      "end": 7.0,
       "moment_role": "Build",
       "stable_moment": true,
-      "reason": "Sustained interaction with moderate laughter while picking up food."
+      "reason": "Steady interaction while picking up and showing a fry."
     },
     "Low": {
-      "start": 0.0,
-      "end": 3.0,
-      "moment_role": "Establishing",
+      "start": 21.0,
+      "end": 24.0,
+      "moment_role": "Transition",
       "stable_moment": true,
-      "reason": "Initial setup showing the food on the table with minimal movement."
+      "reason": "Brief pause in the main action and laughter."
     }
   },
   "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 02:04:13"
+  "_cached_at": "2026-01-28 03:06:02"
 }
