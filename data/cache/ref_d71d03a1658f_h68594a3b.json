@@ -1,0 +1,181 @@
+{
+  "total_duration": 21.035873,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "A montage of a group trip showing various activities and bonding moments",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 3.67,
+      "duration": 3.67,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Friends",
+      "arc_stage": "Intro",
+      "reasoning": "Establishing the group and the snowy location with a series of group poses."
+    },
+    {
+      "id": 2,
+      "start": 3.67,
+      "end": 5.33,
+      "duration": 1.66,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Transitioning to high-energy dancing in a dark, snowy environment."
+    },
+    {
+      "id": 3,
+      "start": 5.33,
+      "end": 6.63,
+      "duration": 1.3,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Candid moments of laughter and interaction on a spiral staircase."
+    },
+    {
+      "id": 4,
+      "start": 6.63,
+      "end": 7.13,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "A quick, energetic shot of the group running through a forest."
+    },
+    {
+      "id": 5,
+      "start": 7.13,
+      "end": 8.4,
+      "duration": 1.27,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Capturing the excitement and energy of traveling together on a bus."
+    },
+    {
+      "id": 6,
+      "start": 8.4,
+      "end": 9.23,
+      "duration": 0.83,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "A high-adrenaline highlight showing friends zip-lining over a valley."
+    },
+    {
+      "id": 7,
+      "start": 9.23,
+      "end": 10.23,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Indoor celebration and dancing with vibrant lighting."
+    },
+    {
+      "id": 8,
+      "start": 10.23,
+      "end": 11.2,
+      "duration": 0.97,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "A peaceful moment of the group relaxing by a forest stream."
+    },
+    {
+      "id": 9,
+      "start": 11.2,
+      "end": 12.23,
+      "duration": 1.03,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Playful interaction and joy while playing in the snow."
+    },
+    {
+      "id": 10,
+      "start": 12.23,
+      "end": 14.1,
+      "duration": 1.87,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Continued dynamic snow play in front of a building."
+    },
+    {
+      "id": 11,
+      "start": 14.1,
+      "end": 14.77,
+      "duration": 0.67,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "A cozy indoor bonding moment with someone playing the guitar."
+    },
+    {
+      "id": 12,
+      "start": 14.77,
+      "end": 15.83,
+      "duration": 1.06,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "A group photo moment with a dog in a forest setting."
+    },
+    {
+      "id": 13,
+      "start": 15.83,
+      "end": 16.93,
+      "duration": 1.1,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Fun and games in the snow, burying a friend."
+    },
+    {
+      "id": 14,
+      "start": 16.93,
+      "end": 19.13,
+      "duration": 2.2,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Late-night fun and dancing in pajamas."
+    },
+    {
+      "id": 15,
+      "start": 19.13,
+      "end": 21.035873,
+      "duration": 1.905873,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Final celebratory group shot holding a cake at night."
+    }
+  ],
+  "overall_reasoning": "The video is a fast-paced montage capturing the highlights of a group trip, emphasizing the bond between friends across various locations and activities. The editing uses quick cuts to maintain high energy throughout.",
+  "ideal_material_suggestions": [
+    "More close-up shots of individual expressions to enhance the emotional connection.",
+    "Slow-motion clips of the snow play for a more cinematic feel.",
+    "Landscape shots of the mountains to establish the scale and beauty of the trip location."
+  ],
+  "_cache_version": "6.1",
+  "_cached_at": "2026-01-27 12:29:16"
+}

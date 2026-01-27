@@ -21,7 +21,7 @@ PIPELINE RUN: REF6.MP4
 Session ID: ref6_vibes_test
 Reference: ref6.mp4
 Clips: 55
-Timestamp: 2026-01-27 00:24:12
+Timestamp: 2026-01-27 12:37:00
 
 
 [1/5] Validating inputs...
@@ -472,13 +472,13 @@ Segment 2: 0.80s-1.20s (0.40s, Medium/Static)
 
 Segment 3: 1.20s-1.63s (0.43s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
-  📎 Selected: clip37.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip37.mp4 [1.50s-1.93s] (0.43s) → timeline [1.200000s-1.630000s]
+  📎 Selected: clip22.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip22.mp4 [1.00s-1.43s] (0.43s) → timeline [1.200000s-1.630000s]
 
 Segment 4: 1.63s-2.03s (0.40s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
-  📎 Selected: clip23.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip23.mp4 [8.00s-8.40s] (0.40s) → timeline [1.630000s-2.030000s]
+  📎 Selected: clip6.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip6.mp4 [0.00s-0.40s] (0.40s) → timeline [1.630000s-2.030000s]
 
 Segment 5: 2.03s-2.80s (0.77s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Urban | Flow | Medium
@@ -492,48 +492,48 @@ Segment 6: 2.80s-3.63s (0.83s, Medium/Dynamic)
 
 Segment 7: 3.63s-4.40s (0.77s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Nature | LightMatch | Flow | Medium
-  📎 Selected: clip51.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip51.mp4 [2.00s-2.77s] (0.77s) → timeline [3.630000s-4.400000s]
+  📎 Selected: clip32.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip32.mp4 [4.00s-4.77s] (0.77s) → timeline [3.630000s-4.400000s]
 
 Segment 8: 4.40s-4.73s (0.33s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Travel | LightMatch | Flow | Medium
-  📎 Selected: clip14.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip14.mp4 [0.50s-0.83s] (0.33s) → timeline [4.400000s-4.730000s]
+  📎 Selected: clip48.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip48.mp4 [4.00s-4.33s] (0.33s) → timeline [4.400000s-4.730000s]
 
 Segment 9: 4.73s-5.50s (0.77s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Action | LightMatch | Flow | High
-  📎 Selected: clip55.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip55.mp4 [5.00s-5.77s] (0.77s) → timeline [4.730000s-5.500000s]
+  📎 Selected: clip11.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip11.mp4 [0.00s-0.77s] (0.77s) → timeline [4.730000s-5.500000s]
 
 Segment 10: 5.50s-6.37s (0.87s, Medium/Static)
-  🧠 AI: 🌟 ✨ New | Nearby:urban | Flow | Medium
-  📎 Selected: clip40.mp4 (Score: 85.0)
-    ✂️ Cut 1: clip40.mp4 [0.00s-0.87s] (0.87s) → timeline [5.500000s-6.370000s]
+  🧠 AI: 🌟 ✨ New | Vibe:Urban | LightMatch | ~Low
+  📎 Selected: clip52.mp4 (Score: 85.0)
+    ✂️ Cut 1: clip52.mp4 [1.00s-1.87s] (0.87s) → timeline [5.500000s-6.370000s]
 
 Segment 11: 6.37s-6.70s (0.33s, High/Dynamic)
-  🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
-  📎 Selected: clip22.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip22.mp4 [1.00s-1.33s] (0.33s) → timeline [6.370000s-6.700000s]
+  🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | High
+  📎 Selected: clip43.mp4 (Score: 105.0)
+    ✂️ Cut 1: clip43.mp4 [1.50s-1.83s] (0.33s) → timeline [6.370000s-6.700000s]
 
 Segment 12: 6.70s-7.17s (0.47s, Low/Static)
   🧠 AI: 🌟 ✨ New | Vibe:Nature | LightMatch | Flow | Low
-  📎 Selected: clip8.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip8.mp4 [3.00s-3.47s] (0.47s) → timeline [6.700000s-7.170000s]
+  📎 Selected: clip30.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip30.mp4 [0.00s-0.47s] (0.47s) → timeline [6.700000s-7.170000s]
 
 Segment 13: 7.17s-7.77s (0.60s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | Vibe:Urban | LightMatch | ~Low
-  📎 Selected: clip52.mp4 (Score: 85.0)
-    ✂️ Cut 1: clip52.mp4 [1.00s-1.60s] (0.60s) → timeline [7.170000s-7.770000s]
+  🧠 AI: 🌟 ✨ New | Nearby:urban | Flow | Medium
+  📎 Selected: clip40.mp4 (Score: 85.0)
+    ✂️ Cut 1: clip40.mp4 [0.00s-0.60s] (0.60s) → timeline [7.170000s-7.770000s]
 
 Segment 14: 7.77s-8.27s (0.50s, Low/Static)
-  🧠 AI: 🌟 ✨ New | Vibe:Urban | Flow | Low
-  📎 Selected: clip49.mp4 (Score: 100.0)
+  🧠 AI: 🌟 ✨ New | Vibe:Urban | Low
+  📎 Selected: clip49.mp4 (Score: 95.0)
     ✂️ Cut 1: clip49.mp4 [0.00s-0.50s] (0.50s) → timeline [7.770000s-8.270000s]
 
 Segment 15: 8.27s-9.07s (0.80s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Travel | LightMatch | Medium
-  📎 Selected: clip32.mp4 (Score: 105.0)
-    ✂️ Cut 1: clip32.mp4 [4.00s-4.80s] (0.80s) → timeline [8.270000s-9.070000s]
+  📎 Selected: clip33.mp4 (Score: 105.0)
+    ✂️ Cut 1: clip33.mp4 [2.50s-3.30s] (0.80s) → timeline [8.270000s-9.070000s]
 
 Segment 16: 9.07s-9.77s (0.70s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Nearby:urban | Flow | Medium
@@ -542,8 +542,8 @@ Segment 16: 9.07s-9.77s (0.70s, Medium/Dynamic)
 
 Segment 17: 9.77s-10.33s (0.56s, Medium/Static)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip27.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip27.mp4 [16.00s-16.56s] (0.56s) → timeline [9.770000s-10.330000s]
+  📎 Selected: clip3.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip3.mp4 [0.00s-0.56s] (0.56s) → timeline [9.770000s-10.330000s]
 
 Segment 18: 10.33s-11.17s (0.84s, Low/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Nature | LightMatch | Flow | Low
@@ -552,28 +552,28 @@ Segment 18: 10.33s-11.17s (0.84s, Low/Dynamic)
 
 Segment 19: 11.17s-11.53s (0.36s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | Medium
-  📎 Selected: clip53.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip53.mp4 [5.00s-5.36s] (0.36s) → timeline [11.170000s-11.530000s]
+  📎 Selected: clip2.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip2.mp4 [0.00s-0.36s] (0.36s) → timeline [11.170000s-11.530000s]
 
 Segment 20: 11.53s-11.87s (0.34s, Low/Static)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Low
-  📎 Selected: clip30.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip30.mp4 [0.00s-0.34s] (0.34s) → timeline [11.530000s-11.870000s]
+  📎 Selected: clip8.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip8.mp4 [3.00s-3.34s] (0.34s) → timeline [11.530000s-11.870000s]
 
 Segment 21: 11.87s-12.27s (0.40s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | Vibe:Urban | Flow | ~High
-  📎 Selected: clip24.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip24.mp4 [7.50s-7.90s] (0.40s) → timeline [11.870000s-12.270000s]
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip10.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip10.mp4 [2.50s-2.90s] (0.40s) → timeline [11.870000s-12.270000s]
 
 Segment 22: 12.27s-12.60s (0.33s, Medium/Static)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip13.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip13.mp4 [0.00s-0.33s] (0.33s) → timeline [12.270000s-12.600000s]
+  🧠 AI: 🌟 ✨ New | Vibe:Urban | Flow | ~High
+  📎 Selected: clip19.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip19.mp4 [3.00s-3.33s] (0.33s) → timeline [12.270000s-12.600000s]
 
 Segment 23: 12.60s-13.17s (0.57s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
-  📎 Selected: clip6.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip6.mp4 [0.00s-0.57s] (0.57s) → timeline [12.600000s-13.170000s]
+  📎 Selected: clip5.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip5.mp4 [11.00s-11.57s] (0.57s) → timeline [12.600000s-13.170000s]
 
 Segment 24: 13.17s-13.57s (0.40s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
@@ -582,43 +582,43 @@ Segment 24: 13.17s-13.57s (0.40s, High/Dynamic)
 
 Segment 25: 13.57s-14.17s (0.60s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip10.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip10.mp4 [2.50s-3.10s] (0.60s) → timeline [13.570000s-14.170000s]
+  📎 Selected: clip.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip.mp4 [0.00s-0.60s] (0.60s) → timeline [13.570000s-14.170000s]
 
 Segment 26: 14.17s-14.53s (0.36s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | Vibe:Urban | Flow | ~High
-  📎 Selected: clip19.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip19.mp4 [3.00s-3.36s] (0.36s) → timeline [14.170000s-14.530000s]
+  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
+  📎 Selected: clip51.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip51.mp4 [2.00s-2.36s] (0.36s) → timeline [14.170000s-14.530000s]
 
 Segment 27: 14.53s-14.93s (0.40s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Nature | LightMatch | Flow | Medium
-  📎 Selected: clip33.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip33.mp4 [2.50s-2.90s] (0.40s) → timeline [14.530000s-14.930000s]
+  📎 Selected: clip27.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip27.mp4 [16.00s-16.40s] (0.40s) → timeline [14.530000s-14.930000s]
 
 Segment 28: 14.93s-15.40s (0.47s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Travel | LightMatch | Flow | Medium
-  📎 Selected: clip28.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip28.mp4 [5.00s-5.47s] (0.47s) → timeline [14.930000s-15.400000s]
+  📎 Selected: clip13.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip13.mp4 [0.00s-0.47s] (0.47s) → timeline [14.930000s-15.400000s]
 
 Segment 29: 15.40s-16.03s (0.63s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Action | LightMatch | Flow | High
-  📎 Selected: clip36.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip36.mp4 [2.00s-2.63s] (0.63s) → timeline [15.400000s-16.030000s]
+  📎 Selected: clip55.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip55.mp4 [5.00s-5.63s] (0.63s) → timeline [15.400000s-16.030000s]
 
 Segment 30: 16.03s-16.43s (0.40s, Medium/Static)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip47.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip47.mp4 [9.00s-9.40s] (0.40s) → timeline [16.030000s-16.430000s]
+  📎 Selected: clip56.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip56.mp4 [0.00s-0.40s] (0.40s) → timeline [16.030000s-16.430000s]
 
 Segment 31: 16.43s-16.87s (0.44s, High/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
-  📎 Selected: clip38.mp4 (Score: 110.0)
-    ✂️ Cut 1: clip38.mp4 [0.00s-0.44s] (0.44s) → timeline [16.430000s-16.870000s]
+  📎 Selected: clip23.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip23.mp4 [8.00s-8.44s] (0.44s) → timeline [16.430000s-16.870000s]
 
 Segment 32: 16.87s-17.57s (0.70s, Low/Static)
   🧠 AI: 🌟 ✨ New | Vibe:Nature | LightMatch | Low
-  📎 Selected: clip31.mp4 (Score: 105.0)
-    ✂️ Cut 1: clip31.mp4 [5.00s-5.70s] (0.70s) → timeline [16.870000s-17.570000s]
+  📎 Selected: clip35.mp4 (Score: 105.0)
+    ✂️ Cut 1: clip35.mp4 [3.50s-4.20s] (0.70s) → timeline [16.870000s-17.570000s]
 
 Segment 33: 17.57s-18.00s (0.43s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
@@ -627,18 +627,18 @@ Segment 33: 17.57s-18.00s (0.43s, Medium/Dynamic)
 
 Segment 34: 18.00s-18.63s (0.63s, Low/Static)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Low
-  📎 Selected: clip35.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip35.mp4 [3.50s-4.13s] (0.63s) → timeline [18.000000s-18.630000s]
+  📎 Selected: clip29.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip29.mp4 [0.00s-0.63s] (0.63s) → timeline [18.000000s-18.630000s]
 
 Segment 35: 18.63s-19.10s (0.47s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | Vibe:Travel | LightMatch | Medium
-  📎 Selected: clip34.mp4 (Score: 105.0)
-    ✂️ Cut 1: clip34.mp4 [1.50s-1.97s] (0.47s) → timeline [18.630000s-19.100000s]
+  📎 Selected: clip47.mp4 (Score: 105.0)
+    ✂️ Cut 1: clip47.mp4 [9.00s-9.47s] (0.47s) → timeline [18.630000s-19.100000s]
 
 Segment 36: 19.10s-19.69s (0.59s, Medium/Dynamic)
   🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip9.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip9.mp4 [2.50s-3.09s] (0.59s) → timeline [19.100000s-19.687664s]
+  📎 Selected: clip28.mp4 (Score: 80.0)
+    ✂️ Cut 1: clip28.mp4 [5.00s-5.59s] (0.59s) → timeline [19.100000s-19.687664s]
 
 ============================================================
 [OK] Matching complete: 36 edit decisions
@@ -650,10 +650,10 @@ Segment 36: 19.10s-19.69s (0.59s, Medium/Dynamic)
 
    ✅ NO CLIPS REPEATED! Perfect diversity achieved.
 
-📋 ENERGY COMPROMISES: 3
+📋 ENERGY COMPROMISES: 2
    (Used adjacent energy when exact wasn't available)
-      Medium→High: 2 times
       Medium→Low: 1 times
+      Medium→High: 1 times
 
 💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
 
@@ -672,81 +672,82 @@ Available clips: 55
 Clip usage distribution:
   clip_053.mp4: 1 times
   clip_049.mp4: 1 times
-  clip_032.mp4: 1 times
-  clip_017.mp4: 1 times
+  clip_016.mp4: 1 times
+  clip_052.mp4: 1 times
   clip_036.mp4: 1 times
   clip_037.mp4: 1 times
-  clip_046.mp4: 1 times
-  clip_007.mp4: 1 times
-  clip_050.mp4: 1 times
-  clip_035.mp4: 1 times
-  clip_016.mp4: 1 times
-  clip_054.mp4: 1 times
-  clip_047.mp4: 1 times
-  clip_043.mp4: 1 times
   clip_027.mp4: 1 times
-  clip_034.mp4: 1 times
-  clip_021.mp4: 1 times
-  clip_040.mp4: 1 times
-  clip_048.mp4: 1 times
+  clip_042.mp4: 1 times
+  clip_004.mp4: 1 times
+  clip_047.mp4: 1 times
+  clip_038.mp4: 1 times
   clip_025.mp4: 1 times
-  clip_018.mp4: 1 times
-  clip_006.mp4: 1 times
-  clip_052.mp4: 1 times
-  clip_045.mp4: 1 times
+  clip_035.mp4: 1 times
+  clip_043.mp4: 1 times
+  clip_028.mp4: 1 times
+  clip_034.mp4: 1 times
+  clip_024.mp4: 1 times
+  clip_040.mp4: 1 times
+  clip_013.mp4: 1 times
+  clip_054.mp4: 1 times
   clip_003.mp4: 1 times
   clip_012.mp4: 1 times
-  clip_028.mp4: 1 times
-  clip_022.mp4: 1 times
-  clip_031.mp4: 1 times
-  clip_041.mp4: 1 times
-  clip_033.mp4: 1 times
-  clip_026.mp4: 1 times
-  clip_019.mp4: 1 times
+  clip_044.mp4: 1 times
+  clip_045.mp4: 1 times
+  clip_001.mp4: 1 times
+  clip_046.mp4: 1 times
+  clip_021.mp4: 1 times
+  clip_006.mp4: 1 times
+  clip_050.mp4: 1 times
+  clip_051.mp4: 1 times
+  clip_017.mp4: 1 times
   clip_030.mp4: 1 times
-  clip_029.mp4: 1 times
-  clip_055.mp4: 1 times
+  clip_019.mp4: 1 times
+  clip_023.mp4: 1 times
+  clip_041.mp4: 1 times
+  clip_022.mp4: 1 times
 
 
 [5/5] Rendering final video...
     [OK] Segment extracted: 1.00s - 1.80s
     [OK] Segment extracted: 0.50s - 0.90s
-    [OK] Segment extracted: 1.50s - 1.93s
-    [OK] Segment extracted: 8.00s - 8.40s
+    [OK] Segment extracted: 1.00s - 1.43s
+    [OK] Segment extracted: 0.00s - 0.40s
     [OK] Segment extracted: 15.00s - 15.77s
     [OK] Segment extracted: 11.50s - 12.33s
-    [OK] Segment extracted: 2.00s - 2.77s
-    [OK] Segment extracted: 0.50s - 0.83s
-    [OK] Segment extracted: 5.00s - 5.77s
-    [OK] Segment extracted: 0.00s - 0.87s
-    [OK] Segment extracted: 1.00s - 1.33s
-    [OK] Segment extracted: 3.00s - 3.47s
-    [OK] Segment extracted: 1.00s - 1.60s
+    [OK] Segment extracted: 4.00s - 4.77s
+    [OK] Segment extracted: 4.00s - 4.33s
+    [OK] Segment extracted: 0.00s - 0.77s
+    [OK] Segment extracted: 1.00s - 1.87s
+    [OK] Segment extracted: 1.50s - 1.83s
+    [OK] Segment extracted: 0.00s - 0.47s
+    [OK] Segment extracted: 0.00s - 0.60s
     [OK] Segment extracted: 0.00s - 0.50s
-    [OK] Segment extracted: 4.00s - 4.80s
+    [OK] Segment extracted: 2.50s - 3.30s
     [OK] Segment extracted: 1.00s - 1.70s
-    [OK] Segment extracted: 16.00s - 16.56s
+    [OK] Segment extracted: 0.00s - 0.56s
     [OK] Segment extracted: 2.50s - 3.34s
-    [OK] Segment extracted: 5.00s - 5.36s
-    [OK] Segment extracted: 0.00s - 0.34s
-    [OK] Segment extracted: 7.50s - 7.90s
-    [OK] Segment extracted: 0.00s - 0.33s
-    [OK] Segment extracted: 0.00s - 0.57s
-    [OK] Segment extracted: 28.50s - 28.90s
-    [OK] Segment extracted: 2.50s - 3.10s
-    [OK] Segment extracted: 3.00s - 3.36s
+    [OK] Segment extracted: 0.00s - 0.36s
+    [OK] Segment extracted: 3.00s - 3.34s
     [OK] Segment extracted: 2.50s - 2.90s
-    [OK] Segment extracted: 5.00s - 5.47s
-    [OK] Segment extracted: 2.00s - 2.63s
-    [OK] Segment extracted: 9.00s - 9.40s
-    [OK] Segment extracted: 0.00s - 0.44s
-    [OK] Segment extracted: 5.00s - 5.70s
+    [OK] Segment extracted: 3.00s - 3.33s
+    [OK] Segment extracted: 11.00s - 11.57s
+    [OK] Segment extracted: 28.50s - 28.90s
+    [OK] Segment extracted: 0.00s - 0.60s
+    [OK] Segment extracted: 2.00s - 2.36s
+    [OK] Segment extracted: 16.00s - 16.40s
+    [OK] Segment extracted: 0.00s - 0.47s
+    [OK] Segment extracted: 5.00s - 5.63s
+    [OK] Segment extracted: 0.00s - 0.40s
+    [OK] Segment extracted: 8.00s - 8.44s
+    [OK] Segment extracted: 3.50s - 4.20s
     [OK] Segment extracted: 24.00s - 24.43s
-    [OK] Segment extracted: 3.50s - 4.13s
-    [OK] Segment extracted: 1.50s - 1.97s
-    [OK] Segment extracted: 2.50s - 3.09s
+    [OK] Segment extracted: 0.00s - 0.63s
+    [OK] Segment extracted: 9.00s - 9.47s
+    [OK] Segment extracted: 5.00s - 5.59s
   [OK] Concatenated 36 segments (frame-perfect)
   [OK] Audio extracted: ref_audio.aac
+[WARN] Removing existing output file: data\results\ref6_output_ref6_vib.mp4
   [OK] Audio merged onto video (optimized)
 
 ================================================================================
@@ -757,7 +758,7 @@ Clip usage distribution:
    Output: ref6_output_ref6_vib.mp4
    Duration: 19.62s (ref: 19.69s)
    Difference: 0.07s
-   Processing time: 24.4s
+   Processing time: 19.7s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -825,8 +826,8 @@ Clip usage distribution:
    Most used clips:
      clip_053.mp4: 1 times (2.8%)
      clip_049.mp4: 1 times (2.8%)
-     clip_032.mp4: 1 times (2.8%)
-     clip_017.mp4: 1 times (2.8%)
+     clip_016.mp4: 1 times (2.8%)
+     clip_052.mp4: 1 times (2.8%)
      clip_036.mp4: 1 times (2.8%)
 
 🧠 AI Reasoning Breakdown:
@@ -835,7 +836,7 @@ Clip usage distribution:
    ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 28/36 (77.8%)
+   Matches: 27/36 (75.0%)
 
 📏 Cut Statistics by Arc Stage:
    Intro: 2 cuts, avg 0.60s
@@ -852,8 +853,8 @@ Clip usage distribution:
 💭 Sample AI Reasoning (first 5 decisions):
    1. clip_053.mp4: 🌟 ✨ New | Vibe:Urban | LightMatch | Medium
    2. clip_049.mp4: 🌟 ✨ New | Vibe:Urban | LightMatch | Flow | Medium
-   3. clip_032.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
-   4. clip_017.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
+   3. clip_016.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
+   4. clip_052.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
    5. clip_036.mp4: 🌟 ✨ New | Vibe:Urban | Flow | Medium
 
 📦 CLIP REGISTRY (55 total):
@@ -940,7 +941,7 @@ Analysis log saved: data\results\ref6_output_ref6_vib.txt
    Output: mimic_output_ref6_vibes_test.mp4
    Duration: 19.62s (ref: 19.69s)
    Difference: 0.07s
-   Processing time: 24.4s
+   Processing time: 19.7s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -1008,8 +1009,8 @@ Analysis log saved: data\results\ref6_output_ref6_vib.txt
    Most used clips:
      clip_053.mp4: 1 times (2.8%)
      clip_049.mp4: 1 times (2.8%)
-     clip_032.mp4: 1 times (2.8%)
-     clip_017.mp4: 1 times (2.8%)
+     clip_016.mp4: 1 times (2.8%)
+     clip_052.mp4: 1 times (2.8%)
      clip_036.mp4: 1 times (2.8%)
 
 🧠 AI Reasoning Breakdown:
@@ -1018,7 +1019,7 @@ Analysis log saved: data\results\ref6_output_ref6_vib.txt
    ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 28/36 (77.8%)
+   Matches: 27/36 (75.0%)
 
 📏 Cut Statistics by Arc Stage:
    Intro: 2 cuts, avg 0.60s
@@ -1035,8 +1036,8 @@ Analysis log saved: data\results\ref6_output_ref6_vib.txt
 💭 Sample AI Reasoning (first 5 decisions):
    1. clip_053.mp4: 🌟 ✨ New | Vibe:Urban | LightMatch | Medium...
    2. clip_049.mp4: 🌟 ✨ New | Vibe:Urban | LightMatch | Flow | Medium...
-   3. clip_032.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High...
-   4. clip_017.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High...
+   3. clip_016.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High...
+   4. clip_052.mp4: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High...
    5. clip_036.mp4: 🌟 ✨ New | Vibe:Urban | Flow | Medium...
 
 📦 CLIP REGISTRY (55 total):
@@ -1129,9 +1130,9 @@ A. PER-SEGMENT CANDIDATE RANKINGS (Top 3):
 
    Segment 4:
      Rank 1: clip15.mp4 | Score: 110.0 | ✨ New | Vibe:Friends | LightMatch | Flow | High ✅ WINNER
-     Rank 2: clip22.mp4 | Score: 110.0 | ✨ New | Vibe:Friends | LightMatch | Flow | High
+     Rank 2: clip23.mp4 | Score: 110.0 | ✨ New | Vibe:Friends | LightMatch | Flow | High
        Why lost: Score 110.0 vs winner 110.0 (diff: 0.0)
-     Rank 3: clip23.mp4 | Score: 110.0 | ✨ New | Vibe:Friends | LightMatch | Flow | High
+     Rank 3: clip36.mp4 | Score: 110.0 | ✨ New | Vibe:Friends | LightMatch | Flow | High
        Why lost: Score 110.0 vs winner 110.0 (diff: 0.0)
 
    Segment 5:
@@ -1164,9 +1165,9 @@ A. PER-SEGMENT CANDIDATE RANKINGS (Top 3):
 
    Segment 9:
      Rank 1: clip11.mp4 | Score: 110.0 | ✨ New | Vibe:Action | LightMatch | Flow | High ✅ WINNER
-     Rank 2: clip36.mp4 | Score: 110.0 | ✨ New | Vibe:Action | LightMatch | Flow | High
+     Rank 2: clip23.mp4 | Score: 110.0 | ✨ New | Vibe:Action | LightMatch | Flow | High
        Why lost: Score 110.0 vs winner 110.0 (diff: 0.0)
-     Rank 3: clip55.mp4 | Score: 110.0 | ✨ New | Vibe:Action | LightMatch | Flow | High
+     Rank 3: clip36.mp4 | Score: 110.0 | ✨ New | Vibe:Action | LightMatch | Flow | High
        Why lost: Score 110.0 vs winner 110.0 (diff: 0.0)
 
    Segment 10:
@@ -1199,7 +1200,7 @@ C. SEMANTIC NEIGHBOR EVENTS:
 D. UNUSED CLIPS:
    Never eligible: 0 clips
    Eligible but never selected: 55 clips
-     clip14.mp4, clip15.mp4, clip30.mp4, clip42.mp4, clip23.mp4, clip45.mp4, clip32.mp4, clip51.mp4, clip43.mp4, clip18.mp4
+     clip33.mp4, clip19.mp4, clip22.mp4, clip21.mp4, clip.mp4, clip11.mp4, clip5.mp4, clip50.mp4, clip17.mp4, clip28.mp4
 
    [OK] Full enhanced logging saved to: data\results\ref6_enhanced_logging.json
 
@@ -1215,7 +1216,7 @@ D. UNUSED CLIPS:
 
 📊 Selection Reasoning Breakdown:
    Arc Stage Relevance: 0 decisions (0.0%)
-   Vibe Matching: 26 decisions (72.2%)
+   Vibe Matching: 25 decisions (69.4%)
    Visual Cooldown Warnings: 0 decisions (0.0%)
    Smooth Transitions: 0 decisions (0.0%)
    Usage Penalties Applied: 0 decisions (0.0%)
@@ -1240,8 +1241,8 @@ D. UNUSED CLIPS:
 
    Decision 3:
      Timeline: 1.200s - 1.630s (0.430s)
-     Clip: clip_032.mp4
-     Source: 1.50s - 1.93s
+     Clip: clip_016.mp4
+     Source: 1.00s - 1.43s
      Segment: Build-up | High/Dynamic | Vibe: Friends
      Reasoning: 🌟 ✨ New | Vibe:Friends | LightMatch | Flow | High
      Vibe Match: ✅
