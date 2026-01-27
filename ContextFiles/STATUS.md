@@ -1,8 +1,8 @@
 # MIMIC Project Status
 
-**Version:** V7.0 - Production-Ready  
-**Last Updated:** January 23, 2026 01:45 AM  
-**Status:** ✅ **PRODUCTION READY**
+**Version:** V7.0 - Enhanced Analysis & Advisor System  
+**Last Updated:** January 27, 2026  
+**Status:** ✅ **CORE COMPLETE** - Advisor implemented, cache fallback fix needed
 
 ---
 
@@ -17,8 +17,9 @@ The MIMIC system is now production-ready with all core features implemented, tes
 ## ✅ Completed Features
 
 ### Core Pipeline (100% Complete)
-- ✅ **Reference Analysis** - Scene detection + BPM + Gemini semantic analysis
-- ✅ **Clip Analysis** - Energy + vibes + best moments extraction
+- ✅ **Reference Analysis (V7.0)** - Enhanced prompts with narrative intent, content requirements, experience goals
+- ✅ **Clip Analysis (V7.0)** - Fixed energy bias, added intensity, motion granularity (STILL/GENTLE/ACTIVE/KINETIC), semantic content analysis
+- ✅ **Gemini Advisor** - Strategic clip selection guidance system (planning bias layer)
 - ✅ **Tiered Energy Matching** - Intelligent eligibility prevents jarring transitions
 - ✅ **Semantic Matching** - Vibe-aware selection with 70-80% accuracy
 - ✅ **Beat Synchronization** - Dynamic BPM detection and cut snapping
@@ -179,6 +180,23 @@ temp/{session_id}/
 
 ## 📈 Recent Development History
 
+### V7.0 (January 27, 2026) - Enhanced Analysis & Advisor
+**Major Changes:**
+- **Enhanced Reference Analysis:** Added text overlay extraction, narrative message, intent clarity, must_have/should_have/avoid content, pacing feel, visual balance
+- **Enhanced Clip Analysis:** Fixed Medium-energy bias, added intensity (1-3), granular motion types (STILL/GENTLE/ACTIVE/KINETIC), primary subject, narrative utility, emotional tone, clip quality, best_for/avoid_for
+- **Gemini Advisor:** Strategic planning layer that provides clip suggestions per arc stage, library assessment, and overall strategy
+- **Motion Type Mapping:** Added backward compatibility for new motion types in cache loading
+- **Cache Version:** Updated to v7.0 for both reference and clip analysis
+
+**Known Issues:**
+- ⚠️ **Reference Cache Fallback:** When hash-based cache has wrong version, system doesn't check fallback `hints0.json` before re-analyzing (needs fix)
+
+**Performance Gains:**
+- 30x speedup on cached runs
+- 100% cache hit rate on repeat runs
+- 90%+ clip diversity
+- Advisor adds strategic guidance without replacing deterministic matcher
+
 ### V7.0 (January 23, 2026) - Production Ready
 **Major Changes:**
 - Implemented tiered energy matching
@@ -188,11 +206,6 @@ temp/{session_id}/
 - Added smart recommendations
 - Created X-Ray diagnostic output
 - Achieved 15-20s pipeline time
-
-**Performance Gains:**
-- 30x speedup on cached runs
-- 100% cache hit rate on repeat runs
-- 90%+ clip diversity
 
 ### V6.1 (January 22, 2026) - Semantic Analysis
 **Major Changes:**
@@ -212,12 +225,14 @@ temp/{session_id}/
 
 ## 🐛 Known Issues
 
-### None Critical
+### Critical (Needs Fix)
+- [ ] **Reference Cache Fallback:** When orchestrator detects scene timestamps and finds old hash-based cache (wrong version), it deletes it but doesn't check fallback `hints0.json` before re-analyzing. This causes unnecessary API calls and quota waste.
 
-**Minor:**
+### Minor
 - [ ] Segment extraction could be parallelized (potential 4x speedup)
 - [ ] Frontend doesn't display recommendations yet
 - [ ] No batch processing support
+- [ ] Advisor cache fallback logic needs testing
 
 **By Design:**
 - Low utilization ratio (2-3%) is expected - we only use best moments from each clip

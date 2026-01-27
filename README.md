@@ -4,7 +4,7 @@
 
 MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrative arc) and automatically recreates that style using your clips. Think "Instagram Reels editor that understands the 'why' behind professional edits."
 
-**Version:** V7.0 - Production-Ready with Smart Caching & Tiered Matching (January 23, 2026)
+**Version:** V7.0 - Enhanced Analysis & Gemini Advisor (January 27, 2026)
 
 ---
 
@@ -55,9 +55,12 @@ MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrativ
 
 ---
 
-## 📋 Recent Updates (V7.0 - January 23, 2026)
+## 📋 Recent Updates (V7.0 - January 27, 2026)
 
 ### **Major Improvements**
+- **✅ Enhanced Reference Analysis:** Extracts narrative intent, content requirements, experience goals, and text overlays
+- **✅ Enhanced Clip Analysis:** Fixed energy bias, added intensity, granular motion types, semantic content analysis
+- **✅ Gemini Advisor:** Strategic planning layer that provides clip suggestions per arc stage and library assessment
 - **✅ Tiered Energy Matching:** Intelligent energy eligibility prevents jarring transitions
 - **✅ Persistent Standardization Cache:** `data/cache/standardized/` stores hash-based standardized clips
 - **✅ Discovery Bonus System:** Prioritizes unused clips for maximum variety

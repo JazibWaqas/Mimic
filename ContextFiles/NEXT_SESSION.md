@@ -1,18 +1,19 @@
 # MIMIC - Next Session Action Plan
 
-**Last Updated:** January 23, 2026 01:45 AM  
-**Current Version:** V7.0 (Production Ready)  
-**Status:** ✅ Core pipeline complete, ready for frontend integration
+**Last Updated:** January 27, 2026  
+**Current Version:** V7.0 (Enhanced Analysis + Advisor)  
+**Status:** ✅ Core complete, ⚠️ Reference cache fallback fix needed
 
 ---
 
 ## 🎯 Session Objectives
 
-### Primary Goal
-Prepare MIMIC for hackathon submission with frontend integration and demo materials.
+### Primary Goal (IMMEDIATE)
+Fix reference cache fallback issue and validate Advisor system with proper reference data.
 
 ### Secondary Goals
-- Integrate smart recommendations into UI
+- Test Advisor output quality and tune bonus weights
+- Integrate Advisor suggestions into UI
 - Create demo video
 - Polish user experience
 - Final testing and validation
@@ -21,7 +22,57 @@ Prepare MIMIC for hackathon submission with frontend integration and demo materi
 
 ## 📋 Immediate Tasks (Priority Order)
 
-### 1. Frontend Integration (HIGH PRIORITY)
+### 1. Fix Reference Cache Fallback (CRITICAL - DO FIRST)
+
+**Issue:** When orchestrator detects scene timestamps and finds old hash-based cache (wrong version), it deletes it but doesn't check fallback `hints0.json` before re-analyzing.
+
+**Location:** `backend/engine/brain.py` lines 870-888
+
+**Fix Required:**
+After deleting wrong-version cache (line 872), check if `fallback_cache_file` exists and is valid before proceeding to re-analysis.
+
+**Code Change:**
+```python
+if cache_version != REFERENCE_CACHE_VERSION:
+    print(f"[CACHE] Reference version mismatch ({cache_version} vs {REFERENCE_CACHE_VERSION}). Re-analyzing...")
+    cache_file.unlink()
+    # ADD: Check fallback before re-analyzing
+    if fallback_cache_file and fallback_cache_file.exists():
+        # Try loading fallback
+        # If valid, use it; otherwise continue to re-analysis
+```
+
+**Testing:**
+1. Run `test_ref.py` with ref5.mp4
+2. Verify it uses `ref_d04cf94d4d8a_hints0.json` (v7.0) instead of re-analyzing
+3. Confirm reference analysis shows v7.0 fields (narrative_message, must_have_content, etc.)
+
+**Estimated Time:** 30 minutes
+
+---
+
+### 2. Test Advisor with Proper Reference (HIGH PRIORITY)
+
+**Task:** Re-run pipeline with fixed cache to validate Advisor output
+
+**Steps:**
+1. Fix cache fallback (Task 1)
+2. Run `test_ref.py` with ref5.mp4
+3. Verify Advisor receives proper v7.0 reference data
+4. Check Advisor suggestions are meaningful
+5. Validate Advisor bonus improves clip selection
+
+**Expected Output:**
+- Advisor suggestions per arc stage
+- Library assessment (strengths/gaps/confidence)
+- Overall strategy
+- Improved clip selection based on narrative intent
+
+**Estimated Time:** 1 hour
+
+---
+
+### 3. Frontend Integration (MEDIUM PRIORITY)
 
 **Task:** Display smart recommendations in UI
 
