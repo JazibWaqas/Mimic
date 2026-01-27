@@ -22,7 +22,7 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 
 # Separate cache versioning for reference vs clip analysis
 # Reference and clip analysis use different prompts and should be versioned independently
-REFERENCE_CACHE_VERSION = "6.1"  # v6.1: Fixed semantic analysis for scene-hinted references (Jan 22, 2026)
+REFERENCE_CACHE_VERSION = "7.0"  # v7.0: Enhanced narrative analysis with text overlay, content requirements, and experience goals (Jan 27, 2026)
 CLIP_CACHE_VERSION = "6.1"        # v6.0: Deep semantic analysis + editing grammar intelligence (Jan 21, 2026)
 # v5.0: Fixed string corruption bug + vibes loading (Jan 21, 2026)
 # v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
@@ -35,47 +35,157 @@ CLIP_CACHE_VERSION = "6.1"        # v6.0: Deep semantic analysis + editing gramm
 # ============================================================================
 
 REFERENCE_ANALYSIS_PROMPT = """
-You are a professional video editor. Analyze the EDITING DNA and EMOTIONAL ARC of this video.
+You are a professional video editor analyzing a REFERENCE VIDEO.
 
-YOUR TASK: Identify EVERY significant cut point and create segments that match the exact editing rhythm.
+Your goal is to extract the EDITING STRUCTURE and CREATIVE INTENT of this video
+so it can be applied to other footage.
 
-1. **OVERALL ANALYSIS**:
-   - editing_style: (e.g., Cinematic, Vlog, Montage)
-   - emotional_intent: (e.g., Nostalgic, Energetic, Peaceful)
-   - arc_description: How the energy flows (e.g., "Slow build to fast climax").
+You are NOT selecting clips.
+You are NOT judging visual quality.
+You are extracting intent, structure, and constraints.
 
-2. **SEGMENT ANALYSIS**:
-   For each cut-to-cut segment:
-   - ENERGY: (Low/Medium/High)
-   - MOTION: (Static/Dynamic)
-   - VIBE: Aesthetic keyword (e.g., Nature, Urban, Candid)
-   - ARC_STAGE: (Intro, Build-up, Peak, Outro)
+---
 
-RULES:
-- Detect ACTUAL CUTS.
-- Last segment MUST end at total_duration.
+## 1. TEXT & NARRATIVE CONTEXT (if present)
+
+- text_overlay:
+  Extract any readable on-screen text that appears in the video.
+  If none exists, return an empty string.
+
+- narrative_message:
+  Interpret what the edit is trying to communicate or evoke for the viewer
+  in ONE clear sentence.
+  Focus on intent and purpose, not describing the footage itself.
+
+- intent_clarity:
+  How explicit the intent is in the reference.
+  One of: "Clear", "Implicit", "Ambiguous"
+
+### Text Interpretation Rule
+If on-screen text appears to function primarily as:
+- song lyrics
+- timestamps, dates, counters, or calendars
+- rapidly changing or decorative visual elements
+
+then treat the text as a STRUCTURAL or MOOD device, not authorial intent.
+
+In these cases:
+- Set intent_clarity to "Implicit"
+- Base narrative_message primarily on visual progression and pacing
+- Do NOT infer story meaning directly from the literal text content
+
+---
+
+## 2. OVERALL EDITING ANALYSIS
+
+- editing_style:
+  (e.g., Cinematic, Vlog, Travel Montage, Memory Reel)
+
+- emotional_intent:
+  The dominant emotional tone the edit aims to evoke
+  (e.g., Nostalgic, Energetic, Reflective)
+
+- arc_description:
+  Describe how energy evolves across the timeline
+  (e.g., "Calm intro → steady build → energetic peak → soft outro")
+
+---
+
+## 3. CONTENT REQUIREMENTS (INTENT-LEVEL, NOT CLIP SELECTION)
+
+Describe what TYPES of moments make this edit work.
+Be semantic and experiential, not technical.
+
+- must_have_content:
+  3–5 types of moments this edit fundamentally relies on
+
+- should_have_content:
+  2–3 types of moments that would strengthen the edit
+
+- avoid_content:
+  Content types that would clash with the narrative intent of this edit.
+  Avoid absolute exclusions when context could make them compatible.
+
+Rules:
+- Do NOT reference specific clips.
+- Do NOT describe camera techniques.
+- Describe meaning, not mechanics.
+
+---
+
+## 4. EXPERIENCE GOALS (FELT, NOT MECHANICAL)
+
+- pacing_feel:
+  How the edit FEELS rhythmically
+  (e.g., breathable, relentless, reflective)
+
+- visual_balance:
+  What the edit emphasizes overall
+  (e.g., people-centric, place-centric, balanced)
+
+Describe the viewer experience, not BPM, cut speed, or timing.
+
+---
+
+## 5. SEGMENT STRUCTURE (CUT-TO-CUT)
+
+Identify EVERY actual cut and define segments that match the exact editing rhythm.
+
+For EACH segment:
+- ENERGY: Low | Medium | High
+- MOTION: Static | Dynamic
+- VIBE: Single-word or short reusable noun phrase describing visible content
+  (people, place, or activity)
+- ARC_STAGE: Intro | Build-up | Peak | Outro
+
+Rules:
+- Detect REAL cuts only.
+- Segment IDs must be sequential.
+- Last segment MUST end exactly at total_duration.
+- VIBE must describe visible content categories.
+  Avoid abstract concepts, lighting conditions, or emotions as vibes.
+
+---
+
+## OUTPUT REQUIREMENTS
+
 - Output VALID JSON ONLY.
+- No markdown, no explanations.
+- Do NOT assume future footage.
+- Do NOT predict outcomes.
+- Analysis must be reusable for applying this structure to DIFFERENT content.
 
-JSON SCHEMA:
+---
+
+## JSON SCHEMA
+
 {
+  "text_overlay": "",
+  "narrative_message": "",
+  "intent_clarity": "",
+  "must_have_content": [],
+  "should_have_content": [],
+  "avoid_content": [],
+  "pacing_feel": "",
+  "visual_balance": "",
   "total_duration": 15.5,
-  "editing_style": "...",
-  "emotional_intent": "...",
-  "arc_description": "...",
+  "editing_style": "",
+  "emotional_intent": "",
+  "arc_description": "",
   "segments": [
     {
       "id": 1,
       "start": 0.0,
-      "end": 3.2,
-      "duration": 3.2,
-      "energy": "Low",
+      "end": 1.0,
+      "duration": 1.0,
+      "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Nature",
+      "vibe": "Candid",
       "arc_stage": "Intro"
     }
   ],
-  "overall_reasoning": "...",
-  "ideal_material_suggestions": ["..."]
+  "overall_reasoning": "",
+  "ideal_material_suggestions": []
 }
 """
 

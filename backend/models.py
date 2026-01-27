@@ -94,6 +94,20 @@ class StyleBlueprint(BaseModel):
     emotional_intent: str = Field("Dynamic", description="The intended mood/emotion (e.g. Nostalgic, Energetic, Peaceful)")
     arc_description: str = Field("", description="Description of the video's structural story arc")
     
+    # Enhanced Narrative Analysis (v7.0+)
+    text_overlay: str = Field("", description="On-screen text extracted from reference video")
+    narrative_message: str = Field("", description="What the edit is trying to communicate in one sentence")
+    intent_clarity: str = Field("Implicit", description="How explicit the intent is: Clear, Implicit, or Ambiguous")
+    
+    # Content Requirements (Intent-Level)
+    must_have_content: List[str] = Field(default_factory=list, description="3-5 types of moments this edit fundamentally relies on")
+    should_have_content: List[str] = Field(default_factory=list, description="2-3 types of moments that would strengthen the edit")
+    avoid_content: List[str] = Field(default_factory=list, description="Content types that would clash with narrative intent")
+    
+    # Experience Goals (Felt, Not Mechanical)
+    pacing_feel: str = Field("", description="How the edit feels rhythmically (e.g., breathable, relentless)")
+    visual_balance: str = Field("", description="What the edit emphasizes (e.g., people-centric, place-centric)")
+    
     overall_reasoning: str = Field("", description="AI's holistic thinking about this video's structure")
     ideal_material_suggestions: List[str] = Field(default_factory=list, description="Suggestions for the user on what clips would work best")
     
