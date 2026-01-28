@@ -39,10 +39,57 @@ from engine.processors import (
     create_silent_video,
     validate_output,
     detect_scene_changes,
-    detect_bpm
+    detect_bpm,
+    get_beat_grid,
+    get_video_duration
 )
 from utils import ensure_directory, cleanup_session
 from collections import defaultdict, Counter
+
+
+# ============================================================================
+# HELPER FUNCTIONS
+# ============================================================================
+
+def _merge_scene_and_beat_timestamps(
+    scene_timestamps: List[float],
+    beat_grid: List[float],
+    max_gap: float = 2.0
+) -> List[float]:
+    """
+    Merge visual scene cuts with beat-aligned timestamps.
+    
+    This ensures no segment is longer than max_gap seconds by inserting
+    beat-aligned cut points where visual detection missed cuts.
+    
+    Args:
+        scene_timestamps: Detected visual cut points
+        beat_grid: Beat-aligned timestamps from BPM detection
+        max_gap: Maximum allowed gap between timestamps (seconds)
+    
+    Returns:
+        Combined list of timestamps (sorted, deduplicated)
+    """
+    combined = set(scene_timestamps)  # Start with visual cuts
+    
+    # Add beat timestamps to fill gaps
+    all_timestamps = sorted(scene_timestamps + [0.0])  # Include start
+    
+    for i in range(len(all_timestamps) - 1):
+        start = all_timestamps[i]
+        end = all_timestamps[i + 1]
+        gap = end - start
+        
+        # If gap exceeds max_gap, insert beat-aligned timestamps
+        if gap > max_gap:
+            # Find beats within this gap
+            for beat in beat_grid:
+                if start < beat < end:
+                    # Only add if it creates reasonable subdivision
+                    if beat - start >= 0.3 and end - beat >= 0.3:
+                        combined.add(beat)
+    
+    return sorted(list(combined))
 
 
 # ============================================================================
@@ -166,18 +213,30 @@ def run_mimic_pipeline(
         ref_bpm = 120.0
         
         try:
-            # 2a. Detect visual cuts first (Temporal Hints)
-            scene_timestamps = detect_scene_changes(reference_path)
+            # 2a. Detect visual cuts first (LOWERED threshold for subtle cuts)
+            scene_timestamps = detect_scene_changes(reference_path, threshold=0.15)
             
             # 2b. Extract audio and detect BPM (Dynamic Rhythm)
             if extract_audio_wav(reference_path, str(audio_analysis_path)):
                 ref_bpm = detect_bpm(str(audio_analysis_path))
             
-            # 2c. Analyze with Gemini using hints
+            # 2c. HYBRID DETECTION: Merge visual cuts + beat-aligned subdivision
+            # This ensures no segment is longer than ~2 seconds (critical for rhythm-based edits)
+            ref_duration = get_video_duration(reference_path)
+            beat_grid = get_beat_grid(ref_duration, int(ref_bpm))
+            combined_timestamps = _merge_scene_and_beat_timestamps(
+                scene_timestamps, 
+                beat_grid, 
+                max_gap=2.0
+            )
+            
+            print(f"  [HYBRID] Visual cuts: {len(scene_timestamps)}, Beat-enhanced: {len(combined_timestamps)}")
+            
+            # 2d. Analyze with Gemini using hybrid timestamps
             blueprint = analyze_reference_video(
                 reference_path, 
                 api_key=api_key,
-                scene_timestamps=scene_timestamps
+                scene_timestamps=combined_timestamps
             )
             print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
         except Exception as e:
@@ -199,7 +258,6 @@ def run_mimic_pipeline(
             print(f"[ERROR] Gemini clip analysis failed: {e}")
             print("    FALLING BACK to default energy levels. Edit quality will be reduced.")
             from models import ClipMetadata, EnergyLevel, MotionType
-            from engine.processors import get_video_duration
             
             clips = []
             for path in clip_paths:
@@ -324,7 +382,6 @@ def run_mimic_pipeline(
         # ==================================================================
         processing_time = time.time() - start_time
         
-        from engine.processors import get_video_duration
         output_duration = get_video_duration(str(final_output_path))
         ref_duration = blueprint.total_duration
         
@@ -564,7 +621,6 @@ def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
     Raises:
         ValueError: If inputs are invalid
     """
-    from engine.processors import get_video_duration
     
     # Check reference video exists
     if not Path(reference_path).exists():

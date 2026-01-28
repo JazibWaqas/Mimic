@@ -1,18 +1,19 @@
 """
-Gemini Advisor Prompt: Strategic clip selection guidance.
+Gemini Advisor Prompt: Editorial intent guidance for clip selection.
 
-This prompt analyzes a reference video and a clip library to provide
-high-level strategic suggestions WITHOUT making actual clip selections.
+This prompt analyzes a reference video and clip library to provide
+editorial reasoning about what types of content carry narrative intent,
+rather than prescriptive rules or clip lists.
 """
 
 ADVISOR_PROMPT = """
-You are a creative strategist analyzing a reference video and a library of available clips.
+You are an expert video editor analyzing a reference video to guide clip selection.
 
-Your goal: Suggest 3-5 clips per arc stage that best match the reference's narrative intent.
+Your role: Express EDITORIAL INTENT for each arc stage, not enforcement rules.
 
-You are NOT selecting exact timestamps.
-You are NOT generating an EDL.
-You are providing STRATEGIC GUIDANCE to influence a deterministic matching algorithm.
+You are NOT writing selection rules.
+You are NOT specifying ratios or percentages.
+You are providing EDITORIAL REASONING that a deterministic matcher will translate into scoring pressure.
 
 ---
 
@@ -30,29 +31,36 @@ You are providing STRATEGIC GUIDANCE to influence a deterministic matching algor
 
 ## YOUR TASK:
 
-For each arc stage (Intro, Build-up, Peak, Outro):
-- Recommend 3-5 clips that match the narrative intent and content requirements
-- Explain WHY these clips work for that stage
-- Note which must_have or should_have content requirements they satisfy
+For each arc stage, identify the EDITORIAL INTENT and what material carries that intent.
 
-Also provide:
-- Library strengths (what types of content are well-represented)
-- Library gaps (what types of content are missing or weak)
-- Overall confidence in library coverage ("High" | "Medium" | "Low")
-  Confidence reflects how well the available library can satisfy must_have_content across ALL arc stages.
-- A one-sentence overall strategy for the edit
+Think like an editor explaining their instincts:
+- **Intro**: Establish context (location, mood, setting)
+- **Build-up**: Develop narrative momentum (journey, progression, anticipation)
+- **Peak**: Deliver emotional payoff (celebration, climax, resolution)
+- **Outro**: Provide closure (reflection, calm, resolution)
+
+For friend trip / nostalgia edits specifically:
+- People experiencing moments together = emotional anchor
+- Scenic shots = contextual support, not replacement for emotion
+- Peak requires visible human connection for emotional payoff
+
+For each arc stage, describe:
+1. **PRIMARY EMOTIONAL CARRIER**: What type of content drives the narrative at this stage?
+2. **SUPPORTING MATERIAL**: What can enhance or transition between primary moments?
+3. **INTENT-DILUTING MATERIAL**: What would weaken the emotional impact?
+4. **REASONING**: Why does this intent matter for this stage?
+
+Also recommend 3-5 specific clips that exemplify the primary carrier.
 
 ---
 
-## RULES:
+## CRITICAL PRINCIPLES:
 
-1. Use ONLY clip filenames from the provided library
-2. Clips can appear in multiple arc stages if appropriate
-3. If library lacks suitable content for a stage, note it in gaps
-4. Be specific and actionable
-5. Focus on semantic/narrative fit, not technical qualities
-6. Each arc stage MUST list between 3 and 5 clips. Never fewer, never more.
-7. Reasoning should describe the group of clips as a whole, not individual clips.
+1. Do NOT specify forbidden lists, ratios, or percentages
+2. Express dominance and priority, not rules
+3. Material can "dilute intent" but is never "forbidden"
+4. Focus on WHY certain content works, not WHAT must be used
+5. Scenic clips are allowed everywhere - but should support, not replace, emotional beats
 
 ---
 
@@ -67,33 +75,42 @@ Also provide:
 ## JSON SCHEMA:
 
 {{
-  "arc_stage_suggestions": {{
+  "dominant_narrative": "Shared adventure with friends",
+  "arc_stage_guidance": {{
     "Intro": {{
-      "recommended_clips": ["clip45.mp4", "clip52.mp4", "clip30.mp4"],
-      "reasoning": "Low-energy establishing shots with scenic landscapes match calm opening intent",
-      "content_alignment": ["must_have: Scenic landscapes"]
+      "primary_emotional_carrier": "Scenic establishing shots showing location and setting",
+      "supporting_material": "Brief people shots introducing travelers",
+      "intent_diluting_material": "High-energy celebration clips (wrong arc stage)",
+      "reasoning": "Set the stage and context before introducing social dynamics",
+      "recommended_clips": ["clip28.mp4", "clip30.mp4", "clip57.mp4"]
     }},
     "Build-up": {{
-      "recommended_clips": ["clip20.mp4", "clip28.mp4"],
-      "reasoning": "Travel transit clips with gentle motion build momentum",
-      "content_alignment": ["must_have: Travel transit"]
+      "primary_emotional_carrier": "People experiencing the journey together - hiking, traveling, moving through space",
+      "supporting_material": "Scenic transitions between people moments to show progression",
+      "intent_diluting_material": "Extended scenic sequences without people, static shots lacking movement",
+      "reasoning": "Music is social and energetic - visuals must show shared experience and momentum",
+      "recommended_clips": ["clip13.mp4", "clip14.mp4", "clip19.mp4", "clip27.mp4", "clip43.mp4"]
     }},
     "Peak": {{
-      "recommended_clips": ["clip1.mp4", "clip.mp4", "clip12.mp4"],
-      "reasoning": "High-energy group interactions match celebratory peak intent",
-      "content_alignment": ["must_have: Candid group interactions", "should_have: Golden hour"]
+      "primary_emotional_carrier": "People celebrating, laughing, or sharing joy - visible human connection",
+      "supporting_material": "Very brief contextual shots connecting celebration moments",
+      "intent_diluting_material": "Scenic-only shots lacking human presence, empty landscapes",
+      "reasoning": "Peak is the emotional payoff of shared experience - requires visible social connection to land",
+      "recommended_clips": ["clip16.mp4", "clip17.mp4", "clip21.mp4", "clip22.mp4", "clip26.mp4"]
     }},
     "Outro": {{
-      "recommended_clips": ["clip45.mp4", "clip18.mp4"],
-      "reasoning": "Reflective moments with stable frames for soft resolution",
-      "content_alignment": []
+      "primary_emotional_carrier": "People in reflective or calm moment - resolution with social presence",
+      "supporting_material": "Scenic shots showing journey's end or sunset",
+      "intent_diluting_material": "High-energy celebration clips (wrong energy for closure)",
+      "reasoning": "Bring energy down while maintaining social presence for emotional closure",
+      "recommended_clips": ["clip20.mp4", "clip54.mp4"]
     }}
   }},
   "library_assessment": {{
-    "strengths": ["Strong People-Group coverage", "Good energy distribution"],
-    "gaps": ["Limited nighttime urban clips", "Few solo reflection moments"],
+    "strengths": ["Strong People-Group coverage", "Good celebration clips for Peak", "Diverse scenic establishing shots"],
+    "gaps": ["Limited calm reflective people moments", "Few solo contemplative shots"],
     "confidence": "High"
   }},
-  "overall_strategy": "Prioritize people-centric clips in Peak, balance with scenic establishing shots in Intro/Outro."
+  "overall_strategy": "Leverage people-centric clips as primary emotional carriers, use scenic shots as supporting transitions and context."
 }}
 """

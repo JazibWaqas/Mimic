@@ -1,0 +1,69 @@
+{
+  "dominant_narrative": "A high-energy, fast-paced journey of friendship and shared adventure.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Atmospheric establishing shots that signal the start of a journey or a specific location.",
+      "supporting_material": "Low-to-medium energy clips of the group arriving or preparing for an activity.",
+      "intent_diluting_material": "High-intensity celebration or chaotic motion that skips the 'setup' phase.",
+      "reasoning": "The intro needs to ground the viewer in the environment (mountains, travel, or urban settings) before the rapid-fire editing of the peak begins.",
+      "recommended_clips": [
+        "clip29.mp4",
+        "clip30.mp4",
+        "clip45.mp4",
+        "clip52.mp4"
+      ]
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Clips featuring physical progression and movement, such as walking, riding, or driving.",
+      "supporting_material": "Medium-energy social interactions that hint at the fun to come without reaching full intensity.",
+      "intent_diluting_material": "Static, stationary shots or slow-moving nature pans that stall the narrative momentum.",
+      "reasoning": "The build-up must create a sense of 'going somewhere' to justify the high-energy payoff of the peak.",
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip27.mp4",
+        "clip42.mp4",
+        "clip48.mp4",
+        "clip7.mp4"
+      ]
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Explosive social joy, including laughing, dancing, singing, and high-action group activities.",
+      "supporting_material": "Dynamic, high-motion shots of nature or objects (like waves or moving vehicles) to maintain the fast cutting rhythm.",
+      "intent_diluting_material": "Long-duration clips with little movement or shots where no people are present.",
+      "reasoning": "With 28 segments in the peak, the editor needs a high volume of 'micro-moments' of intense human connection to sustain the emotional high.",
+      "recommended_clips": [
+        "clip16.mp4",
+        "clip21.mp4",
+        "clip22.mp4",
+        "clip26.mp4",
+        "clip38.mp4"
+      ]
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Reflective or concluding imagery showing the group moving away or the day ending.",
+      "supporting_material": "Calm, low-energy scenic shots like sunsets or quiet landscapes.",
+      "intent_diluting_material": "Residual high-energy clips that prevent the video from feeling finished.",
+      "reasoning": "The single-segment outro requires a definitive visual 'period' to the sentence, providing a sense of completion.",
+      "recommended_clips": [
+        "clip31.mp4",
+        "clip54.mp4",
+        "clip57.mp4"
+      ]
+    }
+  },
+  "library_assessment": {
+    "strengths": [
+      "Excellent variety of high-energy 'car singing' and 'dancing' clips for the dense peak",
+      "Strong selection of travel-based movement (horses, jet skis, walking) for the build-up",
+      "Good mix of day and night footage to show a full experience"
+    ],
+    "gaps": [
+      "The peak is very long (28 segments), requiring almost all high-energy clips in the library to avoid repetition",
+      "Fewer 'quiet' social moments for a more nuanced outro"
+    ],
+    "confidence": "High"
+  },
+  "overall_strategy": "Prioritize 'People-Group' clips with high motion for the peak to match the cinematic montage style, while using 'Activity-Travel' clips to bridge the gap between the quiet intro and the explosive middle.",
+  "cache_version": "2.0",
+  "cached_at": "2026-01-28T11:01:54.340291"
+}

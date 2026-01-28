@@ -862,27 +862,28 @@ def analyze_reference_video(
     if cache_file.exists():
         print(f"[CACHE] Found cached analysis: {cache_file.name}")
         try:
-            with open(cache_file) as f:
+            # Read cache with UTF-8 encoding to handle emojis/unicode from Gemini
+            with open(cache_file, encoding='utf-8') as f:
                 cache_data = json.load(f)
-                
-                # Check cache version
-                cache_version = cache_data.get("_cache_version", "1.0")
-                if cache_version != REFERENCE_CACHE_VERSION:
-                    print(f"[CACHE] Reference version mismatch ({cache_version} vs {REFERENCE_CACHE_VERSION}). Re-analyzing...")
-                    cache_file.unlink()
+            
+            # Check cache version (file is now closed, safe to delete if needed)
+            cache_version = cache_data.get("_cache_version", "1.0")
+            if cache_version != REFERENCE_CACHE_VERSION:
+                print(f"[CACHE] Reference version mismatch ({cache_version} vs {REFERENCE_CACHE_VERSION}). Re-analyzing...")
+                cache_file.unlink()  # Safe: file is closed
+            else:
+                blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
+                blueprint = StyleBlueprint(**blueprint_data)
+
+                # Apply subdivision only if cache was not created with scene hints
+                # (preserve original rhythm when mimicking detected cuts)
+                if "hints0" in cache_file.name:
+                    blueprint = subdivide_segments(blueprint)
+                    print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (subdivided)")
                 else:
-                    blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
-                    blueprint = StyleBlueprint(**blueprint_data)
+                    print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (preserved original rhythm)")
 
-                    # Apply subdivision only if cache was not created with scene hints
-                    # (preserve original rhythm when mimicking detected cuts)
-                    if "hints0" in cache_file.name:
-                        blueprint = subdivide_segments(blueprint)
-                        print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (subdivided)")
-                    else:
-                        print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (preserved original rhythm)")
-
-                    return blueprint
+                return blueprint
         except Exception as e:
             print(f"[WARN] Cache issue: {e}. Re-analyzing...")
     
@@ -998,14 +999,14 @@ JSON schema:
             else:
                 print(f"[OK] Preserved original cut rhythm: {len(blueprint.segments)} segments (no subdivision)")
             
-            # Save ORIGINAL to cache
+            # Save ORIGINAL to cache with UTF-8 encoding
             cache_data = {
                 **json_data,
                 "_cache_version": REFERENCE_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
-            with open(cache_file, 'w') as f:
-                json.dump(cache_data, f, indent=2)
+            with open(cache_file, 'w', encoding='utf-8') as f:
+                json.dump(cache_data, f, indent=2, ensure_ascii=False)
             
             print(f"[OK] Analysis complete: {len(blueprint.segments)} segments.")
             return blueprint
@@ -1223,15 +1224,16 @@ def _analyze_single_clip_comprehensive(
     
     if cache_file.exists():
         try:
-            with open(cache_file) as f:
+            # Read cache with UTF-8 encoding
+            with open(cache_file, encoding='utf-8') as f:
                 cache_data = json.load(f)
-                
-                # Check cache version
-                cache_version = cache_data.get("_cache_version", "1.0")
-                if cache_version != CLIP_CACHE_VERSION:
-                    print(f"    [CACHE] Clip version mismatch ({cache_version} vs {CLIP_CACHE_VERSION}) - invalidating...")
-                    cache_file.unlink()
-                else:
+            
+            # Check cache version (file is now closed, safe to delete if needed)
+            cache_version = cache_data.get("_cache_version", "1.0")
+            if cache_version != CLIP_CACHE_VERSION:
+                print(f"    [CACHE] Clip version mismatch ({cache_version} vs {CLIP_CACHE_VERSION}) - invalidating...")
+                cache_file.unlink()  # Safe: file is closed
+            else:
                     # Reconstruct ClipMetadata from cache
                     energy = EnergyLevel(cache_data["energy"])
                     
@@ -1267,9 +1269,20 @@ def _analyze_single_clip_comprehensive(
                     vibes = cache_data.get("vibes", [])
                     content_description = cache_data.get("content_description", "")
                     
+                    # VIBE DERIVATION: If vibes are empty, derive from primary_subject for matcher compatibility
+                    # This gives the matcher baseline semantic literacy without making it too smart
+                    # The Advisor still has access to full V7 data for strategic reasoning
+                    if not vibes and primary_subject:
+                        vibes = [
+                            subject.split('-')[1] if '-' in subject else subject
+                            for subject in primary_subject
+                        ]
+                    
                     print(f"    [CACHE] Loaded: {energy.value}/{motion.value}/intensity={intensity} with {len(best_moments) if best_moments else 0} best moments")
                     if primary_subject:
                         print(f"    [CACHE] Subject: {', '.join(primary_subject)}")
+                    if vibes:
+                        print(f"    [CACHE] Derived vibes: {', '.join(vibes)}")
                     
                     return ClipMetadata(
                         filename=Path(clip_path).name,
@@ -1397,14 +1410,23 @@ def _analyze_single_clip_comprehensive(
                 "_cache_version": CLIP_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
-            with open(cache_file, 'w') as f:
-                json.dump(cache_data, f, indent=2)
+            with open(cache_file, 'w', encoding='utf-8') as f:
+                json.dump(cache_data, f, indent=2, ensure_ascii=False)
+            
+            # VIBE DERIVATION: If vibes are empty, derive from primary_subject for matcher compatibility
+            if not vibes and primary_subject:
+                vibes = [
+                    subject.split('-')[1] if '-' in subject else subject
+                    for subject in primary_subject
+                ]
             
             print(f"    [OK] {energy.value}/{motion_str}/intensity={intensity} with best moments:")
             for level, bm in best_moments.items():
                 print(f"        {level}: {bm.start:.2f}s - {bm.end:.2f}s ({bm.moment_role})")
             if primary_subject:
                 print(f"    Subject: {', '.join(primary_subject)}")
+            if vibes:
+                print(f"    Derived vibes: {', '.join(vibes)}")
             
             return ClipMetadata(
                 filename=Path(clip_path).name,
@@ -1489,7 +1511,7 @@ def _analyze_single_clip_simple(model: genai.GenerativeModel, clip_path: str) ->
                 "_cache_version": CLIP_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
-            with open(cache_file, 'w') as f:
+            with open(cache_file, 'w', encoding='utf-8') as f:
                 json.dump(cache_data, f, indent=2)
             
             print(f"    [OK] {energy.value} / {motion.value}")

@@ -140,13 +140,18 @@ class StyleBlueprint(BaseModel):
 # GEMINI ADVISOR (v7.0+)
 # ============================================================================
 
-class ArcStageSuggestion(BaseModel):
+class ArcStageGuidance(BaseModel):
     """
-    Gemini's recommendations for clips to use in a specific arc stage.
+    Gemini's editorial intent reasoning for a specific arc stage.
+    
+    This expresses WHAT TYPE of content carries narrative intent,
+    not prescriptive rules about what must be used.
     """
-    recommended_clips: List[str] = Field(default_factory=list, description="3-5 clip filenames recommended for this arc stage")
-    reasoning: str = Field("", description="Why these clips work for this arc stage")
-    content_alignment: List[str] = Field(default_factory=list, description="Which must_have/should_have content they satisfy")
+    primary_emotional_carrier: str = Field("", description="What type of content drives the narrative at this stage")
+    supporting_material: str = Field("", description="What can enhance or transition between primary moments")
+    intent_diluting_material: str = Field("", description="What would weaken the emotional impact")
+    reasoning: str = Field("", description="Why this intent matters for this arc stage")
+    recommended_clips: List[str] = Field(default_factory=list, description="3-5 clip filenames that exemplify the primary carrier")
 
 
 class LibraryAssessment(BaseModel):
@@ -160,19 +165,20 @@ class LibraryAssessment(BaseModel):
 
 class AdvisorHints(BaseModel):
     """
-    Complete Gemini Advisor output containing strategic clip suggestions.
+    Complete Gemini Advisor output containing editorial intent reasoning.
     
     This is generated once per reference+library combination and cached.
-    The hints influence scoring but do not control the matcher.
+    The hints express editorial intent that the matcher translates into scoring pressure.
     """
-    arc_stage_suggestions: dict[str, ArcStageSuggestion] = Field(
+    dominant_narrative: str = Field("", description="Overall story being told (e.g., 'Shared adventure with friends')")
+    arc_stage_guidance: dict[str, ArcStageGuidance] = Field(
         default_factory=dict,
-        description="Suggestions keyed by arc stage: Intro, Build-up, Peak, Outro"
+        description="Editorial intent guidance keyed by arc stage: Intro, Build-up, Peak, Outro"
     )
     library_assessment: LibraryAssessment = Field(default_factory=LibraryAssessment)
     overall_strategy: str = Field("", description="One-sentence overall editing strategy")
     
-    cache_version: str = Field("1.0", description="Advisor cache version")
+    cache_version: str = Field("2.0", description="Advisor cache version (2.0 = intent-driven)")
     cached_at: str = Field("", description="ISO timestamp when cached")
 
 

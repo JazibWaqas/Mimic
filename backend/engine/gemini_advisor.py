@@ -18,7 +18,7 @@ from models import (
     ClipMetadata,
     Segment,
     AdvisorHints,
-    ArcStageSuggestion,
+    ArcStageGuidance,
     LibraryAssessment
 )
 from engine.gemini_advisor_prompt import ADVISOR_PROMPT
@@ -107,14 +107,16 @@ def get_advisor_suggestions(
             
             cached_at = datetime.utcnow().isoformat()
             
-            arc_suggestions = {}
-            for stage, suggestion_data in data.get('arc_stage_suggestions', {}).items():
-                arc_suggestions[stage] = ArcStageSuggestion(**suggestion_data)
+            # Parse arc stage guidance (intent-driven)
+            arc_guidance = {}
+            for stage, guidance_data in data.get('arc_stage_guidance', {}).items():
+                arc_guidance[stage] = ArcStageGuidance(**guidance_data)
             
             library_assessment = LibraryAssessment(**data.get('library_assessment', {}))
             
             hints = AdvisorHints(
-                arc_stage_suggestions=arc_suggestions,
+                dominant_narrative=data.get('dominant_narrative', ''),
+                arc_stage_guidance=arc_guidance,
                 library_assessment=library_assessment,
                 overall_strategy=data.get('overall_strategy', ''),
                 cached_at=cached_at
@@ -147,34 +149,63 @@ def compute_advisor_bonus(
     advisor_hints: Optional[AdvisorHints]
 ) -> int:
     """
-    Compute advisor scoring bonus for a specific clip in a segment.
+    Translate Advisor's editorial intent into scoring pressure.
     
-    This is ADDITIVE to the base matcher score. The bonus can be positive
-    (recommended clip) or negative (clip should be avoided).
+    This is NOT rule enforcement - it's priority weighting based on
+    whether the clip matches the editorial intent for this arc stage.
     
     Args:
         clip: Candidate clip being scored
         segment: Current segment being filled
         blueprint: Reference analysis with narrative intent
-        advisor_hints: Advisor suggestions (can be None for graceful degradation)
+        advisor_hints: Advisor guidance (can be None for graceful degradation)
     
     Returns:
-        Bonus score (typically in range -30 to +85)
+        Bonus score (typically in range -50 to +60)
     """
     if not advisor_hints:
         return 0
     
     bonus = 0
     
-    arc_suggestions = advisor_hints.arc_stage_suggestions.get(segment.arc_stage)
-    if arc_suggestions and clip.filename in arc_suggestions.recommended_clips:
-        if blueprint.intent_clarity == "Clear":
-            bonus += 40
-        elif blueprint.intent_clarity == "Implicit":
-            bonus += 25
-        else:
-            bonus += 15
+    # Get editorial guidance for this arc stage
+    guidance = advisor_hints.arc_stage_guidance.get(segment.arc_stage)
+    if not guidance:
+        return 0
     
+    # Check if clip matches PRIMARY EMOTIONAL CARRIER (+60 strong boost)
+    primary_match = _matches_intent(clip, guidance.primary_emotional_carrier)
+    if primary_match:
+        bonus += 60
+    
+    # Check if clip is SUPPORTING MATERIAL (+15 mild boost)
+    supporting_match = _matches_intent(clip, guidance.supporting_material)
+    if not primary_match and supporting_match:
+        bonus += 15
+    
+    # Check if clip DILUTES INTENT (-50 penalty, but not forbidden)
+    dilutes_match = _matches_intent(clip, guidance.intent_diluting_material)
+    if dilutes_match:
+        bonus -= 50
+    
+    # CRITICAL FIX: For Build-up, if primary carrier mentions "people" but clip has no people,
+    # treat it as intent-diluting even if it wasn't explicitly listed
+    if segment.arc_stage == "Build-up":
+        primary_needs_people = "people" in guidance.primary_emotional_carrier.lower() or \
+                              "group" in guidance.primary_emotional_carrier.lower() or \
+                              "shared" in guidance.primary_emotional_carrier.lower()
+        
+        clip_has_people = any("People" in subj for subj in clip.primary_subject)
+        
+        if primary_needs_people and not clip_has_people and not primary_match:
+            # This is a scenic clip in a people-driven Build-up segment
+            bonus -= 40  # Penalty for missing the primary carrier
+    
+    # Boost clips that are specifically recommended as exemplars
+    if clip.filename in guidance.recommended_clips:
+        bonus += 20
+    
+    # Content alignment bonuses (from blueprint must_have/should_have)
     exact_must, category_must = _match_content_requirements(
         clip, blueprint.must_have_content
     )
@@ -191,9 +222,11 @@ def compute_advisor_bonus(
     elif category_should:
         bonus += 5
     
+    # Quality bonus
     if clip.clip_quality >= 4:
         bonus += 5
     
+    # Stable moments for Intro/Outro
     if segment.arc_stage in ["Intro", "Outro"]:
         if clip.best_moments:
             energy_key = segment.energy.value.capitalize()
@@ -201,12 +234,71 @@ def compute_advisor_bonus(
             if best_moment and best_moment.stable_moment:
                 bonus += 10
     
-    for avoid_context in clip.avoid_for:
-        if segment.arc_stage.lower() in avoid_context.lower():
-            bonus -= 30
-            break
-    
     return bonus
+
+
+def _matches_intent(clip: ClipMetadata, intent_description: str) -> bool:
+    """
+    Simple semantic matching between clip metadata and intent description.
+    
+    This is intentionally fuzzy - we're checking if the clip's semantic
+    tags align with the Advisor's editorial reasoning.
+    """
+    if not intent_description:
+        return False
+    
+    intent_lower = intent_description.lower()
+    
+    # Check if intent requires people
+    intent_needs_people = any(keyword in intent_lower for keyword in [
+        "people", "group", "shared", "celebrating", "laughing", "human", "friends"
+    ])
+    
+    clip_has_people = any("People" in subj for subj in clip.primary_subject)
+    
+    # If intent needs people but clip has none, no match
+    if intent_needs_people and not clip_has_people:
+        return False
+    
+    # If intent is about scenic/landscapes and clip is scenic, match
+    if any(keyword in intent_lower for keyword in ["scenic", "landscape", "atmospheric", "establishing"]):
+        if any("Place" in subj for subj in clip.primary_subject):
+            return True
+    
+    # Check primary_subject for specific matches
+    for subject in clip.primary_subject:
+        if "People" in subject:
+            # People-related intent keywords
+            if any(keyword in intent_lower for keyword in [
+                "people", "group", "shared", "celebrating", "laughing", "human",
+                "connection", "interaction", "friends", "social"
+            ]):
+                return True
+        
+        if "Celebration" in subject and "celebrat" in intent_lower:
+            return True
+        
+        if "Travel" in subject and any(keyword in intent_lower for keyword in [
+            "journey", "transit", "travel", "moving"
+        ]):
+            return True
+        
+        if "Leisure" in subject and any(keyword in intent_lower for keyword in [
+            "leisure", "casual", "relaxed"
+        ]):
+            return True
+    
+    # Check emotional_tone
+    for tone in clip.emotional_tone:
+        if tone.lower() in intent_lower:
+            return True
+    
+    # Check narrative_utility
+    for utility in clip.narrative_utility:
+        if utility.lower() in intent_lower:
+            return True
+    
+    return False
 
 
 def _match_content_requirements(

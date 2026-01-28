@@ -1,0 +1,69 @@
+{
+  "dominant_narrative": "A high-energy journey of friendship and shared discovery",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Establishing shots that signal the start of a journey or a change in location",
+      "supporting_material": "Brief glimpses of the group arriving or preparing for the adventure",
+      "intent_diluting_material": "Static, low-energy nature shots without any sense of movement or travel",
+      "reasoning": "The intro needs to set a 'dynamic' tone immediately, using travel-oriented visuals to suggest the start of a narrative arc.",
+      "recommended_clips": [
+        "clip29.mp4",
+        "clip45.mp4",
+        "clip52.mp4"
+      ]
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Active movement and shared experiences, showing the group in transit or engaging in diverse activities",
+      "supporting_material": "POV shots and environmental transitions that emphasize the 'path' being taken",
+      "intent_diluting_material": "Repetitive celebration shots that belong in the peak, or overly long scenic shots that stall momentum",
+      "reasoning": "This stage is about progression; the clips should feel like a montage of 'doing' and 'going' to build anticipation for the emotional high point.",
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip14.mp4",
+        "clip27.mp4",
+        "clip42.mp4",
+        "clip48.mp4"
+      ]
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Uninhibited joy and collective celebration, characterized by high-intensity movement and clear human connection",
+      "supporting_material": "Fast-paced action or chaotic fun that mirrors the peak energy of the music/edit",
+      "intent_diluting_material": "Empty landscapes or solo shots that lack the 'shared' element of the trip",
+      "reasoning": "The peak is the emotional payoff; it requires the most expressive and socially connected footage to justify the build-up.",
+      "recommended_clips": [
+        "clip21.mp4",
+        "clip22.mp4",
+        "clip17.mp4",
+        "clip38.mp4",
+        "clip16.mp4"
+      ]
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Moments of shared reflection, winding down, or the group moving away from the camera",
+      "supporting_material": "Atmospheric shots of sunsets or food that signify the end of a day or trip",
+      "intent_diluting_material": "High-intensity dancing or shouting that disrupts the sense of closure",
+      "reasoning": "The outro should provide a 'soft landing,' maintaining the presence of the group while lowering the energy to signal completion.",
+      "recommended_clips": [
+        "clip20.mp4",
+        "clip54.mp4",
+        "clip58.mp4",
+        "clip31.mp4"
+      ]
+    }
+  },
+  "library_assessment": {
+    "strengths": [
+      "Exceptional variety of high-energy group celebration clips",
+      "Strong selection of travel-related movement (cars, boats, planes, horses)",
+      "Good mix of day and night settings to show a full journey"
+    ],
+    "gaps": [
+      "Limited close-up emotional portraits",
+      "Few clips showing quiet, one-on-one dialogue or intimacy"
+    ],
+    "confidence": "High"
+  },
+  "overall_strategy": "Prioritize clips with high physical movement and group interaction to match the 'Dynamic' intent. Use the abundance of car-based celebration for the Peak and the diverse travel modes to drive the Build-up.",
+  "cache_version": "2.0",
+  "cached_at": "2026-01-28T10:57:24.316919"
+}

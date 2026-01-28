@@ -21,185 +21,32 @@ PIPELINE RUN: REF5.MP4
 Session ID: ref5_vibes_test
 Reference: ref5.mp4
 Clips: 55
-Timestamp: 2026-01-28 03:16:59
+Timestamp: 2026-01-28 15:46:31
 
 
 [1/5] Validating inputs...
 
 [2/5] Detecting visual cuts and analyzing reference structure...
-  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.3)...
-  [OK] Detected 20 visual cuts.
+  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.15)...
+  [OK] Detected 25 visual cuts.
   [BEAT] Detecting BPM for ref_analysis_audio.wav...
   [OK] Detected BPM: 129.20
+  [HYBRID] Visual cuts: 25, Beat-enhanced: 29
 
 ============================================================
 [BRAIN] ANALYZING REFERENCE VIDEO: ref5.mp4
-[BRAIN] Using 20 visual scene anchors.
+[BRAIN] Using 29 visual scene anchors.
 ============================================================
 
-[CACHE] Found cached analysis: ref_d04cf94d4d8a_h32e59bfd.json
-[CACHE] Reference version mismatch (6.1 vs 7.0). Re-analyzing...
-[WARN] Cache issue: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\cache\\ref_d04cf94d4d8a_h32e59bfd.json'. Re-analyzing...
 [API KEY MANAGER] Loaded 28 API key(s)
 [API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
 [OK] Using model: gemini-3-flash-preview
 Uploading muted_d04cf94d4d8a.mp4...
 Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/lnwyhqinmdau
-[RETRY DEBUG] Reference analysis attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 24.395941877s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 24
-}
-]
-[QUOTA] Rate limit detected during reference analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during reference analysis)
-[API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-Uploading muted_d04cf94d4d8a.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/a7b86gd401ls
-[RETRY DEBUG] Reference analysis attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 56.162950771s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 56
-}
-]
-[QUOTA] Rate limit detected during reference analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyAjP3...SS5Pk (Rate limit during reference analysis)
-[API KEY MANAGER] Rotated to key 3/28: AIzaSyCyiV...ASpNo
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-Uploading muted_d04cf94d4d8a.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/qvnkt6ojjcu8
-[RETRY DEBUG] Reference analysis attempt 3 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 28.831562907s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 28
-}
-]
-[QUOTA] Rate limit detected during reference analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyCyiV...ASpNo (Rate limit during reference analysis)
-[API KEY MANAGER] Rotated to key 4/28: AIzaSyCuGa...Nb5WU
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-Uploading muted_d04cf94d4d8a.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/blvy6s4vlzr1
-[RETRY DEBUG] Reference analysis attempt 4 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 2.964292631s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 2
-}
-]
-[QUOTA] Rate limit detected during reference analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyCuGa...Nb5WU (Rate limit during reference analysis)
-[API KEY MANAGER] Rotated to key 5/28: AIzaSyAJil...nqKGA
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-Uploading muted_d04cf94d4d8a.mp4...
-Waiting for video processing (state: PROCESSING)...
-Upload complete: https://generativelanguage.googleapis.com/v1beta/files/hbfcpk7rdn2u
-[RETRY DEBUG] Reference analysis attempt 5 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 36.031037647s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 36
-}
-]
-[QUOTA] Rate limit detected during reference analysis
-[API KEY MANAGER] Marking key as exhausted: AIzaSyAJil...nqKGA (Rate limit during reference analysis)
-[API KEY MANAGER] Rotated to key 6/28: AIzaSyAh7d...v9jZA
-[QUOTA] Rotated to new API key, re-initializing genai...
-[ERROR] Gemini reference analysis failed: Failed to analyze reference video after all retries and key rotations.
-    FALLING BACK to linear 2-second segments. Results will be generic.
-[WARN] Using fallback mode: Linear 2-second segments
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/0g4jqn6lr3gi
+[OK] Preserved original cut rhythm: 30 segments (no subdivision)
+[OK] Analysis complete: 30 segments.
+[OK] Gemini successfully analyzed reference: 30 segments found.
 
 [3/5] Analyzing user clips with Gemini AI...
 
@@ -214,330 +61,385 @@ Please retry in 36.031037647s. [links {
   Analyzing comprehensively: clip.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Place-Indoor
+    [CACHE] Derived vibes: Group, Indoor
 
 [2/55] Processing clip1.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip1.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [3/55] Processing clip10.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip10.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [4/55] Processing clip11.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip11.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Solo, Activity-Leisure
+    [CACHE] Derived vibes: Solo, Leisure
 
 [5/55] Processing clip12.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip12.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [6/55] Processing clip13.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip13.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [7/55] Processing clip14.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip14.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [8/55] Processing clip15.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip15.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [9/55] Processing clip16.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip16.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [10/55] Processing clip17.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip17.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [11/55] Processing clip18.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip18.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Object-Vehicle
+    [CACHE] Derived vibes: Group, Vehicle
 
 [12/55] Processing clip19.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip19.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [13/55] Processing clip2.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip2.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [14/55] Processing clip20.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip20.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [15/55] Processing clip21.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip21.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [16/55] Processing clip22.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip22.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [17/55] Processing clip23.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip23.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Place-Indoor
+    [CACHE] Derived vibes: Group, Indoor
 
 [18/55] Processing clip24.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip24.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [19/55] Processing clip25.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip25.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [20/55] Processing clip26.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip26.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [21/55] Processing clip27.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip27.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [22/55] Processing clip28.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip28.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Place-Nature, Activity-Travel
+    [CACHE] Derived vibes: Nature, Travel
 
 [23/55] Processing clip29.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip29.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: Activity-Travel, Object-Vehicle
+    [CACHE] Derived vibes: Travel, Vehicle
 
 [24/55] Processing clip3.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip3.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [25/55] Processing clip30.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip30.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: Place-Nature, Activity-Travel
+    [CACHE] Derived vibes: Nature, Travel
 
 [26/55] Processing clip31.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip31.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Crowd, Place-Nature
+    [CACHE] Derived vibes: Crowd, Nature
 
 [27/55] Processing clip32.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip32.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Place-Nature, Activity-Travel
+    [CACHE] Derived vibes: Nature, Travel
 
 [28/55] Processing clip33.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip33.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Place-Nature, Activity-Travel
+    [CACHE] Derived vibes: Nature, Travel
 
 [29/55] Processing clip34.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip34.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Object-Vehicle, Activity-Travel
+    [CACHE] Derived vibes: Vehicle, Travel
 
 [30/55] Processing clip35.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip35.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: Place-Nature
+    [CACHE] Derived vibes: Nature
 
 [31/55] Processing clip36.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip36.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [32/55] Processing clip37.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip37.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [33/55] Processing clip38.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip38.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Crowd, Activity-Celebration
+    [CACHE] Derived vibes: Crowd, Celebration
 
 [34/55] Processing clip39.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip39.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [35/55] Processing clip40.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip40.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [36/55] Processing clip41.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip41.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Activity-Travel, Object-Vehicle
+    [CACHE] Derived vibes: Travel, Vehicle
 
 [37/55] Processing clip42.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip42.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Activity-Travel, Object-Vehicle
+    [CACHE] Derived vibes: Travel, Vehicle
 
 [38/55] Processing clip43.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip43.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [39/55] Processing clip44.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip44.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [40/55] Processing clip45.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip45.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: Place-Nature
+    [CACHE] Derived vibes: Nature
 
 [41/55] Processing clip47.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip47.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Solo, Activity-Travel
+    [CACHE] Derived vibes: Solo, Travel
 
 [42/55] Processing clip48.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip48.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Solo, Activity-Travel
+    [CACHE] Derived vibes: Solo, Travel
 
 [43/55] Processing clip5.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip5.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [44/55] Processing clip50.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip50.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [45/55] Processing clip51.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip51.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Object-Animal, Place-Nature
+    [CACHE] Derived vibes: Animal, Nature
 
 [46/55] Processing clip52.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip52.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Place-Urban, Activity-Travel
+    [CACHE] Derived vibes: Urban, Travel
 
 [47/55] Processing clip53.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip53.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [48/55] Processing clip54.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip54.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Travel
+    [CACHE] Derived vibes: Group, Travel
 
 [49/55] Processing clip55.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip55.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Place-Nature
+    [CACHE] Derived vibes: Nature
 
 [50/55] Processing clip56.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip56.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Crowd, Object-Animal
+    [CACHE] Derived vibes: Crowd, Animal
 
 [51/55] Processing clip57.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip57.mp4...
     [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
     [CACHE] Subject: Place-Nature, Object-Animal
+    [CACHE] Derived vibes: Nature, Animal
 
 [52/55] Processing clip58.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip58.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: Place-Indoor, Activity-Leisure
+    [CACHE] Derived vibes: Indoor, Leisure
 
 [53/55] Processing clip6.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip6.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
 
 [54/55] Processing clip7.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip7.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Place-Urban
+    [CACHE] Derived vibes: Group, Urban
 
 [55/55] Processing clip9.mp4
 [OK] Using model: gemini-3-flash-preview
   Analyzing comprehensively: clip9.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
 [OK] All 55 clips analyzed
 [OK] Rate limiter status: 0 requests in last minute
@@ -593,10 +495,8 @@ Please retry in 36.031037647s. [links {
   [CACHE] Using standardized clip 48/55: clip54.mp4
   [CACHE] Using standardized clip 49/55: clip55.mp4
   [CACHE] Using standardized clip 50/55: clip56.mp4
-  Standardizing clip 51/55: clip57.mp4...
-  [OK] Standardized: clip_051.mp4
-  Standardizing clip 52/55: clip58.mp4...
-  [OK] Standardized: clip_052.mp4
+  [CACHE] Using standardized clip 51/55: clip57.mp4
+  [CACHE] Using standardized clip 52/55: clip58.mp4
   [CACHE] Using standardized clip 53/55: clip6.mp4
   [CACHE] Using standardized clip 54/55: clip7.mp4
   [CACHE] Using standardized clip 55/55: clip9.mp4
@@ -607,7 +507,7 @@ Please retry in 36.031037647s. [links {
 ============================================================
 [EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)
 ============================================================
-  Segments: 9
+  Segments: 30
   Clips: 55
   Clips with pre-computed best moments: 55/55
 
@@ -616,108 +516,192 @@ Please retry in 36.031037647s. [links {
 ============================================================
   🧠 Calling Gemini for strategic guidance...
 [OK] Using model: gemini-3-flash-preview
-  ⚠️ Advisor attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 24.440128072s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 24
-}
-]
-[QUOTA] Rate limit detected during advisor
-[API KEY MANAGER] Marking key as exhausted: AIzaSyAh7d...v9jZA (Rate limit during advisor)
-[API KEY MANAGER] Rotated to key 7/28: AIzaSyDHpI...3rkwY
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
-  ⚠️ Advisor attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-[QUOTA] Rate limit detected during advisor
-[API KEY MANAGER] Marking key as exhausted: AIzaSyDHpI...3rkwY (Rate limit during advisor)
-[API KEY MANAGER] Rotated to key 8/28: AIzaSyAQju...4ax4w
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using model: gemini-3-flash-preview
   ✅ Advisor hints generated and cached
   📊 Confidence: High
-  💡 Strategy: Drive the narrative using high-intensity group joy and car-ride celebrations as the core energy, bookended by scenic travel establishing shots and beach-themed resolutions.
+  💡 Strategy: Prioritize the infectious energy of the group in the car and celebration scenes for the Peak, while using the diverse travel and nature shots to provide a cinematic framework for the journey.
   ✅ Advisor enabled: Strategic guidance active
   🎵 Beat grid generated: 36 beats at 129.20 BPM
   DEBUG: First 5 beats: [0.0, 0.46511627906976744, 0.9302325581395349, 1.3953488372093024, 1.8604651162790697]
 
 
 📊 CLIP DEMAND ANALYSIS:
-   Reference needs: High=0, Medium=9, Low=0
+   Reference needs: High=15, Medium=10, Low=5
    You have:        High=35, Medium=13, Low=7
    ✅ You have enough clips for a perfect edit!
 
 
-Segment 1: 0.00s-2.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Medium
-  📎 Selected: clip20.mp4 (Score: 75.0)
-    ✂️ Cut 1: clip20.mp4 [0.00s-2.00s] (2.00s) → timeline [0.000000s-2.000000s]
+Segment 1: 0.00s-0.77s (0.77s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | ~Low
+  📎 Selected: clip52.mp4 (Score: 175.0)
+    ✂️ Cut 1: clip52.mp4 [1.00s-1.77s] (0.77s) → timeline [0.000000s-0.770000s]
 
-Segment 2: 2.00s-4.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip47.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip47.mp4 [0.00s-2.00s] (2.00s) → timeline [2.000000s-4.000000s]
+Segment 2: 0.77s-1.73s (0.96s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | Flow | ~Low
+  📎 Selected: clip29.mp4 (Score: 180.0)
+    ✂️ Cut 1: clip29.mp4 [2.50s-3.46s] (0.96s) → timeline [0.770000s-1.730000s]
 
-Segment 3: 4.00s-6.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip58.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip58.mp4 [1.50s-3.00s] (1.50s) → timeline [4.000000s-6.000000s]
+Segment 3: 1.73s-2.90s (1.17s, Low/Static)
+  🧠 AI: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | ~Medium
+  📎 Selected: clip13.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip13.mp4 [6.50s-7.67s] (1.17s) → timeline [1.730000s-2.900000s]
 
-Segment 4: 6.00s-8.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip28.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip28.mp4 [10.00s-12.00s] (2.00s) → timeline [6.000000s-8.000000s]
+Segment 4: 2.90s-3.87s (0.97s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | Medium
+  📎 Selected: clip48.mp4 (Score: 160.0)
+    ✂️ Cut 1: clip48.mp4 [0.00s-0.97s] (0.97s) → timeline [2.900000s-3.870000s]
 
-Segment 5: 8.00s-10.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip13.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip13.mp4 [3.00s-5.00s] (2.00s) → timeline [8.000000s-10.000000s]
+Segment 5: 3.87s-5.07s (1.20s, Low/Static)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
+  📎 Selected: clip54.mp4 (Score: 120.0)
+    ✂️ Cut 1: clip54.mp4 [0.00s-1.20s] (1.20s) → timeline [3.870000s-5.070000s]
 
-Segment 6: 10.00s-12.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip33.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip33.mp4 [3.00s-5.00s] (2.00s) → timeline [10.000000s-12.000000s]
+Segment 6: 5.07s-5.58s (0.51s, Low/Static)
+  🧠 AI: 🌟 ✨ New | 🧠+10 | Vibe:Nature | LightMatch | Flow | Low
+  📎 Selected: clip31.mp4 (Score: 120.0)
+    ✂️ Cut 1: clip31.mp4 [0.00s-0.51s] (0.51s) → timeline [5.070000s-5.580000s]
 
-Segment 7: 12.00s-14.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip56.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip56.mp4 [1.00s-3.00s] (2.00s) → timeline [12.000000s-14.000000s]
+Segment 7: 5.58s-6.05s (0.47s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+80 | Nearby:friends | LightMatch | Flow | ~High
+  📎 Selected: clip27.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip27.mp4 [1.00s-1.47s] (0.47s) → timeline [5.580000s-6.050000s]
 
-Segment 8: 14.00s-16.00s (2.00s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip7.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip7.mp4 [2.00s-4.00s] (2.00s) → timeline [14.000000s-16.000000s]
+Segment 8: 6.05s-6.51s (0.46s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | Medium
+  📎 Selected: clip20.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip20.mp4 [0.00s-0.46s] (0.46s) → timeline [6.050000s-6.510000s]
 
-Segment 9: 16.00s-16.65s (0.65s, Medium/Dynamic)
-  🧠 AI: 🌟 ✨ New | LightMatch | Flow | Medium
-  📎 Selected: clip54.mp4 (Score: 80.0)
-    ✂️ Cut 1: clip54.mp4 [0.00s-0.65s] (0.65s) → timeline [16.000000s-16.645850s]
+Segment 9: 6.51s-6.98s (0.47s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+80 | Nearby:friends | LightMatch | Flow | ~High
+  📎 Selected: clip14.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip14.mp4 [0.50s-0.97s] (0.47s) → timeline [6.510000s-6.980000s]
+
+Segment 10: 6.98s-7.60s (0.62s, Low/Static)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
+  📎 Selected: clip47.mp4 (Score: 120.0)
+    ✂️ Cut 1: clip47.mp4 [4.00s-4.62s] (0.62s) → timeline [6.980000s-7.600000s]
+
+Segment 11: 7.60s-7.97s (0.37s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | LightMatch | Flow | Medium
+  📎 Selected: clip56.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip56.mp4 [1.00s-1.37s] (0.37s) → timeline [7.600000s-7.970000s]
+
+Segment 12: 7.97s-8.30s (0.33s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+65 | Nearby:friends | LightMatch | Flow | ~High
+  📎 Selected: clip26.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip26.mp4 [2.00s-2.33s] (0.33s) → timeline [7.970000s-8.300000s]
+
+Segment 13: 8.30s-8.63s (0.33s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+65 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip22.mp4 (Score: 160.0)
+    ✂️ Cut 1: clip22.mp4 [1.50s-1.83s] (0.33s) → timeline [8.300000s-8.630000s]
+
+Segment 14: 8.63s-9.00s (0.37s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip36.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip36.mp4 [3.00s-3.37s] (0.37s) → timeline [8.630000s-9.000000s]
+
+Segment 15: 9.00s-9.43s (0.43s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip6.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip6.mp4 [0.00s-0.43s] (0.43s) → timeline [9.000000s-9.430000s]
+
+Segment 16: 9.43s-9.73s (0.30s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip25.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip25.mp4 [8.50s-8.80s] (0.30s) → timeline [9.430000s-9.730000s]
+
+Segment 17: 9.73s-10.10s (0.37s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip50.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip50.mp4 [28.50s-28.87s] (0.37s) → timeline [9.730000s-10.100000s]
+
+Segment 18: 10.10s-10.47s (0.37s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip15.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip15.mp4 [12.00s-12.37s] (0.37s) → timeline [10.100000s-10.470000s]
+
+Segment 19: 10.47s-10.80s (0.33s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip44.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip44.mp4 [0.00s-0.33s] (0.33s) → timeline [10.470000s-10.800000s]
+
+Segment 20: 10.80s-11.20s (0.40s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip12.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip12.mp4 [3.50s-3.90s] (0.40s) → timeline [10.800000s-11.200000s]
+
+Segment 21: 11.20s-11.53s (0.33s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip17.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip17.mp4 [3.20s-3.53s] (0.33s) → timeline [11.200000s-11.530000s]
+
+Segment 22: 11.53s-11.90s (0.37s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip37.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip37.mp4 [3.00s-3.37s] (0.37s) → timeline [11.530000s-11.900000s]
+
+Segment 23: 11.90s-12.27s (0.37s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip43.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip43.mp4 [0.00s-0.37s] (0.37s) → timeline [11.900000s-12.270000s]
+
+Segment 24: 12.27s-12.67s (0.40s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | High
+  📎 Selected: clip10.mp4 (Score: 155.0)
+    ✂️ Cut 1: clip10.mp4 [5.00s-5.40s] (0.40s) → timeline [12.270000s-12.670000s]
+
+Segment 25: 12.67s-13.13s (0.46s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+30 | LightMatch | Flow | High
+  📎 Selected: clip38.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip38.mp4 [0.00s-0.46s] (0.46s) → timeline [12.670000s-13.130000s]
+
+Segment 26: 13.13s-13.53s (0.40s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+30 | Flow | High
+  📎 Selected: clip21.mp4 (Score: 100.0)
+    ✂️ Cut 1: clip21.mp4 [39.00s-39.40s] (0.40s) → timeline [13.130000s-13.530000s]
+
+Segment 27: 13.53s-14.20s (0.67s, Medium/Static)
+  🧠 AI: 🌟 ✨ New | 🧠+10 | Nearby:friends | LightMatch | Flow | Medium
+  📎 Selected: clip7.mp4 (Score: 105.0)
+    ✂️ Cut 1: clip7.mp4 [2.00s-2.67s] (0.67s) → timeline [13.530000s-14.200000s]
+
+Segment 28: 14.20s-14.73s (0.53s, High/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+30 | Flow | High
+  📎 Selected: clip16.mp4 (Score: 100.0)
+    ✂️ Cut 1: clip16.mp4 [5.00s-5.53s] (0.53s) → timeline [14.200000s-14.730000s]
+
+Segment 29: 14.73s-15.20s (0.47s, Medium/Dynamic)
+  🧠 AI: 🌟 ✨ New | 🧠+70 | Nearby:friends | LightMatch | Flow | ~High
+  📎 Selected: clip5.mp4 (Score: 145.0)
+    ✂️ Cut 1: clip5.mp4 [4.00s-4.47s] (0.47s) → timeline [14.730000s-15.200000s]
+
+Segment 30: 15.20s-16.65s (1.45s, Low/Dynamic)
+  🧠 AI: 🌟 Used:1x | 🧠+90 | LightMatch | Flow | Low
+  📎 Selected: clip31.mp4 (Score: 100.0)
+    ✂️ Cut 1: clip31.mp4 [0.51s-1.96s] (1.45s) → timeline [15.200000s-16.645850s]
 
 ============================================================
-[OK] Matching complete: 9 edit decisions
+[OK] Matching complete: 30 edit decisions
 [OK] Total timeline duration: 16.65s (target: 16.65s)
 
 📊 DIVERSITY REPORT:
-   Unique clips used: 9/55
-   ⚠️ 46 clips were not used.
+   Unique clips used: 29/55
+   ⚠️ 26 clips were not used.
 
-   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
+   ⚠️ CLIPS REPEATED:
+      clip_026.mp4: 2x
+
+📋 ENERGY COMPROMISES: 9
+   (Used adjacent energy when exact wasn't available)
+      Medium→High: 4 times
+      Low→Medium: 3 times
+      Medium→Low: 2 times
+
+💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
+
+   [Quality Improvements]
+   → 3 segments wanted 'Low' energy but used 'Medium'.
+     Add more 'Nature' or 'Calm' clips to reduce jitter here.
 ============================================================
 
 
@@ -725,34 +709,76 @@ Segment 9: 16.00s-16.65s (0.65s, Medium/Dynamic)
 [EDL] EDIT DECISION LIST SUMMARY
 ============================================================
 
-Total decisions: 9
-Total segments: 9
+Total decisions: 30
+Total segments: 30
 Available clips: 55
 
 Clip usage distribution:
-  clip_014.mp4: 1 times
-  clip_041.mp4: 1 times
-  clip_052.mp4: 1 times
-  clip_022.mp4: 1 times
+  clip_026.mp4: 2 times
+  clip_046.mp4: 1 times
+  clip_023.mp4: 1 times
   clip_006.mp4: 1 times
-  clip_028.mp4: 1 times
-  clip_050.mp4: 1 times
-  clip_054.mp4: 1 times
+  clip_042.mp4: 1 times
   clip_048.mp4: 1 times
+  clip_021.mp4: 1 times
+  clip_014.mp4: 1 times
+  clip_007.mp4: 1 times
+  clip_041.mp4: 1 times
+  clip_050.mp4: 1 times
+  clip_020.mp4: 1 times
+  clip_016.mp4: 1 times
+  clip_031.mp4: 1 times
+  clip_053.mp4: 1 times
+  clip_019.mp4: 1 times
+  clip_044.mp4: 1 times
+  clip_008.mp4: 1 times
+  clip_039.mp4: 1 times
+  clip_005.mp4: 1 times
+  clip_010.mp4: 1 times
+  clip_032.mp4: 1 times
+  clip_038.mp4: 1 times
+  clip_003.mp4: 1 times
+  clip_033.mp4: 1 times
+  clip_015.mp4: 1 times
+  clip_054.mp4: 1 times
+  clip_009.mp4: 1 times
+  clip_043.mp4: 1 times
 
 
 [5/5] Rendering final video...
-    [OK] Segment extracted: 0.00s - 2.00s
-    [OK] Segment extracted: 0.00s - 2.00s
-    [OK] Segment extracted: 1.50s - 3.00s
-    [OK] Segment extracted: 10.00s - 12.00s
-    [OK] Segment extracted: 3.00s - 5.00s
-    [OK] Segment extracted: 3.00s - 5.00s
-    [OK] Segment extracted: 1.00s - 3.00s
-    [OK] Segment extracted: 2.00s - 4.00s
-    [OK] Segment extracted: 0.00s - 0.65s
-  [OK] Concatenated 9 segments (frame-perfect)
+    [OK] Segment extracted: 1.00s - 1.77s
+    [OK] Segment extracted: 2.50s - 3.46s
+    [OK] Segment extracted: 6.50s - 7.67s
+    [OK] Segment extracted: 0.00s - 0.97s
+    [OK] Segment extracted: 0.00s - 1.20s
+    [OK] Segment extracted: 0.00s - 0.51s
+    [OK] Segment extracted: 1.00s - 1.47s
+    [OK] Segment extracted: 0.00s - 0.46s
+    [OK] Segment extracted: 0.50s - 0.97s
+    [OK] Segment extracted: 4.00s - 4.62s
+    [OK] Segment extracted: 1.00s - 1.37s
+    [OK] Segment extracted: 2.00s - 2.33s
+    [OK] Segment extracted: 1.50s - 1.83s
+    [OK] Segment extracted: 3.00s - 3.37s
+    [OK] Segment extracted: 0.00s - 0.43s
+    [OK] Segment extracted: 8.50s - 8.80s
+    [OK] Segment extracted: 28.50s - 28.87s
+    [OK] Segment extracted: 12.00s - 12.37s
+    [OK] Segment extracted: 0.00s - 0.33s
+    [OK] Segment extracted: 3.50s - 3.90s
+    [OK] Segment extracted: 3.20s - 3.53s
+    [OK] Segment extracted: 3.00s - 3.37s
+    [OK] Segment extracted: 0.00s - 0.37s
+    [OK] Segment extracted: 5.00s - 5.40s
+    [OK] Segment extracted: 0.00s - 0.46s
+    [OK] Segment extracted: 39.00s - 39.40s
+    [OK] Segment extracted: 2.00s - 2.67s
+    [OK] Segment extracted: 5.00s - 5.53s
+    [OK] Segment extracted: 4.00s - 4.47s
+    [OK] Segment extracted: 0.51s - 1.96s
+  [OK] Concatenated 30 segments (frame-perfect)
   [OK] Audio extracted: ref_audio.aac
+[WARN] Removing existing output file: data\results\ref5_output_ref5_vib.mp4
   [OK] Audio merged onto video (optimized)
 
 ================================================================================
@@ -761,42 +787,72 @@ Clip usage distribution:
 
 📊 Basic Results:
    Output: ref5_output_ref5_vib.mp4
-   Duration: 16.37s (ref: 16.65s)
-   Difference: 0.28s
-   Processing time: 185.7s
+   Duration: 16.60s (ref: 16.65s)
+   Difference: 0.04s
+   Processing time: 103.7s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
 ================================================================================
 
 📹 Reference Analysis:
-   Editing Style: General
+   Editing Style: Cinematic Montage
    Emotional Intent: Dynamic
-   Arc Description: 
-   Total Segments: 9
+   Arc Description: A travel montage transitioning from scenic nature views to high-energy group activities and ending w...
+   Total Segments: 30
 
 📑 BLUEPRINT FULL SEGMENT LIST:
-   01:  0.00- 2.00s | Medium | Vibe: General    | Main
-   02:  2.00- 4.00s | Medium | Vibe: General    | Main
-   03:  4.00- 6.00s | Medium | Vibe: General    | Main
-   04:  6.00- 8.00s | Medium | Vibe: General    | Main
-   05:  8.00-10.00s | Medium | Vibe: General    | Main
-   06: 10.00-12.00s | Medium | Vibe: General    | Main
-   07: 12.00-14.00s | Medium | Vibe: General    | Main
-   08: 14.00-16.00s | Medium | Vibe: General    | Main
-   09: 16.00-16.65s | Medium | Vibe: General    | Main
+   01:  0.00- 0.77s | Medium | Vibe: Travel     | Intro
+   02:  0.77- 1.73s | Medium | Vibe: Travel     | Intro
+   03:  1.73- 2.90s | Low    | Vibe: Nature     | Build-up
+   04:  2.90- 3.87s | Medium | Vibe: Nature     | Build-up
+   05:  3.87- 5.07s | Low    | Vibe: Nature     | Build-up
+   06:  5.07- 5.58s | Low    | Vibe: Nature     | Build-up
+   07:  5.58- 6.05s | Medium | Vibe: Friends    | Build-up
+   08:  6.05- 6.51s | Medium | Vibe: Friends    | Build-up
+   09:  6.51- 6.98s | Medium | Vibe: Friends    | Build-up
+   10:  6.98- 7.60s | Low    | Vibe: Nature     | Build-up
+   11:  7.60- 7.97s | Medium | Vibe: Nature     | Build-up
+   12:  7.97- 8.30s | Medium | Vibe: Friends    | Build-up
+   13:  8.30- 8.63s | High   | Vibe: Friends    | Build-up
+   14:  8.63- 9.00s | High   | Vibe: Friends    | Build-up
+   15:  9.00- 9.43s | High   | Vibe: Friends    | Build-up
+   16:  9.43- 9.73s | High   | Vibe: Friends    | Build-up
+   17:  9.73-10.10s | High   | Vibe: Friends    | Build-up
+   18: 10.10-10.47s | High   | Vibe: Friends    | Build-up
+   19: 10.47-10.80s | High   | Vibe: Friends    | Build-up
+   20: 10.80-11.20s | High   | Vibe: Friends    | Build-up
+   21: 11.20-11.53s | High   | Vibe: Friends    | Build-up
+   22: 11.53-11.90s | High   | Vibe: Friends    | Build-up
+   23: 11.90-12.27s | High   | Vibe: Friends    | Build-up
+   24: 12.27-12.67s | High   | Vibe: Friends    | Build-up
+   25: 12.67-13.13s | High   | Vibe: Action     | Peak
+   26: 13.13-13.53s | High   | Vibe: Action     | Peak
+   27: 13.53-14.20s | Medium | Vibe: Friends    | Peak
+   28: 14.20-14.73s | High   | Vibe: Action     | Peak
+   29: 14.73-15.20s | Medium | Vibe: Friends    | Outro
+   30: 15.20-16.65s | Low    | Vibe: Friends    | Outro
 
 📈 Arc Stage Distribution:
-   Main: 9 segments (100.0%)
+   Build-up: 22 segments (73.3%)
+   Peak: 4 segments (13.3%)
+   Intro: 2 segments (6.7%)
+   Outro: 2 segments (6.7%)
+
+🎨 Vibe Distribution:
+   Friends: 19 segments (63.3%)
+   Nature: 6 segments (20.0%)
+   Action: 3 segments (10.0%)
+   Travel: 2 segments (6.7%)
 
 📎 Clip Usage Analysis:
-   Unique clips used: 9/55
+   Unique clips used: 29/55
    Most used clips:
-     clip_014.mp4: 1 times (11.1%)
-     clip_041.mp4: 1 times (11.1%)
-     clip_052.mp4: 1 times (11.1%)
-     clip_022.mp4: 1 times (11.1%)
-     clip_006.mp4: 1 times (11.1%)
+     clip_026.mp4: 2 times (6.7%)
+     clip_046.mp4: 1 times (3.3%)
+     clip_023.mp4: 1 times (3.3%)
+     clip_006.mp4: 1 times (3.3%)
+     clip_042.mp4: 1 times (3.3%)
 
 🧠 AI Reasoning Breakdown:
    ✨ Smart Match: 0 (0.0%)
@@ -804,93 +860,96 @@ Clip usage distribution:
    ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 0/9 (0.0%)
+   Matches: 21/30 (70.0%)
 
 📏 Cut Statistics by Arc Stage:
-   Main: 9 cuts, avg 1.85s
+   Intro: 2 cuts, avg 0.86s
+   Build-up: 22 cuts, avg 0.50s
+   Peak: 4 cuts, avg 0.52s
+   Outro: 2 cuts, avg 0.96s
 
 📏 Overall Cut Statistics:
-   Total cuts: 9
-   Average cut: 1.85s
-   Shortest cut: 0.65s
-   Longest cut: 2.00s
+   Total cuts: 30
+   Average cut: 0.55s
+   Shortest cut: 0.30s
+   Longest cut: 1.45s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_014.mp4: 🌟 ✨ New | LightMatch | Medium
-   2. clip_041.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
-   3. clip_052.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
-   4. clip_022.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
-   5. clip_006.mp4: 🌟 ✨ New | LightMatch | Flow | Medium
+   1. clip_046.mp4: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | ~Low
+   2. clip_023.mp4: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | Flow | ~Low
+   3. clip_006.mp4: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | ~Medium
+   4. clip_042.mp4: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | Medium
+   5. clip_048.mp4: 🌟 ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
 
 📦 CLIP REGISTRY (55 total):
-   01: clip.mp4        | High   |   4.8s | Vibes: N/A
-   02: clip1.mp4       | High   |  15.4s | Vibes: N/A
-   03: clip10.mp4      | High   |   7.7s | Vibes: N/A
-   04: clip11.mp4      | High   |  15.4s | Vibes: N/A
-   05: clip12.mp4      | High   |   7.9s | Vibes: N/A
-   06: clip13.mp4      | Medium |   7.9s | Vibes: N/A
-   07: clip14.mp4      | High   |   2.3s | Vibes: N/A
-   08: clip15.mp4      | High   |  27.0s | Vibes: N/A
-   09: clip16.mp4      | High   |  38.3s | Vibes: N/A
-   10: clip17.mp4      | High   |   5.5s | Vibes: N/A
-   11: clip18.mp4      | High   |   8.5s | Vibes: N/A
-   12: clip19.mp4      | High   |  14.8s | Vibes: N/A
-   13: clip2.mp4       | High   |   8.8s | Vibes: N/A
-   14: clip20.mp4      | Medium |   5.6s | Vibes: N/A
-   15: clip21.mp4      | High   |  48.6s | Vibes: N/A
-   16: clip22.mp4      | High   |  27.7s | Vibes: N/A
-   17: clip23.mp4      | High   |  21.4s | Vibes: N/A
-   18: clip24.mp4      | High   |  12.6s | Vibes: N/A
-   19: clip25.mp4      | High   |  28.8s | Vibes: N/A
-   20: clip26.mp4      | High   |   9.9s | Vibes: N/A
-   21: clip27.mp4      | High   |  29.0s | Vibes: N/A
-   22: clip28.mp4      | Medium |  38.9s | Vibes: N/A
-   23: clip29.mp4      | Low    |   6.8s | Vibes: N/A
-   24: clip3.mp4       | High   |  10.4s | Vibes: N/A
-   25: clip30.mp4      | Low    |   4.6s | Vibes: N/A
-   26: clip31.mp4      | Low    |   7.1s | Vibes: N/A
-   27: clip32.mp4      | High   |  11.1s | Vibes: N/A
-   28: clip33.mp4      | Medium |   9.3s | Vibes: N/A
-   29: clip34.mp4      | Medium |   9.2s | Vibes: N/A
-   30: clip35.mp4      | Low    |   6.9s | Vibes: N/A
-   31: clip36.mp4      | High   |  12.9s | Vibes: N/A
-   32: clip37.mp4      | High   |   5.6s | Vibes: N/A
-   33: clip38.mp4      | High   |  18.2s | Vibes: N/A
-   34: clip39.mp4      | High   |   3.6s | Vibes: N/A
-   35: clip40.mp4      | High   |   7.6s | Vibes: N/A
-   36: clip41.mp4      | Medium |  38.2s | Vibes: N/A
-   37: clip42.mp4      | High   |  33.1s | Vibes: N/A
-   38: clip43.mp4      | High   |  10.3s | Vibes: N/A
-   39: clip44.mp4      | High   |   3.0s | Vibes: N/A
-   40: clip45.mp4      | Low    |   4.3s | Vibes: N/A
-   41: clip47.mp4      | Medium |  13.1s | Vibes: N/A
-   42: clip48.mp4      | Medium |  21.5s | Vibes: N/A
-   43: clip5.mp4       | High   |  19.4s | Vibes: N/A
-   44: clip50.mp4      | High   |  33.1s | Vibes: N/A
-   45: clip51.mp4      | Medium |   6.8s | Vibes: N/A
-   46: clip52.mp4      | Low    |   4.2s | Vibes: N/A
-   47: clip53.mp4      | High   |  29.3s | Vibes: N/A
-   48: clip54.mp4      | Medium |   3.4s | Vibes: N/A
-   49: clip55.mp4      | High   |   8.9s | Vibes: N/A
-   50: clip56.mp4      | Medium |   4.3s | Vibes: N/A
-   51: clip57.mp4      | Low    |   7.6s | Vibes: N/A
-   52: clip58.mp4      | Medium |   4.8s | Vibes: N/A
-   53: clip6.mp4       | High   |   6.9s | Vibes: N/A
-   54: clip7.mp4       | Medium |   4.1s | Vibes: N/A
-   55: clip9.mp4       | High   |   7.0s | Vibes: N/A
+   01: clip.mp4        | High   |   4.8s | Vibes: Group, Indoor
+   02: clip1.mp4       | High   |  15.4s | Vibes: Group, Leisure
+   03: clip10.mp4      | High   |   7.7s | Vibes: Group, Leisure
+   04: clip11.mp4      | High   |  15.4s | Vibes: Solo, Leisure
+   05: clip12.mp4      | High   |   7.9s | Vibes: Group, Leisure
+   06: clip13.mp4      | Medium |   7.9s | Vibes: Group, Travel
+   07: clip14.mp4      | High   |   2.3s | Vibes: Group, Travel
+   08: clip15.mp4      | High   |  27.0s | Vibes: Group, Leisure
+   09: clip16.mp4      | High   |  38.3s | Vibes: Group, Celebration
+   10: clip17.mp4      | High   |   5.5s | Vibes: Group, Celebration
+   11: clip18.mp4      | High   |   8.5s | Vibes: Group, Vehicle
+   12: clip19.mp4      | High   |  14.8s | Vibes: Group, Travel
+   13: clip2.mp4       | High   |   8.8s | Vibes: Group, Leisure
+   14: clip20.mp4      | Medium |   5.6s | Vibes: Group, Leisure
+   15: clip21.mp4      | High   |  48.6s | Vibes: Group, Celebration
+   16: clip22.mp4      | High   |  27.7s | Vibes: Group, Celebration
+   17: clip23.mp4      | High   |  21.4s | Vibes: Group, Indoor
+   18: clip24.mp4      | High   |  12.6s | Vibes: Group, Leisure
+   19: clip25.mp4      | High   |  28.8s | Vibes: Group, Leisure
+   20: clip26.mp4      | High   |   9.9s | Vibes: Group, Celebration
+   21: clip27.mp4      | High   |  29.0s | Vibes: Group, Travel
+   22: clip28.mp4      | Medium |  38.9s | Vibes: Nature, Travel
+   23: clip29.mp4      | Low    |   6.8s | Vibes: Travel, Vehicle
+   24: clip3.mp4       | High   |  10.4s | Vibes: Group, Leisure
+   25: clip30.mp4      | Low    |   4.6s | Vibes: Nature, Travel
+   26: clip31.mp4      | Low    |   7.1s | Vibes: Crowd, Nature
+   27: clip32.mp4      | High   |  11.1s | Vibes: Nature, Travel
+   28: clip33.mp4      | Medium |   9.3s | Vibes: Nature, Travel
+   29: clip34.mp4      | Medium |   9.2s | Vibes: Vehicle, Travel
+   30: clip35.mp4      | Low    |   6.9s | Vibes: Nature
+   31: clip36.mp4      | High   |  12.9s | Vibes: Group, Leisure
+   32: clip37.mp4      | High   |   5.6s | Vibes: Group, Celebration
+   33: clip38.mp4      | High   |  18.2s | Vibes: Crowd, Celebration
+   34: clip39.mp4      | High   |   3.6s | Vibes: Group, Leisure
+   35: clip40.mp4      | High   |   7.6s | Vibes: Group, Leisure
+   36: clip41.mp4      | Medium |  38.2s | Vibes: Travel, Vehicle
+   37: clip42.mp4      | High   |  33.1s | Vibes: Travel, Vehicle
+   38: clip43.mp4      | High   |  10.3s | Vibes: Group, Travel
+   39: clip44.mp4      | High   |   3.0s | Vibes: Group, Leisure
+   40: clip45.mp4      | Low    |   4.3s | Vibes: Nature
+   41: clip47.mp4      | Medium |  13.1s | Vibes: Solo, Travel
+   42: clip48.mp4      | Medium |  21.5s | Vibes: Solo, Travel
+   43: clip5.mp4       | High   |  19.4s | Vibes: Group, Travel
+   44: clip50.mp4      | High   |  33.1s | Vibes: Group, Leisure
+   45: clip51.mp4      | Medium |   6.8s | Vibes: Animal, Nature
+   46: clip52.mp4      | Low    |   4.2s | Vibes: Urban, Travel
+   47: clip53.mp4      | High   |  29.3s | Vibes: Group, Leisure
+   48: clip54.mp4      | Medium |   3.4s | Vibes: Group, Travel
+   49: clip55.mp4      | High   |   8.9s | Vibes: Nature
+   50: clip56.mp4      | Medium |   4.3s | Vibes: Crowd, Animal
+   51: clip57.mp4      | Low    |   7.6s | Vibes: Nature, Animal
+   52: clip58.mp4      | Medium |   4.8s | Vibes: Indoor, Leisure
+   53: clip6.mp4       | High   |   6.9s | Vibes: Group, Celebration
+   54: clip7.mp4       | Medium |   4.1s | Vibes: Group, Urban
+   55: clip9.mp4       | High   |   7.0s | Vibes: Group, Leisure
 
 📋 Metadata Coverage:
    Best Moments: 55/55
-   Vibes: 0/55
+   Vibes: 55/55
 
 🔍 Temporal Precision Check:
    ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
 
 📦 Material Efficiency:
    Total source duration available: 763.74s
-   Total duration used in edit: 16.15s
-   Unique clip segments used: 9
-   Utilization Ratio: 2.1%
+   Total duration used in edit: 16.65s
+   Unique clip segments used: 30
+   Utilization Ratio: 2.2%
    💡 Note: Low utilization suggests clips may not match reference vibes well
 
 ================================================================================
@@ -906,40 +965,70 @@ Analysis log saved: data\results\ref5_output_ref5_vib.txt
    Output: mimic_output_ref5_vibes_test.mp4
    Duration: 16.60s (ref: 16.65s)
    Difference: 0.04s
-   Processing time: 185.7s
+   Processing time: 103.7s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
 ================================================================================
 
 📹 Reference Analysis:
-   Editing Style: General
+   Editing Style: Cinematic Montage
    Emotional Intent: Dynamic
-   Arc Description: 
-   Total Segments: 9
+   Arc Description: A travel montage transitioning from scenic nature views to high-energy group activities and ending w...
+   Total Segments: 30
 
 📑 BLUEPRINT FULL SEGMENT LIST:
-   01:  0.00- 2.00s | Medium | Vibe: General    | Main
-   02:  2.00- 4.00s | Medium | Vibe: General    | Main
-   03:  4.00- 6.00s | Medium | Vibe: General    | Main
-   04:  6.00- 8.00s | Medium | Vibe: General    | Main
-   05:  8.00-10.00s | Medium | Vibe: General    | Main
-   06: 10.00-12.00s | Medium | Vibe: General    | Main
-   07: 12.00-14.00s | Medium | Vibe: General    | Main
-   08: 14.00-16.00s | Medium | Vibe: General    | Main
-   09: 16.00-16.65s | Medium | Vibe: General    | Main
+   01:  0.00- 0.77s | Medium | Vibe: Travel     | Intro
+   02:  0.77- 1.73s | Medium | Vibe: Travel     | Intro
+   03:  1.73- 2.90s | Low    | Vibe: Nature     | Build-up
+   04:  2.90- 3.87s | Medium | Vibe: Nature     | Build-up
+   05:  3.87- 5.07s | Low    | Vibe: Nature     | Build-up
+   06:  5.07- 5.58s | Low    | Vibe: Nature     | Build-up
+   07:  5.58- 6.05s | Medium | Vibe: Friends    | Build-up
+   08:  6.05- 6.51s | Medium | Vibe: Friends    | Build-up
+   09:  6.51- 6.98s | Medium | Vibe: Friends    | Build-up
+   10:  6.98- 7.60s | Low    | Vibe: Nature     | Build-up
+   11:  7.60- 7.97s | Medium | Vibe: Nature     | Build-up
+   12:  7.97- 8.30s | Medium | Vibe: Friends    | Build-up
+   13:  8.30- 8.63s | High   | Vibe: Friends    | Build-up
+   14:  8.63- 9.00s | High   | Vibe: Friends    | Build-up
+   15:  9.00- 9.43s | High   | Vibe: Friends    | Build-up
+   16:  9.43- 9.73s | High   | Vibe: Friends    | Build-up
+   17:  9.73-10.10s | High   | Vibe: Friends    | Build-up
+   18: 10.10-10.47s | High   | Vibe: Friends    | Build-up
+   19: 10.47-10.80s | High   | Vibe: Friends    | Build-up
+   20: 10.80-11.20s | High   | Vibe: Friends    | Build-up
+   21: 11.20-11.53s | High   | Vibe: Friends    | Build-up
+   22: 11.53-11.90s | High   | Vibe: Friends    | Build-up
+   23: 11.90-12.27s | High   | Vibe: Friends    | Build-up
+   24: 12.27-12.67s | High   | Vibe: Friends    | Build-up
+   25: 12.67-13.13s | High   | Vibe: Action     | Peak
+   26: 13.13-13.53s | High   | Vibe: Action     | Peak
+   27: 13.53-14.20s | Medium | Vibe: Friends    | Peak
+   28: 14.20-14.73s | High   | Vibe: Action     | Peak
+   29: 14.73-15.20s | Medium | Vibe: Friends    | Outro
+   30: 15.20-16.65s | Low    | Vibe: Friends    | Outro
 
 📈 Arc Stage Distribution:
-   Main: 9 segments (100.0%)
+   Build-up: 22 segments (73.3%)
+   Peak: 4 segments (13.3%)
+   Intro: 2 segments (6.7%)
+   Outro: 2 segments (6.7%)
+
+🎨 Vibe Distribution:
+   Friends: 19 segments (63.3%)
+   Nature: 6 segments (20.0%)
+   Action: 3 segments (10.0%)
+   Travel: 2 segments (6.7%)
 
 📎 Clip Usage Analysis:
-   Unique clips used: 9/55
+   Unique clips used: 29/55
    Most used clips:
-     clip_014.mp4: 1 times (11.1%)
-     clip_041.mp4: 1 times (11.1%)
-     clip_052.mp4: 1 times (11.1%)
-     clip_022.mp4: 1 times (11.1%)
-     clip_006.mp4: 1 times (11.1%)
+     clip_026.mp4: 2 times (6.7%)
+     clip_046.mp4: 1 times (3.3%)
+     clip_023.mp4: 1 times (3.3%)
+     clip_006.mp4: 1 times (3.3%)
+     clip_042.mp4: 1 times (3.3%)
 
 🧠 AI Reasoning Breakdown:
    ✨ Smart Match: 0 (0.0%)
@@ -947,84 +1036,87 @@ Analysis log saved: data\results\ref5_output_ref5_vib.txt
    ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 0/9 (0.0%)
+   Matches: 21/30 (70.0%)
 
 📏 Cut Statistics by Arc Stage:
-   Main: 9 cuts, avg 1.85s
+   Intro: 2 cuts, avg 0.86s
+   Build-up: 22 cuts, avg 0.50s
+   Peak: 4 cuts, avg 0.52s
+   Outro: 2 cuts, avg 0.96s
 
 📏 Overall Cut Statistics:
-   Total cuts: 9
-   Average cut: 1.85s
-   Shortest cut: 0.65s
-   Longest cut: 2.00s
+   Total cuts: 30
+   Average cut: 0.55s
+   Shortest cut: 0.30s
+   Longest cut: 1.45s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_014.mp4: 🌟 ✨ New | LightMatch | Medium...
-   2. clip_041.mp4: 🌟 ✨ New | LightMatch | Flow | Medium...
-   3. clip_052.mp4: 🌟 ✨ New | LightMatch | Flow | Medium...
-   4. clip_022.mp4: 🌟 ✨ New | LightMatch | Flow | Medium...
-   5. clip_006.mp4: 🌟 ✨ New | LightMatch | Flow | Medium...
+   1. clip_046.mp4: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | ~Low...
+   2. clip_023.mp4: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | Flow | ~Low...
+   3. clip_006.mp4: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | ~Medium...
+   4. clip_042.mp4: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | Medium...
+   5. clip_048.mp4: 🌟 ✨ New | 🧠+60 | LightMatch | Flow | ~Medium...
 
 📦 CLIP REGISTRY (55 total):
-   01: clip.mp4        | High   |   4.8s | Vibes: 
-   02: clip1.mp4       | High   |  15.4s | Vibes: 
-   03: clip10.mp4      | High   |   7.7s | Vibes: 
-   04: clip11.mp4      | High   |  15.4s | Vibes: 
-   05: clip12.mp4      | High   |   7.9s | Vibes: 
-   06: clip13.mp4      | Medium |   7.9s | Vibes: 
-   07: clip14.mp4      | High   |   2.3s | Vibes: 
-   08: clip15.mp4      | High   |  27.0s | Vibes: 
-   09: clip16.mp4      | High   |  38.3s | Vibes: 
-   10: clip17.mp4      | High   |   5.5s | Vibes: 
-   11: clip18.mp4      | High   |   8.5s | Vibes: 
-   12: clip19.mp4      | High   |  14.8s | Vibes: 
-   13: clip2.mp4       | High   |   8.8s | Vibes: 
-   14: clip20.mp4      | Medium |   5.6s | Vibes: 
-   15: clip21.mp4      | High   |  48.6s | Vibes: 
-   16: clip22.mp4      | High   |  27.7s | Vibes: 
-   17: clip23.mp4      | High   |  21.4s | Vibes: 
-   18: clip24.mp4      | High   |  12.6s | Vibes: 
-   19: clip25.mp4      | High   |  28.8s | Vibes: 
-   20: clip26.mp4      | High   |   9.9s | Vibes: 
-   21: clip27.mp4      | High   |  29.0s | Vibes: 
-   22: clip28.mp4      | Medium |  38.9s | Vibes: 
-   23: clip29.mp4      | Low    |   6.8s | Vibes: 
-   24: clip3.mp4       | High   |  10.4s | Vibes: 
-   25: clip30.mp4      | Low    |   4.6s | Vibes: 
-   26: clip31.mp4      | Low    |   7.1s | Vibes: 
-   27: clip32.mp4      | High   |  11.1s | Vibes: 
-   28: clip33.mp4      | Medium |   9.3s | Vibes: 
-   29: clip34.mp4      | Medium |   9.2s | Vibes: 
-   30: clip35.mp4      | Low    |   6.9s | Vibes: 
-   31: clip36.mp4      | High   |  12.9s | Vibes: 
-   32: clip37.mp4      | High   |   5.6s | Vibes: 
-   33: clip38.mp4      | High   |  18.2s | Vibes: 
-   34: clip39.mp4      | High   |   3.6s | Vibes: 
-   35: clip40.mp4      | High   |   7.6s | Vibes: 
-   36: clip41.mp4      | Medium |  38.2s | Vibes: 
-   37: clip42.mp4      | High   |  33.1s | Vibes: 
-   38: clip43.mp4      | High   |  10.3s | Vibes: 
-   39: clip44.mp4      | High   |   3.0s | Vibes: 
-   40: clip45.mp4      | Low    |   4.3s | Vibes: 
-   41: clip47.mp4      | Medium |  13.1s | Vibes: 
-   42: clip48.mp4      | Medium |  21.5s | Vibes: 
-   43: clip5.mp4       | High   |  19.4s | Vibes: 
-   44: clip50.mp4      | High   |  33.1s | Vibes: 
-   45: clip51.mp4      | Medium |   6.8s | Vibes: 
-   46: clip52.mp4      | Low    |   4.2s | Vibes: 
-   47: clip53.mp4      | High   |  29.3s | Vibes: 
-   48: clip54.mp4      | Medium |   3.4s | Vibes: 
-   49: clip55.mp4      | High   |   8.9s | Vibes: 
-   50: clip56.mp4      | Medium |   4.3s | Vibes: 
-   51: clip57.mp4      | Low    |   7.6s | Vibes: 
-   52: clip58.mp4      | Medium |   4.8s | Vibes: 
-   53: clip6.mp4       | High   |   6.9s | Vibes: 
-   54: clip7.mp4       | Medium |   4.1s | Vibes: 
-   55: clip9.mp4       | High   |   7.0s | Vibes: 
+   01: clip.mp4        | High   |   4.8s | Vibes: Group, Indoor
+   02: clip1.mp4       | High   |  15.4s | Vibes: Group, Leisure
+   03: clip10.mp4      | High   |   7.7s | Vibes: Group, Leisure
+   04: clip11.mp4      | High   |  15.4s | Vibes: Solo, Leisure
+   05: clip12.mp4      | High   |   7.9s | Vibes: Group, Leisure
+   06: clip13.mp4      | Medium |   7.9s | Vibes: Group, Travel
+   07: clip14.mp4      | High   |   2.3s | Vibes: Group, Travel
+   08: clip15.mp4      | High   |  27.0s | Vibes: Group, Leisure
+   09: clip16.mp4      | High   |  38.3s | Vibes: Group, Celebration
+   10: clip17.mp4      | High   |   5.5s | Vibes: Group, Celebration
+   11: clip18.mp4      | High   |   8.5s | Vibes: Group, Vehicle
+   12: clip19.mp4      | High   |  14.8s | Vibes: Group, Travel
+   13: clip2.mp4       | High   |   8.8s | Vibes: Group, Leisure
+   14: clip20.mp4      | Medium |   5.6s | Vibes: Group, Leisure
+   15: clip21.mp4      | High   |  48.6s | Vibes: Group, Celebration
+   16: clip22.mp4      | High   |  27.7s | Vibes: Group, Celebration
+   17: clip23.mp4      | High   |  21.4s | Vibes: Group, Indoor
+   18: clip24.mp4      | High   |  12.6s | Vibes: Group, Leisure
+   19: clip25.mp4      | High   |  28.8s | Vibes: Group, Leisure
+   20: clip26.mp4      | High   |   9.9s | Vibes: Group, Celebration
+   21: clip27.mp4      | High   |  29.0s | Vibes: Group, Travel
+   22: clip28.mp4      | Medium |  38.9s | Vibes: Nature, Travel
+   23: clip29.mp4      | Low    |   6.8s | Vibes: Travel, Vehicle
+   24: clip3.mp4       | High   |  10.4s | Vibes: Group, Leisure
+   25: clip30.mp4      | Low    |   4.6s | Vibes: Nature, Travel
+   26: clip31.mp4      | Low    |   7.1s | Vibes: Crowd, Nature
+   27: clip32.mp4      | High   |  11.1s | Vibes: Nature, Travel
+   28: clip33.mp4      | Medium |   9.3s | Vibes: Nature, Travel
+   29: clip34.mp4      | Medium |   9.2s | Vibes: Vehicle, Travel
+   30: clip35.mp4      | Low    |   6.9s | Vibes: Nature
+   31: clip36.mp4      | High   |  12.9s | Vibes: Group, Leisure
+   32: clip37.mp4      | High   |   5.6s | Vibes: Group, Celebration
+   33: clip38.mp4      | High   |  18.2s | Vibes: Crowd, Celebration
+   34: clip39.mp4      | High   |   3.6s | Vibes: Group, Leisure
+   35: clip40.mp4      | High   |   7.6s | Vibes: Group, Leisure
+   36: clip41.mp4      | Medium |  38.2s | Vibes: Travel, Vehicle
+   37: clip42.mp4      | High   |  33.1s | Vibes: Travel, Vehicle
+   38: clip43.mp4      | High   |  10.3s | Vibes: Group, Travel
+   39: clip44.mp4      | High   |   3.0s | Vibes: Group, Leisure
+   40: clip45.mp4      | Low    |   4.3s | Vibes: Nature
+   41: clip47.mp4      | Medium |  13.1s | Vibes: Solo, Travel
+   42: clip48.mp4      | Medium |  21.5s | Vibes: Solo, Travel
+   43: clip5.mp4       | High   |  19.4s | Vibes: Group, Travel
+   44: clip50.mp4      | High   |  33.1s | Vibes: Group, Leisure
+   45: clip51.mp4      | Medium |   6.8s | Vibes: Animal, Nature
+   46: clip52.mp4      | Low    |   4.2s | Vibes: Urban, Travel
+   47: clip53.mp4      | High   |  29.3s | Vibes: Group, Leisure
+   48: clip54.mp4      | Medium |   3.4s | Vibes: Group, Travel
+   49: clip55.mp4      | High   |   8.9s | Vibes: Nature
+   50: clip56.mp4      | Medium |   4.3s | Vibes: Crowd, Animal
+   51: clip57.mp4      | Low    |   7.6s | Vibes: Nature, Animal
+   52: clip58.mp4      | Medium |   4.8s | Vibes: Indoor, Leisure
+   53: clip6.mp4       | High   |   6.9s | Vibes: Group, Celebration
+   54: clip7.mp4       | Medium |   4.1s | Vibes: Group, Urban
+   55: clip9.mp4       | High   |   7.0s | Vibes: Group, Leisure
 
 📋 Metadata Coverage:
    Best Moments: 55/55
-   Vibes: 0/55
+   Vibes: 55/55
 
 ================================================================================
 🔍 ENHANCED LOGGING DATA
@@ -1033,67 +1125,74 @@ Analysis log saved: data\results\ref5_output_ref5_vib.txt
 A. PER-SEGMENT CANDIDATE RANKINGS (Top 3):
 
    Segment 1:
-     Rank 1: clip13.mp4 | Score: 75.0 | ✨ New | LightMatch | Medium ✅ WINNER
-     Rank 2: clip20.mp4 | Score: 75.0 | ✨ New | LightMatch | Medium
-       Why lost: Score 75.0 vs winner 75.0 (diff: 0.0)
-     Rank 3: clip28.mp4 | Score: 75.0 | ✨ New | LightMatch | Medium
-       Why lost: Score 75.0 vs winner 75.0 (diff: 0.0)
+     Rank 1: clip28.mp4 | Score: 175.0 | ✨ New | 🧠+70 | Vibe:Travel | LightMatch | Medium ✅ WINNER
+     Rank 2: clip29.mp4 | Score: 175.0 | ✨ New | 🧠+90 | Vibe:Travel | LightMatch | ~Low
+       Why lost: Score 175.0 vs winner 175.0 (diff: 0.0)
+     Rank 3: clip30.mp4 | Score: 175.0 | ✨ New | 🧠+90 | Vibe:Travel | LightMatch | ~Low
+       Why lost: Score 175.0 vs winner 175.0 (diff: 0.0)
 
    Segment 2:
-     Rank 1: clip13.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip28.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip33.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip28.mp4 | Score: 180.0 | ✨ New | 🧠+70 | Vibe:Travel | LightMatch | Flow | Medium ✅ WINNER
+     Rank 2: clip29.mp4 | Score: 180.0 | ✨ New | 🧠+90 | Vibe:Travel | LightMatch | Flow | ~Low
+       Why lost: Score 180.0 vs winner 180.0 (diff: 0.0)
+     Rank 3: clip30.mp4 | Score: 180.0 | ✨ New | 🧠+90 | Vibe:Travel | LightMatch | Flow | ~Low
+       Why lost: Score 180.0 vs winner 180.0 (diff: 0.0)
 
    Segment 3:
-     Rank 1: clip13.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip28.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip33.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip13.mp4 | Score: 140.0 | ✨ New | 🧠+80 | LightMatch | Flow | ~Medium ✅ WINNER
+     Rank 2: clip48.mp4 | Score: 140.0 | ✨ New | 🧠+80 | LightMatch | Flow | ~Medium
+       Why lost: Score 140.0 vs winner 140.0 (diff: 0.0)
+     Rank 3: clip20.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
+       Why lost: Score 120.0 vs winner 140.0 (diff: 20.0)
 
    Segment 4:
-     Rank 1: clip13.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip28.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip33.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip48.mp4 | Score: 160.0 | ✨ New | 🧠+80 | LightMatch | Flow | Medium ✅ WINNER
+     Rank 2: clip14.mp4 | Score: 140.0 | ✨ New | 🧠+80 | LightMatch | Flow | ~High
+       Why lost: Score 140.0 vs winner 160.0 (diff: 20.0)
+     Rank 3: clip20.mp4 | Score: 140.0 | ✨ New | 🧠+60 | LightMatch | Flow | Medium
+       Why lost: Score 140.0 vs winner 160.0 (diff: 20.0)
 
    Segment 5:
-     Rank 1: clip13.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip33.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip34.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip20.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium ✅ WINNER
+     Rank 2: clip31.mp4 | Score: 120.0 | ✨ New | 🧠+10 | Vibe:Nature | LightMatch | Flow | Low
+       Why lost: Score 120.0 vs winner 120.0 (diff: 0.0)
+     Rank 3: clip47.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
+       Why lost: Score 120.0 vs winner 120.0 (diff: 0.0)
 
    Segment 6:
-     Rank 1: clip33.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip34.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip48.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip20.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium ✅ WINNER
+     Rank 2: clip31.mp4 | Score: 120.0 | ✨ New | 🧠+10 | Vibe:Nature | LightMatch | Flow | Low
+       Why lost: Score 120.0 vs winner 120.0 (diff: 0.0)
+     Rank 3: clip47.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
+       Why lost: Score 120.0 vs winner 120.0 (diff: 0.0)
 
    Segment 7:
-     Rank 1: clip34.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip48.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip51.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip14.mp4 | Score: 155.0 | ✨ New | 🧠+80 | Nearby:friends | LightMatch | Flow | ~High ✅ WINNER
+     Rank 2: clip20.mp4 | Score: 155.0 | ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | Medium
+       Why lost: Score 155.0 vs winner 155.0 (diff: 0.0)
+     Rank 3: clip27.mp4 | Score: 155.0 | ✨ New | 🧠+80 | Nearby:friends | LightMatch | Flow | ~High
+       Why lost: Score 155.0 vs winner 155.0 (diff: 0.0)
 
    Segment 8:
-     Rank 1: clip34.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip48.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip51.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip14.mp4 | Score: 155.0 | ✨ New | 🧠+80 | Nearby:friends | LightMatch | Flow | ~High ✅ WINNER
+     Rank 2: clip20.mp4 | Score: 155.0 | ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | Medium
+       Why lost: Score 155.0 vs winner 155.0 (diff: 0.0)
+     Rank 3: clip22.mp4 | Score: 140.0 | ✨ New | 🧠+65 | Nearby:friends | LightMatch | Flow | ~High
+       Why lost: Score 140.0 vs winner 155.0 (diff: 15.0)
 
    Segment 9:
-     Rank 1: clip34.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium ✅ WINNER
-     Rank 2: clip48.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
-     Rank 3: clip51.mp4 | Score: 80.0 | ✨ New | LightMatch | Flow | Medium
-       Why lost: Score 80.0 vs winner 80.0 (diff: 0.0)
+     Rank 1: clip14.mp4 | Score: 155.0 | ✨ New | 🧠+80 | Nearby:friends | LightMatch | Flow | ~High ✅ WINNER
+     Rank 2: clip22.mp4 | Score: 140.0 | ✨ New | 🧠+65 | Nearby:friends | LightMatch | Flow | ~High
+       Why lost: Score 140.0 vs winner 155.0 (diff: 15.0)
+     Rank 3: clip26.mp4 | Score: 140.0 | ✨ New | 🧠+65 | Nearby:friends | LightMatch | Flow | ~High
+       Why lost: Score 140.0 vs winner 155.0 (diff: 15.0)
+
+   Segment 10:
+     Rank 1: clip47.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium ✅ WINNER
+     Rank 2: clip56.mp4 | Score: 120.0 | ✨ New | 🧠+60 | LightMatch | Flow | ~Medium
+       Why lost: Score 120.0 vs winner 120.0 (diff: 0.0)
+     Rank 3: clip7.mp4 | Score: 70.0 | ✨ New | 🧠+10 | LightMatch | Flow | ~Medium
+       Why lost: Score 70.0 vs winner 120.0 (diff: 50.0)
 
 B. ELIGIBILITY BREAKDOWNS (Sample segments):
    Segment 1 (Medium energy):
@@ -1102,15 +1201,15 @@ B. ELIGIBILITY BREAKDOWNS (Sample segments):
    Segment 2 (Medium energy):
      Eligible: 55/55
      Filtered out: 0 clips (energy mismatch)
-   Segment 3 (Medium energy):
-     Eligible: 55/55
-     Filtered out: 0 clips (energy mismatch)
+   Segment 3 (Low energy):
+     Eligible: 20/55
+     Filtered out: 35 clips (energy mismatch)
    Segment 4 (Medium energy):
      Eligible: 55/55
      Filtered out: 0 clips (energy mismatch)
-   Segment 5 (Medium energy):
-     Eligible: 55/55
-     Filtered out: 0 clips (energy mismatch)
+   Segment 5 (Low energy):
+     Eligible: 20/55
+     Filtered out: 35 clips (energy mismatch)
 
 C. SEMANTIC NEIGHBOR EVENTS:
    Total: 0 segments used semantic neighbors
@@ -1118,7 +1217,7 @@ C. SEMANTIC NEIGHBOR EVENTS:
 D. UNUSED CLIPS:
    Never eligible: 0 clips
    Eligible but never selected: 55 clips
-     clip31.mp4, clip21.mp4, clip40.mp4, clip43.mp4, clip10.mp4, clip35.mp4, clip33.mp4, clip16.mp4, clip11.mp4, clip25.mp4
+     clip15.mp4, clip23.mp4, clip22.mp4, clip21.mp4, clip6.mp4, clip41.mp4, clip43.mp4, clip45.mp4, clip19.mp4, clip54.mp4
 
    [OK] Full enhanced logging saved to: data\results\ref5_enhanced_logging.json
 
@@ -1127,42 +1226,42 @@ D. UNUSED CLIPS:
 
 📦 Material Efficiency:
    Total source duration available: 763.74s
-   Total duration used in edit: 16.15s
-   Unique clip segments used: 9
-   Utilization Ratio: 2.1%
+   Total duration used in edit: 16.65s
+   Unique clip segments used: 30
+   Utilization Ratio: 2.2%
    💡 Note: Low utilization suggests clips may not match reference vibes well
 
 📊 Selection Reasoning Breakdown:
    Arc Stage Relevance: 0 decisions (0.0%)
-   Vibe Matching: 0 decisions (0.0%)
+   Vibe Matching: 3 decisions (10.0%)
    Visual Cooldown Warnings: 0 decisions (0.0%)
    Smooth Transitions: 0 decisions (0.0%)
-   Usage Penalties Applied: 0 decisions (0.0%)
+   Usage Penalties Applied: 1 decisions (3.3%)
 
 💭 Detailed Reasoning Examples (first 3 decisions):
 
    Decision 1:
-     Timeline: 0.000s - 2.000s (2.000s)
-     Clip: clip_014.mp4
-     Source: 0.00s - 2.00s
-     Segment: Main | Medium/Dynamic | Vibe: General
-     Reasoning: 🌟 ✨ New | LightMatch | Medium
-     Vibe Match: ❌
+     Timeline: 0.000s - 0.770s (0.770s)
+     Clip: clip_046.mp4
+     Source: 1.00s - 1.77s
+     Segment: Intro | Medium/Dynamic | Vibe: Travel
+     Reasoning: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | ~Low
+     Vibe Match: ✅
 
    Decision 2:
-     Timeline: 2.000s - 4.000s (2.000s)
-     Clip: clip_041.mp4
-     Source: 0.00s - 2.00s
-     Segment: Main | Medium/Dynamic | Vibe: General
-     Reasoning: 🌟 ✨ New | LightMatch | Flow | Medium
-     Vibe Match: ❌
+     Timeline: 0.770s - 1.730s (0.960s)
+     Clip: clip_023.mp4
+     Source: 2.50s - 3.46s
+     Segment: Intro | Medium/Dynamic | Vibe: Travel
+     Reasoning: 🌟 ✨ New | 🧠+90 | Vibe:Travel | LightMatch | Flow | ~Low
+     Vibe Match: ✅
 
    Decision 3:
-     Timeline: 4.000s - 6.000s (2.000s)
-     Clip: clip_052.mp4
-     Source: 1.50s - 3.00s
-     Segment: Main | Medium/Dynamic | Vibe: General
-     Reasoning: 🌟 ✨ New | LightMatch | Flow | Medium
+     Timeline: 1.730s - 2.900s (1.170s)
+     Clip: clip_006.mp4
+     Source: 6.50s - 7.67s
+     Segment: Build-up | Low/Static | Vibe: Nature
+     Reasoning: 🌟 ✨ New | 🧠+80 | LightMatch | Flow | ~Medium
      Vibe Match: ❌
 
 ================================================================================

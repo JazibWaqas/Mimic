@@ -1,0 +1,67 @@
+{
+  "dominant_narrative": "A high-energy, fast-paced journey of friendship and shared adventure.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Dynamic establishing shots that signal the start of a trip or a change in environment.",
+      "supporting_material": "Quick glimpses of the group or travel icons like planes and moving vehicles.",
+      "intent_diluting_material": "Static, slow-moving nature shots without a sense of 'arrival' or 'departure'.",
+      "reasoning": "The reference intro is high-energy; we need to grab attention immediately with movement and the promise of an adventure.",
+      "recommended_clips": [
+        "clip29.mp4",
+        "clip14.mp4",
+        "clip32.mp4"
+      ]
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Movement-based clips showing the group in transit or exploring new terrains.",
+      "supporting_material": "Environmental details that show the changing locations and the scale of the journey.",
+      "intent_diluting_material": "Stationary shots or clips where people are just sitting still without interaction.",
+      "reasoning": "To build narrative momentum, the visuals must literally move through space, creating anticipation for the destination.",
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip27.mp4",
+        "clip42.mp4",
+        "clip48.mp4"
+      ]
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Peak social energy—unfiltered joy, laughter, and synchronized group activities.",
+      "supporting_material": "Fast-paced action shots like jet skiing or amusement park rides to maintain the 'dynamic' feel.",
+      "intent_diluting_material": "Scenic shots without people; these would drop the emotional stakes during the climax.",
+      "reasoning": "The peak is the emotional payoff; it requires the highest density of human connection and shared laughter to land effectively.",
+      "recommended_clips": [
+        "clip16.mp4",
+        "clip21.mp4",
+        "clip22.mp4",
+        "clip26.mp4",
+        "clip38.mp4"
+      ]
+    },
+    "Outro": {
+      "primary_emotional_carrier": "A final high-energy signature moment or a visually striking group action that leaves a lasting impression.",
+      "supporting_material": "Punchy, high-motion transitions like a wave crashing or a quick camera move.",
+      "intent_diluting_material": "Slow fades to black or quiet, contemplative nature shots that don't match the high-energy requirement.",
+      "reasoning": "The reference calls for a high-energy finish; the edit should end on a 'bang' rather than a slow fade.",
+      "recommended_clips": [
+        "clip55.mp4",
+        "clip17.mp4",
+        "clip53.mp4"
+      ]
+    }
+  },
+  "library_assessment": {
+    "strengths": [
+      "Excellent car-based social clips (singing/dancing)",
+      "Strong celebration and high-energy group footage",
+      "Diverse travel modes (boat, plane, horse, car) for build-up"
+    ],
+    "gaps": [
+      "Limited high-quality (4/5+) footage",
+      "Few clips that bridge the gap between high-energy celebration and quiet reflection"
+    ],
+    "confidence": "High"
+  },
+  "overall_strategy": "Prioritize clips with high physical motion and visible group laughter. Use the travel-based clips to bridge the gap between the intro and the high-intensity celebration peaks.",
+  "cache_version": "2.0",
+  "cached_at": "2026-01-28T11:01:58.769236"
+}
