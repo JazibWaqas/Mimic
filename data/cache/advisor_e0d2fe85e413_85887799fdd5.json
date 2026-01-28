@@ -1,36 +1,36 @@
 {
-  "dominant_narrative": "A high-energy shared adventure defined by movement and group celebration",
+  "dominant_narrative": "A high-energy, cinematic journey of friendship and shared celebration.",
   "arc_stage_guidance": {
     "Intro": {
-      "primary_emotional_carrier": "Establishing travel and location shots that set a sense of departure or arrival",
-      "supporting_material": "Brief glimpses of the group or individuals preparing for the journey",
-      "intent_diluting_material": "High-intensity celebration or chaotic action that bypasses the setup",
-      "reasoning": "The intro needs to ground the viewer in the 'where' and 'how' before the social energy ramps up.",
+      "primary_emotional_carrier": "Establishing shots that signal the start of a journey or a change in location.",
+      "supporting_material": "Atmospheric nature shots or travel-related objects like planes or roads.",
+      "intent_diluting_material": "High-intensity celebration or chaotic movement that skips the 'arrival' feeling.",
+      "reasoning": "The intro needs to ground the viewer in a sense of place and anticipation before the energy ramps up.",
       "recommended_clips": [
         "clip29.mp4",
-        "clip30.mp4",
+        "clip34.mp4",
         "clip45.mp4",
         "clip52.mp4"
       ]
     },
     "Build-up": {
-      "primary_emotional_carrier": "Active travel and progression shots showing the group in motion (driving, walking, riding)",
-      "supporting_material": "Dynamic scenic transitions that maintain a sense of forward momentum",
-      "intent_diluting_material": "Static landscapes or stationary group shots that stall the narrative pace",
-      "reasoning": "With 10 segments in the build-up, we need to show the journey's progression to justify the eventual emotional peak.",
+      "primary_emotional_carrier": "Active movement and progression, showing the group in transit or exploring.",
+      "supporting_material": "POV shots and rhythmic travel sequences that create a sense of forward momentum.",
+      "intent_diluting_material": "Static landscapes without human presence or peak-level emotional payoffs like intense dancing.",
+      "reasoning": "This stage is about the 'climb'—it should feel like the story is moving toward something bigger through shared activity.",
       "recommended_clips": [
         "clip13.mp4",
-        "clip14.mp4",
         "clip27.mp4",
         "clip42.mp4",
-        "clip48.mp4"
+        "clip48.mp4",
+        "clip7.mp4"
       ]
     },
     "Peak": {
-      "primary_emotional_carrier": "High-intensity social connection, laughter, and collective celebration",
-      "supporting_material": "Fast-paced action shots or POV excitement that mirrors the group's energy",
-      "intent_diluting_material": "Scenic-only shots without human presence or low-energy reflective moments",
-      "reasoning": "The peak is the emotional payoff; it requires visible human joy and high-intensity interaction to match the 'High' energy segments.",
+      "primary_emotional_carrier": "Unfiltered joy, group synchronization, and high-intensity social interaction.",
+      "supporting_material": "Fast-paced action shots or dynamic physical activities that mirror the emotional high.",
+      "intent_diluting_material": "Quiet, reflective moments or wide establishing shots that lack human energy.",
+      "reasoning": "The peak is the emotional core; it requires the highest energy and most visible human connection to satisfy the build-up.",
       "recommended_clips": [
         "clip16.mp4",
         "clip21.mp4",
@@ -40,31 +40,31 @@
       ]
     },
     "Outro": {
-      "primary_emotional_carrier": "Moments of shared reflection or the group moving away from the camera",
-      "supporting_material": "Atmospheric sunset or 'end of day' visuals that provide a sense of completion",
-      "intent_diluting_material": "Aggressive action or high-volume celebration that prevents the energy from settling",
-      "reasoning": "The outro should provide a 'breath' after the peak, offering a sense of nostalgic closure to the adventure.",
+      "primary_emotional_carrier": "Moments of departure, reflection, or a gentle wind-down of the day's energy.",
+      "supporting_material": "Soft lighting, sunsets, or shots of people moving away from the camera.",
+      "intent_diluting_material": "Aggressive movement or loud, celebratory group shots.",
+      "reasoning": "The outro provides the 'breath' after the peak, offering a sense of completion and nostalgia.",
       "recommended_clips": [
+        "clip54.mp4",
         "clip20.mp4",
         "clip31.mp4",
-        "clip54.mp4",
         "clip57.mp4"
       ]
     }
   },
   "library_assessment": {
     "strengths": [
-      "Exceptional variety of high-energy group interactions (car singing, dancing, water fights)",
-      "Strong selection of travel-based movement clips (driving, boating, riding)",
-      "Good mix of day and night settings to create a full 'trip' feel"
+      "Excellent variety of high-energy car and celebration clips",
+      "Strong selection of travel-related movement (planes, horses, driving)",
+      "Good mix of medium-energy transitions"
     ],
     "gaps": [
-      "Limited number of medium-energy 'quiet' social moments for a nuanced outro",
-      "Few close-up individual portraits to break up the group shots"
+      "Fewer intimate, quiet group moments for a more nuanced outro",
+      "Limited solo character focus if a specific protagonist was needed"
     ],
     "confidence": "High"
   },
-  "overall_strategy": "Prioritize clips featuring group movement and vocal interaction (singing/laughing) to drive the dynamic montage style, using scenic travel shots as the connective tissue that builds toward the high-energy celebration peaks.",
+  "overall_strategy": "Prioritize high-motion group clips for the build and peak to match the dynamic intent, using scenic travel shots to bridge the narrative gaps and establish the 'cinematic' feel.",
   "cache_version": "2.0",
-  "cached_at": "2026-01-28T10:55:38.093643"
+  "cached_at": "2026-01-28T11:18:15.354669"
 }

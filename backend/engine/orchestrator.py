@@ -127,9 +127,15 @@ def run_mimic_pipeline(
     """
     start_time = time.time()
     
-    # Setup file logging (like test_ref.py)
+    # Setup file logging and results naming
     ref_name = Path(reference_path).stem
-    log_path = Path(output_dir) / f"{ref_name}_output_{session_id[:8]}.txt"
+    # Use 'master' if no session_id is provided, otherwise first 12 chars
+    tag = session_id if len(session_id) < 12 else session_id[:12]
+    base_output_name = f"{ref_name}_{tag}"
+    
+    log_path = Path(output_dir) / f"{base_output_name}.log"
+    json_report_path = Path(output_dir) / f"{base_output_name}.json"
+    
     log_file = None
     original_stdout = sys.stdout
     
@@ -353,9 +359,7 @@ def run_mimic_pipeline(
         audio_extracted = extract_audio(reference_path, str(audio_path))
         
         # Final output (use full session_id to prevent collisions)
-        # Generate filename with reference name for better organization
-        ref_name = Path(reference_path).stem
-        output_filename = f"{ref_name}_output_{session_id[:8]}.mp4"
+        output_filename = f"{base_output_name}.mp4"
         final_output_path = Path(output_dir) / output_filename
         
         # Remove old file if it exists (force regeneration)
@@ -410,12 +414,35 @@ def run_mimic_pipeline(
             processing_time_seconds=processing_time
         )
         
+        # SAVE INTELLIGENCE REPORT FOR FRONTEND (Master Whitebox File)
+        try:
+            print(f"[PROCESS] Exporting master intelligence report...")
+            with open(json_report_path, "w", encoding="utf-8") as jf:
+                json_data = result.model_dump_json(indent=2)
+                jf.write(json_data)
+                jf.flush()
+                # Force OS to write to disk
+                import os
+                os.fsync(jf.fileno())
+            print(f"[OK] Intelligence report saved: {json_report_path} ({len(json_data)} bytes)")
+        except Exception as e:
+            print(f"[WARN] Failed to save JSON report: {e}")
+            import traceback
+            traceback.print_exc()
+
         # Restore stdout and close log file
         if log_file:
             sys.stdout = original_stdout
             log_file.close()
-            print(f"Analysis log saved: {log_path}")
+            print(f"[OK] Analysis log saved: {log_path}")
         
+        # CLEANUP CACHE CLUTTER (Muted videos)
+        try:
+            for muted_vid in Path("data/cache").glob("muted_*.mp4"):
+                muted_vid.unlink()
+        except:
+            pass
+            
         return result
         
     except Exception as e:

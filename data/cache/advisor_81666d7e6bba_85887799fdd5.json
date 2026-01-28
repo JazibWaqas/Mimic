@@ -1,13 +1,12 @@
 {
-  "dominant_narrative": "A high-energy journey of friendship and shared adventure",
+  "dominant_narrative": "A high-energy, fast-paced journey of friendship and shared joy",
   "arc_stage_guidance": {
     "Intro": {
-      "primary_emotional_carrier": "Atmospheric establishing shots that set the travel context and mood",
-      "supporting_material": "Brief glimpses of the group or solo travelers beginning their journey",
-      "intent_diluting_material": "High-intensity celebration or chaotic action that bypasses the sense of arrival",
-      "reasoning": "The intro needs to ground the viewer in the 'where' and 'how' before the social energy takes over.",
+      "primary_emotional_carrier": "Atmospheric establishing shots that define the setting and travel context",
+      "supporting_material": "Brief glimpses of the group arriving or preparing for the journey",
+      "intent_diluting_material": "High-intensity celebration or peak action clips that spoil the build",
+      "reasoning": "The intro needs to ground the viewer in the location and mood before the social energy ramps up.",
       "recommended_clips": [
-        "clip29.mp4",
         "clip30.mp4",
         "clip45.mp4",
         "clip52.mp4",
@@ -15,58 +14,57 @@
       ]
     },
     "Build-up": {
-      "primary_emotional_carrier": "Momentum-driven clips showing the group in transit or exploring new environments",
-      "supporting_material": "POV shots and dynamic movement that suggest progression toward a destination",
-      "intent_diluting_material": "Static landscapes or stationary subjects that stall the narrative flow",
-      "reasoning": "This stage bridges the setting and the payoff; it requires a sense of 'going somewhere' to build anticipation.",
+      "primary_emotional_carrier": "Active travel and exploration showing the group in motion",
+      "supporting_material": "POV shots and dynamic transitions that create a sense of moving toward a destination",
+      "intent_diluting_material": "Static, slow-moving landscapes or isolated solo shots without a sense of journey",
+      "reasoning": "This stage requires narrative momentum to bridge the gap between arrival and the emotional climax.",
       "recommended_clips": [
         "clip13.mp4",
-        "clip14.mp4",
         "clip27.mp4",
         "clip42.mp4",
-        "clip48.mp4"
+        "clip48.mp4",
+        "clip7.mp4"
       ]
     },
     "Peak": {
-      "primary_emotional_carrier": "Unfiltered joy and group connection—dancing, laughing, and high-energy interaction",
-      "supporting_material": "Fast-paced action sequences like water fights or amusement rides that mirror the emotional high",
-      "intent_diluting_material": "Scenic shots without people or quiet, reflective moments that lower the heart rate",
-      "reasoning": "The peak is the emotional core of the montage; it must prioritize human connection and peak intensity.",
+      "primary_emotional_carrier": "Unfiltered group joy, laughter, and high-energy social interaction",
+      "supporting_material": "Fast-paced action sequences or celebratory activities",
+      "intent_diluting_material": "Scenic-only shots or quiet, reflective moments that break the energetic flow",
+      "reasoning": "The peak is the emotional payoff; it must prioritize visible human connection and peak intensity.",
       "recommended_clips": [
         "clip16.mp4",
         "clip21.mp4",
         "clip22.mp4",
         "clip26.mp4",
-        "clip38.mp4"
+        "clip37.mp4"
       ]
     },
     "Outro": {
-      "primary_emotional_carrier": "High-energy resolution shots that leave a lasting impression of the trip's spirit",
-      "supporting_material": "Dynamic nature shots or final group cheers that provide a sense of a 'grand finale'",
-      "intent_diluting_material": "Abrupt cuts to black or low-energy, somber clips that contradict the reference's high-energy finish",
-      "reasoning": "The reference video indicates a high-energy outro, suggesting the edit should end on a high note rather than a slow fade.",
+      "primary_emotional_carrier": "High-energy resolution and infectious laughter to leave a lasting impression",
+      "supporting_material": "Dynamic nature shots or final group gestures that signal the end of the montage",
+      "intent_diluting_material": "Low-energy, somber, or static shots that contradict the 'High' energy requirement of the reference outro",
+      "reasoning": "The reference video specifies a high-energy outro, suggesting a 'mic drop' finish rather than a slow fade-out.",
       "recommended_clips": [
-        "clip19.mp4",
-        "clip37.mp4",
+        "clip15.mp4",
+        "clip38.mp4",
         "clip50.mp4",
-        "clip53.mp4",
         "clip55.mp4"
       ]
     }
   },
   "library_assessment": {
     "strengths": [
-      "Exceptional variety of high-energy group celebrations",
-      "Strong selection of car-based travel footage which is great for build-up",
-      "Good mix of day and night settings to show a full journey"
+      "Abundance of high-energy car and celebration footage",
+      "Excellent variety of travel-related movement (horses, jet skis, cars)",
+      "Strong selection of candid laughter and group interaction"
     ],
     "gaps": [
-      "Fewer 'Medium' energy clips that aren't car-related",
-      "Limited variety in solo-subject emotional beats"
+      "Fewer medium-energy 'transitional' people shots for the build-up",
+      "Limited variety in nighttime urban settings compared to nature"
     ],
     "confidence": "High"
   },
-  "overall_strategy": "Prioritize the 'car culture' and 'group celebration' clips to drive the energy, using the scenic mountain and beach shots to provide necessary breathers and context between high-intensity beats.",
+  "overall_strategy": "Prioritize group-centric clips with high physical motion to match the dynamic cinematic style, using scenic shots strictly as connective tissue to maintain the fast-paced narrative.",
   "cache_version": "2.0",
-  "cached_at": "2026-01-28T11:02:00.017731"
+  "cached_at": "2026-01-28T11:20:26.073900"
 }

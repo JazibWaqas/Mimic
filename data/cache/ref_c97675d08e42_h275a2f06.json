@@ -1,0 +1,151 @@
+{
+  "total_duration": 8.890385,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.77,
+      "duration": 0.77,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Initial shot of running in nature."
+    },
+    {
+      "id": 2,
+      "start": 0.77,
+      "end": 1.54,
+      "duration": 0.77,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Continued running sequence."
+    },
+    {
+      "id": 3,
+      "start": 1.54,
+      "end": 2.31,
+      "duration": 0.77,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Final shot of the running intro."
+    },
+    {
+      "id": 4,
+      "start": 2.31,
+      "end": 2.97,
+      "duration": 0.66,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Build-up",
+      "reasoning": "Shift to a more intense masked figure."
+    },
+    {
+      "id": 5,
+      "start": 2.97,
+      "end": 3.73,
+      "duration": 0.76,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Build-up",
+      "reasoning": "Close-up of the masked figure."
+    },
+    {
+      "id": 6,
+      "start": 3.73,
+      "end": 4.47,
+      "duration": 0.74,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "High-energy boxing at sunset."
+    },
+    {
+      "id": 7,
+      "start": 4.47,
+      "end": 5.07,
+      "duration": 0.6,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Peak action jumping into water."
+    },
+    {
+      "id": 8,
+      "start": 5.07,
+      "end": 5.6,
+      "duration": 0.53,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Calm contrast on a cliff."
+    },
+    {
+      "id": 9,
+      "start": 5.6,
+      "end": 6.37,
+      "duration": 0.77,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Scenic view from the cliff."
+    },
+    {
+      "id": 10,
+      "start": 6.37,
+      "end": 6.93,
+      "duration": 0.56,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Fast, blurry night action."
+    },
+    {
+      "id": 11,
+      "start": 6.93,
+      "end": 8.03,
+      "duration": 1.1,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Outro",
+      "reasoning": "Explosive fireworks finale."
+    },
+    {
+      "id": 12,
+      "start": 8.03,
+      "end": 8.890385,
+      "duration": 0.860385,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Outro",
+      "reasoning": "Final sparks before the end."
+    }
+  ],
+  "overall_reasoning": "The video follows a montage style, transitioning from nature-based running to high-energy action and scenic moments, concluding with a fireworks display.",
+  "ideal_material_suggestions": [
+    "High-speed running shots in forests",
+    "Action-oriented close-ups with masks",
+    "Sunset boxing or physical activities",
+    "Water-based stunts or jumps",
+    "Cinematic landscape views at dusk",
+    "Dynamic light effects like fireworks or sparks"
+  ],
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 16:12:23"
+}

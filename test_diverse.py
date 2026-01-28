@@ -47,4 +47,4 @@ if __name__ == "__main__":
     else:
         ref_to_test = "ref3.mp4"
     
-    test_reference(ref_to_test, session_suffix="final_hybrid_eval")
+    test_reference(ref_to_test, session_suffix="master")
