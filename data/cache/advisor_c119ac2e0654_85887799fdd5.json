@@ -1,67 +1,67 @@
 {
-  "dominant_narrative": "A high-energy, fast-paced journey of friendship and shared adventure.",
+  "dominant_narrative": "A high-octane group adventure defined by shared movement and spontaneous joy.",
   "arc_stage_guidance": {
     "Intro": {
-      "primary_emotional_carrier": "Dynamic establishing shots that signal the start of a trip or a change in environment.",
-      "supporting_material": "Quick glimpses of the group or travel icons like planes and moving vehicles.",
-      "intent_diluting_material": "Static, slow-moving nature shots without a sense of 'arrival' or 'departure'.",
-      "reasoning": "The reference intro is high-energy; we need to grab attention immediately with movement and the promise of an adventure.",
+      "primary_emotional_carrier": "Dynamic travel starts and high-energy establishing shots that signal the beginning of a journey.",
+      "supporting_material": "Fast-moving POV shots or vehicle-based perspectives that create immediate forward momentum.",
+      "intent_diluting_material": "Static landscapes or slow, meditative pans that lack the 'High' energy intensity required for this specific opening.",
+      "reasoning": "The reference calls for a high-energy intro; we need to hook the viewer with movement and the promise of adventure immediately.",
       "recommended_clips": [
-        "clip29.mp4",
         "clip14.mp4",
+        "clip29.mp4",
         "clip32.mp4"
       ]
     },
     "Build-up": {
-      "primary_emotional_carrier": "Movement-based clips showing the group in transit or exploring new terrains.",
-      "supporting_material": "Environmental details that show the changing locations and the scale of the journey.",
-      "intent_diluting_material": "Stationary shots or clips where people are just sitting still without interaction.",
-      "reasoning": "To build narrative momentum, the visuals must literally move through space, creating anticipation for the destination.",
+      "primary_emotional_carrier": "People in motion—walking, riding, or driving—showing the progression of the trip.",
+      "supporting_material": "Environmental transitions that emphasize a change in location or time of day (e.g., moving from day to night).",
+      "intent_diluting_material": "Stationary group shots or repetitive celebration footage that should be reserved for the peak.",
+      "reasoning": "This stage needs to develop narrative momentum, bridging the start of the trip to the most intense emotional moments.",
       "recommended_clips": [
         "clip13.mp4",
         "clip27.mp4",
         "clip42.mp4",
-        "clip48.mp4"
+        "clip47.mp4"
       ]
     },
     "Peak": {
-      "primary_emotional_carrier": "Peak social energy—unfiltered joy, laughter, and synchronized group activities.",
-      "supporting_material": "Fast-paced action shots like jet skiing or amusement park rides to maintain the 'dynamic' feel.",
-      "intent_diluting_material": "Scenic shots without people; these would drop the emotional stakes during the climax.",
-      "reasoning": "The peak is the emotional payoff; it requires the highest density of human connection and shared laughter to land effectively.",
+      "primary_emotional_carrier": "Unfiltered human connection, including laughter, dancing, and synchronized group activities.",
+      "supporting_material": "High-action leisure shots (jet skiing, trampolines) that mirror the intensity of the social interactions.",
+      "intent_diluting_material": "Scenic-only shots without people; at this stage, the environment is secondary to the emotional payoff of the group bond.",
+      "reasoning": "With 25 segments in the peak, the edit requires a dense collection of high-impact social moments to sustain the 'Cinematic Montage' feel.",
       "recommended_clips": [
         "clip16.mp4",
         "clip21.mp4",
         "clip22.mp4",
         "clip26.mp4",
-        "clip38.mp4"
+        "clip36.mp4"
       ]
     },
     "Outro": {
-      "primary_emotional_carrier": "A final high-energy signature moment or a visually striking group action that leaves a lasting impression.",
-      "supporting_material": "Punchy, high-motion transitions like a wave crashing or a quick camera move.",
-      "intent_diluting_material": "Slow fades to black or quiet, contemplative nature shots that don't match the high-energy requirement.",
-      "reasoning": "The reference calls for a high-energy finish; the edit should end on a 'bang' rather than a slow fade.",
+      "primary_emotional_carrier": "A final high-energy 'exclamation point' or a definitive group gesture that provides a sense of completion.",
+      "supporting_material": "Dynamic natural elements (like a crashing wave) that match the high-energy requirement of the reference outro.",
+      "intent_diluting_material": "Slow fades to black or low-energy scenic shots that would clash with the reference's high-intensity finish.",
+      "reasoning": "The reference specifies a 'High' energy outro, suggesting a 'mic drop' ending rather than a slow fade-out.",
       "recommended_clips": [
         "clip55.mp4",
         "clip17.mp4",
-        "clip53.mp4"
+        "clip38.mp4"
       ]
     }
   },
   "library_assessment": {
     "strengths": [
-      "Excellent car-based social clips (singing/dancing)",
-      "Strong celebration and high-energy group footage",
-      "Diverse travel modes (boat, plane, horse, car) for build-up"
+      "Exceptional variety of high-energy car and celebration footage",
+      "Strong selection of dynamic travel-based POV shots",
+      "Good mix of day and night social settings"
     ],
     "gaps": [
-      "Limited high-quality (4/5+) footage",
-      "Few clips that bridge the gap between high-energy celebration and quiet reflection"
+      "Limited high-energy solo shots for variety in the peak",
+      "Few high-energy nature shots that aren't just 'scenic'"
     ],
     "confidence": "High"
   },
-  "overall_strategy": "Prioritize clips with high physical motion and visible group laughter. Use the travel-based clips to bridge the gap between the intro and the high-intensity celebration peaks.",
+  "overall_strategy": "Prioritize clips with visible group interaction and physical movement to match the dynamic, high-energy arc of the reference video.",
   "cache_version": "2.0",
-  "cached_at": "2026-01-28T11:01:58.769236"
+  "cached_at": "2026-01-28T11:26:39.904429"
 }

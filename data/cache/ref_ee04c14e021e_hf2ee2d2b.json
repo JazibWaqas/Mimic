@@ -1,0 +1,281 @@
+{
+  "total_duration": 12.164399,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.47,
+      "duration": 0.47,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Initial shot of a snowy forest path setting the scene."
+    },
+    {
+      "id": 2,
+      "start": 0.47,
+      "end": 0.93,
+      "duration": 0.46,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Intro",
+      "reasoning": "Introduction of the subject taking a selfie in the woods."
+    },
+    {
+      "id": 3,
+      "start": 0.93,
+      "end": 1.4,
+      "duration": 0.47,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Intro",
+      "reasoning": "Quick cut to a snowy ground view."
+    },
+    {
+      "id": 4,
+      "start": 1.4,
+      "end": 1.86,
+      "duration": 0.46,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Transition to friends looking up at the trees, building the narrative."
+    },
+    {
+      "id": 5,
+      "start": 1.86,
+      "end": 2.37,
+      "duration": 0.51,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Close-up of hands making a heart, emphasizing the 'besties' theme."
+    },
+    {
+      "id": 6,
+      "start": 2.37,
+      "end": 2.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Calm",
+      "arc_stage": "Build-up",
+      "reasoning": "Shot of a campfire, adding warmth and variety to the trip dump."
+    },
+    {
+      "id": 7,
+      "start": 2.87,
+      "end": 3.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Subject walking on a forest path, showing movement."
+    },
+    {
+      "id": 8,
+      "start": 3.37,
+      "end": 3.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Interior shot of a dome stay, showcasing the accommodation."
+    },
+    {
+      "id": 9,
+      "start": 3.87,
+      "end": 4.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Subject sitting by a river, a peaceful moment in the trip."
+    },
+    {
+      "id": 10,
+      "start": 4.37,
+      "end": 4.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "View of tall trees, emphasizing the natural surroundings."
+    },
+    {
+      "id": 11,
+      "start": 4.87,
+      "end": 5.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Car driving on a snowy road, showing the journey."
+    },
+    {
+      "id": 12,
+      "start": 5.37,
+      "end": 5.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Build-up",
+      "reasoning": "Subject walking through trees, continuing the exploration theme."
+    },
+    {
+      "id": 13,
+      "start": 5.87,
+      "end": 6.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Stunning view of snow-capped mountains, a highlight of the trip."
+    },
+    {
+      "id": 14,
+      "start": 6.37,
+      "end": 6.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Another majestic mountain view, maintaining the peak energy."
+    },
+    {
+      "id": 15,
+      "start": 6.87,
+      "end": 7.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Close-up of a friend, focusing on the social aspect of the trip."
+    },
+    {
+      "id": 16,
+      "start": 7.37,
+      "end": 7.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Peak",
+      "reasoning": "Walking in the snow, capturing the experience."
+    },
+    {
+      "id": 17,
+      "start": 7.87,
+      "end": 8.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Peak",
+      "reasoning": "Wide view of a valley, showcasing the scale of the landscape."
+    },
+    {
+      "id": 18,
+      "start": 8.37,
+      "end": 8.87,
+      "duration": 0.5,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Friends laughing and having fun, the emotional peak of the video."
+    },
+    {
+      "id": 19,
+      "start": 8.87,
+      "end": 9.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Sunset view, signaling the end of the day and the trip."
+    },
+    {
+      "id": 20,
+      "start": 9.37,
+      "end": 9.87,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Outro",
+      "reasoning": "Subject walking away, a classic closing shot."
+    },
+    {
+      "id": 21,
+      "start": 9.87,
+      "end": 10.37,
+      "duration": 0.5,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "arc_stage": "Outro",
+      "reasoning": "View from a car window, suggesting the journey home."
+    },
+    {
+      "id": 22,
+      "start": 10.37,
+      "end": 10.87,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Final snowy landscape shot."
+    },
+    {
+      "id": 23,
+      "start": 10.87,
+      "end": 11.37,
+      "duration": 0.5,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Last mountain view before the end."
+    },
+    {
+      "id": 24,
+      "start": 11.37,
+      "end": 12.164399,
+      "duration": 0.794399,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Outro",
+      "reasoning": "Final fade out of the video."
+    }
+  ],
+  "overall_reasoning": "The video is a fast-paced montage of a trip, using quick cuts to show various highlights including nature, travel activities, and moments with friends. It follows a standard montage structure with an intro, a build-up of experiences, a peak of scenic views and social interaction, and a winding down outro.",
+  "ideal_material_suggestions": [
+    "More candid shots of friends interacting.",
+    "B-roll of local food or culture.",
+    "Slow-motion shots of the snow or river for contrast.",
+    "A consistent color grade to unify the diverse shots."
+  ],
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 16:30:51"
+}
