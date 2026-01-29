@@ -137,8 +137,10 @@ export default function LibraryPage() {
                 <div className="w-full aspect-video bg-black relative overflow-hidden">
                     <video
                         src={`http://localhost:8000${path}`}
+                        poster={item.thumbnail_url ? `http://localhost:8000${item.thumbnail_url}` : undefined}
                         className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
                         muted
+                        preload="none"
                         onMouseOver={(e) => e.currentTarget.play().catch(() => { })}
                         onMouseOut={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
                     />

@@ -8,6 +8,7 @@ export interface Clip {
     session_id: string;
     filename: string;
     path: string;
+    thumbnail_url?: string;
     size: number;
     created_at: number;
     tags?: string[];
@@ -16,6 +17,7 @@ export interface Clip {
 export interface Result {
     filename: string;
     url: string;
+    thumbnail_url?: string;
     size: number;
     created_at: number;
 }
@@ -23,6 +25,7 @@ export interface Result {
 export interface Reference {
     filename: string;
     path: string;
+    thumbnail_url?: string;
     size: number;
     created_at: number;
 }

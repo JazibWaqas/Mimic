@@ -7,8 +7,10 @@
 
 const API_BASE = "http://localhost:8000";
 
+const intelCache = new Map<string, any>();
+
 export const api = {
-  // ==================== UPLOAD ====================
+  // ... existing uploadFiles, startGeneration, etc.
   uploadFiles: async (reference: File, clips: File[]) => {
     const formData = new FormData();
     formData.append("reference", reference);
@@ -23,7 +25,6 @@ export const api = {
     return res.json();
   },
 
-  // ==================== GENERATION ====================
   startGeneration: async (sessionId: string) => {
     const res = await fetch(`${API_BASE}/api/generate/${sessionId}`, {
       method: "POST",
@@ -37,7 +38,6 @@ export const api = {
     return new WebSocket(`ws://localhost:8000/ws/progress/${sessionId}`);
   },
 
-  // ==================== CLIPS (Assets Page) ====================
   fetchClips: async () => {
     const res = await fetch(`${API_BASE}/api/clips`);
     if (!res.ok) throw new Error("Failed to fetch clips");
@@ -52,7 +52,6 @@ export const api = {
     return res.json();
   },
 
-  // ==================== RESULTS (Projects Page) ====================
   fetchResults: async () => {
     const res = await fetch(`${API_BASE}/api/results`);
     if (!res.ok) throw new Error("Failed to fetch results");
@@ -67,10 +66,20 @@ export const api = {
     return res.json();
   },
 
-  // ==================== REFERENCES (Projects Page) ====================
   fetchReferences: async () => {
     const res = await fetch(`${API_BASE}/api/references`);
     if (!res.ok) throw new Error("Failed to fetch references");
     return res.json();
+  },
+
+  fetchIntelligence: async (type: string, filename: string) => {
+    const cacheKey = `${type}:${filename}`;
+    if (intelCache.has(cacheKey)) return intelCache.get(cacheKey);
+
+    const res = await fetch(`${API_BASE}/api/intelligence?type=${type}&filename=${encodeURIComponent(filename)}`);
+    if (!res.ok) throw new Error("Intelligence data not found");
+    const data = await res.json();
+    intelCache.set(cacheKey, data);
+    return data;
   },
 };

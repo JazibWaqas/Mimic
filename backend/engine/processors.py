@@ -565,6 +565,43 @@ def create_silent_video(input_path: str, output_path: str) -> None:
 
 
 # ============================================================================
+# THUMBNAIL GENERATION (NEW)
+# ============================================================================
+
+def generate_thumbnail(video_path: str, thumbnail_path: str, time: float = 1.0) -> bool:
+    """
+    Extract a single frame from video to use as thumbnail.
+    
+    Args:
+        video_path: Source video path
+        thumbnail_path: Output image path (jpg/png)
+        time: Time offset in seconds to capture (default 1.0s)
+    """
+    # Ensure parent dir exists
+    Path(thumbnail_path).parent.mkdir(parents=True, exist_ok=True)
+    
+    cmd = [
+        "ffmpeg",
+        "-ss", str(time),
+        "-i", video_path,
+        "-frames:v", "1",
+        "-q:v", "4", # Quality scale (2-5 is good)
+        "-y",
+        thumbnail_path
+    ]
+    
+    try:
+        subprocess.run(cmd, check=True, capture_output=True)
+        return True
+    except Exception as e:
+        # Fallback to frame 0 if 1s is too far
+        if time > 0:
+            return generate_thumbnail(video_path, thumbnail_path, time=0)
+        print(f"  [WARN] Thumbnail extraction failed: {e}")
+        return False
+
+
+# ============================================================================
 # VALIDATION
 # ============================================================================
 

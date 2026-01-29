@@ -19,6 +19,7 @@ import hashlib
 from dotenv import load_dotenv
 from models import *
 from engine.orchestrator import run_mimic_pipeline
+from engine.processors import generate_thumbnail
 from utils import ensure_directory, cleanup_session
 
 # Load environment variables
@@ -33,12 +34,14 @@ CLIPS_DIR = SAMPLES_DIR / "clips"  # All user clips go here
 REFERENCES_DIR = SAMPLES_DIR / "reference"  # All reference videos go here
 RESULTS_DIR = DATA_DIR / "results"  # Final output videos
 CACHE_DIR = DATA_DIR / "cache"      # Cached AI analyses
+THUMBNAILS_DIR = DATA_DIR / "cache" / "thumbnails"
 
 # Ensure dirs exist
 CLIPS_DIR.mkdir(parents=True, exist_ok=True)
 REFERENCES_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
+THUMBNAILS_DIR.mkdir(parents=True, exist_ok=True)
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="MIMIC API", version="1.0.0")
@@ -130,21 +133,24 @@ async def upload_files(
     print(f"[UPLOAD] Checking {len(existing_files_list)} existing clips for duplicates...")
     for existing_file in existing_files_list:
         if existing_file.is_file():
-            try:
-                with open(existing_file, 'rb') as f:
-                    file_content = f.read()
-                    file_hash = hashlib.md5(file_content).hexdigest()[:12]
+            file_hash = get_file_hash(existing_file)
+            if file_hash:
                 existing_hashes[file_hash] = existing_file
-                print(f"[UPLOAD] Pre-calculated hash for existing file: {existing_file.name} -> {file_hash}")
-            except Exception as e:
-                print(f"[UPLOAD] Warning: Could not read {existing_file.name}: {e}")
-                continue
+                print(f"[UPLOAD] Hash for existing file: {existing_file.name} -> {file_hash}")
     
     print(f"[UPLOAD] Pre-calculated {len(existing_hashes)} existing clip hashes")
     
     for clip in clips:
         clip_content = await clip.read()
-        clip_hash = hashlib.md5(clip_content).hexdigest()[:12]
+        # Fast hash for incoming content: if large, hash start and end
+        hasher = hashlib.md5()
+        if len(clip_content) < 2 * 1024 * 1024:
+            hasher.update(clip_content)
+        else:
+            hasher.update(clip_content[:1024 * 1024])
+            hasher.update(clip_content[-1024 * 1024:])
+        
+        clip_hash = hasher.hexdigest()[:12]
         print(f"[UPLOAD] Incoming clip '{clip.filename}' hash: {clip_hash}")
         
         # Check if file with same content already exists
@@ -532,9 +538,17 @@ async def list_reference_samples():
     references = []
     for ref_path in REFERENCES_DIR.iterdir():
         if ref_path.is_file() and ref_path.suffix.lower() == '.mp4':
+             ref_hash = get_file_hash(ref_path)
+             thumb_name = f"thumb_ref_{ref_hash}.jpg"
+             thumb_path = THUMBNAILS_DIR / thumb_name
+             
+             if not thumb_path.exists():
+                 generate_thumbnail(str(ref_path), str(thumb_path))
+                 
              references.append({
                 "filename": ref_path.name,
                 "path": f"/api/files/references/{ref_path.name}",
+                "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
                 "size": ref_path.stat().st_size,
                 "created_at": ref_path.stat().st_mtime
             })
@@ -554,10 +568,18 @@ async def list_all_clips():
     if CLIPS_DIR.exists():
         for clip_path in CLIPS_DIR.iterdir():
             if clip_path.is_file() and clip_path.suffix.lower() == '.mp4':
+                clip_hash = get_file_hash(clip_path)
+                thumb_name = f"thumb_clip_{clip_hash}.jpg"
+                thumb_path = THUMBNAILS_DIR / thumb_name
+                
+                if not thumb_path.exists():
+                    generate_thumbnail(str(clip_path), str(thumb_path))
+                
                 all_clips.append({
                     "session_id": "samples",
                     "filename": clip_path.name,
                     "path": f"/api/files/samples/clips/{clip_path.name}",
+                    "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
                     "size": clip_path.stat().st_size,
                     "created_at": clip_path.stat().st_mtime
                 })
@@ -588,9 +610,17 @@ async def list_all_results():
     results = []
     for result_path in RESULTS_DIR.glob("*.mp4"):
         if result_path.is_file():
+            res_hash = get_file_hash(result_path) # Might be slow for large results, but okay for list
+            thumb_name = f"thumb_res_{res_hash}.jpg"
+            thumb_path = THUMBNAILS_DIR / thumb_name
+            
+            if not thumb_path.exists():
+                generate_thumbnail(str(result_path), str(thumb_path))
+                
             results.append({
                 "filename": result_path.name,
                 "url": f"/api/files/results/{result_path.name}",
+                "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
                 "size": result_path.stat().st_size,
                 "created_at": result_path.stat().st_mtime
             })
@@ -608,6 +638,107 @@ async def delete_result(filename: str):
         result_path.unlink()
         return {"status": "deleted"}
     raise HTTPException(status_code=404, detail="Result not found")
+
+# ============================================================================
+# INTELLIGENCE ENDPOINTS (For Vault A)
+# ============================================================================
+
+# Hash cache to avoid reading files multiple times
+hash_cache = {}
+
+def get_file_hash(path: Path) -> str:
+    """Helper to get a fast hash of a file without reading the whole thing."""
+    if not path.exists():
+        return ""
+    
+    # Check cache first
+    path_str = str(path)
+    file_stat = path.stat()
+    cache_key = f"{path_str}_{file_stat.st_mtime}_{file_stat.st_size}"
+    
+    if cache_key in hash_cache:
+        return hash_cache[cache_key]
+    
+    try:
+        # For small files, read the whole thing. For large files, read chunks.
+        hasher = hashlib.md5()
+        file_size = file_stat.st_size
+        
+        with open(path, "rb") as f:
+            if file_size < 2 * 1024 * 1024:  # < 2MB
+                hasher.update(f.read())
+            else:
+                # Read first 1MB
+                hasher.update(f.read(1024 * 1024))
+                # Seek to near the end and read another 1MB
+                f.seek(max(0, file_size - 1024 * 1024))
+                hasher.update(f.read(1024 * 1024))
+        
+        res = hasher.hexdigest()[:12]
+        hash_cache[cache_key] = res
+        return res
+    except Exception as e:
+        print(f"[HASH] Error hashing {path}: {e}")
+        return hashlib.md5(path.name.encode()).hexdigest()[:12]
+
+@app.get("/api/intelligence")
+async def get_intelligence(type: str, filename: str):
+    """
+    Find and serve the AI intelligence/analysis JSON for a specific file.
+    
+    Types: 
+    - results: Look for master JSON in data/results/
+    - references: Look for ref_{hash}_h*.json in data/cache/
+    - clips: Look for clip_comprehensive_{hash}.json in data/cache/
+    """
+    try:
+        if type == "results":
+            # Strip extension and search for master JSON
+            stem = Path(filename).stem
+            # In orchestrator.py, results are saved as "{ref_name}_{session_id}.json"
+            # The frontend sends the filename of the MP4, e.g., "ref4_12345678.mp4"
+            json_name = f"{stem}.json"
+            json_path = RESULTS_DIR / json_name
+            
+            if not json_path.exists():
+                # Try finding any JSON that starts with the stem (in case of extension mismatch)
+                matches = list(RESULTS_DIR.glob(f"{stem}*.json"))
+                if matches:
+                    json_path = matches[0]
+            
+            if json_path.exists():
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+                    
+        elif type == "references":
+            ref_path = REFERENCES_DIR / filename
+            if not ref_path.exists():
+                raise HTTPException(status_code=404, detail="Reference video not found")
+            
+            ref_hash = get_file_hash(ref_path)
+            # Reference cache naming: ref_{hash}_h{fingerprint}.json
+            matches = list(CACHE_DIR.glob(f"ref_{ref_hash}_h*.json"))
+            if matches:
+                with open(matches[0], 'r', encoding='utf-8') as f:
+                    return json.load(f)
+
+        elif type == "clips":
+            clip_path = CLIPS_DIR / filename
+            if not clip_path.exists():
+                raise HTTPException(status_code=404, detail="Clip video not found")
+            
+            clip_hash = get_file_hash(clip_path)
+            # Clip cache naming: clip_comprehensive_{hash}.json
+            json_path = CACHE_DIR / f"clip_comprehensive_{clip_hash}.json"
+            if json_path.exists():
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+                    
+        raise HTTPException(status_code=404, detail=f"Intelligence not found for {type}/{filename}")
+        
+    except Exception as e:
+        print(f"[INTEL] Error fetching intelligence: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 # ============================================================================
 # FILE SERVING ENDPOINTS (Explicit file serving for reliability)
@@ -654,6 +785,21 @@ async def serve_sample_clip_file(filename: str):
         media_type="video/mp4",
         filename=filename
     )
+
+@app.get("/api/files/thumbnails/{filename}")
+async def serve_thumbnail_file(filename: str):
+    """
+    Serve a thumbnail image file explicitly.
+    """
+    thumb_path = THUMBNAILS_DIR / filename
+    if not thumb_path.exists() or not thumb_path.is_file():
+        raise HTTPException(status_code=404, detail="Thumbnail not found")
+    return FileResponse(
+        path=str(thumb_path),
+        media_type="image/jpeg",
+        filename=filename
+    )
+
 
 # Health check
 @app.get("/health")
