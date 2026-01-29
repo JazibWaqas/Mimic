@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIMIC Vault – Intelligence Core</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Inter, system-ui, sans-serif;
+            background: #020306;
+            color: #e5e7eb;
+        }
+
+        .glass {
+            background: rgba(12, 12, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .panel-title {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            font-weight: 800;
+            color: #9ca3af;
+            text-transform: uppercase;
+        }
+
+        .metric-label {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .metric-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.4);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen">
+
+    <!-- HEADER -->
+    <header class="h-14 flex items-center justify-between px-10 border-b border-white/5 glass">
+        <div>
+            <div class="text-lg font-extrabold tracking-tight">VAULT</div>
+            <div class="text-[10px] tracking-widest text-cyan-400 font-bold">INTELLIGENCE CORE</div>
+        </div>
+        <div class="text-[10px] text-slate-400 flex gap-4 font-bold uppercase tracking-widest">
+            <span>● Systems: Operational</span>
+            <span class="text-cyan-400">● Gemini: Active</span>
+        </div>
+    </header>
+
+    <!-- SEARCH -->
+    <div class="px-10 py-4 border-b border-white/5">
+        <input
+            class="w-full h-10 rounded-lg bg-black/40 border border-white/10 px-4 text-sm outline-none focus:border-cyan-500/40 placeholder-slate-500"
+            placeholder="🔍 Search videos to compare..." />
+    </div>
+
+    <!-- HORIZONTAL SCROLL CARDS -->
+    <div class="px-10 py-5 border-b border-white/5 bg-black/20">
+        <div class="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-3">Select Videos to Compare</div>
+        <div class="flex gap-3 overflow-x-auto custom-scrollbar pb-2">
+            <!-- Card 1 -->
+            <div class="shrink-0 w-48 glass rounded-lg p-3 hover:border-white/20 transition-all cursor-pointer group">
+                <div class="aspect-video rounded bg-black border border-white/10 mb-2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&fit=crop"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all"
+                        alt="ref_01">
+                </div>
+                <div class="text-[11px] font-bold text-white mb-1">ref_01.mp4</div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[9px] font-bold text-cyan-400 uppercase">Reference</span>
+                    <span class="text-[9px] text-slate-500 font-mono">14.2s</span>
+                </div>
+                <button
+                    class="w-full h-7 rounded bg-white/5 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:bg-cyan-500/10 hover:border-cyan-500/30 hover:text-cyan-400 transition-all">Select</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="shrink-0 w-48 glass rounded-lg p-3 hover:border-white/20 transition-all cursor-pointer group">
+                <div class="aspect-video rounded bg-black border border-white/10 mb-2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&fit=crop"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all"
+                        alt="ref_02">
+                </div>
+                <div class="text-[11px] font-bold text-white mb-1">ref_02.mp4</div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[9px] font-bold text-cyan-400 uppercase">Reference</span>
+                    <span class="text-[9px] text-slate-500 font-mono">12.8s</span>
+                </div>
+                <button
+                    class="w-full h-7 rounded bg-white/5 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:bg-cyan-500/10 hover:border-cyan-500/30 hover:text-cyan-400 transition-all">Select</button>
+            </div>
+
+            <!-- Card 3 - SELECTED -->
+            <div
+                class="shrink-0 w-48 rounded-lg p-3 bg-cyan-500/10 border-2 border-cyan-500/40 transition-all cursor-pointer shadow-[0_0_20px_rgba(0,212,255,0.2)]">
+                <div class="aspect-video rounded bg-black border border-cyan-500/30 mb-2 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&fit=crop"
+                        class="w-full h-full object-cover" alt="out_02">
+                    <div
+                        class="absolute top-1 right-1 px-2 py-0.5 rounded bg-cyan-500 text-[7px] font-black text-white uppercase tracking-widest">
+                        Selected</div>
+                </div>
+                <div class="text-[11px] font-bold text-white mb-1">out_02.mp4</div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[9px] font-bold text-cyan-400 uppercase">✓ Reference</span>
+                    <span class="text-[9px] text-cyan-400 font-mono">14.2s</span>
+                </div>
+                <button
+                    class="w-full h-7 rounded bg-cyan-500/20 border border-cyan-500/40 text-[9px] font-bold uppercase tracking-wider text-cyan-400">Selected</button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="shrink-0 w-48 glass rounded-lg p-3 hover:border-white/20 transition-all cursor-pointer group">
+                <div class="aspect-video rounded bg-black border border-white/10 mb-2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=400&fit=crop"
+                        class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all"
+                        alt="out_03">
+                </div>
+                <div class="text-[11px] font-bold text-white mb-1">out_03.mp4</div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[9px] font-bold text-indigo-400 uppercase">Output</span>
+                    <span class="text-[9px] text-slate-500 font-mono">13.5s</span>
+                </div>
+                <button
+                    class="w-full h-7 rounded bg-white/5 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:bg-indigo-500/10 hover:border-indigo-500/30 hover:text-indigo-400 transition-all">Select</button>
+            </div>
+        </div>
+
+        <!-- Currently Comparing -->
+        <div class="mt-4 flex items-center justify-center gap-3 text-[10px] font-bold">
+            <span class="text-slate-500 uppercase tracking-widest">Currently Comparing:</span>
+            <span class="text-cyan-400 uppercase tracking-tight">ref_02.mp4 (Reference)</span>
+            <div class="flex items-center gap-2">
+                <div class="h-[1px] w-10 bg-gradient-to-r from-cyan-500 to-indigo-500"></div>
+                <svg class="h-3 w-3 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+                <div class="h-[1px] w-10 bg-gradient-to-r from-indigo-500 to-pink-500"></div>
+            </div>
+            <span class="text-indigo-400 uppercase tracking-tight">out_02.mp4 (Output)</span>
+        </div>
+    </div>
+
+    <!-- MAIN GRID -->
+    <main class="max-w-[1600px] mx-auto px-10 py-8 grid grid-cols-[320px_1fr_440px] gap-8">
+
+        <!-- LEFT -->
+        <aside class="space-y-5">
+
+            <div class="glass rounded-xl p-5 border-l-4 border-l-indigo-500">
+                <div class="panel-title mb-4">🧬 Structural DNA</div>
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="metric-label">Segments</span>
+                        <span class="metric-value">30</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="metric-label">BPM</span>
+                        <span class="metric-value">128</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="metric-label">Arc</span>
+                        <span class="metric-value text-base">4-ACT</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="metric-label">Style</span>
+                        <span class="metric-value text-cyan-400 text-base">REEL</span>
+                    </div>
+                    <!-- Mini Waveform -->
+                    <div class="mt-4 h-10 flex items-end gap-1">
+                        <div class="h-[20%] flex-1 bg-indigo-500/40 rounded-full"></div>
+                        <div class="h-[35%] flex-1 bg-indigo-500/60 rounded-full"></div>
+                        <div class="h-[50%] flex-1 bg-indigo-500/80 rounded-full"></div>
+                        <div class="h-[75%] flex-1 bg-indigo-600 rounded-full"></div>
+                        <div class="h-[100%] flex-1 bg-indigo-400 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.4)]">
+                        </div>
+                        <div class="h-[75%] flex-1 bg-indigo-600 rounded-full"></div>
+                        <div class="h-[50%] flex-1 bg-indigo-500/80 rounded-full"></div>
+                        <div class="h-[35%] flex-1 bg-indigo-500/60 rounded-full"></div>
+                        <div class="h-[20%] flex-1 bg-indigo-500/40 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="glass rounded-xl p-4 text-[10px] text-slate-400 font-bold uppercase tracking-widest cursor-pointer hover:border-white/20 transition-all">
+                📊 Reference Breakdown [Click ▼]
+            </div>
+
+            <div class="glass rounded-xl p-4">
+                <div class="panel-title mb-2">📚 Library Coverage</div>
+                <div class="text-2xl font-bold">16</div>
+                <div class="text-[10px] text-slate-400 uppercase tracking-wider">Analyzed</div>
+                <button
+                    class="w-full h-7 rounded bg-white/5 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-slate-400 hover:bg-white/10 transition-all mt-3">Inspect</button>
+            </div>
+
+        </aside>
+
+        <!-- CENTER -->
+        <section class="flex flex-col items-center gap-4">
+
+            <div
+                class="w-[400px] h-[710px] rounded-[2.5rem] overflow-hidden border-2 border-cyan-500/30 bg-black relative shadow-[0_0_60px_rgba(0,212,255,0.15)] hover:border-cyan-500/50 transition-all duration-700">
+                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200"
+                    class="w-full h-full object-cover opacity-80" alt="Video" />
+                <!-- HUD Overlay -->
+                <div class="absolute inset-0 pointer-events-none p-6 flex flex-col justify-between">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <div class="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></div>
+                                <span class="text-[9px] font-black text-cyan-400 uppercase tracking-widest">Live
+                                    Analysis</span>
+                            </div>
+                            <p class="text-[7px] font-bold text-white/30 uppercase tracking-widest">ID: session_abc123
+                            </p>
+                        </div>
+                    </div>
+                    <div class="bg-black/80 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 w-fit mx-auto">
+                        <div class="text-center">
+                            <div class="font-mono text-cyan-400 text-lg font-bold mb-1">00:08.42</div>
+                            <div class="text-[8px] font-black text-white/60 uppercase tracking-widest">Peak</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass w-[400px] rounded-xl p-3">
+                <div class="h-8 flex items-end gap-[2px]">
+                    <div
+                        class="h-[30%] flex-1 bg-indigo-500/40 rounded-sm hover:bg-indigo-500 transition-all cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[40%] flex-1 bg-indigo-500/40 rounded-sm hover:bg-indigo-500 transition-all cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[50%] flex-1 bg-cyan-500/40 rounded-sm hover:bg-cyan-500 transition-all cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[70%] flex-1 bg-cyan-500/60 rounded-sm hover:bg-cyan-500 transition-all cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[100%] flex-1 bg-pink-600 rounded-sm shadow-[0_0_10px_rgba(255,0,127,0.4)] cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[80%] flex-1 bg-pink-500/80 rounded-sm hover:bg-pink-500 transition-all cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[40%] flex-1 bg-indigo-500/40 rounded-sm hover:bg-indigo-500 transition-all cursor-pointer">
+                    </div>
+                    <div
+                        class="h-[20%] flex-1 bg-indigo-500/40 rounded-sm hover:bg-indigo-500 transition-all cursor-pointer">
+                    </div>
+                </div>
+                <div class="text-[8px] text-center text-slate-500 uppercase tracking-widest mt-2 font-bold">
+                    Click to jump • Hover for details
+                </div>
+            </div>
+
+        </section>
+
+        <!-- RIGHT -->
+        <aside class="space-y-6 overflow-y-auto custom-scrollbar pr-2">
+
+            <div class="glass rounded-xl p-5 border-l-4 border-l-cyan-500">
+                <div class="panel-title mb-4">🎯 Match Decisions</div>
+                <div class="text-[8px] font-bold text-slate-500 uppercase tracking-widest mb-4">(Selected Highlights)
+                </div>
+
+                <div class="space-y-3">
+                    <!-- Decision 1 -->
+                    <div
+                        class="bg-white/[0.02] border border-white/5 rounded-lg p-3 hover:bg-white/[0.05] transition-all">
+                        <div class="text-[9px] font-black text-cyan-400 uppercase tracking-widest mb-2">Segment 1: INTRO
+                            (0:00-0:03)</div>
+                        <div class="flex gap-3">
+                            <div class="w-14 h-14 rounded bg-black border border-white/10 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&fit=crop"
+                                    class="w-full h-full object-cover opacity-70" alt="clip">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="text-[10px] font-bold text-white uppercase tracking-tight mb-1">
+                                    clip_nature_calm.mp4</div>
+                                <div class="text-[9px] text-slate-400 leading-relaxed mb-1">"Calm establishing shot
+                                    matches intro energy and nature theme from reference"</div>
+                                <span class="text-[7px] font-black text-lime-400 uppercase tracking-widest">Alignment:
+                                    Strong ✓</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decision 2 -->
+                    <div
+                        class="bg-white/[0.02] border border-white/5 rounded-lg p-3 hover:bg-white/[0.05] transition-all">
+                        <div class="text-[9px] font-black text-cyan-400 uppercase tracking-widest mb-2">Segment 8:
+                            BUILD-UP (0:08-0:10)</div>
+                        <div class="flex gap-3">
+                            <div class="w-14 h-14 rounded bg-black border border-white/10 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200&fit=crop"
+                                    class="w-full h-full object-cover opacity-70" alt="clip">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="text-[10px] font-bold text-white uppercase tracking-tight mb-1">
+                                    clip_travel_motion.mp4</div>
+                                <div class="text-[9px] text-slate-400 leading-relaxed mb-1">"Movement creates momentum,
+                                    beat-aligned at 0:08 drum hit matches reference"</div>
+                                <span class="text-[7px] font-black text-lime-400 uppercase tracking-widest">Alignment:
+                                    Strong ✓</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decision 3 -->
+                    <div
+                        class="bg-white/[0.02] border border-white/5 rounded-lg p-3 hover:bg-white/[0.05] transition-all">
+                        <div class="text-[9px] font-black text-cyan-400 uppercase tracking-widest mb-2">Segment 15: PEAK
+                            (0:12-0:14)</div>
+                        <div class="flex gap-3">
+                            <div class="w-14 h-14 rounded bg-black border border-white/10 overflow-hidden shrink-0">
+                                <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?w=200&fit=crop"
+                                    class="w-full h-full object-cover opacity-70" alt="clip">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <div class="text-[10px] font-bold text-white uppercase tracking-tight mb-1">
+                                    clip_friends_dance.mp4</div>
+                                <div class="text-[9px] text-slate-400 leading-relaxed mb-1">"Celebration vibe matches
+                                    peak emotional climax"</div>
+                                <span class="text-[7px] font-black text-lime-400 uppercase tracking-widest">Alignment:
+                                    Strong ✓</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center py-3">
+                        <div class="text-[8px] font-bold text-slate-600 uppercase tracking-widest italic">[Scroll for 27
+                            more decisions...]</div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="glass rounded-xl p-6 border-l-4 border-l-pink-500 shadow-[0_0_40px_rgba(255,0,127,0.1)] relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 pointer-events-none">
+                </div>
+
+                <div class="panel-title mb-3 text-pink-400 relative z-10">🎬 Director's Audit</div>
+
+                <div class="space-y-5 relative z-10">
+                    <div>
+                        <div class="text-[9px] font-black text-pink-400 uppercase tracking-widest mb-2">💭 REFLECTION:
+                        </div>
+                        <div class="text-[11px] font-bold text-slate-200 leading-relaxed uppercase tracking-tight">
+                            "Execution matched strategic intent. Intro used Nature clips as planned. Build-up created
+                            momentum with Travel clips. Peak required 2 energy compromises (High→Medium) due to limited
+                            high-energy clips in library."
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-2">🎯 V2
+                            RECOMMENDATIONS:</div>
+                        <ul class="space-y-1.5">
+                            <li class="flex items-start gap-2">
+                                <span class="text-lime-400 mt-0.5">•</span>
+                                <span class="text-[10px] font-bold text-slate-300 uppercase tracking-tight">Add 3 clips:
+                                    'Celebration' vibe</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-lime-400 mt-0.5">•</span>
+                                <span class="text-[10px] font-bold text-slate-300 uppercase tracking-tight">Add 2 clips:
+                                    'Urban/Night' vibe</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-lime-400 mt-0.5">•</span>
+                                <span class="text-[10px] font-bold text-slate-300 uppercase tracking-tight">Add 1 clip:
+                                    'Golden Hour' light</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button
+                        class="w-full h-14 rounded-xl font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-700 flex items-center justify-center relative overflow-hidden group border border-white/20 bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600 bg-[length:200%_auto] text-white shadow-[0_0_30px_rgba(255,0,127,0.3)] hover:bg-right hover:scale-[1.02] active:scale-[0.98]">
+                        <span class="relative z-10">✨ Remake with Suggestions</span>
+                        <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- FOOTER: NARRATIVE TIMELINE -->
+    <footer class="border-t border-white/10 glass px-10 py-5 mt-8">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="flex justify-between items-center mb-3">
+                <div class="flex items-center gap-2">
+                    <svg class="h-3 w-3 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    <span class="text-[10px] font-black text-white/40 uppercase tracking-[0.25em]">Narrative Energy
+                        Mapping</span>
+                </div>
+                <span class="font-mono text-[9px] text-white/60 font-bold">0:00 ━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:14</span>
+            </div>
+
+            <div class="h-5 w-full flex gap-2 items-center">
+                <!-- Intro -->
+                <div
+                    class="h-2 flex-[0.2] bg-indigo-500/40 rounded-full relative group cursor-pointer hover:h-full transition-all duration-500">
+                    <div
+                        class="absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-black border border-white/10 px-2 py-1 rounded text-[7px] font-black whitespace-nowrap z-50">
+                        INTRO: Calm (0:00-0:03)
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
+                    </div>
+                </div>
+
+                <!-- Build-up -->
+                <div
+                    class="h-2.5 flex-[0.35] bg-cyan-500/40 rounded-full relative group cursor-pointer hover:h-full transition-all duration-500">
+                    <div
+                        class="absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-black border border-white/10 px-2 py-1 rounded text-[7px] font-black whitespace-nowrap z-50">
+                        BUILD-UP: Momentum (0:03-0:08)
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
+                    </div>
+                </div>
+
+                <!-- Peak -->
+                <div
+                    class="h-full flex-[0.35] bg-pink-600 rounded-full relative group cursor-pointer shadow-[0_0_20px_rgba(255,0,127,0.4)]">
+                    <div
+                        class="absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-pink-600 text-white px-2 py-1 rounded text-[7px] font-black whitespace-nowrap z-50">
+                        PEAK: Celebration (0:08-0:12) • 9.8/10
+                    </div>
+                </div>
+
+                <!-- Outro -->
+                <div
+                    class="h-2 flex-[0.1] bg-indigo-500/40 rounded-full relative group cursor-pointer hover:h-full transition-all duration-500">
+                    <div
+                        class="absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-black border border-white/10 px-2 py-1 rounded text-[7px] font-black whitespace-nowrap z-50">
+                        OUTRO: Sunset (0:12-0:14)
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
