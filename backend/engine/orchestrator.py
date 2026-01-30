@@ -55,42 +55,45 @@ from collections import defaultdict, Counter
 def _merge_scene_and_beat_timestamps(
     scene_timestamps: List[float],
     beat_grid: List[float],
-    max_gap: float = 2.0
+    max_gap: float = 3.0
 ) -> List[float]:
     """
-    Merge visual scene cuts with beat-aligned timestamps.
+    Merge visual scene cuts with beat-aligned timestamps using LOCAL ADAPTIVE PACING.
     
-    This ensures no segment is longer than max_gap seconds by inserting
-    beat-aligned cut points where visual detection missed cuts.
-    
-    Args:
-        scene_timestamps: Detected visual cut points
-        beat_grid: Beat-aligned timestamps from BPM detection
-        max_gap: Maximum allowed gap between timestamps (seconds)
-    
-    Returns:
-        Combined list of timestamps (sorted, deduplicated)
+    It respects the user's intended pacing (long shots stay long, fast shots stay fast)
+    but ensures every cut is 'snapped' to a musical beat.
     """
-    combined = set(scene_timestamps)  # Start with visual cuts
+    # 1. Start with 'Beat-Snapped' visual cuts
+    combined = set()
+    for scene_cut in scene_timestamps:
+        # Find nearest beat to the visual cut
+        nearest_beat = min(beat_grid, key=lambda x: abs(x - scene_cut))
+        # Only snap if the beat is close enough (within 0.25s), otherwise keep the visual cut
+        if abs(nearest_beat - scene_cut) < 0.25:
+            combined.add(nearest_beat)
+        else:
+            combined.add(scene_cut)
     
-    # Add beat timestamps to fill gaps
-    all_timestamps = sorted(scene_timestamps + [0.0])  # Include start
+    # 2. Safety Subdivision (Only for EXTREME gaps)
+    # We only insert extra beat cuts if a shot is longer than the reference allowed
+    # Defaulting to 3.0s as a 'Cinematic' safety limit
+    all_cuts = sorted(list(combined) + [0.0])
+    final_timestamps = set(combined)
     
-    for i in range(len(all_timestamps) - 1):
-        start = all_timestamps[i]
-        end = all_timestamps[i + 1]
+    for i in range(len(all_cuts) - 1):
+        start = all_cuts[i]
+        end = all_cuts[i + 1]
         gap = end - start
         
-        # If gap exceeds max_gap, insert beat-aligned timestamps
+        # If the gap is massive (stagnant), insert ONE beat-aligned cut in the middle
+        # This keeps the video 'Alive' without breaking the cinematic hold
         if gap > max_gap:
-            # Find beats within this gap
-            for beat in beat_grid:
-                if start < beat < end:
-                    # Only add if it creates reasonable subdivision
-                    if beat - start >= 0.3 and end - beat >= 0.3:
-                        combined.add(beat)
-    
-    return sorted(list(combined))
+            midpoint = start + (gap / 2)
+            nearest_mid_beat = min(beat_grid, key=lambda x: abs(x - midpoint))
+            if start < nearest_mid_beat < end:
+                final_timestamps.add(nearest_mid_beat)
+                
+    return sorted(list(final_timestamps))
 
 
 # ============================================================================
@@ -234,7 +237,7 @@ def run_mimic_pipeline(
             combined_timestamps = _merge_scene_and_beat_timestamps(
                 scene_timestamps, 
                 beat_grid, 
-                max_gap=2.0
+                max_gap=3.0
             )
             
             print(f"  [HYBRID] Visual cuts: {len(scene_timestamps)}, Beat-enhanced: {len(combined_timestamps)}")
@@ -452,12 +455,12 @@ def run_mimic_pipeline(
             log_file.close()
             print(f"[OK] Analysis log saved: {log_path}")
         
-        # CLEANUP CACHE CLUTTER (Muted videos)
-        try:
-            for muted_vid in Path("data/cache").glob("muted_*.mp4"):
-                muted_vid.unlink()
-        except:
-            pass
+        # CLEANUP CACHE CLUTTER (Optional: disabled for demo speed)
+        # try:
+        #     for muted_vid in Path("data/cache").glob("muted_*.mp4"):
+        #         muted_vid.unlink()
+        # except:
+        #     pass
             
         return result
         

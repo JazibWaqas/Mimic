@@ -925,13 +925,21 @@ def analyze_reference_video(
         cache_file = cache_dir / f"ref_{file_hash}_hints0.json"
         fallback_cache_file = None
     
-    # Try primary cache first, then fallback to hints0 if available
-    if not cache_file.exists() and fallback_cache_file and fallback_cache_file.exists():
-        print(f"[CACHE] Hash-based cache not found, using fallback: {fallback_cache_file.name}")
-        cache_file = fallback_cache_file
+    # Try primary cache first, then fallback to any existing cache for this video (Cache Inheritance)
+    if not cache_file.exists():
+        fallback_candidates = list(cache_dir.glob(f"ref_{file_hash}_*.json"))
+        if fallback_candidates:
+            # Sort to get the most substantial one (more data = better intelligence)
+            fallback_candidates.sort(key=lambda x: x.stat().st_size, reverse=True)
+            print(f"[CACHE] Inheriting intelligence from previous analysis: {fallback_candidates[0].name}")
+            cache_file = fallback_candidates[0]
+        elif fallback_cache_file and fallback_cache_file.exists():
+            print(f"[CACHE] Falling back to general analysis: {fallback_cache_file.name}")
+            cache_file = fallback_cache_file
     
     if cache_file.exists():
-        print(f"[CACHE] Found cached analysis: {cache_file.name}")
+        cache_type = "Hybrid Rhythmic" if "hints0" not in cache_file.name else "General"
+        print(f"[CACHE] Found {cache_type} analysis: {cache_file.name}")
         try:
             # Read cache with UTF-8 encoding to handle emojis/unicode from Gemini
             with open(cache_file, encoding='utf-8') as f:

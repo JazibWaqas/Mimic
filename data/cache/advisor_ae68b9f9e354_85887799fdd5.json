@@ -1,0 +1,69 @@
+{
+  "dominant_narrative": "A nostalgic retrospective of friendship and shared adventures, capturing the bittersweet beauty of fleeting moments.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Atmospheric and hazy establishing shots that evoke a sense of 'looking back' or beginning a journey.",
+      "supporting_material": "Quiet, low-energy shots of travel or nature that set a contemplative tone.",
+      "intent_diluting_material": "High-intensity shouting, chaotic movement, or bright, modern-looking action.",
+      "reasoning": "The intro needs to establish the 'memory' aesthetic. Starting with softer, more atmospheric visuals allows the nostalgia to breathe before the energy builds.",
+      "recommended_clips": [
+        "clip31.mp4",
+        "clip57.mp4",
+        "clip52.mp4",
+        "clip29.mp4"
+      ]
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Friends in motion—traveling, walking, and transitioning between locations to create a sense of shared history.",
+      "supporting_material": "Scenic transitions like forests or night drives that emphasize the passage of time and distance.",
+      "intent_diluting_material": "Static, empty landscapes or isolated solo shots that lack a sense of companionship.",
+      "reasoning": "This stage develops the narrative momentum. By showing the group moving through different environments, we simulate the 'reel' of memories leading to the best moments.",
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip27.mp4",
+        "clip42.mp4",
+        "clip48.mp4",
+        "clip7.mp4"
+      ]
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Unfiltered joy and physical connection—laughing, singing together, and high-energy group celebrations.",
+      "supporting_material": "Dynamic action shots like water fights or jumping that mirror the 'physical play' mentioned in the reference.",
+      "intent_diluting_material": "Calm, distant, or scenic-only shots that break the emotional intensity of the human connection.",
+      "reasoning": "The peak is the emotional payoff. It should feel like the 'heart' of the memory—the specific, loud, and happy moments that the narrator is nostalgic for.",
+      "recommended_clips": [
+        "clip15.mp4",
+        "clip22.mp4",
+        "clip36.mp4",
+        "clip38.mp4",
+        "clip21.mp4"
+      ]
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Quiet resolution shots, such as people walking away or simple, mundane shared actions.",
+      "supporting_material": "Fading light or calm natural elements that signal the end of the 'reel'.",
+      "intent_diluting_material": "Sudden bursts of energy or loud audio-visual cues that disrupt the sense of closure.",
+      "reasoning": "The outro provides the 'bittersweet' finish. It should feel like a gentle exit from the memory, leaving the viewer with a sense of longing.",
+      "recommended_clips": [
+        "clip54.mp4",
+        "clip20.mp4",
+        "clip35.mp4"
+      ]
+    }
+  },
+  "library_assessment": {
+    "strengths": [
+      "Abundant high-energy group footage for the Peak",
+      "Strong selection of car-based travel memories",
+      "Good variety of atmospheric 'lo-fi' style night shots"
+    ],
+    "gaps": [
+      "Lacks actual childhood/home video footage as seen in the reference",
+      "Limited 'birthday' or specific domestic ritual content"
+    ],
+    "confidence": "High"
+  },
+  "overall_strategy": "Since the library contains modern young-adult footage rather than childhood videos, the edit will pivot to 'modern nostalgia.' We will use the hazy, atmospheric scenic shots to bridge the gap and focus heavily on candid, high-energy group interactions to replicate the emotional weight of the reference's play-centric narrative.",
+  "cache_version": "2.0",
+  "cached_at": "2026-01-30T22:55:31.856909"
+}
