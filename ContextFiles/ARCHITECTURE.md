@@ -1,17 +1,17 @@
 # MIMIC Architecture Documentation
 
-**Version:** V8.0 - The Closed-Loop Agentic System  
-**Last Updated:** January 30, 2026
+**Version:** V9.0 - The Aesthetic Era  
+**Last Updated:** January 31, 2026
 
-This document provides a complete technical overview of the MIMIC system architecture, detailing the transition from a linear workflow to an agentic "Plan -> Execute -> Reflect" loop.
+This document provides a complete technical overview of the MIMIC system architecture, detailing the transition to a high-fidelity "Plan -> Execute -> Style -> Reflect" loop.
 
 ---
 
 ## 🏗️ System Overview
 
-### The Action Era Stack
+### The Aesthetic Era Stack
 
-MIMIC is built on a 6-stage multimodal pipeline designed to minimize creative friction while maximizing aesthetic fidelity.
+MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footage into premium social content.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -21,64 +21,59 @@ MIMIC is built on a 6-stage multimodal pipeline designed to minimize creative fr
                            │ HTTP/WebSocket
 ┌──────────────────────────┴──────────────────────────────────┐
 │                    Backend (FastAPI)                         │
-│             Orchestrator Stage Machine (V8.0)                │
+│             Orchestrator Stage Machine (V9.0)                │
 └─────┬──────────┬──────────┬──────────┬──────────┬───────────┘
       │          │          │          │          │
 ┌─────┴────┐ ┌──┴────┐ ┌───┴────┐ ┌──┴─────┐ ┌──┴─────┐
-│  Brain   │ │Advisor│ │ Editor │ │Process │ │Reflect │
-│ (Gemini) │ │(Plan) │ │(Match) │ │(FFmpeg)│ │(Audit) │
+│  Brain   │ │Advisor│ │ Editor │ │Stylist │ │Reflect │
+│ (Gemini) │ │(Plan) │ │(Match) │ │(Aesth) │ │(Audit) │
 └──────────┘ └───────┘ └────────┘ └────────┘ └────────┘
 ```
 
 ### Module Responsibilities
 
-- **`orchestrator.py`**: The central state machine. It manages the handoff between planning, assembly, and reflection.
-- **`brain.py`**: Multimodal reasoning engine. Uses Gemini 1.5 Flash/Pro for deep semantic video analysis.
-- **`advisor.py`** (Internal to Brain): Generates the creative strategy and evaluates library diversity before matching.
-- **`editor.py`**: The deterministic "Grammar" engine. Implements tiered energy matching and novelty-bias selection.
-- **`reflector.py`**:
-    - **Responsibility:** Post-render judicial audit.
-    - **Logic:** Gemini watches the final `.mp4` and judges it based on the original blueprint.
-    - **Status:** Under architectural review.
-- **`processors.py`**: The "Hands" of the system. Handles surgery-level FFmpeg cuts and librosa rhythmic analysis.
+- **`orchestrator.py`**: The central state machine. Manages Adaptive Rhythm and the handoff between planning, styling, and reflection.
+- **`brain.py`**: Multimodal reasoning engine. Uses Gemini 3 for semantic density and "Creative DNA" extraction.
+- **`editor.py`**: The "Grammar" engine. Implements tiered energy matching and novelty-bias selection.
+- **`stylist.py`**: 
+    - **Responsibility:** Aesthetic Post-Processing.
+    - **Logic:** Maps reference font styles to high-end typography (Serif/Sans) and applies cinematic color grading.
+- **`reflector.py`**: Post-render judicial audit. Judges final video vs. original intent.
+- **`processors.py`**: FFmpeg / Librosa operations for surgical cuts and rhythmic detection.
 
 ---
 
-## 🌊 Core Stages (Plan -> Execute -> Reflect)
+## 🌊 Core Stages (Plan -> Execute -> Style -> Reflect)
 
-### Stage 4: The Advisor (Strategic Planning)
-Before a single cut is made, the Advisor generates a `Master Strategy`. It analyzes the library against the blueprint demand (e.g., "Library has 30 High energy clips, but only 2 Low energy scenic clips") and adjusts matching weights to favor the scenic clips early in the edit.
+### Stage 4: High-Precision Editor (Adaptive Rhythm)
+MIMIC V9.0 introduces **Adaptive Rhythm**. The editor no longer applies a blind 2-second cut rule. It distinguishes between:
+1. **Cinematic Holds**: Respects long, emotional shots found in the reference.
+2. **High-Energy Riffs**: Maintain rapid-fire beat-sync in intense sections.
+3. **Beat-Snapping**: Every visual cut is mathematically aligned to the nearest musical anchor.
 
-### Stage 5: The Editor (Multi-Factor Scoring)
-Matching is handled by a weighted scoring algorithm:
-- **Novelty (+40 pts)**: Prioritizes clips that haven't been seen yet.
-- **Vibe Density (+15 pts)**: Rewards clips with high semantic overlap (e.g., "Urban" vs. "Streetwear").
-- **Visual Cooldown (-40 pts)**: Penalizes reuse of the same clip within 5 seconds of timeline space.
-
-### Stage 6: The Reflector (Judicial Audit)
-The newest addition to the MIMIC stack. The Reflector performs three functions:
-1. **Fidelity Scoring**: Measures how well the final render matches the original Reference Blueprint.
-2. **Rhythm Check**: Validates that "Peak" visual moments align with "Peak" audio moments.
-3. **Editorial Suggestion**: If a segment is weak, it suggests exactly which clip from the library *should* have been used instead for V2.
+### Stage 5: The Stylist (Visual Excellence)
+Before the final render, the Stylist module performs a "Style Transfer":
+- **Typography**: Matches reference text placement and style (e.g., "Serif Center" -> Georgia).
+- **Color Tone**: Adjusts tone and contrast (Warm/Cool/Neutral) to match the reference look.
+- **Clean Aesthetic**: Ensures all overlays follow professional design principles (soft shadows, readable font scales).
 
 ---
 
 ## ⚡ Performance & Caching
 
-MIMIC uses a three-tier hash-based cache to achieve 15-20s render times:
-1. **Analysis Cache**: Stores Gemini results keyed by file hash + analysis parameters.
-2. **Standardization Cache**: Stores `std_{hash}.mp4` files (1080x1920, 30fps) to avoid expensive re-encoding.
-3. **Fingerprint Validation**: Reference analysis is cached only if the visual scene anchors (FFmpeg scene detection) match.
+MIMIC uses tiered hash-based caching for instant (~1s) re-runs:
+1. **Cache Inheritance**: Allows the system to reuse expensive AI analysis even if pacing timestamps have slightly shifted.
+2. **Analysis Cache**: Stores Gemini results keyed by file hash.
+3. **Standardization Cache**: Stores `std_{hash}.mp4` files to avoid re-encoding overhead.
 
 ---
 
 ## 🔒 Security & Reliability
-- **Multi-Key Rotation**: 28-key carousel managed by `api_key_manager.py` to prevent quota failures.
-- **Timeline Integrity**: Mathematical continuity checks ensure zero-frame gaps or overlaps in the final EDL.
-- **Reflective Fallbacks**: If Gemini fails to provide JSON, a deterministic heuristic blueprint is used.
+- **Multi-Key Rotation**: 28-key carousel to prevent API quota failures.
+- **Timeline Integrity**: Mathematical continuity checks ensure zero-frame gaps.
 
 ---
 
-**Last Updated:** January 30, 2026  
-**Version:** V8.0  
-**Status:** Hackathon Ready
+**Last Updated:** January 31, 2026  
+**Version:** V9.0  
+**Status:** Ready for Demo

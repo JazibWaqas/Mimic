@@ -1,46 +1,42 @@
-# 🌊 MIMIC - Agentic Development Flow (V7.1)
+# 🌊 MIMIC - Agentic Development Flow (V9.0)
 
-This document details the exact sequence of logic implemented in the MIMIC pipeline as of **January 30, 2026**.
+This document details the exact sequence of logic implemented in the MIMIC pipeline as of **January 31, 2026**.
 
 ---
 
-## 🚀 The Agentic Flow (Plan -> Execute)
+## 🚀 The Agentic Flow (Plan -> Execute -> Style)
 
 ### 1. Pre-Analysis (The Brain)
 - **Visual Scene Grounding:** FFmpeg identifies physical cuts to anchor the AI's temporal reasoning.
 - **Rhythmic Extraction:** Librosa extracts the BPM and beat grid from the reference audio.
-- **Gemini Analysis:** mapping the "Aesthetic Blueprint" (Energy, Motion, Vibes, Arc Stage).
+- **Adaptive Rhythm Calculation:** Determines the ideal shot density (e.g., Respecting Cinematic Holds vs. High-Energy Riffs).
+- **Gemini Analysis:** mapping the "Aesthetic Blueprint" (Energy, Motion, Vibes, Arc Stage, Typography, Tone).
 
 ### 2. Strategic Planning (The Advisor)
-- **Library Audit:** The Advisor scans all clip analysis files to identify material coverage and gaps.
-- **Narrative Strategy:** Injects weights into the matching engine to ensure a coherent story arc (e.g., "Intro" clips for start segments).
+- **Library Audit:** The Advisor scans materials to identify coverage (e.g., "Need more Medium-energy clips").
+- **Narrative Strategy:** Injects weights to ensure Intro/Build-up/Peak/Outro consistency.
 
 ### 3. Selective Assembly (The Editor)
 - **Weighted-Greedy Search:** Scores clips based on Discovery Bonus (+40), Vibe Match (+15), and Arc Consistency (+10).
-- **Beat Snapping:** Mathematically aligns cut transitions to the nearest rhythmic anchor where possible.
-- **Frame-Accurate Extractions:** FFmpeg surgical cuts with stream re-encoding for precision.
+- **Beat-Snapping:** Every decision is mathematically aligned to a musical anchor.
+- **Micro-Moment Extraction:** High-precision FFmpeg surgical cuts.
 
-### 4. Output Generation (The Renderer)
-- **Assembly:** Concatenates segments and merges original reference audio.
-- **Validation:** Final duration check and integrity verification.
+### 4. Aesthetic Styling (The Stylist)
+- **Type Spec Transfer:** Maps reference text to premium local fonts (Georgia, Serif).
+- **Cinematic Grading:** Applies tone, contrast, and filmic look adjustments via FFmpeg filter chains.
+
+### 5. AI Reflection (The Reflector)
+- **Judicial Audit:** Gemini watches the final MP4 and scores the fidelity.
 
 ---
 
 ## 🏗️ Technical Integrity
 
-- **Standardization Cache:** 100% persistent. Clips are standardized once and reused across sessions.
+- **Cache Inheritance:** Reuses expansive AI analysis across different rhythmic experiments for instant results.
+- **Standardization Cache:** 100% persistent hash-based reuse.
 - **Timeline Continuity:** Zero-gap enforcement via mathematical start/end snapping.
-- **Whitebox Reasoning:** Every single cut has a stored "Reasoning String" visible in logs and the Vault.
-
----
-
-## 🏗️ Upcoming Stage
-
-### Stage 6: Post-Render Reflection
-- **Task:** Final judicial audit where Gemini "watches" the render.
-- **Status:** Planned for V8.0.
 
 ---
 
 **Last Updated:** January 31, 2026  
-**Status:** 🟡 V7.1 Verified  
+**Status:** � V9.0 Finalized  
