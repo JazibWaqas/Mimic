@@ -22,7 +22,7 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 
 # Separate cache versioning for reference vs clip analysis
 # Reference and clip analysis use different prompts and should be versioned independently
-REFERENCE_CACHE_VERSION = "7.0"  # v7.0: Enhanced narrative analysis with text overlay, content requirements, and experience goals (Jan 27, 2026)
+REFERENCE_CACHE_VERSION = "8.0"  # v8.0: Editorial intelligence (shot_function, relation_to_previous, expected_hold, camera_movement), visual style (color_grading, visual_effects), music structure, text styling (Jan 31, 2026)
 CLIP_CACHE_VERSION = "7.0"        # v7.0: Enhanced analysis with intensity, motion granularity, semantic content, and moment roles (Jan 27, 2026)
 # v5.0: Fixed string corruption bug + vibes loading (Jan 21, 2026)
 # v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
@@ -35,125 +35,154 @@ CLIP_CACHE_VERSION = "7.0"        # v7.0: Enhanced analysis with intensity, moti
 # ============================================================================
 
 REFERENCE_ANALYSIS_PROMPT = """
-You are a professional video editor analyzing a REFERENCE VIDEO.
+You are a professional video editor, creative director, and post-production supervisor analyzing a REFERENCE VIDEO.
 
-Your goal is to extract the EDITING STRUCTURE and CREATIVE INTENT of this video
-so it can be applied to other footage.
+Your task is to extract EVERY aspect of this video's creative DNA — not just how it looks, but why each editorial decision works. This analysis will be used to recreate the EXACT editorial structure, semantic intent, and stylistic execution with different footage.
 
-You are NOT selecting clips.
-You are NOT judging visual quality.
-You are extracting intent, structure, and constraints.
+Think like a human editor, not a tagging system.
 
 ---
 
-## 1. TEXT & NARRATIVE CONTEXT (if present)
+## 1. TEXT & NARRATIVE CONTEXT
 
 - text_overlay:
-  Extract any readable on-screen text that appears in the video.
-  If none exists, return an empty string.
+  Extract ALL readable on-screen text that appears in the video.
+  If multiple text elements appear, list them all separated by " | ".
+
+- text_style:
+  Describe the typography and text design:
+  * Font style (e.g., Bold Sans-serif, Handwritten, Serif, Monospace)
+  * Text animation (e.g., Static, Fade-in, Typewriter, Slide, Glitch)
+  * Text placement (e.g., Center, Top-third, Bottom-third, Corner)
+  * Text color and effects (e.g., White with glow, Gradient, Outline, Shadow)
 
 - narrative_message:
-  Interpret what the edit is trying to communicate or evoke for the viewer
-  in ONE clear sentence.
-  Focus on intent and purpose, not describing the footage itself.
+  In ONE sentence, explain what this edit is trying to communicate emotionally or philosophically.
 
 - intent_clarity:
-  How explicit the intent is in the reference.
-  One of: "Clear", "Implicit", "Ambiguous"
-
-### Text Interpretation Rule
-If on-screen text appears to function primarily as:
-- song lyrics
-- timestamps, dates, counters, or calendars
-- rapidly changing or decorative visual elements
-
-then treat the text as a STRUCTURAL or MOOD device, not authorial intent.
-
-In these cases:
-- Set intent_clarity to "Implicit"
-- Base narrative_message primarily on visual progression and pacing
-- Do NOT infer story meaning directly from the literal text content
+  "Clear" | "Implicit" | "Ambiguous"
 
 ---
 
-## 2. OVERALL EDITING ANALYSIS
+## 2. VISUAL STYLE & AESTHETICS
+
+- color_grading:
+  * Tone: Warm | Cool | Neutral | Desaturated | Vibrant
+  * Contrast: High | Medium | Low
+  * Specific look (e.g., Vintage film, Analog VHS, Teal-Orange, Moody dark)
+
+- aspect_ratio:
+  16:9 | 9:16 | 1:1 | 4:5 | 21:9 | Other
+
+- visual_effects:
+  List ALL recurring effects (Film grain, Light leaks, VHS noise, Chromatic aberration, Slow motion, Speed ramps, Vignette, Glitch, None).
+
+- shot_variety:
+  * Dominant scale: Extreme CU | CU | Medium | Wide | Extreme Wide | Mixed
+  * Variety level: Consistent | Moderate | High variety
+
+---
+
+## 3. EDITING STYLE & RHYTHM
 
 - editing_style:
-  (e.g., Cinematic, Vlog, Travel Montage, Memory Reel)
+  (Cinematic montage, Memory reel, Travel edit, Music video, Vlog, Documentary)
+
+- cut_style:
+  Hard cuts | Cross dissolves | Match cuts | Jump cuts | Mixed
+
+- transition_effects:
+  (Whip pans, Zooms, Morphs, None)
 
 - emotional_intent:
-  The dominant emotional tone the edit aims to evoke
-  (e.g., Nostalgic, Energetic, Reflective)
+  (Nostalgic, Reflective, Energetic, Playful, Dramatic, Peaceful)
 
 - arc_description:
-  Describe how energy evolves across the timeline
-  (e.g., "Calm intro → steady build → energetic peak → soft outro")
-
----
-
-## 3. CONTENT REQUIREMENTS (INTENT-LEVEL, NOT CLIP SELECTION)
-
-Describe what TYPES of moments make this edit work.
-Be semantic and experiential, not technical.
-
-- must_have_content:
-  3–5 types of moments this edit fundamentally relies on
-
-- should_have_content:
-  2–3 types of moments that would strengthen the edit
-
-- avoid_content:
-  Content types that would clash with the narrative intent of this edit.
-  Avoid absolute exclusions when context could make them compatible.
-
-Rules:
-- Do NOT reference specific clips.
-- Do NOT describe camera techniques.
-- Describe meaning, not mechanics.
-
----
-
-## 4. EXPERIENCE GOALS (FELT, NOT MECHANICAL)
+  Describe the emotional and energy progression over time.
 
 - pacing_feel:
-  How the edit FEELS rhythmically
-  (e.g., breathable, relentless, reflective)
+  Breathable | Relentless | Steady | Syncopated | Reflective
 
 - visual_balance:
-  What the edit emphasizes overall
-  (e.g., people-centric, place-centric, balanced)
-
-Describe the viewer experience, not BPM, cut speed, or timing.
+  People-centric | Place-centric | Balanced | Action-focused | Atmosphere-focused
 
 ---
 
-## 5. SEGMENT STRUCTURE (CUT-TO-CUT)
+## 4. AUDIO & MUSIC RELATIONSHIP
 
-Identify EVERY actual cut and define segments that match the exact editing rhythm.
+- music_sync:
+  Tightly synced | Loosely synced | Independent
+
+- audio_style:
+  * Genre
+  * Vocal presence: Instrumental | Vocals | Mixed
+  * Energy: High | Mid | Slow/Ambient
+
+---
+
+## 5. CONTENT REQUIREMENTS (EDITORIAL CONSTRAINTS)
+
+- must_have_content:
+  3–5 moment types this edit fundamentally relies on (describe meaning, not mechanics).
+
+- should_have_content:
+  2–3 moment types that would strengthen the edit.
+
+- avoid_content:
+  Content that would break the emotional or narrative intent.
+
+---
+
+## 6. SEGMENT STRUCTURE (CUT-TO-CUT)
+
+Identify EVERY REAL CUT and define segments.
 
 For EACH segment:
-- ENERGY: Low | Medium | High
-- MOTION: Static | Dynamic
-- VIBE: Single-word or short reusable noun phrase describing visible content
-  (people, place, or activity)
-- ARC_STAGE: Intro | Build-up | Peak | Outro
+
+- energy: Low | Medium | High
+- motion: Static | Dynamic
+- vibe: Single-word visible subject or activity
+- shot_scale: Extreme CU | CU | Medium | Wide | Extreme Wide
+- arc_stage: Intro | Build-up | Peak | Outro
+
+### Editorial Intelligence (REQUIRED)
+
+- shot_function:
+  Establish | Action | Reaction | Detail | Transition | Release | Button
+
+- relation_to_previous:
+  Setup | Payoff | Contrast | Continuation | None
+
+- expected_hold:
+  Short | Normal | Long
+
+- camera_movement:
+  Locked | Handheld | Smooth pan | Erratic | Mixed
 
 Rules:
-- Detect REAL cuts only.
-- Segment IDs must be sequential.
-- Last segment MUST end exactly at total_duration.
-- VIBE must describe visible content categories.
-  Avoid abstract concepts, lighting conditions, or emotions as vibes.
+- Detect REAL cuts only
+- Segment IDs must be sequential
+- Final segment must end exactly at total_duration
+
+---
+
+## 7. MUSIC STRUCTURE (EDITORIAL)
+
+Analyze music structurally, not technically.
+
+- music_structure:
+  * phrases (intro, main, breakdown, resolve)
+  * accent_moments (drops, emphasized beats)
+  * ending_type (hard stop, fade, loop)
 
 ---
 
 ## OUTPUT REQUIREMENTS
 
-- Output VALID JSON ONLY.
-- No markdown, no explanations.
-- Do NOT assume future footage.
-- Do NOT predict outcomes.
-- Analysis must be reusable for applying this structure to DIFFERENT content.
+- Output VALID JSON ONLY
+- No markdown
+- No explanations
+- Fill ALL fields (use "" or [] if not applicable)
 
 ---
 
@@ -161,17 +190,54 @@ Rules:
 
 {
   "text_overlay": "",
+  "text_style": {
+    "font_style": "",
+    "animation": "",
+    "placement": "",
+    "color_effects": ""
+  },
   "narrative_message": "",
   "intent_clarity": "",
+
+  "color_grading": {
+    "tone": "",
+    "contrast": "",
+    "specific_look": ""
+  },
+  "aspect_ratio": "",
+  "visual_effects": [],
+  "shot_variety": {
+    "dominant_scale": "",
+    "variety_level": ""
+  },
+
+  "editing_style": "",
+  "cut_style": "",
+  "transition_effects": [],
+  "emotional_intent": "",
+  "arc_description": "",
+  "pacing_feel": "",
+  "visual_balance": "",
+
+  "music_sync": "",
+  "audio_style": {
+    "genre": "",
+    "vocal_presence": "",
+    "energy": ""
+  },
+
   "must_have_content": [],
   "should_have_content": [],
   "avoid_content": [],
-  "pacing_feel": "",
-  "visual_balance": "",
-  "total_duration": 15.5,
-  "editing_style": "",
-  "emotional_intent": "",
-  "arc_description": "",
+
+  "music_structure": {
+    "phrases": [],
+    "accent_moments": [],
+    "ending_type": ""
+  },
+
+  "total_duration": 0.0,
+
   "segments": [
     {
       "id": 1,
@@ -180,10 +246,16 @@ Rules:
       "duration": 1.0,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Candid",
-      "arc_stage": "Intro"
+      "vibe": "People",
+      "shot_scale": "Wide",
+      "arc_stage": "Intro",
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
     }
   ],
+
   "overall_reasoning": "",
   "ideal_material_suggestions": []
 }
@@ -540,11 +612,9 @@ rate_limiter.disable()  # Gemini API enforces its own limits, we just rotate key
 class GeminiConfig:
     """Configuration for Gemini API calls."""
     
-    # Model selection - USING GEMINI 3 FOR HACKATHON
-    MODEL_NAME = "gemini-3-flash-preview"  # Primary 2.0 Model
-    FALLBACK_MODEL = "gemini-1.5-flash"     # Reliable Backup (High Quota)
-    PRO_MODEL = "gemini-3-pro-preview"      # Higher tier backup
-    EMERGENCY_FALLBACK = "gemini-2.0-flash-exp"
+    # GEMINI 3 GLOBAL HACKATHON - ONLY GEMINI 3 MODELS ALLOWED
+    MODEL_NAME = "gemini-3-flash-preview"  # Primary model
+    PRO_MODEL = "gemini-3-pro-preview"      # Pro tier for complex analysis
     
     # Generation config for consistent, structured output
     GENERATION_CONFIG = {
@@ -623,28 +693,19 @@ def initialize_gemini(api_key: str | None = None) -> genai.GenerativeModel:
     
     genai.configure(api_key=api_key)
     
-    # Try models in order: Gemini 3 Flash → Gemini 1.5 Flash (Backup) → Gemini 3 Pro
-    models_to_try = [
-        GeminiConfig.MODEL_NAME, 
-        GeminiConfig.FALLBACK_MODEL, 
-        GeminiConfig.PRO_MODEL,
-        GeminiConfig.EMERGENCY_FALLBACK
-    ]
+    # Use Gemini 3 Flash (default) - NO FALLBACKS
+    model_name = GeminiConfig.MODEL_NAME
     
-    for model_name in models_to_try:
-        try:
-            model = genai.GenerativeModel(
-                model_name=model_name,
-                generation_config=GeminiConfig.GENERATION_CONFIG,
-                safety_settings=GeminiConfig.SAFETY_SETTINGS
-            )
-            print(f"[OK] Using model: {model_name}")
-            return model
-        except Exception as e:
-            print(f"[WARN] Model {model_name} could not be initialized: {e}")
-            continue
-    
-    raise ValueError("No Gemini models available. Check API key and model access.")
+    try:
+        model = genai.GenerativeModel(
+            model_name=model_name,
+            generation_config=GeminiConfig.GENERATION_CONFIG,
+            safety_settings=GeminiConfig.SAFETY_SETTINGS
+        )
+        print(f"[OK] Using Gemini 3 model: {model_name}")
+        return model
+    except Exception as e:
+        raise ValueError(f"Failed to initialize Gemini 3 model '{model_name}': {e}")
 
 
 def _upload_video_with_retry(video_path: str) -> genai.File:
@@ -787,7 +848,12 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
                     motion=segment.motion,
                     vibe=segment.vibe,
                     reasoning=segment.reasoning,
-                    arc_stage=segment.arc_stage
+                    arc_stage=segment.arc_stage,
+                    shot_scale=segment.shot_scale,
+                    shot_function=segment.shot_function,
+                    relation_to_previous=segment.relation_to_previous,
+                    expected_hold=segment.expected_hold,
+                    camera_movement=segment.camera_movement
                 ))
                 segment_id += 1
         else:
@@ -801,7 +867,12 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
                 motion=segment.motion,
                 vibe=segment.vibe,
                 reasoning=segment.reasoning,
-                arc_stage=segment.arc_stage
+                arc_stage=segment.arc_stage,
+                shot_scale=segment.shot_scale,
+                shot_function=segment.shot_function,
+                relation_to_previous=segment.relation_to_previous,
+                expected_hold=segment.expected_hold,
+                camera_movement=segment.camera_movement
             ))
             segment_id += 1
     
@@ -900,49 +971,31 @@ def analyze_reference_video(
     
     analysis_video_path = muted_path
     
+    analysis_video_path = muted_path
+    
+    prompt = REFERENCE_ANALYSIS_PROMPT
     if scene_timestamps:
         rounded_hints = [round(t, 2) for t in scene_timestamps]
-        prompt = f"""
-You are a professional video editor.
-
-You MUST use these exact cut boundaries to define segments.
+        constraint_intro = f"""
+### EDITORIAL CONSTRAINT: SCENE DETECTION HINTS
+You MUST use these exact cut boundaries for your segment analysis.
 Cut boundaries (seconds): {rounded_hints}
 Total duration: {duration}
 
-Rules:
-- Create segments exactly between [0.0] + cut_boundaries + [total_duration].
-- Do NOT invent new cut times.
-- For each segment, fill: energy, motion, vibe, arc_stage, reasoning.
-- arc_stage must be one of: Intro, Build-up, Peak, Outro (choose best).
-- vibe must be a short keyword: Nature, Urban, Action, Calm, Friends, Travel, etc.
-- Output VALID JSON ONLY matching the schema below.
-- Last segment end must equal total_duration exactly.
+Rules for hinted analysis:
+1. Every segment MUST start and end exactly on these timestamps.
+2. Do NOT add or remove segments.
+3. For each segment, provide the full editorial intelligence required below.
 
-JSON schema:
-{{
-  "total_duration": {duration},
-  "editing_style": "Cinematic Montage",
-  "emotional_intent": "Dynamic",
-  "arc_description": "Video with multiple scene changes",
-  "segments": [
-    {{
-      "id": 1,
-      "start": 0.0,
-      "end": 1.23,
-      "duration": 1.23,
-      "energy": "Low|Medium|High",
-      "motion": "Static|Dynamic",
-      "vibe": "Nature",
-      "arc_stage": "Intro|Build-up|Peak|Outro",
-      "reasoning": "Based on scene change detection"
-    }}
-  ],
-  "overall_reasoning": "Analysis based on visual scene changes",
-  "ideal_material_suggestions": ["Varied content matching detected segments"]
-}}
+---
 """
-    else:
-        prompt = REFERENCE_ANALYSIS_PROMPT
+        prompt = constraint_intro + REFERENCE_ANALYSIS_PROMPT
+    
+    # Inject actual duration into the schema if possible (search and replace last occurrence)
+    if '"total_duration": 0.0,' in prompt:
+        prompt = prompt.replace('"total_duration": 0.0,', f'"total_duration": {duration},')
+    elif '"total_duration": 15.5,' in prompt:
+        prompt = prompt.replace('"total_duration": 15.5,', f'"total_duration": {duration},')
 
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:

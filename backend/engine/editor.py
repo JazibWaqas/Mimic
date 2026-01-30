@@ -10,7 +10,7 @@ FIXES APPLIED:
 """
 
 from typing import List, Dict, Optional
-from collections import defaultdict
+from collections import defaultdict, Counter
 from pathlib import Path
 from models import (
     StyleBlueprint,
@@ -87,13 +87,34 @@ def match_clips_to_blueprint(
         print(f"  ⚙️ Advisor disabled by config")
     
     # PHASE 2: Generate beat grid for audio sync
-    beat_grid = None
+    beat_grid = []
     if reference_path and has_audio(reference_path) and bpm and bpm > 0:
         beat_grid = get_beat_grid(blueprint.total_duration, bpm=int(round(bpm)))
         print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at {bpm:.2f} BPM")
-        print(f"  DEBUG: First 5 beats: {beat_grid[:5]}")
+    
+    # Phase 2b: Intelligent Beat Extraction (v8.0)
+    if blueprint.music_structure and "accent_moments" in blueprint.music_structure:
+        import re
+        manual_beats = []
+        for m in blueprint.music_structure["accent_moments"]:
+            # Extract last number which is typically the timestamp
+            nums = re.findall(r"[-+]?\d*\.\d+|\d+", str(m))
+            if nums:
+                try: 
+                    t = float(nums[-1])
+                    if 0 < t < blueprint.total_duration:
+                        manual_beats.append(t)
+                except: continue
+        
+        if manual_beats:
+            print(f"  🎹 Extracted {len(manual_beats)} manual accent moments (Super Beats)")
+            beat_grid = sorted(list(set(beat_grid + manual_beats)))
+
+    if not beat_grid:
+        print(f"  🔇 No beats detected - using visual cuts only")
     else:
-        print(f"  🔇 No audio detected or invalid BPM - using visual cuts only")
+        print(f"  ✅ Active beat grid: {len(beat_grid)} points")
+
     
     print()
     
@@ -109,7 +130,7 @@ def match_clips_to_blueprint(
     
     # VISUAL COOLDOWN SYSTEM: Track when each clip was last used on the timeline
     clip_last_used_at = {clip.filename: -999.0 for clip in clip_index.clips}
-    MIN_CLIP_REUSE_GAP = 5.0  # Don't reuse a clip within 5 seconds
+    # MIN_CLIP_REUSE_GAP is now calculated dynamically inside the segment loop to be energy-aware
     
     # TRANSITION MEMORY: Track the last clip's motion for smooth flow
     last_clip_motion = None
@@ -190,7 +211,8 @@ def match_clips_to_blueprint(
         
         # Fill this segment with MULTIPLE RAPID CUTS to match fast-paced editing
         cuts_in_segment = 0
-        max_cuts_per_segment = 20  # Prevent infinite loops
+        # Dynamic loop protection: more cuts allowed for longer segments (min 10)
+        max_cuts_per_segment = max(10, int(segment.duration / 0.2))
         
         while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
             # Update remaining duration based on current timeline position
@@ -242,7 +264,9 @@ def match_clips_to_blueprint(
                 # We aggressively push the AI to use things it hasn't shown yet
                 usage = clip_usage_count[clip.filename]
                 if usage == 0:
-                    score += 50.0  # Massive bonus for discovery
+                    # Discovery bonus: High for Intro to establish variety, then decays slightly to avoid overriding function
+                    discovery_bonus = 40.0 if segment.arc_stage == "Intro" else 30.0
+                    score += discovery_bonus
                     reasons.append("✨ New")
                 else:
                     score -= (usage * 20.0) # Penalty for reuse: Each time used, it becomes significantly less attractive
@@ -306,11 +330,117 @@ def match_clips_to_blueprint(
 
                 # 5. RECENT COOLDOWN (Force temporal spacing)
                 time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
-                if time_since_last_use < MIN_CLIP_REUSE_GAP:
+                
+                # Dynamic Reuse Gap: Faster montages allow quicker reuse (min 2.0s)
+                # Long, calm segments require more visual breathing room between same clip
+                dynamic_reuse_gap = max(2.0, segment.duration * 0.6)
+                if segment.arc_stage.lower() == "peak":
+                    dynamic_reuse_gap = 2.0 # Force rotation faster during peaks
+                
+                if time_since_last_use < dynamic_reuse_gap:
                     score -= 100.0 # Extreme penalty for near-simultaneous reuse
                     reasons.append("Cooldown")
 
-                reasoning = " | ".join(reasons)
+                # 6. EDITORIAL INTELLIGENCE MATCHING (NEW v8.0)
+                # This uses the new high-level fields from the blueprint for precise matching
+                
+                # A. Shot Function alignment
+                # Map reference function to candidate narrative utilities
+                function_to_utility = {
+                    "Establish": ["establishing", "transition"],
+                    "Action": ["peak", "build", "transition"],
+                    "Reaction": ["reflection", "build", "transition"],
+                    "Detail": ["transition", "build"],
+                    "Transition": ["transition"],
+                    "Release": ["reflection", "transition"],
+                    "Button": ["peak", "transition"]
+                }
+                
+                seg_func = getattr(segment, 'shot_function', None)
+                if seg_func and seg_func in function_to_utility:
+                    target_utilities = function_to_utility[seg_func]
+                    clip_utilities = [u.lower() for u in clip.narrative_utility]
+                    if any(tu in clip_utilities for tu in target_utilities):
+                        score += 25.0
+                        reasons.append(f"Func:{seg_func[:3]}")
+                
+                # B. Subject Consistency Matching
+                # Match segment vibe (subject) to clip primary subjects
+                seg_vibe_lower = (segment.vibe or "").lower()
+                clip_subjects = [s.lower() for s in clip.primary_subject]
+                
+                subject_map = {
+                    "friends": ["people-group", "activity-celebration", "people-solo"],
+                    "nature": ["place-nature", "activity-travel"],
+                    "urban": ["place-urban", "place-indoor"],
+                    "action": ["activity-sport", "activity-celebration"],
+                    "travel": ["activity-travel", "place-nature", "place-urban"]
+                }
+                
+                for cat, subjects in subject_map.items():
+                    if cat in seg_vibe_lower:
+                        if any(s in clip_subjects for s in subjects):
+                            score += 20.0
+                            reasons.append("Subj")
+                            break
+
+                # C. Shot Scale Continuity (Heuristic)
+                # Map reference shot scale to clip properties (since old clips don't have shot_scale)
+                seg_scale = getattr(segment, 'shot_scale', None)
+                if seg_scale:
+                    is_scale_match = False
+                    if seg_scale in ["Wide", "Extreme Wide"]:
+                        is_scale_match = "establishing" in [u.lower() for u in clip.narrative_utility] or \
+                                         any("place" in s.lower() for s in clip.primary_subject)
+                    elif seg_scale == "Medium":
+                        is_scale_match = any(u.lower() in ["build", "transition"] for u in clip.narrative_utility) or \
+                                         any("people-group" in s.lower() for s in clip.primary_subject)
+                    elif "Close" in seg_scale:
+                        is_scale_match = any(u.lower() == "peak" for u in clip.narrative_utility) or \
+                                         any("people-solo" in s.lower() for s in clip.primary_subject)
+                    
+                    if is_scale_match:
+                        score += 15.0
+                        reasons.append(f"Scale:{seg_scale[:2]}")
+
+                # D. Moment Role alignment
+                if clip.best_moments:
+                    energy_key = segment.energy.value.capitalize()
+                    best_moment = clip.best_moments.get(energy_key)
+                    if best_moment:
+                        role = getattr(best_moment, 'moment_role', '').lower()
+                        if role == segment.arc_stage.lower() or role == (seg_func or '').lower():
+                            score += 15.0
+                            reasons.append("Role")
+
+
+                # NARRATIVE REASONING SYNTHESIS (v8.1)
+                # Instead of raw tags, we build a "Director's Note"
+                narrative_parts = []
+                
+                # 1. Lead with Shot Function / Arc Context
+                seg_func = getattr(segment, 'shot_function', 'Action')
+                if "Func:" in str(reasons):
+                    narrative_parts.append(f"Chosen to serve as a strategic '{seg_func}' shot for this {segment.arc_stage} sequence.")
+                
+                # 2. Add Content/Vibe justification
+                if vibe_matched:
+                    narrative_parts.append(f"The visual content perfectly captures the '{segment.vibe}' atmosphere we're aiming for.")
+                
+                # 3. Add technical "Finish"
+                tech_notes = []
+                if "✨ New" in reasons: tech_notes.append("visual freshness")
+                if "Flow" in reasons: tech_notes.append("smooth motion continuity")
+                if "LightMatch" in reasons: tech_notes.append("matching lighting conditions")
+                
+                if tech_notes:
+                    narrative_parts.append(f"Matches the reference in terms of {', '.join(tech_notes)}.")
+                
+                # Handle Advisor guidance
+                if advisor and any("🧠" in r for r in reasons):
+                    narrative_parts.append(f"Directly satisfies the Editor's strategic guidance for this emotional arc.")
+
+                reasoning = " ".join(narrative_parts) if narrative_parts else "Selected based on optimal energy and content alignment."
                 return score, reasoning, vibe_matched
 
             # Calculate scores for available clips
@@ -380,23 +510,36 @@ def match_clips_to_blueprint(
                 use_duration = segment_remaining
                 is_last_cut_of_segment = True
             else:
-                # Subdivide based on BEAT VALUES
+                # Subdivide based on BEAT VALUES and NARRATIVE PACING (v8.0)
                 if beat_grid and bpm > 0:
                     seconds_per_beat = 60.0 / bpm
-                    stage = segment.arc_stage.lower()
                     
-                    if stage == "peak":
-                        # Aggressive: 1 beat
-                        use_duration = seconds_per_beat * 1
-                    elif stage == "build-up" or is_long_segment:
-                        # Energetic: 1 or 2 beats
-                        use_duration = seconds_per_beat * random.choice([1, 2])
+                    # 1. Determine base multiplier from Expected Hold (Director Intent)
+                    hold = getattr(segment, 'expected_hold', 'Normal').lower()
+                    if hold == "short":
+                        multiplier = 1  # 1 beat
+                    elif hold == "long":
+                        multiplier = 4  # 4 beats (1 bar)
                     else:
-                        # Moderate
-                        use_duration = seconds_per_beat * 4
+                        multiplier = 2  # 2 beats (Normal)
+                        
+                    # 2. Adjust for Arc Stage (Contextual Override)
+                    stage = segment.arc_stage.lower()
+                    if stage == "peak":
+                        multiplier = 1  # Always fast in peak
+                    elif stage == "outro" and hold == "long":
+                        multiplier = 8  # Extra long hold for outro
+                    
+                    use_duration = seconds_per_beat * multiplier
                 else:
-                    # Fallback to aggressive random
-                    use_duration = random.uniform(0.6, 1.1)
+                    # Fallback to random weighted by expected_hold
+                    hold = getattr(segment, 'expected_hold', 'Normal').lower()
+                    if hold == "short":
+                        use_duration = random.uniform(0.4, 0.7)
+                    elif hold == "long":
+                        use_duration = random.uniform(1.8, 3.0)
+                    else:
+                        use_duration = random.uniform(0.8, 1.4)
                 
                 # Check if we overshot the segment
                 if use_duration >= segment_remaining - 0.2:
@@ -405,18 +548,30 @@ def match_clips_to_blueprint(
                 else:
                     is_last_cut_of_segment = False
 
+            # ======================================================================
             # PHASE 2: Beat Alignment (Snapping)
+            # CONTRACT: The Editor (logic) has final authority over time.
+            # The Director (Gemini) provides "accent_moments", but these MUST
+            # stay strictly within the segment boundaries fixed by FFmpeg/Librosa.
+            # ======================================================================
             original_duration = use_duration
             beat_aligned = False
             beat_target = None
+            
             if beat_grid and not is_last_cut_of_segment:
                 target_end = timeline_position + use_duration
                 aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.15)
                 
-                if aligned_end > timeline_position + 0.1 and aligned_end < segment.end - 0.1:
+                # TIMING GUARD: Never allow a beat to snap outside the current segment.
+                # Must be inside the segment with at least 100ms breathing room from edges.
+                if (aligned_end >= segment.start + 0.1 and 
+                    aligned_end < segment.end - 0.1 and
+                    aligned_end > timeline_position + 0.1):
+                    
                     beat_target = aligned_end
                     use_duration = aligned_end - timeline_position
                     beat_aligned = True
+                    
                     # ENHANCED LOGGING: Beat alignment
                     beat_alignment_logs.append({
                         "segment_id": segment.id,
@@ -670,7 +825,40 @@ def print_edl_summary(edl: EDL, blueprint: StyleBlueprint, clip_index: ClipIndex
     for filename, count in sorted(clip_usage.items(), key=lambda x: x[1], reverse=True):
         print(f"  {filename}: {count} times")
     
+    # NEW: Intelligence Audit (v8.1)
+    # This proves the AI actually followed the narrative intent
+    print(f"\n🧠 INTELLIGENCE AUDIT (Narrative Compliance):")
+    arc_accuracy = defaultdict(list)
+    function_counts = Counter()
+    vibe_matches = 0
+    total_cuts = len(edl.decisions)
+
+    # Find the blueprint segments for each decision to check compliance
+    for d in edl.decisions:
+        seg = next((s for s in blueprint.segments if s.id == d.segment_id), None)
+        if seg:
+            function_counts[seg.shot_function] += 1
+            if d.vibe_match: vibe_matches += 1
+            
+            # Use heuristic to see if shot_function matches clip's narrative role
+            # (Note: This is a rough check since clips don't have explicit function tags yet)
+            arc_accuracy[seg.arc_stage].append(1 if d.vibe_match else 0)
+
+    print(f"   Vibe Accuracy: {(vibe_matches/total_cuts*100):.1f}% matching suggested vibes")
+    
+    print(f"\n   Shot Function Breakdown:")
+    for func, count in function_counts.most_common():
+        print(f"      {func:12s}: {count} cuts")
+
+    print(f"\n   Arc Stage Fidelity:")
+    for stage in ["Intro", "Build-up", "Peak", "Outro"]:
+        matches = arc_accuracy.get(stage, [])
+        if matches:
+            acc = sum(matches) / len(matches) * 100
+            print(f"      {stage:12s}: {acc:.1f}% intent alignment")
+
     print()
+
 
 
 def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:

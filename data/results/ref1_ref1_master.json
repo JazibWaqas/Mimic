@@ -9,11 +9,16 @@
         "start": 0.0,
         "end": 0.7,
         "duration": 0.7,
-        "energy": "Low",
+        "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Intro text overlay with blurry background.",
-        "arc_stage": "Intro"
+        "vibe": "Wrestling",
+        "reasoning": "",
+        "arc_stage": "Intro",
+        "shot_scale": "Medium",
+        "shot_function": "Establish",
+        "relation_to_previous": "None",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 2,
@@ -22,9 +27,14 @@
         "duration": 0.7,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Close-up of a friend's face.",
-        "arc_stage": "Intro"
+        "vibe": "Laughing",
+        "reasoning": "",
+        "arc_stage": "Intro",
+        "shot_scale": "CU",
+        "shot_function": "Reaction",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 3,
@@ -33,9 +43,14 @@
         "duration": 0.69,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Group shot in a vehicle.",
-        "arc_stage": "Intro"
+        "vibe": "Car ride",
+        "reasoning": "",
+        "arc_stage": "Intro",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 4,
@@ -44,9 +59,14 @@
         "duration": 0.7,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Travel",
-        "reasoning": "Fast motion travel shot from a car.",
-        "arc_stage": "Build-up"
+        "vibe": "Motion blur",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Transition",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Erratic"
       },
       {
         "id": 5,
@@ -55,9 +75,14 @@
         "duration": 0.64,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Action",
-        "reasoning": "Guy leaning out of a car window.",
-        "arc_stage": "Build-up"
+        "vibe": "Rebellion",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Payoff",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 6,
@@ -66,9 +91,14 @@
         "duration": 0.76,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Interaction inside a car.",
-        "arc_stage": "Build-up"
+        "vibe": "Group fun",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 7,
@@ -77,9 +107,14 @@
         "duration": 0.69,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Urban",
-        "reasoning": "Interaction with a street vendor.",
-        "arc_stage": "Build-up"
+        "vibe": "Interaction",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 8,
@@ -88,9 +123,14 @@
         "duration": 0.59,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Urban",
-        "reasoning": "Close-up of street interaction.",
-        "arc_stage": "Build-up"
+        "vibe": "Interaction",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "CU",
+        "shot_function": "Detail",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 9,
@@ -99,9 +139,14 @@
         "duration": 0.81,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Nighttime park hangout.",
-        "arc_stage": "Build-up"
+        "vibe": "Playground",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 10,
@@ -110,9 +155,14 @@
         "duration": 0.7,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Playing on park equipment.",
-        "arc_stage": "Build-up"
+        "vibe": "Playground",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 11,
@@ -121,20 +171,30 @@
         "duration": 0.55,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Friends",
-        "reasoning": "Indoor hangout scene.",
-        "arc_stage": "Build-up"
+        "vibe": "Indoor",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Establish",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 12,
         "start": 7.53,
         "end": 8.37,
         "duration": 0.84,
-        "energy": "Low",
+        "energy": "Medium",
         "motion": "Static",
-        "vibe": "Friends",
-        "reasoning": "Relaxed indoor group shot.",
-        "arc_stage": "Build-up"
+        "vibe": "Chilling",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Locked"
       },
       {
         "id": 13,
@@ -143,9 +203,14 @@
         "duration": 0.7,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Action",
-        "reasoning": "Running at night.",
-        "arc_stage": "Build-up"
+        "vibe": "Running",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 14,
@@ -154,9 +219,14 @@
         "duration": 0.53,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Start of high-energy dancing.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 15,
@@ -165,9 +235,14 @@
         "duration": 0.87,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Continued dancing in a hall.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 16,
@@ -176,9 +251,14 @@
         "duration": 0.69,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Rooftop dancing scene.",
-        "arc_stage": "Peak"
+        "vibe": "Rooftop",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 17,
@@ -187,9 +267,14 @@
         "duration": 0.47,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "More rooftop dancing.",
-        "arc_stage": "Peak"
+        "vibe": "Rooftop",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 18,
@@ -199,8 +284,13 @@
         "energy": "High",
         "motion": "Dynamic",
         "vibe": "Party",
-        "reasoning": "Large crowd dancing.",
-        "arc_stage": "Peak"
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
       },
       {
         "id": 19,
@@ -210,8 +300,13 @@
         "energy": "High",
         "motion": "Dynamic",
         "vibe": "Party",
-        "reasoning": "Crowd energy increases.",
-        "arc_stage": "Peak"
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 20,
@@ -220,9 +315,14 @@
         "duration": 0.69,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Lifting a friend in the crowd.",
-        "arc_stage": "Peak"
+        "vibe": "Lifting",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 21,
@@ -231,9 +331,14 @@
         "duration": 0.82,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Intense crowd dancing.",
-        "arc_stage": "Peak"
+        "vibe": "Crowd",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 22,
@@ -242,9 +347,14 @@
         "duration": 0.58,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Fast-paced dance cuts.",
-        "arc_stage": "Peak"
+        "vibe": "Crowd",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 23,
@@ -253,20 +363,30 @@
         "duration": 0.7,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "More dance floor action.",
-        "arc_stage": "Peak"
+        "vibe": "Bus dance",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 24,
         "start": 16.05,
         "end": 16.83,
         "duration": 0.78,
-        "energy": "High",
+        "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Crowd celebration.",
-        "arc_stage": "Peak"
+        "vibe": "Night drive",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Transition",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Smooth pan"
       },
       {
         "id": 25,
@@ -275,9 +395,14 @@
         "duration": 0.61,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "High energy party vibes.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 26,
@@ -286,9 +411,14 @@
         "duration": 0.7,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Continued party montage.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 27,
@@ -297,9 +427,14 @@
         "duration": 0.73,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "More dancing shots.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 28,
@@ -308,9 +443,14 @@
         "duration": 0.66,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Rapid cuts of the party.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 29,
@@ -319,9 +459,14 @@
         "duration": 0.7,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Crowd interaction.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 30,
@@ -330,9 +475,14 @@
         "duration": 0.7,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Peak party energy.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 31,
@@ -341,9 +491,14 @@
         "duration": 0.74,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Final dance floor shots.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 32,
@@ -352,9 +507,14 @@
         "duration": 0.8,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Party",
-        "reasoning": "Dancing inside a bus.",
-        "arc_stage": "Peak"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 33,
@@ -363,38 +523,103 @@
         "duration": 0.83,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Action",
-        "reasoning": "Leaning out of moving car at night.",
-        "arc_stage": "Outro"
+        "vibe": "Dancing",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
       },
       {
         "id": 34,
         "start": 23.3,
         "end": 24.192336,
         "duration": 0.892336,
-        "energy": "Medium",
+        "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Travel",
-        "reasoning": "Car driving away into the night.",
-        "arc_stage": "Outro"
+        "vibe": "Final drive",
+        "reasoning": "",
+        "arc_stage": "Outro",
+        "shot_scale": "Wide",
+        "shot_function": "Button",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Smooth pan"
       }
     ],
-    "editing_style": "Cinematic Montage",
-    "emotional_intent": "Dynamic",
-    "arc_description": "Video with multiple scene changes",
-    "text_overlay": "",
-    "narrative_message": "",
-    "intent_clarity": "Implicit",
-    "must_have_content": [],
-    "should_have_content": [],
-    "avoid_content": [],
-    "pacing_feel": "",
-    "visual_balance": "",
-    "overall_reasoning": "The video is a fast-paced montage capturing moments of friendship, travel, and high-energy celebration. It transitions from casual hangouts to an intense party sequence, concluding with a dynamic travel shot.",
+    "editing_style": "Memory reel",
+    "emotional_intent": "Playful",
+    "arc_description": "The video starts with chaotic, intimate moments of friendship, builds through various social activities like car rides and playground antics, and reaches a peak with high-energy dancing at a party.",
+    "text_overlay": "We Took | Duniya ki aesi ki tesi, no zimmedari | Way to seriously",
+    "narrative_message": "A high-energy celebration of youthful rebellion and the joy of living a carefree life with friends.",
+    "intent_clarity": "Clear",
+    "must_have_content": [
+      "Candid group interactions showing physical closeness (hugging, wrestling, dancing).",
+      "Night-time settings with artificial lighting (street lights, party lights).",
+      "Dynamic motion, either from the subjects or the camera (car rides, running).",
+      "A mix of indoor and outdoor social environments."
+    ],
+    "should_have_content": [
+      "Shots of friends leaning out of car windows or in transit.",
+      "Interactions with people outside the immediate friend group."
+    ],
+    "avoid_content": [
+      "Slow-paced or static shots.",
+      "Professional, staged, or overly polished cinematography.",
+      "Solitary or lonely subjects."
+    ],
+    "pacing_feel": "Relentless",
+    "visual_balance": "People-centric",
+    "color_grading": {
+      "tone": "Warm",
+      "contrast": "Medium",
+      "specific_look": "Low-light night aesthetic with warm skin tones and natural shadows."
+    },
+    "aspect_ratio": "9:16",
+    "visual_effects": [
+      "Motion blur",
+      "Handheld camera shake",
+      "Low-light grain"
+    ],
+    "shot_variety": {
+      "dominant_scale": "Medium",
+      "variety_level": "High variety"
+    },
+    "cut_style": "Hard cuts",
+    "transition_effects": [
+      "None"
+    ],
+    "music_sync": "Tightly synced",
+    "audio_style": {
+      "genre": "Upbeat Pop/Electronic",
+      "vocal_presence": "Vocals",
+      "energy": "High"
+    },
+    "music_structure": {
+      "phrases": [
+        "Intro (0:00-0:03)",
+        "Main energetic loop (0:03-0:23)",
+        "Hard stop (0:23-0:24)"
+      ],
+      "accent_moments": [
+        "Every cut aligns with a drum beat or vocal accent."
+      ],
+      "ending_type": "Hard stop"
+    },
+    "text_style": {
+      "font_style": "Serif, Elegant",
+      "animation": "Static",
+      "placement": "Top-center",
+      "color_effects": "Yellow/Gold color"
+    },
+    "overall_reasoning": "The edit functions as a fast-paced 'memory dump' or 'vibe check' of a friend group's highlights. It relies on the sheer volume of clips and the relentless sync to the music to create a feeling of overwhelming joy and chaos. The serif text adds a touch of nostalgic elegance to otherwise raw and unpolished footage.",
     "ideal_material_suggestions": [
-      "More high-energy group activities",
-      "Travel footage",
-      "Vibrant party scenes with dynamic camera movements"
+      "Raw phone footage of friends laughing and being silly.",
+      "Clips from a wedding or party with lots of dancing and movement.",
+      "Night-time car ride footage with streetlights passing by.",
+      "Physical play like wrestling, running, or playground activities."
     ]
   },
   "clip_index": {
@@ -3666,346 +3891,346 @@
     "decisions": [
       {
         "segment_id": 1,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_040.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_048.mp4",
         "clip_start": 0.0,
         "clip_end": 0.7,
         "timeline_start": 0.0,
         "timeline_end": 0.7,
-        "reasoning": "🌟 ✨ New | 🧠+90 | LightMatch | Low",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Matches the reference in terms of visual freshness, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 2,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_054.mp4",
-        "clip_start": 2.0,
-        "clip_end": 2.7,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_024.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.7,
         "timeline_start": 0.7,
         "timeline_end": 1.4,
-        "reasoning": "🌟 ✨ New | 🧠+70 | Nearby:friends | LightMatch | Flow | Medium",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Reaction' shot for this Intro sequence. The visual content perfectly captures the 'Laughing' atmosphere we're aiming for. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": true
       },
       {
         "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_006.mp4",
-        "clip_start": 3.0,
-        "clip_end": 3.69,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_001.mp4",
+        "clip_start": 2.5,
+        "clip_end": 3.19,
         "timeline_start": 1.4,
         "timeline_end": 2.09,
-        "reasoning": "🌟 ✨ New | 🧠+70 | Nearby:friends | LightMatch | Flow | Medium",
-        "vibe_match": true
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Intro sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": false
       },
       {
         "segment_id": 4,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_021.mp4",
-        "clip_start": 7.5,
-        "clip_end": 8.2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_007.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.7000000000000002,
         "timeline_start": 2.09,
         "timeline_end": 2.79,
-        "reasoning": "🌟 ✨ New | 🧠+80 | Vibe:Travel | LightMatch | Flow | High",
-        "vibe_match": true
+        "reasoning": "🌟 Chosen to serve as a strategic 'Transition' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": false
       },
       {
         "segment_id": 5,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_007.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.6400000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_021.mp4",
+        "clip_start": 7.5,
+        "clip_end": 8.14,
         "timeline_start": 2.79,
         "timeline_end": 3.43,
-        "reasoning": "🌟 ✨ New | 🧠+80 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 6,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_042.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.7600000000000002,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_038.mp4",
+        "clip_start": 4.5,
+        "clip_end": 5.26,
         "timeline_start": 3.43,
         "timeline_end": 4.19,
-        "reasoning": "🌟 ✨ New | 🧠+80 | LightMatch | Flow | Medium",
-        "vibe_match": false
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. The visual content perfectly captures the 'Group fun' atmosphere we're aiming for. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": true
       },
       {
         "segment_id": 7,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_048.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.6899999999999995,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_020.mp4",
+        "clip_start": 2.0,
+        "clip_end": 2.6899999999999995,
         "timeline_start": 4.19,
         "timeline_end": 4.88,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | Medium",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 8,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_050.mp4",
-        "clip_start": 1.0,
-        "clip_end": 1.5899999999999999,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_016.mp4",
+        "clip_start": 8.0,
+        "clip_end": 8.59,
         "timeline_start": 4.88,
         "timeline_end": 5.47,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | Medium",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Detail' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 9,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_014.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.8100000000000005,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_006.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.8100000000000005,
         "timeline_start": 5.47,
         "timeline_end": 6.28,
-        "reasoning": "🌟 ✨ New | 🧠+60 | Nearby:friends | LightMatch | Flow | Medium",
-        "vibe_match": true
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": false
       },
       {
         "segment_id": 10,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_016.mp4",
-        "clip_start": 8.0,
-        "clip_end": 8.7,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_014.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.7000000000000002,
         "timeline_start": 6.28,
         "timeline_end": 6.98,
-        "reasoning": "🌟 ✨ New | 🧠+65 | Nearby:friends | LightMatch | Flow | ~High",
-        "vibe_match": true
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": false
       },
       {
         "segment_id": 11,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_041.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.5499999999999998,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_054.mp4",
+        "clip_start": 2.0,
+        "clip_end": 2.55,
         "timeline_start": 6.98,
         "timeline_end": 7.53,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | Medium",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Establish' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 12,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_026.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.839999999999999,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_011.mp4",
+        "clip_start": 2.0,
+        "clip_end": 2.839999999999999,
         "timeline_start": 7.53,
         "timeline_end": 8.37,
-        "reasoning": "🌟 ✨ New | 🧠+10 | LightMatch | Flow | Low",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 13,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_020.mp4",
-        "clip_start": 4.5,
-        "clip_end": 5.200000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_012.mp4",
+        "clip_start": 10.5,
+        "clip_end": 11.200000000000001,
         "timeline_start": 8.37,
         "timeline_end": 9.07,
-        "reasoning": "🌟 ✨ New | 🧠+65 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 14,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_033.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.5299999999999994,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_009.mp4",
+        "clip_start": 5.0,
+        "clip_end": 5.529999999999999,
         "timeline_start": 9.07,
         "timeline_end": 9.6,
-        "reasoning": "🌟 ✨ New | 🧠+80 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 15,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_009.mp4",
-        "clip_start": 5.0,
-        "clip_end": 5.870000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_015.mp4",
+        "clip_start": 39.0,
+        "clip_end": 39.870000000000005,
         "timeline_start": 9.6,
         "timeline_end": 10.47,
-        "reasoning": "🌟 ✨ New | 🧠+80 | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 16,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_015.mp4",
-        "clip_start": 39.0,
-        "clip_end": 39.69,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_017.mp4",
+        "clip_start": 9.2,
+        "clip_end": 9.889999999999999,
         "timeline_start": 10.47,
         "timeline_end": 11.16,
-        "reasoning": "🌟 ✨ New | 🧠+80 | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 17,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_004.mp4",
-        "clip_start": 1.0,
-        "clip_end": 1.4700000000000006,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_039.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.47000000000000064,
         "timeline_start": 11.16,
         "timeline_end": 11.63,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 18,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_002.mp4",
-        "clip_start": 5.5,
-        "clip_end": 6.5699999999999985,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_035.mp4",
+        "clip_start": 0.0,
+        "clip_end": 1.0699999999999985,
         "timeline_start": 11.63,
         "timeline_end": 12.7,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 19,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_039.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.5600000000000005,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_013.mp4",
+        "clip_start": 3.5,
+        "clip_end": 4.0600000000000005,
         "timeline_start": 12.7,
         "timeline_end": 13.26,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 20,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_005.mp4",
-        "clip_start": 3.5,
-        "clip_end": 4.1899999999999995,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_008.mp4",
+        "clip_start": 12.0,
+        "clip_end": 12.69,
         "timeline_start": 13.26,
         "timeline_end": 13.95,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 21,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_019.mp4",
-        "clip_start": 8.5,
-        "clip_end": 9.32,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_033.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.8200000000000003,
         "timeline_start": 13.95,
         "timeline_end": 14.77,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
-        "vibe_match": false
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. The visual content perfectly captures the 'Crowd' atmosphere we're aiming for. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": true
       },
       {
         "segment_id": 22,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_038.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.5800000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_002.mp4",
+        "clip_start": 5.5,
+        "clip_end": 6.08,
         "timeline_start": 14.77,
         "timeline_end": 15.35,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 23,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_024.mp4",
-        "clip_start": 3.0,
-        "clip_end": 3.700000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_010.mp4",
+        "clip_start": 3.2,
+        "clip_end": 3.9000000000000012,
         "timeline_start": 15.35,
         "timeline_end": 16.05,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 24,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_003.mp4",
-        "clip_start": 5.0,
-        "clip_end": 5.779999999999998,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_036.mp4",
+        "clip_start": 10.0,
+        "clip_end": 10.779999999999998,
         "timeline_start": 16.05,
         "timeline_end": 16.83,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Transition' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions.",
         "vibe_match": false
       },
       {
         "segment_id": 25,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_044.mp4",
-        "clip_start": 28.5,
-        "clip_end": 29.110000000000003,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_053.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.610000000000003,
         "timeline_start": 16.83,
         "timeline_end": 17.44,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 26,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_031.mp4",
-        "clip_start": 3.0,
-        "clip_end": 3.6999999999999993,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_044.mp4",
+        "clip_start": 28.5,
+        "clip_end": 29.2,
         "timeline_start": 17.44,
         "timeline_end": 18.14,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 27,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_043.mp4",
-        "clip_start": 11.5,
-        "clip_end": 12.23,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_032.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.7300000000000004,
         "timeline_start": 18.14,
         "timeline_end": 18.87,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 28,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_008.mp4",
-        "clip_start": 12.0,
-        "clip_end": 12.66,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_019.mp4",
+        "clip_start": 8.5,
+        "clip_end": 9.16,
         "timeline_start": 18.87,
         "timeline_end": 19.53,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 29,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_053.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_055.mp4",
         "clip_start": 0.0,
         "clip_end": 0.6999999999999993,
         "timeline_start": 19.53,
         "timeline_end": 20.23,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 30,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_055.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.6999999999999993,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_003.mp4",
+        "clip_start": 5.0,
+        "clip_end": 5.699999999999999,
         "timeline_start": 20.23,
         "timeline_end": 20.93,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 31,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_032.mp4",
-        "clip_start": 3.0,
-        "clip_end": 3.740000000000002,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_047.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.740000000000002,
         "timeline_start": 20.93,
         "timeline_end": 21.67,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 32,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_047.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.7999999999999972,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_043.mp4",
+        "clip_start": 11.5,
+        "clip_end": 12.299999999999997,
         "timeline_start": 21.67,
         "timeline_end": 22.47,
-        "reasoning": "🌟 ✨ New | 🧠+60 | LightMatch | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 33,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_034.mp4",
-        "clip_start": 1.5,
-        "clip_end": 2.330000000000002,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_031.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.830000000000002,
         "timeline_start": 22.47,
         "timeline_end": 23.3,
-        "reasoning": "🌟 ✨ New | 🧠+70 | Flow | High",
+        "reasoning": "🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
         "vibe_match": false
       },
       {
         "segment_id": 34,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_048.mp4",
-        "clip_start": 0.6899999999999995,
-        "clip_end": 1.5823359999999997,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref1_master\\standardized\\clip_005.mp4",
+        "clip_start": 3.5,
+        "clip_end": 4.392336,
         "timeline_start": 23.3,
         "timeline_end": 24.192336,
-        "reasoning": "🌟 Used:1x | 🧠+90 | Vibe:Travel | LightMatch | Flow | Medium",
-        "vibe_match": true
+        "reasoning": "🌟 Chosen to serve as a strategic 'Button' shot for this Outro sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.",
+        "vibe_match": false
       }
     ]
   },
   "error": null,
-  "processing_time_seconds": 140.2192509174347
+  "processing_time_seconds": 55.431567907333374
 }

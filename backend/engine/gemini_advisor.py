@@ -353,7 +353,16 @@ def _format_blueprint_summary(blueprint: StyleBlueprint) -> str:
     
     if blueprint.text_overlay:
         lines.append(f"Text Overlay: \"{blueprint.text_overlay}\"")
+        if blueprint.text_style:
+            lines.append(f"Text Style: {blueprint.text_style}")
     
+    if blueprint.color_grading:
+        lines.append(f"Color Grading: {blueprint.color_grading}")
+    if blueprint.visual_effects:
+        lines.append(f"Visual Effects: {', '.join(blueprint.visual_effects)}")
+    if blueprint.aspect_ratio:
+        lines.append(f"Aspect Ratio: {blueprint.aspect_ratio}")
+
     lines.append(f"\nNarrative Message: {blueprint.narrative_message}")
     lines.append(f"Intent Clarity: {blueprint.intent_clarity}")
     
@@ -386,10 +395,15 @@ def _format_blueprint_summary(blueprint: StyleBlueprint) -> str:
     lines.append(f"\nArc Stage Breakdown:")
     for stage, segments in arc_stages.items():
         energy_counts = {}
+        functions = set()
         for seg in segments:
             energy_counts[seg.energy.value] = energy_counts.get(seg.energy.value, 0) + 1
+            if seg.shot_function:
+                functions.add(seg.shot_function)
+        
         energy_str = ", ".join(f"{count}x {energy}" for energy, count in energy_counts.items())
-        lines.append(f"  {stage}: {len(segments)} segments ({energy_str})")
+        func_str = f" [Functions: {', '.join(functions)}]" if functions else ""
+        lines.append(f"  {stage}: {len(segments)} segments ({energy_str}){func_str}")
     
     return "\n".join(lines)
 

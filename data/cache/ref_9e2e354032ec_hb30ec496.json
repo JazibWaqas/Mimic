@@ -1,19 +1,85 @@
 {
+  "text_overlay": "We Took | Duniya ki aesi ki tesi, no zimmedari | Way to seriously",
+  "text_style": {
+    "font_style": "Serif, Elegant",
+    "animation": "Static",
+    "placement": "Top-center",
+    "color_effects": "Yellow/Gold color"
+  },
+  "narrative_message": "A high-energy celebration of youthful rebellion and the joy of living a carefree life with friends.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Warm",
+    "contrast": "Medium",
+    "specific_look": "Low-light night aesthetic with warm skin tones and natural shadows."
+  },
+  "aspect_ratio": "9:16",
+  "visual_effects": [
+    "Motion blur",
+    "Handheld camera shake",
+    "Low-light grain"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Medium",
+    "variety_level": "High variety"
+  },
+  "editing_style": "Memory reel",
+  "cut_style": "Hard cuts",
+  "transition_effects": [
+    "None"
+  ],
+  "emotional_intent": "Playful",
+  "arc_description": "The video starts with chaotic, intimate moments of friendship, builds through various social activities like car rides and playground antics, and reaches a peak with high-energy dancing at a party.",
+  "pacing_feel": "Relentless",
+  "visual_balance": "People-centric",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Upbeat Pop/Electronic",
+    "vocal_presence": "Vocals",
+    "energy": "High"
+  },
+  "must_have_content": [
+    "Candid group interactions showing physical closeness (hugging, wrestling, dancing).",
+    "Night-time settings with artificial lighting (street lights, party lights).",
+    "Dynamic motion, either from the subjects or the camera (car rides, running).",
+    "A mix of indoor and outdoor social environments."
+  ],
+  "should_have_content": [
+    "Shots of friends leaning out of car windows or in transit.",
+    "Interactions with people outside the immediate friend group."
+  ],
+  "avoid_content": [
+    "Slow-paced or static shots.",
+    "Professional, staged, or overly polished cinematography.",
+    "Solitary or lonely subjects."
+  ],
+  "music_structure": {
+    "phrases": [
+      "Intro (0:00-0:03)",
+      "Main energetic loop (0:03-0:23)",
+      "Hard stop (0:23-0:24)"
+    ],
+    "accent_moments": [
+      "Every cut aligns with a drum beat or vocal accent."
+    ],
+    "ending_type": "Hard stop"
+  },
   "total_duration": 24.192336,
-  "editing_style": "Cinematic Montage",
-  "emotional_intent": "Dynamic",
-  "arc_description": "Video with multiple scene changes",
   "segments": [
     {
       "id": 1,
       "start": 0.0,
       "end": 0.7,
       "duration": 0.7,
-      "energy": "Low",
+      "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Wrestling",
+      "shot_scale": "Medium",
       "arc_stage": "Intro",
-      "reasoning": "Intro text overlay with blurry background."
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 2,
@@ -22,9 +88,13 @@
       "duration": 0.7,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Laughing",
+      "shot_scale": "CU",
       "arc_stage": "Intro",
-      "reasoning": "Close-up of a friend's face."
+      "shot_function": "Reaction",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 3,
@@ -33,9 +103,13 @@
       "duration": 0.69,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Car ride",
+      "shot_scale": "Medium",
       "arc_stage": "Intro",
-      "reasoning": "Group shot in a vehicle."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 4,
@@ -44,9 +118,13 @@
       "duration": 0.7,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Travel",
+      "vibe": "Motion blur",
+      "shot_scale": "Wide",
       "arc_stage": "Build-up",
-      "reasoning": "Fast motion travel shot from a car."
+      "shot_function": "Transition",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Erratic"
     },
     {
       "id": 5,
@@ -55,9 +133,13 @@
       "duration": 0.64,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Action",
+      "vibe": "Rebellion",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Guy leaning out of a car window."
+      "shot_function": "Action",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 6,
@@ -66,9 +148,13 @@
       "duration": 0.76,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Group fun",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Interaction inside a car."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 7,
@@ -77,9 +163,13 @@
       "duration": 0.69,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Urban",
+      "vibe": "Interaction",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Interaction with a street vendor."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 8,
@@ -88,9 +178,13 @@
       "duration": 0.59,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Urban",
+      "vibe": "Interaction",
+      "shot_scale": "CU",
       "arc_stage": "Build-up",
-      "reasoning": "Close-up of street interaction."
+      "shot_function": "Detail",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 9,
@@ -99,9 +193,13 @@
       "duration": 0.81,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Playground",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Nighttime park hangout."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 10,
@@ -110,9 +208,13 @@
       "duration": 0.7,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Playground",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Playing on park equipment."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 11,
@@ -121,20 +223,28 @@
       "duration": 0.55,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Indoor",
+      "shot_scale": "Wide",
       "arc_stage": "Build-up",
-      "reasoning": "Indoor hangout scene."
+      "shot_function": "Establish",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 12,
       "start": 7.53,
       "end": 8.37,
       "duration": 0.84,
-      "energy": "Low",
+      "energy": "Medium",
       "motion": "Static",
-      "vibe": "Friends",
+      "vibe": "Chilling",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Relaxed indoor group shot."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
     },
     {
       "id": 13,
@@ -143,9 +253,13 @@
       "duration": 0.7,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Action",
+      "vibe": "Running",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Running at night."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 14,
@@ -154,9 +268,13 @@
       "duration": 0.53,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Start of high-energy dancing."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 15,
@@ -165,9 +283,13 @@
       "duration": 0.87,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Continued dancing in a hall."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 16,
@@ -176,9 +298,13 @@
       "duration": 0.69,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Rooftop",
+      "shot_scale": "Wide",
       "arc_stage": "Peak",
-      "reasoning": "Rooftop dancing scene."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 17,
@@ -187,9 +313,13 @@
       "duration": 0.47,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Rooftop",
+      "shot_scale": "Wide",
       "arc_stage": "Peak",
-      "reasoning": "More rooftop dancing."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 18,
@@ -199,8 +329,12 @@
       "energy": "High",
       "motion": "Dynamic",
       "vibe": "Party",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Large crowd dancing."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
     },
     {
       "id": 19,
@@ -210,8 +344,12 @@
       "energy": "High",
       "motion": "Dynamic",
       "vibe": "Party",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Crowd energy increases."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 20,
@@ -220,9 +358,13 @@
       "duration": 0.69,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Lifting",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Lifting a friend in the crowd."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 21,
@@ -231,9 +373,13 @@
       "duration": 0.82,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Crowd",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Intense crowd dancing."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 22,
@@ -242,9 +388,13 @@
       "duration": 0.58,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Crowd",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Fast-paced dance cuts."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 23,
@@ -253,20 +403,28 @@
       "duration": 0.7,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Bus dance",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "More dance floor action."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 24,
       "start": 16.05,
       "end": 16.83,
       "duration": 0.78,
-      "energy": "High",
+      "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Night drive",
+      "shot_scale": "Wide",
       "arc_stage": "Peak",
-      "reasoning": "Crowd celebration."
+      "shot_function": "Transition",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Smooth pan"
     },
     {
       "id": 25,
@@ -275,9 +433,13 @@
       "duration": 0.61,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "High energy party vibes."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 26,
@@ -286,9 +448,13 @@
       "duration": 0.7,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Continued party montage."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 27,
@@ -297,9 +463,13 @@
       "duration": 0.73,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "More dancing shots."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 28,
@@ -308,9 +478,13 @@
       "duration": 0.66,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Rapid cuts of the party."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 29,
@@ -319,9 +493,13 @@
       "duration": 0.7,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Crowd interaction."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 30,
@@ -330,9 +508,13 @@
       "duration": 0.7,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Peak party energy."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 31,
@@ -341,9 +523,13 @@
       "duration": 0.74,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Final dance floor shots."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 32,
@@ -352,9 +538,13 @@
       "duration": 0.8,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Party",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Dancing inside a bus."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 33,
@@ -363,28 +553,37 @@
       "duration": 0.83,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Action",
-      "arc_stage": "Outro",
-      "reasoning": "Leaning out of moving car at night."
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 34,
       "start": 23.3,
       "end": 24.192336,
       "duration": 0.892336,
-      "energy": "Medium",
+      "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Travel",
+      "vibe": "Final drive",
+      "shot_scale": "Wide",
       "arc_stage": "Outro",
-      "reasoning": "Car driving away into the night."
+      "shot_function": "Button",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Smooth pan"
     }
   ],
-  "overall_reasoning": "The video is a fast-paced montage capturing moments of friendship, travel, and high-energy celebration. It transitions from casual hangouts to an intense party sequence, concluding with a dynamic travel shot.",
+  "overall_reasoning": "The edit functions as a fast-paced 'memory dump' or 'vibe check' of a friend group's highlights. It relies on the sheer volume of clips and the relentless sync to the music to create a feeling of overwhelming joy and chaos. The serif text adds a touch of nostalgic elegance to otherwise raw and unpolished footage.",
   "ideal_material_suggestions": [
-    "More high-energy group activities",
-    "Travel footage",
-    "Vibrant party scenes with dynamic camera movements"
+    "Raw phone footage of friends laughing and being silly.",
+    "Clips from a wedding or party with lots of dancing and movement.",
+    "Night-time car ride footage with streetlights passing by.",
+    "Physical play like wrestling, running, or playground activities."
   ],
-  "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 16:28:42"
+  "_cache_version": "8.0",
+  "_cached_at": "2026-01-31 02:37:18"
 }

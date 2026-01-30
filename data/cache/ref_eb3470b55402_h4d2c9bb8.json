@@ -1,8 +1,74 @@
 {
+  "text_overlay": "i know these will all be stories some day | and our pictures will become old photographs | we'll all become somebody's mom or dad | but right now | these moments are not stories",
+  "text_style": {
+    "font_style": "Bold Rounded Sans-serif",
+    "animation": "Static",
+    "placement": "Center",
+    "color_effects": "Yellow with slight soft glow"
+  },
+  "narrative_message": "A nostalgic celebration of the present, emphasizing that current moments with friends are precious realities before they inevitably become memories.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Warm",
+    "contrast": "Low",
+    "specific_look": "Vintage film aesthetic with a hazy, desaturated, and grainy texture."
+  },
+  "aspect_ratio": "1:1",
+  "visual_effects": [
+    "Film grain",
+    "Motion blur",
+    "Vignette",
+    "Light leaks",
+    "Vintage filter"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Medium",
+    "variety_level": "High variety"
+  },
+  "editing_style": "Memory reel",
+  "cut_style": "Hard cuts",
+  "transition_effects": [
+    "None"
+  ],
+  "emotional_intent": "Nostalgic",
+  "arc_description": "The edit begins with slow, reflective shots of friends at sunset, transitions through various candid everyday moments, and builds into a high-energy sequence of dancing and joy, concluding with a focus on living in the 'now'.",
+  "pacing_feel": "Reflective",
+  "visual_balance": "People-centric",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Indie Pop",
+    "vocal_presence": "Vocals",
+    "energy": "Mid"
+  },
+  "must_have_content": [
+    "Candid group interactions showing genuine connection",
+    "A mix of outdoor (nature) and indoor (home/social) settings",
+    "Low-fidelity, vintage-style cinematography",
+    "Text that provides a philosophical counterpoint to the visuals"
+  ],
+  "should_have_content": [
+    "Motion blur to convey a sense of fleeting time",
+    "Warm, golden hour lighting",
+    "Laughter and unposed movement"
+  ],
+  "avoid_content": [
+    "High-definition, crisp, or overly polished commercial footage",
+    "Static, posed portraits",
+    "Cold or clinical environments"
+  ],
+  "music_structure": {
+    "phrases": [
+      "Intro/Verse (0:00-0:04)",
+      "Build-up (0:04-0:08)",
+      "Chorus/Peak (0:08-0:14)"
+    ],
+    "accent_moments": [
+      "4.1s (beat shift)",
+      "8.5s (rhythmic peak)"
+    ],
+    "ending_type": "Fade"
+  },
   "total_duration": 14.393515,
-  "editing_style": "Cinematic Montage",
-  "emotional_intent": "Dynamic",
-  "arc_description": "Video with multiple scene changes",
   "segments": [
     {
       "id": 1,
@@ -11,9 +77,13 @@
       "duration": 0.5,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Nature",
+      "vibe": "Beach",
+      "shot_scale": "Wide",
       "arc_stage": "Intro",
-      "reasoning": "Friends running on a beach at sunset with text overlay."
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 2,
@@ -22,9 +92,13 @@
       "duration": 0.53,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Nature",
+      "vibe": "Beach",
+      "shot_scale": "Wide",
       "arc_stage": "Intro",
-      "reasoning": "Continuation of the beach scene with text completion."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 3,
@@ -33,9 +107,13 @@
       "duration": 0.47,
       "energy": "Low",
       "motion": "Static",
-      "vibe": "Friends",
+      "vibe": "Interior",
+      "shot_scale": "Medium",
       "arc_stage": "Intro",
-      "reasoning": "Indoor scene featuring an antler chandelier and friends."
+      "shot_function": "Establish",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
     },
     {
       "id": 4,
@@ -43,21 +121,29 @@
       "end": 2.0,
       "duration": 0.5,
       "energy": "Low",
-      "motion": "Static",
-      "vibe": "Friends",
+      "motion": "Dynamic",
+      "vibe": "Interior",
+      "shot_scale": "Medium",
       "arc_stage": "Intro",
-      "reasoning": "Continuation of the indoor antler room scene."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 5,
       "start": 2.0,
       "end": 3.07,
       "duration": 1.07,
-      "energy": "Medium",
+      "energy": "Low",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Blurry",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Blurry indoor shot with text about pictures becoming photographs."
+      "shot_function": "Transition",
+      "relation_to_previous": "Setup",
+      "expected_hold": "Normal",
+      "camera_movement": "Erratic"
     },
     {
       "id": 6,
@@ -66,9 +152,13 @@
       "duration": 0.53,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Dancing",
+      "shot_scale": "Wide",
       "arc_stage": "Build-up",
-      "reasoning": "Continuation of the blurry indoor shot."
+      "shot_function": "Action",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 7,
@@ -77,9 +167,13 @@
       "duration": 0.5,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Beach",
+      "shot_scale": "Wide",
       "arc_stage": "Build-up",
-      "reasoning": "Large living room scene with friends moving around."
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 8,
@@ -88,9 +182,13 @@
       "duration": 0.5,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Concert",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Continuation of the living room scene."
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 9,
@@ -98,10 +196,14 @@
       "end": 5.1,
       "duration": 0.5,
       "energy": "Medium",
-      "motion": "Dynamic",
-      "vibe": "Nature",
+      "motion": "Static",
+      "vibe": "Kitchen",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Beach scene with friends playing volleyball."
+      "shot_function": "Detail",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
     },
     {
       "id": 10,
@@ -110,9 +212,13 @@
       "duration": 1.0,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Nature",
+      "vibe": "Store",
+      "shot_scale": "Medium",
       "arc_stage": "Build-up",
-      "reasoning": "Continuation of the beach volleyball scene."
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
     },
     {
       "id": 11,
@@ -121,9 +227,13 @@
       "duration": 0.53,
       "energy": "Medium",
       "motion": "Static",
-      "vibe": "Friends",
-      "arc_stage": "Peak",
-      "reasoning": "Indoor stage or church setting with text about becoming parents."
+      "vibe": "Piano",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Detail",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
     },
     {
       "id": 12,
@@ -131,10 +241,14 @@
       "end": 7.13,
       "duration": 0.5,
       "energy": "Medium",
-      "motion": "Static",
-      "vibe": "Friends",
-      "arc_stage": "Peak",
-      "reasoning": "Continuation of the stage setting scene."
+      "motion": "Dynamic",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 13,
@@ -143,9 +257,13 @@
       "duration": 0.5,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
-      "arc_stage": "Peak",
-      "reasoning": "Kitchen scene with friends hanging out."
+      "vibe": "Laughing",
+      "shot_scale": "CU",
+      "arc_stage": "Build-up",
+      "shot_function": "Reaction",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 14,
@@ -155,8 +273,12 @@
       "energy": "Medium",
       "motion": "Dynamic",
       "vibe": "Friends",
-      "arc_stage": "Peak",
-      "reasoning": "Continuation of the kitchen scene."
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 15,
@@ -165,31 +287,43 @@
       "duration": 0.53,
       "energy": "Medium",
       "motion": "Dynamic",
-      "vibe": "Friends",
-      "arc_stage": "Peak",
-      "reasoning": "Grocery store scene with friends being playful."
+      "vibe": "Pushups",
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 16,
       "start": 8.5,
       "end": 9.0,
       "duration": 0.5,
-      "energy": "Medium",
+      "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Continuation of the grocery store scene."
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 17,
       "start": 9.0,
       "end": 9.53,
       "duration": 0.53,
-      "energy": "Medium",
-      "motion": "Static",
-      "vibe": "Friends",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Indoor scene with someone playing the piano."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 18,
@@ -198,20 +332,28 @@
       "duration": 0.67,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Friends",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
       "arc_stage": "Peak",
-      "reasoning": "Blurry indoor scene of friends dancing."
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 19,
       "start": 10.2,
       "end": 10.7,
       "duration": 0.5,
-      "energy": "Medium",
-      "motion": "Static",
-      "vibe": "Friends",
-      "arc_stage": "Outro",
-      "reasoning": "Two girls laughing with text 'but right now'."
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 20,
@@ -220,9 +362,13 @@
       "duration": 0.5,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Friends",
-      "arc_stage": "Outro",
-      "reasoning": "Friends doing pushups in a room."
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 21,
@@ -231,9 +377,13 @@
       "duration": 0.5,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Friends",
-      "arc_stage": "Outro",
-      "reasoning": "Friends dancing in a room with text 'these moments are'."
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 22,
@@ -242,29 +392,37 @@
       "duration": 0.5,
       "energy": "High",
       "motion": "Dynamic",
-      "vibe": "Friends",
-      "arc_stage": "Outro",
-      "reasoning": "Continuation of the dancing scene with text 'not stories'."
+      "vibe": "Dancing",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
     },
     {
       "id": 23,
       "start": 12.2,
       "end": 14.393515,
       "duration": 2.193515,
-      "energy": "High",
+      "energy": "Medium",
       "motion": "Dynamic",
       "vibe": "Friends",
+      "shot_scale": "Wide",
       "arc_stage": "Outro",
-      "reasoning": "Final dancing scene concluding the video."
+      "shot_function": "Release",
+      "relation_to_previous": "None",
+      "expected_hold": "Long",
+      "camera_movement": "Handheld"
     }
   ],
-  "overall_reasoning": "The video is a nostalgic montage of youth and friendship, using a mix of indoor and outdoor settings. The editing follows the rhythm of the text overlays, building energy from calm, reflective moments to high-energy dancing and play.",
+  "overall_reasoning": "The video uses a rapid-fire montage of low-fi, handheld footage to simulate the feeling of a memory reel. The yellow text acts as a narrative anchor, grounding the fast-paced visuals in a poignant, reflective theme. The shift from slow, atmospheric shots to high-energy dancing mirrors the realization that while these moments will be 'stories' later, they are vibrant and alive 'right now'.",
   "ideal_material_suggestions": [
-    "Candid shots of friends laughing",
-    "Golden hour beach footage",
-    "Low-light indoor party scenes",
-    "Close-ups of nostalgic objects"
+    "Handheld footage of friends laughing in a car at night",
+    "Close-ups of polaroid photos being taken",
+    "Wide shots of a group bonfire or camping trip",
+    "Candid shots of friends eating together in a messy kitchen"
   ],
-  "_cache_version": "7.0",
-  "_cached_at": "2026-01-28 16:01:37"
+  "_cache_version": "8.0",
+  "_cached_at": "2026-01-31 02:15:26"
 }

@@ -1,0 +1,301 @@
+{
+  "text_overlay": "Life when that one friend group is together>>",
+  "text_style": {
+    "font_style": "Sans-serif",
+    "animation": "Static",
+    "placement": "Center",
+    "color_effects": "White"
+  },
+  "narrative_message": "Capturing the essence of friendship through a series of joyful, shared experiences in diverse settings.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Warm",
+    "contrast": "Medium",
+    "specific_look": "Vintage film with a teal-orange tint"
+  },
+  "aspect_ratio": "21:9",
+  "visual_effects": [
+    "Film grain",
+    "Slow motion",
+    "Cinematic letterboxing"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Mixed",
+    "variety_level": "High variety"
+  },
+  "editing_style": "Cinematic montage",
+  "cut_style": "Hard cuts",
+  "transition_effects": [],
+  "emotional_intent": "Nostalgic",
+  "arc_description": "A high-energy montage of happy memories that maintains a consistent celebratory tone from start to finish.",
+  "pacing_feel": "Syncopated",
+  "visual_balance": "People-centric",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Indie Pop",
+    "vocal_presence": "Vocals",
+    "energy": "High"
+  },
+  "must_have_content": [
+    "Group interactions showing genuine laughter and bonding",
+    "Diverse locations including travel, social gatherings, and nature",
+    "Candid, unposed moments of joy"
+  ],
+  "should_have_content": [
+    "Scenic landscapes that establish a sense of adventure",
+    "A mix of indoor and outdoor settings",
+    "Direct eye contact or waving at the camera to engage the viewer"
+  ],
+  "avoid_content": [
+    "Solo shots without a clear connection to the group",
+    "Static or low-energy footage",
+    "Sad or overly serious expressions"
+  ],
+  "music_structure": {
+    "phrases": [
+      "Main upbeat loop"
+    ],
+    "accent_moments": [
+      "Every 1-second beat"
+    ],
+    "ending_type": "Hard stop"
+  },
+  "total_duration": 15.463084,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "shot_scale": "Wide",
+      "arc_stage": "Intro",
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 2,
+      "start": 1.0,
+      "end": 2.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Celebration",
+      "shot_scale": "CU",
+      "arc_stage": "Build-up",
+      "shot_function": "Reaction",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 3,
+      "start": 2.0,
+      "end": 3.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Party",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 4,
+      "start": 3.0,
+      "end": 4.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Laughter",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 5,
+      "start": 4.0,
+      "end": 5.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Outdoors",
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 6,
+      "start": 5.0,
+      "end": 6.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Swimming",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 7,
+      "start": 6.0,
+      "end": 7.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Dining",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Reaction",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 8,
+      "start": 7.0,
+      "end": 8.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Adventure",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 9,
+      "start": 8.0,
+      "end": 9.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Walking",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 10,
+      "start": 9.0,
+      "end": 10.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Roadtrip",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Transition",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "camera_movement": "Smooth pan"
+    },
+    {
+      "id": 11,
+      "start": 10.0,
+      "end": 11.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Sunset",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 12,
+      "start": 11.0,
+      "end": 12.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Running",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 13,
+      "start": 12.0,
+      "end": 13.0,
+      "duration": 1.0,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Water",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 14,
+      "start": 13.0,
+      "end": 14.0,
+      "duration": 1.0,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Nature",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 15,
+      "start": 14.0,
+      "end": 15.463084,
+      "duration": 1.463084,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Sunset",
+      "shot_scale": "Wide",
+      "arc_stage": "Outro",
+      "shot_function": "Button",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    }
+  ],
+  "overall_reasoning": "The video uses a rapid-fire montage technique where each shot lasts approximately one second, perfectly synced to the beat of an upbeat indie track. The cinematic 21:9 aspect ratio and warm, vintage color grading evoke a sense of nostalgia and 'core memories.' The consistent presence of the text overlay anchors the narrative, while the high variety of locations and activities keeps the viewer engaged and reinforces the theme of a vibrant, active friendship.",
+  "ideal_material_suggestions": [
+    "Footage of friends laughing together in a car with windows down",
+    "Candid shots of a group at a bonfire or party",
+    "Wide shots of friends running or jumping into water in scenic locations",
+    "Close-ups of genuine smiles and shared jokes",
+    "Travel footage showing different landscapes like mountains, beaches, or city streets"
+  ],
+  "_cache_version": "8.0",
+  "_cached_at": "2026-01-31 01:53:34"
+}

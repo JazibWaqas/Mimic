@@ -432,7 +432,9 @@ def detect_scene_changes(video_path: str, threshold: float = 0.3) -> List[float]
         if timestamps:
             final_ts.append(timestamps[0])
             for i in range(1, len(timestamps)):
-                if timestamps[i] - final_ts[-1] > 0.3: # Min 0.3s between cuts
+                # CRITICAL: Lowered from 0.3s to 0.15s to capture fast-paced edits
+                # Music videos and reels often have cuts every 0.2-0.3s
+                if timestamps[i] - final_ts[-1] > 0.15:
                     final_ts.append(timestamps[i])
         
         print(f"  [OK] Detected {len(final_ts)} visual cuts.")

@@ -1,0 +1,274 @@
+{
+  "text_overlay": "\"Maybe it wasn't that bad?\" | IT WAS NEVER BAD!",
+  "text_style": {
+    "font_style": "Bold Sans-serif",
+    "animation": "Static",
+    "placement": "Center",
+    "color_effects": "White with subtle drop shadow"
+  },
+  "narrative_message": "A nostalgic celebration of school life that reframes past struggles as cherished memories of friendship and community.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Neutral",
+    "contrast": "Medium",
+    "specific_look": "Natural, slightly warm indoor lighting"
+  },
+  "aspect_ratio": "1:1",
+  "visual_effects": [
+    "None"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Medium",
+    "variety_level": "High variety"
+  },
+  "editing_style": "Memory reel",
+  "cut_style": "Hard cuts",
+  "transition_effects": [
+    "None"
+  ],
+  "emotional_intent": "Nostalgic",
+  "arc_description": "A rapid-fire collection of candid school moments that builds a sense of collective joy and belonging.",
+  "pacing_feel": "Syncopated",
+  "visual_balance": "People-centric",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Indie Pop / Nostalgic",
+    "vocal_presence": "Vocals",
+    "energy": "Mid"
+  },
+  "must_have_content": [
+    "Candid interactions between friends",
+    "School uniforms or institutional identifiers",
+    "Group activities or shared spaces",
+    "Genuine expressions of laughter or playfulness"
+  ],
+  "should_have_content": [
+    "Classroom settings",
+    "Student leadership symbols (sashes, badges)",
+    "Handheld, amateur-style camera work"
+  ],
+  "avoid_content": [
+    "Professional studio lighting",
+    "Staged or overly posed portraits",
+    "Solitary or lonely subjects"
+  ],
+  "music_structure": {
+    "phrases": [
+      "Intro hook",
+      "Main rhythmic montage",
+      "Resolution"
+    ],
+    "accent_moments": [
+      "Cuts align precisely with the snare/beat",
+      "Text remains constant while visuals cycle"
+    ],
+    "ending_type": "Hard stop"
+  },
+  "total_duration": 20.037415,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.73,
+      "duration": 0.73,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Excitement",
+      "shot_scale": "Medium",
+      "arc_stage": "Intro",
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 2,
+      "start": 0.73,
+      "end": 1.8,
+      "duration": 1.07,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Friendship",
+      "shot_scale": "Medium",
+      "arc_stage": "Intro",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 3,
+      "start": 1.8,
+      "end": 3.63,
+      "duration": 1.83,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Playful",
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 4,
+      "start": 3.63,
+      "end": 5.73,
+      "duration": 2.1,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Classroom",
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 5,
+      "start": 5.73,
+      "end": 7.43,
+      "duration": 1.7,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Laughter",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Reaction",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 6,
+      "start": 7.43,
+      "end": 9.7,
+      "duration": 2.27,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Chaos",
+      "shot_scale": "CU",
+      "arc_stage": "Build-up",
+      "shot_function": "Detail",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Erratic"
+    },
+    {
+      "id": 7,
+      "start": 9.7,
+      "end": 10.93,
+      "duration": 1.23,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Arrival",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 8,
+      "start": 10.93,
+      "end": 12.7,
+      "duration": 1.77,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Joy",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 9,
+      "start": 12.7,
+      "end": 14.1,
+      "duration": 1.4,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Community",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 10,
+      "start": 14.1,
+      "end": 15.77,
+      "duration": 1.67,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Event",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Detail",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 11,
+      "start": 15.77,
+      "end": 17.27,
+      "duration": 1.5,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Scale",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Establish",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Locked"
+    },
+    {
+      "id": 12,
+      "start": 17.27,
+      "end": 18.2,
+      "duration": 0.93,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Focus",
+      "shot_scale": "Medium",
+      "arc_stage": "Outro",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 13,
+      "start": 18.2,
+      "end": 20.037415,
+      "duration": 1.837415,
+      "energy": "Low",
+      "motion": "Dynamic",
+      "vibe": "Routine",
+      "shot_scale": "Medium",
+      "arc_stage": "Outro",
+      "shot_function": "Release",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "camera_movement": "Handheld"
+    }
+  ],
+  "overall_reasoning": "The video uses a fast-paced montage of candid, handheld footage to create a 'memory reel' effect. The central creative hook is the juxtaposition of the text overlay (challenging the idea that school was 'bad') with visual evidence of joy and camaraderie. The square aspect ratio and amateur camera work suggest a social media native format, emphasizing authenticity over production value.",
+  "ideal_material_suggestions": [
+    "Candid clips of students laughing in hallways",
+    "Footage of school sports or club activities",
+    "Close-ups of school-specific items like badges, notebooks, or cafeteria food",
+    "Group shots of students in uniform walking together"
+  ],
+  "_cache_version": "8.0",
+  "_cached_at": "2026-01-31 02:13:24"
+}

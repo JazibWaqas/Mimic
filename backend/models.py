@@ -64,6 +64,13 @@ class Segment(BaseModel):
     reasoning: str = Field("", description="AI's thinking about why this segment has this profile")
     arc_stage: str = Field("Main", description="The role of this segment in the video's story arc (e.g. Intro, Build-up, Peak, Outro)")
     
+    # Editorial Intelligence (v8.0+)
+    shot_scale: str = Field("", description="Shot framing: Extreme CU | CU | Medium | Wide | Extreme Wide")
+    shot_function: str = Field("", description="Editorial purpose: Establish | Action | Reaction | Detail | Transition | Release | Button")
+    relation_to_previous: str = Field("None", description="How this relates to previous shot: Setup | Payoff | Contrast | Continuation | None")
+    expected_hold: str = Field("Normal", description="How long viewer should rest: Short | Normal | Long")
+    camera_movement: str = Field("", description="Camera motion: Locked | Handheld | Smooth pan | Erratic | Mixed")
+    
     @field_validator('end')
     @classmethod
     def end_after_start(cls, v, info):
@@ -107,6 +114,24 @@ class StyleBlueprint(BaseModel):
     # Experience Goals (Felt, Not Mechanical)
     pacing_feel: str = Field("", description="How the edit feels rhythmically (e.g., breathable, relentless)")
     visual_balance: str = Field("", description="What the edit emphasizes (e.g., people-centric, place-centric)")
+    
+    # Visual Style & Aesthetics (v8.0+)
+    color_grading: dict = Field(default_factory=dict, description="Color treatment: tone, contrast, specific_look")
+    aspect_ratio: str = Field("", description="Video aspect ratio: 16:9 | 9:16 | 1:1 | 4:5 | 21:9")
+    visual_effects: List[str] = Field(default_factory=list, description="Recurring effects: Film grain, Light leaks, etc.")
+    shot_variety: dict = Field(default_factory=dict, description="Shot scale variety: dominant_scale, variety_level")
+    
+    # Editing Style (v8.0+)
+    cut_style: str = Field("", description="How cuts are executed: Hard cuts | Cross dissolves | Match cuts | Jump cuts | Mixed")
+    transition_effects: List[str] = Field(default_factory=list, description="Special transitions: Whip pans, Zooms, Morphs, None")
+    
+    # Audio & Music (v8.0+)
+    music_sync: str = Field("", description="Cut-music alignment: Tightly synced | Loosely synced | Independent")
+    audio_style: dict = Field(default_factory=dict, description="Audio characteristics: genre, vocal_presence, energy")
+    music_structure: dict = Field(default_factory=dict, description="Music structure: phrases, accent_moments, ending_type")
+    
+    # Text Styling (v8.0+)
+    text_style: dict = Field(default_factory=dict, description="Typography design: font_style, animation, placement, color_effects")
     
     overall_reasoning: str = Field("", description="AI's holistic thinking about this video's structure")
     ideal_material_suggestions: List[str] = Field(default_factory=list, description="Suggestions for the user on what clips would work best")
