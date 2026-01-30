@@ -1,0 +1,270 @@
+{
+  "total_duration": 9.958503,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.4,
+      "duration": 0.4,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Friends",
+      "arc_stage": "Intro",
+      "reasoning": "Initial scene setting with friends indoors."
+    },
+    {
+      "id": 2,
+      "start": 0.4,
+      "end": 0.8,
+      "duration": 0.4,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Friends",
+      "arc_stage": "Intro",
+      "reasoning": "Continuation of the intro sequence."
+    },
+    {
+      "id": 3,
+      "start": 0.8,
+      "end": 1.2,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Intro",
+      "reasoning": "Transition to a more active outdoor scene."
+    },
+    {
+      "id": 4,
+      "start": 1.2,
+      "end": 1.6,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Intro",
+      "reasoning": "Quick cut showing movement and interaction."
+    },
+    {
+      "id": 5,
+      "start": 1.6,
+      "end": 2.03,
+      "duration": 0.43,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Building momentum with shots of friends laughing."
+    },
+    {
+      "id": 6,
+      "start": 2.03,
+      "end": 2.33,
+      "duration": 0.3,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Fast-paced cut in the build-up phase."
+    },
+    {
+      "id": 7,
+      "start": 2.33,
+      "end": 2.73,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Another quick transition showing group dynamics."
+    },
+    {
+      "id": 8,
+      "start": 2.73,
+      "end": 3.43,
+      "duration": 0.7,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Slightly longer shot of friends interacting."
+    },
+    {
+      "id": 9,
+      "start": 3.43,
+      "end": 3.83,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Rapid cut maintaining the build-up energy."
+    },
+    {
+      "id": 10,
+      "start": 3.83,
+      "end": 4.23,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Transitioning towards the peak of the montage."
+    },
+    {
+      "id": 11,
+      "start": 4.23,
+      "end": 4.67,
+      "duration": 0.44,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Final build-up segment before the high-energy peak."
+    },
+    {
+      "id": 12,
+      "start": 4.67,
+      "end": 5.07,
+      "duration": 0.4,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Peak energy with concert footage and flashing lights."
+    },
+    {
+      "id": 13,
+      "start": 5.07,
+      "end": 5.47,
+      "duration": 0.4,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Continuation of the high-energy concert scene."
+    },
+    {
+      "id": 14,
+      "start": 5.47,
+      "end": 5.93,
+      "duration": 0.46,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Final high-energy peak segment."
+    },
+    {
+      "id": 15,
+      "start": 5.93,
+      "end": 6.4,
+      "duration": 0.47,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Transitioning from concert to other group activities."
+    },
+    {
+      "id": 16,
+      "start": 6.4,
+      "end": 6.8,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Quick cut showing food and casual interaction."
+    },
+    {
+      "id": 17,
+      "start": 6.8,
+      "end": 7.2,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Scene change to a classroom setting."
+    },
+    {
+      "id": 18,
+      "start": 7.2,
+      "end": 7.63,
+      "duration": 0.43,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Peak",
+      "reasoning": "Maintaining peak momentum with fast cuts."
+    },
+    {
+      "id": 19,
+      "start": 7.63,
+      "end": 8.03,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Starting the outro with getting ready scenes."
+    },
+    {
+      "id": 20,
+      "start": 8.03,
+      "end": 8.43,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Continuation of the playful outro sequence."
+    },
+    {
+      "id": 21,
+      "start": 8.43,
+      "end": 8.87,
+      "duration": 0.44,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Playful shot with a unicorn hat."
+    },
+    {
+      "id": 22,
+      "start": 8.87,
+      "end": 9.27,
+      "duration": 0.4,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Final quick cuts before the end."
+    },
+    {
+      "id": 23,
+      "start": 9.27,
+      "end": 9.958503,
+      "duration": 0.688503,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Outro",
+      "reasoning": "Concluding the montage with a final group shot."
+    }
+  ],
+  "overall_reasoning": "The video is a fast-paced cinematic montage capturing various moments of a friend group. It follows a clear arc from a calm intro to a high-energy peak at a concert, followed by a playful outro. The editing uses rapid cuts to maintain a dynamic feel throughout.",
+  "ideal_material_suggestions": [
+    "High-energy concert footage with flashing lights",
+    "Candid shots of friends laughing and interacting",
+    "Fast-paced transitions between different environments",
+    "Playful and quirky group activities"
+  ],
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-30 16:04:24"
+}

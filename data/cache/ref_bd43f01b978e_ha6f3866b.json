@@ -1,0 +1,249 @@
+{
+  "total_duration": 10.168934,
+  "editing_style": "Cinematic Montage",
+  "emotional_intent": "Dynamic",
+  "arc_description": "Video with multiple scene changes",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 0.23,
+      "duration": 0.23,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Intro",
+      "reasoning": "Initial shot of food and drinks setting the scene."
+    },
+    {
+      "id": 2,
+      "start": 0.23,
+      "end": 0.63,
+      "duration": 0.4,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Intro",
+      "reasoning": "Continuation of the food and drinks intro sequence."
+    },
+    {
+      "id": 3,
+      "start": 0.63,
+      "end": 1.07,
+      "duration": 0.44,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Intro",
+      "reasoning": "Final shot of the food and drinks intro sequence."
+    },
+    {
+      "id": 4,
+      "start": 1.07,
+      "end": 1.37,
+      "duration": 0.3,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Calm",
+      "arc_stage": "Build-up",
+      "reasoning": "Transition to a calm shot of flowers in water."
+    },
+    {
+      "id": 5,
+      "start": 1.37,
+      "end": 1.73,
+      "duration": 0.36,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Calm",
+      "arc_stage": "Build-up",
+      "reasoning": "Continuation of the calm flower shot."
+    },
+    {
+      "id": 6,
+      "start": 1.73,
+      "end": 2.07,
+      "duration": 0.34,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Build-up",
+      "reasoning": "Introduction of dynamic light streaks at night."
+    },
+    {
+      "id": 7,
+      "start": 2.07,
+      "end": 2.37,
+      "duration": 0.3,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Build-up",
+      "reasoning": "Continuation of the dynamic light streaks."
+    },
+    {
+      "id": 8,
+      "start": 2.37,
+      "end": 3.07,
+      "duration": 0.7,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "High energy concert performance shot."
+    },
+    {
+      "id": 9,
+      "start": 3.07,
+      "end": 3.6,
+      "duration": 0.53,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Continuation of the high energy concert performance."
+    },
+    {
+      "id": 10,
+      "start": 3.6,
+      "end": 4.23,
+      "duration": 0.63,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Transition to a serene sunset with palm trees."
+    },
+    {
+      "id": 11,
+      "start": 4.23,
+      "end": 4.77,
+      "duration": 0.54,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Continuation of the serene sunset shot."
+    },
+    {
+      "id": 12,
+      "start": 4.77,
+      "end": 5.2,
+      "duration": 0.43,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Explosive fireworks display creating a peak moment."
+    },
+    {
+      "id": 13,
+      "start": 5.2,
+      "end": 5.63,
+      "duration": 0.43,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Action",
+      "arc_stage": "Peak",
+      "reasoning": "Continuation of the explosive fireworks display."
+    },
+    {
+      "id": 14,
+      "start": 5.63,
+      "end": 6.2,
+      "duration": 0.57,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Transition to a relaxed cat lying on the ground."
+    },
+    {
+      "id": 15,
+      "start": 6.2,
+      "end": 6.77,
+      "duration": 0.57,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Continuation of the relaxed cat shot."
+    },
+    {
+      "id": 16,
+      "start": 6.77,
+      "end": 7.4,
+      "duration": 0.63,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Joyful moment with a girl and her dog."
+    },
+    {
+      "id": 17,
+      "start": 7.4,
+      "end": 7.93,
+      "duration": 0.53,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friends",
+      "arc_stage": "Build-up",
+      "reasoning": "Continuation of the girl and dog moment."
+    },
+    {
+      "id": 18,
+      "start": 7.93,
+      "end": 8.53,
+      "duration": 0.6,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Peaceful sunset over the ocean waves."
+    },
+    {
+      "id": 19,
+      "start": 8.53,
+      "end": 9.1,
+      "duration": 0.57,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "arc_stage": "Build-up",
+      "reasoning": "Continuation of the ocean sunset shot."
+    },
+    {
+      "id": 20,
+      "start": 9.1,
+      "end": 9.5,
+      "duration": 0.4,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Outro",
+      "reasoning": "Closing shot of intricate temple architecture."
+    },
+    {
+      "id": 21,
+      "start": 9.5,
+      "end": 10.168934,
+      "duration": 0.668934,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Travel",
+      "arc_stage": "Outro",
+      "reasoning": "Final frame of the temple architecture outro."
+    }
+  ],
+  "overall_reasoning": "The video is a fast-paced cinematic montage capturing various moments throughout a year. It uses beat-matched cuts to transition between lifestyle, nature, and action scenes, creating a dynamic and nostalgic flow.",
+  "ideal_material_suggestions": [
+    "High-quality lifestyle shots of food and dining.",
+    "Serene nature footage of sunsets and beaches.",
+    "Dynamic action shots from concerts or events.",
+    "Candid moments with pets and friends.",
+    "Architectural shots of travel destinations."
+  ],
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-30 16:14:09"
+}
