@@ -4,7 +4,7 @@ PIPELINE RUN: REF1.MP4
 Session ID: ref1_master
 Reference: ref1.mp4
 Clips: 55
-Timestamp: 2026-01-31 02:42:22
+Timestamp: 2026-01-31 03:06:53
 
 
 [1/5] Validating inputs...
@@ -499,7 +499,7 @@ Timestamp: 2026-01-31 02:42:22
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   ⚠️ Advisor attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
 * Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 25.492500736s. [links {
+Please retry in 51.84093008s. [links {
   description: "Learn more about Gemini API quotas"
   url: "https://ai.google.dev/gemini-api/docs/rate-limits"
 }
@@ -517,7 +517,7 @@ Please retry in 25.492500736s. [links {
   quota_value: 20
 }
 , retry_delay {
-  seconds: 25
+  seconds: 51
 }
 ]
 [QUOTA] Rate limit detected during advisor
@@ -525,9 +525,37 @@ Please retry in 25.492500736s. [links {
 [API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
 [QUOTA] Rotated to new API key, re-initializing genai...
 [OK] Using Gemini 3 model: gemini-3-flash-preview
+  ⚠️ Advisor attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 51.228978699s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 51
+}
+]
+[QUOTA] Rate limit detected during advisor
+[API KEY MANAGER] Marking key as exhausted: AIzaSyAjP3...SS5Pk (Rate limit during advisor)
+[API KEY MANAGER] Rotated to key 3/28: AIzaSyCyiV...ASpNo
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
   ✅ Advisor hints generated and cached
   📊 Confidence: High
-  💡 Strategy: Prioritize clips with group physical closeness and dynamic camera movement. Use the car-based 'sunroof' clips as the backbone of the build-up, and save the most chaotic, multi-person celebrations for the peak to ensure the emotional payoff lands.
+  💡 Strategy: Prioritize car-based celebration and night-time group chaos to mirror the reference's 'no zimmedari' theme, using scenic transit shots only to bridge the high-energy peaks.
   ✅ Advisor enabled: Strategic guidance active
   🎵 Beat grid generated: 35 beats at 86.13 BPM
   ✅ Active beat grid: 35 points
@@ -541,18 +569,18 @@ Please retry in 25.492500736s. [links {
 
 Segment 1: 0.00s-0.70s (0.70s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Matches the reference in terms of visual freshness, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip54.mp4 (Score: 155.0)
-    ✂️ Cut 1: clip54.mp4 [0.00s-0.70s] (0.70s) → timeline [0.000000s-0.700000s]
+  📎 Selected: clip7.mp4 (Score: 225.0)
+    ✂️ Cut 1: clip7.mp4 [2.00s-2.70s] (0.70s) → timeline [0.000000s-0.700000s]
 
 Segment 2: 0.70s-1.40s (0.70s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Reaction' shot for this Intro sequence. The visual content perfectly captures the 'Laughing' atmosphere we're aiming for. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip3.mp4 (Score: 160.0)
-    ✂️ Cut 1: clip3.mp4 [0.00s-0.70s] (0.70s) → timeline [0.700000s-1.400000s]
+  📎 Selected: clip13.mp4 (Score: 210.0)
+    ✂️ Cut 1: clip13.mp4 [3.00s-3.70s] (0.70s) → timeline [0.700000s-1.400000s]
 
 Segment 3: 1.40s-2.09s (0.69s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Intro sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip.mp4 (Score: 160.0)
-    ✂️ Cut 1: clip.mp4 [2.50s-3.19s] (0.69s) → timeline [1.400000s-2.090000s]
+  📎 Selected: clip54.mp4 (Score: 210.0)
+    ✂️ Cut 1: clip54.mp4 [0.00s-0.69s] (0.69s) → timeline [1.400000s-2.090000s]
 
 Segment 4: 2.09s-2.79s (0.70s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Transition' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
@@ -561,13 +589,13 @@ Segment 4: 2.09s-2.79s (0.70s, High/Dynamic)
 
 Segment 5: 2.79s-3.43s (0.64s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip27.mp4 (Score: 210.0)
-    ✂️ Cut 1: clip27.mp4 [7.50s-8.14s] (0.64s) → timeline [2.790000s-3.430000s]
+  📎 Selected: clip2.mp4 (Score: 210.0)
+    ✂️ Cut 1: clip2.mp4 [3.50s-4.14s] (0.64s) → timeline [2.790000s-3.430000s]
 
 Segment 6: 3.43s-4.19s (0.76s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. The visual content perfectly captures the 'Group fun' atmosphere we're aiming for. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip43.mp4 (Score: 220.0)
-    ✂️ Cut 1: clip43.mp4 [4.50s-5.26s] (0.76s) → timeline [3.430000s-4.190000s]
+  📎 Selected: clip27.mp4 (Score: 220.0)
+    ✂️ Cut 1: clip27.mp4 [1.00s-1.76s] (0.76s) → timeline [3.430000s-4.190000s]
 
 Segment 7: 4.19s-4.88s (0.69s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
@@ -581,48 +609,48 @@ Segment 8: 4.88s-5.47s (0.59s, Medium/Dynamic)
 
 Segment 9: 5.47s-6.28s (0.81s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip13.mp4 (Score: 190.0)
-    ✂️ Cut 1: clip13.mp4 [3.00s-3.81s] (0.81s) → timeline [5.470000s-6.280000s]
+  📎 Selected: clip20.mp4 (Score: 190.0)
+    ✂️ Cut 1: clip20.mp4 [0.00s-0.81s] (0.81s) → timeline [5.470000s-6.280000s]
 
 Segment 10: 6.28s-6.98s (0.70s, Medium/Dynamic)
-  🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip20.mp4 (Score: 190.0)
-    ✂️ Cut 1: clip20.mp4 [0.00s-0.70s] (0.70s) → timeline [6.280000s-6.980000s]
+  🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
+  📎 Selected: clip18.mp4 (Score: 180.0)
+    ✂️ Cut 1: clip18.mp4 [2.00s-2.70s] (0.70s) → timeline [6.280000s-6.980000s]
 
 Segment 11: 6.98s-7.53s (0.55s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Establish' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip7.mp4 (Score: 190.0)
-    ✂️ Cut 1: clip7.mp4 [2.00s-2.55s] (0.55s) → timeline [6.980000s-7.530000s]
+  📎 Selected: clip47.mp4 (Score: 170.0)
+    ✂️ Cut 1: clip47.mp4 [0.00s-0.55s] (0.55s) → timeline [6.980000s-7.530000s]
 
 Segment 12: 7.53s-8.37s (0.84s, Medium/Static)
-  🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip18.mp4 (Score: 180.0)
-    ✂️ Cut 1: clip18.mp4 [2.00s-2.84s] (0.84s) → timeline [7.530000s-8.370000s]
+  🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
+  📎 Selected: clip3.mp4 (Score: 170.0)
+    ✂️ Cut 1: clip3.mp4 [0.00s-0.84s] (0.84s) → timeline [7.530000s-8.370000s]
 
 Segment 13: 8.37s-9.07s (0.70s, High/Dynamic)
-  🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip19.mp4 (Score: 200.0)
-    ✂️ Cut 1: clip19.mp4 [10.50s-11.20s] (0.70s) → timeline [8.370000s-9.070000s]
+  🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
+  📎 Selected: clip15.mp4 (Score: 190.0)
+    ✂️ Cut 1: clip15.mp4 [12.00s-12.70s] (0.70s) → timeline [8.370000s-9.070000s]
 
 Segment 14: 9.07s-9.60s (0.53s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip16.mp4 (Score: 150.0)
-    ✂️ Cut 1: clip16.mp4 [5.00s-5.53s] (0.53s) → timeline [9.070000s-9.600000s]
+  📎 Selected: clip21.mp4 (Score: 150.0)
+    ✂️ Cut 1: clip21.mp4 [39.00s-39.53s] (0.53s) → timeline [9.070000s-9.600000s]
 
 Segment 15: 9.60s-10.47s (0.87s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip21.mp4 (Score: 150.0)
-    ✂️ Cut 1: clip21.mp4 [39.00s-39.87s] (0.87s) → timeline [9.600000s-10.470000s]
+  📎 Selected: clip16.mp4 (Score: 150.0)
+    ✂️ Cut 1: clip16.mp4 [5.00s-5.87s] (0.87s) → timeline [9.600000s-10.470000s]
 
 Segment 16: 10.47s-11.16s (0.69s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip23.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip23.mp4 [9.20s-9.89s] (0.69s) → timeline [10.470000s-11.160000s]
+  📎 Selected: clip.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip.mp4 [0.80s-1.49s] (0.69s) → timeline [10.470000s-11.160000s]
 
 Segment 17: 11.16s-11.63s (0.47s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip44.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip44.mp4 [0.00s-0.47s] (0.47s) → timeline [11.160000s-11.630000s]
+  📎 Selected: clip23.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip23.mp4 [9.20s-9.67s] (0.47s) → timeline [11.160000s-11.630000s]
 
 Segment 18: 11.63s-12.70s (1.07s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
@@ -631,13 +659,13 @@ Segment 18: 11.63s-12.70s (1.07s, High/Dynamic)
 
 Segment 19: 12.70s-13.26s (0.56s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip2.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip2.mp4 [3.50s-4.06s] (0.56s) → timeline [12.700000s-13.260000s]
+  📎 Selected: clip50.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip50.mp4 [28.50s-29.06s] (0.56s) → timeline [12.700000s-13.260000s]
 
 Segment 20: 13.26s-13.95s (0.69s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip15.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip15.mp4 [12.00s-12.69s] (0.69s) → timeline [13.260000s-13.950000s]
+  📎 Selected: clip5.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip5.mp4 [11.50s-12.19s] (0.69s) → timeline [13.260000s-13.950000s]
 
 Segment 21: 13.95s-14.77s (0.82s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. The visual content perfectly captures the 'Crowd' atmosphere we're aiming for. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
@@ -646,68 +674,68 @@ Segment 21: 13.95s-14.77s (0.82s, High/Dynamic)
 
 Segment 22: 14.77s-15.35s (0.58s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip1.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip1.mp4 [5.50s-6.08s] (0.58s) → timeline [14.770000s-15.350000s]
+  📎 Selected: clip9.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip9.mp4 [0.00s-0.58s] (0.58s) → timeline [14.770000s-15.350000s]
 
 Segment 23: 15.35s-16.05s (0.70s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip17.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip17.mp4 [3.20s-3.90s] (0.70s) → timeline [15.350000s-16.050000s]
+  📎 Selected: clip25.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip25.mp4 [8.50s-9.20s] (0.70s) → timeline [15.350000s-16.050000s]
 
 Segment 24: 16.05s-16.83s (0.78s, Medium/Dynamic)
-  🧠 AI: 🌟 Chosen to serve as a strategic 'Transition' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions.
-  📎 Selected: clip41.mp4 (Score: 115.0)
-    ✂️ Cut 1: clip41.mp4 [10.00s-10.78s] (0.78s) → timeline [16.050000s-16.830000s]
+  🧠 AI: 🌟 Chosen to serve as a strategic 'Transition' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity. Directly satisfies the Editor's strategic guidance for this emotional arc.
+  📎 Selected: clip44.mp4 (Score: 125.0)
+    ✂️ Cut 1: clip44.mp4 [1.50s-2.28s] (0.78s) → timeline [16.050000s-16.830000s]
 
 Segment 25: 16.83s-17.44s (0.61s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip6.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip6.mp4 [0.00s-0.61s] (0.61s) → timeline [16.830000s-17.440000s]
+  📎 Selected: clip10.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip10.mp4 [5.00s-5.61s] (0.61s) → timeline [16.830000s-17.440000s]
 
 Segment 26: 17.44s-18.14s (0.70s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip50.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip50.mp4 [28.50s-29.20s] (0.70s) → timeline [17.440000s-18.140000s]
+  📎 Selected: clip6.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip6.mp4 [0.00s-0.70s] (0.70s) → timeline [17.440000s-18.140000s]
 
 Segment 27: 18.14s-18.87s (0.73s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip37.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip37.mp4 [3.00s-3.73s] (0.73s) → timeline [18.140000s-18.870000s]
+  📎 Selected: clip1.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip1.mp4 [5.50s-6.23s] (0.73s) → timeline [18.140000s-18.870000s]
 
 Segment 28: 18.87s-19.53s (0.66s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip25.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip25.mp4 [8.50s-9.16s] (0.66s) → timeline [18.870000s-19.530000s]
+  📎 Selected: clip43.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip43.mp4 [0.00s-0.66s] (0.66s) → timeline [18.870000s-19.530000s]
 
 Segment 29: 19.53s-20.23s (0.70s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip9.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip9.mp4 [0.00s-0.70s] (0.70s) → timeline [19.530000s-20.230000s]
+  📎 Selected: clip37.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip37.mp4 [3.00s-3.70s] (0.70s) → timeline [19.530000s-20.230000s]
 
 Segment 30: 20.23s-20.93s (0.70s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip10.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip10.mp4 [5.00s-5.70s] (0.70s) → timeline [20.230000s-20.930000s]
+  📎 Selected: clip53.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip53.mp4 [0.00s-0.70s] (0.70s) → timeline [20.230000s-20.930000s]
 
 Segment 31: 20.93s-21.67s (0.74s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip53.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip53.mp4 [0.00s-0.74s] (0.74s) → timeline [20.930000s-21.670000s]
+  📎 Selected: clip12.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip12.mp4 [3.50s-4.24s] (0.74s) → timeline [20.930000s-21.670000s]
 
 Segment 32: 21.67s-22.47s (0.80s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip5.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip5.mp4 [11.50s-12.30s] (0.80s) → timeline [21.670000s-22.470000s]
+  📎 Selected: clip36.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip36.mp4 [3.00s-3.80s] (0.80s) → timeline [21.670000s-22.470000s]
 
 Segment 33: 22.47s-23.30s (0.83s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip36.mp4 (Score: 140.0)
-    ✂️ Cut 1: clip36.mp4 [3.00s-3.83s] (0.83s) → timeline [22.470000s-23.300000s]
+  📎 Selected: clip17.mp4 (Score: 140.0)
+    ✂️ Cut 1: clip17.mp4 [3.20s-4.03s] (0.83s) → timeline [22.470000s-23.300000s]
 
 Segment 34: 23.30s-24.19s (0.89s, High/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Button' shot for this Outro sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip12.mp4 (Score: 185.0)
-    ✂️ Cut 1: clip12.mp4 [3.50s-4.39s] (0.89s) → timeline [23.300000s-24.192336s]
+  📎 Selected: clip56.mp4 (Score: 160.0)
+    ✂️ Cut 1: clip56.mp4 [2.50s-3.39s] (0.89s) → timeline [23.300000s-24.192336s]
 
 ============================================================
 [OK] Matching complete: 34 edit decisions
@@ -719,13 +747,16 @@ Segment 34: 23.30s-24.19s (0.89s, High/Dynamic)
 
    ✅ NO CLIPS REPEATED! Perfect diversity achieved.
 
-📋 ENERGY COMPROMISES: 6
+📋 ENERGY COMPROMISES: 7
    (Used adjacent energy when exact wasn't available)
       Medium→High: 6 times
+      High→Medium: 1 times
 
 💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
 
    [Quality Improvements]
+   → 1 segments wanted 'High' energy but used 'Medium'.
+     Add high-intensity clips with 'Urban' or 'Nightlife' vibes to fix this.
 ============================================================
 
 
@@ -738,40 +769,40 @@ Total segments: 34
 Available clips: 55
 
 Clip usage distribution:
+  clip_054.mp4: 1 times
+  clip_006.mp4: 1 times
   clip_048.mp4: 1 times
-  clip_024.mp4: 1 times
-  clip_001.mp4: 1 times
   clip_007.mp4: 1 times
+  clip_013.mp4: 1 times
   clip_021.mp4: 1 times
-  clip_038.mp4: 1 times
   clip_020.mp4: 1 times
   clip_016.mp4: 1 times
-  clip_006.mp4: 1 times
   clip_014.mp4: 1 times
-  clip_054.mp4: 1 times
   clip_011.mp4: 1 times
-  clip_012.mp4: 1 times
-  clip_009.mp4: 1 times
-  clip_015.mp4: 1 times
-  clip_017.mp4: 1 times
-  clip_039.mp4: 1 times
-  clip_035.mp4: 1 times
-  clip_013.mp4: 1 times
+  clip_041.mp4: 1 times
+  clip_024.mp4: 1 times
   clip_008.mp4: 1 times
-  clip_033.mp4: 1 times
-  clip_002.mp4: 1 times
-  clip_010.mp4: 1 times
-  clip_036.mp4: 1 times
-  clip_053.mp4: 1 times
+  clip_015.mp4: 1 times
+  clip_009.mp4: 1 times
+  clip_001.mp4: 1 times
+  clip_017.mp4: 1 times
+  clip_035.mp4: 1 times
   clip_044.mp4: 1 times
-  clip_032.mp4: 1 times
-  clip_019.mp4: 1 times
-  clip_055.mp4: 1 times
-  clip_003.mp4: 1 times
-  clip_047.mp4: 1 times
   clip_043.mp4: 1 times
-  clip_031.mp4: 1 times
+  clip_033.mp4: 1 times
+  clip_055.mp4: 1 times
+  clip_019.mp4: 1 times
+  clip_039.mp4: 1 times
+  clip_003.mp4: 1 times
+  clip_053.mp4: 1 times
+  clip_002.mp4: 1 times
+  clip_038.mp4: 1 times
+  clip_032.mp4: 1 times
+  clip_047.mp4: 1 times
   clip_005.mp4: 1 times
+  clip_031.mp4: 1 times
+  clip_010.mp4: 1 times
+  clip_050.mp4: 1 times
 
 🧠 INTELLIGENCE AUDIT (Narrative Compliance):
    Vibe Accuracy: 8.8% matching suggested vibes
@@ -792,41 +823,43 @@ Clip usage distribution:
 
 
 [5/5] Rendering final video...
+    [OK] Segment extracted: 2.00s - 2.70s
+    [OK] Segment extracted: 3.00s - 3.70s
+    [OK] Segment extracted: 0.00s - 0.69s
     [OK] Segment extracted: 0.00s - 0.70s
-    [OK] Segment extracted: 0.00s - 0.70s
-    [OK] Segment extracted: 2.50s - 3.19s
-    [OK] Segment extracted: 0.00s - 0.70s
-    [OK] Segment extracted: 7.50s - 8.14s
-    [OK] Segment extracted: 4.50s - 5.26s
+    [OK] Segment extracted: 3.50s - 4.14s
+    [OK] Segment extracted: 1.00s - 1.76s
     [OK] Segment extracted: 2.00s - 2.69s
     [OK] Segment extracted: 8.00s - 8.59s
-    [OK] Segment extracted: 3.00s - 3.81s
-    [OK] Segment extracted: 0.00s - 0.70s
-    [OK] Segment extracted: 2.00s - 2.55s
-    [OK] Segment extracted: 2.00s - 2.84s
-    [OK] Segment extracted: 10.50s - 11.20s
-    [OK] Segment extracted: 5.00s - 5.53s
-    [OK] Segment extracted: 39.00s - 39.87s
-    [OK] Segment extracted: 9.20s - 9.89s
-    [OK] Segment extracted: 0.00s - 0.47s
+    [OK] Segment extracted: 0.00s - 0.81s
+    [OK] Segment extracted: 2.00s - 2.70s
+    [OK] Segment extracted: 0.00s - 0.55s
+    [OK] Segment extracted: 0.00s - 0.84s
+    [OK] Segment extracted: 12.00s - 12.70s
+    [OK] Segment extracted: 39.00s - 39.53s
+    [OK] Segment extracted: 5.00s - 5.87s
+    [OK] Segment extracted: 0.80s - 1.49s
+    [OK] Segment extracted: 9.20s - 9.67s
     [OK] Segment extracted: 0.00s - 1.07s
-    [OK] Segment extracted: 3.50s - 4.06s
-    [OK] Segment extracted: 12.00s - 12.69s
+    [OK] Segment extracted: 28.50s - 29.06s
+    [OK] Segment extracted: 11.50s - 12.19s
     [OK] Segment extracted: 0.00s - 0.82s
-    [OK] Segment extracted: 5.50s - 6.08s
-    [OK] Segment extracted: 3.20s - 3.90s
-    [OK] Segment extracted: 10.00s - 10.78s
-    [OK] Segment extracted: 0.00s - 0.61s
-    [OK] Segment extracted: 28.50s - 29.20s
-    [OK] Segment extracted: 3.00s - 3.73s
-    [OK] Segment extracted: 8.50s - 9.16s
+    [OK] Segment extracted: 0.00s - 0.58s
+    [OK] Segment extracted: 8.50s - 9.20s
+    [OK] Segment extracted: 1.50s - 2.28s
+    [OK] Segment extracted: 5.00s - 5.61s
     [OK] Segment extracted: 0.00s - 0.70s
-    [OK] Segment extracted: 5.00s - 5.70s
-    [OK] Segment extracted: 0.00s - 0.74s
-    [OK] Segment extracted: 11.50s - 12.30s
-    [OK] Segment extracted: 3.00s - 3.83s
-    [OK] Segment extracted: 3.50s - 4.39s
+    [OK] Segment extracted: 5.50s - 6.23s
+    [OK] Segment extracted: 0.00s - 0.66s
+    [OK] Segment extracted: 3.00s - 3.70s
+    [OK] Segment extracted: 0.00s - 0.70s
+    [OK] Segment extracted: 3.50s - 4.24s
+    [OK] Segment extracted: 3.00s - 3.80s
+    [OK] Segment extracted: 3.20s - 4.03s
+    [OK] Segment extracted: 2.50s - 3.39s
   [OK] Concatenated 34 segments (frame-perfect)
+  [STYLIST] Applying Clean Aesthetic: 3 lines, Font: Georgia
+  [OK] Stylized video ready: temp_video_styled.mp4
   [OK] Audio extracted: ref_audio.aac
 [WARN] Removing existing output file: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref1_ref1_master.mp4
   [OK] Audio merged onto video (optimized)
@@ -839,7 +872,7 @@ Clip usage distribution:
    Output: ref1_ref1_master.mp4
    Duration: 24.13s (ref: 24.19s)
    Difference: 0.07s
-   Processing time: 55.4s
+   Processing time: 55.2s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -917,11 +950,11 @@ Clip usage distribution:
 📎 Clip Usage Analysis:
    Unique clips used: 34/55
    Most used clips:
+     clip_054.mp4: 1 times (2.9%)
+     clip_006.mp4: 1 times (2.9%)
      clip_048.mp4: 1 times (2.9%)
-     clip_024.mp4: 1 times (2.9%)
-     clip_001.mp4: 1 times (2.9%)
      clip_007.mp4: 1 times (2.9%)
-     clip_021.mp4: 1 times (2.9%)
+     clip_013.mp4: 1 times (2.9%)
 
 🧠 AI Reasoning Breakdown:
    ✨ Smart Match: 0 (0.0%)
@@ -944,11 +977,11 @@ Clip usage distribution:
    Longest cut: 1.07s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_048.mp4: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Match...
-   2. clip_024.mp4: 🌟 Chosen to serve as a strategic 'Reaction' shot for this Intro sequence. The vi...
-   3. clip_001.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Intro sequence. Matches ...
+   1. clip_054.mp4: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Match...
+   2. clip_006.mp4: 🌟 Chosen to serve as a strategic 'Reaction' shot for this Intro sequence. The vi...
+   3. clip_048.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Intro sequence. Matches ...
    4. clip_007.mp4: 🌟 Chosen to serve as a strategic 'Transition' shot for this Build-up sequence. M...
-   5. clip_021.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Match...
+   5. clip_013.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Match...
 
 📦 CLIP REGISTRY (55 total):
    01: clip.mp4        | High   |   4.8s | Vibes: Group, Indoor
@@ -1026,4 +1059,4 @@ Clip usage distribution:
 ================================================================================
 
 [PROCESS] Exporting master intelligence report...
-[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref1_ref1_master.json (137633 bytes)
+[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref1_ref1_master.json (137741 bytes)

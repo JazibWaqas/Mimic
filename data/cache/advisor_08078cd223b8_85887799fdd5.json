@@ -1,35 +1,36 @@
 {
-  "dominant_narrative": "A high-energy, rebellious celebration of friendship and carefree living, moving from intimate chaos to peak social euphoria.",
+  "dominant_narrative": "A high-energy, carefree celebration of youthful rebellion and shared friendship, moving from anticipation to chaotic joy.",
   "arc_stage_guidance": {
     "Intro": {
-      "primary_emotional_carrier": "Candid, close-up interactions that immediately establish the 'no responsibility' playful mood.",
-      "supporting_material": "Brief glimpses of urban or indoor settings that feel lived-in and unpolished.",
-      "intent_diluting_material": "Wide, empty landscapes or slow-moving nature shots that lack human energy.",
-      "reasoning": "The intro must immediately signal the 'Memory Reel' style by prioritizing intimacy and personality over location.",
+      "primary_emotional_carrier": "Atmospheric establishing shots that set a 'on-the-road' or 'arrival' mood.",
+      "supporting_material": "Brief glimpses of the group entering a new environment or transit-related objects.",
+      "intent_diluting_material": "High-intensity dancing or peak celebration clips that leave no room for the energy to climb.",
+      "reasoning": "The intro needs to establish the 'no responsibility' vibe through setting and mood before the social chaos takes over.",
       "recommended_clips": [
-        "clip.mp4",
-        "clip3.mp4",
-        "clip39.mp4"
+        "clip52.mp4",
+        "clip7.mp4",
+        "clip29.mp4",
+        "clip57.mp4"
       ]
     },
     "Build-up": {
-      "primary_emotional_carrier": "Dynamic transit and shared activities, specifically car rides and group movement through various environments.",
-      "supporting_material": "POV shots or first-person perspectives that make the viewer feel part of the journey.",
-      "intent_diluting_material": "Static shots or clips where the subjects are stationary and not interacting.",
-      "reasoning": "This stage needs to create a sense of 'relentless' momentum, showing the group moving from one adventure to the next.",
+      "primary_emotional_carrier": "Dynamic movement and group activities showing the journey in progress (car rides, walking, playful competition).",
+      "supporting_material": "Quick cuts of food, scenery, or environmental details that show the variety of the trip.",
+      "intent_diluting_material": "Static, slow-paced landscapes or solitary subjects that break the 'relentless' pacing.",
+      "reasoning": "This stage builds momentum by showing the group in motion, transitioning from 'getting there' to 'being wild'.",
       "recommended_clips": [
         "clip18.mp4",
-        "clip19.mp4",
-        "clip27.mp4",
         "clip42.mp4",
-        "clip43.mp4"
+        "clip13.mp4",
+        "clip2.mp4",
+        "clip27.mp4"
       ]
     },
     "Peak": {
-      "primary_emotional_carrier": "High-intensity social connection, featuring dancing, singing, and chaotic group celebrations.",
-      "supporting_material": "Fast-motion clips with artificial lighting (night-time, party lights) to match the 'low-light night aesthetic'.",
-      "intent_diluting_material": "Daytime scenic shots or solo activities that break the 'people-centric' focus.",
-      "reasoning": "The peak is the emotional payoff of the 'rebellion' theme; it requires the highest energy and most visible human connection.",
+      "primary_emotional_carrier": "Unfiltered, high-energy social interaction—singing in cars, dancing, and physical play.",
+      "supporting_material": "Fast-motion shots or dynamic camera movements that mirror the subjects' energy.",
+      "intent_diluting_material": "Scenic shots without people or calm, peaceful nature sequences.",
+      "reasoning": "The peak is the 'Duniya ki aesi ki tesi' payoff; it requires the most intense human connection and chaotic joy to match the narrative message.",
       "recommended_clips": [
         "clip16.mp4",
         "clip21.mp4",
@@ -39,30 +40,30 @@
       ]
     },
     "Outro": {
-      "primary_emotional_carrier": "A final 'button' shot that captures a playful or unique moment of friendship to close the reel.",
-      "supporting_material": "Atmospheric night-time or sunset shots that signal the end of the day's journey.",
-      "intent_diluting_material": "Abrupt cuts to black or overly serious, dramatic imagery.",
-      "reasoning": "The outro needs to provide a sense of closure while maintaining the playful, carefree spirit of the entire edit.",
+      "primary_emotional_carrier": "A definitive 'button' shot—friends moving away or a final symbolic gesture of the trip ending.",
+      "supporting_material": "A final high-energy burst or a quick transition to a scenic resolution.",
+      "intent_diluting_material": "Mid-level energy clips that feel like they belong in the build-up rather than a conclusion.",
+      "reasoning": "With only one segment for the outro, the clip must provide a sense of 'that was an epic ride' through a clear visual exit.",
       "recommended_clips": [
-        "clip53.mp4",
         "clip55.mp4",
-        "clip20.mp4"
+        "clip39.mp4",
+        "clip54.mp4"
       ]
     }
   },
   "library_assessment": {
     "strengths": [
-      "Exceptional variety of car-based celebration clips (sunroofs, singing)",
-      "Strong night-time and artificial light content matching the reference look",
-      "High volume of 'High Energy' clips suitable for the relentless pacing"
+      "Excellent variety of high-energy car interior shots (sunroofs, singing)",
+      "Strong night-time aesthetic clips that match the reference look",
+      "Abundant candid group laughter and physical interaction"
     ],
     "gaps": [
-      "Limited clips specifically tagged with 'grain' or 'motion blur', though dynamic motion is present",
-      "Fewer 'Reaction' specific clips for the intro segments"
+      "Fewer 'low-light grain' specific clips compared to the reference's aesthetic",
+      "Limited 'button' shots for a single-segment outro"
     ],
     "confidence": "High"
   },
-  "overall_strategy": "Prioritize clips with group physical closeness and dynamic camera movement. Use the car-based 'sunroof' clips as the backbone of the build-up, and save the most chaotic, multi-person celebrations for the peak to ensure the emotional payoff lands.",
+  "overall_strategy": "Prioritize car-based celebration and night-time group chaos to mirror the reference's 'no zimmedari' theme, using scenic transit shots only to bridge the high-energy peaks.",
   "cache_version": "2.0",
-  "cached_at": "2026-01-30T21:43:04.774977"
+  "cached_at": "2026-01-30T22:07:23.857200"
 }

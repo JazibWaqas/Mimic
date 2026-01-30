@@ -1,0 +1,262 @@
+{
+  "text_overlay": "POV: That one trip with your cousins",
+  "text_style": {
+    "font_style": "Serif",
+    "animation": "Static",
+    "placement": "Bottom-third",
+    "color_effects": "Yellow with slight shadow"
+  },
+  "narrative_message": "This edit captures the chaotic, joyful, and nostalgic essence of a shared family vacation through a series of candid, high-energy moments.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Vibrant",
+    "contrast": "Medium",
+    "specific_look": "Natural home-video aesthetic with bright, saturated colors typical of outdoor travel footage."
+  },
+  "aspect_ratio": "1:1",
+  "visual_effects": [
+    "Slow motion",
+    "Handheld camera shake",
+    "Natural lens flare"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Medium",
+    "variety_level": "High variety"
+  },
+  "editing_style": "Memory reel",
+  "cut_style": "Hard cuts",
+  "transition_effects": [
+    "None"
+  ],
+  "emotional_intent": "Nostalgic",
+  "arc_description": "The video begins with a high-energy physical comedy moment, transitions through travel and group interactions, and concludes with a peaceful scenic shot, mimicking the arc of a trip.",
+  "pacing_feel": "Steady",
+  "visual_balance": "People-centric",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Pop/Indie",
+    "vocal_presence": "Mixed",
+    "energy": "Mid"
+  },
+  "must_have_content": [
+    "Chaotic physical interaction or 'fail' moments",
+    "Scenic transit or travel establishing shots",
+    "Candid group laughter and play",
+    "Local environmental details (e.g., animals, architecture)"
+  ],
+  "should_have_content": [
+    "Mirror selfies or group selfies",
+    "POV walking or movement shots",
+    "Slow-motion captures of joy"
+  ],
+  "avoid_content": [
+    "Staged, professional-looking modeling shots",
+    "Static, boring landscapes without context",
+    "Melancholic or lonely imagery"
+  ],
+  "music_structure": {
+    "phrases": [
+      "Intro beat",
+      "Main rhythmic verse",
+      "Outro resolution"
+    ],
+    "accent_moments": [
+      "Cuts aligned with snare hits",
+      "Energy peaks during group laughter"
+    ],
+    "ending_type": "Fade"
+  },
+  "total_duration": 16.275782,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.27,
+      "duration": 1.27,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Chaos",
+      "shot_scale": "Wide",
+      "arc_stage": "Intro",
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 2,
+      "start": 1.27,
+      "end": 3.73,
+      "duration": 2.46,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Travel",
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Transition",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "camera_movement": "Smooth pan"
+    },
+    {
+      "id": 3,
+      "start": 3.73,
+      "end": 7.1,
+      "duration": 3.37,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Laughter",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Long",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 4,
+      "start": 7.1,
+      "end": 7.97,
+      "duration": 0.87,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Nature",
+      "shot_scale": "Wide",
+      "arc_stage": "Build-up",
+      "shot_function": "Detail",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
+    },
+    {
+      "id": 5,
+      "start": 7.97,
+      "end": 9.27,
+      "duration": 1.3,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Movement",
+      "shot_scale": "CU",
+      "arc_stage": "Build-up",
+      "shot_function": "Transition",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 6,
+      "start": 9.27,
+      "end": 10.33,
+      "duration": 1.06,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Selfie",
+      "shot_scale": "Medium",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 7,
+      "start": 10.33,
+      "end": 11.43,
+      "duration": 1.1,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Play",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 8,
+      "start": 11.43,
+      "end": 12.53,
+      "duration": 1.1,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Mirror",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Detail",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
+    },
+    {
+      "id": 9,
+      "start": 12.53,
+      "end": 13.8,
+      "duration": 1.27,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Walking",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 10,
+      "start": 13.8,
+      "end": 14.77,
+      "duration": 0.97,
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "View",
+      "shot_scale": "Wide",
+      "arc_stage": "Peak",
+      "shot_function": "Release",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
+    },
+    {
+      "id": 11,
+      "start": 14.77,
+      "end": 15.47,
+      "duration": 0.7,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Spinning",
+      "shot_scale": "Medium",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 12,
+      "start": 15.47,
+      "end": 16.275782,
+      "duration": 0.805782,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Scenery",
+      "shot_scale": "Wide",
+      "arc_stage": "Outro",
+      "shot_function": "Button",
+      "relation_to_previous": "None",
+      "expected_hold": "Short",
+      "camera_movement": "Locked"
+    }
+  ],
+  "overall_reasoning": "The video uses a rapid-fire montage style to simulate the feeling of a memory reel. The square aspect ratio and persistent text overlay give it a social media 'vlog' feel. The pacing is driven by the music, with cuts occurring on the beat to maintain energy. The content focuses heavily on interpersonal dynamics and shared experiences rather than just scenery.",
+  "ideal_material_suggestions": [
+    "Footage of friends or family laughing uncontrollably.",
+    "Quick clips of local street food or unique animals encountered.",
+    "Handheld shots of walking through a new city or landscape.",
+    "A mix of daytime and nighttime activities to show the full scope of a trip.",
+    "One or two 'fail' moments where someone trips or makes a mistake."
+  ],
+  "_cache_version": "8.0",
+  "_cached_at": "2026-01-31 02:49:44"
+}

@@ -43,6 +43,7 @@ from engine.processors import (
     get_beat_grid,
     get_video_duration
 )
+from engine.stylist import apply_visual_styling
 from utils import ensure_directory, cleanup_session
 from collections import defaultdict, Counter
 
@@ -354,6 +355,21 @@ def run_mimic_pipeline(
         temp_video_path = temp_session_dir / "temp_video.mp4"
         concatenate_videos(segment_paths, str(temp_video_path))
         
+        # apply visual styling (text overlay, color grading)
+        styled_video_path = temp_session_dir / "temp_video_styled.mp4"
+        try:
+            apply_visual_styling(
+                str(temp_video_path),
+                str(styled_video_path),
+                blueprint.text_overlay,
+                blueprint.text_style,
+                blueprint.color_grading
+            )
+            render_source = styled_video_path
+        except Exception as e:
+            print(f"[WARN] Stylist failed, using unstyled video: {e}")
+            render_source = temp_video_path
+        
         # Handle audio
         audio_path = temp_session_dir / "ref_audio.aac"
         audio_extracted = extract_audio(reference_path, str(audio_path))
@@ -369,13 +385,13 @@ def run_mimic_pipeline(
         
         if audio_extracted:
             merge_audio_video(
-                str(temp_video_path),
+                str(render_source),
                 str(audio_path),
                 str(final_output_path),
                 trim_to_shortest=True
             )
         else:
-            create_silent_video(str(temp_video_path), str(final_output_path))
+            create_silent_video(str(render_source), str(final_output_path))
         
         # Validate output
         if not validate_output(str(final_output_path)):
