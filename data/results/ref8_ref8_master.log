@@ -4,7 +4,7 @@ PIPELINE RUN: REF8.MP4
 Session ID: ref8_master
 Reference: ref8.mp4
 Clips: 55
-Timestamp: 2026-01-31 21:59:51
+Timestamp: 2026-01-31 23:01:12
 
 
 [1/5] Validating inputs...
@@ -425,61 +425,116 @@ Timestamp: 2026-01-31 21:59:51
 [OK] Rate limiter status: 0 requests in last minute
 
 [OK] Gemini successfully analyzed 55 clips (using originals for cache).
-  [CACHE] Using standardized clip 1/55: clip.mp4
-  [CACHE] Using standardized clip 2/55: clip1.mp4
-  [CACHE] Using standardized clip 3/55: clip10.mp4
-  [CACHE] Using standardized clip 4/55: clip11.mp4
-  [CACHE] Using standardized clip 5/55: clip12.mp4
-  [CACHE] Using standardized clip 6/55: clip13.mp4
-  [CACHE] Using standardized clip 7/55: clip14.mp4
-  [CACHE] Using standardized clip 8/55: clip15.mp4
-  [CACHE] Using standardized clip 9/55: clip16.mp4
-  [CACHE] Using standardized clip 10/55: clip17.mp4
-  [CACHE] Using standardized clip 11/55: clip18.mp4
-  [CACHE] Using standardized clip 12/55: clip19.mp4
-  [CACHE] Using standardized clip 13/55: clip2.mp4
-  [CACHE] Using standardized clip 14/55: clip20.mp4
-  [CACHE] Using standardized clip 15/55: clip21.mp4
-  [CACHE] Using standardized clip 16/55: clip22.mp4
-  [CACHE] Using standardized clip 17/55: clip23.mp4
-  [CACHE] Using standardized clip 18/55: clip24.mp4
-  [CACHE] Using standardized clip 19/55: clip25.mp4
-  [CACHE] Using standardized clip 20/55: clip26.mp4
-  [CACHE] Using standardized clip 21/55: clip27.mp4
-  [CACHE] Using standardized clip 22/55: clip28.mp4
-  [CACHE] Using standardized clip 23/55: clip29.mp4
-  [CACHE] Using standardized clip 24/55: clip3.mp4
-  [CACHE] Using standardized clip 25/55: clip30.mp4
-  [CACHE] Using standardized clip 26/55: clip31.mp4
-  [CACHE] Using standardized clip 27/55: clip32.mp4
-  [CACHE] Using standardized clip 28/55: clip33.mp4
-  [CACHE] Using standardized clip 29/55: clip34.mp4
-  [CACHE] Using standardized clip 30/55: clip35.mp4
-  [CACHE] Using standardized clip 31/55: clip36.mp4
-  [CACHE] Using standardized clip 32/55: clip37.mp4
-  [CACHE] Using standardized clip 33/55: clip38.mp4
-  [CACHE] Using standardized clip 34/55: clip39.mp4
-  [CACHE] Using standardized clip 35/55: clip40.mp4
-  [CACHE] Using standardized clip 36/55: clip41.mp4
-  [CACHE] Using standardized clip 37/55: clip42.mp4
-  [CACHE] Using standardized clip 38/55: clip43.mp4
-  [CACHE] Using standardized clip 39/55: clip44.mp4
-  [CACHE] Using standardized clip 40/55: clip45.mp4
-  [CACHE] Using standardized clip 41/55: clip47.mp4
-  [CACHE] Using standardized clip 42/55: clip48.mp4
-  [CACHE] Using standardized clip 43/55: clip5.mp4
-  [CACHE] Using standardized clip 44/55: clip50.mp4
-  [CACHE] Using standardized clip 45/55: clip51.mp4
-  [CACHE] Using standardized clip 46/55: clip52.mp4
-  [CACHE] Using standardized clip 47/55: clip53.mp4
-  [CACHE] Using standardized clip 48/55: clip54.mp4
-  [CACHE] Using standardized clip 49/55: clip55.mp4
-  [CACHE] Using standardized clip 50/55: clip56.mp4
-  [CACHE] Using standardized clip 51/55: clip57.mp4
-  [CACHE] Using standardized clip 52/55: clip58.mp4
-  [CACHE] Using standardized clip 53/55: clip6.mp4
-  [CACHE] Using standardized clip 54/55: clip7.mp4
-  [CACHE] Using standardized clip 55/55: clip9.mp4
+  Standardizing clip 1/55: clip.mp4...
+  [OK] Standardized: clip_001.mp4
+  Standardizing clip 2/55: clip1.mp4...
+  [OK] Standardized: clip_002.mp4
+  Standardizing clip 3/55: clip10.mp4...
+  [OK] Standardized: clip_003.mp4
+  Standardizing clip 4/55: clip11.mp4...
+  [OK] Standardized: clip_004.mp4
+  Standardizing clip 5/55: clip12.mp4...
+  [OK] Standardized: clip_005.mp4
+  Standardizing clip 6/55: clip13.mp4...
+  [OK] Standardized: clip_006.mp4
+  Standardizing clip 7/55: clip14.mp4...
+  [OK] Standardized: clip_007.mp4
+  Standardizing clip 8/55: clip15.mp4...
+  [OK] Standardized: clip_008.mp4
+  Standardizing clip 9/55: clip16.mp4...
+  [OK] Standardized: clip_009.mp4
+  Standardizing clip 10/55: clip17.mp4...
+  [OK] Standardized: clip_010.mp4
+  Standardizing clip 11/55: clip18.mp4...
+  [OK] Standardized: clip_011.mp4
+  Standardizing clip 12/55: clip19.mp4...
+  [OK] Standardized: clip_012.mp4
+  Standardizing clip 13/55: clip2.mp4...
+  [OK] Standardized: clip_013.mp4
+  Standardizing clip 14/55: clip20.mp4...
+  [OK] Standardized: clip_014.mp4
+  Standardizing clip 15/55: clip21.mp4...
+  [OK] Standardized: clip_015.mp4
+  Standardizing clip 16/55: clip22.mp4...
+  [OK] Standardized: clip_016.mp4
+  Standardizing clip 17/55: clip23.mp4...
+  [OK] Standardized: clip_017.mp4
+  Standardizing clip 18/55: clip24.mp4...
+  [OK] Standardized: clip_018.mp4
+  Standardizing clip 19/55: clip25.mp4...
+  [OK] Standardized: clip_019.mp4
+  Standardizing clip 20/55: clip26.mp4...
+  [OK] Standardized: clip_020.mp4
+  Standardizing clip 21/55: clip27.mp4...
+  [OK] Standardized: clip_021.mp4
+  Standardizing clip 22/55: clip28.mp4...
+  [OK] Standardized: clip_022.mp4
+  Standardizing clip 23/55: clip29.mp4...
+  [OK] Standardized: clip_023.mp4
+  Standardizing clip 24/55: clip3.mp4...
+  [OK] Standardized: clip_024.mp4
+  Standardizing clip 25/55: clip30.mp4...
+  [OK] Standardized: clip_025.mp4
+  Standardizing clip 26/55: clip31.mp4...
+  [OK] Standardized: clip_026.mp4
+  Standardizing clip 27/55: clip32.mp4...
+  [OK] Standardized: clip_027.mp4
+  Standardizing clip 28/55: clip33.mp4...
+  [OK] Standardized: clip_028.mp4
+  Standardizing clip 29/55: clip34.mp4...
+  [OK] Standardized: clip_029.mp4
+  Standardizing clip 30/55: clip35.mp4...
+  [OK] Standardized: clip_030.mp4
+  Standardizing clip 31/55: clip36.mp4...
+  [OK] Standardized: clip_031.mp4
+  Standardizing clip 32/55: clip37.mp4...
+  [OK] Standardized: clip_032.mp4
+  Standardizing clip 33/55: clip38.mp4...
+  [OK] Standardized: clip_033.mp4
+  Standardizing clip 34/55: clip39.mp4...
+  [OK] Standardized: clip_034.mp4
+  Standardizing clip 35/55: clip40.mp4...
+  [OK] Standardized: clip_035.mp4
+  Standardizing clip 36/55: clip41.mp4...
+  [OK] Standardized: clip_036.mp4
+  Standardizing clip 37/55: clip42.mp4...
+  [OK] Standardized: clip_037.mp4
+  Standardizing clip 38/55: clip43.mp4...
+  [OK] Standardized: clip_038.mp4
+  Standardizing clip 39/55: clip44.mp4...
+  [OK] Standardized: clip_039.mp4
+  Standardizing clip 40/55: clip45.mp4...
+  [OK] Standardized: clip_040.mp4
+  Standardizing clip 41/55: clip47.mp4...
+  [OK] Standardized: clip_041.mp4
+  Standardizing clip 42/55: clip48.mp4...
+  [OK] Standardized: clip_042.mp4
+  Standardizing clip 43/55: clip5.mp4...
+  [OK] Standardized: clip_043.mp4
+  Standardizing clip 44/55: clip50.mp4...
+  [OK] Standardized: clip_044.mp4
+  Standardizing clip 45/55: clip51.mp4...
+  [OK] Standardized: clip_045.mp4
+  Standardizing clip 46/55: clip52.mp4...
+  [OK] Standardized: clip_046.mp4
+  Standardizing clip 47/55: clip53.mp4...
+  [OK] Standardized: clip_047.mp4
+  Standardizing clip 48/55: clip54.mp4...
+  [OK] Standardized: clip_048.mp4
+  Standardizing clip 49/55: clip55.mp4...
+  [OK] Standardized: clip_049.mp4
+  Standardizing clip 50/55: clip56.mp4...
+  [OK] Standardized: clip_050.mp4
+  Standardizing clip 51/55: clip57.mp4...
+  [OK] Standardized: clip_051.mp4
+  Standardizing clip 52/55: clip58.mp4...
+  [OK] Standardized: clip_052.mp4
+  Standardizing clip 53/55: clip6.mp4...
+  [OK] Standardized: clip_053.mp4
+  Standardizing clip 54/55: clip7.mp4...
+  [OK] Standardized: clip_054.mp4
+  Standardizing clip 55/55: clip9.mp4...
+  [OK] Standardized: clip_055.mp4
 [OK] All clips standardized (cached or new) and ready for render.
 
 [4/5] Creating edit sequence...
@@ -708,7 +763,7 @@ Clip usage distribution:
     [OK] Segment extracted: 7.50s - 9.83s
     [OK] Segment extracted: 0.00s - 1.97s
   [OK] Concatenated 20 segments (frame-perfect)
-  [STYLIST] Applying Atomic Aesthetic: 2 lines
+  [STYLIST] Applying Demo-Safe Aesthetic: 2 lines
   [OK] Stylized video ready: temp_video_styled.mp4
   [OK] Audio extracted: ref_audio.aac
 [WARN] Removing existing output file: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref8_ref8_master.mp4
@@ -722,7 +777,7 @@ Clip usage distribution:
    Output: ref8_ref8_master.mp4
    Duration: 20.97s (ref: 21.04s)
    Difference: 0.07s
-   Processing time: 18.7s
+   Processing time: 807.7s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -896,4 +951,4 @@ Clip usage distribution:
 
 [PROCESS] Exporting master intelligence report...
    (Intelligence data confirmed: 0 chars)
-[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref8_ref8_master.json (128071 bytes)
+[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref8_ref8_master.json (128070 bytes)

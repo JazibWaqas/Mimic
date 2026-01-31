@@ -273,20 +273,26 @@ def standardize_clip(input_path: str, output_path: str) -> None:
         "ffmpeg",
         "-i", input_path,
         "-vf", (
+            # 1. Geometry: Scale and Crop to 9:16 vertical
             "scale=1080:1920:force_original_aspect_ratio=increase,"
             "crop=1080:1920:(in_w-1080)/2:(in_h-1920)/2,"
+            # 2. Visual Excellence: The 'High-Def Master' Stack
+            "unsharp=3:3:0.8:3:3:0.5,"          # Edge-pop for HD clarity
+            "eq=contrast=1.07:brightness=0.0:saturation=1.15," # Vibrant & Clear (No crushed blacks)
+            "noise=alls=0.5:allf=t+u,"          # Micro-grain for pro-texture
             "setsar=1"
         ),
-        "-r", "30",
+        "-r", "30",                 # Force consistent 30fps
         "-c:v", "libx264",
-        "-crf", "23",
-        "-preset", "medium",
+        "-crf", "18",               # Ultra-High Fidelity (HD Look)
+        "-preset", "slow",          # Maximum encoding precision
         "-c:a", "aac",
         "-b:a", "192k",
         "-movflags", "+faststart",
-        "-y",  # Overwrite output file
+        "-y",                       # Overwrite output file
         output_path
     ]
+
     
     try:
         result = subprocess.run(
