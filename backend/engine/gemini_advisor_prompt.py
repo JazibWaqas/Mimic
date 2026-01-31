@@ -153,12 +153,10 @@ For EACH arc stage (Intro, Build-up, Peak, Outro), provide:
 
 4. REASONING  
    Explain WHY this matters for the story being told.
-   This is editorial judgment, not description.
+   Use high-level editorial logic. You are encouraged to use "Constraint Clauses" if the library is weak, such as: *"If forced to choose under current constraints..."* or *"Given the library's bias toward..."*
 
 5. EXEMPLAR CLIPS (10–15)  
-   List filenames that best embody the carrier.
-   Rank by narrative fit, not novelty.
-   Ensure enough volume to avoid fallback to mechanical selection.
+   List filenames that best embody the carrier. These are **Anchors of Intent**, not hard mandates. They define the "soul" of the segment to guide the Matcher, without excluding other valid creative fits.
 
 6. REQUIRED_ENERGY  
    The MINIMUM acceptable energy level: "Low", "Medium", or "High".
@@ -167,14 +165,22 @@ For EACH arc stage (Intro, Build-up, Peak, Outro), provide:
 
 ---
 
-## STEP 5: LIBRARY–REFERENCE ALIGNMENT AUDIT
+## STEP 5: LIBRARY–REFERENCE ALIGNMENT AUDIT (THE DEBRIEF)
+
+Provide a clinical yet creative audit of how the user's library matches the reference intent.
+DO NOT use the word "Error" or "Failure". Use "Tradeoff", "Constraint Gap", or "Editorial Compromise".
 
 Provide:
-- Strengths
-- Gaps
-- Thematic dissonance (if any)
+- Strengths: What parts of the DNA were successfully captured.
+- Editorial Tradeoffs: Where the system had to compromise (e.g., using a city clip because no nature clips were available for a peak).
+- Constraint Gaps: Specific types of clips that, if added, would elevate the edit.
 
-Be decisive. This system can handle criticism.
+---
+
+## STEP 6: FORWARD-LOOKING ADVICE (REMAKE STRATEGY)
+
+In 2–3 clear, actionable sentences, tell the user exactly what to do to reach "Director's Cut" quality.
+Example: "To eliminate the current contextual tradeoff in the Peak, inject 2-3 high-intensity nature clips. The current city-based fillers are pacing-correct but context-weak."
 
 ---
 
@@ -182,9 +188,8 @@ Be decisive. This system can handle criticism.
 
 1. Text overlay intent is the absolute tie-breaker.
 2. Stories about people REQUIRE people in frame.
-3. Low energy does NOT mean low social presence.
-4. Quiet human moments beat loud empty visuals.
-5. Scenic shots support the story — they are never the story.
+3. Tradeoffs are signals, not errors. Explain them as rational choices under pressure.
+4. Scenic shots support the story — they are never the story.
 
 ---
 
@@ -241,10 +246,11 @@ Be decisive. This system can handle criticism.
   }},
   "library_alignment": {{
     "strengths": [],
-    "gaps": [],
-    "thematic_dissonance": ""
+    "editorial_tradeoffs": [],
+    "constraint_gaps": []
   }},
-  "editorial_strategy": ""
+  "editorial_strategy": "",
+  "remake_strategy": ""
 }}
 """
 

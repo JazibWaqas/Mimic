@@ -273,19 +273,19 @@ def standardize_clip(input_path: str, output_path: str) -> None:
         "ffmpeg",
         "-i", input_path,
         "-vf", (
-            # 1. Geometry: Scale and Crop to 9:16 vertical
+            # 1. Geometry: Orientation + Scale and Crop to 9:16 vertical
+            "fps=30,"                           # Force consistent 30fps early
             "scale=1080:1920:force_original_aspect_ratio=increase,"
             "crop=1080:1920:(in_w-1080)/2:(in_h-1920)/2,"
             # 2. Visual Excellence: The 'High-Def Master' Stack
             "unsharp=3:3:0.8:3:3:0.5,"          # Edge-pop for HD clarity
-            "eq=contrast=1.07:brightness=0.0:saturation=1.15," # Vibrant & Clear (No crushed blacks)
+            "eq=contrast=1.07:brightness=0.0:saturation=1.15," # Vibrant & Clear
             "noise=alls=0.5:allf=t+u,"          # Micro-grain for pro-texture
             "setsar=1"
         ),
-        "-r", "30",                 # Force consistent 30fps
         "-c:v", "libx264",
-        "-crf", "18",               # Ultra-High Fidelity (HD Look)
-        "-preset", "slow",          # Maximum encoding precision
+        "-crf", "22",               # High Fidelity (Balanced for size)
+        "-preset", "medium",        # Faster than 'slow' for better UX
         "-c:a", "aac",
         "-b:a", "192k",
         "-movflags", "+faststart",
@@ -576,37 +576,39 @@ def create_silent_video(input_path: str, output_path: str) -> None:
 # THUMBNAIL GENERATION (NEW)
 # ============================================================================
 
-def generate_thumbnail(video_path: str, thumbnail_path: str, time: float = 1.0) -> bool:
+def generate_thumbnail(video_path: str, thumbnail_path: str, time: float = 2.0) -> bool:
     """
     Extract a single frame from video to use as thumbnail.
-    
-    Args:
-        video_path: Source video path
-        thumbnail_path: Output image path (jpg/png)
-        time: Time offset in seconds to capture (default 1.0s)
+    Attempts to avoid black frames by trying different time offsets.
     """
     # Ensure parent dir exists
     Path(thumbnail_path).parent.mkdir(parents=True, exist_ok=True)
     
-    cmd = [
-        "ffmpeg",
-        "-ss", str(time),
-        "-i", video_path,
-        "-frames:v", "1",
-        "-q:v", "4", # Quality scale (2-5 is good)
-        "-y",
-        thumbnail_path
-    ]
-    
-    try:
-        subprocess.run(cmd, check=True, capture_output=True)
-        return True
-    except Exception as e:
-        # Fallback to frame 0 if 1s is too far
-        if time > 0:
-            return generate_thumbnail(video_path, thumbnail_path, time=0)
-        print(f"  [WARN] Thumbnail extraction failed: {e}")
-        return False
+    # Try multiple offsets: 2.0s, 5.0s, 0.5s, 0.0s
+    for offset in [time, 5.0, 0.5, 0.0]:
+        cmd = [
+            "ffmpeg",
+            "-ss", str(offset),
+            "-i", video_path,
+            "-frames:v", "1",
+            "-q:v", "4",
+            "-y",
+            thumbnail_path
+        ]
+        try:
+            # Check if video is actually long enough for this offset
+            duration = get_video_duration(video_path)
+            if offset > duration and duration > 0:
+                continue
+                
+            subprocess.run(cmd, check=True, capture_output=True)
+            # Basic check: is the file size non-zero?
+            if Path(thumbnail_path).exists() and Path(thumbnail_path).stat().st_size > 2000:
+                return True
+        except Exception:
+            continue
+            
+    return False
 
 
 # ============================================================================

@@ -16,7 +16,9 @@ import {
     Info,
     History,
     Eye,
-    X
+    X,
+    Pencil,
+    Check
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -37,6 +39,8 @@ export default function LibraryPage() {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const [renamingItem, setRenamingItem] = useState<AssetItem | null>(null);
+    const [newName, setNewName] = useState("");
 
     const fetchAllAssets = async () => {
         try {
@@ -81,6 +85,20 @@ export default function LibraryPage() {
             toast.success("File deleted");
         } catch (err) {
             toast.error("Delete failed");
+        }
+    };
+
+    const handleRename = async () => {
+        if (!renamingItem || !newName.trim()) return;
+        try {
+            const type = getItemType(renamingItem) === 'Raw Sample' ? 'clips' : getItemType(renamingItem) === 'Synthesis Output' ? 'results' : 'references';
+            await api.renameFile(type, renamingItem.filename, newName);
+            toast.success("File renamed successfully");
+            setRenamingItem(null);
+            setNewName("");
+            fetchAllAssets();
+        } catch (err) {
+            toast.error("Rename failed");
         }
     };
 
@@ -160,7 +178,30 @@ export default function LibraryPage() {
 
                 <div className="p-2.5 space-y-2.5 flex-1 flex flex-col">
                     <div className="flex-1 min-w-0">
-                        <h3 className="text-xs font-bold text-white/90 truncate leading-tight mb-1">{item.filename}</h3>
+                        {renamingItem === item ? (
+                            <div className="flex items-center gap-1.5 mb-1">
+                                <input
+                                    type="text"
+                                    value={newName}
+                                    onChange={(e) => setNewName(e.target.value)}
+                                    onKeyDown={(e) => e.key === 'Enter' && handleRename()}
+                                    className="flex-1 h-6 bg-white/10 border border-white/20 rounded px-2 text-[10px] text-white outline-none focus:border-indigo-500"
+                                    autoFocus
+                                />
+                                <button onClick={handleRename} className="h-6 w-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all"><Check className="h-3 w-3" /></button>
+                                <button onClick={() => setRenamingItem(null)} className="h-6 w-6 rounded bg-white/5 text-slate-400 flex items-center justify-center hover:bg-white/10 transition-all"><X className="h-3 w-3" /></button>
+                            </div>
+                        ) : (
+                            <div className="flex items-center justify-between group/title mb-1">
+                                <h3 className="text-xs font-bold text-white/90 truncate leading-tight">{item.filename}</h3>
+                                <button
+                                    onClick={() => { setRenamingItem(item); setNewName(item.filename); }}
+                                    className="opacity-0 group-hover/title:opacity-100 p-1 text-slate-500 hover:text-white transition-all"
+                                >
+                                    <Pencil className="h-3 w-3" />
+                                </button>
+                            </div>
+                        )}
                         <div className="flex items-center gap-2 text-[10px] text-slate-500 font-medium">
                             <span className="font-mono text-purple-400/80">{(item.size / (1024 * 1024)).toFixed(1)}MB</span>
                             <span className="opacity-30">•</span>

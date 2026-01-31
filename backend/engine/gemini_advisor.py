@@ -70,8 +70,8 @@ def get_advisor_suggestions(
             data = json.loads(cache_file.read_text(encoding='utf-8'))
             
             cache_version = data.get("cache_version", "1.0")
-            if cache_version != "3.5":
-                print(f"  ⚠️ Cache version mismatch ({cache_version} vs 3.4), regenerating...")
+            if cache_version != "4.0":
+                print(f"  ⚠️ Cache version mismatch ({cache_version} vs 4.0), regenerating...")
                 cache_file.unlink()
             else:
                 hints = AdvisorHints(**data)
@@ -146,8 +146,9 @@ def get_advisor_suggestions(
                 arc_stage_guidance=arc_guidance,
                 library_alignment=data.get('library_alignment', {}),
                 editorial_strategy=data.get('editorial_strategy', ''),
+                remake_strategy=data.get('remake_strategy', ''),
                 cached_at=cached_at,
-                cache_version="3.5"
+                cache_version="4.0"
             )
             
             cache_file.write_text(hints.model_dump_json(indent=2), encoding='utf-8')

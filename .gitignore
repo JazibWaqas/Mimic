@@ -1,17 +1,4 @@
 
-# Processing
+# Results and Cache (Large files)
+data/
 temp/
-# Build artifacts
-frontend/.next/
-frontend/node_modules/
-backend/venv/
-backend/__pycache__/
-# Environment
-.env
-backend/.env
-frontend/.env.local
-# System
-.DS_Store
-Thumbs.db
-# Results (ignore by default, but you might want to keep them)
-# data/results/

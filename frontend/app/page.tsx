@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { Upload, Video, ArrowRight, MonitorPlay, X, Plus, Sparkles, BrainCircuit, Terminal, Activity, CheckCircle2, ShieldCheck, Zap, Info, AlertTriangle, Layers, Target, Cpu, Wand2, Film } from "lucide-react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { api } from "@/lib/api";
 import { useDropzone } from "react-dropzone";
@@ -18,16 +18,48 @@ export default function StudioPage() {
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
   const [logMessages, setLogMessages] = useState<string[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
+  const [pinnedCritique, setPinnedCritique] = useState<string | null>(null);
+  const [isIdLoading, setIsIdLoading] = useState(false);
+  const searchParams = useSearchParams();
   const logEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     logEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [logMessages]);
 
-  const onDropRef = useCallback((acceptedFiles: File[]) => {
+  // Handle Refine State
+  useEffect(() => {
+    const refineFile = searchParams.get("refine");
+    if (refineFile) {
+      const fetchOldIntel = async () => {
+        try {
+          const data = await api.fetchIntelligence("results", refineFile);
+          if (data?.advisor?.remake_strategy) {
+            setPinnedCritique(data.advisor.remake_strategy);
+            toast.info("Advisor critique pinned for refinement");
+          }
+        } catch (err) {
+          console.error("Failed to fetch old intel for refine state", err);
+        }
+      };
+      fetchOldIntel();
+    }
+  }, [searchParams]);
+
+  const onDropRef = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles?.[0]) {
-      setRefFile(acceptedFiles[0]);
-      toast.success("Reference Locked");
+      const file = acceptedFiles[0];
+      setRefFile(file);
+      setIsIdLoading(true);
+      try {
+        const { session_id } = await api.identify(file);
+        setCurrentSessionId(session_id);
+        toast.success(`Identity Locked: ${session_id.substring(5, 12)}`);
+      } catch (err) {
+        toast.error("Identity mapping failed");
+      } finally {
+        setIsIdLoading(false);
+      }
     }
   }, []);
 
@@ -74,9 +106,22 @@ export default function StudioPage() {
       const ws = api.connectProgress(session_id);
       ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
-        setProgress(data.progress * 100); setStatusMsg(data.message || "");
+        setProgress(data.progress * 100);
+        setStatusMsg(data.message || "");
         if (data.logs) setLogMessages(data.logs);
-        if (data.status === "complete") { setIsGenerating(false); checkStatus(session_id); }
+
+        // Dynamic Agent Insight parsing from logs
+        if (data.message && data.message.includes("Advisor")) {
+          setRecommendations(prev => {
+            if (!prev.includes(data.message)) return [data.message, ...prev].slice(0, 5);
+            return prev;
+          });
+        }
+
+        if (data.status === "complete") {
+          setIsGenerating(false);
+          checkStatus(session_id);
+        }
       };
       ws.onerror = () => checkStatus(session_id);
     } catch (err) { setIsGenerating(false); toast.error("Process failed."); }
@@ -94,9 +139,11 @@ export default function StudioPage() {
                 <div className="p-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
                   <Wand2 className="h-4 w-4" />
                 </div>
-                <h1 className="text-3xl font-black tracking-tighter text-white uppercase italic">Studio</h1>
+                <h1 className="text-3xl font-black tracking-tighter text-white uppercase italic">
+                  Studio {searchParams.get("refine") ? <span className="text-[#ff007f] ml-2 animate-pulse">V2_Refinement</span> : "V1"}
+                </h1>
               </div>
-              <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">Integrated Gemini 3 Engine</p>
+              <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">Integrated Gemini 4_Iterative Engine</p>
             </div>
             <div className="space-y-1.5 ml-10 border-l-2 border-white/5 pl-6 py-1">
               <h2 className="text-lg font-bold text-white/90">Edit Videos by Reference Using Gemini 3</h2>
@@ -256,7 +303,7 @@ export default function StudioPage() {
               <div className="p-5 bg-white/[0.02] border-t border-white/5 relative z-10">
                 <button
                   onClick={startMimic}
-                  disabled={isGenerating || !refFile || materialFiles.length === 0}
+                  disabled={isGenerating || !refFile || materialFiles.length === 0 || isIdLoading}
                   className={cn(
                     "w-full h-14 rounded-xl font-black text-[11px] uppercase tracking-[0.25em] transition-all duration-700 flex flex-col items-center justify-center relative overflow-hidden group/execute border",
                     isGenerating
@@ -271,10 +318,10 @@ export default function StudioPage() {
                     <div className="flex items-center gap-3">
                       <Sparkles className={cn(
                         "h-4 w-4",
-                        isGenerating ? "text-white animate-spin-slow" :
+                        isGenerating || isIdLoading ? "text-white animate-spin-slow" :
                           refFile && materialFiles.length > 0 ? "text-white animate-spin-slow" : "text-cyan-400"
                       )} />
-                      <span>{isGenerating ? "Synthesizing..." : "Execute Synthesis"}</span>
+                      <span>{isGenerating ? "Synthesizing..." : isIdLoading ? "Binding Style..." : "Execute Synthesis"}</span>
                     </div>
                   </div>
 
@@ -307,7 +354,16 @@ export default function StudioPage() {
                 )}
               </div>
               <div className="space-y-4">
-                {recommendations.length === 0 ? (
+                {pinnedCritique && (
+                  <div className="flex gap-4 items-start group/rec p-2 rounded-lg bg-amber-500/5 border-l-2 border-amber-500 shadow-[inset_4px_0_10px_-4px_rgba(245,158,11,0.2)] transition-all">
+                    <div className="h-1.5 w-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
+                    <div className="space-y-1">
+                      <p className="text-[8px] font-black text-amber-500 uppercase tracking-widest">Pinned Critique from V1</p>
+                      <p className="text-[11px] font-bold text-amber-200 leading-relaxed uppercase tracking-tight">{pinnedCritique}</p>
+                    </div>
+                  </div>
+                )}
+                {recommendations.length === 0 && !pinnedCritique ? (
                   <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest italic leading-relaxed border-l border-white/10 pl-4 py-1">System in idle state. Analysis requires source material injection.</p>
                 ) : (
                   recommendations.map((rec, i) => (
@@ -339,19 +395,19 @@ export default function StudioPage() {
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-cyan-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover/bp:bg-cyan-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(34,211,238,0.2)] group-hover/bp:shadow-[0_0_20px_rgba(34,211,238,0.4)]"><Layers className="h-2.5 w-2.5" /></div>
-                  Multi-Stage Orchestration
+                  Taste Under Constraint
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Combining computer vision, audio beat analysis, and Gemini 3 multimodal reasoning to map temporal structures across footage.
+                  Making intelligent editorial compromises when matching source material to reference DNA.
                 </p>
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-purple-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover/bp:bg-purple-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(191,0,255,0.2)] group-hover/bp:shadow-[0_0_20px_rgba(191,0,255,0.4)]"><Zap className="h-2.5 w-2.5" /></div>
-                  Editing by Example
+                  Failure as Signal
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Deterministic decisions on clip selection, anti-repetition, and timeline continuity, turning creative intuition into an engineering protocol.
+                  Treating "mismatches" as editorial breakthroughs. The system identifies constraint gaps to guide the perfect remake.
                 </p>
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-lime-500/30 transition-all duration-500">
@@ -375,27 +431,30 @@ export default function StudioPage() {
               </div>
               <div className="flex items-center gap-2">
                 {[
-                  { label: 'Ingestion', color: 'bg-indigo-500', active: true },
-                  { label: 'Temporal Map', color: 'bg-cyan-500', active: !!refFile },
-                  { label: 'Beat Alignment', color: 'bg-purple-500', active: false },
-                  { label: 'Logic Reasoning', color: 'bg-[#bf00ff]', active: false, cached: true },
-                  { label: 'Final Output', color: 'bg-lime-500', active: false }
+                  { label: 'Ingestion', color: 'bg-indigo-500', active: true, progress: 100 },
+                  { label: 'Temporal Map', color: 'bg-cyan-500', active: progress > 15, progress: progress > 30 ? 100 : (progress - 15) * 6.6 },
+                  { label: 'Beat Alignment', color: 'bg-purple-500', active: progress > 40, progress: progress > 60 ? 100 : (progress - 40) * 5 },
+                  { label: 'Logic Reasoning', color: 'bg-[#bf00ff]', active: progress > 70, progress: progress > 85 ? 100 : (progress - 70) * 6.6 },
+                  { label: 'Final Synthesis', color: 'bg-lime-500', active: progress > 90, progress: (progress - 90) * 10 }
                 ].map((step, i) => (
-                  <div key={i} className="flex-1 flex items-center gap-2">
-                    <div className={cn(
-                      "flex-1 h-1.5 rounded-full transition-all duration-1000 relative overflow-hidden",
-                      step.active ? step.color : "bg-white/5"
-                    )}>
-                      {step.active && <div className="absolute inset-0 bg-white/40 animate-shimmer" />}
+                  <div key={i} className="flex-1 flex flex-col gap-2">
+                    <div className="flex-1 h-1.5 rounded-full bg-white/5 relative overflow-hidden">
+                      {step.active && (
+                        <div
+                          className={cn("absolute inset-0 transition-all duration-1000", step.color)}
+                          style={{ width: `${step.progress}%` }}
+                        >
+                          <div className="absolute inset-0 bg-white/30 animate-shimmer" />
+                        </div>
+                      )}
                     </div>
-                    {i < 4 && <div className="h-1 w-1 rounded-full bg-white/10" />}
+                    {i < 4 && <div className="h-0.5 w-full bg-white/5 hidden" />}
                     <div className="hidden lg:block">
                       <p className={cn(
                         "text-[8px] font-black uppercase tracking-widest transition-colors",
                         step.active ? "text-white" : "text-slate-700"
                       )}>
                         {step.label}
-                        {step.cached && <span className="ml-2 text-indigo-400">[CACHED]</span>}
                       </p>
                     </div>
                   </div>

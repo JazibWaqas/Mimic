@@ -16,7 +16,7 @@ export interface Clip {
 
 export interface Result {
     filename: string;
-    url: string;
+    path: string;
     thumbnail_url?: string;
     size: number;
     created_at: number;

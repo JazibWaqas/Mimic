@@ -5,12 +5,22 @@
 // Makes it easy to change endpoints, add error handling, etc.
 // ============================================================================
 
-const API_BASE = "http://localhost:8000";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const intelCache = new Map<string, any>();
 
 export const api = {
-  // ... existing uploadFiles, startGeneration, etc.
+  // ... existing uploadFiles, identify, startGeneration, etc.
+  identify: async (reference: File) => {
+    const formData = new FormData();
+    formData.append("reference", reference);
+    const res = await fetch(`${API_BASE}/api/identify`, {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) throw new Error("Identity scan failed");
+    return res.json();
+  },
   uploadFiles: async (reference: File, clips: File[]) => {
     const formData = new FormData();
     formData.append("reference", reference);
@@ -63,6 +73,14 @@ export const api = {
       method: "DELETE",
     });
     if (!res.ok) throw new Error("Failed to delete result");
+    return res.json();
+  },
+
+  renameFile: async (type: string, oldFilename: string, newFilename: string) => {
+    const res = await fetch(`${API_BASE}/api/rename?type=${type}&old_filename=${encodeURIComponent(oldFilename)}&new_filename=${encodeURIComponent(newFilename)}`, {
+      method: "POST",
+    });
+    if (!res.ok) throw new Error("Failed to rename file");
     return res.json();
   },
 

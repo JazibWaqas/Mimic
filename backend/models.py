@@ -210,6 +210,14 @@ class CreativeAudit(BaseModel):
     thematic_dissonance: str = Field("", description="Description of mismatch between reference and library themes")
     critical_nuance: str = Field("", description="Subtle mismatch (e.g. 'Reference is 4:3 filmic, Library is 9:16 digital')")
 
+class LibraryAlignment(BaseModel):
+    """
+    Structured assessment of how well the library matches the reference style.
+    """
+    strengths: List[str] = Field(default_factory=list)
+    editorial_tradeoffs: List[str] = Field(default_factory=list)
+    constraint_gaps: List[str] = Field(default_factory=list)
+
 class AdvisorHints(BaseModel):
     """
     Complete Gemini Advisor output containing editorial intent reasoning.
@@ -226,11 +234,12 @@ class AdvisorHints(BaseModel):
         default_factory=dict,
         description="Editorial intent guidance keyed by arc stage: Intro, Build-up, Peak, Outro"
     )
-    library_alignment: dict = Field(
-        default_factory=dict,
-        description="Library assessment: strengths, gaps, thematic_dissonance"
+    library_alignment: LibraryAlignment = Field(
+        default_factory=LibraryAlignment,
+        description="Library assessment: strengths, editorial_tradeoffs, constraint_gaps"
     )
     editorial_strategy: str = Field("", description="One-sentence overall editing strategy")
+    remake_strategy: str = Field("", description="Advice for the next iteration to reach Director's Cut quality")
     
     # Narrative Subject Authority (v9.5+)
     primary_narrative_subject: NarrativeSubject | None = Field(None, description="The primary subject that MUST dominate (e.g. People-Group for 'friends')")
@@ -430,6 +439,7 @@ class PipelineResult(BaseModel):
     clip_index: ClipIndex | None = None
     edl: EDL | None = None
     advisor: AdvisorHints | None = None  # NEW: Strategic guidance used
+    iteration: int = Field(1, description="The version/iteration of this result")
     error: str | None = None
     processing_time_seconds: float | None = None
 

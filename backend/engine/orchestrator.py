@@ -106,7 +106,8 @@ def run_mimic_pipeline(
     session_id: str,
     output_dir: str,
     api_key: str | None = None,
-    progress_callback: Callable[[int, int, str], None] | None = None
+    progress_callback: Callable[[int, int, str], None] | None = None,
+    iteration: int = 1
 ) -> PipelineResult:
     """
     Execute the complete MIMIC pipeline.
@@ -135,7 +136,9 @@ def run_mimic_pipeline(
     ref_name = Path(reference_path).stem
     # Use 'master' if no session_id is provided, otherwise first 12 chars
     tag = session_id if len(session_id) < 12 else session_id[:12]
-    base_output_name = f"{ref_name}_{tag}"
+    
+    # Versioned naming: ref_tag_v1
+    base_output_name = f"{ref_name}_{tag}_v{iteration}"
     
     log_path = Path(output_dir) / f"{base_output_name}.log"
     json_report_path = Path(output_dir) / f"{base_output_name}.json"
@@ -432,6 +435,7 @@ def run_mimic_pipeline(
             clip_index=clip_index,
             edl=edl,
             advisor=advisor_hints,
+            iteration=iteration,
             processing_time_seconds=processing_time
         )
         
@@ -664,33 +668,36 @@ def _print_comprehensive_analysis(blueprint: StyleBlueprint, edl: EDL, clip_inde
             if utilization < 10:
                 print(f"   💡 Note: Low utilization suggests clips may not match reference vibes well")
 
-    # 13. ADVISOR STRATEGIC CRITIQUE (v9.0)
+    # 13. ADVISOR STRATEGIC CRITIQUE (v11.0: Director's Cut)
     if advisor:
         print(f"\n{'='*80}")
-        print("💡 EDITORIAL ADVISOR CRITIQUE & GUIDANCE")
+        print("💡 POST-EDIT CREATIVE REVIEW (ADVISOR CRITIQUE)")
         print(f"{'='*80}")
         
-        # A. Creative Audit (Deep Nuance)
-        audit = advisor.creative_audit
-        if audit:
-            print(f"\n🎨 CREATIVE AUDIT:")
-            print(f"   Reference Theme : {audit.reference_theme}")
-            print(f"   Library Theme   : {audit.library_theme}")
-            print(f"\n   ⚠️ THEMATIC DISSONANCE:")
-            print(f"   {audit.thematic_dissonance}")
-            if audit.critical_nuance:
-                print(f"\n   🔍 CRITICAL NUANCE:")
-                print(f"   {audit.critical_nuance}")
+        # A. Library Alignment (The Debrief)
+        alignment = advisor.library_alignment
+        if alignment:
+            print(f"\n🎨 THE EDITORIAL DEBRIEF:")
+            if hasattr(alignment, 'strengths') and alignment.strengths:
+                print(f"   ✅ STRENGTHS:")
+                for s in alignment.strengths: print(f"      - {s}")
+            
+            if hasattr(alignment, 'editorial_tradeoffs') and alignment.editorial_tradeoffs:
+                print(f"\n   ⚠️ EDITORIAL TRADEOFFS:")
+                for t in alignment.editorial_tradeoffs: print(f"      - {t}")
+            
+            if hasattr(alignment, 'constraint_gaps') and alignment.constraint_gaps:
+                print(f"\n   🔍 CONSTRAINT GAPS:")
+                for g in alignment.constraint_gaps: print(f"      - {g}")
         
-        # B. Required Improvements (Actionable Guidance)
-        if advisor.required_improvements:
-            print(f"\n🚀 REQUIRED IMPROVEMENTS FOR BEST QUALITY:")
-            for i, imp in enumerate(advisor.required_improvements, 1):
-                print(f"   {i}. {imp}")
-        
-        # C. Arc Strategy Recap
-        print(f"\n🧠 OVERALL STRATEGY:")
-        print(f"   {advisor.overall_strategy}")
+        # B. Overall Strategy
+        print(f"\n🧠 EDITORIAL STRATEGY:")
+        print(f"   {advisor.editorial_strategy}")
+
+        # C. Remake Strategy (The Forward-Looking Advice)
+        if hasattr(advisor, 'remake_strategy') and advisor.remake_strategy:
+            print(f"\n🚀 REMAKE STRATEGY (HOW TO REACH DIRECTOR'S CUT):")
+            print(f"   {advisor.remake_strategy}")
         
         print(f"\n{'='*80}\n")
 

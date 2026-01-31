@@ -14,7 +14,8 @@ import {
     TrendingUp,
     MessageSquare,
     ChevronDown,
-    Plus
+    Video,
+    Search
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -26,6 +27,7 @@ export type AssetItem = Clip | Reference | Result;
 
 export default function VaultPage() {
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     // Data state
     const [clips, setClips] = useState<Clip[]>([]);
@@ -40,6 +42,7 @@ export default function VaultPage() {
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isCabinetOpen, setIsCabinetOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     // Refs
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -114,11 +117,16 @@ export default function VaultPage() {
         fetchIntel();
     }, [selectedItem, viewMode]);
 
-    const currentAssets = viewMode === "results" ? results : viewMode === "references" ? references : clips;
+    const currentAssets = useMemo(() => {
+        const assets = viewMode === "results" ? results : viewMode === "references" ? references : clips;
+        if (!searchQuery.trim()) return assets;
+        return assets.filter(a => a.filename.toLowerCase().includes(searchQuery.toLowerCase()));
+    }, [viewMode, results, references, clips, searchQuery]);
 
     const getVideoUrl = (item: AssetItem) => {
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
         const path = "path" in item ? item.path : (item as any).url;
-        return `http://localhost:8000${path}`;
+        return `${API_BASE}${path}`;
     };
 
     // Video events
@@ -177,7 +185,18 @@ export default function VaultPage() {
                     <div className="h-6 w-6 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
                         <Activity className="h-3.5 w-3.5 text-indigo-400" />
                     </div>
-                    <h1 className="text-[11px] font-black text-white uppercase tracking-[0.3em]">Vault // Edit Review</h1>
+                    <h1 className="text-[10px] font-black text-white uppercase tracking-[0.4em]">Vault // Forensic_Workbench</h1>
+                </div>
+
+                <div className="flex-1 max-w-sm mx-10 relative group">
+                    <Search className="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 text-slate-700 group-focus-within:text-cyan-600/50 transition-colors" />
+                    <input
+                        type="text"
+                        placeholder="SEARCH_DNA"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-transparent border-b border-white/5 rounded-none py-1 pl-6 pr-2 text-[10px] font-medium text-slate-400 placeholder-slate-800 outline-none focus:border-cyan-500/10 transition-all uppercase tracking-widest"
+                    />
                 </div>
 
                 <div className="flex items-center bg-black/40 p-1 rounded-lg border border-white/5">
@@ -223,7 +242,15 @@ export default function VaultPage() {
                         >
                             <div className="flex items-center gap-3">
                                 <div className="w-20 h-12 rounded-lg bg-black relative overflow-hidden shrink-0 border border-white/10">
-                                    <video src={getVideoUrl(res)} className="w-full h-full object-cover opacity-60" />
+                                    {(res as any).thumbnail_url ? (
+                                        <img
+                                            src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${(res as any).thumbnail_url}`}
+                                            alt={res.filename}
+                                            className="w-full h-full object-cover opacity-80"
+                                        />
+                                    ) : (
+                                        <video src={getVideoUrl(res)} className="w-full h-full object-cover opacity-60" />
+                                    )}
                                 </div>
                                 <div className="min-w-0">
                                     <p className="text-xs font-black text-white uppercase truncate">{res.filename}</p>
@@ -260,7 +287,15 @@ export default function VaultPage() {
                                                 : "border-white/10 bg-[#0a0c14] opacity-60 hover:opacity-80"
                                         )}
                                     >
-                                        <video src={getVideoUrl(item)} className="w-full h-full object-cover" />
+                                        {item.thumbnail_url ? (
+                                            <img
+                                                src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${item.thumbnail_url}`}
+                                                alt={item.filename}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            <video src={getVideoUrl(item)} className="w-full h-full object-cover" />
+                                        )}
                                         <div className={cn(
                                             "absolute bottom-1 right-1 px-1 py-0.5 rounded text-[7px] font-black uppercase",
                                             isSelected ? "bg-cyan-500 text-white" : "bg-black/60 text-white"
@@ -279,22 +314,31 @@ export default function VaultPage() {
                 {/* LEFT: Edit Structure */}
                 <aside className="space-y-6">
                     <div className="glass-premium rounded-2xl p-6 border-l-2 border-l-indigo-500/30 relative overflow-hidden group">
-                        <div className="flex items-center gap-2 mb-5">
-                            <TrendingUp className="w-4 h-4 text-indigo-400" />
-                            <h3 className="text-xs font-black text-slate-300 uppercase tracking-[0.4em]">Edit Structure</h3>
+                        <div className="flex items-center gap-2 mb-4">
+                            <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
+                            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Operational_Strategy</h3>
                         </div>
                         <div className="space-y-5 relative z-10">
-                            <div className="flex flex-col gap-2 border-b border-white/5 pb-3">
-                                <span className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Temporal & Rhythmic Analysis</span>
-                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
-                                    Detected increasing emotional intensity toward peak window (8.2s–12.5s)
-                                </p>
+                            <div className="space-y-4 border-b border-white/5 pb-4">
+                                <div className="space-y-1">
+                                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
+                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
+                                        {intelligence?.advisor?.dominant_narrative || "Rhythmic Consistency & Energy Matching"}
+                                    </p>
+                                </div>
+                                <div className="space-y-1">
+                                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Priority_Rules</span>
+                                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
+                                        {intelligence?.advisor?.editorial_strategy || "Prioritize sync-lock on primary beat grid."}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="flex justify-between items-end border-b border-white/5 pb-3">
-                                <span className="text-xs font-black text-slate-500 uppercase tracking-widest">Beat Bias</span>
+
+                            <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Rhythmic_Constraint</span>
                                 <div className="flex items-baseline gap-1">
-                                    <span className="text-lg font-black text-cyan-400">{intelligence?.bpm || 128}</span>
-                                    <span className="text-[10px] text-cyan-900 font-black uppercase">BPM</span>
+                                    <span className="text-xl font-black text-cyan-400 font-mono tracking-tighter">{intelligence?.bpm || 128}</span>
+                                    <span className="text-[8px] text-cyan-900 font-black uppercase">BPM</span>
                                 </div>
                             </div>
 
@@ -320,34 +364,35 @@ export default function VaultPage() {
                     <div className="bg-[#0a0c14]/60 border border-white/5 rounded-2xl p-5 backdrop-blur-sm">
                         <div className="flex items-center gap-3 mb-4">
                             <Sparkles className="w-4 h-4 text-indigo-400" />
-                            <h3 className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">Recommended Action</h3>
+                            <h3 className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">Remake Strategy</h3>
                         </div>
                         <p className="text-[10px] font-bold text-slate-300 uppercase tracking-tight leading-relaxed mb-5 border-l-2 border-indigo-500/30 pl-4">
-                            Add 2–3 clips with fast camera motion to reinforce emotional climax.
+                            Identify and bridge constraint gaps for a more aggressive rhythmic alignment.
                         </p>
                         <button
-                            onClick={() => toast.success("Re-generating video with editorial insights...")}
-                            className="w-full h-14 rounded-xl bg-indigo-600 text-white font-black text-[11px] uppercase tracking-[0.3em] shadow-[0_20px_40px_rgba(79,102,241,0.3)] hover:scale-[1.02] transition-all relative group overflow-hidden border border-indigo-500/40"
+                            onClick={() => {
+                                router.push(`/?refine=${selectedItem?.filename}`);
+                                toast.success("Refining edit based on advisor critique...");
+                            }}
+                            className="w-full h-12 rounded-xl bg-indigo-600/90 text-white font-black text-[10px] uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(79,102,241,0.2)] hover:bg-indigo-600 transition-all relative group overflow-hidden border border-indigo-500/40"
                         >
-                            <span className="relative z-10">Remake Video</span>
-                            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <span className="relative z-10">Trigger_Refinement</span>
                         </button>
                         <p className="text-[9px] text-center text-slate-600 uppercase tracking-widest mt-3 font-black">Applies editorial insights automatically</p>
                     </div>
                 </aside>
 
                 {/* CENTER: Video Hero */}
-                <section className="flex flex-col items-center gap-6">
-                    <div className="w-[400px] flex items-center justify-between px-1">
-                        <div className="px-4 py-1.5 bg-black/40 border border-white/10 rounded-full">
-                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.4em]">
-                                {viewMode === "results" ? "Final Output (Locked)" : "Reference Specimen"}
+                <section className="flex flex-col items-center">
+                    <div className="w-[400px] mb-2 flex items-center justify-between transition-opacity duration-1000">
+                        <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono font-black text-cyan-400 uppercase tracking-[0.2em] opacity-40">
+                                [SYNTHESIS]_LAB
+                            </span>
+                            <span className="text-[10px] font-mono font-black text-slate-600 uppercase tracking-[0.1em] opacity-40">
+                                // {selectedItem?.filename || "NULL_SPECIMEN"}
                             </span>
                         </div>
-                        <button className="flex items-center gap-3 px-5 py-2 rounded-full bg-indigo-500/15 border border-indigo-500/40 hover:bg-indigo-500/25 transition-all group shadow-[0_0_15px_rgba(79,102,241,0.2)]">
-                            <div className="h-2 w-2 rounded-full bg-indigo-400 group-hover:bg-cyan-400 transition-colors"></div>
-                            <span className="text-[10px] font-black text-indigo-200 uppercase tracking-[0.2em] leading-none">Add Styling</span>
-                        </button>
                     </div>
 
                     <div className="w-[400px] h-[710px] rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl relative group ring-1 ring-white/5 hover:ring-indigo-500/30 transition-all duration-700">
@@ -371,8 +416,8 @@ export default function VaultPage() {
 
                     </div>
 
-                    {/* Mini Timeline Control */}
-                    <div className="glass-premium w-[400px] rounded-2xl p-4 border-white/10 bg-black/40 shadow-xl">
+                    {/* Mini Timeline Control - Fused to Player */}
+                    <div className="glass-premium w-[400px] rounded-b-2xl p-4 pt-6 -mt-4 border-white/10 bg-black/40 shadow-xl border-t-0 relative z-0">
                         <div className="flex items-center justify-between mb-3 px-1">
                             <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">Rhythmic Consistency</span>
                             <span className="text-[10px] font-black text-cyan-400 uppercase tracking-widest leading-none">Sync: Frame-Locked</span>
@@ -401,77 +446,91 @@ export default function VaultPage() {
                 </section>
 
                 {/* RIGHT: Telemetry-Inspired Intelligence Panel */}
-                <aside className="space-y-4 pr-2">
-                    {/* EDITORIAL DECISIONS - Top Priority */}
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-3 px-2">
-                            <div className="h-1 w-8 bg-gradient-to-r from-cyan-500 to-transparent rounded-full" />
-                            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Editorial Decisions</h3>
+                <aside className="space-y-4 pr-2 flex flex-col h-[760px]">
+                    {/* EDITORIAL LEDGER - Fixed Volume */}
+                    <div className="flex-1 flex flex-col min-h-0">
+                        <div className="flex items-center gap-3 px-2 mb-4 shrink-0">
+                            <div className="h-1 w-6 bg-cyan-700/40 rounded-full" />
+                            <h3 className="text-[10px] font-black text-slate-600 uppercase tracking-[0.4em]">Editorial_Ledger</h3>
                         </div>
 
-                        {/* SEG_15: Peak Moment */}
-                        <div className={cn(
-                            "bg-[#0a0c14]/60 border rounded-2xl p-5 transition-all duration-700 backdrop-blur-sm",
-                            (currentTime >= 8.2 && currentTime <= 12.5) || viewMode !== "results"
-                                ? "border-[#ff007f]/40 shadow-[0_0_30px_rgba(255,0,127,0.15)] scale-[1.01]"
-                                : "border-white/5 opacity-50"
-                        )}>
-                            <div className="flex items-center justify-between mb-5">
-                                <div className="flex items-center gap-3">
-                                    <div className={cn("h-2 w-2 rounded-full bg-[#ff007f] shadow-[0_0_10px_#ff007f]", currentTime >= 8.2 && currentTime <= 12.5 && "animate-pulse")} />
-                                    <span className="text-[10px] font-black text-[#ff007f] uppercase tracking-[0.25em]">SEG_15: Peak Moment</span>
-                                </div>
-                                <span className="text-[9px] font-black text-white bg-[#ff007f]/20 px-3 py-1 rounded-full border border-[#ff007f]/30 uppercase tracking-wider">Critical</span>
-                            </div>
-                            <div className="flex gap-5">
-                                <div className="w-24 h-24 rounded-xl bg-black border border-[#ff007f]/30 overflow-hidden shrink-0 shadow-inner">
-                                    <video src={selectedItem ? getVideoUrl(selectedItem) : ""} className="w-full h-full object-cover" />
-                                </div>
-                                <div className="min-w-0 flex-1 flex flex-col justify-center">
-                                    <p className="text-[11px] font-black text-white uppercase tracking-tight truncate mb-3">
-                                        {selectedItem?.filename}
+                        <div className="flex-1 overflow-y-auto custom-scrollbar-thin pr-2 space-y-3 min-h-0">
+
+                            {!intelligence?.edl?.decisions?.length ? (
+                                <div className="bg-[#0a0c14]/40 border border-dashed border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+                                    <MonitorPlay className="h-8 w-8 text-slate-700 mb-3 animate-pulse" />
+                                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-relaxed">
+                                        Editorial debrief pending<br />
+                                        <span className="opacity-50 font-bold">Synchronizing decision telemetry...</span>
                                     </p>
-                                    <p className="text-[10px] text-slate-300 font-bold uppercase leading-tight mb-1">Matches reference intensity</p>
-                                    <p className="text-[9px] text-slate-500 uppercase leading-snug font-medium">Best available peak candidate</p>
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* SEG_14: System Build */}
-                        <div className={cn(
-                            "bg-[#0a0c14]/40 border rounded-xl p-5 transition-all duration-700",
-                            currentTime >= 4 && currentTime < 8.2
-                                ? "border-indigo-500/40 shadow-[0_0_20px_rgba(79,102,241,0.1)] opacity-100"
-                                : "border-white/5 opacity-40"
-                        )}>
-                            <div className="flex items-center justify-between mb-4">
-                                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">SEG_14: System Build</span>
-                                <span className="text-[9px] font-black text-indigo-400 uppercase tracking-wider">Strong Match</span>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <TrendingUp className="h-4 w-4 text-emerald-500" />
-                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Supports emotional build</span>
-                            </div>
+                            ) : (
+                                intelligence.edl.decisions.map((decision: any, idx: number) => {
+                                    const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
+                                    return (
+                                        <div key={idx} className={cn(
+                                            "bg-[#0a0c14]/40 border rounded-xl p-4 transition-all duration-500 backdrop-blur-sm relative overflow-hidden group/decision",
+                                            isActive
+                                                ? "border-cyan-500/40 shadow-[0_0_25px_rgba(0,212,255,0.1)] scale-[1.01] z-10"
+                                                : "border-white/5 opacity-40"
+                                        )}>
+                                            {isActive && <div className="absolute top-0 left-0 w-full h-[1.5px] bg-cyan-500/50 animate-shimmer" />}
+                                            <div className="flex items-center justify-between mb-3">
+                                                <div className="flex items-center gap-3">
+                                                    <div className={cn("h-1.5 w-1.5 rounded-full", isActive ? "bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" : "bg-slate-700")} />
+                                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] font-mono">
+                                                        SEG_{decision.segment_id || idx + 1}
+                                                    </span>
+                                                </div>
+                                                <span className="text-[8px] font-black text-cyan-500/60 uppercase tracking-widest font-mono">BASIS: VALIDATED</span>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <div className="w-16 h-16 rounded-xl bg-black/50 border border-white/10 overflow-hidden shrink-0 group-hover/decision:border-[#ff007f]/30 transition-colors">
+                                                    <div className="w-full h-full flex items-center justify-center bg-indigo-500/5">
+                                                        <Video className="h-4 w-4 text-indigo-500/30" />
+                                                    </div>
+                                                </div>
+                                                <div className="min-w-0 flex-1 flex flex-col justify-center">
+                                                    <p className="text-[10px] font-black text-white uppercase tracking-tight truncate mb-1">
+                                                        {decision.clip_filename}
+                                                    </p>
+                                                    <p className="text-[9px] text-slate-400 font-bold uppercase leading-snug">
+                                                        {decision.reasoning || "Optimized for visual energy mapping."}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            )}
                         </div>
                     </div>
 
-                    {/* AI INSIGHT - Compact Summary */}
-                    <div className="bg-[#0a0c14]/60 border border-white/5 rounded-2xl p-5 backdrop-blur-sm">
-                        <div className="flex items-center gap-3 mb-4">
-                            <BrainCircuit className="w-4 h-4 text-cyan-400" />
-                            <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.3em]">AI Insight</h3>
+                    {/* EDITORIAL DEBRIEF - The Verdict Anchor */}
+                    <div className="bg-[#0a0c10] border border-cyan-500/10 rounded-2xl p-6 shadow-[inset_0_0_30px_rgba(34,211,238,0.03)] shrink-0 group/debrief transition-all hover:border-cyan-500/30">
+                        <div className="flex items-center gap-3 mb-5">
+                            <BrainCircuit className="w-3.5 h-3.5 text-cyan-400 group-hover/debrief:scale-110 transition-transform" />
+                            <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em]">Synthesis_Debrief</h3>
                         </div>
                         <div className="space-y-4">
-                            <div className="border-l-2 border-cyan-500/30 pl-4">
-                                <p className="text-[10px] font-bold text-slate-300 uppercase tracking-tight leading-relaxed">
-                                    Edit maintained rhythmic consistency but lacked high-energy clips during peak window (8.2s–12.5s).
-                                </p>
-                            </div>
-                            <div className="border-l-2 border-[#ff007f]/30 pl-4">
-                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
-                                    Clip library skewed toward calm shots, limiting peak amplification.
-                                </p>
-                            </div>
+                            {intelligence?.advisor?.library_alignment?.editorial_tradeoffs?.length ? (
+                                <div className="space-y-4">
+                                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.1em] mb-1">Critical_Tradeoffs</p>
+                                    {intelligence.advisor.library_alignment.editorial_tradeoffs.map((trade: string, idx: number) => (
+                                        <div key={idx} className="border-l-2 border-indigo-500/50 pl-4 py-1">
+                                            <p className="text-[11px] font-bold text-slate-300 uppercase tracking-tight leading-relaxed">
+                                                {trade}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="border-l-2 border-cyan-500/40 pl-5 py-2">
+                                    <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
+                                        System synthesized optimal matches with zero significant tradeoffs. Baseline performance exceeded.
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     </div>
 
@@ -483,3 +542,4 @@ export default function VaultPage() {
         </div>
     );
 }
+
