@@ -9,7 +9,7 @@ FIXES APPLIED:
 5. Prevents back-to-back repeats of same clip
 """
 
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 from collections import defaultdict, Counter
 from pathlib import Path
 from models import (
@@ -34,7 +34,7 @@ def match_clips_to_blueprint(
     reference_path: str | None = None,  # NEW: For beat detection
     bpm: float = 120.0,  # NEW: Dynamic BPM detection
     use_advisor: bool = True  # NEW: Enable Gemini Advisor for strategic guidance
-) -> EDL:
+) -> Tuple[EDL, Optional[AdvisorHints]]:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
     
@@ -165,6 +165,9 @@ def match_clips_to_blueprint(
     # === COMPROMISE TRACKER ===
     compromises = []  # Track every time we use adjacent energy
     
+    # === DEBUG MODE (Gate heavy logging) ===
+    DEBUG_MODE = True
+    
     # === ENHANCED LOGGING (for explainability) ===
     candidate_rankings = []  # Top 3 candidates per segment
     eligibility_breakdowns = []  # Eligibility stats per segment
@@ -221,11 +224,24 @@ def match_clips_to_blueprint(
                 break
                 
             # === TIERED ELIGIBILITY SELECTION ===
+            # Advisor Energy Override (v9.5):
+            # If the Advisor dictates a specific energy for this arc stage, 
+            # we bypass segment.energy filtering to allow the "correct" clips.
+            active_energy_requirement = segment.energy
+            if advisor_hints:
+                guidance = advisor_hints.arc_stage_guidance.get(segment.arc_stage)
+                if guidance and guidance.required_energy:
+                    try:
+                        active_energy_requirement = EnergyLevel(guidance.required_energy)
+                        print(f"      ⚡ADVISOR OVERRIDE: Using {active_energy_requirement.value} energy for {segment.arc_stage}")
+                    except ValueError:
+                        pass
+
             # Step 1: Get energy-compatible clips (Soft constraints)
-            eligible_clips = get_eligible_clips(segment.energy, clip_index.clips)
+            eligible_clips = get_eligible_clips(active_energy_requirement, clip_index.clips)
             
             # ENHANCED LOGGING: Eligibility breakdown
-            if cuts_in_segment == 0:  # Only log once per segment
+            if DEBUG_MODE and cuts_in_segment == 0:  # Only log once per segment
                 ineligible_count = len(clip_index.clips) - len(eligible_clips)
                 eligibility_breakdowns.append({
                     "segment_id": segment.id,
@@ -256,24 +272,70 @@ def match_clips_to_blueprint(
             }
 
             def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
-                score = 0.0
+                """
+                NEW INTELLIGENT SCORING SYSTEM (v9.0)
+                
+                Scoring Hierarchy:
+                1. STRATEGIC LAYER (Advisor): 40-80 points
+                2. NARRATIVE LAYER (Vibe/Function): 25-30 points  
+                3. QUALITY LAYER (Best Moments): 10-15 points
+                4. VARIETY LAYER (Freshness): -20 to +20 points
+                5. PENALTY LAYER (Avoid/Wrong Arc): -20 to -50 points
+                """
+                score = 100.0  # Base score
                 reasons = []
                 vibe_matched = False
 
-                # 1. DISCOVERY & REUSE (The "Greedy Utilization" Engine)
-                # We aggressively push the AI to use things it hasn't shown yet
-                usage = clip_usage_count[clip.filename]
-                if usage == 0:
-                    # Discovery bonus: High for Intro to establish variety, then decays slightly to avoid overriding function
-                    discovery_bonus = 40.0 if segment.arc_stage == "Intro" else 30.0
-                    score += discovery_bonus
-                    reasons.append("✨ New")
-                else:
-                    score -= (usage * 20.0) # Penalty for reuse: Each time used, it becomes significantly less attractive
-                    reasons.append(f"Used:{usage}x")
+                # === STRATEGIC LAYER: Advisor Authority ===
+                # The Advisor sees the "big picture" that mechanical matching can't
                 
-                # ADVISOR BONUS (NEW: Strategic guidance from Gemini)
+                # NARRATIVE ANCHOR (v9.5):
+                # If Advisor has locked a primary subject (e.g. People-Group), enforce it.
+                narrative_subject_match = False
+                if advisor and advisor.primary_narrative_subject:
+                    target_subject = advisor.primary_narrative_subject.value
+                    clip_primary_subjects = [s for s in clip.primary_subject]
+                    
+                    if target_subject in clip_primary_subjects:
+                        narrative_subject_match = True
+                        score += 200.0  # MASSIVE bonus for staying on narrative
+                        reasons.append("⚓ANCHOR")
+                    else:
+                        # Check if it's an allowed supporting subject
+                        is_supporting = False
+                        if advisor.allowed_supporting_subjects:
+                            allowed_subs = [s.value for s in advisor.allowed_supporting_subjects]
+                            if any(s in allowed_subs for s in clip_primary_subjects):
+                                is_supporting = True
+                        
+                        if not is_supporting:
+                            # Hard penalty for losing the narrative thread (the "Forest/Food" penalty)
+                            penalty = 150.0 * getattr(advisor, 'subject_lock_strength', 1.0)
+                            score -= penalty
+                            reasons.append(f"🚫Filler")
+
+                # CRITICAL OVERRIDE RULE (v9.2):
+                # If Advisor explicitly recommends this clip as PRIMARY EMOTIONAL CARRIER
+                # for this arc stage, IGNORE energy mismatch and apply massive bonus
+                advisor_primary_carrier = False
+                required_energy_override = None
+                
                 if advisor:
+                    guidance = advisor.arc_stage_guidance.get(segment.arc_stage)
+                    if guidance:
+                        # Check if Advisor specifies required energy override
+                        if guidance.required_energy:
+                            required_energy_override = guidance.required_energy
+                        
+                        # Check if this clip is explicitly recommended
+                        if guidance.recommended_clips and clip.filename in guidance.recommended_clips:
+                            # This clip is explicitly recommended by Advisor for this arc stage
+                            advisor_primary_carrier = True
+                            score += 150  # MASSIVE bonus - overrides everything
+                            reasons.append(f"🎯PRIMARY")
+                
+                # Standard Advisor bonus (for non-primary recommendations)
+                if advisor and not advisor_primary_carrier:
                     advisor_bonus = compute_advisor_bonus(clip, segment, blueprint, advisor)
                     if advisor_bonus != 0:
                         score += advisor_bonus
@@ -282,70 +344,27 @@ def match_clips_to_blueprint(
                         else:
                             reasons.append(f"🚫{advisor_bonus}")
 
-                # 2. SEMANTIC PROXIMITY (Soft Vibe Matching)
+                # === NARRATIVE LAYER: Semantic Matching ===
+                
+                # 1. Direct Vibe Match (+30 points)
                 target_vibe = (segment.vibe or "general").lower()
                 clip_vibes = [v.lower() for v in clip.vibes]
                 
-                # Check for direct match
                 if any(target_vibe in v or v in target_vibe for v in clip_vibes):
                     score += 30.0
                     reasons.append(f"Vibe:{segment.vibe}")
                     vibe_matched = True
                 else:
-                    # Check for semantic neighbor match
-                    neighbor_hit = False
+                    # Semantic neighbor match (+15 points)
                     for category, neighbors in SEMANTIC_MAP.items():
                         if target_vibe in neighbors or target_vibe == category:
                             if any(v in neighbors for v in clip_vibes):
-                                score += 15.0 # Half bonus for being "in the neighborhood"
+                                score += 15.0
                                 reasons.append(f"Nearby:{category}")
-                                neighbor_hit = True
                                 vibe_matched = True
                                 break
                 
-                # 3. CINEMATIC FLOW (The "Motion & Lighting" Bridge)
-                content = (clip.content_description or "").lower()
-                
-                # Lighting moods
-                is_night_segment = any(kw in target_vibe for kw in ["night", "dark", "evening"])
-                is_night_clip = any(kw in content or kw in str(clip_vibes) for kw in ["night", "dark", "evening", "neon"])
-                
-                if is_night_segment == is_night_clip:
-                    score += 10.0
-                    reasons.append("LightMatch")
-                
-                # Motion continuity (Prefer keeping the flow state)
-                if last_motion and clip.motion == last_motion:
-                    score += 5.0
-                    reasons.append("Flow")
-
-                # 4. ENERGY ARC ALIGNMENT (Weighted Match)
-                if clip.energy == segment.energy:
-                    score += 15.0
-                    reasons.append(f"{clip.energy.value}")
-                else:
-                    # Penalty for adjacent energy compromises
-                    score -= 5.0
-                    reasons.append(f"~{clip.energy.value}")
-
-                # 5. RECENT COOLDOWN (Force temporal spacing)
-                time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
-                
-                # Dynamic Reuse Gap: Faster montages allow quicker reuse (min 2.0s)
-                # Long, calm segments require more visual breathing room between same clip
-                dynamic_reuse_gap = max(2.0, segment.duration * 0.6)
-                if segment.arc_stage.lower() == "peak":
-                    dynamic_reuse_gap = 2.0 # Force rotation faster during peaks
-                
-                if time_since_last_use < dynamic_reuse_gap:
-                    score -= 100.0 # Extreme penalty for near-simultaneous reuse
-                    reasons.append("Cooldown")
-
-                # 6. EDITORIAL INTELLIGENCE MATCHING (NEW v8.0)
-                # This uses the new high-level fields from the blueprint for precise matching
-                
-                # A. Shot Function alignment
-                # Map reference function to candidate narrative utilities
+                # 2. Shot Function Match (+25 points)
                 function_to_utility = {
                     "Establish": ["establishing", "transition"],
                     "Action": ["peak", "build", "transition"],
@@ -364,8 +383,7 @@ def match_clips_to_blueprint(
                         score += 25.0
                         reasons.append(f"Func:{seg_func[:3]}")
                 
-                # B. Subject Consistency Matching
-                # Match segment vibe (subject) to clip primary subjects
+                # 3. Subject Consistency (+20 points)
                 seg_vibe_lower = (segment.vibe or "").lower()
                 clip_subjects = [s.lower() for s in clip.primary_subject]
                 
@@ -383,9 +401,8 @@ def match_clips_to_blueprint(
                             score += 20.0
                             reasons.append("Subj")
                             break
-
-                # C. Shot Scale Continuity (Heuristic)
-                # Map reference shot scale to clip properties (since old clips don't have shot_scale)
+                
+                # 4. Shot Scale Continuity (+15 points)
                 seg_scale = getattr(segment, 'shot_scale', None)
                 if seg_scale:
                     is_scale_match = False
@@ -402,45 +419,155 @@ def match_clips_to_blueprint(
                     if is_scale_match:
                         score += 15.0
                         reasons.append(f"Scale:{seg_scale[:2]}")
+                
+                # 5. Emotional Tone Match (+10 points)
+                if hasattr(clip, 'emotional_tone') and clip.emotional_tone:
+                    seg_intent = getattr(blueprint, 'emotional_intent', '').lower()
+                    clip_tones = [t.lower() for t in clip.emotional_tone]
+                    if seg_intent and any(seg_intent in t or t in seg_intent for t in clip_tones):
+                        score += 10.0
+                        reasons.append("Tone")
 
-                # D. Moment Role alignment
+                # === QUALITY LAYER: Best Moment Matching ===
+                
+                # 1. Best Moment Quality Match (+15 points)
+                # Use the right moment quality for the arc stage
                 if clip.best_moments:
-                    energy_key = segment.energy.value.capitalize()
-                    best_moment = clip.best_moments.get(energy_key)
-                    if best_moment:
-                        role = getattr(best_moment, 'moment_role', '').lower()
-                        if role == segment.arc_stage.lower() or role == (seg_func or '').lower():
-                            score += 15.0
-                            reasons.append("Role")
+                    # Map arc stage to preferred moment quality
+                    arc_to_moment = {
+                        "Intro": "Low",      # Calm establishing
+                        "Build-up": "Medium", # Rising action
+                        "Peak": "High",      # Climax
+                        "Outro": "Low"       # Resolution
+                    }
+                    
+                    preferred_quality = arc_to_moment.get(segment.arc_stage, segment.energy.value.capitalize())
+                    if preferred_quality in clip.best_moments:
+                        score += 15.0
+                        reasons.append(f"Moment:{preferred_quality}")
+                
+                # 2. Clip Quality Rating (+10 per point, max +30)
+                if hasattr(clip, 'clip_quality') and clip.clip_quality:
+                    score += (clip.clip_quality * 10.0)
+                    if clip.clip_quality >= 3:
+                        reasons.append(f"Q{clip.clip_quality}")
 
+                # === VARIETY LAYER: Freshness vs Repetition ===
+                usage = clip_usage_count[clip.filename]
+                if usage == 0:
+                    score += 20.0  # Fresh clip bonus
+                    reasons.append("✨New")
+                else:
+                    # Soft penalty: -20 per use (was -50)
+                    penalty = usage * 20.0
+                    
+                    # NARRATIVE SOFTENING (v9.5): 
+                    # If this clip matches the primary narrative subject, reduce repetition penalty
+                    if narrative_subject_match:
+                        penalty *= 0.4  # 60% reduction in penalty
+                        reasons.append("🛡️Subject")
+                    
+                    score -= penalty
+                    reasons.append(f"Used:{usage}x")
+                
+                # === PENALTY LAYER ===
+                
+                # 1. Recent Cooldown (-100 points)
+                time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
+                dynamic_reuse_gap = max(2.0, segment.duration * 0.6)
+                if segment.arc_stage.lower() == "peak":
+                    dynamic_reuse_gap = 2.0
+                
+                if time_since_last_use < dynamic_reuse_gap:
+                    score -= 100.0
+                    reasons.append("Cooldown")
+                
+                # 2. Energy Matching (with Advisor override support)
+                # Determine what energy level we're matching against
+                target_energy = segment.energy
+                if required_energy_override:
+                    # Advisor override: match against required energy, not segment energy
+                    # Use EnergyLevel from global scope (models)
+                    try:
+                        target_energy = EnergyLevel(required_energy_override)
+                        reasons.append(f"🎯{required_energy_override}")
+                    except (ValueError, TypeError):
+                        pass
+                
+                if clip.energy != target_energy:
+                    # CRITICAL: If Advisor explicitly recommends this clip, ignore energy mismatch
+                    if not advisor_primary_carrier:
+                        # NARRATIVE SOFTENING (v9.5): Minor penalty if subject matches
+                        penalty = 5.0
+                        if narrative_subject_match:
+                            penalty = 1.0
+                            reasons.append("⚡Match")
+                            
+                        score -= penalty
+                        reasons.append(f"~{clip.energy.value}")
+                    else:
+                        # Advisor override: energy mismatch is irrelevant
+                        reasons.append(f"⚡{clip.energy.value}")
+                else:
+                    score += 15.0
+                    reasons.append(f"{clip.energy.value}")
+                
+                # 3. Lighting Continuity (+10 points)
+                content = (clip.content_description or "").lower()
+                is_night_segment = any(kw in target_vibe for kw in ["night", "dark", "evening"])
+                is_night_clip = any(kw in content or kw in str(clip_vibes) for kw in ["night", "dark", "evening", "neon"])
+                
+                if is_night_segment == is_night_clip:
+                    score += 10.0
+                    reasons.append("Light")
+                
+                # 4. Motion Continuity (+5 points)
+                if last_motion and clip.motion == last_motion:
+                    score += 5.0
+                    reasons.append("Flow")
 
-                # NARRATIVE REASONING SYNTHESIS (v8.1)
-                # Instead of raw tags, we build a "Director's Note"
+                # === NARRATIVE REASONING SYNTHESIS (v9.5) ===
                 narrative_parts = []
                 
-                # 1. Lead with Shot Function / Arc Context
-                seg_func = getattr(segment, 'shot_function', 'Action')
-                if "Func:" in str(reasons):
-                    narrative_parts.append(f"Chosen to serve as a strategic '{seg_func}' shot for this {segment.arc_stage} sequence.")
+                # 1. Strategic Identity (The Anchor)
+                if narrative_subject_match:
+                    target_sub = advisor.primary_narrative_subject.value if advisor else "Subject"
+                    narrative_parts.append(f"Prioritizing narrative continuity by anchoring on '{target_sub}' as requested by the text intent.")
+                elif "🚫Filler" in str(reasons):
+                    narrative_parts.append("Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor.")
                 
-                # 2. Add Content/Vibe justification
+                # 2. Shot Function & Strategy
+                if advisor_primary_carrier:
+                    narrative_parts.append(f"Acting as the primary emotional carrier for the {segment.arc_stage} stage.")
+                elif "Func:" in str(reasons):
+                    narrative_parts.append(f"Serving as a strategic '{seg_func}' shot within this sequence.")
+                
                 if vibe_matched:
-                    narrative_parts.append(f"The visual content perfectly captures the '{segment.vibe}' atmosphere we're aiming for.")
+                    narrative_parts.append(f"The visual content captures the '{segment.vibe}' atmosphere perfectly.")
                 
-                # 3. Add technical "Finish"
+                # 4. Energy Handling (Override vs Natural)
+                if required_energy_override:
+                    if clip.energy.value == required_energy_override:
+                        narrative_parts.append(f"Satisfies the narrative's high-energy demand for this segment.")
+                    elif narrative_subject_match:
+                        narrative_parts.append(f"Matching narrative subject over raw energy to preserve story coherence.")
+                
+                # 5. Technical Flow
                 tech_notes = []
-                if "✨ New" in reasons: tech_notes.append("visual freshness")
-                if "Flow" in reasons: tech_notes.append("smooth motion continuity")
-                if "LightMatch" in reasons: tech_notes.append("matching lighting conditions")
+                if "🛡️Subject" in reasons: tech_notes.append("narrative-safe reuse")
+                elif "✨New" in reasons: tech_notes.append("visual freshness")
+                if "Flow" in reasons: tech_notes.append("motion continuity")
+                if "Light" in reasons: tech_notes.append("lighting consistency")
                 
                 if tech_notes:
-                    narrative_parts.append(f"Matches the reference in terms of {', '.join(tech_notes)}.")
+                    narrative_parts.append(f"Maintains {', '.join(tech_notes)}.")
                 
-                # Handle Advisor guidance
-                if advisor and any("🧠" in r for r in reasons):
-                    narrative_parts.append(f"Directly satisfies the Editor's strategic guidance for this emotional arc.")
 
-                reasoning = " ".join(narrative_parts) if narrative_parts else "Selected based on optimal energy and content alignment."
+                reasoning = " ".join(narrative_parts) if narrative_parts else "Aligned with arc energy and visual flow."
+                
+                # SCORE CAP (v9.5): Prevent runaway dominance to maintain ranking discrimination
+                score = min(score, 350.0)
+                
                 return score, reasoning, vibe_matched
 
             # Calculate scores for available clips
@@ -461,7 +588,7 @@ def match_clips_to_blueprint(
             selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
             
             # ENHANCED LOGGING: Candidate rankings (top 3)
-            if cuts_in_segment == 0:  # Only log once per segment
+            if DEBUG_MODE and cuts_in_segment == 0:  # Only log once per segment
                 top_3 = scored_clips[:3]
                 candidates = []
                 for idx, (c, score, reason, vm) in enumerate(top_3):
@@ -692,8 +819,6 @@ def match_clips_to_blueprint(
 
     
     edl = EDL(decisions=decisions)
-    
-    # === POST-EDIT SUMMARY ===
     unique_clips_used = len(set(d.clip_path for d in decisions))
     total_clips = len(clip_index.clips)
     
@@ -796,7 +921,7 @@ def match_clips_to_blueprint(
         "unused_clips": unused_data
     }
     
-    return edl
+    return edl, advisor_hints
 
 
 def _create_energy_pools(clip_index: ClipIndex) -> Dict[EnergyLevel, List[ClipMetadata]]:

@@ -20,42 +20,50 @@ def apply_visual_styling(
     
     # If no text overlay, just copy and return
     if not text_overlay:
+        print(f"  [STYLIST] No text overlay requested. Skipping text rendering.")
         import shutil
         shutil.copy2(input_video, output_video)
         return
 
-    # 1. Map Font Selection (Keyword based)
+    # 1. Map Font Selection (Windows Path Resolution)
     font_style_raw = text_style.get("font_style", "serif").lower()
-    font_name = "Arial" # Default
     
-    if "serif" in font_style_raw:
-        font_name = "Georgia"
-    elif "mono" in font_style_raw:
-        font_name = "Courier New"
-    elif "handwritten" in font_style_raw or "script" in font_style_raw:
-        font_name = "Lucida Handwriting"
-    elif "bold" in font_style_raw:
-        font_name = "Arial Black"
+    # Map to standard Windows font filenames
+    font_map = {
+        "serif": "georgia.ttf",
+        "sans-serif": "arial.ttf",
+        "mono": "consola.ttf",
+        "handwritten": "lhandw.ttf",
+        "bold": "arialbd.ttf"
+    }
+    
+    # Try to find the actual font file on Windows
+    font_file = font_map.get(font_style_raw, "arial.ttf")
+    font_path = Path("C:/Windows/Fonts") / font_file
+    
+    # Fallback if font isn't found (using string name as last resort)
+    if font_path.exists():
+        # BATTLE-TESTED WINDOWS FONT PATH FOR FFmpeg:
+        # We need C\\:/Windows/Fonts/arial.ttf (double escape the colon)
+        # And we DO NOT use quotes around the fontfile path in the filter string.
+        active_font = str(font_path).replace("\\", "/").replace(":", "\\\\:")
+    else:
+        active_font = "Arial"
     
     # 2. Color Mapping - High-End Minimalist
-    # Defaulting to White for that premium look unless gold is specifically requested
     font_color = "white"
     color_effects = text_style.get("color_effects", "").lower()
     if "gold" in color_effects or "yellow" in color_effects:
-        font_color = "0xEEEEEE" # Soft Off-White (looks better than pure yellow)
+        font_color = "0xEEEEEE" 
 
     # 3. Text Processing (Multi-line Support with Auto-Wrapping)
     import textwrap
     
-    # First, handle explicit breaks (pipe or newline)
     raw_lines = text_overlay.replace("|", "\n").split("\n")
     
-    # Then, auto-wrap long lines to fit typical 9:16 width (approx 35 chars)
-    # This prevents the horizontol overflow seen in long phrases.
     wrapped_lines = []
     for line in raw_lines:
         if len(line.strip()) > 35:
-            # Wrap to 35 characters
             wrapped_lines.extend(textwrap.wrap(line.strip(), width=35))
         else:
             if line.strip():
@@ -79,24 +87,26 @@ def apply_visual_styling(
 
     # B. Multi-line DrawText (Manual stacking for perfect alignment)
     placement = text_style.get("placement", "top").lower()
-    font_size = 42 # Smaller is more premium
+    font_size = 42
     line_height = font_size * 1.5
     
-    # Determine base Y position
     if "top" in placement:
-        base_y = "h/5"
+        base_y = "base_y=h/5"
     elif "bottom" in placement:
-        base_y = f"h*0.8 - ({len(lines)} * {line_height}/2)"
+        base_y = f"base_y=h*0.8 - ({len(lines)} * {line_height}/2)"
     else:
-        base_y = f"(h - ({len(lines)} * {line_height}))/2"
+        base_y = f"base_y=(h - ({len(lines)} * {line_height}))/2"
 
     for i, line in enumerate(lines):
-        clean_l = line.replace("'", "").replace(":", "") # Filter out problematic chars
-        y_offset = i * line_height
+        # ESCAPING FOR FFMPEG DRAWTEXT: ' : and \ need special handling
+        # Also escaping > which caused issues in ref3
+        clean_l = line.replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:").replace(">", "\\>")
+        
+        y_offset = f"({base_y.split('=')[1]}) + {i * line_height}"
         
         drawtext = (
-            f"drawtext=font='{font_name}':text='{clean_l}':"
-            f"x=(w-text_w)/2:y={base_y}+{y_offset}:"
+            f"drawtext=fontfile={active_font}:text='{clean_l}':"
+            f"x=(w-text_w)/2:y={y_offset}:"
             f"fontsize={font_size}:fontcolor={font_color}:"
             f"shadowcolor=black@0.4:shadowx=2:shadowy=2"
         )
@@ -116,7 +126,7 @@ def apply_visual_styling(
         output_video
     ]
     
-    print(f"  [STYLIST] Applying Clean Aesthetic: {len(lines)} lines, Font: {font_name}")
+    print(f"  [STYLIST] Applying Clean Aesthetic: {len(lines)} lines, Font: {active_font}")
     try:
         subprocess.run(cmd, check=True, capture_output=True)
         print(f"  [OK] Stylized video ready: {Path(output_video).name}")

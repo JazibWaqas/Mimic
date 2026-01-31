@@ -20,8 +20,8 @@ if sys.platform == 'win32':
 import hashlib
 import shutil
 from pathlib import Path
-from typing import Callable, List
-from models import PipelineResult, StyleBlueprint, ClipIndex, EDL
+from typing import Callable, List, Optional
+from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints
 
 from engine.brain import (
     analyze_reference_video,
@@ -223,8 +223,9 @@ def run_mimic_pipeline(
         ref_bpm = 120.0
         
         try:
-            # 2a. Detect visual cuts first (INCREASED sensitivity for subtle cuts)
-            scene_timestamps = detect_scene_changes(reference_path, threshold=0.1)
+            # [STEP 2] Visual Scene Change Detection (The "Eyes")
+            print(f"  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.12)...")
+            scene_changes = detect_scene_changes(reference_path, threshold=0.12)
             
             # 2b. Extract audio and detect BPM (Dynamic Rhythm)
             if extract_audio_wav(reference_path, str(audio_analysis_path)):
@@ -235,12 +236,12 @@ def run_mimic_pipeline(
             ref_duration = get_video_duration(reference_path)
             beat_grid = get_beat_grid(ref_duration, int(ref_bpm))
             combined_timestamps = _merge_scene_and_beat_timestamps(
-                scene_timestamps, 
+                scene_changes, 
                 beat_grid, 
                 max_gap=3.0
             )
             
-            print(f"  [HYBRID] Visual cuts: {len(scene_timestamps)}, Beat-enhanced: {len(combined_timestamps)}")
+            print(f"  [HYBRID] Visual cuts: {len(scene_changes)}, Beat-enhanced: {len(combined_timestamps)}")
             
             # 2d. Analyze with Gemini using hybrid timestamps
             blueprint = analyze_reference_video(
@@ -319,13 +320,13 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(4, TOTAL_STEPS, "Creating edit sequence...")
         
-        edl = match_clips_to_blueprint(
+        edl, advisor_hints = match_clips_to_blueprint(
             blueprint, 
             clip_index, 
             find_best_moments=True, 
             api_key=api_key,
-            reference_path=reference_path,  # For beat grid detection
-            bpm=ref_bpm  # Dynamic BPM detected in Step 2
+            reference_path=reference_path,
+            bpm=ref_bpm
         )
         
         # Validate EDL but don't fail - allow debugging even if timing is off
@@ -418,7 +419,7 @@ def run_mimic_pipeline(
         print(f"   Processing time: {processing_time:.1f}s")
         
         # Print comprehensive analysis (matching test_ref.py style)
-        _print_comprehensive_analysis(blueprint, edl, clip_index, clip_paths)
+        _print_comprehensive_analysis(blueprint, edl, clip_index, clip_paths, advisor=advisor_hints)
         
         print(f"\n{'='*80}")
         print(f"🎉 Watch the result: {final_output_path}")
@@ -430,12 +431,16 @@ def run_mimic_pipeline(
             blueprint=blueprint,
             clip_index=clip_index,
             edl=edl,
+            advisor=advisor_hints,
             processing_time_seconds=processing_time
         )
         
         # SAVE INTELLIGENCE REPORT FOR FRONTEND (Master Whitebox File)
         try:
             print(f"[PROCESS] Exporting master intelligence report...")
+            if result.advisor:
+                print(f"   (Intelligence data confirmed: {len(result.advisor.overall_strategy)} chars)")
+            
             with open(json_report_path, "w", encoding="utf-8") as jf:
                 json_data = result.model_dump_json(indent=2)
                 jf.write(json_data)
@@ -493,7 +498,7 @@ def run_mimic_pipeline(
 # VALIDATION
 # ============================================================================
 
-def _print_comprehensive_analysis(blueprint: StyleBlueprint, edl: EDL, clip_index: ClipIndex, clip_paths: List[str]) -> None:
+def _print_comprehensive_analysis(blueprint: StyleBlueprint, edl: EDL, clip_index: ClipIndex, clip_paths: List[str], advisor: Optional[AdvisorHints] = None) -> None:
     """Print comprehensive debugging analysis matching test_ref.py style."""
     if not blueprint or not edl:
         return
@@ -658,6 +663,36 @@ def _print_comprehensive_analysis(blueprint: StyleBlueprint, edl: EDL, clip_inde
             print(f"   Utilization Ratio: {utilization:.1f}%")
             if utilization < 10:
                 print(f"   💡 Note: Low utilization suggests clips may not match reference vibes well")
+
+    # 13. ADVISOR STRATEGIC CRITIQUE (v9.0)
+    if advisor:
+        print(f"\n{'='*80}")
+        print("💡 EDITORIAL ADVISOR CRITIQUE & GUIDANCE")
+        print(f"{'='*80}")
+        
+        # A. Creative Audit (Deep Nuance)
+        audit = advisor.creative_audit
+        if audit:
+            print(f"\n🎨 CREATIVE AUDIT:")
+            print(f"   Reference Theme : {audit.reference_theme}")
+            print(f"   Library Theme   : {audit.library_theme}")
+            print(f"\n   ⚠️ THEMATIC DISSONANCE:")
+            print(f"   {audit.thematic_dissonance}")
+            if audit.critical_nuance:
+                print(f"\n   🔍 CRITICAL NUANCE:")
+                print(f"   {audit.critical_nuance}")
+        
+        # B. Required Improvements (Actionable Guidance)
+        if advisor.required_improvements:
+            print(f"\n🚀 REQUIRED IMPROVEMENTS FOR BEST QUALITY:")
+            for i, imp in enumerate(advisor.required_improvements, 1):
+                print(f"   {i}. {imp}")
+        
+        # C. Arc Strategy Recap
+        print(f"\n🧠 OVERALL STRATEGY:")
+        print(f"   {advisor.overall_strategy}")
+        
+        print(f"\n{'='*80}\n")
 
 
 def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:

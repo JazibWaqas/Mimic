@@ -35,6 +35,18 @@ class MotionType(str, Enum):
     DYNAMIC = "Dynamic"
 
 
+class NarrativeSubject(str, Enum):
+    """
+    Specific narrative subjects that can be used for subject-locking.
+    """
+    PEOPLE_GROUP = "People-Group"
+    PEOPLE_SOLO = "People-Solo"
+    PLACE_NATURE = "Place-Nature"
+    PLACE_URBAN = "Place-Urban"
+    OBJECT_DETAIL = "Object-Detail"
+    ABSTRACT = "Abstract"
+
+
 # ============================================================================
 # REFERENCE VIDEO ANALYSIS
 # ============================================================================
@@ -176,7 +188,8 @@ class ArcStageGuidance(BaseModel):
     supporting_material: str = Field("", description="What can enhance or transition between primary moments")
     intent_diluting_material: str = Field("", description="What would weaken the emotional impact")
     reasoning: str = Field("", description="Why this intent matters for this arc stage")
-    recommended_clips: List[str] = Field(default_factory=list, description="3-5 clip filenames that exemplify the primary carrier")
+    recommended_clips: List[str] = Field(default_factory=list, description="8-12 clip filenames that exemplify the primary carrier")
+    required_energy: str = Field("", description="OVERRIDE: Required energy level for this arc stage (Low/Medium/High) - overrides reference's mechanical labels when text overlay demands it")
 
 
 class LibraryAssessment(BaseModel):
@@ -188,23 +201,51 @@ class LibraryAssessment(BaseModel):
     confidence: str = Field("Medium", description="High, Medium, or Low confidence in library coverage")
 
 
+class CreativeAudit(BaseModel):
+    """
+    Deeper analysis of the synergy between Reference Theme and User Library.
+    """
+    reference_theme: str = Field("", description="The primary visual/emotional theme of the reference (e.g. 'Mountains / Nature')")
+    library_theme: str = Field("", description="The dominant theme detected in user clips (e.g. 'City / Urban')")
+    thematic_dissonance: str = Field("", description="Description of mismatch between reference and library themes")
+    critical_nuance: str = Field("", description="Subtle mismatch (e.g. 'Reference is 4:3 filmic, Library is 9:16 digital')")
+
 class AdvisorHints(BaseModel):
     """
     Complete Gemini Advisor output containing editorial intent reasoning.
     
+    ENDGAME VERSION (v3.0): Includes text overlay interpretation as the highest
+    authority signal, with clear reasoning hierarchy.
+    
     This is generated once per reference+library combination and cached.
     The hints express editorial intent that the matcher translates into scoring pressure.
     """
+    text_overlay_intent: str = Field("", description="Interpreted narrative intent from text overlay (highest authority)")
     dominant_narrative: str = Field("", description="Overall story being told (e.g., 'Shared adventure with friends')")
     arc_stage_guidance: dict[str, ArcStageGuidance] = Field(
         default_factory=dict,
         description="Editorial intent guidance keyed by arc stage: Intro, Build-up, Peak, Outro"
     )
-    library_assessment: LibraryAssessment = Field(default_factory=LibraryAssessment)
-    overall_strategy: str = Field("", description="One-sentence overall editing strategy")
+    library_alignment: dict = Field(
+        default_factory=dict,
+        description="Library assessment: strengths, gaps, thematic_dissonance"
+    )
+    editorial_strategy: str = Field("", description="One-sentence overall editing strategy")
     
-    cache_version: str = Field("2.0", description="Advisor cache version (2.0 = intent-driven)")
+    # Narrative Subject Authority (v9.5+)
+    primary_narrative_subject: NarrativeSubject | None = Field(None, description="The primary subject that MUST dominate (e.g. People-Group for 'friends')")
+    allowed_supporting_subjects: List[NarrativeSubject] = Field(default_factory=list, description="Subjects allowed as fillers/transitions")
+    subject_lock_strength: float = Field(1.0, description="Confidence in subject lock (0.0=advisory, 1.0=forced anchor)")
+    
+    # Legacy fields (for backward compatibility with v2.0 cache)
+    library_assessment: LibraryAssessment | None = Field(None, description="DEPRECATED: Use library_alignment")
+    creative_audit: CreativeAudit | None = Field(None, description="DEPRECATED: Merged into library_alignment")
+    overall_strategy: str = Field("", description="DEPRECATED: Use editorial_strategy")
+    required_improvements: List[str] = Field(default_factory=list, description="DEPRECATED: No longer used")
+    
+    cache_version: str = Field("3.4", description="Advisor cache version (3.4 = primary_narrative_subject support)")
     cached_at: str = Field("", description="ISO timestamp when cached")
+
 
 
 # ============================================================================
@@ -388,6 +429,7 @@ class PipelineResult(BaseModel):
     blueprint: StyleBlueprint | None = None
     clip_index: ClipIndex | None = None
     edl: EDL | None = None
+    advisor: AdvisorHints | None = None  # NEW: Strategic guidance used
     error: str | None = None
     processing_time_seconds: float | None = None
 

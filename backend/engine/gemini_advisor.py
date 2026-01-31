@@ -19,7 +19,8 @@ from models import (
     Segment,
     AdvisorHints,
     ArcStageGuidance,
-    LibraryAssessment
+    LibraryAssessment,
+    CreativeAudit
 )
 from engine.gemini_advisor_prompt import ADVISOR_PROMPT
 from engine.brain import initialize_gemini, _parse_json_response, GeminiConfig, rate_limiter, _handle_rate_limit_error
@@ -69,8 +70,8 @@ def get_advisor_suggestions(
             data = json.loads(cache_file.read_text(encoding='utf-8'))
             
             cache_version = data.get("cache_version", "1.0")
-            if cache_version != "1.0":
-                print(f"  ⚠️ Cache version mismatch ({cache_version} vs 1.0), regenerating...")
+            if cache_version != "3.5":
+                print(f"  ⚠️ Cache version mismatch ({cache_version} vs 3.4), regenerating...")
                 cache_file.unlink()
             else:
                 hints = AdvisorHints(**data)
@@ -110,22 +111,50 @@ def get_advisor_suggestions(
             # Parse arc stage guidance (intent-driven)
             arc_guidance = {}
             for stage, guidance_data in data.get('arc_stage_guidance', {}).items():
-                arc_guidance[stage] = ArcStageGuidance(**guidance_data)
+                try:
+                    # Handle both old "recommended_clips" and new "exemplar_clips"
+                    if 'exemplar_clips' in guidance_data:
+                        guidance_data['recommended_clips'] = guidance_data['exemplar_clips']
+                    arc_guidance[stage] = ArcStageGuidance(**guidance_data)
+                except Exception as e:
+                    print(f"  ⚠️ Failed to parse guidance for {stage}: {e}")
             
-            library_assessment = LibraryAssessment(**data.get('library_assessment', {}))
+            # Parse narrative subject lock (v9.5+)
+            from models import NarrativeSubject
+            primary_subject = None
+            if data.get('primary_narrative_subject'):
+                try:
+                    primary_subject = NarrativeSubject(data['primary_narrative_subject'])
+                except ValueError:
+                    pass
             
+            allowed_subjects = []
+            for s in data.get('allowed_supporting_subjects', []):
+                try:
+                    allowed_subjects.append(NarrativeSubject(s))
+                except ValueError:
+                    pass
+
             hints = AdvisorHints(
+                text_overlay_intent=data.get('text_overlay_intent', ''),
                 dominant_narrative=data.get('dominant_narrative', ''),
+                
+                primary_narrative_subject=primary_subject,
+                allowed_supporting_subjects=allowed_subjects,
+                subject_lock_strength=float(data.get('subject_lock_strength', 1.0)),
+                
                 arc_stage_guidance=arc_guidance,
-                library_assessment=library_assessment,
-                overall_strategy=data.get('overall_strategy', ''),
-                cached_at=cached_at
+                library_alignment=data.get('library_alignment', {}),
+                editorial_strategy=data.get('editorial_strategy', ''),
+                cached_at=cached_at,
+                cache_version="3.5"
             )
             
             cache_file.write_text(hints.model_dump_json(indent=2), encoding='utf-8')
             print(f"  ✅ Advisor hints generated and cached")
-            print(f"  📊 Confidence: {hints.library_assessment.confidence}")
-            print(f"  💡 Strategy: {hints.overall_strategy}")
+            print(f"  💡 Text Overlay Intent: {hints.text_overlay_intent[:80]}...")
+            print(f"  📖 Dominant Narrative: {hints.dominant_narrative[:80]}...")
+            print(f"  🎯 Editorial Strategy: {hints.editorial_strategy[:80]}...")
             
             return hints
             

@@ -1,0 +1,86 @@
+{
+  "text_overlay_intent": "The text 'Life when that one friend group is together>>' demands a high-energy, socially dense celebration of collective identity. It requires moments of chaotic joy, shared laughter, and uninhibited group movement that prove life is qualitatively better when these specific people are united.",
+  "dominant_narrative": "A high-octane tribute to the irreplaceable bond and shared adventures of a close-knit friend group, emphasizing that their presence transforms ordinary moments into legendary memories.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Immediate group arrival and shared movement.",
+      "supporting_material": "Travel context like motorboats or group walking shots that establish the 'journey' has begun.",
+      "intent_diluting_material": "Empty landscapes, static establishing shots, or solo subjects without immediate group payoff.",
+      "reasoning": "The intro must instantly validate the text overlay by showing the group in motion. We are not setting a scene; we are launching an experience.",
+      "recommended_clips": [
+        "clip14.mp4",
+        "clip7.mp4",
+        "clip44.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Escalating activity and physical interaction.",
+      "supporting_material": "Active leisure like bumper cars, horse riding, or synchronized movements that show the group's shared rhythm.",
+      "intent_diluting_material": "Passive observation, slow-motion solo shots, or generic travel b-roll like airplane wings.",
+      "reasoning": "The build-up needs to transition from 'being together' to 'doing together.' The energy must climb through shared physical stakes.",
+      "recommended_clips": [
+        "clip1.mp4",
+        "clip10.mp4",
+        "clip2.mp4",
+        "clip27.mp4",
+        "clip12.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Maximum social intensity—unfiltered laughter, singing, and collective celebration.",
+      "supporting_material": "High-motion group activities like water gun fights, trampoline jumping, or boisterous car sing-alongs.",
+      "intent_diluting_material": "Any shot where the group is not the central focus or where the energy dips below a 'peak' threshold.",
+      "reasoning": "This is the core of the 'Life when...' promise. These clips must feel like the 'best-of' highlights that the group will talk about for years.",
+      "recommended_clips": [
+        "clip22.mp4",
+        "clip16.mp4",
+        "clip21.mp4",
+        "clip38.mp4",
+        "clip36.mp4",
+        "clip26.mp4",
+        "clip15.mp4",
+        "clip50.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Lingering joy and the 'afterglow' of the gathering.",
+      "supporting_material": "Candid, slightly lower-energy laughter or the group moving away from the camera, suggesting the adventure continues.",
+      "intent_diluting_material": "Abrupt endings, lonely solo shots, or purely scenic sunsets without human presence.",
+      "reasoning": "The outro should feel like a 'button' on a great day. It needs to maintain the group connection while allowing the energy to settle into a nostalgic memory.",
+      "recommended_clips": [
+        "clip53.mp4",
+        "clip39.mp4",
+        "clip25.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Exceptional volume of high-energy car singing and interior group laughter clips.",
+      "Strong variety of 'active' group leisure (paintball, water guns, bumper cars).",
+      "Multiple clips featuring genuine, uncontrollable laughter which perfectly fits the 'memory reel' style."
+    ],
+    "gaps": [
+      "Limited 'water-based activities' beyond the motorboat and jet ski.",
+      "Few 'golden hour' group shots; most high-energy moments are night-time or indoor."
+    ],
+    "thematic_dissonance": "The library contains many high-quality scenic/nature shots (misty mountains, airplane wings) that must be aggressively ignored because they lack the human presence required by the 'friend group' narrative."
+  },
+  "editorial_strategy": "Prioritize 'People-Group' clips with 'High' energy and 'Dynamic' motion. The text overlay is a promise of social chaos and joy; therefore, any clip without at least two people interacting should be deprioritized. Car-based singing and group laughter are the 'hero' moments of this edit. Scenic shots are only permitted if they feature the group (e.g., the motorboat or the snowy mountain walk) to maintain the narrative anchor.",
+  "primary_narrative_subject": "People-Group",
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Object-Detail"
+  ],
+  "subject_lock_strength": 1.0,
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "3.5",
+  "cached_at": "2026-01-31T15:57:59.095092"
+}
