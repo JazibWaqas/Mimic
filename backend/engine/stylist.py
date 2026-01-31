@@ -44,10 +44,24 @@ def apply_visual_styling(
     if "gold" in color_effects or "yellow" in color_effects:
         font_color = "0xEEEEEE" # Soft Off-White (looks better than pure yellow)
 
-    # 3. Text Processing (Multi-line Support without 'Box' characters)
-    # Use pipe or newline as delimiter
+    # 3. Text Processing (Multi-line Support with Auto-Wrapping)
+    import textwrap
+    
+    # First, handle explicit breaks (pipe or newline)
     raw_lines = text_overlay.replace("|", "\n").split("\n")
-    lines = [line.strip() for line in raw_lines if line.strip()]
+    
+    # Then, auto-wrap long lines to fit typical 9:16 width (approx 35 chars)
+    # This prevents the horizontol overflow seen in long phrases.
+    wrapped_lines = []
+    for line in raw_lines:
+        if len(line.strip()) > 35:
+            # Wrap to 35 characters
+            wrapped_lines.extend(textwrap.wrap(line.strip(), width=35))
+        else:
+            if line.strip():
+                wrapped_lines.append(line.strip())
+    
+    lines = wrapped_lines
     
     # 4. Build Filter Chain
     filters = []

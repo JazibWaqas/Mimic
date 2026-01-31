@@ -25,8 +25,8 @@ This document details the exact sequence of logic implemented in the MIMIC pipel
 - **Type Spec Transfer:** Maps reference text to premium local fonts (Georgia, Serif).
 - **Cinematic Grading:** Applies tone, contrast, and filmic look adjustments via FFmpeg filter chains.
 
-### 5. AI Reflection (The Reflector)
-- **Judicial Audit:** Gemini watches the final MP4 and scores the fidelity.
+### [UPCOMING] 5. AI Reflection (The Reflector)
+- **Judicial Audit:** Gemini watches the final MP4 and scores the fidelity. [Planned for Post-Hackathon]
 
 ---
 

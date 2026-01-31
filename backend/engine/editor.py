@@ -498,24 +498,37 @@ def match_clips_to_blueprint(
             # === PACING LOGIC: BPM-RELATIVE MIMIC BEHAVIOR ===
             # High quality editing snaps to beats or 1/2 beats.
             
-            # MONTAGE MODE: If a segment is very long (>3s), it's likely a montage block 
-            # that needs dense internal cutting.
-            is_long_segment = segment.duration > 3.0
+            # MONTAGE MODE: Determine if we should subdivide this reference segment.
+            # We only subdivide if the segment is long AND doesn't have an explicit 'Long' hold request.
+            hold = getattr(segment, 'expected_hold', 'Normal').lower()
+            arc_stage = segment.arc_stage.lower()
             
             should_subdivide = False
-            if is_long_segment or (segment.duration > 1.5 and segment.arc_stage.lower() in ["build-up", "peak"]):
+            
+            # Smart Subdivision thresholds based on Director Intent (expected_hold)
+            if hold == "short":
+                max_hold = 1.2
+            elif hold == "long":
+                max_hold = 5.0 # Allow deep scenic holds
+            else:
+                max_hold = 3.0 # Standard social media patience
+                
+            # Override: In 'Peak' or 'Build-up', we tend to want more energy (tighter cuts)
+            if arc_stage in ["build-up", "peak"] and hold != "long":
+                max_hold = min(max_hold, 1.8)
+                
+            if segment.duration > max_hold:
                 should_subdivide = True
             
             if not should_subdivide:
                 use_duration = segment_remaining
                 is_last_cut_of_segment = True
             else:
-                # Subdivide based on BEAT VALUES and NARRATIVE PACING (v8.0)
+                # Subdivide based on BEAT VALUES and NARRATIVE PACING (v8.1)
                 if beat_grid and bpm > 0:
                     seconds_per_beat = 60.0 / bpm
                     
-                    # 1. Determine base multiplier from Expected Hold (Director Intent)
-                    hold = getattr(segment, 'expected_hold', 'Normal').lower()
+                    # Determine multiplier from hold intent
                     if hold == "short":
                         multiplier = 1  # 1 beat
                     elif hold == "long":
@@ -523,23 +536,21 @@ def match_clips_to_blueprint(
                     else:
                         multiplier = 2  # 2 beats (Normal)
                         
-                    # 2. Adjust for Arc Stage (Contextual Override)
-                    stage = segment.arc_stage.lower()
-                    if stage == "peak":
-                        multiplier = 1  # Always fast in peak
-                    elif stage == "outro" and hold == "long":
-                        multiplier = 8  # Extra long hold for outro
+                    # Arc Stage context
+                    if arc_stage == "peak":
+                        multiplier = 1  
+                    elif arc_stage == "outro" and hold == "long":
+                        multiplier = 8  # Extra long hold
                     
                     use_duration = seconds_per_beat * multiplier
                 else:
-                    # Fallback to random weighted by expected_hold
-                    hold = getattr(segment, 'expected_hold', 'Normal').lower()
+                    # Fallback to random weighted by intent
                     if hold == "short":
                         use_duration = random.uniform(0.4, 0.7)
                     elif hold == "long":
-                        use_duration = random.uniform(1.8, 3.0)
+                        use_duration = random.uniform(2.5, 4.5)
                     else:
-                        use_duration = random.uniform(0.8, 1.4)
+                        use_duration = random.uniform(1.0, 1.8)
                 
                 # Check if we overshot the segment
                 if use_duration >= segment_remaining - 0.2:

@@ -4,7 +4,7 @@ PIPELINE RUN: REF12.MP4
 Session ID: ref12_master
 Reference: ref12.mp4
 Clips: 55
-Timestamp: 2026-01-31 03:56:22
+Timestamp: 2026-01-31 14:10:37
 
 
 [1/5] Validating inputs...
@@ -494,67 +494,13 @@ Timestamp: 2026-01-31 03:56:22
 ============================================================
 [ADVISOR] GENERATING STRATEGIC GUIDANCE
 ============================================================
+  📦 Loading cached advisor hints...
+  ⚠️ Cache version mismatch (2.0 vs 1.0), regenerating...
   🧠 Calling Gemini for strategic guidance...
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  ⚠️ Advisor attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 23.121657035s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 23
-}
-]
-[QUOTA] Rate limit detected during advisor
-[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during advisor)
-[API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
-[QUOTA] Rotated to new API key, re-initializing genai...
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  ⚠️ Advisor attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 22.253514117s. [links {
-  description: "Learn more about Gemini API quotas"
-  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
-}
-, violations {
-  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
-  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
-  quota_dimensions {
-    key: "model"
-    value: "gemini-3-flash"
-  }
-  quota_dimensions {
-    key: "location"
-    value: "global"
-  }
-  quota_value: 20
-}
-, retry_delay {
-  seconds: 22
-}
-]
-[QUOTA] Rate limit detected during advisor
-[API KEY MANAGER] Marking key as exhausted: AIzaSyAjP3...SS5Pk (Rate limit during advisor)
-[API KEY MANAGER] Rotated to key 3/28: AIzaSyCyiV...ASpNo
-[QUOTA] Rotated to new API key, re-initializing genai...
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   ✅ Advisor hints generated and cached
   📊 Confidence: High
-  💡 Strategy: Prioritize clips with natural lighting and candid human connection to mirror the 'memory reel' style. Use the high-energy laughter clips as the emotional anchor of the edit, framed by soft, scenic transitions to maintain the nostalgic, reflective pacing.
+  💡 Strategy: Translate the 'childhood' theme of the reference into a 'youthful friendship' narrative by prioritizing clips of raw, uninhibited laughter and shared travel, framed by hazy, vintage-style establishing and closing shots.
   ✅ Advisor enabled: Strategic guidance active
   🎵 Beat grid generated: 37 beats at 99.38 BPM
   ✅ Active beat grid: 37 points
@@ -568,44 +514,44 @@ Please retry in 22.253514117s. [links {
 
 Segment 1: 0.00s-4.60s (4.60s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Matches the reference in terms of visual freshness, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip34.mp4 (Score: 175.0)
-    ✂️ Cut 1: clip34.mp4 [2.50s-4.92s] (2.42s) → timeline [0.000000s-2.424242s]
-    ✂️ Cut 2: clip33.mp4 [3.00s-5.18s] (2.18s) → timeline [2.424242s-4.600000s]
+  📎 Selected: clip7.mp4 (Score: 195.0)
+    ✂️ Cut 1: clip7.mp4 [2.00s-4.00s] (2.00s) → timeline [0.000000s-2.000000s]
+    ✂️ Cut 2: clip13.mp4 [3.00s-5.50s] (2.50s) → timeline [2.000000s-4.600000s]
 
 Segment 2: 4.60s-9.17s (4.57s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip13.mp4 (Score: 150.0)
-    ✂️ Cut 1: clip13.mp4 [3.00s-5.41s] (2.41s) → timeline [4.600000s-7.014875s]
-    ✂️ Cut 2: clip7.mp4 [2.00s-4.00s] (2.00s) → timeline [7.014875s-9.170000s]
+  📎 Selected: clip54.mp4 (Score: 130.0)
+    ✂️ Cut 1: clip54.mp4 [0.00s-2.41s] (2.41s) → timeline [4.600000s-7.014875s]
+    ✂️ Cut 2: clip48.mp4 [0.00s-2.16s] (2.16s) → timeline [7.014875s-9.170000s]
 
 Segment 3: 9.17s-13.27s (4.10s, Low/Static)
   🧠 AI: 🌟 Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
   📎 Selected: clip31.mp4 (Score: 85.0)
     ✂️ Cut 1: clip31.mp4 [0.00s-1.13s] (1.13s) → timeline [9.170000s-10.303030s]
-    ✂️ Cut 2: clip54.mp4 [0.00s-1.21s] (1.21s) → timeline [10.303030s-11.515152s]
-    ✂️ Cut 3: clip48.mp4 [8.00s-9.21s] (1.21s) → timeline [11.515152s-12.727273s]
-    ✂️ Cut 4: clip20.mp4 [4.00s-4.54s] (0.54s) → timeline [12.727273s-13.270000s]
+    ✂️ Cut 2: clip20.mp4 [4.00s-5.21s] (1.21s) → timeline [10.303030s-11.515152s]
+    ✂️ Cut 3: clip47.mp4 [4.00s-5.21s] (1.21s) → timeline [11.515152s-12.727273s]
+    ✂️ Cut 4: clip56.mp4 [0.00s-0.54s] (0.54s) → timeline [12.727273s-13.270000s]
 
 Segment 4: 13.27s-16.73s (3.46s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip44.mp4 (Score: 130.0)
-    ✂️ Cut 1: clip44.mp4 [1.50s-2.78s] (1.28s) → timeline [13.270000s-14.545455s]
-    ✂️ Cut 2: clip27.mp4 [1.00s-2.21s] (1.21s) → timeline [14.545455s-15.757576s]
+  📎 Selected: clip27.mp4 (Score: 130.0)
+    ✂️ Cut 1: clip27.mp4 [1.00s-2.28s] (1.28s) → timeline [13.270000s-14.545455s]
+    ✂️ Cut 2: clip.mp4 [2.50s-3.71s] (1.21s) → timeline [14.545455s-15.757576s]
     ✂️ Cut 3: clip23.mp4 [6.50s-7.47s] (0.97s) → timeline [15.757576s-16.730000s]
 
 Segment 5: 16.73s-19.60s (2.87s, Medium/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Action' shot for this Peak sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip53.mp4 (Score: 130.0)
-    ✂️ Cut 1: clip53.mp4 [5.00s-5.60s] (0.60s) → timeline [16.730000s-17.333719s]
-    ✂️ Cut 2: clip36.mp4 [8.50s-9.10s] (0.60s) → timeline [17.333719s-17.937438s]
-    ✂️ Cut 3: clip3.mp4 [0.00s-0.60s] (0.60s) → timeline [17.937438s-18.541156s]
-    ✂️ Cut 4: clip15.mp4 [0.00s-0.60s] (0.60s) → timeline [18.541156s-19.144875s]
-    ✂️ Cut 5: clip40.mp4 [3.50s-3.96s] (0.46s) → timeline [19.144875s-19.600000s]
+  📎 Selected: clip22.mp4 (Score: 135.0)
+    ✂️ Cut 1: clip22.mp4 [8.00s-8.60s] (0.60s) → timeline [16.730000s-17.333719s]
+    ✂️ Cut 2: clip15.mp4 [0.00s-0.60s] (0.60s) → timeline [17.333719s-17.937438s]
+    ✂️ Cut 3: clip40.mp4 [3.50s-4.10s] (0.60s) → timeline [17.937438s-18.541156s]
+    ✂️ Cut 4: clip26.mp4 [2.00s-2.60s] (0.60s) → timeline [18.541156s-19.144875s]
+    ✂️ Cut 5: clip50.mp4 [12.00s-12.46s] (0.46s) → timeline [19.144875s-19.600000s]
 
 Segment 6: 19.60s-22.22s (2.62s, Low/Dynamic)
   🧠 AI: 🌟 Chosen to serve as a strategic 'Button' shot for this Outro sequence. Matches the reference in terms of visual freshness, smooth motion continuity, matching lighting conditions. Directly satisfies the Editor's strategic guidance for this emotional arc.
-  📎 Selected: clip56.mp4 (Score: 150.0)
-    ✂️ Cut 1: clip56.mp4 [0.00s-2.00s] (2.00s) → timeline [19.600000s-22.220091s]
+  📎 Selected: clip52.mp4 (Score: 110.0)
+    ✂️ Cut 1: clip52.mp4 [0.00s-2.00s] (2.00s) → timeline [19.600000s-22.220091s]
 
 ============================================================
 [OK] Matching complete: 17 edit decisions
@@ -617,15 +563,15 @@ Segment 6: 19.60s-22.22s (2.62s, Low/Dynamic)
 
    ✅ NO CLIPS REPEATED! Perfect diversity achieved.
 
-📋 ENERGY COMPROMISES: 12
+📋 ENERGY COMPROMISES: 11
    (Used adjacent energy when exact wasn't available)
       Medium→High: 8 times
-      Low→Medium: 4 times
+      Low→Medium: 3 times
 
 💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
 
    [Quality Improvements]
-   → 4 segments wanted 'Low' energy but used 'Medium'.
+   → 3 segments wanted 'Low' energy but used 'Medium'.
      Add more 'Nature' or 'Calm' clips to reduce jitter here.
 ============================================================
 
@@ -639,23 +585,23 @@ Total segments: 6
 Available clips: 55
 
 Clip usage distribution:
-  clip_029.mp4: 1 times
-  clip_028.mp4: 1 times
-  clip_006.mp4: 1 times
   clip_054.mp4: 1 times
-  clip_026.mp4: 1 times
+  clip_006.mp4: 1 times
   clip_048.mp4: 1 times
   clip_042.mp4: 1 times
+  clip_026.mp4: 1 times
   clip_014.mp4: 1 times
-  clip_039.mp4: 1 times
+  clip_041.mp4: 1 times
+  clip_050.mp4: 1 times
   clip_021.mp4: 1 times
+  clip_001.mp4: 1 times
   clip_017.mp4: 1 times
-  clip_047.mp4: 1 times
-  clip_031.mp4: 1 times
-  clip_024.mp4: 1 times
+  clip_016.mp4: 1 times
   clip_008.mp4: 1 times
   clip_035.mp4: 1 times
-  clip_050.mp4: 1 times
+  clip_020.mp4: 1 times
+  clip_044.mp4: 1 times
+  clip_046.mp4: 1 times
 
 🧠 INTELLIGENCE AUDIT (Narrative Compliance):
    Vibe Accuracy: 0.0% matching suggested vibes
@@ -674,25 +620,25 @@ Clip usage distribution:
 
 
 [5/5] Rendering final video...
-    [OK] Segment extracted: 2.50s - 4.92s
-    [OK] Segment extracted: 3.00s - 5.18s
-    [OK] Segment extracted: 3.00s - 5.41s
     [OK] Segment extracted: 2.00s - 4.00s
+    [OK] Segment extracted: 3.00s - 5.50s
+    [OK] Segment extracted: 0.00s - 2.41s
+    [OK] Segment extracted: 0.00s - 2.16s
     [OK] Segment extracted: 0.00s - 1.13s
-    [OK] Segment extracted: 0.00s - 1.21s
-    [OK] Segment extracted: 8.00s - 9.21s
-    [OK] Segment extracted: 4.00s - 4.54s
-    [OK] Segment extracted: 1.50s - 2.78s
-    [OK] Segment extracted: 1.00s - 2.21s
+    [OK] Segment extracted: 4.00s - 5.21s
+    [OK] Segment extracted: 4.00s - 5.21s
+    [OK] Segment extracted: 0.00s - 0.54s
+    [OK] Segment extracted: 1.00s - 2.28s
+    [OK] Segment extracted: 2.50s - 3.71s
     [OK] Segment extracted: 6.50s - 7.47s
-    [OK] Segment extracted: 5.00s - 5.60s
-    [OK] Segment extracted: 8.50s - 9.10s
+    [OK] Segment extracted: 8.00s - 8.60s
     [OK] Segment extracted: 0.00s - 0.60s
-    [OK] Segment extracted: 0.00s - 0.60s
-    [OK] Segment extracted: 3.50s - 3.96s
+    [OK] Segment extracted: 3.50s - 4.10s
+    [OK] Segment extracted: 2.00s - 2.60s
+    [OK] Segment extracted: 12.00s - 12.46s
     [OK] Segment extracted: 0.00s - 2.00s
   [OK] Concatenated 17 segments (frame-perfect)
-  [STYLIST] Applying Clean Aesthetic: 1 lines, Font: Georgia
+  [STYLIST] Applying Clean Aesthetic: 2 lines, Font: Georgia
   [OK] Stylized video ready: temp_video_styled.mp4
   [OK] Audio extracted: ref_audio.aac
 [WARN] Removing existing output file: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref12_ref12_master.mp4
@@ -704,9 +650,9 @@ Clip usage distribution:
 
 📊 Basic Results:
    Output: ref12_ref12_master.mp4
-   Duration: 22.10s (ref: 22.22s)
-   Difference: 0.12s
-   Processing time: 48.8s
+   Duration: 22.18s (ref: 22.22s)
+   Difference: 0.05s
+   Processing time: 66.2s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -743,10 +689,10 @@ Clip usage distribution:
 📎 Clip Usage Analysis:
    Unique clips used: 17/55
    Most used clips:
-     clip_029.mp4: 1 times (5.9%)
-     clip_028.mp4: 1 times (5.9%)
-     clip_006.mp4: 1 times (5.9%)
      clip_054.mp4: 1 times (5.9%)
+     clip_006.mp4: 1 times (5.9%)
+     clip_048.mp4: 1 times (5.9%)
+     clip_042.mp4: 1 times (5.9%)
      clip_026.mp4: 1 times (5.9%)
 
 🧠 AI Reasoning Breakdown:
@@ -770,10 +716,10 @@ Clip usage distribution:
    Longest cut: 2.62s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_029.mp4: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Match...
-   2. clip_028.mp4: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Match...
-   3. clip_006.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Match...
-   4. clip_054.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Match...
+   1. clip_054.mp4: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Match...
+   2. clip_006.mp4: 🌟 Chosen to serve as a strategic 'Establish' shot for this Intro sequence. Match...
+   3. clip_048.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Match...
+   4. clip_042.mp4: 🌟 Chosen to serve as a strategic 'Action' shot for this Build-up sequence. Match...
    5. clip_026.mp4: 🌟 Matches the reference in terms of visual freshness, smooth motion continuity, ...
 
 📦 CLIP REGISTRY (55 total):
@@ -842,7 +788,7 @@ Clip usage distribution:
 
 📦 Material Efficiency:
    Total source duration available: 763.74s
-   Total duration used in edit: 21.44s
+   Total duration used in edit: 21.50s
    Unique clip segments used: 17
    Utilization Ratio: 2.8%
    💡 Note: Low utilization suggests clips may not match reference vibes well
@@ -852,4 +798,4 @@ Clip usage distribution:
 ================================================================================
 
 [PROCESS] Exporting master intelligence report...
-[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref12_ref12_master.json (115320 bytes)
+[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref12_ref12_master.json (115283 bytes)

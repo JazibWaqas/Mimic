@@ -43,7 +43,8 @@ MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrativ
 - **Gemini Advisor:** Strategic planning layer that assessment library gaps and sets the creative direction.
 - **Adaptive Rhythm (V9.0):** Respects "Cinematic Holds" of the reference while maintaining surgical beat-sync.
 - **Smart Matching:** Tiered energy eligibility, discovery bonuses (+40 pts), and vibe-aware selection (+15 pts).
-- **Stage 6 Reflector:** A final AI judgment pass that critiques the render and suggests improvements.
+- **Beat Synchronization:** Snaps cuts to detected BPM for musical alignment.
+- **[UPCOMING] Stage 6 Reflector:** A planned post-render AI judgment pass to critique results.
 
 ### **Performance & Caching**
 - **Cache Inheritance (New):** Reuse high-quality metadata across different pacing attempts (Instant re-runs).
@@ -57,9 +58,6 @@ MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrativ
 
 ### **Major Improvements**
 - **✅ Stylist Module:** Integrated a dedicated aesthetic engine for text and color grading.
-- **✅ Adaptive Rhythm:** Implemented logic to respect the reference's original shot density (Cinematic Holds).
-- **✅ Cache Inheritance:** Enabled "Relaxed" caching to reuse AI research across precision experiments.
-- **✅ Beat-Snapping:** All visual cuts are now mathematically snapped to the nearest musical high-hat or bass beat.
 
 ### **Quality Metrics**
 - **Diversity:** Consistently achieves 90-100% unique clip usage.
@@ -225,7 +223,7 @@ Remove-Item data/cache/* -Recurse -Force
 1. **Strategic Planning:** Gemini Advisor reviews your library and maps a path through the reference arc.
 2. **Selective Assembly:** The Editor performs a weighted-greedy search for clips, balancing novelty vs. fidelity.
 3. **Beat Synchronization:** Cuts are mathematically aligned to the reference's rhythmic anchors.
-4. **Post-Render Audit:** The Reflector watches the final MP4 and generates the "Judicial Review."
+4. **[UPCOMING] Post-Render Audit:** Stage 6 Reflection pass.
 
 ---
 

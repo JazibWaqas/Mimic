@@ -24,10 +24,10 @@ MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footag
 │             Orchestrator Stage Machine (V9.0)                │
 └─────┬──────────┬──────────┬──────────┬──────────┬───────────┘
       │          │          │          │          │
-┌─────┴────┐ ┌──┴────┐ ┌───┴────┐ ┌──┴─────┐ ┌──┴─────┐
-│  Brain   │ │Advisor│ │ Editor │ │Stylist │ │Reflect │
-│ (Gemini) │ │(Plan) │ │(Match) │ │(Aesth) │ │(Audit) │
-└──────────┘ └───────┘ └────────┘ └────────┘ └────────┘
+┌─────┴────┐ ┌──┴────┐ ┌───┴────┐ ┌──┴─────┐
+│  Brain   │ │Advisor│ │ Editor │ │Stylist │
+│ (Gemini) │ │(Plan) │ │(Match) │ │(Aesth) │
+└──────────┘ └───────┘ └────────┘ └────────┘
 ```
 
 ### Module Responsibilities
@@ -38,12 +38,11 @@ MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footag
 - **`stylist.py`**: 
     - **Responsibility:** Aesthetic Post-Processing.
     - **Logic:** Maps reference font styles to high-end typography (Serif/Sans) and applies cinematic color grading.
-- **`reflector.py`**: Post-render judicial audit. Judges final video vs. original intent.
 - **`processors.py`**: FFmpeg / Librosa operations for surgical cuts and rhythmic detection.
 
 ---
 
-## 🌊 Core Stages (Plan -> Execute -> Style -> Reflect)
+## 🌊 Core Stages (Plan -> Execute -> Style)
 
 ### Stage 4: High-Precision Editor (Adaptive Rhythm)
 MIMIC V9.0 introduces **Adaptive Rhythm**. The editor no longer applies a blind 2-second cut rule. It distinguishes between:

@@ -223,8 +223,8 @@ def run_mimic_pipeline(
         ref_bpm = 120.0
         
         try:
-            # 2a. Detect visual cuts first (LOWERED threshold for subtle cuts)
-            scene_timestamps = detect_scene_changes(reference_path, threshold=0.15)
+            # 2a. Detect visual cuts first (INCREASED sensitivity for subtle cuts)
+            scene_timestamps = detect_scene_changes(reference_path, threshold=0.1)
             
             # 2b. Extract audio and detect BPM (Dynamic Rhythm)
             if extract_audio_wav(reference_path, str(audio_analysis_path)):
