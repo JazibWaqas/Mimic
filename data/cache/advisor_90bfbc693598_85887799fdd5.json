@@ -1,0 +1,92 @@
+{
+  "text_overlay_intent": "A defiant celebration of youthful rebellion and the rejection of adult responsibilities in favor of chaotic, shared joy with friends. It demands moments of uninhibited laughter, group mischief, and the feeling of being 'untouchable' together.",
+  "dominant_narrative": "This video is a manifesto of youthful freedom, capturing the specific brand of madness and deep camaraderie that exists when a group of friends decides to prioritize their bond over the world's expectations.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Candid group intimacy and shared humor.",
+      "supporting_material": "Close-up details of shared activities like eating or joking around.",
+      "intent_diluting_material": "Generic scenic establishing shots or empty landscapes that lack human presence.",
+      "reasoning": "The story is about 'We,' so we must start with the faces of the people who own this narrative. The audience needs to feel like an insider in this friend group immediately.",
+      "recommended_clips": [
+        "clip.mp4",
+        "clip25.mp4",
+        "clip40.mp4",
+        "clip3.mp4",
+        "clip53.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Spontaneous physical play and the transition to movement.",
+      "supporting_material": "Shots of travel or walking that suggest a journey is underway.",
+      "intent_diluting_material": "Static, slow-paced shots or overly serious 'adventure' footage that feels like a documentary.",
+      "reasoning": "The 'no zimmedari' (no responsibility) vibe requires a shift from sitting to acting. We need to see the group moving through space with a sense of purpose and playfulness.",
+      "recommended_clips": [
+        "clip1.mp4",
+        "clip10.mp4",
+        "clip23.mp4",
+        "clip39.mp4",
+        "clip2.mp4",
+        "clip12.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "High-decibel group chaos, specifically singing and shouting in cars or at parties.",
+      "supporting_material": "Dynamic, handheld camera work and vibrant night lights.",
+      "intent_diluting_material": "Daytime nature shots or solo activities that break the 'group energy' fever.",
+      "reasoning": "This is the 'Duniya ki aesi ki tesi' moment. It must be loud, messy, and visually dense. Car singing and night-time celebrations are the ultimate symbols of this carefree rebellion.",
+      "recommended_clips": [
+        "clip16.mp4",
+        "clip22.mp4",
+        "clip19.mp4",
+        "clip21.mp4",
+        "clip26.mp4",
+        "clip38.mp4",
+        "clip37.mp4",
+        "clip50.mp4",
+        "clip24.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "The lingering feeling of freedom on the road.",
+      "supporting_material": "Motion-heavy travel shots and symbolic releases like waves or sunsets.",
+      "intent_diluting_material": "Abrupt endings or shots of people looking tired or lonely.",
+      "reasoning": "The resolution shouldn't be a 'stop,' but a 'continuation' of the feeling. It needs to feel like the road goes on forever and the responsibility never caught up.",
+      "recommended_clips": [
+        "clip18.mp4",
+        "clip43.mp4",
+        "clip32.mp4",
+        "clip55.mp4",
+        "clip42.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Exceptional volume of high-energy car-based group interactions which perfectly match the 'no responsibility' theme.",
+      "Strong selection of candid laughter and unpolished social moments.",
+      "Good variety of night-time 'chaotic' lighting (blue/red/city lights)."
+    ],
+    "gaps": [
+      "Limited 'low energy' group moments for a more reflective outro; most group clips are very high intensity.",
+      "A surplus of 'nature/scenic' clips that are irrelevant to this specific people-centric narrative."
+    ],
+    "thematic_dissonance": "The library contains many 'peaceful' and 'solitary' travel clips (airplane wings, snowy mountains) that directly contradict the 'chaotic rebellion' implied by the text overlay."
+  },
+  "editorial_strategy": "Prioritize 'People-Group' clips above all else. If a clip doesn't have at least two people interacting or reacting, it is context, not story. Use the car-singing clips as the rhythmic backbone of the edit. Force the energy to stay high through the build and peak, only allowing a slight 'release' in the outro through motion-based travel shots. Ignore all 'scenic' clips unless they feature the group moving through them.",
+  "primary_narrative_subject": "People-Group",
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Object-Detail"
+  ],
+  "subject_lock_strength": 1.0,
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "3.5",
+  "cached_at": "2026-01-31T16:34:16.647171"
+}

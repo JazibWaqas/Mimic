@@ -4,7 +4,7 @@ PIPELINE RUN: REF4.MP4
 Session ID: ref4_master
 Reference: ref4.mp4
 Clips: 55
-Timestamp: 2026-01-31 21:01:42
+Timestamp: 2026-01-31 21:23:29
 
 
 [1/5] Validating inputs...
@@ -131,8 +131,8 @@ Timestamp: 2026-01-31 21:01:42
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   Analyzing comprehensively: clip20.mp4...
     [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Group, Activity-Leisure
-    [CACHE] Derived vibes: Group, Leisure
+    [CACHE] Subject: Object-Detail, Activity-Leisure
+    [CACHE] Derived vibes: Detail, Leisure
 
 [15/55] Processing clip21.mp4
 [OK] Using Gemini 3 model: gemini-3-flash-preview
@@ -494,13 +494,11 @@ Timestamp: 2026-01-31 21:01:42
 ============================================================
 [ADVISOR] GENERATING STRATEGIC GUIDANCE
 ============================================================
-  📦 Loading cached advisor hints...
-  ⚠️ Cache version mismatch (3.4 vs 3.4), regenerating...
   🧠 Calling Gemini for strategic guidance...
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   ⚠️ Advisor attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
 * Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
-Please retry in 6.165118512s. [links {
+Please retry in 4.660004574s. [links {
   description: "Learn more about Gemini API quotas"
   url: "https://ai.google.dev/gemini-api/docs/rate-limits"
 }
@@ -518,7 +516,7 @@ Please retry in 6.165118512s. [links {
   quota_value: 20
 }
 , retry_delay {
-  seconds: 6
+  seconds: 4
 }
 ]
 [QUOTA] Rate limit detected during advisor
@@ -527,9 +525,9 @@ Please retry in 6.165118512s. [links {
 [QUOTA] Rotated to new API key, re-initializing genai...
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   ✅ Advisor hints generated and cached
-  💡 Text Overlay Intent: This is a manifesto of shared brotherhood and collective adventure. It demands h...
-  📖 Dominant Narrative: A high-octane celebration of friendship and the 'legendary' moments created duri...
-  🎯 Editorial Strategy: Prioritize the 'People-Group' anchor at all costs. If a clip does not feature th...
+  💡 Text Overlay Intent: The text 'The memories we all want to make with our friends' demands a focus on ...
+  📖 Dominant Narrative: A high-octane celebration of brotherhood and shared adventure, capturing the cha...
+  🎯 Editorial Strategy: Prioritize the 'People-Group' anchor above all else. The text overlay is a promi...
   ✅ Advisor enabled: Strategic guidance active
   🎵 Beat grid generated: 31 beats at 129.20 BPM
   ✅ Active beat grid: 31 points
@@ -543,213 +541,205 @@ Please retry in 6.165118512s. [links {
 
 Segment 1: 0.00s-0.47s (0.47s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness.
-  📎 Selected: clip24.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip24.mp4 [0.00s-0.47s] (0.47s) → timeline [0.000000s-0.470000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.
+  📎 Selected: clip.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip.mp4 [2.50s-2.97s] (0.47s) → timeline [0.000000s-0.470000s]
 
 Segment 2: 0.47s-0.93s (0.46s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip7.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip7.mp4 [2.00s-2.46s] (0.46s) → timeline [0.470000s-0.930000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip1.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip1.mp4 [2.50s-2.96s] (0.46s) → timeline [0.470000s-0.930000s]
 
 Segment 3: 0.93s-1.40s (0.47s, High/Static)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Friends' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.
-  📎 Selected: clip21.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip21.mp4 [39.00s-39.47s] (0.47s) → timeline [0.930000s-1.400000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Friends' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip10.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip10.mp4 [5.00s-5.47s] (0.47s) → timeline [0.930000s-1.400000s]
 
 Segment 4: 1.40s-1.86s (0.46s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip25.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip25.mp4 [4.00s-4.46s] (0.46s) → timeline [1.400000s-1.860000s]
+  📎 Selected: clip12.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip12.mp4 [1.00s-1.46s] (0.46s) → timeline [1.400000s-1.860000s]
 
 Segment 5: 1.86s-2.33s (0.47s, Low/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Establish' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip27.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip27.mp4 [13.50s-13.97s] (0.47s) → timeline [1.860000s-2.330000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip13.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip13.mp4 [6.50s-6.97s] (0.47s) → timeline [1.860000s-2.330000s]
 
 Segment 6: 2.33s-2.79s (0.46s, Low/Static)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.
-  📎 Selected: clip18.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip18.mp4 [0.00s-0.46s] (0.46s) → timeline [2.330000s-2.790000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip14.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip14.mp4 [1.00s-1.46s] (0.46s) → timeline [2.330000s-2.790000s]
 
 Segment 7: 2.79s-3.26s (0.47s, Low/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip26.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip26.mp4 [0.00s-0.47s] (0.47s) → timeline [2.790000s-3.260000s]
+  📎 Selected: clip15.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip15.mp4 [24.00s-24.47s] (0.47s) → timeline [2.790000s-3.260000s]
 
 Segment 8: 3.26s-3.72s (0.46s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip7.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip7.mp4 [2.46s-2.92s] (0.46s) → timeline [3.260000s-3.720000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.
+  📎 Selected: clip16.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip16.mp4 [12.00s-12.46s] (0.46s) → timeline [3.260000s-3.720000s]
 
 Segment 9: 3.72s-4.19s (0.47s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip2.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip2.mp4 [1.50s-1.97s] (0.47s) → timeline [3.720000s-4.190000s]
+  📎 Selected: clip17.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip17.mp4 [1.50s-1.97s] (0.47s) → timeline [3.720000s-4.190000s]
 
 Segment 10: 4.19s-4.65s (0.46s, High/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Group' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip26.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip26.mp4 [4.50s-4.96s] (0.46s) → timeline [4.190000s-4.650000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Group' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.
+  📎 Selected: clip18.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip18.mp4 [4.50s-4.96s] (0.46s) → timeline [4.190000s-4.650000s]
 
 Segment 11: 4.65s-5.12s (0.47s, Low/Static)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip9.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip9.mp4 [5.00s-5.47s] (0.47s) → timeline [4.650000s-5.120000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.
+  📎 Selected: clip19.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip19.mp4 [0.00s-0.47s] (0.47s) → timeline [4.650000s-5.120000s]
 
 Segment 12: 5.12s-5.58s (0.46s, Low/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip12.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip12.mp4 [0.00s-0.46s] (0.46s) → timeline [5.120000s-5.580000s]
+  📎 Selected: clip2.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip2.mp4 [0.00s-0.46s] (0.46s) → timeline [5.120000s-5.580000s]
 
 Segment 13: 5.58s-6.05s (0.47s, High/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip25.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip25.mp4 [8.50s-8.97s] (0.47s) → timeline [5.580000s-6.050000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.
+  📎 Selected: clip21.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip21.mp4 [39.00s-39.47s] (0.47s) → timeline [5.580000s-6.050000s]
 
 Segment 14: 6.05s-6.51s (0.46s, High/Dynamic)
       ⚡ADVISOR OVERRIDE: Using Medium energy for Intro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip3.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip3.mp4 [3.00s-3.46s] (0.46s) → timeline [6.050000s-6.510000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Celebration' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip22.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip22.mp4 [1.50s-1.96s] (0.46s) → timeline [6.050000s-6.510000s]
 
 Segment 15: 6.51s-6.98s (0.47s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip15.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip15.mp4 [0.00s-0.47s] (0.47s) → timeline [6.510000s-6.980000s]
+  📎 Selected: clip23.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip23.mp4 [6.50s-6.97s] (0.47s) → timeline [6.510000s-6.980000s]
 
 Segment 16: 6.98s-7.44s (0.46s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip12.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip12.mp4 [1.00s-1.46s] (0.46s) → timeline [6.980000s-7.440000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.
+  📎 Selected: clip24.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip24.mp4 [0.00s-0.46s] (0.46s) → timeline [6.980000s-7.440000s]
 
 Segment 17: 7.44s-7.91s (0.47s, High/Static)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Friends' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity.
-  📎 Selected: clip21.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip21.mp4 [39.47s-39.94s] (0.47s) → timeline [7.440000s-7.910000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Friends' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip25.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip25.mp4 [8.50s-8.97s] (0.47s) → timeline [7.440000s-7.910000s]
 
 Segment 18: 7.91s-8.37s (0.46s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
   📎 Selected: clip26.mp4 (Score: 350.0)
     ✂️ Cut 1: clip26.mp4 [2.00s-2.46s] (0.46s) → timeline [7.910000s-8.370000s]
 
 Segment 19: 8.37s-8.84s (0.47s, Low/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.
-  📎 Selected: clip39.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip39.mp4 [0.00s-0.47s] (0.47s) → timeline [8.370000s-8.840000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip27.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip27.mp4 [13.50s-13.97s] (0.47s) → timeline [8.370000s-8.840000s]
 
 Segment 20: 8.84s-9.30s (0.46s, Low/Static)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip43.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip43.mp4 [8.50s-8.96s] (0.46s) → timeline [8.840000s-9.300000s]
+  📎 Selected: clip3.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip3.mp4 [7.00s-7.46s] (0.46s) → timeline [8.840000s-9.300000s]
 
 Segment 21: 9.30s-9.77s (0.47s, Low/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip15.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip15.mp4 [24.00s-24.47s] (0.47s) → timeline [9.300000s-9.770000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip36.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip36.mp4 [0.00s-0.47s] (0.47s) → timeline [9.300000s-9.770000s]
 
 Segment 22: 9.77s-10.23s (0.46s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip14.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip14.mp4 [0.50s-0.96s] (0.46s) → timeline [9.770000s-10.230000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip37.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip37.mp4 [1.50s-1.96s] (0.46s) → timeline [9.770000s-10.230000s]
 
 Segment 23: 10.23s-10.70s (0.47s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip23.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip23.mp4 [6.50s-6.97s] (0.47s) → timeline [10.230000s-10.700000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.
+  📎 Selected: clip39.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip39.mp4 [0.50s-0.97s] (0.47s) → timeline [10.230000s-10.700000s]
 
 Segment 24: 10.70s-11.16s (0.46s, High/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Group' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip12.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip12.mp4 [3.50s-3.96s] (0.46s) → timeline [10.700000s-11.160000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Group' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.
+  📎 Selected: clip40.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip40.mp4 [0.00s-0.46s] (0.46s) → timeline [10.700000s-11.160000s]
 
 Segment 25: 11.16s-11.63s (0.47s, Low/Static)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
   🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip22.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip22.mp4 [24.50s-24.97s] (0.47s) → timeline [11.160000s-11.630000s]
+  📎 Selected: clip43.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip43.mp4 [8.50s-8.97s] (0.47s) → timeline [11.160000s-11.630000s]
 
 Segment 26: 11.63s-12.09s (0.46s, Low/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip13.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip13.mp4 [6.50s-6.96s] (0.46s) → timeline [11.630000s-12.090000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip44.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip44.mp4 [0.00s-0.46s] (0.46s) → timeline [11.630000s-12.090000s]
 
 Segment 27: 12.09s-12.56s (0.47s, High/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip54.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip54.mp4 [0.00s-0.47s] (0.47s) → timeline [12.090000s-12.560000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip5.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip5.mp4 [11.50s-11.97s] (0.47s) → timeline [12.090000s-12.560000s]
 
 Segment 28: 12.56s-13.02s (0.46s, High/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Build-up
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Celebration' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip37.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip37.mp4 [3.00s-3.46s] (0.46s) → timeline [12.560000s-13.020000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip50.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip50.mp4 [28.50s-28.96s] (0.46s) → timeline [12.560000s-13.020000s]
 
 Segment 29: 13.02s-13.49s (0.47s, Medium/Dynamic)
       ⚡ADVISOR OVERRIDE: Using High energy for Peak
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.
-  📎 Selected: clip2.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip2.mp4 [1.97s-2.44s] (0.47s) → timeline [13.020000s-13.490000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip53.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip53.mp4 [5.00s-5.47s] (0.47s) → timeline [13.020000s-13.490000s]
 
 Segment 30: 13.49s-14.23s (0.74s, Medium/Dynamic)
-      ⚡ADVISOR OVERRIDE: Using High energy for Outro
-  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
-  📎 Selected: clip53.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip53.mp4 [5.00s-5.74s] (0.74s) → timeline [13.490000s-14.230975s]
+      ⚡ADVISOR OVERRIDE: Using Medium energy for Outro
+  🧠 AI: 🌟 Serving as a strategic 'Button' shot within this sequence. The visual content captures the 'Travel' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.
+  📎 Selected: clip47.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip47.mp4 [0.00s-0.74s] (0.74s) → timeline [13.490000s-14.230975s]
 
 ============================================================
 [OK] Matching complete: 30 edit decisions
 [OK] Total timeline duration: 14.23s (target: 14.23s)
 
 📊 DIVERSITY REPORT:
-   Unique clips used: 21/55
-   ⚠️ 34 clips were not used.
+   Unique clips used: 30/55
+   ⚠️ 25 clips were not used.
 
-   ⚠️ CLIPS REPEATED:
-      clip_020.mp4: 3x
-      clip_005.mp4: 3x
-      clip_054.mp4: 2x
-      clip_015.mp4: 2x
-      clip_019.mp4: 2x
+   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
 
 📋 ENERGY COMPROMISES: 21
    (Used adjacent energy when exact wasn't available)
-      Medium→High: 10 times
+      Medium→High: 11 times
       Low→High: 9 times
       Low→Medium: 1 times
-      High→Medium: 1 times
 
 💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
    [Inventory Gaps]
    → Add 3 more LOW-ENERGY clips (scenic, calm, establishing shots, landscapes)
 
    [Quality Improvements]
-   → 1 segments wanted 'High' energy but used 'Medium'.
-     Add high-intensity clips with 'Urban' or 'Nightlife' vibes to fix this.
    → 10 segments wanted 'Low' energy but used 'Medium'.
      Add more 'Nature' or 'Calm' clips to reduce jitter here.
 ============================================================
@@ -764,30 +754,39 @@ Total segments: 30
 Available clips: 55
 
 Clip usage distribution:
-  clip_020.mp4: 3 times
-  clip_005.mp4: 3 times
-  clip_054.mp4: 2 times
-  clip_015.mp4: 2 times
-  clip_019.mp4: 2 times
-  clip_013.mp4: 2 times
-  clip_008.mp4: 2 times
-  clip_018.mp4: 1 times
-  clip_021.mp4: 1 times
-  clip_011.mp4: 1 times
-  clip_055.mp4: 1 times
-  clip_024.mp4: 1 times
-  clip_034.mp4: 1 times
-  clip_038.mp4: 1 times
-  clip_007.mp4: 1 times
-  clip_017.mp4: 1 times
-  clip_016.mp4: 1 times
+  clip_001.mp4: 1 times
+  clip_002.mp4: 1 times
+  clip_003.mp4: 1 times
+  clip_005.mp4: 1 times
   clip_006.mp4: 1 times
-  clip_048.mp4: 1 times
+  clip_007.mp4: 1 times
+  clip_008.mp4: 1 times
+  clip_009.mp4: 1 times
+  clip_010.mp4: 1 times
+  clip_011.mp4: 1 times
+  clip_012.mp4: 1 times
+  clip_013.mp4: 1 times
+  clip_015.mp4: 1 times
+  clip_016.mp4: 1 times
+  clip_017.mp4: 1 times
+  clip_018.mp4: 1 times
+  clip_019.mp4: 1 times
+  clip_020.mp4: 1 times
+  clip_021.mp4: 1 times
+  clip_024.mp4: 1 times
+  clip_031.mp4: 1 times
   clip_032.mp4: 1 times
+  clip_034.mp4: 1 times
+  clip_035.mp4: 1 times
+  clip_038.mp4: 1 times
+  clip_039.mp4: 1 times
+  clip_043.mp4: 1 times
+  clip_044.mp4: 1 times
   clip_047.mp4: 1 times
+  clip_041.mp4: 1 times
 
 🧠 INTELLIGENCE AUDIT (Narrative Compliance):
-   Vibe Accuracy: 16.7% matching suggested vibes
+   Vibe Accuracy: 20.0% matching suggested vibes
 
    Shot Function Breakdown:
       Action      : 12 cuts
@@ -797,43 +796,43 @@ Clip usage distribution:
       Button      : 1 cuts
 
    Arc Stage Fidelity:
-      Intro       : 14.3% intent alignment
-      Build-up    : 21.4% intent alignment
+      Intro       : 21.4% intent alignment
+      Build-up    : 14.3% intent alignment
       Peak        : 0.0% intent alignment
-      Outro       : 0.0% intent alignment
+      Outro       : 100.0% intent alignment
 
 
 [5/5] Rendering final video...
-    [OK] Segment extracted: 0.00s - 0.47s
-    [OK] Segment extracted: 2.00s - 2.46s
-    [OK] Segment extracted: 39.00s - 39.47s
-    [OK] Segment extracted: 4.00s - 4.46s
-    [OK] Segment extracted: 13.50s - 13.97s
-    [OK] Segment extracted: 0.00s - 0.46s
-    [OK] Segment extracted: 0.00s - 0.47s
-    [OK] Segment extracted: 2.46s - 2.92s
+    [OK] Segment extracted: 2.50s - 2.97s
+    [OK] Segment extracted: 2.50s - 2.96s
+    [OK] Segment extracted: 5.00s - 5.47s
+    [OK] Segment extracted: 1.00s - 1.46s
+    [OK] Segment extracted: 6.50s - 6.97s
+    [OK] Segment extracted: 1.00s - 1.46s
+    [OK] Segment extracted: 24.00s - 24.47s
+    [OK] Segment extracted: 12.00s - 12.46s
     [OK] Segment extracted: 1.50s - 1.97s
     [OK] Segment extracted: 4.50s - 4.96s
-    [OK] Segment extracted: 5.00s - 5.47s
+    [OK] Segment extracted: 0.00s - 0.47s
+    [OK] Segment extracted: 0.00s - 0.46s
+    [OK] Segment extracted: 39.00s - 39.47s
+    [OK] Segment extracted: 1.50s - 1.96s
+    [OK] Segment extracted: 6.50s - 6.97s
     [OK] Segment extracted: 0.00s - 0.46s
     [OK] Segment extracted: 8.50s - 8.97s
-    [OK] Segment extracted: 3.00s - 3.46s
-    [OK] Segment extracted: 0.00s - 0.47s
-    [OK] Segment extracted: 1.00s - 1.46s
-    [OK] Segment extracted: 39.47s - 39.94s
     [OK] Segment extracted: 2.00s - 2.46s
+    [OK] Segment extracted: 13.50s - 13.97s
+    [OK] Segment extracted: 7.00s - 7.46s
     [OK] Segment extracted: 0.00s - 0.47s
-    [OK] Segment extracted: 8.50s - 8.96s
-    [OK] Segment extracted: 24.00s - 24.47s
-    [OK] Segment extracted: 0.50s - 0.96s
-    [OK] Segment extracted: 6.50s - 6.97s
-    [OK] Segment extracted: 3.50s - 3.96s
-    [OK] Segment extracted: 24.50s - 24.97s
-    [OK] Segment extracted: 6.50s - 6.96s
-    [OK] Segment extracted: 0.00s - 0.47s
-    [OK] Segment extracted: 3.00s - 3.46s
-    [OK] Segment extracted: 1.97s - 2.44s
-    [OK] Segment extracted: 5.00s - 5.74s
+    [OK] Segment extracted: 1.50s - 1.96s
+    [OK] Segment extracted: 0.50s - 0.97s
+    [OK] Segment extracted: 0.00s - 0.46s
+    [OK] Segment extracted: 8.50s - 8.97s
+    [OK] Segment extracted: 0.00s - 0.46s
+    [OK] Segment extracted: 11.50s - 11.97s
+    [OK] Segment extracted: 28.50s - 28.96s
+    [OK] Segment extracted: 5.00s - 5.47s
+    [OK] Segment extracted: 0.00s - 0.74s
   [OK] Concatenated 30 segments (frame-perfect)
   [STYLIST] Applying Clean Aesthetic: 2 lines, Font: C\\:/Windows/Fonts/arial.ttf
   [OK] Stylized video ready: temp_video_styled.mp4
@@ -849,7 +848,7 @@ Clip usage distribution:
    Output: ref4_ref4_master.mp4
    Duration: 14.19s (ref: 14.23s)
    Difference: 0.04s
-   Processing time: 38.6s
+   Processing time: 55.7s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -916,13 +915,13 @@ Clip usage distribution:
    Celebration: 2 segments (6.7%)
 
 📎 Clip Usage Analysis:
-   Unique clips used: 21/55
+   Unique clips used: 30/55
    Most used clips:
-     clip_020.mp4: 3 times (10.0%)
-     clip_005.mp4: 3 times (10.0%)
-     clip_054.mp4: 2 times (6.7%)
-     clip_015.mp4: 2 times (6.7%)
-     clip_019.mp4: 2 times (6.7%)
+     clip_001.mp4: 1 times (3.3%)
+     clip_002.mp4: 1 times (3.3%)
+     clip_003.mp4: 1 times (3.3%)
+     clip_005.mp4: 1 times (3.3%)
+     clip_006.mp4: 1 times (3.3%)
 
 🧠 AI Reasoning Breakdown:
    ✨ Smart Match: 0 (0.0%)
@@ -930,7 +929,7 @@ Clip usage distribution:
    ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 5/30 (16.7%)
+   Matches: 6/30 (20.0%)
 
 📏 Cut Statistics by Arc Stage:
    Intro: 14 cuts, avg 0.46s
@@ -945,11 +944,11 @@ Clip usage distribution:
    Longest cut: 0.74s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_018.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
-   2. clip_054.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
-   3. clip_015.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
-   4. clip_019.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
-   5. clip_021.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   1. clip_001.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   2. clip_002.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   3. clip_003.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   4. clip_005.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   5. clip_006.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
 
 📦 CLIP REGISTRY (55 total):
    01: clip.mp4        | High   |   4.8s | Vibes: Group, Indoor
@@ -965,7 +964,7 @@ Clip usage distribution:
    11: clip18.mp4      | High   |   8.5s | Vibes: Group, Vehicle
    12: clip19.mp4      | High   |  14.8s | Vibes: Group, Travel
    13: clip2.mp4       | High   |   8.8s | Vibes: Group, Leisure
-   14: clip20.mp4      | Medium |   5.6s | Vibes: Group, Leisure
+   14: clip20.mp4      | Medium |   5.6s | Vibes: Detail, Leisure
    15: clip21.mp4      | High   |  48.6s | Vibes: Group, Celebration
    16: clip22.mp4      | High   |  27.7s | Vibes: Group, Celebration
    17: clip23.mp4      | High   |  21.4s | Vibes: Group, Indoor
@@ -1038,4 +1037,4 @@ Clip usage distribution:
 
 [PROCESS] Exporting master intelligence report...
    (Intelligence data confirmed: 0 chars)
-[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref4_ref4_master.json (139139 bytes)
+[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref4_ref4_master.json (139047 bytes)

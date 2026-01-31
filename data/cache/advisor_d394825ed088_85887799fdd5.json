@@ -1,0 +1,90 @@
+{
+  "text_overlay_intent": "The trip is a soul-cleansing remedy; the friends are the medicine. The 'North' is the essential setting, but the group's bond is the absolute narrative priority.",
+  "dominant_narrative": "A nostalgic reclamation of peace found through the chaotic and intimate bond of a group trip to the mountains, serving as a spiritual reset.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "High-energy group travel and arrival chaos.",
+      "supporting_material": "Car interiors, night-time movement, and sunroof shots.",
+      "intent_diluting_material": "Empty landscapes, solo shots without social context, or static establishing shots.",
+      "reasoning": "We must establish the 'who' immediately. The energy of the group is the catalyst for the escape; the audience needs to feel the momentum of leaving life's stresses behind.",
+      "recommended_clips": [
+        "clip16.mp4",
+        "clip22.mp4",
+        "clip19.mp4",
+        "clip18.mp4",
+        "clip24.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Group immersion and movement through the 'North' environment.",
+      "supporting_material": "Snowy paths, forest trails, and first-person travel perspectives.",
+      "intent_diluting_material": "Urban settings, beach scenes, or indoor-only shots that lack a sense of place.",
+      "reasoning": "This stage bridges the journey and the destination. It places the friends within the specific 'North' context, emphasizing the transition into nature.",
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip27.mp4",
+        "clip48.mp4",
+        "clip44.mp4",
+        "clip28.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Unfiltered, raw group laughter and shared intimate joy.",
+      "supporting_material": "Close-up interactions like sharing food, playing games, or physical play.",
+      "intent_diluting_material": "Staged poses, solo action sports, or scenic-only pans without human presence.",
+      "reasoning": "This is the 'all I needed' moment. It must feel intimate, chaotic, and authentic to prove that the company was the cure.",
+      "recommended_clips": [
+        "clip15.mp4",
+        "clip40.mp4",
+        "clip50.mp4",
+        "clip25.mp4",
+        "clip3.mp4",
+        "clip1.mp4",
+        "clip23.mp4",
+        "clip36.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Quiet, reflective group presence or a lingering sense of peace.",
+      "supporting_material": "Soft sunset lighting, misty landscapes (as a POV), and walking away shots.",
+      "intent_diluting_material": "High-energy shouting, bright high-noon sun, or fast-paced cuts.",
+      "reasoning": "The 'soul-cleansing' aspect requires a breath. We leave the viewer with the lingering feeling of nostalgia and the peace the trip provided.",
+      "recommended_clips": [
+        "clip48.mp4",
+        "clip30.mp4",
+        "clip31.mp4",
+        "clip52.mp4",
+        "clip54.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Excellent car-based group energy clips that match the 'trip' vibe.",
+      "Strong 'North' context with snowy forest and mountain trail footage.",
+      "High volume of candid laughter and group interaction clips."
+    ],
+    "gaps": [
+      "Lacks specific 'foggy/moody' forest shots; most nature is either bright snow or sunny.",
+      "Limited 'hero' shots of a single person looking at a landscape in a moody style."
+    ],
+    "thematic_dissonance": "Significant amount of beach, tropical, and desert content (camels, jet skis, palm trees) that directly contradicts the 'North' narrative and must be strictly excluded."
+  },
+  "editorial_strategy": "Prioritize the 'People-Group' anchor to fulfill the 'with your friends' promise. Use the 'North' (snow/mountains/forests) as the exclusive backdrop, discarding all tropical or beach-related assets regardless of their quality. The edit must evolve from the high-energy 'escape' (car scenes) to deep 'connection' (laughter/bonding) and conclude on a 'serene' reflective note to mirror the soul-cleansing intent.",
+  "primary_narrative_subject": "People-Group",
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Object-Detail"
+  ],
+  "subject_lock_strength": 1.0,
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "3.5",
+  "cached_at": "2026-01-31T16:31:34.547065"
+}

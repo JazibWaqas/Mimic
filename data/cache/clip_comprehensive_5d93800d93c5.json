@@ -3,7 +3,7 @@
   "motion": "Gentle",
   "intensity": 2,
   "primary_subject": [
-    "People-Group",
+    "Object-Detail",
     "Activity-Leisure"
   ],
   "narrative_utility": [
@@ -23,7 +23,10 @@
     "High-energy action sequences",
     "Professional corporate videos"
   ],
-  "vibes": [],
+  "vibes": [
+    "Detail",
+    "Leisure"
+  ],
   "content_description": "A person pours a brown liquid from a paper bag into a small white cup held by another person.",
   "best_moments": {
     "High": {

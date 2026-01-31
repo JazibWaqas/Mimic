@@ -298,8 +298,13 @@ def match_clips_to_blueprint(
                     
                     if target_subject in clip_primary_subjects:
                         narrative_subject_match = True
-                        score += 200.0  # MASSIVE bonus for staying on narrative
-                        reasons.append("⚓ANCHOR")
+                        # NARRATIVE FULFILLMENT (v10.0):
+                        # Use a large bonus for the FIRST use to establish the anchor.
+                        # Subsequent uses get a much smaller "maintenance" bonus.
+                        usage = clip_usage_count[clip.filename]
+                        bonus = 200.0 if usage == 0 else 30.0
+                        score += bonus
+                        reasons.append("⚓ANCHOR" if usage == 0 else "⚓RECAP")
                     else:
                         # Check if it's an allowed supporting subject
                         is_supporting = False
@@ -458,14 +463,15 @@ def match_clips_to_blueprint(
                     score += 20.0  # Fresh clip bonus
                     reasons.append("✨New")
                 else:
-                    # Soft penalty: -20 per use (was -50)
-                    penalty = usage * 20.0
-                    
-                    # NARRATIVE SOFTENING (v9.5): 
-                    # If this clip matches the primary narrative subject, reduce repetition penalty
-                    if narrative_subject_match:
-                        penalty *= 0.4  # 60% reduction in penalty
-                        reasons.append("🛡️Subject")
+                    # TIERED EMOTIONAL TAX (v10.0):
+                    # Replace linear penalty with tiered exponential decay.
+                    # 1st reuse: -60, 2nd reuse: -200, 3rd+ reuse: -500
+                    if usage == 1:
+                        penalty = 60.0
+                    elif usage == 2:
+                        penalty = 200.0
+                    else:
+                        penalty = 500.0
                     
                     score -= penalty
                     reasons.append(f"Used:{usage}x")
@@ -580,10 +586,14 @@ def match_clips_to_blueprint(
             # Sort by total score
             scored_clips.sort(key=lambda x: x[1], reverse=True)
 
-            # Top tier selection (add a tiny bit of randomness among top scorers)
+            # Top tier selection (v10.0: replaced randomness with Usage Tie-breaker)
+            # Find clips within a "Finesse Buffer" of the max score
             max_score = scored_clips[0][1]
-            top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if (max_score - s) < 5.0]
-            random.shuffle(top_tier)
+            top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if (max_score - s) < 15.0]
+            
+            # Sort top tier by usage (freshest clips first)
+            # This ensures we pick the "freshest clip that is still great"
+            top_tier.sort(key=lambda x: clip_usage_count[x[0].filename])
 
             selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
             

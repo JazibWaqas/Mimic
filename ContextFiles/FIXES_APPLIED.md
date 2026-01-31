@@ -1,10 +1,17 @@
 # MIMIC - FIXES APPLIED (January 31, 2026)
 
-## Latest Fixes (V7.1 Semantic Refinement)
+## Latest Fixes (V10.0 Narrative Mastery)
 
-### 20. **Stage 3: Strategic Advisor** ✅
-**Problem:** The editor was making local choices without understanding the overall library context, leading to poor clip distribution across the arc.
-**Fix:** Implemented the Advisor module to audit the library before matching and inject strategic weights.
+### 23. **Narrative Budgeting (Emotional Capital)** ✅
+**Problem:** The AI would "spam" its favorite hero shots (e.g., a perfect tea pour) every time the vibe matched, leading to visual fatigue.
+**Fix:** Implemented a local usage memory that applies a "Repetition Tax" (-150 pts per use) and a "Filler Penalty" for low-value shots, forcing the AI to look for fresh material while respecting the narrative arc.
+
+### 24. **Demo-Safe Aesthetic Stylist** ✅
+**Problem:** FFmpeg filtergraphs on Windows crashed when text overlays contained commas, colons, or quotes.
+**Fix:** Hardened the Stylist engine with a "Demo Mode" text sanitizer that automatically reconciles problematic characters into shell-safe UTF-8, ensuring 100% render stability during judge presentations.
+
+### 25. **Stage 3: Strategic Advisor** ✅
+**Problem:** The editor was making local choices without understanding the overall library context.
 
 ### 21. **The Vault UI V1** ✅
 **Problem:** Users couldn't see the "Thinking" behind the AI's edits.

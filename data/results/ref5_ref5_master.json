@@ -1248,7 +1248,7 @@
         "motion": "Dynamic",
         "intensity": 2,
         "primary_subject": [
-          "People-Group",
+          "Object-Detail",
           "Activity-Leisure"
         ],
         "narrative_utility": [
@@ -1269,7 +1269,7 @@
           "Professional corporate videos"
         ],
         "vibes": [
-          "Group",
+          "Detail",
           "Leisure"
         ],
         "content_description": "A person pours a brown liquid from a paper bag into a small white cup held by another person.",
@@ -3734,27 +3734,27 @@
     "decisions": [
       {
         "segment_id": 1,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_014.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.93,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_001.mp4",
+        "clip_start": 2.5,
+        "clip_end": 3.43,
         "timeline_start": 0.0,
         "timeline_end": 0.93,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 2,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_012.mp4",
-        "clip_start": 4.0,
-        "clip_end": 4.93,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_002.mp4",
+        "clip_start": 2.5,
+        "clip_end": 3.43,
         "timeline_start": 0.93,
         "timeline_end": 1.86,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_002.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_003.mp4",
         "clip_start": 0.0,
         "clip_end": 0.9299999999999999,
         "timeline_start": 1.86,
@@ -3764,9 +3764,9 @@
       },
       {
         "segment_id": 4,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_010.mp4",
-        "clip_start": 1.5,
-        "clip_end": 2.43,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_005.mp4",
+        "clip_start": 1.0,
+        "clip_end": 1.9300000000000002,
         "timeline_start": 2.79,
         "timeline_end": 3.72,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
@@ -3774,29 +3774,29 @@
       },
       {
         "segment_id": 5,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_005.mp4",
-        "clip_start": 0.0,
-        "clip_end": 1.4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_006.mp4",
+        "clip_start": 6.5,
+        "clip_end": 7.9,
         "timeline_start": 3.72,
         "timeline_end": 5.12,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 6,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_014.mp4",
-        "clip_start": 0.93,
-        "clip_end": 2.5,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_007.mp4",
+        "clip_start": 0.5,
+        "clip_end": 2.318478,
         "timeline_start": 5.12,
         "timeline_end": 7.44,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 7,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_020.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.46999999999999975,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_008.mp4",
+        "clip_start": 24.0,
+        "clip_end": 24.47,
         "timeline_start": 7.44,
         "timeline_end": 7.91,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
@@ -3804,253 +3804,255 @@
       },
       {
         "segment_id": 8,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_007.mp4",
-        "clip_start": 0.5,
-        "clip_end": 0.9599999999999991,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_009.mp4",
+        "clip_start": 12.0,
+        "clip_end": 12.459999999999999,
         "timeline_start": 7.91,
         "timeline_end": 8.37,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.",
         "vibe_match": false
       },
       {
         "segment_id": 9,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_048.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.47000000000000064,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_010.mp4",
+        "clip_start": 1.5,
+        "clip_end": 1.9700000000000006,
         "timeline_start": 8.37,
         "timeline_end": 8.84,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 10,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_044.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_011.mp4",
         "clip_start": 0.0,
         "clip_end": 0.46000000000000085,
         "timeline_start": 8.84,
         "timeline_end": 9.3,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.",
         "vibe_match": false
       },
       {
         "segment_id": 11,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_053.mp4",
-        "clip_start": 2.5,
-        "clip_end": 2.969999999999999,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_012.mp4",
+        "clip_start": 4.0,
+        "clip_end": 4.469999999999999,
         "timeline_start": 9.3,
         "timeline_end": 9.77,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 12,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_010.mp4",
-        "clip_start": 3.2,
-        "clip_end": 3.660000000000001,
-        "timeline_start": 9.77,
-        "timeline_end": 10.23,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 13,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_035.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.46999999999999886,
-        "timeline_start": 10.23,
-        "timeline_end": 10.7,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 14,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_003.mp4",
-        "clip_start": 2.5,
-        "clip_end": 2.960000000000001,
-        "timeline_start": 10.7,
-        "timeline_end": 11.16,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 15,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_011.mp4",
-        "clip_start": 2.0,
-        "clip_end": 2.4700000000000006,
-        "timeline_start": 11.16,
-        "timeline_end": 11.63,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.",
         "vibe_match": false
       },
       {
-        "segment_id": 16,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_017.mp4",
-        "clip_start": 9.2,
-        "clip_end": 9.659999999999998,
-        "timeline_start": 11.63,
-        "timeline_end": 12.09,
+        "segment_id": 12,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_013.mp4",
+        "clip_start": 3.5,
+        "clip_end": 3.960000000000001,
+        "timeline_start": 9.77,
+        "timeline_end": 10.23,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
-        "segment_id": 17,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_031.mp4",
-        "clip_start": 3.0,
-        "clip_end": 3.4700000000000006,
-        "timeline_start": 12.09,
-        "timeline_end": 12.56,
+        "segment_id": 13,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_015.mp4",
+        "clip_start": 39.0,
+        "clip_end": 39.47,
+        "timeline_start": 10.23,
+        "timeline_end": 10.7,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 14,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_016.mp4",
+        "clip_start": 8.0,
+        "clip_end": 8.46,
+        "timeline_start": 10.7,
+        "timeline_end": 11.16,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
-        "segment_id": 18,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_047.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.4599999999999991,
-        "timeline_start": 12.56,
-        "timeline_end": 13.02,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "segment_id": 15,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_017.mp4",
+        "clip_start": 6.5,
+        "clip_end": 6.970000000000001,
+        "timeline_start": 11.16,
+        "timeline_end": 11.63,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
-        "segment_id": 19,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_054.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.47000000000000064,
-        "timeline_start": 13.02,
-        "timeline_end": 13.49,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 20,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_034.mp4",
-        "clip_start": 1.5,
-        "clip_end": 1.959999999999999,
-        "timeline_start": 13.49,
-        "timeline_end": 13.95,
+        "segment_id": 16,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_018.mp4",
+        "clip_start": 3.5,
+        "clip_end": 3.959999999999999,
+        "timeline_start": 11.63,
+        "timeline_end": 12.09,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.",
         "vibe_match": false
       },
       {
-        "segment_id": 21,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_048.mp4",
-        "clip_start": 0.47000000000000064,
-        "clip_end": 0.9400000000000013,
-        "timeline_start": 13.95,
-        "timeline_end": 14.42,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains narrative-safe reuse, motion continuity, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 22,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_006.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.46000000000000085,
-        "timeline_start": 14.42,
-        "timeline_end": 14.88,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 23,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_055.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.46999999999999886,
-        "timeline_start": 14.88,
-        "timeline_end": 15.35,
+        "segment_id": 17,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_019.mp4",
+        "clip_start": 8.5,
+        "clip_end": 8.97,
+        "timeline_start": 12.09,
+        "timeline_end": 12.56,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
         "vibe_match": false
       },
       {
+        "segment_id": 18,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_020.mp4",
+        "clip_start": 4.5,
+        "clip_end": 4.959999999999999,
+        "timeline_start": 12.56,
+        "timeline_end": 13.02,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 19,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_021.mp4",
+        "clip_start": 7.5,
+        "clip_end": 7.970000000000001,
+        "timeline_start": 13.02,
+        "timeline_end": 13.49,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 20,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_024.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.459999999999999,
+        "timeline_start": 13.49,
+        "timeline_end": 13.95,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 21,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_031.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.4700000000000006,
+        "timeline_start": 13.95,
+        "timeline_end": 14.42,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 22,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_032.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.460000000000001,
+        "timeline_start": 14.42,
+        "timeline_end": 14.88,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 23,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_034.mp4",
+        "clip_start": 1.5,
+        "clip_end": 1.9699999999999989,
+        "timeline_start": 14.88,
+        "timeline_end": 15.35,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.",
+        "vibe_match": false
+      },
+      {
         "segment_id": 24,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_014.mp4",
-        "clip_start": 0.0,
-        "clip_end": 1.2958499999999997,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\ref5_master\\standardized\\clip_035.mp4",
+        "clip_start": 3.5,
+        "clip_end": 4.79585,
         "timeline_start": 15.35,
         "timeline_end": 16.64585,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Button' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains narrative-safe reuse, motion continuity, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Outro stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.",
         "vibe_match": false
       }
     ]
   },
   "advisor": {
-    "text_overlay_intent": "The phrase 'For the stories we'll tell later' transforms this from a travelogue into a legacy of friendship. It demands moments of high social friction—laughter, shouting, and shared physical activity—that serve as the 'proof' of a life well-lived together.",
-    "dominant_narrative": "A high-octane celebration of brotherhood and shared adventure, documenting the chaotic and joyful bonds that form the foundation of lifelong memories.",
+    "text_overlay_intent": "The phrase 'For the stories we'll tell later' transforms this from a travelogue into a legacy piece. It demands human-centric 'happening' moments—the kind of chaotic, unpolished, and joyful interactions that form the basis of shared history, rather than just pretty scenery.",
+    "dominant_narrative": "A kinetic time capsule of friendship that prioritizes raw, shared experiences and collective joy over the aesthetics of the destination.",
     "arc_stage_guidance": {
       "Intro": {
-        "primary_emotional_carrier": "Group movement and the anticipation of arrival.",
-        "supporting_material": "POV travel shots that establish a sense of 'going somewhere' together.",
-        "intent_diluting_material": "Static landscapes or empty airplane wings that lack human presence.",
-        "reasoning": "The intro must immediately establish the 'we' in the story. We aren't just looking at a place; we are entering it as a unit.",
+        "primary_emotional_carrier": "Group arrival and collective movement.",
+        "supporting_material": "POV travel shots that imply the group's perspective (feet walking, looking out windows).",
+        "intent_diluting_material": "Empty landscapes or static nature shots. If there are no people or signs of life, there is no story to tell later.",
+        "reasoning": "The intro must establish the 'we' in the story immediately. We are not watching a nature documentary; we are starting a journey with friends.",
         "recommended_clips": [
           "clip7.mp4",
-          "clip13.mp4",
           "clip44.mp4",
-          "clip54.mp4"
+          "clip13.mp4",
+          "clip54.mp4",
+          "clip28.mp4"
         ],
         "required_energy": "Medium"
       },
       "Build-up": {
-        "primary_emotional_carrier": "Candid, mid-energy bonding through shared activities and food.",
-        "supporting_material": "Close-up details of shared objects (drinks, food) that contextualize the hang.",
-        "intent_diluting_material": "High-intensity peaks that belong in the climax or solitary reflection shots.",
-        "reasoning": "This stage builds the 'lore' of the trip. It’s about the smaller, funny moments that happen between the big events.",
+        "primary_emotional_carrier": "Interactive bonding and shared activities.",
+        "supporting_material": "Close-up details of shared objects (pouring drinks, sharing food) to ground the experience in reality.",
+        "intent_diluting_material": "Solo shots that feel isolated or lonely. Every frame should feel like someone else is just off-camera.",
+        "reasoning": "This stage needs to escalate the intimacy of the group. We move from 'arriving' to 'doing,' showing the specific quirks of the friendship.",
         "recommended_clips": [
           "clip25.mp4",
           "clip20.mp4",
-          "clip58.mp4",
+          "clip.mp4",
+          "clip2.mp4",
           "clip10.mp4",
-          "clip12.mp4",
-          "clip2.mp4"
+          "clip12.mp4"
         ],
         "required_energy": "Medium"
       },
       "Peak": {
-        "primary_emotional_carrier": "Unfiltered, high-octane group joy—shouting, dancing, and collective release.",
-        "supporting_material": "Dynamic, shaky-cam footage that mimics the energy of the moment.",
-        "intent_diluting_material": "Any shot where the subject is not actively engaged with others or the camera.",
-        "reasoning": "The 'stories' mentioned in the text are born here. This is the 'legendary' part of the night. Energy must be at its ceiling.",
+        "primary_emotional_carrier": "Uninhibited, high-energy collective euphoria.",
+        "supporting_material": "Dynamic camera movement, night-time celebrations, and loud, vocal expressions of joy (singing, shouting).",
+        "intent_diluting_material": "Polished, posed, or 'slow' moments. The peak must feel like the 'legendary' part of the story—chaotic and alive.",
+        "reasoning": "The peak is the 'story' itself. It requires the highest density of human interaction and movement to justify the nostalgic payoff.",
         "recommended_clips": [
           "clip16.mp4",
           "clip22.mp4",
+          "clip19.mp4",
           "clip21.mp4",
           "clip26.mp4",
+          "clip37.mp4",
           "clip38.mp4",
           "clip15.mp4",
-          "clip1.mp4",
           "clip36.mp4",
-          "clip19.mp4",
-          "clip18.mp4"
+          "clip50.mp4"
         ],
         "required_energy": "High"
       },
       "Outro": {
-        "primary_emotional_carrier": "A final, lingering moment of shared exhaustion or 'running away' from the camera.",
-        "supporting_material": "Soft lighting or nighttime cityscapes that suggest the end of an era.",
-        "intent_diluting_material": "Abrupt cuts to black or generic nature shots that disconnect from the group.",
-        "reasoning": "The 'button' needs to feel like the end of a chapter, leaving the viewer with the warmth of the group's presence.",
+        "primary_emotional_carrier": "Lingering, nostalgic group connection.",
+        "supporting_material": "Soft lighting or sunset scenes, but only if they contain human presence.",
+        "intent_diluting_material": "Abrupt cuts to black or generic scenic postcards without the group.",
+        "reasoning": "The 'button' needs to feel like a memory being tucked away. It should be a moment of shared reflection or a final burst of laughter.",
         "recommended_clips": [
-          "clip39.mp4",
+          "clip31.mp4",
           "clip53.mp4",
-          "clip3.mp4",
-          "clip40.mp4"
+          "clip40.mp4",
+          "clip3.mp4"
         ],
         "required_energy": "Medium"
       }
     },
     "library_alignment": {
       "strengths": [
-        "Exceptional volume of high-energy group celebration clips, particularly car-based singing and nighttime activities.",
-        "Strong selection of candid laughter and 'unpolished' moments that fit the 'stories' narrative."
+        "Exceptional volume of high-energy 'car culture' and singing clips which perfectly fit the 'stories' narrative.",
+        "Strong selection of candid laughter and group play (paintball, water guns, dancing).",
+        "Good variety of 'arrival' and 'walking' shots for the intro."
       ],
       "gaps": [
-        "Limited 'golden hour' group shots; most high-energy content is nighttime or indoor.",
+        "Limited 'golden hour' group shots; most high-energy content is night-time or indoor.",
         "Few POV shots of hands/feet to satisfy the 'Should-Have' immersion requirement."
       ],
-      "thematic_dissonance": "The reference calls for 'Slow motion' and 'Nostalgic travel vlog' aesthetics, but the library is heavily weighted toward chaotic, high-energy movement. I am prioritizing the high-energy 'stories' intent over the slow-motion technical preference."
+      "thematic_dissonance": "The reference asks for 'scenic landscape establishing shots,' but the text overlay 'For the stories we'll tell later' demands people. I am overriding the scenic requirement to prioritize human-centric clips, as empty landscapes do not tell stories."
     },
-    "editorial_strategy": "Prioritize the 'we' in every frame. The text overlay is a promise of shared history; therefore, any clip without a human element is a wasted frame. We will lean into the 'chaotic' energy of the library to fulfill the 'stories' promise, using the car-singing and celebration clips as the narrative spine.",
+    "editorial_strategy": "I am anchoring this entire edit on the 'People-Group' subject. Every scenic or transition shot must be secondary to a moment of human connection. I will use the high-energy car and celebration clips to create a 'fever dream' of a summer night, ensuring the pacing builds from steady walking to chaotic joy, ending on a warm, laughing 'button' that feels like a preserved memory.",
     "primary_narrative_subject": "People-Group",
     "allowed_supporting_subjects": [
       "People-Solo",
@@ -4062,8 +4064,8 @@
     "overall_strategy": "",
     "required_improvements": [],
     "cache_version": "3.5",
-    "cached_at": "2026-01-31T16:03:13.122919"
+    "cached_at": "2026-01-31T16:22:43.742932"
   },
   "error": null,
-  "processing_time_seconds": 42.121540546417236
+  "processing_time_seconds": 59.29345512390137
 }
