@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel vlogs",
+    "High-energy montages"
+  ],
+  "avoid_for": [
+    "Calm reflective scenes",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends enjoys a road trip inside a van, talking and dancing to music.",
+  "best_moments": {
+    "High": {
+      "start": 10.5,
+      "end": 13.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak dancing and expressive hand gestures from the central subject."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 4.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Casual conversation and moderate hand movements among the group."
+    },
+    "Low": {
+      "start": 18.5,
+      "end": 21.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Lower activity level as subjects focus on phones or look away momentarily."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:25:32"
+}

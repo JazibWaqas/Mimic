@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Crowd",
+    "Place-Urban"
+  ],
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Fast-paced urban montages",
+    "Transitioning between street scenes"
+  ],
+  "avoid_for": [
+    "Slow emotional storytelling",
+    "Static landscape shots"
+  ],
+  "vibes": [],
+  "content_description": "A handheld shot of a busy city street at night with people walking and a quick pan across a shoe store.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.0,
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Rapid camera pan across the street creates high visual energy."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Steady movement of people and cars after the initial pan."
+    },
+    "Low": {
+      "start": 2.0,
+      "end": 3.763125,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Minimal camera movement compared to the opening pan."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:37:42"
+}

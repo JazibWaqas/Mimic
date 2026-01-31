@@ -1,0 +1,3346 @@
+{
+  "success": true,
+  "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref_sess_6c5c439_v1.mp4",
+  "blueprint": {
+    "total_duration": 25.864172,
+    "segments": [
+      {
+        "id": 1,
+        "start": 0.0,
+        "end": 1.17,
+        "duration": 1.17,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Chaos",
+        "reasoning": "",
+        "arc_stage": "Intro",
+        "shot_scale": "Wide",
+        "shot_function": "Establish",
+        "relation_to_previous": "None",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 2,
+        "start": 1.17,
+        "end": 2.91,
+        "duration": 1.74,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Excitement",
+        "reasoning": "",
+        "arc_stage": "Intro",
+        "shot_scale": "CU",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Erratic"
+      },
+      {
+        "id": 3,
+        "start": 2.91,
+        "end": 4.66,
+        "duration": 1.75,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Friends",
+        "reasoning": "",
+        "arc_stage": "Intro",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 4,
+        "start": 4.66,
+        "end": 6.99,
+        "duration": 2.33,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Journey",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Transition",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 5,
+        "start": 6.99,
+        "end": 8.16,
+        "duration": 1.17,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Fog",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Establish",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 6,
+        "start": 8.16,
+        "end": 9.32,
+        "duration": 1.16,
+        "energy": "Medium",
+        "motion": "Static",
+        "vibe": "Group",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Detail",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 7,
+        "start": 9.32,
+        "end": 11.65,
+        "duration": 2.33,
+        "energy": "Low",
+        "motion": "Static",
+        "vibe": "Solitude",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Release",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Normal",
+        "camera_movement": "Locked"
+      },
+      {
+        "id": 8,
+        "start": 11.65,
+        "end": 14.56,
+        "duration": 2.91,
+        "energy": "Low",
+        "motion": "Static",
+        "vibe": "Viewpoint",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Establish",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Long",
+        "camera_movement": "Locked"
+      },
+      {
+        "id": 9,
+        "start": 14.56,
+        "end": 16.89,
+        "duration": 2.33,
+        "energy": "Low",
+        "motion": "Dynamic",
+        "vibe": "Forest",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Transition",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 10,
+        "start": 16.89,
+        "end": 18.64,
+        "duration": 1.75,
+        "energy": "Low",
+        "motion": "Dynamic",
+        "vibe": "Walking",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Detail",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 11,
+        "start": 18.64,
+        "end": 21.3,
+        "duration": 2.66,
+        "energy": "Medium",
+        "motion": "Static",
+        "vibe": "Warmth",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 12,
+        "start": 21.3,
+        "end": 23.88,
+        "duration": 2.58,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Play",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Action",
+        "relation_to_previous": "Payoff",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
+      },
+      {
+        "id": 13,
+        "start": 23.88,
+        "end": 25.864172,
+        "duration": 1.984172,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Laughter",
+        "reasoning": "",
+        "arc_stage": "Outro",
+        "shot_scale": "Medium",
+        "shot_function": "Button",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Normal",
+        "camera_movement": "Handheld"
+      }
+    ],
+    "editing_style": "Memory reel",
+    "emotional_intent": "Nostalgic",
+    "arc_description": "The edit begins with high-energy, chaotic night shots, transitions into a serene and reflective exploration of foggy landscapes, and concludes with warm, intimate moments of group bonding.",
+    "text_overlay": "Pov: When you came to know all you needed was a trip to North with your friends",
+    "narrative_message": "This video captures the nostalgic and soul-cleansing essence of a spontaneous mountain trip with close friends, emphasizing that shared experiences are the ultimate remedy for life's stresses.",
+    "intent_clarity": "Clear",
+    "must_have_content": [
+      "Chaotic, high-energy group interactions",
+      "Atmospheric scenic shots of fog and forests",
+      "Candid moments of friends walking or sitting together",
+      "A central 'hero' shot of someone looking at the landscape"
+    ],
+    "should_have_content": [
+      "Travel transitions like being inside a van",
+      "Warm lighting elements like a campfire to contrast the cool fog"
+    ],
+    "avoid_content": [
+      "Overly polished or staged commercial-style shots",
+      "Bright, sunny, high-saturation colors",
+      "Fast-paced action that breaks the nostalgic mood"
+    ],
+    "pacing_feel": "Steady",
+    "visual_balance": "Balanced",
+    "color_grading": {
+      "tone": "Cool",
+      "contrast": "Medium",
+      "specific_look": "Moody dark with a foggy, desaturated mountain aesthetic."
+    },
+    "aspect_ratio": "9:16",
+    "visual_effects": [
+      "Slow motion",
+      "Handheld shake",
+      "Vignette"
+    ],
+    "shot_variety": {
+      "dominant_scale": "Wide",
+      "variety_level": "Moderate"
+    },
+    "cut_style": "Hard cuts",
+    "transition_effects": [
+      "None"
+    ],
+    "music_sync": "Tightly synced",
+    "audio_style": {
+      "genre": "Indie Folk",
+      "vocal_presence": "Vocals",
+      "energy": "Mid"
+    },
+    "music_structure": {
+      "phrases": [
+        "Intro (Chaotic/Fast)",
+        "Main Verse (Atmospheric/Melodic)",
+        "Bridge (Reflective)",
+        "Outro (Warm/Resolving)"
+      ],
+      "accent_moments": [
+        "Cut to the foggy forest at 9.32",
+        "Cut to the campfire at 18.64",
+        "Final laugh at 23.88"
+      ],
+      "ending_type": "Fade"
+    },
+    "text_style": {
+      "font_style": "Serif",
+      "animation": "Static",
+      "placement": "Center",
+      "color_effects": "White"
+    },
+    "overall_reasoning": "The edit works by juxtaposing the chaotic energy of friendship with the quiet, overwhelming beauty of nature. The use of slow motion in the middle section allows the viewer to 'breathe' with the subjects, while the hard cuts on the beat maintain a rhythmic, memory-like flow. The consistent text overlay acts as a narrative anchor, framing every shot as a piece of a larger realization about happiness.",
+    "ideal_material_suggestions": [
+      "Candid footage of friends laughing in a car at night.",
+      "Cinematic wide shots of a misty mountain range or dense forest.",
+      "Close-ups of small details like steam from a cup or a crackling fire.",
+      "Handheld footage of a group running or playing in an open outdoor space."
+    ]
+  },
+  "clip_index": {
+    "clips": [
+      {
+        "filename": "clip8.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_001.mp4",
+        "duration": 5.528542,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 1,
+        "primary_subject": [
+          "Place-Nature",
+          "People-Solo"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Opening establishing shots",
+          "Travel montages"
+        ],
+        "avoid_for": [
+          "High-energy peaks",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Nature",
+          "Solo"
+        ],
+        "content_description": "A person looks out over a mountain landscape as the camera pans across the horizon towards the sun.",
+        "best_moments": {
+          "High": {
+            "start": 3.0,
+            "end": 5.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "The pan accelerates slightly towards the sun, creating the most visual change."
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 4.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "A steady, controlled pan across the forested hills and distant horizon."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The initial moment showing the person looking out, with minimal camera movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_002.mp4",
+        "duration": 7.034,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Adventure montages",
+          "Travel vlogs"
+        ],
+        "avoid_for": [
+          "Calm reflective moments",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two men riding a jet ski on a river near a sandy bank.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Fastest movement with visible water spray and active engagement."
+          },
+          "Medium": {
+            "start": 3.0,
+            "end": 5.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Controlled deceleration and turning as the jet ski approaches the camera."
+          },
+          "Low": {
+            "start": 5.0,
+            "end": 6.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The jet ski comes to a near halt, showing the subjects more clearly."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip10.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_003.mp4",
+        "duration": 7.666,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Dance montages",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two men walk down a forest path and perform a synchronized dance move towards the camera.",
+        "best_moments": {
+          "High": {
+            "start": 5.0,
+            "end": 7.666,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "The subjects perform a synchronized dance move with high energy."
+          },
+          "Medium": {
+            "start": 2.5,
+            "end": 5.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Subjects walk closer to the camera, increasing visual engagement."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial walking sequence from a distance with lower visual intensity."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip11.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_004.mp4",
+        "duration": 15.424167,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Solo",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "POV action sequences",
+          "High-energy peaks",
+          "Adventure montages"
+        ],
+        "avoid_for": [
+          "Calm reflective intros",
+          "Steady establishing shots"
+        ],
+        "vibes": [
+          "Solo",
+          "Leisure"
+        ],
+        "content_description": "A person on a high-swinging amusement park ride overlooking a valley.",
+        "best_moments": {
+          "High": {
+            "start": 1.0,
+            "end": 4.0,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak swing speed and intense camera movement with audible excitement."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 6.5,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Transitioning through the swing arc with sustained but slightly less chaotic motion."
+          },
+          "Low": {
+            "start": 7.0,
+            "end": 9.0,
+            "moment_role": "Reflection",
+            "stable_moment": false,
+            "reason": "Brief moment of reduced relative motion as the ride reaches its apex."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip12.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_005.mp4",
+        "duration": 7.874688,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Action sequences",
+          "Leisure activity montages"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A man shoots an arrow at a board of balloons while another man assists him in an outdoor setting.",
+        "best_moments": {
+          "High": {
+            "start": 3.5,
+            "end": 6.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "The moment of the shot and the balloon popping provides peak action."
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 3.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Preparation and aiming phase with steady movement."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial setup with minimal movement before the action begins."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip13.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_006.mp4",
+        "duration": 7.918005,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel montages",
+          "Transition sequences"
+        ],
+        "avoid_for": [
+          "High-intensity action",
+          "Intimate close-ups"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "A group of people walks along a snowy mountain path surrounded by pine trees.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Most active camera movement and subject interaction at the start."
+          },
+          "Medium": {
+            "start": 3.0,
+            "end": 5.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Steady walking pace as the group moves along the path."
+          },
+          "Low": {
+            "start": 6.5,
+            "end": 7.918005,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Calm pan away from the subjects to the forest landscape."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip14.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_007.mp4",
+        "duration": 2.318478,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel montages",
+          "Adventure sequences",
+          "Transition shots"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Still photography style shots"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "People wearing life jackets ride a motorboat across a lake during the day.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Fast camera pan combined with the boat's high-speed motion."
+          },
+          "Medium": {
+            "start": 0.5,
+            "end": 2.318478,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Consistent tracking of the passenger while maintaining a sense of travel."
+          },
+          "Low": {
+            "start": 1.0,
+            "end": 2.318478,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "The most stable portion of the clip focusing on the subject's expression."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip15.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_008.mp4",
+        "duration": 26.968917,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Laughter montages",
+          "High-energy peaks",
+          "Blooper reels"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Serious narratives"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two young men laugh uncontrollably in a hotel room, one lying on the bed and the other on the floor.",
+        "best_moments": {
+          "High": {
+            "start": 12.0,
+            "end": 15.0,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak laughter intensity and expressive camera movement between subjects."
+          },
+          "Medium": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Clear, sustained laughter that establishes the joyful mood of the scene."
+          },
+          "Low": {
+            "start": 24.0,
+            "end": 26.968917,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "The laughter subsides as the subject on the floor sits up, providing a natural exit."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip27.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_009.mp4",
+        "duration": 29.013229,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Adventure travel montages",
+          "POV action sequences"
+        ],
+        "avoid_for": [
+          "Stable cinematic shots",
+          "Quiet reflective scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "A first-person perspective of riding a horse on a rugged forest trail with other riders ahead.",
+        "best_moments": {
+          "High": {
+            "start": 7.5,
+            "end": 10.5,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak movement intensity and clear view of the lead rider during a fast trot."
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 4.0,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Steady movement at the start of the sequence establishing the group's pace."
+          },
+          "Low": {
+            "start": 13.5,
+            "end": 16.0,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Camera pans away from the horse to the surrounding forest, reducing visual intensity."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip45.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_010.mp4",
+        "duration": 4.295692,
+        "energy": "Low",
+        "motion": "Dynamic",
+        "intensity": 1,
+        "primary_subject": [
+          "Place-Nature"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Opening establishing shots",
+          "Travel montages"
+        ],
+        "avoid_for": [
+          "High-energy peaks",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Nature"
+        ],
+        "content_description": "A slow pan across a mountainous landscape with evergreen trees and a clear blue sky.",
+        "best_moments": {
+          "High": {
+            "start": 2.5,
+            "end": 4.295692,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Most expansive view of the valley during the pan"
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 3.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady camera movement across the landscape"
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial calm view of the mountain side"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip47.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_011.mp4",
+        "duration": 13.124479,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Dramatic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Transitions",
+          "Travel montages"
+        ],
+        "avoid_for": [
+          "High-energy peaks",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Solo",
+          "Travel"
+        ],
+        "content_description": "A person with a backpack walks through a dimly lit stone tunnel.",
+        "best_moments": {
+          "High": {
+            "start": 8.0,
+            "end": 11.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Increased visual change as the subject moves through the archway."
+          },
+          "Medium": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Steady tracking shot of the subject walking at the start."
+          },
+          "Low": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Subject moves into a darker area, creating a sense of mystery and slower pacing."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip48.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_012.mp4",
+        "duration": 21.478458,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel montages",
+          "Establishing shots"
+        ],
+        "avoid_for": [
+          "High-energy action",
+          "Intimate close-ups"
+        ],
+        "vibes": [
+          "Solo",
+          "Travel"
+        ],
+        "content_description": "Two men explore a snowy forest landscape near a mountain lodge.",
+        "best_moments": {
+          "High": {
+            "start": 14.5,
+            "end": 17.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Subject walking towards the camera creates the most dynamic movement in the clip."
+          },
+          "Medium": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Controlled walking and camera panning establish the scene's moderate pace."
+          },
+          "Low": {
+            "start": 8.0,
+            "end": 11.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Slow pan across the mountain house provides a calm, contextual view of the location."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip70.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_013.mp4",
+        "duration": 11.173229,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Friendship montages",
+          "Travel vlogs",
+          "Social media reels"
+        ],
+        "avoid_for": [
+          "Formal presentations",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Friends play cards and laugh at a table placed in a shallow, rocky riverbed with mountains in the background.",
+        "best_moments": {
+          "High": {
+            "start": 8.5,
+            "end": 11.0,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Close-up of a laughing face provides a high-energy, expressive peak."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady panning across the group playing cards shows active social interaction."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial wide shot sets the unique location and context of the scene."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip71.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_014.mp4",
+        "duration": 17.026979,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Joyful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel vlogs",
+          "Adventure montages",
+          "Outdoor activity sequences"
+        ],
+        "avoid_for": [
+          "Cinematic landscapes",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of people carefully navigates a rocky stream crossing in a scenic mountain valley with a Pakistani flag visible.",
+        "best_moments": {
+          "High": {
+            "start": 10.2,
+            "end": 13.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Most dynamic movement as the man in black assists others across the trickier rocks."
+          },
+          "Medium": {
+            "start": 4.5,
+            "end": 7.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady progress across the stream with consistent subject and camera motion."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial wide view of the scene providing context with minimal subject movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip72.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_015.mp4",
+        "duration": 5.434,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Energetic"
+        ],
+        "clip_quality": 2,
+        "best_for": [
+          "Vlog segments",
+          "Casual travel montages"
+        ],
+        "avoid_for": [
+          "Cinematic landscapes",
+          "Still interviews"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two young men walk and talk to a handheld camera on a rainy street at night.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Fast camera movement and initial expressive dialogue as they start walking."
+          },
+          "Medium": {
+            "start": 2.0,
+            "end": 4.0,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Consistent walking pace and casual interaction between the subjects."
+          },
+          "Low": {
+            "start": 4.0,
+            "end": 5.3,
+            "moment_role": "Reflection",
+            "stable_moment": false,
+            "reason": "Slightly more stable framing towards the end of the shot."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip73.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_016.mp4",
+        "duration": 8.2,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Energetic"
+        ],
+        "clip_quality": 2,
+        "best_for": [
+          "Fast-paced transitions",
+          "Room tour montages"
+        ],
+        "avoid_for": [
+          "Cinematic establishing shots",
+          "Calm reflective scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "A handheld camera moves quickly through a modern bedroom following a group of people into another room.",
+        "best_moments": {
+          "High": {
+            "start": 1.5,
+            "end": 4.0,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Rapid camera movement and subject motion through the room"
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.5,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Controlled but active movement towards a doorway"
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 1.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial pan of the room with relatively slower motion"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip74.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_017.mp4",
+        "duration": 9.705941,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel vlogs",
+          "Transition sequences",
+          "Scenic montages"
+        ],
+        "avoid_for": [
+          "High-action scenes",
+          "Static interviews",
+          "Intimate close-ups"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "A group of people walking down a colorful staircase on a sunny hillside.",
+        "best_moments": {
+          "High": {
+            "start": 6.0,
+            "end": 9.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Increased camera movement and subject descent towards the end of the path."
+          },
+          "Medium": {
+            "start": 3.0,
+            "end": 6.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Steady walking pace and clear view of the colorful stairs."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial setup of the walk with relatively less camera motion."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip75.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_018.mp4",
+        "duration": 96.130612,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Transition",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Joyful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Vlog segments",
+          "Travel montages"
+        ],
+        "avoid_for": [
+          "Calm reflective intros",
+          "Professional landscapes"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "Two men walk through a forest while filming themselves and talking to the camera.",
+        "best_moments": {
+          "High": {
+            "start": 15.0,
+            "end": 18.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak expressive talking and increased camera shake during an animated moment."
+          },
+          "Medium": {
+            "start": 45.0,
+            "end": 48.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady walking and conversational vlog narration with consistent motion."
+          },
+          "Low": {
+            "start": 68.0,
+            "end": 71.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "A pause in movement and talking to evaluate the hiking path."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip76.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_019.mp4",
+        "duration": 13.978413,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel vlogs",
+          "Transition sequences"
+        ],
+        "avoid_for": [
+          "High-action peaks",
+          "Cinematic wide shots"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "A group of people walking down stairs in a mountainous outdoor setting.",
+        "best_moments": {
+          "High": {
+            "start": 8.5,
+            "end": 11.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Increased interaction and camera movement as they reach the bottom."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady walking motion down the stairs."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial setup and slow start of the movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip77.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_020.mp4",
+        "duration": 31.707813,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel vlogs",
+          "High-energy montages"
+        ],
+        "avoid_for": [
+          "Calm reflective scenes",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Travel"
+        ],
+        "content_description": "A group of friends enjoys a road trip inside a van, talking and dancing to music.",
+        "best_moments": {
+          "High": {
+            "start": 10.5,
+            "end": 13.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak dancing and expressive hand gestures from the central subject."
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 4.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Casual conversation and moderate hand movements among the group."
+          },
+          "Low": {
+            "start": 18.5,
+            "end": 21.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Lower activity level as subjects focus on phones or look away momentarily."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip78.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_021.mp4",
+        "duration": 3.8,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Nature"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Establishing shots",
+          "Travel montages",
+          "Location reveals"
+        ],
+        "avoid_for": [
+          "High-energy peaks",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Nature"
+        ],
+        "content_description": "A group of people on a hill overlooking a valley with a large plume of smoke in the distance.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 2.2,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Initial camera pan across the group provides the most visual movement."
+          },
+          "Medium": {
+            "start": 0.8,
+            "end": 3.2,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady panning motion transitioning from the subjects to the landscape."
+          },
+          "Low": {
+            "start": 1.8,
+            "end": 3.8,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "The camera movement slows down as it settles on the distant view."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip79.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_022.mp4",
+        "duration": 20.631767,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Dramatic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Prank compilations",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Peaceful scenes",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "A man uses a clothes hanger to wake up his sleeping friend in a hotel room.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.5,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak physical action and shouting during the prank."
+          },
+          "Medium": {
+            "start": 13.5,
+            "end": 16.5,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Movement and dialogue following the initial burst of energy."
+          },
+          "Low": {
+            "start": 17.5,
+            "end": 20.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The camera settles on the subject in bed after the main action."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip80.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_023.mp4",
+        "duration": 68.734333,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Casual vlog segments",
+          "Friendship montages",
+          "Transitioning between locations"
+        ],
+        "avoid_for": [
+          "Professional corporate videos",
+          "High-fidelity cinematic scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of friends laughs in an elevator and then walks through a dark building to a rooftop at night.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Intense laughter and group interaction in the elevator."
+          },
+          "Medium": {
+            "start": 38.0,
+            "end": 41.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Group interaction in a dark room using a flashlight."
+          },
+          "Low": {
+            "start": 68.63433300000001,
+            "end": 68.734333,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Calmer moment standing at a doorway at the end."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip81.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_024.mp4",
+        "duration": 16.725,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Reaction shots",
+          "Humorous montages",
+          "Social media clips"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Serious documentaries"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A man performs a card trick for a friend, resulting in a burst of shared laughter.",
+        "best_moments": {
+          "High": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and expressive physical reaction from both subjects."
+          },
+          "Medium": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "The setup of the card trick with moderate interaction and focus."
+          },
+          "Low": {
+            "start": 13.0,
+            "end": 16.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Lingering laughter with reduced physical movement and steadier framing."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip82.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_025.mp4",
+        "duration": 61.199,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Comedy montages",
+          "Social media funny moments"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "Friends playfully lock each other out on a balcony, resulting in laughter and chaotic interaction through a glass door.",
+        "best_moments": {
+          "High": {
+            "start": 3.5,
+            "end": 6.5,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak laughter and physical comedy as a person falls while trying to enter."
+          },
+          "Medium": {
+            "start": 28.0,
+            "end": 31.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Moderate movement and dialogue between the friends as they continue the prank."
+          },
+          "Low": {
+            "start": 57.5,
+            "end": 60.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "A quieter moment with the person outside standing still, looking through the glass."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip83.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_026.mp4",
+        "duration": 9.599854,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Casual social montages",
+          "Street food vlogs"
+        ],
+        "avoid_for": [
+          "Formal documentaries",
+          "Calm cinematic sequences"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of friends talking and eating french fries at a street food stall at night.",
+        "best_moments": {
+          "High": {
+            "start": 3.8,
+            "end": 6.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Friends eating and laughing together"
+          },
+          "Medium": {
+            "start": 0.5,
+            "end": 3.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Casual conversation and interaction"
+          },
+          "Low": {
+            "start": 7.5,
+            "end": 9.599854,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Close-up shot of the fries with less movement"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip84.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_027.mp4",
+        "duration": 35.308333,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "Object-Animal",
+          "People-Group"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel vlogs",
+          "Animal encounter segments",
+          "Humorous montages"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional nature documentaries"
+        ],
+        "vibes": [
+          "Animal",
+          "Group"
+        ],
+        "content_description": "A group of men watches and films two monkeys eating food on a stone ledge in a wooded area.",
+        "best_moments": {
+          "High": {
+            "start": 16.5,
+            "end": 19.5,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "One monkey lunges at the other, creating a sudden peak of action and camera movement."
+          },
+          "Medium": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial pan revealing the monkeys eating on the ledge, setting the scene."
+          },
+          "Low": {
+            "start": 32.0,
+            "end": 35.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "A relatively calm shot of the monkeys eating quietly towards the end of the clip."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip85.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_028.mp4",
+        "duration": 32.706667,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Adventurous"
+        ],
+        "clip_quality": 2,
+        "best_for": [
+          "Found-footage style edits",
+          "Night adventure montages"
+        ],
+        "avoid_for": [
+          "Calm reflective scenes",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of friends walks and runs along a dark path at night, talking and shouting.",
+        "best_moments": {
+          "High": {
+            "start": 18.5,
+            "end": 21.5,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak shouting and rapid camera movement as the group starts running."
+          },
+          "Medium": {
+            "start": 7.5,
+            "end": 10.5,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Consistent walking and dialogue between the friends."
+          },
+          "Low": {
+            "start": 29.0,
+            "end": 32.0,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Slower movement and more focused framing on the subjects at the end."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip86.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_029.mp4",
+        "duration": 7.295875,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 1,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Social media montages",
+          "Travel vlogs",
+          "Friendship highlights"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Serious documentary segments"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of friends poses for a selfie video in an outdoor setting with a rustic door frame.",
+        "best_moments": {
+          "High": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak expressive smiles and active camera panning to capture the group."
+          },
+          "Medium": {
+            "start": 2.0,
+            "end": 4.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady posing and framing as the subjects interact with the camera."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial setup of the selfie shot with minimal camera movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip87.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_030.mp4",
+        "duration": 9.872396,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Nature"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Reflection",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel montages",
+          "Nature transitions",
+          "Establishing shots"
+        ],
+        "avoid_for": [
+          "Static interviews",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Nature"
+        ],
+        "content_description": "Two men run down a slope by a lake as the camera pans to reveal a sunset over the water.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Active movement of subjects running down the hill"
+          },
+          "Medium": {
+            "start": 3.0,
+            "end": 5.5,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Camera panning across the water towards the sun"
+          },
+          "Low": {
+            "start": 6.5,
+            "end": 9.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Calm, steady shot of the sunset over the lake"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip88.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_031.mp4",
+        "duration": 9.266,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Place-Urban"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Dramatic",
+          "Intimate"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Character introductions",
+          "Street-style montages",
+          "Urban transitions"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Corporate presentations"
+        ],
+        "vibes": [
+          "Solo",
+          "Urban"
+        ],
+        "content_description": "A man in a hooded jacket and face covering walks toward and past the camera in an urban setting at night.",
+        "best_moments": {
+          "High": {
+            "start": 4.0,
+            "end": 6.5,
+            "moment_role": "Climax",
+            "stable_moment": false,
+            "reason": "Peak engagement with the camera and close-up framing with direct eye contact."
+          },
+          "Medium": {
+            "start": 0.5,
+            "end": 3.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Consistent movement towards the camera with clear subject visibility."
+          },
+          "Low": {
+            "start": 7.0,
+            "end": 9.266,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Subject moving out of frame, decreasing visual focus and engagement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip89.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_032.mp4",
+        "duration": 11.266146,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel montages",
+          "Candid fun moments"
+        ],
+        "avoid_for": [
+          "Serious documentaries",
+          "Calm reflective scenes"
+        ],
+        "vibes": [
+          "Solo",
+          "Travel"
+        ],
+        "content_description": "A man laughs and talks while wrapped in a scarf inside a moving car at night.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and expressive facial movement from the subject."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 6.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Sustained interaction and talking with moderate intensity."
+          },
+          "Low": {
+            "start": 8.5,
+            "end": 11.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Shift in focus to the car interior with less subject activity."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip90.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_033.mp4",
+        "duration": 14.814331,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Reaction shots",
+          "Humorous montages"
+        ],
+        "avoid_for": [
+          "Professional interviews",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "Two young men sitting on a bed looking at their phones and laughing hysterically.",
+        "best_moments": {
+          "High": {
+            "start": 7.5,
+            "end": 10.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and expressive pointing"
+          },
+          "Medium": {
+            "start": 3.5,
+            "end": 6.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Active interaction and pointing at the screen"
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial calm setup of the scene"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip91.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_034.mp4",
+        "duration": 7.293958,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Comedic peaks",
+          "Vlog highlights"
+        ],
+        "avoid_for": [
+          "Calm reflective moments",
+          "Professional settings"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "A man opens a door to a steam-filled bathroom where his friend is laughing.",
+        "best_moments": {
+          "High": {
+            "start": 1.5,
+            "end": 4.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and the visual reveal of the steam-filled room."
+          },
+          "Medium": {
+            "start": 0.0,
+            "end": 1.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Opening the door creates anticipation for the reveal."
+          },
+          "Low": {
+            "start": 5.0,
+            "end": 7.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The initial shock passes and the subjects settle into a conversation."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip92.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_035.mp4",
+        "duration": 12.752813,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Social media montages",
+          "Friendship highlights"
+        ],
+        "avoid_for": [
+          "Professional cinematic trailers",
+          "Calm reflective scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "Four young men laugh and pose for a mirror selfie in an indoor setting.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Expressive laughter and group interaction at the start."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Active posing and talking while looking at the mirror."
+          },
+          "Low": {
+            "start": 9.0,
+            "end": 11.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Holding a steady pose as the lighting changes."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip93.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_036.mp4",
+        "duration": 15.779722,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 1,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Casual social montages",
+          "Vlog-style interactions"
+        ],
+        "avoid_for": [
+          "Professional cinematic sequences",
+          "Calm reflective scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of young men are looking at and discussing a piece of clothing at an outdoor night market.",
+        "best_moments": {
+          "High": {
+            "start": 8.0,
+            "end": 11.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and expressive facial reactions from the group."
+          },
+          "Medium": {
+            "start": 3.0,
+            "end": 6.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady interaction and dialogue as they examine the clothing."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial calm setup showing the group focusing on the item."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip94.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_037.mp4",
+        "duration": 3.763125,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Crowd",
+          "Place-Urban"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Fast-paced urban montages",
+          "Transitioning between street scenes"
+        ],
+        "avoid_for": [
+          "Slow emotional storytelling",
+          "Static landscape shots"
+        ],
+        "vibes": [
+          "Crowd",
+          "Urban"
+        ],
+        "content_description": "A handheld shot of a busy city street at night with people walking and a quick pan across a shoe store.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Rapid camera pan across the street creates high visual energy."
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Steady movement of people and cars after the initial pan."
+          },
+          "Low": {
+            "start": 2.0,
+            "end": 3.763125,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Minimal camera movement compared to the opening pan."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip1.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_038.mp4",
+        "duration": 15.443,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "High-energy montages",
+          "Fun travel clips",
+          "Action-oriented social media content"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Serious dramatic scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A group of friends playfully runs and chases each other on a grassy hilltop under a clear sky.",
+        "best_moments": {
+          "High": {
+            "start": 5.5,
+            "end": 8.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak chaotic movement with multiple people running across the frame and expressive gestures."
+          },
+          "Medium": {
+            "start": 2.5,
+            "end": 5.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Initial movement as the first person runs past the main subject, building anticipation."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Calm opening shot with the subject standing still against the landscape before action begins."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip28.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_039.mp4",
+        "duration": 38.916644,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "Place-Nature",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel vlogs",
+          "Nature transitions",
+          "Hiking montages"
+        ],
+        "avoid_for": [
+          "High-energy action scenes",
+          "Professional cinematic landscapes"
+        ],
+        "vibes": [
+          "Nature",
+          "Travel"
+        ],
+        "content_description": "A first-person perspective of walking along a rocky, wooded trail.",
+        "best_moments": {
+          "High": {
+            "start": 28.0,
+            "end": 31.0,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Increased camera movement and more rugged terrain interaction."
+          },
+          "Medium": {
+            "start": 10.0,
+            "end": 13.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Steady, consistent walking pace through the forest."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial setup of the trail with slower, more deliberate movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip29.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_040.mp4",
+        "duration": 6.757007,
+        "energy": "Low",
+        "motion": "Dynamic",
+        "intensity": 1,
+        "primary_subject": [
+          "Activity-Travel",
+          "Object-Vehicle"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Transition"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel transitions",
+          "Establishing flight context"
+        ],
+        "avoid_for": [
+          "High-energy action sequences",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Travel",
+          "Vehicle"
+        ],
+        "content_description": "View of an airplane wing and engine from a window seat during flight.",
+        "best_moments": {
+          "High": {
+            "start": 5.0,
+            "end": 6.757007,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Most stable and clear view of the wing and engine."
+          },
+          "Medium": {
+            "start": 2.5,
+            "end": 5.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady flight with consistent visual framing."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial setup of the aerial perspective."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip30.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_041.mp4",
+        "duration": 4.620771,
+        "energy": "Low",
+        "motion": "Dynamic",
+        "intensity": 1,
+        "primary_subject": [
+          "Place-Nature",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Establishing shots",
+          "Nature montages",
+          "Travel vlogs"
+        ],
+        "avoid_for": [
+          "High-energy action",
+          "Fast-paced transitions"
+        ],
+        "vibes": [
+          "Nature",
+          "Travel"
+        ],
+        "content_description": "A slow camera pan across a misty mountain landscape and a dirt hiking trail.",
+        "best_moments": {
+          "High": {
+            "start": 2.5,
+            "end": 4.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Relative peak of visual information as the trail is revealed"
+          },
+          "Medium": {
+            "start": 1.0,
+            "end": 3.0,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Steady panning motion across the landscape"
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Calm opening view of the misty valley"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip31.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_042.mp4",
+        "duration": 7.128526,
+        "energy": "Low",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Crowd",
+          "Place-Nature"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Nostalgic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Atmospheric transitions",
+          "Travel montages"
+        ],
+        "avoid_for": [
+          "High-energy action",
+          "Fast-paced sequences"
+        ],
+        "vibes": [
+          "Crowd",
+          "Nature"
+        ],
+        "content_description": "A hazy sunset scene on a crowded beach with people and horses walking along the shore.",
+        "best_moments": {
+          "High": {
+            "start": 3.5,
+            "end": 6.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Relative peak in movement as more figures cross the frame."
+          },
+          "Medium": {
+            "start": 1.5,
+            "end": 4.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Consistent walking pace and steady visual flow."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Calm opening focusing on the sun and the horizon."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip32.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_043.mp4",
+        "duration": 11.083333,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "Place-Nature",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Transition",
+          "Establishing"
+        ],
+        "emotional_tone": [
+          "Adventurous",
+          "Peaceful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Travel montages",
+          "Transitions"
+        ],
+        "avoid_for": [
+          "Static scenes",
+          "Interviews"
+        ],
+        "vibes": [
+          "Nature",
+          "Travel"
+        ],
+        "content_description": "A sunset view through a moving vehicle window with silhouettes of trees passing by.",
+        "best_moments": {
+          "High": {
+            "start": 7.5,
+            "end": 10.5,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Fastest motion and most vibrant colors as the vehicle speeds up."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady movement showing the sunset clearly through the window."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial dark framing providing a slow reveal of the scene."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip33.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_044.mp4",
+        "duration": 9.35,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "Place-Nature",
+          "Activity-Travel"
+        ],
+        "narrative_utility": [
+          "Establishing",
+          "Transition",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Peaceful",
+          "Adventurous"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Nature montages",
+          "Travel transitions",
+          "Establishing forest settings"
+        ],
+        "avoid_for": [
+          "Intimate close-up moments",
+          "High-action peaks"
+        ],
+        "vibes": [
+          "Nature",
+          "Travel"
+        ],
+        "content_description": "A low-angle tracking shot looking up at tall pine trees against a cloudy sky.",
+        "best_moments": {
+          "High": {
+            "start": 6.0,
+            "end": 8.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Peak visual flow as camera moves past dense tree tops."
+          },
+          "Medium": {
+            "start": 3.0,
+            "end": 6.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Consistent movement through the forest canopy."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Slower initial movement providing a calm perspective."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      }
+    ]
+  },
+  "edl": {
+    "decisions": [
+      {
+        "segment_id": 1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_002.mp4",
+        "clip_start": 0.0,
+        "clip_end": 1.17,
+        "timeline_start": 0.0,
+        "timeline_end": 1.17,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_003.mp4",
+        "clip_start": 5.0,
+        "clip_end": 5.577572815533981,
+        "timeline_start": 1.17,
+        "timeline_end": 1.7475728155339807,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_005.mp4",
+        "clip_start": 3.5,
+        "clip_end": 4.08252427184466,
+        "timeline_start": 1.7475728155339807,
+        "timeline_end": 2.3300970873786406,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_006.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5799029126213595,
+        "timeline_start": 2.3300970873786406,
+        "timeline_end": 2.91,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_007.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5851456310679604,
+        "timeline_start": 2.91,
+        "timeline_end": 3.4951456310679605,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Friends' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_008.mp4",
+        "clip_start": 12.0,
+        "clip_end": 12.58252427184466,
+        "timeline_start": 3.4951456310679605,
+        "timeline_end": 4.07766990291262,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Friends' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_009.mp4",
+        "clip_start": 7.5,
+        "clip_end": 8.082330097087379,
+        "timeline_start": 4.07766990291262,
+        "timeline_end": 4.66,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Friends' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_012.mp4",
+        "clip_start": 0.0,
+        "clip_end": 1.1652427184466,
+        "timeline_start": 4.66,
+        "timeline_end": 5.8252427184466,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_013.mp4",
+        "clip_start": 4.0,
+        "clip_end": 5.1647572815534,
+        "timeline_start": 5.8252427184466,
+        "timeline_end": 6.99,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 5,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_014.mp4",
+        "clip_start": 4.5,
+        "clip_end": 5.67,
+        "timeline_start": 6.99,
+        "timeline_end": 8.16,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 6,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_015.mp4",
+        "clip_start": 2.0,
+        "clip_end": 3.16,
+        "timeline_start": 8.16,
+        "timeline_end": 9.32,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. The visual content captures the 'Group' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 7,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_001.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5829126213592204,
+        "timeline_start": 9.32,
+        "timeline_end": 9.90291262135922,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 7,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_017.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5825242718446599,
+        "timeline_start": 9.90291262135922,
+        "timeline_end": 10.48543689320388,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Release' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 7,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_019.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5825242718446599,
+        "timeline_start": 10.48543689320388,
+        "timeline_end": 11.06796116504854,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Release' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 7,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_021.mp4",
+        "clip_start": 1.8,
+        "clip_end": 2.3820388349514596,
+        "timeline_start": 11.06796116504854,
+        "timeline_end": 11.65,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Release' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 8,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_026.mp4",
+        "clip_start": 7.5,
+        "clip_end": 9.599854,
+        "timeline_start": 11.65,
+        "timeline_end": 14.56,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 9,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_031.mp4",
+        "clip_start": 7.0,
+        "clip_end": 7.58563106796116,
+        "timeline_start": 14.56,
+        "timeline_end": 15.14563106796116,
+        "reasoning": "🌟 Serving as a strategic 'Transition' shot within this sequence. Maintains visual freshness, motion continuity.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 9,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_001.mp4",
+        "clip_start": 0.5829126213592204,
+        "clip_end": 1.1654368932038803,
+        "timeline_start": 15.14563106796116,
+        "timeline_end": 15.72815533980582,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 9,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_011.mp4",
+        "clip_start": 4.0,
+        "clip_end": 4.582524271844662,
+        "timeline_start": 15.72815533980582,
+        "timeline_end": 16.31067961165048,
+        "reasoning": "🌟 Serving as a strategic 'Transition' shot within this sequence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 9,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_021.mp4",
+        "clip_start": 2.3820388349514596,
+        "clip_end": 2.9613592233009784,
+        "timeline_start": 16.31067961165048,
+        "timeline_end": 16.89,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Transition' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 10,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_044.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5857281553398046,
+        "timeline_start": 16.89,
+        "timeline_end": 17.475728155339805,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Peak stage. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 10,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_006.mp4",
+        "clip_start": 6.5,
+        "clip_end": 7.082524271844662,
+        "timeline_start": 17.475728155339805,
+        "timeline_end": 18.058252427184467,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 10,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_017.mp4",
+        "clip_start": 0.5825242718446599,
+        "clip_end": 1.1642718446601936,
+        "timeline_start": 18.058252427184467,
+        "timeline_end": 18.64,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Detail' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_019.mp4",
+        "clip_start": 4.0,
+        "clip_end": 4.58330097087379,
+        "timeline_start": 18.64,
+        "timeline_end": 19.22330097087379,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_041.mp4",
+        "clip_start": 1.0,
+        "clip_end": 1.5825242718446617,
+        "timeline_start": 19.22330097087379,
+        "timeline_end": 19.805825242718452,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_014.mp4",
+        "clip_start": 5.67,
+        "clip_end": 6.252524271844662,
+        "timeline_start": 19.805825242718452,
+        "timeline_end": 20.388349514563114,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_026.mp4",
+        "clip_start": 0.5,
+        "clip_end": 1.0825242718446617,
+        "timeline_start": 20.388349514563114,
+        "timeline_end": 20.970873786407775,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_031.mp4",
+        "clip_start": 0.5,
+        "clip_end": 0.8291262135922253,
+        "timeline_start": 20.970873786407775,
+        "timeline_end": 21.3,
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains motion continuity.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 12,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_015.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5804988662131514,
+        "timeline_start": 21.3,
+        "timeline_end": 21.880498866213152,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 12,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_011.mp4",
+        "clip_start": 8.0,
+        "clip_end": 8.580498866213151,
+        "timeline_start": 21.880498866213152,
+        "timeline_end": 22.460997732426303,
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 12,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_012.mp4",
+        "clip_start": 14.5,
+        "clip_end": 15.080498866213151,
+        "timeline_start": 22.460997732426303,
+        "timeline_end": 23.041496598639455,
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 12,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_039.mp4",
+        "clip_start": 28.0,
+        "clip_end": 28.58049886621315,
+        "timeline_start": 23.041496598639455,
+        "timeline_end": 23.621995464852606,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 12,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_044.mp4",
+        "clip_start": 6.0,
+        "clip_end": 6.258004535147393,
+        "timeline_start": 23.621995464852606,
+        "timeline_end": 23.88,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Peak stage. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 13,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_6c5c439c92cf\\standardized\\clip_016.mp4",
+        "clip_start": 1.5,
+        "clip_end": 3.484172000000001,
+        "timeline_start": 23.88,
+        "timeline_end": 25.864172,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Button' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      }
+    ]
+  },
+  "advisor": {
+    "text_overlay_intent": "The text demands a narrative of emotional salvation through friendship. It requires moments of collective joy and shared presence in a specific 'North' (mountainous/cold) setting to validate the 'all I needed' realization.",
+    "dominant_narrative": "A nostalgic journey proving that the chaotic and serene moments shared with friends in the mountains are the ultimate remedy for life's weight.",
+    "arc_stage_guidance": {
+      "Intro": {
+        "primary_emotional_carrier": "High-energy group arrival and chaotic movement.",
+        "supporting_material": "Fast-paced travel transitions like van interiors or moving vehicle views.",
+        "intent_diluting_material": "Static, empty landscapes or slow-moving solo reflections.",
+        "reasoning": "The intro must establish the 'trip' and the 'friends' immediately. We need to feel the energy of the group before we transition into the soul-cleansing atmosphere.",
+        "recommended_clips": [
+          "clip77.mp4",
+          "clip85.mp4",
+          "clip80.mp4",
+          "clip73.mp4"
+        ],
+        "required_energy": "High"
+      },
+      "Build-up": {
+        "primary_emotional_carrier": "The physical journey into the wild; walking and exploring together.",
+        "supporting_material": "Atmospheric nature shots that include human presence to maintain the narrative anchor.",
+        "intent_diluting_material": "Indoor hotel pranks or urban street scenes that break the 'North' aesthetic.",
+        "reasoning": "This stage bridges the initial chaos with the eventual serenity. It should feel like the group is moving deeper into the landscape.",
+        "recommended_clips": [
+          "clip13.mp4",
+          "clip48.mp4",
+          "clip71.mp4",
+          "clip28.mp4"
+        ],
+        "required_energy": "Medium"
+      },
+      "Peak": {
+        "primary_emotional_carrier": "Soul-cleansing bonding and the 'Hero' realization of the landscape's power.",
+        "supporting_material": "Misty, foggy mountain vistas and intimate, low-energy group interactions.",
+        "intent_diluting_material": "High-intensity action sports (jet skis, swings) that distract from the nostalgic, reflective mood.",
+        "reasoning": "The peak is where the 'all you needed' realization hits. It must be atmospheric and emotionally resonant, favoring connection over adrenaline.",
+        "recommended_clips": [
+          "clip70.mp4",
+          "clip87.mp4",
+          "clip8.mp4",
+          "clip30.mp4",
+          "clip1.mp4",
+          "clip33.mp4"
+        ],
+        "required_energy": "Low"
+      },
+      "Outro": {
+        "primary_emotional_carrier": "A final 'button' of shared laughter or a definitive group portrait.",
+        "supporting_material": "Warm lighting or a sunset to provide a sense of closure.",
+        "intent_diluting_material": "Generic travel transitions like airplane wings or empty roads.",
+        "reasoning": "The video must end on the 'friends' who made the trip what it was. A high-energy social moment provides a satisfying emotional resolution.",
+        "recommended_clips": [
+          "clip92.mp4",
+          "clip86.mp4",
+          "clip81.mp4"
+        ],
+        "required_energy": "High"
+      }
+    },
+    "library_alignment": {
+      "strengths": [
+        "Excellent variety of high-energy group interactions (laughter, van dancing, running).",
+        "Strong 'North' context with snowy paths and mountain landscapes.",
+        "Good availability of 'Hero' shots (clip8) to anchor the realization."
+      ],
+      "editorial_tradeoffs": [
+        "Using urban/indoor laughter (clip82, clip90) to supplement group energy where outdoor group footage is less 'chaotic'.",
+        "Relying on sunny nature shots (clip45) despite the 'moody/foggy' intent due to a lack of desaturated mountain clips."
+      ],
+      "constraint_gaps": [
+        "Missing 'campfire' or 'warm contrast' shots mentioned in the reference to balance the cool tones.",
+        "Lack of 'foggy/moody' specific group shots; most group shots are in clear or night lighting."
+      ]
+    },
+    "editorial_strategy": "Prioritize the 'People-Group' anchor above all else. If a clip doesn't feature the friends, it must serve as a direct atmospheric bridge to the next group moment. The 'North' is the setting, but the 'Friends' are the story. We will lean into the desaturated, cool-toned clips to maintain the nostalgic, soul-cleansing aesthetic requested.",
+    "remake_strategy": "To reach Director's Cut quality, replace the high-saturation 'sunny' nature clips with more foggy, overcast mountain footage. Additionally, capture or insert 2-3 shots of the group around a warm light source (fire/lantern) to provide the 'Should-Have' contrast against the cool mountain fog.",
+    "primary_narrative_subject": "People-Group",
+    "allowed_supporting_subjects": [
+      "People-Solo",
+      "Object-Detail"
+    ],
+    "subject_lock_strength": 1.0,
+    "library_assessment": null,
+    "creative_audit": null,
+    "overall_strategy": "",
+    "required_improvements": [],
+    "cache_version": "4.0",
+    "cached_at": "2026-01-31T22:46:28.353446"
+  },
+  "iteration": 1,
+  "error": null,
+  "processing_time_seconds": 1728.9225330352783
+}

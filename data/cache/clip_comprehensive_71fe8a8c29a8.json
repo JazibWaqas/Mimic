@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Place-Indoor"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Comedy montages",
+    "Social media funny moments"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional corporate videos"
+  ],
+  "vibes": [],
+  "content_description": "Friends playfully lock each other out on a balcony, resulting in laughter and chaotic interaction through a glass door.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 6.5,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak laughter and physical comedy as a person falls while trying to enter."
+    },
+    "Medium": {
+      "start": 28.0,
+      "end": 31.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Moderate movement and dialogue between the friends as they continue the prank."
+    },
+    "Low": {
+      "start": 57.5,
+      "end": 60.5,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "A quieter moment with the person outside standing still, looking through the glass."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:29:03"
+}
