@@ -274,13 +274,15 @@ def standardize_clip(input_path: str, output_path: str) -> None:
         "-i", input_path,
         "-vf", (
             # 1. Geometry: Orientation + Scale and Crop to 9:16 vertical
-            "fps=30,"                           # Force consistent 30fps early
+            # Note: FFmpeg handles rotation metadata (autorotate) BEFORE the filter chain.
             "scale=1080:1920:force_original_aspect_ratio=increase,"
             "crop=1080:1920:(in_w-1080)/2:(in_h-1920)/2,"
+            "fps=30,"                           # Force consistent 30fps after geometric conforming
             # 2. Visual Excellence: The 'High-Def Master' Stack
             "unsharp=3:3:0.8:3:3:0.5,"          # Edge-pop for HD clarity
             "eq=contrast=1.07:brightness=0.0:saturation=1.15," # Vibrant & Clear
             "noise=alls=0.5:allf=t+u,"          # Micro-grain for pro-texture
+            "format=yuv420p,"                   # Ensure maximal compatibility
             "setsar=1"
         ),
         "-c:v", "libx264",
@@ -288,6 +290,9 @@ def standardize_clip(input_path: str, output_path: str) -> None:
         "-preset", "medium",        # Faster than 'slow' for better UX
         "-c:a", "aac",
         "-b:a", "192k",
+        "-ar", "44100",             # Standardize sample rate for sync
+        "-map_metadata", "-1",      # Strip all metadata to prevent orientation tags
+        "-metadata:s:v:0", "rotate=0", # Explicitly clear rotation flag
         "-movflags", "+faststart",
         "-y",                       # Overwrite output file
         output_path
