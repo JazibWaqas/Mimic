@@ -37,10 +37,8 @@ MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footag
 - **`brain.py`**: Multimodal reasoning engine. Uses Gemini for semantic analysis and "Creative DNA" extraction.
 - **`gemini_advisor.py`**: Strategic planning layer. Generates editorial guidance, assesses library gaps, and provides remake strategies.
 - **`editor.py`**: The "Grammar" engine. Implements tiered energy matching, narrative budgeting, and subject locking.
-- **`stylist.py`**: 
-    - **Responsibility:** Aesthetic Post-Processing
-    - **Logic:** Maps reference font styles to high-end typography and applies cinematic color grading
-    - **Hardening:** Demo-safe punctuation handling, shell-safe rendering
+- **`stylist.py`**: Aesthetic post-processing. Maps reference font styles to high-end typography and applies cinematic color grading.
+- **`reflector.py`**: The "Director's Voice." Performs post-render AI reflection to judge narrative cohesion and generate a Director's Monologue.
 - **`processors.py`**: FFmpeg / Librosa operations for surgical cuts, beat detection, and thumbnail generation.
 - **`main.py`**: FastAPI server with file management, session tracking, and intelligence serving.
 
@@ -49,47 +47,42 @@ MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footag
 ## 🌊 Core Stages (The 7-Stage Pipeline)
 
 ### Stage 1: Pre-Analysis (Processors)
-- **Scene Detection:** FFmpeg identifies every visual cut in the reference
-- **BPM Detection:** librosa extracts music tempo for beat-perfect cuts
-- **Standardization:** Clips normalized to consistent format with hash-based caching
+- **Scene Detection:** FFmpeg identifies every visual cut in the reference.
+- **BPM Detection:** librosa extracts music tempo for beat-perfect cuts.
+- **Standardization:** Clips normalized to consistent format with hash-based caching.
 
 ### Stage 2: Reference Analysis (Brain)
-- **Multimodal Understanding:** Gemini analyzes energy, motion, vibes, and narrative arc
-- **Segment Breakdown:** Each cut classified with energy level, arc stage, shot function
-- **Text Overlay Extraction:** On-screen text captured for narrative intent interpretation
-- **Music Structure:** Accent moments and phrase boundaries identified
+- **Multimodal Understanding:** Gemini analyzes energy, motion, vibes, and narrative arc.
+- **Segment Breakdown:** Each cut classified with energy level, arc stage, shot function.
+- **Text Overlay Extraction:** On-screen text captured for narrative intent interpretation.
 
 ### Stage 3: Clip Analysis (Brain)
-- **Comprehensive Metadata:** Energy, motion, primary subject, narrative utility, emotional tone
-- **Best Moments:** Pre-computed optimal segments for each energy level
-- **Quality Scoring:** 1-5 scale for visual appeal and usefulness
-- **Semantic Tagging:** "Best for" and "Avoid for" context classification
+- **Comprehensive Metadata:** Energy, motion, primary subject, narrative utility, emotional tone.
+- **Best Moments:** Pre-computed optimal segments for each energy level.
+- **Quality Scoring:** 1-5 scale for visual appeal and usefulness.
 
 ### Stage 4: Strategic Planning (Advisor)
-- **Text Overlay Intent:** Highest authority signal for narrative direction
-- **Arc Stage Guidance:** Editorial intent reasoning for each story stage
-- **Library Assessment:** Strengths, editorial tradeoffs, constraint gaps
-- **Narrative Subject Locking:** Primary subject enforcement (e.g., "People-Group" for friend videos)
-- **Remake Strategy:** Forward-looking advice for Director's Cut quality
+- **Text Overlay Intent:** Highest authority signal for narrative direction.
+- **Arc Stage Guidance:** Editorial intent reasoning for each story stage.
+- **Library Assessment:** Strengths, editorial tradeoffs, constraint gaps.
+- **Narrative Subject Locking:** Primary subject enforcement (e.g., "People-Group" for friend videos).
 
 ### Stage 5: Semantic Editing (Editor)
-- **Weighted-Greedy Matching:** Balances energy fidelity, vibe alignment, and novelty
-- **Narrative Budgeting:** Tracks "Emotional Capital" to prevent clip fatigue
-- **Visual Cooldown:** Prevents back-to-back repetition with dynamic reuse gaps
-- **Beat Synchronization:** Snaps cuts to detected BPM for musical alignment
-- **Subject Lock Enforcement:** Applies +200 bonus for primary narrative subjects
+- **Weighted-Greedy Matching:** Balances energy fidelity, vibe alignment, and novelty.
+- **Narrative Budgeting:** Tracks "Emotional Capital" to prevent clip fatigue.
+- **Beat Synchronization:** Snaps cuts to detected BPM for musical alignment.
+- **Subject Lock Enforcement:** Applies +200 bonus for primary narrative subjects.
 
 ### Stage 6: Aesthetic Styling (Stylist)
-- **Typography Mapping:** Reference text style → High-end fonts (Georgia, Futura, etc.)
-- **Color Grading:** Tone and contrast adjustment matching reference look
-- **Text Rendering:** Demo-safe filtergraph construction with punctuation reconciliation
-- **Visual Effects:** Film grain, light leaks, and other aesthetic treatments
+- **Typography Mapping:** Reference text style → High-end fonts (Georgia, Futura, etc.).
+- **Color Grading:** Tone and contrast adjustment matching reference look.
+- **Text Rendering:** Demo-safe filtergraph construction with punctuation reconciliation.
 
-### Stage 7: Post-Render Reflection (Orchestrator)
-- **Editorial Debrief:** Library strengths, tradeoffs, and constraint gaps
-- **Editorial Strategy:** One-sentence overall editing approach
-- **Remake Strategy:** Specific advice for next iteration
-- **Intelligence Report:** Complete JSON artifact with all reasoning
+### Stage 7: Post-Render Reflection (Reflector)
+- **Director's Monologue:** A 3-4 sentence AI reflection on the edit's "soul" and story transfer.
+- **Hierarchy of Judgment:** Prioritizes Narrative Adherence > Semantic Flow > Rhythmic Precision.
+- **Remake Checklist:** Concrete, filmable shot suggestions to reach a 10/10 score.
+- **Critique Caching:** Hash-based caching for instant Director notes in the Vault.
 
 ---
 
@@ -136,142 +129,46 @@ MIMIC uses tiered hash-based caching for instant (~1s) re-runs:
 ### 1. Standardization Cache
 - **Location:** `data/cache/standardized/`
 - **Naming:** `std_{content_hash}.mp4`
-- **Benefit:** Clips encoded once, reused forever
+- **Benefit:** Clips encoded once, reused forever.
 
 ### 2. Analysis Cache
 - **Location:** `data/cache/`
 - **Files:** `ref_{hash}.json`, `clip_comprehensive_{hash}.json`
-- **Benefit:** Gemini analysis cached per file content
+- **Benefit:** Gemini analysis cached per file content.
 
-### 3. Advisor Cache
+### 3. Critique Cache (New)
 - **Location:** `data/cache/`
-- **Files:** `advisor_{ref_hash}_{library_hash}.json`
-- **Benefit:** Strategic guidance reused for same ref+library combination
-
-### 4. Thumbnail Cache
-- **Location:** `data/cache/thumbnails/`
-- **Naming:** `thumb_{type}_{hash}.jpg`
-- **Benefit:** Multi-point sampling eliminates black frames
-
-### Cache Inheritance
-Allows reuse of expensive AI analysis even if pacing timestamps shift slightly. Keyed by content hash, not filename.
+- **Files:** `critique_{edl_hash}.json`
+- **Benefit:** Director notes appear instantly in the Vault for known edits.
 
 ---
 
 ## 🔒 Security & Reliability
 
 ### Multi-Key Rotation
-- **Capacity:** 28 API keys loaded from `.env`
-- **Strategy:** Round-robin with automatic failover
-- **Quota:** 560 requests/day total capacity
-- **Graceful Degradation:** Advisor can fail without breaking pipeline
-
-### Timeline Integrity
-- **Validation:** Mathematical continuity checks ensure zero-frame gaps
-- **Precision:** <0.001s tolerance for segment boundaries
-- **Beat Sync:** <0.015s deviation from musical anchors
+- **Capacity:** 28 API keys loaded from `.env`.
+- **Strategy:** Round-robin with automatic failover.
+- **Quota:** 560 requests/day total capacity.
 
 ### Production Hardening (V11.0)
-- **File Validation:** `.mp4` extension check on all uploads
-- **Environment Variables:** `NEXT_PUBLIC_API_URL` for deployment flexibility
-- **API Consistency:** Unified `path` field across all asset types
-- **Error Handling:** Clear HTTP status codes and error messages
-
----
-
-## 📊 Data Flow
-
-```
-1. User uploads reference + clips
-   ↓
-2. Backend standardizes clips (cached)
-   ↓
-3. Brain analyzes reference (cached)
-   ↓
-4. Brain analyzes clips (cached)
-   ↓
-5. Advisor generates strategic plan (cached)
-   ↓
-6. Editor matches clips to segments
-   ↓
-7. Stylist applies aesthetic treatments
-   ↓
-8. Processors render final video
-   ↓
-9. Orchestrator generates intelligence report
-   ↓
-10. Vault displays results + reasoning
-```
+- **File Validation:** `.mp4` extension check on all uploads.
+- **Environment Variables:** `NEXT_PUBLIC_API_URL` for deployment flexibility.
+- **API Consistency:** Unified `path` field across all asset types.
 
 ---
 
 ## 🎨 Frontend Architecture
 
 ### Pages
-- **`/` (Studio):** Upload interface with identity scanning and progress tracking
-- **`/vault`:** Asset browser with search, thumbnails, and intelligence viewer
-- **`/gallery`:** Clip library management
-- **`/history`:** Session history and iteration tracking
-- **`/compare`:** Side-by-side reference vs. output comparison
+- **`/` (Studio):** Upload interface with identity scanning and progress tracking.
+- **`/vault`:** Asset browser with the new **Director's Review** panel.
+- **`/gallery`:** Clip library management.
+- **`/history`:** Session history and iteration tracking.
 
 ### Key Components
-- **Asset Strip:** Horizontal thumbnail carousel for quick navigation
-- **Intelligence Panel:** Editorial decisions, AI insights, recommended actions
-- **Temporal Sequence Map:** Visual timeline with energy/vibe indicators
-- **Search Bar:** Real-time filtering across all asset types
-
-### State Management
-- **React Hooks:** `useState`, `useEffect`, `useMemo` for local state
-- **API Client:** Centralized in `lib/api.ts` with caching
-- **WebSocket:** Real-time progress updates during generation
-
----
-
-## 🔍 Architectural Decisions
-
-### Why In-Memory Sessions?
-> "Session state is ephemeral by design. All durable artifacts (videos, JSON reports, thumbnails) are persisted to disk with content-based hashing. Session recovery happens via filesystem scan, not memory."
-
-### Why No Locking?
-> "MIMIC prioritizes deterministic artifact reconstruction over live session durability. For a single-user creative workflow, explicit locking adds complexity without improving editorial correctness."
-
-### Why Graceful Advisor Degradation?
-> "The Advisor is a strategic enhancement, not a critical dependency. If it fails, the base matcher still produces coherent edits using energy/motion matching."
-
----
-
-## 📈 Performance Metrics
-
-| Operation | Time | Cache Hit |
-|-----------|------|-----------|
-| Clip Standardization | 2-3s each | 100% on repeat |
-| Reference Analysis | 5-8s | 100% on repeat |
-| Clip Analysis | 3-5s each | 100% on repeat |
-| Advisor Planning | 4-6s | 100% on repeat |
-| Matching Algorithm | 1-2s | N/A |
-| FFmpeg Rendering | 5-10s | N/A |
-| **Total (30-seg edit)** | **15-20s** | **With cache** |
-| **Total (first run)** | **2-3 min** | **No cache** |
-
----
-
-## 🛠️ Technology Stack
-
-### Backend
-- **Python 3.10+** - Core language
-- **FastAPI** - Web framework
-- **Pydantic** - Data validation
-- **Google Gemini API** - Multimodal AI
-- **FFmpeg** - Video processing
-- **librosa** - Audio analysis
-- **Pillow** - Thumbnail generation
-
-### Frontend
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Lucide React** - Icons
-- **Sonner** - Toast notifications
+- **Director's Review Panel:** Displays Monologue, Score, and Remake Checklist.
+- **Editorial Ledger:** Real-time list of edit decisions with AI reasoning.
+- **Temporal Sequence Map:** Visual timeline with energy/vibe indicators.
 
 ---
 

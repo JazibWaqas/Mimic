@@ -218,6 +218,17 @@ class LibraryAlignment(BaseModel):
     editorial_tradeoffs: List[str] = Field(default_factory=list)
     constraint_gaps: List[str] = Field(default_factory=list)
 
+class DirectorCritique(BaseModel):
+    """
+    Post-render AI reflection on the final edit quality.
+    """
+    overall_score: float = Field(..., ge=0, le=10, description="1-10 rating of the final edit")
+    monologue: str = Field(..., description="A 3-4 sentence 'Director's Voice' explanation of the edit")
+    star_performers: List[str] = Field(default_factory=list, description="Clips that carried the narrative perfectly")
+    dead_weight: List[str] = Field(default_factory=list, description="Clips that were used but didn't fit the vibe/quality")
+    missing_ingredients: List[str] = Field(default_factory=list, description="Specific shot types/vibes needed to reach 10/10")
+    technical_fidelity: str = Field(..., description="Assessment of beat-sync and energy matching")
+
 class AdvisorHints(BaseModel):
     """
     Complete Gemini Advisor output containing editorial intent reasoning.
@@ -439,6 +450,7 @@ class PipelineResult(BaseModel):
     clip_index: ClipIndex | None = None
     edl: EDL | None = None
     advisor: AdvisorHints | None = None  # NEW: Strategic guidance used
+    critique: DirectorCritique | None = None # NEW: Post-render reflection
     iteration: int = Field(1, description="The version/iteration of this result")
     error: str | None = None
     processing_time_seconds: float | None = None

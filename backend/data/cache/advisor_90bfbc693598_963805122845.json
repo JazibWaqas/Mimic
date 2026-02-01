@@ -1,0 +1,87 @@
+{
+  "text_overlay_intent": "The text 'Duniya ki aesi ki tesi, no zimmedari' (To hell with the world, no responsibility) demands a defiant, high-energy celebration of friendship that prioritizes chaotic, unpolished human moments over scenic beauty.",
+  "dominant_narrative": "A nostalgic and rebellious tribute to a brotherhood that chose spontaneous joy and shared madness over the constraints of adult responsibility.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Candid group intimacy and the 'we' identity.",
+      "supporting_material": "Handheld movement, direct eye contact with the camera.",
+      "intent_diluting_material": "Empty landscapes, static establishing shots, or solo shots that feel isolated.",
+      "reasoning": "The intro must immediately establish the 'us against the world' pact. We need to see the faces of the people who are rejecting responsibility together.",
+      "recommended_clips": [
+        "clip86.mp4",
+        "clip72.mp4",
+        "clip92.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "The momentum of the journey and shared anticipation.",
+      "supporting_material": "Travel shots (vans, walking), playful synchronized movements, and casual social interactions.",
+      "intent_diluting_material": "Slow-paced nature walks without interaction or overly serious 'travel vlog' aesthetics.",
+      "reasoning": "The build-up should feel like a series of 'happening' moments—the transition from one fun mistake to the next.",
+      "recommended_clips": [
+        "clip77.mp4",
+        "clip10.mp4",
+        "clip75.mp4",
+        "clip83.mp4",
+        "clip70.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Unfiltered, high-intensity chaos and hysterical laughter.",
+      "supporting_material": "Physical horseplay, pranks, and high-motion activities.",
+      "intent_diluting_material": "Any shot where the subjects are composed, quiet, or observing rather than participating.",
+      "reasoning": "This is the 'aesi ki tesi' moment. The energy must peak with the most unpolished, raw, and joyful expressions of freedom in the library.",
+      "recommended_clips": [
+        "clip15.mp4",
+        "clip82.mp4",
+        "clip79.mp4",
+        "clip1.mp4",
+        "clip91.mp4",
+        "clip90.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "The lingering sense of freedom and the 'road goes on' sentiment.",
+      "supporting_material": "Sunsets viewed from moving vehicles, final group smiles, or retreating movement.",
+      "intent_diluting_material": "Abrupt endings or generic scenic shots that lack a human connection to the preceding chaos.",
+      "reasoning": "The resolution should feel like a 'release'—the group is still together, still moving, and still carefree as the memory fades.",
+      "recommended_clips": [
+        "clip87.mp4",
+        "clip89.mp4",
+        "clip32.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "The library is exceptionally rich in 'uncontrollable laughter' and 'chaotic indoor' moments (clips 15, 79, 82, 90, 91) which perfectly embody the 'no zimmedari' theme.",
+      "Strong presence of 'People-Group' subjects in dynamic, handheld contexts."
+    ],
+    "editorial_tradeoffs": [
+      "Using outdoor adventure clips (jet skiing, archery) to supplement the 'rebellion' narrative where specific 'party' footage is absent.",
+      "Relying on night-market and street scenes to fulfill the 'vibrant night lights' aesthetic of the reference."
+    ],
+    "constraint_gaps": [
+      "Lacks high-energy 'dancing in a crowd' or 'nightclub' style footage to fully hit the 'social gathering' requirement of the reference.",
+      "Limited 'chaotic playground' footage, though the 'hilltop chasing' (clip 1) is a viable substitute."
+    ]
+  },
+  "editorial_strategy": "Prioritize 'The Messy Human Moment' over 'The Beautiful Shot.' If a clip is shaky but shows genuine laughter (like clip 15 or 82), it carries 10x the narrative weight of a stable mountain pan. The edit must feel like a private joke that the audience is being let in on.",
+  "remake_strategy": "To reach Director's Cut quality, aggressively prune any clip that doesn't feature a person's face or a shared group action. Replace the 'scenic' transitions (clip 45, 30) with more 'POV from the car' or 'running with the camera' shots to maintain the handheld memory-reel momentum.",
+  "primary_narrative_subject": "People-Group",
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Object-Detail"
+  ],
+  "subject_lock_strength": 1.0,
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.0",
+  "cached_at": "2026-02-01T13:06:56.627121"
+}

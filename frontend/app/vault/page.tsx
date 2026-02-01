@@ -506,28 +506,70 @@ export default function VaultPage() {
                         </div>
                     </div>
 
-                    {/* EDITORIAL DEBRIEF - The Verdict Anchor */}
-                    <div className="bg-[#0a0c10] border border-cyan-500/10 rounded-2xl p-6 shadow-[inset_0_0_30px_rgba(34,211,238,0.03)] shrink-0 group/debrief transition-all hover:border-cyan-500/30">
-                        <div className="flex items-center gap-3 mb-5">
-                            <BrainCircuit className="w-3.5 h-3.5 text-cyan-400 group-hover/debrief:scale-110 transition-transform" />
-                            <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em]">Synthesis_Debrief</h3>
-                        </div>
-                        <div className="space-y-4">
-                            {intelligence?.advisor?.library_alignment?.editorial_tradeoffs?.length ? (
-                                <div className="space-y-4">
-                                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.1em] mb-1">Critical_Tradeoffs</p>
-                                    {intelligence.advisor.library_alignment.editorial_tradeoffs.map((trade: string, idx: number) => (
-                                        <div key={idx} className="border-l-2 border-indigo-500/50 pl-4 py-1">
-                                            <p className="text-[11px] font-bold text-slate-300 uppercase tracking-tight leading-relaxed">
-                                                {trade}
-                                            </p>
-                                        </div>
-                                    ))}
+                    {/* DIRECTOR'S CRITIQUE - The "Soul" of the Whitebox (v11.0) */}
+                    <div className={cn(
+                        "bg-[#0a0c10] border rounded-2xl p-6 shadow-[inset_0_0_30px_rgba(34,211,238,0.03)] shrink-0 group/critique transition-all duration-700",
+                        intelligence?.critique ? "border-cyan-500/20 hover:border-cyan-500/40" : "border-white/5 opacity-60"
+                    )}>
+                        <div className="flex items-center justify-between mb-5">
+                            <div className="flex items-center gap-3">
+                                <BrainCircuit className="w-4 h-4 text-cyan-400 group-hover/critique:scale-110 transition-transform" />
+                                <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em]">Director_Critique</h3>
+                            </div>
+                            {intelligence?.critique?.overall_score && (
+                                <div className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-black font-mono">
+                                    {intelligence.critique.overall_score.toFixed(1)}/10
                                 </div>
+                            )}
+                        </div>
+
+                        <div className="space-y-6">
+                            {intelligence?.critique ? (
+                                <>
+                                    {/* Monologue */}
+                                    <div className="border-l-2 border-cyan-500/40 pl-5 py-1">
+                                        <p className="text-[12px] font-bold text-slate-200 leading-relaxed italic">
+                                            "{intelligence.critique.monologue}"
+                                        </p>
+                                    </div>
+
+                                    {/* Star Performers & Dead Weight */}
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <p className="text-[8px] font-black text-lime-500 uppercase tracking-widest">Star_Performers</p>
+                                            <div className="space-y-1">
+                                                {intelligence.critique.star_performers?.slice(0, 2).map((s: string, i: number) => (
+                                                    <p key={i} className="text-[9px] font-bold text-slate-400 truncate uppercase">{s}</p>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">Dead_Weight</p>
+                                            <div className="space-y-1">
+                                                {intelligence.critique.dead_weight?.slice(0, 2).map((s: string, i: number) => (
+                                                    <p key={i} className="text-[9px] font-bold text-slate-500 truncate uppercase">{s}</p>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Missing Ingredients */}
+                                    <div className="pt-4 border-t border-white/5">
+                                        <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-3">Remake_Checklist</p>
+                                        <div className="space-y-2">
+                                            {intelligence.critique.missing_ingredients?.slice(0, 3).map((item: string, i: number) => (
+                                                <div key={i} className="flex items-center gap-2">
+                                                    <div className="h-1 w-1 rounded-full bg-indigo-500/40" />
+                                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{item}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </>
                             ) : (
-                                <div className="border-l-2 border-cyan-500/40 pl-5 py-2">
-                                    <p className="text-[11px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
-                                        System synthesized optimal matches with zero significant tradeoffs. Baseline performance exceeded.
+                                <div className="border-l-2 border-white/10 pl-5 py-2">
+                                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
+                                        Director reflection pending. Synthesis must be re-run to generate post-render critique data.
                                     </p>
                                 </div>
                             )}

@@ -35,3 +35,12 @@ export interface ProgressData {
     progress: number;
     message: string;
 }
+
+export interface DirectorCritique {
+    overall_score: number;
+    monologue: string;
+    star_performers: string[];
+    dead_weight: string[];
+    missing_ingredients: string[];
+    technical_fidelity: string;
+}

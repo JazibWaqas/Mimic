@@ -28,6 +28,7 @@ from engine.brain import (
     analyze_all_clips,
     create_fallback_blueprint
 )
+from engine.reflector import reflect_on_edit
 from engine.editor import match_clips_to_blueprint, validate_edl, print_edl_summary
 from engine.processors import (
     standardize_clip,
@@ -428,6 +429,17 @@ def run_mimic_pipeline(
         print(f"🎉 Watch the result: {final_output_path}")
         print(f"{'='*80}\n")
         
+        # ==================================================================
+        # STEP 6: REFLECT & CRITIQUE (The Director's Voice)
+        # ==================================================================
+        update_progress(6, 6, "Generating post-render reflection...")
+        try:
+            critique = reflect_on_edit(blueprint, edl, clip_index, advisor=advisor_hints)
+            print(f"  ✅ Director's Critique generated (Score: {critique.overall_score}/10)")
+        except Exception as e:
+            print(f"  ⚠️ Reflection failed: {e}")
+            critique = None
+
         result = PipelineResult(
             success=True,
             output_path=str(final_output_path),
@@ -435,6 +447,7 @@ def run_mimic_pipeline(
             clip_index=clip_index,
             edl=edl,
             advisor=advisor_hints,
+            critique=critique,
             iteration=iteration,
             processing_time_seconds=processing_time
         )
