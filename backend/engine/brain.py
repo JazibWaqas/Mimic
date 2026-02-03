@@ -1284,6 +1284,10 @@ def _analyze_single_clip_comprehensive(
     file_hash = get_file_hash(clip_path)
     
     cache_file = clip_cache_dir / f"clip_comprehensive_{file_hash}.json"
+    if not cache_file.exists() and len(file_hash) >= 12:
+        legacy_file = clip_cache_dir / f"clip_comprehensive_{file_hash[:12]}.json"
+        if legacy_file.exists():
+            cache_file = legacy_file
 
     if cache_file.exists():
         try:

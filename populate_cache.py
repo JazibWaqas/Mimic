@@ -28,7 +28,7 @@ if sys.platform == 'win32':
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).parent / "backend"))
 
-from engine.brain import analyze_all_clips, CACHE_VERSION
+from engine.brain import analyze_all_clips, CLIP_CACHE_VERSION
 from utils.api_key_manager import get_key_manager
 
 # Configuration
@@ -37,7 +37,7 @@ CACHE_DIR = Path("data/cache")
 
 def main():
     print("=" * 80)
-    print(f"🚀 MIMIC CACHE POPULATOR (Version {CACHE_VERSION})")
+    print(f"MIMIC CACHE POPULATOR (Version {CLIP_CACHE_VERSION})")
     print("=" * 80)
 
     # 1. Check directories
@@ -67,7 +67,7 @@ def main():
     # 4. Start Analysis
     start_time = time.time()
     print(f"🎬 Starting analysis of {total_clips} clips...")
-    print(f"   Note: This will skip clips already in cache (v{CACHE_VERSION})")
+    print(f"   Note: This will skip clips already in cache (v{CLIP_CACHE_VERSION})")
     print()
 
     successful_clips = []

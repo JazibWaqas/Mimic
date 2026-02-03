@@ -89,6 +89,8 @@ def get_fast_hash(path: str | Path) -> str:
                 f.seek(max(0, file_size - 64 * 1024))
                 hasher.update(f.read(64 * 1024))
         
+        # v12.8 Hardening: Include size in the hash for collision resistance
+        hasher.update(str(file_size).encode())
         return hasher.hexdigest()
     except Exception:
         # Fallback to filename hash if reading fails
@@ -144,7 +146,7 @@ def get_file_hash(path: str | Path) -> str:
         mtime = stat.st_mtime
         size = stat.st_size
         
-        key_int = f"{p.name}_{int(mtime)}_{size}"
+        key_int = f"{int(mtime)}_{size}"
         if key_int in _hash_cache:
             return _hash_cache[key_int]
         
@@ -166,6 +168,9 @@ def get_bytes_hash(content: bytes) -> str:
     else:
         hasher.update(content[:64 * 1024])
         hasher.update(content[-64 * 1024:])
+    
+    # v12.8 Hardening: Include size in the hash for collision resistance
+    hasher.update(str(file_size).encode())
     return hasher.hexdigest()
 
 
@@ -176,7 +181,7 @@ def register_file_hash(path: str | Path, value: str) -> None:
         return
     try:
         stat = p.stat()
-        key_int = f"{p.name}_{int(stat.st_mtime)}_{stat.st_size}"
+        key_int = f"{int(stat.st_mtime)}_{stat.st_size}"
         _hash_cache[key_int] = value
     except:
         return
