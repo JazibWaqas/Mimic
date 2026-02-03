@@ -46,7 +46,7 @@ from engine.processors import (
     get_video_duration
 )
 from engine.stylist import apply_visual_styling
-from utils import ensure_directory, cleanup_session
+from utils import ensure_directory, cleanup_session, get_fast_hash
 from collections import defaultdict, Counter
 
 
@@ -220,7 +220,6 @@ def run_mimic_pipeline(
         # ==================================================================
         if text_prompt:
             update_progress(2, TOTAL_STEPS, "Synthesizing Blueprint from text prompt...")
-            blueprint = generate_blueprint_from_text(text_prompt, target_duration, api_key)
             
             # Handle Music for Text-to-Edit Mode
             # Prioritize dedicated music_path, fallback to reference_path if provided
@@ -231,6 +230,16 @@ def run_mimic_pipeline(
                 # Extract audio and detect BPM for the provided music
                 audio_analysis_path = temp_session_dir / "music_analysis.wav"
                 if extract_audio_wav(audio_source, str(audio_analysis_path)):
+                    # AUTO-DURATION (v11.2): Use music length as target duration in Creator Mode
+                    # This overrides any duration sent from the frontend
+                    try:
+                        music_duration = get_video_duration(str(audio_analysis_path))
+                        if music_duration > 3.0:
+                            print(f"  [MUSIC] Detected duration: {music_duration:.2f}s. Overriding target_duration.")
+                            target_duration = music_duration
+                    except Exception as e:
+                        print(f"  [WARN] Could not detect music duration: {e}")
+
                     ref_bpm = detect_bpm(str(audio_analysis_path))
                     print(f"  [MUSIC] Detected BPM: {ref_bpm:.2f}")
                 else:
@@ -239,7 +248,9 @@ def run_mimic_pipeline(
             else:
                 ref_bpm = 120.0
                 print(f"  [WARN] No audio source provided for text-based edit, using default 120 BPM")
-                
+            
+            # Now generate blueprint with the potentially updated target_duration
+            blueprint = generate_blueprint_from_text(text_prompt, target_duration, api_key)
             print(f"[OK] Gemini successfully synthesized blueprint from text: {len(blueprint.segments)} segments.")
         else:
             update_progress(2, TOTAL_STEPS, "Detecting visual cuts and analyzing reference structure...")
@@ -339,10 +350,9 @@ def run_mimic_pipeline(
             output_path = standardized_dir / f"clip_{i:03d}.mp4"
             
             # Generate a unique cache key for this specific file state
-            # (path + scale_params + size + mtime)
-            file_stat = input_p.stat()
-            cache_key_source = f"{input_p.absolute()}_{file_stat.st_size}_{file_stat.st_mtime}"
-            cache_hash = hashlib.md5(cache_key_source.encode()).hexdigest()
+            # Content-based hashing (v11.5): Uses get_fast_hash to ensure
+            # cache remains valid even if mtime changes during upload.
+            cache_hash = get_fast_hash(input_p)
             cached_filename = f"std_{cache_hash}.mp4"
             cached_path = persistent_standardized_cache / cached_filename
             

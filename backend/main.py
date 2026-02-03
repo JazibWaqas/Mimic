@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 from models import *
 from engine.orchestrator import run_mimic_pipeline
 from engine.processors import generate_thumbnail, convert_to_mp4
-from utils import ensure_directory, cleanup_session
+from utils import ensure_directory, cleanup_session, get_fast_hash
 
 # Load environment variables
 load_dotenv()
@@ -203,36 +203,39 @@ async def upload_files(
     existing_files_list = list(CLIPS_DIR.glob("*.mp4"))
     
     # Silently populate library hashes for deduplication
-    for existing_file in existing_files_list:
-        if existing_file.is_file():
-            file_hash = get_file_hash(existing_file)
-            if file_hash:
-                existing_hashes[file_hash] = existing_file
+    # OPTIMIZATION: Populate library hashes in parallel
+    import concurrent.futures
+    def get_hash_entry(f):
+        h = get_file_hash(f)
+        return (h, f) if h else None
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        hash_results = list(executor.map(get_hash_entry, existing_files_list))
+        for res in hash_results:
+            if res:
+                existing_hashes[res[0]] = res[1]
     
     print(f"[UPLOAD] Protocol initialized - Cross-referencing {len(existing_hashes)} library assets...")
     
     temp_upload_dir = TEMP_DIR / "uploads"
     temp_upload_dir.mkdir(parents=True, exist_ok=True)
 
-    for clip in clips:
+    async def process_clip(clip):
         clip_content = await clip.read()
-        # Fast hash for incoming content: if large, hash start and end
+        # Fast hash for incoming content: hash first 512KB and last 512KB
         hasher = hashlib.md5()
-        if len(clip_content) < 2 * 1024 * 1024:
+        if len(clip_content) < 1024 * 1024:
             hasher.update(clip_content)
         else:
-            hasher.update(clip_content[:1024 * 1024])
-            hasher.update(clip_content[-1024 * 1024:])
+            hasher.update(clip_content[:512 * 1024])
+            hasher.update(clip_content[-512 * 1024:])
         
         clip_hash = hasher.hexdigest()[:12]
-        print(f"[UPLOAD] Incoming clip '{clip.filename}' hash: {clip_hash}")
         
         # Check if file with same content already exists
         if clip_hash in existing_hashes:
             existing_clip = existing_hashes[clip_hash]
-            clip_paths.append(str(existing_clip))
-            skipped_count += 1
-            continue
+            return str(existing_clip), True
         
         # Save new clip
         clip_ext = Path(clip.filename).suffix.lower()
@@ -244,7 +247,6 @@ async def upload_files(
             while clip_path.exists():
                 clip_path = CLIPS_DIR / f"{base_name}_{counter}{clip_path.suffix}"
                 counter += 1
-            print(f"[UPLOAD] Clip filename conflict, saved as: {clip_path.name}")
 
         if clip_ext != ".mp4":
             raw_path = temp_upload_dir / clip.filename
@@ -265,8 +267,18 @@ async def upload_files(
             with open(clip_path, "wb") as f:
                 f.write(clip_content)
 
-        clip_paths.append(str(clip_path))
-        print(f"[UPLOAD] New clip saved: {clip_path.name}")
+        return str(clip_path), False
+
+    # Process clips in parallel using asyncio.gather
+    clip_results = await asyncio.gather(*[process_clip(clip) for clip in clips])
+    
+    clip_paths = []
+    for path, was_skipped in clip_results:
+        clip_paths.append(path)
+        if was_skipped:
+            skipped_count += 1
+        else:
+            print(f"[UPLOAD] New clip saved: {Path(path).name}")
     
     print(f"[UPLOAD] {len(clips)} clips processed, {len(clip_paths)} clips will be used ({len(clip_paths) - skipped_count} new, {skipped_count} existing reused)")
     
@@ -295,19 +307,23 @@ async def upload_files(
             generate_thumbnail(str(ref_path), str(ref_thumb_path))
         reference_payload["thumbnail_url"] = f"/api/files/thumbnails/{ref_thumb_name}"
 
-    clips_payload = []
-    for p in clip_paths:
+    # Parallel thumbnail generation
+    import concurrent.futures
+    def get_clip_payload(p):
         clip_path = Path(p)
         clip_hash = get_file_hash(clip_path)
         thumb_name = f"thumb_clip_{clip_hash}.jpg"
         thumb_path = THUMBNAILS_DIR / thumb_name
         if not thumb_path.exists():
             generate_thumbnail(str(clip_path), str(thumb_path))
-        clips_payload.append({
+        return {
             "filename": clip_path.name,
             "size": clip_path.stat().st_size,
             "thumbnail_url": f"/api/files/thumbnails/{thumb_name}"
-        })
+        }
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        clips_payload = list(executor.map(get_clip_payload, clip_paths))
 
     return {
         "session_id": session_id,
@@ -321,7 +337,7 @@ async def generate_video(
     session_id: str, 
     background_tasks: BackgroundTasks,
     text_prompt: Optional[str] = None,
-    target_duration: float = 15.0
+    target_duration: Optional[float] = 15.0
 ):
     """
     Start video generation pipeline.
@@ -831,7 +847,25 @@ async def rename_file(type: str, old_filename: str, new_filename: str):
 # ============================================================================
 
 # Hash cache to avoid reading files multiple times
+# Persistent Registry (v11.4): survive restarts
+REGISTRY_PATH = CACHE_DIR / "hash_registry.json"
 hash_cache = {}
+
+def load_hash_registry():
+    global hash_cache
+    if REGISTRY_PATH.exists():
+        try:
+            hash_cache = json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))
+        except:
+            hash_cache = {}
+
+def save_hash_registry():
+    try:
+        REGISTRY_PATH.write_text(json.dumps(hash_cache), encoding='utf-8')
+    except:
+        pass
+
+load_hash_registry()
 
 def get_file_hash(path: Path) -> str:
     """Helper to get a fast hash of a file without reading the whole thing."""
@@ -839,34 +873,19 @@ def get_file_hash(path: Path) -> str:
         return ""
     
     # Check cache first
-    path_str = str(path)
     file_stat = path.stat()
-    cache_key = f"{path_str}_{file_stat.st_mtime}_{file_stat.st_size}"
+    cache_key = f"{path.name}_{file_stat.st_mtime}_{file_stat.st_size}"
     
     if cache_key in hash_cache:
         return hash_cache[cache_key]
     
-    try:
-        # For small files, read the whole thing. For large files, read chunks.
-        hasher = hashlib.md5()
-        file_size = file_stat.st_size
-        
-        with open(path, "rb") as f:
-            if file_size < 2 * 1024 * 1024:  # < 2MB
-                hasher.update(f.read())
-            else:
-                # Read first 1MB
-                hasher.update(f.read(1024 * 1024))
-                # Seek to near the end and read another 1MB
-                f.seek(max(0, file_size - 1024 * 1024))
-                hasher.update(f.read(1024 * 1024))
-        
-        res = hasher.hexdigest()[:12]
+    res = get_fast_hash(path)
+    if res:
+        # v11.6: Ensure we always use the full 32-char hash for deduplication
         hash_cache[cache_key] = res
-        return res
-    except Exception as e:
-        print(f"[HASH] Error hashing {path}: {e}")
-        return hashlib.md5(path.name.encode()).hexdigest()[:12]
+        save_hash_registry()
+    return res
+
 
 @app.get("/api/intelligence")
 async def get_intelligence(type: str, filename: str):

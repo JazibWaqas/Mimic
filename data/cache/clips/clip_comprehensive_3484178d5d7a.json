@@ -1,0 +1,54 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "School event highlights",
+    "Childhood memory montages"
+  ],
+  "avoid_for": [
+    "Professional cinematic trailers",
+    "Calm reflective scenes"
+  ],
+  "vibes": [],
+  "content_description": "School children in costumes perform the play 'Chicken Licken' in a decorated hallway.",
+  "best_moments": {
+    "High": {
+      "start": 280.34,
+      "end": 280.44,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Children fall to the ground in a dramatic climax of the play."
+    },
+    "Medium": {
+      "start": 65.0,
+      "end": 68.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "A young boy steps forward to read his lines from a card."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial scene setup with children standing in lines wearing paper hats."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 20:53:05"
+}

@@ -1,0 +1,268 @@
+================================================================================
+PIPELINE RUN: TEXT_PROMPT
+================================================================================
+Session ID: text_music_fd54c5314fca
+Reference: None (Creator Mode)
+Clips: 20
+Timestamp: 2026-02-03 22:13:48
+
+[PROGRESS] Step 1/5: Validating inputs...
+
+[1/5] Validating inputs...
+[WS] Connection attempt for session: text_music_fd54c5314fca
+[WS] Origin: http://localhost:3000
+[WS] Connection accepted for session: text_music_fd54c5314fca
+[WS] Session found: text_music_fd54c5314fca
+[PROGRESS] Step 2/5: Synthesizing Blueprint from text prompt...
+
+[2/5] Synthesizing Blueprint from text prompt...
+  [MUSIC] Analyzing audio source: RaabtaMusic.mp4
+  [MUSIC] Detected duration: 31.72s. Overriding target_duration.
+  [BEAT] Detecting BPM for music_analysis.wav...
+  [OK] Detected BPM: 112.35
+  [MUSIC] Detected BPM: 112.35
+
+[GENERATOR] Synthesizing Blueprint from prompt: 'A nostalgic 30ish second reel, with clips fromy ch...'
+[API KEY MANAGER] Loaded 28 API key(s)
+[API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  ⚠️ Blueprint Generation attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 1.61830372s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 1
+}
+]
+[QUOTA] Rate limit detected during blueprint generation
+[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during blueprint generation)
+[API KEY MANAGER] Rotated to key 2/28: AIzaSyAjP3...SS5Pk
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  ✅ Blueprint successfully synthesized (Attempt 2)
+[OK] Gemini successfully synthesized blueprint from text: 6 segments.
+[PROGRESS] Step 3/5: Analyzing user clips with Gemini AI...
+
+[3/5] Analyzing user clips with Gemini AI...
+
+============================================================
+[BRAIN] PARALLEL ANALYSIS: 20 clips
+[BRAIN] Model: gemini-3-flash-preview
+============================================================
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip62_6.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip60_4.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip66_4.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip61_6.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+
+    [CACHE] Subject: People-Group, Place-Indoor    [CACHE] Subject: People-Group, Activity-Leisure
+
+    [CACHE] Derived vibes: Group, Leisure    [CACHE] Derived vibes: Group, Indoor
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip63_5.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+  Analyzing comprehensively: clip68_6.mp4...  Analyzing comprehensively: clip69_6.mp4...
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip70_7.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+
+    [CACHE] Subject: People-Solo, Place-Indoor
+  Analyzing comprehensively: clip67_6.mp4...
+    [CACHE] Derived vibes: Solo, Indoor
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip71_5.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Activity-Leisure
+    [CACHE] Derived vibes: Solo, Leisure
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip73_7.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip72_5.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, People-Group
+    [CACHE] Derived vibes: Solo, Group
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Subject: People-Group, Activity-Leisure
+  Analyzing comprehensively: clip74_5.mp4...
+    [CACHE] Derived vibes: Group, Leisure
+
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments    [CACHE] Derived vibes: Group, Leisure
+
+    [CACHE] Subject: People-Group, Place-Indoor
+    [CACHE] Derived vibes: Group, Indoor
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip75_7.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group
+    [CACHE] Derived vibes: Group
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+  Analyzing comprehensively: clip76_7.mp4...  Analyzing comprehensively: clip77_7.mp4...
+
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Place-Indoor
+    [CACHE] Derived vibes: Solo, Indoor
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip79_7.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip78_7.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip80_7.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Solo, Activity-Leisure    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+
+    [CACHE] Derived vibes: Solo, Leisure
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Place-Indoor
+    [CACHE] Derived vibes: Solo, Indoor
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Place-Indoor
+    [CACHE] Derived vibes: Group, Indoor
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip83_7.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
+
+[OK] All 20 clips analyzed in parallel
+[OK] Gemini successfully analyzed 20 clips (using originals for cache).
+  ✅ Library Health: 80.0% readiness
+  Standardizing clip 1/20: clip60_4.mp4...
+  [OK] Standardized: clip_001.mp4
+  Standardizing clip 2/20: clip61_6.mp4...
+
+================================================================================
+❌ FAILED
+================================================================================
+   Error: FFmpeg standardization failed:
+STDOUT: 
+STDERR: ffmpeg version 8.0.1-essentials_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 15.2.0 (Rev8, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60.  8.100 / 60.  8.100
+  libavcodec     62. 11.100 / 62. 11.100
+  libavformat    62.  3.100 / 62.  3.100
+  libavdevice    62.  1.100 / 62.  1.100
+  libavfilter    11.  4.100 / 11.  4.100
+  libswscale      9.  1.100 /  9.  1.100
+  libswresample   6.  1.100 /  6.  1.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\samples\clips\clip61_6.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf62.3.100
+  Duration: 00:00:36.36, start: 0.000000, bitrate: 1997 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 640x480 [SAR 1:1 DAR 4:3], 1843 kb/s, 25 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc62.11.100 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 32000 Hz, mono, fltp, 147 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[libx264 @ 000001428a30d380] using SAR=1/1
+[libx264 @ 000001428a30d380] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 000001428a30d380] profile High, level 4.0, 4:2:0, 8-bit
+[libx264 @ 000001428a30d380] 264 - core 165 r3223 0480cb0 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=12 lookahead_threads=2 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=22.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'C:\Users\OMNIBOOK\Documents\GitHub\Mimic\temp\text_music_fd54c5314fca\standardized\clip_002.mp4':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 1080x1920 [SAR 1:1 DAR 9:16], q=2-31, 30 fps, 15360 tbn (default)
+    Metadata:
+      encoder         : Lavc62.11.100 libx264
+      rotate          : 0
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 192 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.11.100 aac
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:00.51    
+frame=   30 fps= 29 q=25.0 size=     512KiB time=00:00:00.93 bitrate=4494.3kbits/s speed=0.901x elapsed=0:00:01.03    
+frame=   60 fps= 39 q=28.0 size=    1280KiB time=00:00:01.93 bitrate=5423.9kbits/s speed=1.24x elapsed=0:00:01.55    
+frame=   93 fps= 45 q=28.0 size=    2048KiB time=00:00:03.03 bitrate=5531.1kbits/s speed=1.47x elapsed=0:00:02.06    
+frame=  124 fps= 48 q=25.0 size=    2560KiB time=00:00:04.06 bitrate=5157.0kbits/s speed=1.57x elapsed=0:00:02.58    
+frame=  156 fps= 50 q=28.0 size=    3328KiB time=00:00:05.13 bitrate=5311.0kbits/s speed=1.65x elapsed=0:00:03.10    
+frame=  185 fps= 51 q=28.0 size=    4096KiB time=00:00:06.10 bitrate=5500.8kbits/s speed=1.69x elapsed=0:00:03.61    
+frame=  218 fps= 53 q=28.0 size=    4608KiB time=00:00:07.20 bitrate=5242.9kbits/s speed=1.74x elapsed=0:00:04.14    
+frame=  247 fps= 53 q=28.0 size=    5376KiB time=00:00:08.16 bitrate=5392.7kbits/s speed=1.75x elapsed=0:00:04.65    
+frame=  276 fps= 53 q=28.0 size=    5888KiB time=00:00:09.13 bitrate=5281.2kbits/s speed=1.77x elapsed=0:00:05.16    
+frame=  308 fps= 54 q=28.0 size=    6656KiB time=00:00:10.20 bitrate=5345.7kbits/s speed=1.79x elapsed=0:00:05.68    
+frame=  338 fps= 54 q=28.0 size=    7168KiB time=00:00:11.20 bitrate=5242.9kbits/s speed=1.81x elapsed=0:00:06.20    
+frame=  354 fps= 53 q=28.0 size=    7424KiB time=00:00:11.73 bitrate=5183.3kbits/s speed=1.75x elapsed=0:00:06.71    
+frame=  381 fps= 53 q=28.0 size=    7936KiB time=00:00:12.63 bitrate=5146.1kbits/s speed=1.75x elapsed=0:00:07.22    
+frame=  410 fps= 53 q=28.0 size=    8704KiB time=00:00:13.50 bitrate=5281.7kbits/s speed=1.74x elapsed=0:00:07.73    
+frame=  439 fps= 53 q=28.0 size=    9216KiB time=00:00:14.56 bitrate=5182.9kbits/s speed=1.76x elapsed=0:00:08.27    
+frame=  466 fps= 53 q=28.0 size=    9728KiB time=00:00:15.46 bitrate=5152.5kbits/s speed=1.76x elapsed=0:00:08.79    
+frame=  491 fps= 53 q=28.0 size=   10240KiB time=00:00:16.30 bitrate=5146.4kbits/s speed=1.75x elapsed=0:00:09.32    
+frame=  519 fps= 53 q=28.0 size=   11008KiB time=00:00:17.16 bitrate=5253.1kbits/s speed=1.74x elapsed=0:00:09.84    
+frame=  542 fps= 52 q=25.0 size=   11264KiB time=00:00:18.00 bitrate=5126.4kbits/s speed=1.74x elapsed=0:00:10.37    
+frame=  571 fps= 52 q=28.0 size=   12288KiB time=00:00:18.96 bitrate=5307.4kbits/s speed=1.74x elapsed=0:00:10.89    
+frame=  596 fps= 52 q=25.0 size=   12800KiB time=00:00:19.80 bitrate=5295.9kbits/s speed=1.73x elapsed=0:00:11.42    
+frame=  626 fps= 52 q=28.0 size=   13824KiB time=00:00:20.80 bitrate=5444.5kbits/s speed=1.74x elapsed=0:00:11.95    
+frame=  650 fps= 52 q=28.0 size=   14592KiB time=00:00:21.60 bitrate=5534.2kbits/s speed=1.73x elapsed=0:00:12.47    
+frame=  682 fps= 53 q=28.0 size=   15360KiB time=00:00:22.66 bitrate=5551.3kbits/s speed=1.75x elapsed=0:00:12.98    
+frame=  710 fps= 53 q=25.0 size=   15872KiB time=00:00:23.60 bitrate=5509.5kbits/s speed=1.75x elapsed=0:00:13.50    
+frame=  732 fps= 52 q=28.0 size=   16128KiB time=00:00:24.33 bitrate=5429.6kbits/s speed=1.74x elapsed=0:00:14.02    
+frame=  765 fps= 53 q=28.0 size=   16896KiB time=00:00:25.43 bitrate=5442.2kbits/s speed=1.75x elapsed=0:00:14.54    
+frame=  793 fps= 53 q=28.0 size=   17664KiB time=00:00:26.36 bitrate=5488.1kbits/s speed=1.75x elapsed=0:00:15.05    
+frame=  810 fps= 52 q=28.0 size=   17920KiB time=00:00:26.93 bitrate=5450.5kbits/s speed=1.73x elapsed=0:00:15.58    
+frame=  842 fps= 52 q=28.0 size=   18432KiB time=00:00:27.90 bitrate=5412.0kbits/s speed=1.73x elapsed=0:00:16.10    
+frame=  862 fps= 52 q=28.0 size=   18944KiB time=00:00:28.66 bitrate=5413.6kbits/s speed=1.72x elapsed=0:00:16.65    
+frame=  882 fps= 51 q=28.0 size=   19456KiB time=00:00:29.26 bitrate=5445.9kbits/s speed= 1.7x elapsed=0:00:17.18    
+frame=  907 fps= 51 q=28.0 size=   19968KiB time=00:00:30.16 bitrate=5422.5kbits/s speed= 1.7x elapsed=0:00:17.74    
+frame=  925 fps= 51 q=28.0 size=   20480KiB time=00:00:30.76 bitrate=5453.1kbits/s speed=1.69x elapsed=0:00:18.25    
+frame=  946 fps= 50 q=28.0 size=   20736KiB time=00:00:31.46 bitrate=5398.4kbits/s speed=1.68x elapsed=0:00:18.78    
+frame=  971 fps= 50 q=28.0 size=   21504KiB time=00:00:32.26 bitrate=5459.5kbits/s speed=1.67x elapsed=0:00:19.29    
+frame=  989 fps= 50 q=28.0 size=   21760KiB time=00:00:32.90 bitrate=5418.2kbits/s speed=1.66x elapsed=0:00:19.82    
+frame= 1015 fps= 50 q=28.0 size=   22272KiB time=00:00:33.76 bitrate=5403.3kbits/s speed=1.66x elapsed=0:00:20.33    
+
+================================================================================
+

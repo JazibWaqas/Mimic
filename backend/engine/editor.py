@@ -240,6 +240,11 @@ def match_clips_to_blueprint(
             # Step 1: Get energy-compatible clips (Soft constraints)
             eligible_clips = get_eligible_clips(active_energy_requirement, clip_index.clips)
             
+            # CONSTRAINT RELAXATION (v10.1): If no clips match energy, use ALL clips
+            if not eligible_clips:
+                print(f"      ⚠️ No clips match {active_energy_requirement.value} energy. Relaxing constraints...")
+                eligible_clips = clip_index.clips
+            
             # ENHANCED LOGGING: Eligibility breakdown
             if DEBUG_MODE and cuts_in_segment == 0:  # Only log once per segment
                 ineligible_count = len(clip_index.clips) - len(eligible_clips)
@@ -820,11 +825,19 @@ def match_clips_to_blueprint(
                   f"→ timeline [{decision.timeline_start:.6f}s-{decision.timeline_end:.6f}s]")
 
         # Ensure segment is fully filled (Gap-Filler)
-        if abs(timeline_position - segment.end) > 0.001 and abs(timeline_position - segment.end) < 0.5:
-             # If there's a tiny gap left because the while loop exited, stretch the last decision
-             print(f"    🔗 Snapping segment {segment.id} tail ({timeline_position:.4f} -> {segment.end:.4f})")
+        # v11.1: Aggressive gap filling to ensure total duration matches blueprint
+        gap = segment.end - timeline_position
+        if gap > 0.001:
+             print(f"    🔗 Filling gap in segment {segment.id} ({gap:.4f}s remaining)")
              if decisions:
+                 # Stretch the last decision to fill the gap
                  decisions[-1].timeline_end = segment.end
+                 # Also update the clip_end to keep it proportional (if clip has room)
+                 # But for now, just stretching the timeline is safer for sync
+                 timeline_position = segment.end
+             else:
+                 # Emergency: segment was never even started? 
+                 # This shouldn't happen with the while loop, but let's be safe
                  timeline_position = segment.end
 
     

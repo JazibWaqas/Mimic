@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Place-Indoor"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Family montages",
+    "Candid childhood moments"
+  ],
+  "avoid_for": [
+    "Professional corporate videos",
+    "High-fashion edits"
+  ],
+  "vibes": [],
+  "content_description": "Three children are playing a clapping game and laughing together in a living room.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 6.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and energetic clapping from the children."
+    },
+    "Medium": {
+      "start": 12.0,
+      "end": 15.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Moderate movement while the girl adjusts her hair and talks."
+    },
+    "Low": {
+      "start": 24.0,
+      "end": 27.0,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "Minimal movement as the children focus on the box."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 20:54:34"
+}

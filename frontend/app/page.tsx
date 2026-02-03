@@ -139,12 +139,6 @@ export default function StudioPage() {
   const onDropMaterial = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles?.length > 0) {
       setMaterialFiles(prev => [...prev, ...acceptedFiles]);
-      
-      for (const file of acceptedFiles) {
-        const thumb = await generateThumbnail(file);
-        setPreviews(prev => ({ ...prev, [file.name + file.size]: thumb }));
-      }
-      
       toast.success(`${acceptedFiles.length} Clips Added`);
     }
   }, []);
@@ -193,11 +187,14 @@ export default function StudioPage() {
       const session_id = uploadRes.session_id;
       setCurrentSessionId(session_id); 
       console.log("[STUDIO] Upload complete. Session ID:", session_id);
+      
+      // Update previews with backend thumbnails immediately
       if (uploadRes.clips && uploadRes.clips.length > 0) {
         setPreviews(prev => {
           const next = { ...prev };
           uploadRes.clips?.forEach((clip, idx) => {
-            const file = materialFiles[idx];
+            // Find the matching file in materialFiles by filename
+            const file = materialFiles.find(f => f.name === clip.filename);
             if (!file || !clip.thumbnail_url) return;
             const key = file.name + file.size;
             const url = clip.thumbnail_url.startsWith("http") ? clip.thumbnail_url : `${apiBase}${clip.thumbnail_url}`;
@@ -350,18 +347,6 @@ export default function StudioPage() {
                           <p className="text-[8px] font-bold text-slate-600 uppercase tracking-tight">Describe your vision below</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg border border-white/5 shadow-inner">
-                        <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Target:</span>
-                        <input 
-                          type="number" 
-                          value={targetDuration} 
-                          min={3}
-                          max={60}
-                          onChange={(e) => setTargetDuration(Math.max(3, Math.min(60, parseInt(e.target.value) || 15)))}
-                          className="w-10 bg-transparent text-[10px] font-mono text-white outline-none text-center"
-                        />
-                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">s</span>
-                      </div>
                     </div>
                     
                     <div className="flex-1 flex flex-col gap-4">
@@ -497,10 +482,15 @@ export default function StudioPage() {
                           <div key={i} className="aspect-square rounded-xl bg-black border border-white/10 overflow-hidden relative group/item shadow-2xl flex items-center justify-center">
                             {previewUrl ? (
                               <img src={previewUrl} className="w-full h-full object-cover opacity-90" alt="preview" />
+                            ) : isGenerating ? (
+                              <div className="flex flex-col items-center justify-center gap-1">
+                                <Video className="h-4 w-4 text-cyan-500 animate-pulse" />
+                                <span className="text-[6px] font-black text-cyan-500 uppercase tracking-tighter">Processing</span>
+                              </div>
                             ) : (
                               <div className="flex flex-col items-center justify-center gap-1">
-                                <Video className="h-4 w-4 text-slate-800 animate-pulse" />
-                                <span className="text-[6px] font-black text-slate-800 uppercase tracking-tighter">Loading</span>
+                                <Video className="h-4 w-4 text-slate-800" />
+                                <span className="text-[6px] font-black text-slate-800 uppercase tracking-tighter">Queued</span>
                               </div>
                             )}
                             <button onClick={(e) => { e.stopPropagation(); setMaterialFiles(prev => prev.filter((_, idx) => idx !== i)); }} className="absolute inset-0 bg-red-600 text-white opacity-0 group-hover/item:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm shadow-xl z-10"><X className="h-4 w-4" /></button>

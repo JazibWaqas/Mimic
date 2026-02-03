@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Solo",
+    "Place-Indoor"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Joyful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Action montages",
+    "Family memory highlights"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional sports broadcasts"
+  ],
+  "vibes": [],
+  "content_description": "A young boy performs martial arts kicks and poses in a living room.",
+  "best_moments": {
+    "High": {
+      "start": 37.2,
+      "end": 39.8,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Strong final kick with high impact and expressive energy"
+    },
+    "Medium": {
+      "start": 15.5,
+      "end": 18.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Balancing on one leg and posing with moderate movement"
+    },
+    "Low": {
+      "start": 34.5,
+      "end": 36.8,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "Brief pause and focus before the final move"
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 20:53:37"
+}

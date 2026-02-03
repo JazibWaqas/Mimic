@@ -584,15 +584,22 @@ def create_silent_video(input_path: str, output_path: str) -> None:
 def generate_thumbnail(video_path: str, thumbnail_path: str, time: float = 2.0) -> bool:
     """
     Extract a single frame from video to use as thumbnail.
-    Attempts to avoid black frames by trying different time offsets.
+    Optimized: calls ffprobe once.
     """
-    # Ensure parent dir exists
     Path(thumbnail_path).parent.mkdir(parents=True, exist_ok=True)
     
+    try:
+        duration = get_video_duration(video_path)
+    except Exception:
+        duration = 0
+
     # Try multiple offsets: 2.0s, 5.0s, 0.5s, 0.0s
     for offset in [time, 5.0, 0.5, 0.0]:
+        if duration > 0 and offset > duration:
+            continue
+            
         cmd = [
-            "ffmpeg",
+            "ffmpeg", "-v", "error",
             "-ss", str(offset),
             "-i", video_path,
             "-frames:v", "1",
@@ -601,13 +608,7 @@ def generate_thumbnail(video_path: str, thumbnail_path: str, time: float = 2.0) 
             thumbnail_path
         ]
         try:
-            # Check if video is actually long enough for this offset
-            duration = get_video_duration(video_path)
-            if offset > duration and duration > 0:
-                continue
-                
             subprocess.run(cmd, check=True, capture_output=True)
-            # Basic check: is the file size non-zero?
             if Path(thumbnail_path).exists() and Path(thumbnail_path).stat().st_size > 2000:
                 return True
         except Exception:

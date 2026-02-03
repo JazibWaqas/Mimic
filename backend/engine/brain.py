@@ -917,9 +917,8 @@ def analyze_reference_video(
     muted_cache_dir.mkdir(parents=True, exist_ok=True)
     
     # Cache key includes file hash AND number of hints to ensure fresh analysis if hints change
-    import hashlib
-    with open(video_path, 'rb') as f:
-        file_hash = hashlib.md5(f.read()).hexdigest()[:12]
+    from utils import get_fast_hash
+    file_hash = get_fast_hash(video_path)
     
     if scene_timestamps:
         import hashlib
@@ -1266,9 +1265,8 @@ def _analyze_single_clip_comprehensive(
     clip_cache_dir = cache_dir / "clips"
     clip_cache_dir.mkdir(parents=True, exist_ok=True)
     
-    import hashlib
-    with open(clip_path, 'rb') as f:
-        file_hash = hashlib.md5(f.read()).hexdigest()[:12]
+    from utils import get_fast_hash
+    file_hash = get_fast_hash(clip_path)
     
     cache_file = clip_cache_dir / f"clip_comprehensive_{file_hash}.json"
     

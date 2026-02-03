@@ -64,3 +64,36 @@ def format_duration(seconds: float) -> str:
     secs = int(seconds % 60)
     return f"{mins:02d}:{secs:02d}"
 
+
+def get_fast_hash(path: str | Path) -> str:
+    """
+    Get a fast content-based hash of a file.
+    Reads only the first and last 64KB to ensure speed while maintaining uniqueness.
+    """
+    import hashlib
+    p = Path(path)
+    if not p.exists():
+        return ""
+    
+    file_size = p.stat().st_size
+    hasher = hashlib.md5()
+    
+    try:
+        with open(p, "rb") as f:
+            if file_size < 128 * 1024:
+                hasher.update(f.read())
+            else:
+                # Read first 64KB
+                hasher.update(f.read(64 * 1024))
+                # Seek to near the end and read another 64KB
+                f.seek(max(0, file_size - 64 * 1024))
+                hasher.update(f.read(64 * 1024))
+        
+        # Include file size in the hash for extra safety
+        hasher.update(str(file_size).encode())
+        return hasher.hexdigest()
+    except Exception:
+        # Fallback to filename hash if reading fails
+        return hashlib.md5(p.name.encode()).hexdigest()
+
+

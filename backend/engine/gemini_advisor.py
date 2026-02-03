@@ -157,9 +157,9 @@ def get_advisor_suggestions(
             
             cache_file.write_text(hints.model_dump_json(indent=2), encoding='utf-8')
             print(f"  ✅ Advisor hints generated and cached")
-            print(f"  💡 Text Overlay Intent: {hints.text_overlay_intent[:80]}...")
-            print(f"  📖 Dominant Narrative: {hints.dominant_narrative[:80]}...")
-            print(f"  🎯 Editorial Strategy: {hints.editorial_strategy[:80]}...")
+            print(f"  💡 Text Overlay Intent: {hints.text_overlay_intent}")
+            print(f"  📖 Dominant Narrative: {hints.dominant_narrative}")
+            print(f"  🎯 Editorial Strategy: {hints.editorial_strategy}")
             
             return hints
             
