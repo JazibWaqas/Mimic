@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Family vacation montages",
+    "Playground activity sequences"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "Children and adults playing on a rotating multi-person seesaw in a park.",
+  "best_moments": {
+    "High": {
+      "start": 18.0,
+      "end": 21.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Fastest rotation and peak excitement from the children."
+    },
+    "Medium": {
+      "start": 5.0,
+      "end": 8.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady rotation with clear views of multiple participants."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial movement of the seesaw as the activity begins."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:42:35"
+}

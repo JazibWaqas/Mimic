@@ -1,0 +1,54 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Solo",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Childhood montages",
+    "Outdoor play scenes",
+    "Gardening-themed content"
+  ],
+  "avoid_for": [
+    "Formal documentaries",
+    "Calm reflective outros"
+  ],
+  "vibes": [],
+  "content_description": "A young boy enthusiastically digs a hole in the ground with a trowel while smiling.",
+  "best_moments": {
+    "High": {
+      "start": 0.8,
+      "end": 3.5,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Vigorous digging accompanied by a joyful smile and laughter."
+    },
+    "Medium": {
+      "start": 6.0,
+      "end": 9.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady, consistent digging action with moderate camera movement."
+    },
+    "Low": {
+      "start": 14.0,
+      "end": 17.0,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "Slower, more deliberate digging as the boy focuses on the hole."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:42:41"
+}

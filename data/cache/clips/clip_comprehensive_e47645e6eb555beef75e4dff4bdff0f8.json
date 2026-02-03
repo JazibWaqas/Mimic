@@ -1,0 +1,54 @@
+{
+  "energy": "High",
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Candid family montages",
+    "Nostalgic home video segments",
+    "Childhood memory sequences"
+  ],
+  "avoid_for": [
+    "Steady cinematic sequences",
+    "Calm reflective intros"
+  ],
+  "vibes": [],
+  "content_description": "Two young children singing and laughing while playing together on a swing set.",
+  "best_moments": {
+    "High": {
+      "start": 15.5,
+      "end": 18.5,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak vocal expression and joyful laughter during the children's song."
+    },
+    "Medium": {
+      "start": 37.5,
+      "end": 40.5,
+      "moment_role": "Build",
+      "stable_moment": false,
+      "reason": "Consistent swinging motion with visible smiles and rhythmic movement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": false,
+      "reason": "Initial setup of the children on the swing before the energy peaks."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:44:55"
+}

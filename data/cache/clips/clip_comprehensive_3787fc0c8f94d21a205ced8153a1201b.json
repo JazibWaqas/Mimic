@@ -1,0 +1,52 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Intimate"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Family montages",
+    "Joyful peaks"
+  ],
+  "avoid_for": [
+    "Professional corporate videos",
+    "Calm reflective outros"
+  ],
+  "vibes": [],
+  "content_description": "Two young children hugging and smiling for a photo in front of a wooden door.",
+  "best_moments": {
+    "High": {
+      "start": 4.5,
+      "end": 7.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak hug and joyful smiles directly at the camera."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 4.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Children moving into a hug with moderate energy."
+    },
+    "Low": {
+      "start": 11.5,
+      "end": 14.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Brief pause between poses with minimal movement."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:43:16"
+}

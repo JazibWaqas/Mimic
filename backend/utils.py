@@ -89,11 +89,98 @@ def get_fast_hash(path: str | Path) -> str:
                 f.seek(max(0, file_size - 64 * 1024))
                 hasher.update(f.read(64 * 1024))
         
-        # Include file size in the hash for extra safety
-        hasher.update(str(file_size).encode())
+        # v12.7: Reverted to Legacy Hash (No size included) to match existing cache
+        # hasher.update(str(file_size).encode()) 
         return hasher.hexdigest()
     except Exception:
         # Fallback to filename hash if reading fails
         return hashlib.md5(p.name.encode()).hexdigest()
+
+
+# ============================================================================
+# PERSISTENT HASH REGISTRY (V12.5 Hardened)
+# ============================================================================
+
+import json
+import hashlib
+import time
+
+# Resolve Root correctly (MIMIC/backend/utils.py -> MIMIC/)
+_ROOT_DIR = Path(__file__).resolve().parent.parent
+_HASH_REGISTRY_PATH = _ROOT_DIR / "data" / "cache" / "hash_registry.json"
+_hash_cache = {}
+_registry_loaded = False
+
+def _ensure_registry_loaded():
+    global _hash_cache, _registry_loaded
+    if _registry_loaded: return
+    
+    _HASH_REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    if _HASH_REGISTRY_PATH.exists():
+        try:
+            with open(_HASH_REGISTRY_PATH, "r", encoding="utf-8") as f:
+                _hash_cache = json.load(f)
+        except:
+            _hash_cache = {}
+    _registry_loaded = True
+
+def save_hash_registry():
+    """Manually persist the hash registry to disk."""
+    if not _registry_loaded: return
+    try:
+        with open(_HASH_REGISTRY_PATH, "w", encoding="utf-8") as f:
+            json.dump(_hash_cache, f)
+    except: pass
+
+def get_file_hash(path: str | Path) -> str:
+    """
+    Get a hash of a file with persistent caching.
+    Uses (name, size, mtime) as a fingerprint to avoid re-reading the file.
+    """
+    _ensure_registry_loaded()
+    p = Path(path)
+    if not p.exists(): return ""
+    
+    try:
+        stat = p.stat()
+        mtime = stat.st_mtime
+        size = stat.st_size
+        
+        # Try multiple key formats for backward compatibility (v12.5 Hardened)
+        # Format 1: Int mtime (Modern)
+        key_int = f"{p.name}_{int(mtime)}_{size}"
+        # Format 2: Float mtime (Legacy)
+        key_float = f"{p.name}_{mtime}_{size}"
+        
+        for key in [key_int, key_float]:
+            if key in _hash_cache:
+                return _hash_cache[key]
+        
+        # Cache miss: do the work
+        h = get_fast_hash(p)
+        if h:
+            _hash_cache[key_int] = h
+            # We don't save immediately to avoid disk thrashing during scans
+        return h
+    except:
+        return ""
+
+def get_content_hash(content: bytes) -> str:
+    """
+    Consistency Helper: Generate a hash from bytes that matches the get_fast_hash logic.
+    Used for UploadFiles before they hit the disk.
+    """
+    import hashlib
+    file_size = len(content)
+    hasher = hashlib.md5()
+    
+    if file_size < 128 * 1024:
+        hasher.update(content)
+    else:
+        hasher.update(content[:64 * 1024])
+        hasher.update(content[-64 * 1024:])
+    
+    hasher.update(str(file_size).encode())
+    return hasher.hexdigest()
 
 

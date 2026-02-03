@@ -28,8 +28,11 @@ export default function StudioPage() {
   const [libraryHealth, setLibraryHealth] = useState<any>(null);
   const [pinnedCritique, setPinnedCritique] = useState<string | null>(null);
   const [isIdLoading, setIsIdLoading] = useState(false);
+  const [lastMaterialHash, setLastMaterialHash] = useState<string | null>(null);
+  const [generationError, setGenerationError] = useState(false);
   const searchParams = useSearchParams();
   const logEndRef = useRef<HTMLDivElement>(null);
+  const processedThumbs = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     if (logEndRef.current) {
@@ -62,6 +65,25 @@ export default function StudioPage() {
     }
   }, [searchParams]);
 
+  // v12.7: Safe Healing Worker - Ensures all files eventually get a preview
+  useEffect(() => {
+    const healMissingPreviews = async () => {
+      const missing = materialFiles.filter(f => !previews[f.name + f.size] && !processedThumbs.current.has(f.name + f.size));
+      if (missing.length === 0) return;
+
+      for (const file of missing) {
+        const key = file.name + file.size;
+        processedThumbs.current.add(key);
+        const thumb = await generateThumbnail(file);
+        if (thumb) {
+          setPreviews(prev => ({ ...prev, [key]: thumb }));
+        }
+      }
+    };
+    healMissingPreviews();
+  }, [materialFiles, previews]);
+
+
   const onDropRef = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles?.[0]) {
       const file = acceptedFiles[0];
@@ -81,8 +103,8 @@ export default function StudioPage() {
 
   const generateThumbnail = (file: File): Promise<string> => {
     return new Promise((resolve) => {
-      const video = document.createElement("video");
       const src = URL.createObjectURL(file);
+      const video = document.createElement("video");
       let done = false;
 
       const finish = (value: string) => {
@@ -95,22 +117,26 @@ export default function StudioPage() {
       };
 
       const draw = () => {
-      if (!video.videoWidth || !video.videoHeight) return finish("");
-        const canvas = document.createElement("canvas");
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        const ctx = canvas.getContext("2d");
-        ctx?.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
-        finish(dataUrl);
+        try {
+          if (!video.videoWidth || !video.videoHeight) return finish("");
+          const canvas = document.createElement("canvas");
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) return finish("");
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
+          finish(dataUrl);
+        } catch (e) {
+          finish("");
+        }
       };
 
-      const timeout = setTimeout(() => finish(""), 12000);
+      const timeout = setTimeout(() => finish(""), 10000);
 
       video.preload = "auto";
       video.muted = true;
       video.playsInline = true;
-      video.src = src;
 
       video.onloadedmetadata = () => {
         const duration = Number.isFinite(video.duration) ? video.duration : 0;
@@ -130,8 +156,13 @@ export default function StudioPage() {
         if (!done) draw();
       };
 
-      video.onerror = () => finish("");
+      video.onerror = () => {
+        console.warn("[THUMB] Local generation failed for:", file.name);
+        finish("");
+      };
 
+      // v12.7: Set src ONLY after listeners are ready
+      video.src = src;
       video.load();
     });
   };
@@ -139,6 +170,18 @@ export default function StudioPage() {
   const onDropMaterial = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles?.length > 0) {
       setMaterialFiles(prev => [...prev, ...acceptedFiles]);
+
+      // Generate client-side thumbnails immediately
+      acceptedFiles.forEach(async (file) => {
+        const thumb = await generateThumbnail(file);
+        if (thumb) {
+          setPreviews(prev => ({
+            ...prev,
+            [file.name + file.size]: thumb
+          }));
+        }
+      });
+
       toast.success(`${acceptedFiles.length} Clips Added`);
     }
   }, []);
@@ -175,42 +218,58 @@ export default function StudioPage() {
   const startMimic = async () => {
     if (!refFile && !textPrompt) return toast.error("Provide a reference video or a text description.");
     if (materialFiles.length === 0) return toast.error("Provide source material clips.");
-    
-    setIsGenerating(true); setStatusMsg("Initializing..."); setProgress(5);
+
+    setIsGenerating(true); setStatusMsg("Initializing..."); setProgress(5); setGenerationError(false);
     try {
-      console.log("[STUDIO] Starting upload...");
-      // 1. Upload assets (reference and music are optional now)
-      const uploadRes = await api.uploadFiles(refFile ?? undefined, materialFiles, musicFile ?? undefined) as {
-        session_id: string;
-        clips?: { filename: string; size: number; thumbnail_url?: string }[];
-      };
-      const session_id = uploadRes.session_id;
-      setCurrentSessionId(session_id); 
-      console.log("[STUDIO] Upload complete. Session ID:", session_id);
-      
-      // Update previews with backend thumbnails immediately
-      if (uploadRes.clips && uploadRes.clips.length > 0) {
-        setPreviews(prev => {
-          const next = { ...prev };
-          uploadRes.clips?.forEach((clip, idx) => {
-            // Find the matching file in materialFiles by filename
-            const file = materialFiles.find(f => f.name === clip.filename);
-            if (!file || !clip.thumbnail_url) return;
-            const key = file.name + file.size;
-            const url = clip.thumbnail_url.startsWith("http") ? clip.thumbnail_url : `${apiBase}${clip.thumbnail_url}`;
-            next[key] = url;
+      // Create a unique fingerprint of the current configuration
+      const currentMaterialHash = materialFiles.map(f => f.name + f.size).join("|") +
+        (refFile ? refFile.name + refFile.size : "none") +
+        (musicFile ? musicFile.name + musicFile.size : "none");
+
+      let session_id = currentSessionId;
+      const canSkipUpload = session_id && lastMaterialHash === currentMaterialHash;
+
+      if (canSkipUpload) {
+        console.log("[STUDIO] Config unchanged. Fast-tracking to generation using session:", session_id);
+        setStatusMsg("Reusing session assets...");
+        setProgress(10);
+      } else {
+        console.log("[STUDIO] Config changed or new session. Starting upload...");
+        // 1. Upload assets (reference and music are optional now)
+        const uploadRes = await api.uploadFiles(refFile ?? undefined, materialFiles, musicFile ?? undefined) as {
+          session_id: string;
+          clips?: { filename: string; size: number; thumbnail_url?: string }[];
+        };
+        session_id = uploadRes.session_id;
+        setCurrentSessionId(session_id);
+        setLastMaterialHash(currentMaterialHash);
+        console.log("[STUDIO] Upload complete. New Session ID:", session_id);
+
+        // Update previews with backend thumbnails immediately if available
+        if (uploadRes.clips && uploadRes.clips.length > 0) {
+          setPreviews(prev => {
+            const next = { ...prev };
+            uploadRes.clips?.forEach((clip: any) => {
+              // Perfect Match (v12.3): Link using original properties from backend
+              if (clip.original_filename && clip.original_size) {
+                const key = clip.original_filename + clip.original_size;
+                const url = clip.thumbnail_url.startsWith("http") ? clip.thumbnail_url : `${apiBase}${clip.thumbnail_url}`;
+                next[key] = url;
+              }
+            });
+            return next;
           });
-          return next;
-        });
+        }
       }
-      
+
       setProgress(15);
       setStatusMsg("Synthesizing Blueprint...");
-      
+
       // 2. Start generation with optional text prompt
+      if (!session_id) throw new Error("No active session");
       const genRes = await api.startGeneration(session_id, textPrompt || undefined, targetDuration);
       console.log("[STUDIO] Generation started:", genRes);
-      
+
       const ws = api.connectProgress(session_id);
       ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
@@ -231,11 +290,21 @@ export default function StudioPage() {
         if (data.status === "complete") {
           setIsGenerating(false);
           checkStatus(session_id);
+        } else if (data.status === "error") {
+          setIsGenerating(false);
+          setGenerationError(true);
+          setStatusMsg("Synthesis Failed");
+          toast.error(data.message || "Generation Error via Protocol");
         }
       };
-      ws.onerror = () => checkStatus(session_id);
+      ws.onerror = () => {
+        setGenerationError(true);
+        setIsGenerating(false);
+        checkStatus(session_id);
+      };
     } catch (err) {
       setIsGenerating(false);
+      setGenerationError(true);
       const message = err instanceof Error ? err.message : "Process failed.";
       toast.error(message);
       console.error("Studio start failed", err);
@@ -306,10 +375,10 @@ export default function StudioPage() {
                   )} />
                   <h3 className="text-[11px] font-black text-white uppercase tracking-[0.3em]">01. Style Binding</h3>
                 </div>
-                
+
                 {/* Mode Toggle */}
                 <div className="flex bg-white/5 p-1 rounded-lg border border-white/5">
-                  <button 
+                  <button
                     onClick={() => setActiveMode("text")}
                     className={cn(
                       "px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest transition-all",
@@ -318,7 +387,7 @@ export default function StudioPage() {
                   >
                     Creator Mode
                   </button>
-                  <button 
+                  <button
                     onClick={() => setActiveMode("video")}
                     className={cn(
                       "px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest transition-all",
@@ -348,7 +417,7 @@ export default function StudioPage() {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex-1 flex flex-col gap-4">
                       {/* Chat-style Bubble for Prompt */}
                       <div className="bg-white/[0.03] border border-white/10 rounded-2xl rounded-tl-none p-5 relative group/bubble transition-all hover:bg-white/[0.05]">
@@ -379,9 +448,9 @@ export default function StudioPage() {
                           <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI Synthesis Active</span>
                         </div>
                       </div>
-                      
+
                       {/* Music Upload Slot Integrated */}
-                      <button 
+                      <button
                         onClick={() => {
                           const input = document.createElement('input');
                           input.type = 'file';
@@ -405,7 +474,7 @@ export default function StudioPage() {
                     </div>
                   </div>
                 ) : (
-                  <div 
+                  <div
                     {...getRefProps()}
                     className="flex-1 flex flex-col items-center justify-center p-12 cursor-pointer group/drop animate-in fade-in slide-in-from-right-4 duration-500"
                   >
@@ -418,7 +487,7 @@ export default function StudioPage() {
                             <Video className="h-8 w-8 text-cyan-400" />
                           </div>
                           <p className="text-xs font-black text-white uppercase tracking-[0.4em] mb-2">{refFile.name}</p>
-                          <button 
+                          <button
                             onClick={(e) => { e.stopPropagation(); setRefFile(null); }}
                             className="px-6 py-2 rounded-xl bg-red-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-red-500 transition-all shadow-2xl"
                           >
@@ -489,8 +558,8 @@ export default function StudioPage() {
                               </div>
                             ) : (
                               <div className="flex flex-col items-center justify-center gap-1">
-                                <Video className="h-4 w-4 text-slate-800" />
-                                <span className="text-[6px] font-black text-slate-800 uppercase tracking-tighter">Queued</span>
+                                <Video className="h-4 w-4 text-slate-500" />
+                                <span className="text-[6px] font-black text-slate-500 uppercase tracking-tighter">Queued</span>
                               </div>
                             )}
                             <button onClick={(e) => { e.stopPropagation(); setMaterialFiles(prev => prev.filter((_, idx) => idx !== i)); }} className="absolute inset-0 bg-red-600 text-white opacity-0 group-hover/item:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm shadow-xl z-10"><X className="h-4 w-4" /></button>
@@ -538,8 +607,8 @@ export default function StudioPage() {
                   <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2">Energy Distribution</p>
                   <div className="flex gap-1 h-1.5">
                     {['High', 'Medium', 'Low'].map(e => (
-                      <div 
-                        key={e} 
+                      <div
+                        key={e}
                         className={cn(
                           "h-full rounded-full transition-all duration-1000",
                           e === 'High' ? "bg-[#ff007f]" : e === 'Medium' ? "bg-cyan-400" : "bg-indigo-500"
@@ -580,8 +649,8 @@ export default function StudioPage() {
                     <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Arc Sequence</p>
                     <div className="flex gap-1 overflow-hidden rounded-lg h-8 border border-white/5">
                       {blueprint.segments?.map((seg: any, i: number) => (
-                        <div 
-                          key={i} 
+                        <div
+                          key={i}
                           className={cn(
                             "h-full flex items-center justify-center text-[7px] font-black transition-all",
                             seg.energy === 'High' ? "bg-[#ff007f] text-white" : seg.energy === 'Medium' ? "bg-cyan-500 text-black" : "bg-indigo-600 text-white"
@@ -619,8 +688,23 @@ export default function StudioPage() {
                       <span className="text-[8px] font-mono text-cyan-400">{Math.round(progress)}%</span>
                     </div>
                   )}
-                  <div className={cn("h-1.5 w-1.5 rounded-full glow-cyan", isGenerating ? "bg-cyan-400 animate-pulse" : "bg-slate-700")} />
-                  <span className="text-[8px] font-black text-cyan-400/60 uppercase tracking-widest">{isGenerating ? "Processing" : "Idle"}</span>
+                  <div className={cn("h-1.5 w-1.5 rounded-full glow-cyan", isGenerating ? "bg-cyan-400 animate-pulse" : generationError ? "bg-red-500" : "bg-slate-700")} />
+                  <span className={cn("text-[8px] font-black uppercase tracking-widest", generationError ? "text-red-400" : "text-cyan-400/60")}>
+                    {isGenerating ? "Processing" : generationError ? "Synthesis Failed" : "Idle"}
+                  </span>
+                  {generationError && (
+                    <button
+                      onClick={() => {
+                        setGenerationError(false);
+                        setIsGenerating(false);
+                        setProgress(0);
+                        setStatusMsg("Ready");
+                      }}
+                      className="ml-2 px-2 py-0.5 rounded bg-red-500/10 border border-red-500/20 text-[6px] font-black text-red-500 uppercase hover:bg-red-500/20 transition-all"
+                    >
+                      Reset Protocol
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -650,9 +734,11 @@ export default function StudioPage() {
                     "w-full h-14 rounded-xl font-black text-[11px] uppercase tracking-[0.25em] transition-all duration-700 flex flex-col items-center justify-center relative overflow-hidden group/execute border",
                     isGenerating
                       ? "bg-gradient-to-r from-[#ff007f] to-[#bf00ff] border-[#ff007f]/40 text-white animate-pulse"
-                      : !refFile || materialFiles.length === 0
-                        ? "bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 border-cyan-500/20 text-slate-400 shadow-[0_0_20px_rgba(0,212,255,0.1)] hover:border-cyan-500/40"
-                        : "bg-gradient-to-r from-[#00d4ff] via-[#4f46e5] to-[#bf00ff] bg-[length:200%_auto] border-white/30 text-white shadow-[0_0_30px_rgba(0,212,255,0.4)] hover:shadow-[0_0_60px_rgba(0,212,255,0.7)] hover:bg-right hover:scale-[1.02] active:scale-[0.98] animate-pulse-slow"
+                      : generationError
+                        ? "bg-red-600/20 border-red-500/50 text-red-400 shadow-[0_0_20px_rgba(239,68,68,0.2)] hover:bg-red-600/30"
+                        : !refFile && !textPrompt || materialFiles.length === 0
+                          ? "bg-gradient-to-br from-indigo-500/10 to-cyan-500/10 border-cyan-500/20 text-slate-400 shadow-[0_0_20px_rgba(0,212,255,0.1)] hover:border-cyan-500/40"
+                          : "bg-gradient-to-r from-[#00d4ff] via-[#4f46e5] to-[#bf00ff] bg-[length:200%_auto] border-white/30 text-white shadow-[0_0_30px_rgba(0,212,255,0.4)] hover:shadow-[0_0_60px_rgba(0,212,255,0.7)] hover:bg-right hover:scale-[1.02] active:scale-[0.98] animate-pulse-slow"
                   )}
                 >
                   {/* Hover Label Layer */}
@@ -661,9 +747,10 @@ export default function StudioPage() {
                       <Sparkles className={cn(
                         "h-4 w-4",
                         isGenerating || isIdLoading ? "text-white animate-spin-slow" :
-                          refFile && materialFiles.length > 0 ? "text-white animate-spin-slow" : "text-cyan-400"
+                          generationError ? "text-red-400 animate-pulse" :
+                            refFile && materialFiles.length > 0 ? "text-white animate-spin-slow" : "text-cyan-400"
                       )} />
-                      <span>{isGenerating ? "Synthesizing..." : isIdLoading ? "Binding Style..." : "Execute Synthesis"}</span>
+                      <span>{isGenerating ? "Synthesizing..." : isIdLoading ? "Binding Style..." : generationError ? "Retry Synthesis" : "Execute Synthesis"}</span>
                     </div>
                   </div>
 

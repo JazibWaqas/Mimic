@@ -111,9 +111,35 @@ def generate_blueprint_from_text(
     """
     Call Gemini to generate a full StyleBlueprint from a text prompt.
     Uses robust retry and key rotation logic.
+    
+    V12.1 OPTIMIZATION: Persistent Caching for Blueprint DNA
     """
     print(f"\n[GENERATOR] Synthesizing Blueprint from prompt: '{user_prompt[:50]}...'")
     
+    # 1. Check Cache (Deterministic execution)
+    import hashlib
+    from pathlib import Path
+    import time
+    
+    # Define cache directory
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    cache_dir = BASE_DIR / "data" / "cache" / "blueprints"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Generate unique hash for this prompt + duration combo
+    prompt_hash = hashlib.md5(f"{user_prompt}_{target_duration}".encode()).hexdigest()[:12]
+    cache_file = cache_dir / f"blueprint_{prompt_hash}.json"
+    
+    if cache_file.exists():
+        try:
+            with open(cache_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            print(f"  [CACHE] Hit! Reusing synthesized blueprint: {cache_file.name}")
+            return StyleBlueprint(**data)
+        except Exception as e:
+            print(f"  [WARN] Failed to load cached blueprint: {e}")
+
+    # 2. Proceed with Generation if Cache Miss
     # Use safe formatting to avoid issues with JSON braces in the prompt
     final_prompt = GENERATOR_PROMPT
     final_prompt = final_prompt.replace("{user_prompt}", user_prompt)
@@ -141,6 +167,14 @@ def generate_blueprint_from_text(
             # Add the original text prompt to the blueprint
             data["text_prompt"] = user_prompt
             
+            # Save to Cache immediately
+            try:
+                with open(cache_file, "w", encoding="utf-8") as f:
+                    json.dump(data, f, indent=2)
+                print(f"  [CACHE] Saved new blueprint synthesis: {cache_file.name}")
+            except Exception as e:
+                print(f"  [WARN] Failed to save blueprint cache: {e}")
+
             print(f"  ✅ Blueprint successfully synthesized (Attempt {attempt + 1})")
             return StyleBlueprint(**data)
             

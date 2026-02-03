@@ -14,14 +14,16 @@ import uuid
 from pathlib import Path
 from typing import List
 import asyncio
+from concurrent.futures import ThreadPoolExecutor
 import json
 import hashlib
+import time
 
 from dotenv import load_dotenv
 from models import *
 from engine.orchestrator import run_mimic_pipeline
 from engine.processors import generate_thumbnail, convert_to_mp4
-from utils import ensure_directory, cleanup_session, get_fast_hash
+from utils import ensure_directory, cleanup_session, get_file_hash, get_content_hash, save_hash_registry
 
 # Load environment variables
 load_dotenv()
@@ -82,6 +84,78 @@ app.add_middleware(
 # Track active sessions
 active_sessions = {}
 video_exts = {".mp4", ".mov", ".avi", ".mpg", ".mpeg", ".3gp", ".m4v", ".mkv"}
+
+# ============================================================================
+# STATE MANAGEMENT (V12.0)
+# ============================================================================
+
+# Conversion Mapping (v11.8): Track original source hashes to their converted MP4 paths
+SOURCE_MAP_PATH = CACHE_DIR / "source_map.json"
+source_map = {}
+
+def load_source_map():
+    global source_map
+    if SOURCE_MAP_PATH.exists():
+        try:
+            with open(SOURCE_MAP_PATH, "r", encoding="utf-8") as f:
+                source_map = json.load(f)
+        except Exception as e:
+            print(f"[WARN] Failed to load source_map: {e}")
+            source_map = {}
+
+def save_source_map():
+    try:
+        with open(SOURCE_MAP_PATH, "w", encoding="utf-8") as f:
+            json.dump(source_map, f, indent=2)
+    except Exception as e:
+        print(f"[WARN] Failed to save source_map: {e}")
+
+load_source_map()
+
+class LibraryIndex:
+    """
+    Singleton index for the entire clip library. 
+    Prevents repeated O(N) filesystem scans on every upload.
+    """
+    _hashes: dict[str, Path] = {}
+    _last_refresh: float = 0
+    _refresh_interval: float = 60.0 # Refresh every minute
+    _lock = asyncio.Lock()
+
+    @classmethod
+    async def get_hashes(cls) -> dict[str, Path]:
+        async with cls._lock:
+            now = time.time()
+            if not cls._hashes or (now - cls._last_refresh > cls._refresh_interval):
+                await cls._refresh()
+            return cls._hashes.copy()
+
+    @classmethod
+    def update(cls, clip_hash: str, path: Path):
+        """Immediate update when a new clip is added."""
+        cls._hashes[clip_hash] = path
+
+    @classmethod
+    async def _refresh(cls):
+        print(f"[INDEX] Refreshing clip library index...")
+        new_hashes = {}
+        
+        # Parallel scan using thread pool (v12.4 optimized)
+        files = [p for p in CLIPS_DIR.glob("*.mp4") if p.is_file()]
+        
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            # We use get_file_hash which is fast (uses mtime/size cache)
+            # but we still pool it to minimize OS-level stat latency.
+            results = list(executor.map(lambda p: (get_file_hash(p), p), files))
+            for h, p in results:
+                if h: new_hashes[h] = p
+        
+        # Save registry once after batch processing
+        save_hash_registry()
+        
+        cls._hashes = new_hashes
+        cls._last_refresh = time.time()
+        print(f"[INDEX] Scanned {len(new_hashes)} clips in library.")
 
 # ============================================================================
 # ENDPOINTS
@@ -195,25 +269,12 @@ async def upload_files(
                 f.write(ref_content)
             print(f"[UPLOAD] Reference saved to: {ref_path}")
     
-    # Save clips to data/samples/clips/ (matching test_ref.py)
+    # Save clips to data/samples/clips/
     clip_paths = []
     skipped_count = 0
     
-    existing_hashes = {}
-    existing_files_list = list(CLIPS_DIR.glob("*.mp4"))
-    
-    # Silently populate library hashes for deduplication
-    # OPTIMIZATION: Populate library hashes in parallel
-    import concurrent.futures
-    def get_hash_entry(f):
-        h = get_file_hash(f)
-        return (h, f) if h else None
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        hash_results = list(executor.map(get_hash_entry, existing_files_list))
-        for res in hash_results:
-            if res:
-                existing_hashes[res[0]] = res[1]
+    # v12.0: Use the optimized Singleton Library Index
+    existing_hashes = await LibraryIndex.get_hashes()
     
     print(f"[UPLOAD] Protocol initialized - Cross-referencing {len(existing_hashes)} library assets...")
     
@@ -222,25 +283,41 @@ async def upload_files(
 
     async def process_clip(clip):
         clip_content = await clip.read()
-        # Fast hash for incoming content: hash first 512KB and last 512KB
-        hasher = hashlib.md5()
-        if len(clip_content) < 1024 * 1024:
-            hasher.update(clip_content)
-        else:
-            hasher.update(clip_content[:512 * 1024])
-            hasher.update(clip_content[-512 * 1024:])
+        # Use consistent content-based hash (V12.4)
+        clip_hash = get_content_hash(clip_content)
+        file_size = len(clip_content)
         
-        clip_hash = hasher.hexdigest()[:12]
+        # 1. Direct Content Check (Source-to-Source)
+        # If we've seen THESE EXACT BYTES before, return the previous path immediately
+        if clip_hash in source_map:
+            cached_path = Path(source_map[clip_hash])
+            if cached_path.exists():
+                return {
+                    "path": str(cached_path),
+                    "original_filename": clip.filename,
+                    "original_size": file_size,
+                    "was_skipped": True
+                }
         
-        # Check if file with same content already exists
+        # 2. Library Cross-Reference (for direct MP4 uploads)
         if clip_hash in existing_hashes:
             existing_clip = existing_hashes[clip_hash]
-            return str(existing_clip), True
+            # Update source map for future speed
+            source_map[clip_hash] = str(existing_clip)
+            return {
+                "path": str(existing_clip),
+                "original_filename": clip.filename,
+                "original_size": file_size,
+                "was_skipped": True
+            }
         
         # Save new clip
         clip_ext = Path(clip.filename).suffix.lower()
         target_name = f"{Path(clip.filename).stem}.mp4" if clip_ext != ".mp4" else clip.filename
         clip_path = CLIPS_DIR / target_name
+        
+        # v11.8: Use the hash in the filename for collision-free uniqueness if requested,
+        # otherwise use the iterating name but guard the source_map carefully.
         if clip_path.exists():
             base_name = clip_path.stem
             counter = 1
@@ -259,28 +336,38 @@ async def upload_files(
                     status_code=400,
                     detail=f"Conversion failed for {clip.filename}. {e}"
                 )
-            try:
-                raw_path.unlink()
-            except Exception:
-                pass
+            finally:
+                if raw_path.exists():
+                    raw_path.unlink()
         else:
             with open(clip_path, "wb") as f:
                 f.write(clip_content)
 
-        return str(clip_path), False
+        # 3. Update the mapping for future fast-tracking
+        source_map[clip_hash] = str(clip_path)
+        LibraryIndex.update(clip_hash, clip_path) # Update global index immediately
+        return {
+            "path": str(clip_path),
+            "original_filename": clip.filename,
+            "original_size": file_size,
+            "was_skipped": False
+        }
 
     # Process clips in parallel using asyncio.gather
     clip_results = await asyncio.gather(*[process_clip(clip) for clip in clips])
     
     clip_paths = []
-    for path, was_skipped in clip_results:
-        clip_paths.append(path)
-        if was_skipped:
+    for res in clip_results:
+        clip_paths.append(res["path"])
+        if res["was_skipped"]:
             skipped_count += 1
         else:
-            print(f"[UPLOAD] New clip saved: {Path(path).name}")
+            print(f"[UPLOAD] New clip saved: {Path(res['path']).name}")
     
     print(f"[UPLOAD] {len(clips)} clips processed, {len(clip_paths)} clips will be used ({len(clip_paths) - skipped_count} new, {skipped_count} existing reused)")
+    
+    # Persist the source map to disk
+    save_source_map()
     
     # Store session info
     active_sessions[session_id] = {
@@ -303,27 +390,39 @@ async def upload_files(
         ref_hash = get_file_hash(ref_path)
         ref_thumb_name = f"thumb_ref_{ref_hash}.jpg"
         ref_thumb_path = THUMBNAILS_DIR / ref_thumb_name
-        if not ref_thumb_path.exists():
-            generate_thumbnail(str(ref_path), str(ref_thumb_path))
-        reference_payload["thumbnail_url"] = f"/api/files/thumbnails/{ref_thumb_name}"
+        try:
+            if not ref_thumb_path.exists():
+                generate_thumbnail(str(ref_path), str(ref_thumb_path))
+            reference_payload["thumbnail_url"] = f"/api/files/thumbnails/{ref_thumb_name}"
+            # Signature for frontend matching
+            reference_payload["original_filename"] = getattr(reference, "filename", ref_path.name)
+            reference_payload["original_size"] = ref_path.stat().st_size
+        except Exception as e:
+            print(f"[THUMB] Ref thumbnail failed: {e}")
 
-    # Parallel thumbnail generation
-    import concurrent.futures
-    def get_clip_payload(p):
-        clip_path = Path(p)
-        clip_hash = get_file_hash(clip_path)
-        thumb_name = f"thumb_clip_{clip_hash}.jpg"
-        thumb_path = THUMBNAILS_DIR / thumb_name
-        if not thumb_path.exists():
-            generate_thumbnail(str(clip_path), str(thumb_path))
-        return {
-            "filename": clip_path.name,
-            "size": clip_path.stat().st_size,
-            "thumbnail_url": f"/api/files/thumbnails/{thumb_name}"
-        }
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        def get_payload_with_meta(res):
+            clip_path = Path(res["path"])
+            clip_hash = get_file_hash(clip_path)
+            thumb_name = f"thumb_clip_{clip_hash}.jpg"
+            thumb_path = THUMBNAILS_DIR / thumb_name
+            try:
+                if not thumb_path.exists():
+                    generate_thumbnail(str(clip_path), str(thumb_path))
+                thumb_url = f"/api/files/thumbnails/{thumb_name}"
+            except Exception as e:
+                print(f"[THUMB] Clip thumbnail failed: {e}")
+                thumb_url = None
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-        clips_payload = list(executor.map(get_clip_payload, clip_paths))
+            return {
+                "filename": clip_path.name,
+                "size": clip_path.stat().st_size,
+                "original_filename": res["original_filename"],
+                "original_size": res["original_size"],
+                "thumbnail_url": thumb_url
+            }
+            
+        clips_payload = list(executor.map(get_payload_with_meta, clip_results))
 
     return {
         "session_id": session_id,
@@ -792,6 +891,12 @@ async def list_all_results():
             })
     # Sort by newest first
     results.sort(key=lambda x: x["created_at"], reverse=True)
+    
+    # Pre-generate signatures for the vault list
+    for res in results:
+        res["original_filename"] = res["filename"]
+        res["original_size"] = res["size"]
+        
     return {"results": results}
 
 @app.delete("/api/results/{filename}")
@@ -842,49 +947,7 @@ async def rename_file(type: str, old_filename: str, new_filename: str):
             
     return {"status": "renamed", "new_filename": new_filename}
 
-# ============================================================================
-# INTELLIGENCE ENDPOINTS (For Vault A)
-# ============================================================================
-
-# Hash cache to avoid reading files multiple times
-# Persistent Registry (v11.4): survive restarts
-REGISTRY_PATH = CACHE_DIR / "hash_registry.json"
-hash_cache = {}
-
-def load_hash_registry():
-    global hash_cache
-    if REGISTRY_PATH.exists():
-        try:
-            hash_cache = json.loads(REGISTRY_PATH.read_text(encoding='utf-8'))
-        except:
-            hash_cache = {}
-
-def save_hash_registry():
-    try:
-        REGISTRY_PATH.write_text(json.dumps(hash_cache), encoding='utf-8')
-    except:
-        pass
-
-load_hash_registry()
-
-def get_file_hash(path: Path) -> str:
-    """Helper to get a fast hash of a file without reading the whole thing."""
-    if not path.exists():
-        return ""
-    
-    # Check cache first
-    file_stat = path.stat()
-    cache_key = f"{path.name}_{file_stat.st_mtime}_{file_stat.st_size}"
-    
-    if cache_key in hash_cache:
-        return hash_cache[cache_key]
-    
-    res = get_fast_hash(path)
-    if res:
-        # v11.6: Ensure we always use the full 32-char hash for deduplication
-        hash_cache[cache_key] = res
-        save_hash_registry()
-    return res
+# Hash Registry removed - moved to utils.py for global speed
 
 
 @app.get("/api/intelligence")

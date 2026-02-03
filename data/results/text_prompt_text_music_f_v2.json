@@ -1,0 +1,1736 @@
+{
+  "success": true,
+  "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_f_v2.mp4",
+  "blueprint": {
+    "total_duration": 31.722653,
+    "segments": [
+      {
+        "id": 1,
+        "start": 0.0,
+        "end": 8.0,
+        "duration": 8.0,
+        "energy": "Low",
+        "motion": "Static",
+        "vibe": "Carefree Immersion",
+        "reasoning": "Establishing the 'carefree' baseline with a long hold to allow the viewer to fully inhabit the memory as the music builds.",
+        "arc_stage": "Intro",
+        "shot_scale": "Wide",
+        "shot_function": "Establish",
+        "relation_to_previous": "None",
+        "expected_hold": "Long",
+        "camera_movement": "",
+        "emotional_guidance": ""
+      },
+      {
+        "id": 2,
+        "start": 8.0,
+        "end": 16.0,
+        "duration": 8.0,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Joyous Expansion",
+        "reasoning": "Introducing more variety and movement as the music picks up, showing the breadth of happy childhood moments.",
+        "arc_stage": "Build-up",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "None",
+        "expected_hold": "Normal",
+        "camera_movement": "",
+        "emotional_guidance": ""
+      },
+      {
+        "id": 3,
+        "start": 16.0,
+        "end": 23.0,
+        "duration": 7.0,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Rhythmic Play",
+        "reasoning": "Increasing the frequency of cuts to build momentum, focusing on participatory shots and laughter.",
+        "arc_stage": "Build-up",
+        "shot_scale": "Close",
+        "shot_function": "Reaction",
+        "relation_to_previous": "None",
+        "expected_hold": "Normal",
+        "camera_movement": "",
+        "emotional_guidance": ""
+      },
+      {
+        "id": 4,
+        "start": 23.0,
+        "end": 28.5,
+        "duration": 5.5,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "The Blur of Time",
+        "reasoning": "A rapid-fire montage signifying how fast time moved away; a 'chaotic peak' of pure, vibrant life.",
+        "arc_stage": "Peak",
+        "shot_scale": "Detail",
+        "shot_function": "Transition",
+        "relation_to_previous": "None",
+        "expected_hold": "Short",
+        "camera_movement": "",
+        "emotional_guidance": ""
+      },
+      {
+        "id": 5,
+        "start": 28.5,
+        "end": 31.722653,
+        "duration": 3.222653,
+        "energy": "Low",
+        "motion": "Static",
+        "vibe": "Glowing Reflection",
+        "reasoning": "The music softens; we settle on a final, heartwarming image that lingers to evoke a sense of peace.",
+        "arc_stage": "Outro",
+        "shot_scale": "Medium",
+        "shot_function": "Detail",
+        "relation_to_previous": "None",
+        "expected_hold": "Long",
+        "camera_movement": "",
+        "emotional_guidance": ""
+      }
+    ],
+    "text_prompt": "A nostalgic 30ish second reel, with clips fromy childhood with the text overlay \"Oh to be this young again\" the vibe is very happy, reminiscient, nostalgic, cute meant to evoke emotion and rememeber out childhood years. I want to use multiple moments from the clips starting with a buildup so hold on a scence till the music builds up showing how carefree and happy i used to be,its not a sad reel its a joyous reel which is meant to celebrate life its vibrant its heartwarming, as the music picks up we start going through more scences we dont want to be too fast paced but beggining we want to keep it building up slightly slower and then near the end as the music really builds and then slows we want to turn fast faced signifying how fast time moved away from us and that chapter of our life is over.As the music softens, we end on a quiet, glowing frame.",
+    "plan_summary": "The edit opens with a long, immersive shot of childhood bliss to establish a carefree atmosphere. It then transitions into a rhythmic montage of joyous memories that accelerates into a high-energy 'blur of time' before ending on a singular, soft, and reflective frame.",
+    "assumed_material": [
+      "Candid childhood home videos",
+      "Children running or playing outdoors",
+      "Close-ups of laughing faces",
+      "Sun-drenched backyard or park scenes",
+      "Soft, out-of-focus background elements"
+    ],
+    "editing_style": "Nostalgic Narrative Montage",
+    "emotional_intent": "A heartwarming celebration of childhood innocence, using a rhythmic acceleration to mirror the fleeting nature of time before settling into a peaceful, glowing conclusion.",
+    "arc_description": "Intro (Long Hold) -> Build-up (Rhythmic Expansion) -> Peak (Rapid Time-Blur) -> Outro (Soft Reflection).",
+    "text_overlay": "Oh to be this young again",
+    "narrative_message": "Childhood is a fleeting, beautiful gift that stays with us as a warm glow.",
+    "intent_clarity": "Clear",
+    "must_have_content": [
+      "A long-duration opening shot of pure happiness",
+      "A rapid-fire sequence of varied memories",
+      "A final, quiet, glowing frame"
+    ],
+    "should_have_content": [
+      "Interaction with nature (grass, water, sun)",
+      "Eye contact with the camera (participatory)",
+      "Tactile moments (hands playing, messy eating, hugging)"
+    ],
+    "avoid_content": [
+      "Modern technology or digital screens",
+      "Fast, aggressive camera shakes",
+      "Dark, moody, or high-contrast urban lighting",
+      "Sad or crying expressions"
+    ],
+    "pacing_feel": "Starts with 'Breath' and 'Restraint', moves into 'Momentum', and ends with 'Peace'.",
+    "visual_balance": "Balanced between wide observational shots and intimate close-up details.",
+    "color_grading": {
+      "tone": "Warm, golden-hour amber and soft pastels",
+      "contrast": "Low-medium with lifted blacks for a filmic, hazy look",
+      "specific_look": "Vintage 16mm film emulation with slight halation on highlights"
+    },
+    "aspect_ratio": "",
+    "visual_effects": [
+      "Subtle 8mm film grain",
+      "Warm light leaks on transitions",
+      "Soft edge-blur (vignette)"
+    ],
+    "shot_variety": {},
+    "cut_style": "",
+    "transition_effects": [],
+    "music_sync": "",
+    "audio_style": {},
+    "music_structure": {},
+    "text_style": {
+      "font_style": "Elegant, timeless serif with slight kerning",
+      "animation": "Soft organic fade-in with a gentle 'breathing' scale effect",
+      "placement": "Lower-third center, unobtrusive",
+      "color_effects": "Warm cream white with a subtle 5% outer glow (bloom)"
+    },
+    "overall_reasoning": "",
+    "ideal_material_suggestions": []
+  },
+  "clip_index": {
+    "clips": [
+      {
+        "filename": "clip60_6.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_001.mp4",
+        "duration": 29.88,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "High-energy peaks",
+          "Family montages",
+          "Joyful celebrations"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate presentations"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "A family playfully wrestles and tickles children on a living room floor, filled with laughter and movement.",
+        "best_moments": {
+          "High": {
+            "start": 5.0,
+            "end": 8.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak physical activity and audible laughter during the tickling match."
+          },
+          "Medium": {
+            "start": 18.5,
+            "end": 21.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "Moderate movement as the children reposition themselves after the initial peak."
+          },
+          "Low": {
+            "start": 27.5,
+            "end": 29.88,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The action subsides as the adults sit back and catch their breath."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip61_8.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_002.mp4",
+        "duration": 36.36,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Candid family moments",
+          "Joyful montages"
+        ],
+        "avoid_for": [
+          "Serious dramatic scenes",
+          "Professional corporate content"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Three children lie on a patterned rug, laughing and playing while an adult interacts with them.",
+        "best_moments": {
+          "High": {
+            "start": 5.5,
+            "end": 8.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak group laughter and expressive joy from all three children."
+          },
+          "Medium": {
+            "start": 24.5,
+            "end": 27.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Active repositioning of the children with moderate laughter and engagement."
+          },
+          "Low": {
+            "start": 33.5,
+            "end": 36.36,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The children settle into a final pose with minimal movement at the end."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip62_8.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_003.mp4",
+        "duration": 70.2,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Celebration"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family celebration montages",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Celebration"
+        ],
+        "content_description": "Children perform dances and acrobatic moves for their family in a lively living room setting.",
+        "best_moments": {
+          "High": {
+            "start": 28.5,
+            "end": 32.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and physical interaction as the boy lifts the girl."
+          },
+          "Medium": {
+            "start": 13.0,
+            "end": 16.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Sustained dancing with moderate intensity and family engagement."
+          },
+          "Low": {
+            "start": 51.5,
+            "end": 54.5,
+            "moment_role": "Transition",
+            "stable_moment": true,
+            "reason": "A brief pause in the performance with minimal subject movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip63_6.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_004.mp4",
+        "duration": 9.264867,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Celebration"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Intimate"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family celebration montages",
+          "Birthday sequences"
+        ],
+        "avoid_for": [
+          "Professional cinematic trailers",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Celebration"
+        ],
+        "content_description": "A family gathers around a table to sing 'Happy Birthday' and clap for a young girl.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak clapping and singing at the start of the celebration."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Sustained singing and rhythmic clapping."
+          },
+          "Low": {
+            "start": 7.5,
+            "end": 9.264867,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "The song ends and the family transitions to conversation."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip66_6.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_005.mp4",
+        "duration": 32.04,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "High-energy peaks",
+          "Family montages",
+          "Childhood memories"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two young boys jumping and playing on an outdoor trampoline.",
+        "best_moments": {
+          "High": {
+            "start": 13.5,
+            "end": 16.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak jumping action and a playful fall showing high energy."
+          },
+          "Medium": {
+            "start": 5.0,
+            "end": 8.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Consistent jumping with moderate intensity and interaction."
+          },
+          "Low": {
+            "start": 27.5,
+            "end": 30.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Boys standing still on the trampoline between jumps with minimal movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip67_8.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_006.mp4",
+        "duration": 22.32,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family leisure montages",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Children and adults playing on a rotating playground seesaw in a park.",
+        "best_moments": {
+          "High": {
+            "start": 19.5,
+            "end": 22.32,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak rotation speed and high level of child engagement and laughter."
+          },
+          "Medium": {
+            "start": 5.0,
+            "end": 8.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady rotation with clear subject interaction and moderate pacing."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 2.5,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "The start of the clip where the motion is relatively slower as the scene is established."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip68_8.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_007.mp4",
+        "duration": 280.44,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "School event montages",
+          "Children's activity highlights",
+          "Community storytelling"
+        ],
+        "avoid_for": [
+          "Professional corporate videos",
+          "Calm reflective intros",
+          "High-end cinematic productions"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "School children in costumes perform a play called Chicken Licken in a hallway while teachers supervise.",
+        "best_moments": {
+          "High": {
+            "start": 280.34,
+            "end": 280.44,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "The children all fall down together as part of the play's dramatic conclusion."
+          },
+          "Medium": {
+            "start": 42.0,
+            "end": 46.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Teachers and students work together to unfurl the play's title banner."
+          },
+          "Low": {
+            "start": 106.0,
+            "end": 110.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "A young student stands still and reads his lines from a card."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip69_8.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_008.mp4",
+        "duration": 30.24,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "School event highlights",
+          "Joyful montages"
+        ],
+        "avoid_for": [
+          "Serious dramatic scenes",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "Children wearing animal-themed headbands and costumes bow and cheer during a school performance in a hallway.",
+        "best_moments": {
+          "High": {
+            "start": 21.0,
+            "end": 24.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Children bow together while the audience cheers."
+          },
+          "Medium": {
+            "start": 12.0,
+            "end": 15.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Teacher organizes children into lines for the performance."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial shot of children in costumes waiting in the hallway."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip70_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_009.mp4",
+        "duration": 30.24,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Playful family montages",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Solo",
+          "Indoor"
+        ],
+        "content_description": "A young boy playfully climbs and braces himself against a doorframe.",
+        "best_moments": {
+          "High": {
+            "start": 14.5,
+            "end": 18.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak of the stunt with clear facial expression and high energy."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Active movement as the boy positions himself in the doorframe."
+          },
+          "Low": {
+            "start": 26.0,
+            "end": 29.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Holding a stable position with less intense movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip71_7.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_010.mp4",
+        "duration": 18.0,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Reflection"
+        ],
+        "emotional_tone": [
+          "Intimate",
+          "Joyful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Childhood memory montages",
+          "Gardening or DIY sequences"
+        ],
+        "avoid_for": [
+          "High-end cinematic productions",
+          "Fast-paced action sequences"
+        ],
+        "vibes": [
+          "Solo",
+          "Leisure"
+        ],
+        "content_description": "A young boy is seen digging a hole in the ground with a small trowel while people watch in the background.",
+        "best_moments": {
+          "High": {
+            "start": 9.5,
+            "end": 12.5,
+            "moment_role": "Transition",
+            "stable_moment": false,
+            "reason": "Sudden change in posture and camera tracking as the boy stands up."
+          },
+          "Medium": {
+            "start": 3.5,
+            "end": 6.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Consistent digging action with moderate intensity and engagement."
+          },
+          "Low": {
+            "start": 14.5,
+            "end": 17.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Slower, more focused activity towards the end of the clip."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip72_7.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_011.mp4",
+        "duration": 23.76,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Object-Vehicle"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family memories",
+          "Playful montages",
+          "Childhood-themed content"
+        ],
+        "avoid_for": [
+          "Serious documentaries",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Vehicle"
+        ],
+        "content_description": "Children playing with a toy motorcycle on a rooftop while adults watch and interact.",
+        "best_moments": {
+          "High": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Fast-paced action with children running and riding the toy bike."
+          },
+          "Medium": {
+            "start": 10.0,
+            "end": 13.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Moderate activity as children reposition themselves on the toy bike."
+          },
+          "Low": {
+            "start": 18.0,
+            "end": 21.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "A calmer moment with the child sitting still on the bike looking up."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip73_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_012.mp4",
+        "duration": 19.08,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family home videos",
+          "Joyful character moments"
+        ],
+        "avoid_for": [
+          "Serious documentaries",
+          "Calm transitions"
+        ],
+        "vibes": [
+          "Solo",
+          "Indoor"
+        ],
+        "content_description": "A young boy in a denim shirt talks, laughs, and moves excitedly towards the camera in a living room.",
+        "best_moments": {
+          "High": {
+            "start": 15.5,
+            "end": 18.5,
+            "moment_role": "Peak",
+            "stable_moment": false,
+            "reason": "Expressive laughter and rapid movement towards the camera lens."
+          },
+          "Medium": {
+            "start": 7.0,
+            "end": 10.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Active gesturing and talking with consistent engagement."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Relatively still subject at the start of the scene before the main action."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip74_7.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_013.mp4",
+        "duration": 62.64,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family montages",
+          "Candid childhood moments"
+        ],
+        "avoid_for": [
+          "Professional corporate videos",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "A family gathers in a bedroom, playing with a toddler and making expressive faces at the camera.",
+        "best_moments": {
+          "High": {
+            "start": 58.5,
+            "end": 61.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak expressive action and playful energy from the child."
+          },
+          "Medium": {
+            "start": 6.5,
+            "end": 9.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Sustained interaction between the children with moderate intensity."
+          },
+          "Low": {
+            "start": 30.0,
+            "end": 33.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Calm moment with the toddler sitting on the bed during a lull in activity."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip75_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_014.mp4",
+        "duration": 21.24,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Intimate"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family montages",
+          "Childhood memories",
+          "Heartwarming transitions"
+        ],
+        "avoid_for": [
+          "Corporate presentations",
+          "High-action sports sequences"
+        ],
+        "vibes": [
+          "Group"
+        ],
+        "content_description": "Two young children hug and pose for a photo in front of a house entrance.",
+        "best_moments": {
+          "High": {
+            "start": 4.0,
+            "end": 8.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak joyful interaction with hugging and laughter."
+          },
+          "Medium": {
+            "start": 11.0,
+            "end": 14.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Expressive posing for the camera with moderate movement."
+          },
+          "Low": {
+            "start": 18.0,
+            "end": 21.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Calm standing pose with minimal movement at the end."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip76_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_015.mp4",
+        "duration": 40.68,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Joyful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Action montages",
+          "Family home videos"
+        ],
+        "avoid_for": [
+          "Calm reflective scenes",
+          "Professional sports broadcasts"
+        ],
+        "vibes": [
+          "Solo",
+          "Leisure"
+        ],
+        "content_description": "A young boy demonstrates martial arts moves, including splits and kicks, in an indoor setting.",
+        "best_moments": {
+          "High": {
+            "start": 37.2,
+            "end": 40.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Powerful final kick and reaction."
+          },
+          "Medium": {
+            "start": 1.5,
+            "end": 4.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Boy performing a split and posing."
+          },
+          "Low": {
+            "start": 34.5,
+            "end": 36.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Quiet moment of focus before the action."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip77_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_016.mp4",
+        "duration": 85.212,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Solo",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family montages",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Solo",
+          "Indoor"
+        ],
+        "content_description": "A young boy laughs and jumps on a small chair while interacting with someone off-camera in a bedroom.",
+        "best_moments": {
+          "High": {
+            "start": 75.5,
+            "end": 79.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and physical jumping action"
+          },
+          "Medium": {
+            "start": 24.0,
+            "end": 27.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Focused interaction and recitation"
+          },
+          "Low": {
+            "start": 1.0,
+            "end": 4.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Slower movement as the boy gets up from the floor"
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip78_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_017.mp4",
+        "duration": 74.412,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Solo",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Build",
+          "Peak"
+        ],
+        "emotional_tone": [
+          "Energetic",
+          "Joyful"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Persistence montages",
+          "Family home videos",
+          "Practice sequences"
+        ],
+        "avoid_for": [
+          "Professional gymnastics tutorials",
+          "Calm reflective outros"
+        ],
+        "vibes": [
+          "Solo",
+          "Indoor"
+        ],
+        "content_description": "A young boy repeatedly attempts handstands in a living room while being filmed.",
+        "best_moments": {
+          "High": {
+            "start": 26.5,
+            "end": 29.5,
+            "moment_role": "Peak",
+            "stable_moment": true,
+            "reason": "The boy's most successful and sustained handstand attempt in the clip."
+          },
+          "Medium": {
+            "start": 6.0,
+            "end": 9.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "The boy walking and repositioning himself, showing moderate activity between attempts."
+          },
+          "Low": {
+            "start": 74.31200000000001,
+            "end": 74.412,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "A slower moment where the camera pans across the room with minimal subject action."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip79_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_018.mp4",
+        "duration": 49.212,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Celebration"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Celebration montages",
+          "High-energy peaks",
+          "Family event highlights"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Intimate close-up moments"
+        ],
+        "vibes": [
+          "Group",
+          "Celebration"
+        ],
+        "content_description": "Children energetically play musical chairs at an indoor party, running and then scrambling to sit when the music stops.",
+        "best_moments": {
+          "High": {
+            "start": 20.5,
+            "end": 23.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "The peak scramble as the music stops and children rush to sit down."
+          },
+          "Medium": {
+            "start": 13.0,
+            "end": 16.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady, rhythmic running around the chairs during the game."
+          },
+          "Low": {
+            "start": 37.0,
+            "end": 40.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "A calmer close-up of a child after the intense activity."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip80_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_019.mp4",
+        "duration": 38.7,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Place-Indoor"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Family montages",
+          "Childhood memories",
+          "Joyful highlights"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Indoor"
+        ],
+        "content_description": "Children playing a clapping game and laughing in a living room.",
+        "best_moments": {
+          "High": {
+            "start": 3.5,
+            "end": 6.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and enthusiastic clapping from the children."
+          },
+          "Medium": {
+            "start": 11.0,
+            "end": 14.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Sustained interaction as the girl prepares for the next round."
+          },
+          "Low": {
+            "start": 23.0,
+            "end": 26.0,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "A quiet pause in the game with minimal movement."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip83_9.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_020.mp4",
+        "duration": 49.6,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 2,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Nostalgic"
+        ],
+        "clip_quality": 2,
+        "best_for": [
+          "Nostalgic home video montages",
+          "Childhood memory sequences"
+        ],
+        "avoid_for": [
+          "High-definition professional commercials",
+          "Quiet reflective scenes"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two young children singing and laughing while playing together on a swing set outdoors.",
+        "best_moments": {
+          "High": {
+            "start": 15.0,
+            "end": 18.5,
+            "moment_role": "Peak",
+            "stable_moment": false,
+            "reason": "Peak singing and expressive laughter from both children."
+          },
+          "Medium": {
+            "start": 38.0,
+            "end": 41.0,
+            "moment_role": "Build",
+            "stable_moment": false,
+            "reason": "Steady swinging motion with visible smiles and interaction."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": false,
+            "reason": "Initial setup of the scene as they begin their song."
+          }
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      }
+    ]
+  },
+  "edl": {
+    "decisions": [
+      {
+        "segment_id": 1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_001.mp4",
+        "clip_start": 27.5,
+        "clip_end": 29.88,
+        "timeline_start": 0.0,
+        "timeline_end": 2.379999999999999,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_002.mp4",
+        "clip_start": 33.5,
+        "clip_end": 36.36,
+        "timeline_start": 2.379999999999999,
+        "timeline_end": 5.239999999999998,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_003.mp4",
+        "clip_start": 51.5,
+        "clip_end": 54.260000000000005,
+        "timeline_start": 5.239999999999998,
+        "timeline_end": 8.0,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_004.mp4",
+        "clip_start": 4.0,
+        "clip_end": 5.683542597179201,
+        "timeline_start": 8.0,
+        "timeline_end": 9.683542597179201,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_005.mp4",
+        "clip_start": 5.0,
+        "clip_end": 6.402294434913656,
+        "timeline_start": 9.683542597179201,
+        "timeline_end": 11.085837032092858,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_006.mp4",
+        "clip_start": 5.0,
+        "clip_end": 6.625316981707485,
+        "timeline_start": 11.085837032092858,
+        "timeline_end": 12.711154013800343,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_007.mp4",
+        "clip_start": 42.0,
+        "clip_end": 43.567192941451594,
+        "timeline_start": 12.711154013800343,
+        "timeline_end": 14.278346955251937,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_008.mp4",
+        "clip_start": 12.0,
+        "clip_end": 13.163751234628643,
+        "timeline_start": 14.278346955251937,
+        "timeline_end": 15.44209818988058,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_010.mp4",
+        "clip_start": 3.5,
+        "clip_end": 4.05790181011942,
+        "timeline_start": 15.44209818988058,
+        "timeline_end": 16.0,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_011.mp4",
+        "clip_start": 10.0,
+        "clip_end": 11.370561062701924,
+        "timeline_start": 16.0,
+        "timeline_end": 17.370561062701924,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_013.mp4",
+        "clip_start": 6.5,
+        "clip_end": 8.032348131481406,
+        "timeline_start": 17.370561062701924,
+        "timeline_end": 18.90290919418333,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_014.mp4",
+        "clip_start": 11.0,
+        "clip_end": 12.401724234576323,
+        "timeline_start": 18.90290919418333,
+        "timeline_end": 20.30463342875965,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_017.mp4",
+        "clip_start": 6.0,
+        "clip_end": 7.40275703881644,
+        "timeline_start": 20.30463342875965,
+        "timeline_end": 21.70739046757609,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_018.mp4",
+        "clip_start": 13.0,
+        "clip_end": 14.29260953242391,
+        "timeline_start": 21.70739046757609,
+        "timeline_end": 23.0,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_019.mp4",
+        "clip_start": 3.5,
+        "clip_end": 3.9922254820755843,
+        "timeline_start": 23.0,
+        "timeline_end": 23.492225482075582,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_020.mp4",
+        "clip_start": 15.0,
+        "clip_end": 15.606519938308283,
+        "timeline_start": 23.492225482075582,
+        "timeline_end": 24.098745420383864,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_016.mp4",
+        "clip_start": 75.5,
+        "clip_end": 76.19151236496285,
+        "timeline_start": 24.098745420383864,
+        "timeline_end": 24.79025778534671,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_001.mp4",
+        "clip_start": 5.0,
+        "clip_end": 5.522107823093412,
+        "timeline_start": 24.79025778534671,
+        "timeline_end": 25.312365608440125,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_003.mp4",
+        "clip_start": 28.5,
+        "clip_end": 28.995783354069328,
+        "timeline_start": 25.312365608440125,
+        "timeline_end": 25.808148962509453,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_005.mp4",
+        "clip_start": 13.5,
+        "clip_end": 14.084197138579047,
+        "timeline_start": 25.808148962509453,
+        "timeline_end": 26.3923461010885,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_013.mp4",
+        "clip_start": 58.5,
+        "clip_end": 59.13377920943869,
+        "timeline_start": 26.3923461010885,
+        "timeline_end": 27.026125310527192,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_018.mp4",
+        "clip_start": 20.5,
+        "clip_end": 21.050969529756372,
+        "timeline_start": 27.026125310527192,
+        "timeline_end": 27.577094840283564,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_009.mp4",
+        "clip_start": 14.5,
+        "clip_end": 15.081680252096978,
+        "timeline_start": 27.577094840283564,
+        "timeline_end": 28.158775092380544,
+        "reasoning": "🌟 Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 4,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_012.mp4",
+        "clip_start": 15.5,
+        "clip_end": 15.841224907619456,
+        "timeline_start": 28.158775092380544,
+        "timeline_end": 28.5,
+        "reasoning": "🌟 Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, motion continuity, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 5,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_fd54c5314fca\\standardized\\clip_004.mp4",
+        "clip_start": 7.5,
+        "clip_end": 9.264867,
+        "timeline_start": 28.5,
+        "timeline_end": 31.722653,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Outro stage. Matching narrative subject over raw energy to preserve story coherence. Maintains motion continuity, lighting consistency.",
+        "vibe_match": false
+      }
+    ]
+  },
+  "advisor": {
+    "text_overlay_intent": "A yearning for the uninhibited joy and physical freedom of childhood, demanding moments of pure, unfiltered human connection and play.",
+    "dominant_narrative": "Childhood is a collection of high-energy, tactile memories that feel like a blur of motion and laughter when viewed through the lens of nostalgia.",
+    "arc_stage_guidance": {
+      "Intro": {
+        "primary_emotional_carrier": "Intimate human connection and eye contact.",
+        "supporting_material": "Soft, tactile interactions like hugging or posing.",
+        "intent_diluting_material": "High-velocity group movement or chaotic backgrounds.",
+        "reasoning": "The 'Breath' stage requires a singular, recognizable anchor of happiness to establish the 'Oh to be this young' sentiment before the montage accelerates.",
+        "recommended_clips": [
+          "clip75_9.mp4",
+          "clip73_9.mp4",
+          "clip83_9.mp4"
+        ],
+        "required_energy": "Low"
+      },
+      "Build-up": {
+        "primary_emotional_carrier": "Participatory play and curiosity.",
+        "supporting_material": "Tactile activities like digging, clapping, or playing with objects.",
+        "intent_diluting_material": "Static observation or shots where children are ignored by adults.",
+        "reasoning": "This stage must transition from the individual to the experience, showing the child's engagement with their immediate world.",
+        "recommended_clips": [
+          "clip71_7.mp4",
+          "clip80_9.mp4",
+          "clip72_7.mp4",
+          "clip78_9.mp4"
+        ],
+        "required_energy": "Medium"
+      },
+      "Peak": {
+        "primary_emotional_carrier": "Unbridled, kinetic group joy.",
+        "supporting_material": "Rapid movement, jumping, wrestling, and celebratory chaos.",
+        "intent_diluting_material": "Slow-paced solo activities or quiet indoor settings.",
+        "reasoning": "The 'Time-Blur' requires maximum energy to mirror the 'fleeting' nature of the narrative; the screen should feel full of life and motion.",
+        "recommended_clips": [
+          "clip60_6.mp4",
+          "clip66_6.mp4",
+          "clip79_9.mp4",
+          "clip62_8.mp4",
+          "clip74_7.mp4",
+          "clip77_9.mp4"
+        ],
+        "required_energy": "High"
+      },
+      "Outro": {
+        "primary_emotional_carrier": "Rhythmic, repetitive peace.",
+        "supporting_material": "Swinging, laughing, or soft smiles directed at the camera.",
+        "intent_diluting_material": "Aggressive cuts or high-intensity wrestling.",
+        "reasoning": "The 'Soft Reflection' needs to settle the energy. Given the library's high-energy bias, we must select clips with rhythmic motion (like a swing) to simulate peace.",
+        "recommended_clips": [
+          "clip83_9.mp4",
+          "clip63_6.mp4",
+          "clip75_9.mp4"
+        ],
+        "required_energy": "Low"
+      }
+    },
+    "library_alignment": {
+      "strengths": [
+        "Exceptional abundance of authentic, high-energy joyful interactions.",
+        "Strong 'People-Group' presence that perfectly matches the 'we/us' nostalgia of the text.",
+        "Multiple clips with direct camera engagement (participatory)."
+      ],
+      "editorial_tradeoffs": [
+        "The library lacks true 'Low' energy clips; the Intro and Outro must rely on the emotional weight of 'hugs' or 'swings' to substitute for technical stillness.",
+        "The 'Nature' requirement is under-represented, forcing a heavier reliance on indoor family settings."
+      ],
+      "constraint_gaps": [
+        "Missing slow-motion footage which would better serve the 'Nostalgic' and 'Peaceful' stages.",
+        "Lack of wide-angle outdoor 'Place-Nature' shots to provide scale to the childhood journey."
+      ]
+    },
+    "editorial_strategy": "I am prioritizing emotional proximity over technical energy labels. Because the library is 'High Energy' dominant, I will use the most intimate, camera-facing moments to bookend the piece, creating a 'pseudo-slow' start and finish through subject matter rather than clip velocity.",
+    "remake_strategy": "To reach Director's Cut quality, capture 3-4 low-energy, wide-angle shots of children in nature (e.g., running through a field at sunset). This will provide the necessary 'Breath' and 'Peace' that the current indoor-heavy, high-intensity library struggles to sustain.",
+    "primary_narrative_subject": "People-Group",
+    "allowed_supporting_subjects": [
+      "People-Solo",
+      "Object-Detail"
+    ],
+    "subject_lock_strength": 1.0,
+    "library_assessment": null,
+    "creative_audit": null,
+    "overall_strategy": "",
+    "required_improvements": [],
+    "cache_version": "4.0",
+    "cached_at": "2026-02-03T18:36:03.440420"
+  },
+  "critique": {
+    "overall_score": 8.2,
+    "monologue": "Based on the observed segments, the system successfully navigated a high-energy library to deliver a narrative-first edit that prioritizes human connection over raw kineticism. By anchoring heavily on 'People-Group' tags, it effectively transplanted the nostalgic intent into a sequence that feels intentional and grounded rather than a random collection of clips. While the system executed the rhythmic acceleration well, the reliance on repetitive 'Action' and 'Reaction' shots suggests a library bottleneck where specific narrative beats were substituted with generic movement to maintain the beat. The result is a technically sound montage that captures the 'warm glow' of the brief, though the final high-energy demand in Segment 4 creates a slight thematic dissonance with the requested peaceful conclusion.",
+    "star_performers": [
+      "clip_001.mp4",
+      "clip_010.mp4",
+      "clip_011.mp4",
+      "clip_019.mp4"
+    ],
+    "dead_weight": [
+      "clip_007.mp4",
+      "clip_008.mp4",
+      "clip_018.mp4"
+    ],
+    "missing_ingredients": [
+      "Extreme close-ups of childhood artifacts (toys, worn shoes, hands in dirt)",
+      "Slow-motion backlit 'golden hour' solo portraits",
+      "Static wide shots of empty play spaces to emphasize the 'fleeting' nature of time"
+    ],
+    "remake_actions": [
+      {
+        "type": "change_subject",
+        "segment": "Outro",
+        "suggestion": "Replace high-energy group shots with a single, static, intimate 'People-Solo' shot to satisfy the 'peaceful, glowing conclusion' intent."
+      },
+      {
+        "type": "fix_pacing",
+        "segment": "Build-up",
+        "suggestion": "Introduce 'Detail' or 'Object' shots between the 'Action' sequences to break up the repetitive 'People-Group' visual pattern."
+      }
+    ],
+    "technical_fidelity": "The system demonstrated excellent constraint handling, maintaining lighting and motion continuity across 15 clips. The strategic pivot to 'People-Group' successfully overrode the library's high-energy bias to preserve the narrative's emotional core."
+  },
+  "library_health": {
+    "asset_count": 20,
+    "avg_quality": 2.95,
+    "energy_distribution": {
+      "High": 20
+    },
+    "primary_subject_distribution": {
+      "People-Group": 14,
+      "Place-Indoor": 9,
+      "Activity-Leisure": 6,
+      "Activity-Celebration": 3,
+      "People-Solo": 6,
+      "Object-Vehicle": 1
+    },
+    "confidence_score": 79.5
+  },
+  "iteration": 2,
+  "error": null,
+  "processing_time_seconds": 1432.8821005821228
+}

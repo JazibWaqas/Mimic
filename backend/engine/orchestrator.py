@@ -46,7 +46,7 @@ from engine.processors import (
     get_video_duration
 )
 from engine.stylist import apply_visual_styling
-from utils import ensure_directory, cleanup_session, get_fast_hash
+from utils import ensure_directory, cleanup_session, get_file_hash
 from collections import defaultdict, Counter
 
 
@@ -350,20 +350,20 @@ def run_mimic_pipeline(
             output_path = standardized_dir / f"clip_{i:03d}.mp4"
             
             # Generate a unique cache key for this specific file state
-            # Content-based hashing (v11.5): Uses get_fast_hash to ensure
-            # cache remains valid even if mtime changes during upload.
-            cache_hash = get_fast_hash(input_p)
+            # Fast Fingerprinting (v12.4): uses name/size/mtime cache
+            cache_hash = get_file_hash(input_p)
             cached_filename = f"std_{cache_hash}.mp4"
             cached_path = persistent_standardized_cache / cached_filename
             
             if cached_path.exists():
-                print(f"  [CACHE] Using standardized clip {i}/{len(clip_paths)}: {input_p.name}")
+                print(f"  [CACHE] Hit! Using persistent standardized clip: {input_p.name}")
                 shutil.copy2(str(cached_path), str(output_path))
             else:
-                print(f"  Standardizing clip {i}/{len(clip_paths)}: {input_p.name}...")
-                standardize_clip(clip_path, str(output_path))
+                print(f"  [NEW] Standardizing clip {i}/{len(clip_paths)}: {input_p.name} (first-time processing)...")
+                standardize_clip(str(input_p), str(output_path))
                 # Save to persistent cache
                 shutil.copy2(str(output_path), str(cached_path))
+                print(f"  [CACHE] Saved standardized clip to persistent storage.")
                 
             standardized_paths.append(str(output_path))
             

@@ -917,21 +917,36 @@ def analyze_reference_video(
     muted_cache_dir.mkdir(parents=True, exist_ok=True)
     
     # Cache key includes file hash AND number of hints to ensure fresh analysis if hints change
-    from utils import get_fast_hash
-    file_hash = get_fast_hash(video_path)
+    from utils import get_file_hash, save_hash_registry
+    file_hash = get_file_hash(video_path)
     
-    if scene_timestamps:
-        import hashlib
-        hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
-        cache_file = ref_cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
-        fallback_cache_file = ref_cache_dir / f"ref_{file_hash}_hints0.json"
+    # Try primary cache first
+    matches = list(ref_cache_dir.glob(f"ref_{file_hash}_*.json"))
+    
+    # v12.5 Hardened: Legacy 12-char fallback
+    if not matches and len(file_hash) > 12:
+        legacy_hash = file_hash[:12]
+        matches = list(ref_cache_dir.glob(f"ref_{legacy_hash}_*.json"))
+        
+    if matches:
+        # Use the most specific/recent one
+        cache_file = sorted(matches)[-1]
     else:
-        cache_file = ref_cache_dir / f"ref_{file_hash}_hints0.json"
-        fallback_cache_file = None
-    
+        # Define where we WOULD save a new one (using modern 32-char)
+        if scene_timestamps:
+            import hashlib
+            hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
+            cache_file = ref_cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
+        else:
+            cache_file = ref_cache_dir / f"ref_{file_hash}_hints0.json"
+
     # Try primary cache first, then fallback to any existing cache for this video (Cache Inheritance)
     if not cache_file.exists():
         fallback_candidates = list(ref_cache_dir.glob(f"ref_{file_hash}_*.json"))
+        # Also check legacy if current is missing
+        if not fallback_candidates and len(file_hash) > 12:
+            fallback_candidates = list(ref_cache_dir.glob(f"ref_{file_hash[:12]}_*.json"))
+            
         if fallback_candidates:
             # Sort to get the most substantial one (more data = better intelligence)
             fallback_candidates.sort(key=lambda x: x.stat().st_size, reverse=True)
@@ -1265,11 +1280,16 @@ def _analyze_single_clip_comprehensive(
     clip_cache_dir = cache_dir / "clips"
     clip_cache_dir.mkdir(parents=True, exist_ok=True)
     
-    from utils import get_fast_hash
-    file_hash = get_fast_hash(clip_path)
+    from utils import get_file_hash
+    file_hash = get_file_hash(clip_path)
     
+    # Try 32-char (Modern) then 12-char (Legacy)
     cache_file = clip_cache_dir / f"clip_comprehensive_{file_hash}.json"
-    
+    if not cache_file.exists() and len(file_hash) > 12:
+        legacy_file = clip_cache_dir / f"clip_comprehensive_{file_hash[:12]}.json"
+        if legacy_file.exists():
+            cache_file = legacy_file
+
     if cache_file.exists():
         try:
             # Read cache with UTF-8 encoding

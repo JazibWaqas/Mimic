@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Solo",
+    "Place-Indoor"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Joyful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Home video montages",
+    "Martial arts progress clips"
+  ],
+  "avoid_for": [
+    "Professional cinematic productions",
+    "Calm nature documentaries"
+  ],
+  "vibes": [],
+  "content_description": "A young boy demonstrates martial arts moves, including splits and kicks, in a living room.",
+  "best_moments": {
+    "High": {
+      "start": 37.2,
+      "end": 40.2,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Powerful final kick and pose showing peak energy."
+    },
+    "Medium": {
+      "start": 2.5,
+      "end": 5.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Holding a split pose with a peace sign, showing moderate activity."
+    },
+    "Low": {
+      "start": 15.5,
+      "end": 18.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Standing still and preparing for the next move with minimal motion."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:43:20"
+}

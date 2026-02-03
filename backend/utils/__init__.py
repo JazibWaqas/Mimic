@@ -22,6 +22,10 @@ if _parent_utils.exists():
     cleanup_all_temp = utils_module.cleanup_all_temp
     get_file_size_mb = utils_module.get_file_size_mb
     format_duration = utils_module.format_duration
+    get_fast_hash = utils_module.get_fast_hash
+    get_file_hash = utils_module.get_file_hash
+    get_content_hash = utils_module.get_content_hash
+    save_hash_registry = utils_module.save_hash_registry
 else:
     # Fallback if utils.py doesn't exist
     def ensure_directory(path):
@@ -31,8 +35,21 @@ else:
     def cleanup_session(session_id: str, cleanup_uploads: bool = False):
         pass
 
+    def get_fast_hash(path):
+        return ""
+        
+    def get_file_hash(path):
+        return ""
+        
+    def get_content_hash(content):
+        return ""
+        
+    def save_hash_registry():
+        pass
+
 __all__ = [
     'get_key_manager', 'get_api_key', 'rotate_api_key',
     'ensure_directory', 'cleanup_session', 'cleanup_all_temp',
-    'get_file_size_mb', 'format_duration'
+    'get_file_size_mb', 'format_duration', 'get_fast_hash',
+    'get_file_hash', 'get_content_hash', 'save_hash_registry'
 ]

@@ -1,0 +1,55 @@
+{
+  "energy": "High",
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Solo",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Playful montages",
+    "High-energy peaks",
+    "Family home videos"
+  ],
+  "avoid_for": [
+    "Calm reflective scenes",
+    "Professional documentaries",
+    "Steady cinematic shots"
+  ],
+  "vibes": [],
+  "content_description": "A young boy playfully jumps on a chair and laughs while reciting in a bedroom.",
+  "best_moments": {
+    "High": {
+      "start": 75.5,
+      "end": 79.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak physical activity with the boy jumping on the chair and laughing loudly."
+    },
+    "Medium": {
+      "start": 23.0,
+      "end": 26.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Focused recitation of multiplication tables with moderate facial expressions and movement."
+    },
+    "Low": {
+      "start": 1.0,
+      "end": 4.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Relatively calm moment as the boy transitions from the floor at the start."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:44:47"
+}

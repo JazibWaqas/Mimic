@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Family home videos"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A family engages in a playful and chaotic wrestling match in their living room, filled with laughter and movement.",
+  "best_moments": {
+    "High": {
+      "start": 9.2,
+      "end": 12.2,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and physical interaction among the group."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 4.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained wrestling action with moderate intensity."
+    },
+    "Low": {
+      "start": 27.0,
+      "end": 29.88,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "The action slows down slightly as the scene concludes."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:41:27"
+}

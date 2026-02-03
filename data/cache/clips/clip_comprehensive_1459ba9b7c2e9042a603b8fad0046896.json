@@ -1,0 +1,54 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Build",
+    "Peak"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Family montages",
+    "Childhood memory sequences",
+    "Playful transitions"
+  ],
+  "avoid_for": [
+    "Professional corporate videos",
+    "Calm reflective outros"
+  ],
+  "vibes": [],
+  "content_description": "Children playing on a rooftop with a toy motorcycle while adults watch and interact.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Peak",
+      "stable_moment": false,
+      "reason": "Fast-paced action with the boy pushing the toy motorcycle and children laughing."
+    },
+    "Medium": {
+      "start": 10.5,
+      "end": 13.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Moderate activity as an older girl joins the play and prepares to ride."
+    },
+    "Low": {
+      "start": 14.0,
+      "end": 17.0,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "A calmer moment where the children stop moving and interact with the adults."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 23:43:18"
+}
