@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
-import { Upload, Video, ArrowRight, MonitorPlay, X, Plus, Sparkles, BrainCircuit, Terminal, Activity, CheckCircle2, ShieldCheck, Zap, Info, AlertTriangle, Layers, Target, Cpu, Wand2, Film } from "lucide-react";
+import { Upload, Video, ArrowRight, MonitorPlay, X, Plus, Sparkles, BrainCircuit, Terminal, Activity, CheckCircle2, ShieldCheck, Zap, Info, Layers, Target, Cpu, Wand2, Film } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -10,21 +10,37 @@ import { useDropzone } from "react-dropzone";
 
 export default function StudioPage() {
   const router = useRouter();
+  const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
   const [refFile, setRefFile] = useState<File | null>(null);
   const [materialFiles, setMaterialFiles] = useState<File[]>([]);
+  const [previews, setPreviews] = useState<Record<string, string>>({});
+  const [musicFile, setMusicFile] = useState<File | null>(null);
+  const [textPrompt, setTextPrompt] = useState("");
+  const [targetDuration, setTargetDuration] = useState(15);
+  const [activeMode, setActiveMode] = useState<"text" | "video">("video");
   const [isGenerating, setIsGenerating] = useState(false);
   const [progress, setProgress] = useState(0);
   const [statusMsg, setStatusMsg] = useState("");
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
   const [logMessages, setLogMessages] = useState<string[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
+  const [blueprint, setBlueprint] = useState<any>(null);
+  const [libraryHealth, setLibraryHealth] = useState<any>(null);
   const [pinnedCritique, setPinnedCritique] = useState<string | null>(null);
   const [isIdLoading, setIsIdLoading] = useState(false);
   const searchParams = useSearchParams();
   const logEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    logEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (logEndRef.current) {
+      const container = logEndRef.current.parentElement;
+      if (container) {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: "smooth"
+        });
+      }
+    }
   }, [logMessages]);
 
   // Handle Refine State
@@ -63,9 +79,72 @@ export default function StudioPage() {
     }
   }, []);
 
-  const onDropMaterial = useCallback((acceptedFiles: File[]) => {
+  const generateThumbnail = (file: File): Promise<string> => {
+    return new Promise((resolve) => {
+      const video = document.createElement("video");
+      const src = URL.createObjectURL(file);
+      let done = false;
+
+      const finish = (value: string) => {
+        if (done) return;
+        done = true;
+        clearTimeout(timeout);
+        URL.revokeObjectURL(src);
+        video.remove();
+        resolve(value);
+      };
+
+      const draw = () => {
+      if (!video.videoWidth || !video.videoHeight) return finish("");
+        const canvas = document.createElement("canvas");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext("2d");
+        ctx?.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
+        finish(dataUrl);
+      };
+
+      const timeout = setTimeout(() => finish(""), 12000);
+
+      video.preload = "auto";
+      video.muted = true;
+      video.playsInline = true;
+      video.src = src;
+
+      video.onloadedmetadata = () => {
+        const duration = Number.isFinite(video.duration) ? video.duration : 0;
+        const seekTime = duration ? Math.min(duration * 0.25, 1) : 0;
+        if (seekTime > 0) {
+          video.currentTime = seekTime;
+        } else if (video.readyState >= 2) {
+          draw();
+        }
+      };
+
+      video.onloadeddata = () => {
+        if (!done && video.readyState >= 2) draw();
+      };
+
+      video.onseeked = () => {
+        if (!done) draw();
+      };
+
+      video.onerror = () => finish("");
+
+      video.load();
+    });
+  };
+
+  const onDropMaterial = useCallback(async (acceptedFiles: File[]) => {
     if (acceptedFiles?.length > 0) {
       setMaterialFiles(prev => [...prev, ...acceptedFiles]);
+      
+      for (const file of acceptedFiles) {
+        const thumb = await generateThumbnail(file);
+        setPreviews(prev => ({ ...prev, [file.name + file.size]: thumb }));
+      }
+      
       toast.success(`${acceptedFiles.length} Clips Added`);
     }
   }, []);
@@ -86,6 +165,8 @@ export default function StudioPage() {
       setProgress(status.progress * 100);
       if (status.current_step && status.current_step !== statusMsg) setStatusMsg(status.current_step);
       if (status.logs) setLogMessages(status.logs);
+      if (status.library_health) setLibraryHealth(status.library_health);
+      if (status.blueprint) setBlueprint(status.blueprint);
       if (status.blueprint?.recommendations) setRecommendations(status.blueprint.recommendations);
       if (status.status === "complete") {
         setIsGenerating(false); setProgress(100);
@@ -98,17 +179,49 @@ export default function StudioPage() {
   };
 
   const startMimic = async () => {
-    if (!refFile || materialFiles.length === 0) return toast.error("Provide all assets.");
+    if (!refFile && !textPrompt) return toast.error("Provide a reference video or a text description.");
+    if (materialFiles.length === 0) return toast.error("Provide source material clips.");
+    
     setIsGenerating(true); setStatusMsg("Initializing..."); setProgress(5);
     try {
-      const { session_id } = await api.uploadFiles(refFile, materialFiles);
-      setCurrentSessionId(session_id); await api.startGeneration(session_id);
+      console.log("[STUDIO] Starting upload...");
+      // 1. Upload assets (reference and music are optional now)
+      const uploadRes = await api.uploadFiles(refFile ?? undefined, materialFiles, musicFile ?? undefined) as {
+        session_id: string;
+        clips?: { filename: string; size: number; thumbnail_url?: string }[];
+      };
+      const session_id = uploadRes.session_id;
+      setCurrentSessionId(session_id); 
+      console.log("[STUDIO] Upload complete. Session ID:", session_id);
+      if (uploadRes.clips && uploadRes.clips.length > 0) {
+        setPreviews(prev => {
+          const next = { ...prev };
+          uploadRes.clips?.forEach((clip, idx) => {
+            const file = materialFiles[idx];
+            if (!file || !clip.thumbnail_url) return;
+            const key = file.name + file.size;
+            const url = clip.thumbnail_url.startsWith("http") ? clip.thumbnail_url : `${apiBase}${clip.thumbnail_url}`;
+            next[key] = url;
+          });
+          return next;
+        });
+      }
+      
+      setProgress(15);
+      setStatusMsg("Synthesizing Blueprint...");
+      
+      // 2. Start generation with optional text prompt
+      const genRes = await api.startGeneration(session_id, textPrompt || undefined, targetDuration);
+      console.log("[STUDIO] Generation started:", genRes);
+      
       const ws = api.connectProgress(session_id);
       ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
         setProgress(data.progress * 100);
         setStatusMsg(data.message || "");
         if (data.logs) setLogMessages(data.logs);
+        if (data.library_health) setLibraryHealth(data.library_health);
+        if (data.blueprint) setBlueprint(data.blueprint);
 
         // Dynamic Agent Insight parsing from logs
         if (data.message && data.message.includes("Advisor")) {
@@ -124,7 +237,12 @@ export default function StudioPage() {
         }
       };
       ws.onerror = () => checkStatus(session_id);
-    } catch (err) { setIsGenerating(false); toast.error("Process failed."); }
+    } catch (err) {
+      setIsGenerating(false);
+      const message = err instanceof Error ? err.message : "Process failed.";
+      toast.error(message);
+      console.error("Studio start failed", err);
+    }
   };
 
   return (
@@ -181,45 +299,170 @@ export default function StudioPage() {
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 mt-12">
           <div className="space-y-12">
 
-            {/* Reference Module - Glass Slate */}
+            {/* 01. Style Binding - Unified Toggle Interface */}
             <div className="space-y-5">
-              <div className="flex items-center gap-3">
-                <div className="h-1.5 w-1.5 rounded-full bg-indigo-500 shadow-[0_0_12px_rgba(99,102,241,1)]" />
-                <h3 className="text-[11px] font-black text-white uppercase tracking-[0.3em]">01. Style Binding</h3>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className={cn(
+                    "h-1.5 w-1.5 rounded-full shadow-[0_0_12px_rgba(99,102,241,1)]",
+                    activeMode === "text" ? "bg-[#ff007f] shadow-[#ff007f]" : "bg-cyan-500 shadow-[#06b6d4]"
+                  )} />
+                  <h3 className="text-[11px] font-black text-white uppercase tracking-[0.3em]">01. Style Binding</h3>
+                </div>
+                
+                {/* Mode Toggle */}
+                <div className="flex bg-white/5 p-1 rounded-lg border border-white/5">
+                  <button 
+                    onClick={() => setActiveMode("text")}
+                    className={cn(
+                      "px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest transition-all",
+                      activeMode === "text" ? "bg-[#ff007f] text-white shadow-[0_0_15px_rgba(255,0,127,0.4)]" : "text-slate-500 hover:text-slate-300"
+                    )}
+                  >
+                    Creator Mode
+                  </button>
+                  <button 
+                    onClick={() => setActiveMode("video")}
+                    className={cn(
+                      "px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest transition-all",
+                      activeMode === "video" ? "bg-cyan-500 text-white shadow-[0_0_15px_rgba(0,212,255,0.4)]" : "text-slate-500 hover:text-slate-300"
+                    )}
+                  >
+                    Mimic Mode
+                  </button>
+                </div>
               </div>
-              <div
-                {...getRefProps()}
-                className={cn(
-                  "h-[200px] rounded-xl border transition-all duration-700 flex flex-col items-center justify-center cursor-pointer relative group overflow-hidden",
-                  isRefDragActive ? "border-cyan-400 bg-cyan-500/10 glow-cyan" :
-                    refFile ? "border-cyan-500/40 bg-white/[0.05] shadow-[0_0_20px_rgba(0,212,255,0.15)]" :
-                      "border-white/10 bg-white/[0.03] hover:bg-white/[0.08] hover:border-cyan-500/30"
-                )}
-              >
-                <input {...getRefInputProps()} />
-                {refFile ? (
-                  <>
-                    <video src={URL.createObjectURL(refFile)} className="absolute inset-0 w-full h-full object-cover opacity-90" />
-                    <button onClick={(e) => { e.stopPropagation(); setRefFile(null); }} className="absolute h-10 w-10 rounded-xl bg-red-600/20 backdrop-blur-md text-white border border-red-500/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all hover:bg-red-600 shadow-2xl z-20"><X className="h-5 w-5" /></button>
-                    <div className="absolute top-4 right-4 z-10">
-                      <div className="px-2 py-0.5 rounded bg-cyan-500 text-[8px] font-black text-white uppercase tracking-widest glow-cyan">Target Locked</div>
+
+              {/* Taller Unified Box (320px) */}
+              <div className={cn(
+                "min-h-[320px] rounded-2xl border transition-all duration-700 relative overflow-hidden flex flex-col",
+                activeMode === "text" ? "border-[#ff007f]/20 bg-[#ff007f]/[0.02]" : "border-cyan-500/20 bg-cyan-500/[0.02]"
+              )}>
+                {activeMode === "text" ? (
+                  <div className="flex-1 flex flex-col p-8 space-y-6 animate-in fade-in slide-in-from-left-4 duration-500">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="h-8 w-8 rounded-full bg-[#ff007f]/10 border border-[#ff007f]/20 flex items-center justify-center">
+                          <BrainCircuit className="h-4 w-4 text-[#ff007f]" />
+                        </div>
+                        <div className="space-y-0.5">
+                          <p className="text-[10px] font-black text-white uppercase tracking-widest">Director's Chat</p>
+                          <p className="text-[8px] font-bold text-slate-600 uppercase tracking-tight">Describe your vision below</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg border border-white/5 shadow-inner">
+                        <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Target:</span>
+                        <input 
+                          type="number" 
+                          value={targetDuration} 
+                          min={3}
+                          max={60}
+                          onChange={(e) => setTargetDuration(Math.max(3, Math.min(60, parseInt(e.target.value) || 15)))}
+                          className="w-10 bg-transparent text-[10px] font-mono text-white outline-none text-center"
+                        />
+                        <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest">s</span>
+                      </div>
                     </div>
-                  </>
+                    
+                    <div className="flex-1 flex flex-col gap-4">
+                      {/* Chat-style Bubble for Prompt */}
+                      <div className="bg-white/[0.03] border border-white/10 rounded-2xl rounded-tl-none p-5 relative group/bubble transition-all hover:bg-white/[0.05]">
+                        <textarea
+                          value={textPrompt}
+                          onChange={(e) => setTextPrompt(e.target.value)}
+                          placeholder="Example: 'A nostalgic 15s travel reel. Start with a slow cinematic wide shot of the mountains. Build energy with quick candid cuts of us laughing. Peak with high-intensity dancing and movement. Resolve with a quiet sunset shot.'"
+                          className="w-full bg-transparent text-sm font-medium text-slate-300 placeholder:text-slate-700 outline-none resize-none custom-scrollbar leading-relaxed min-h-[120px]"
+                        />
+                        <div className="absolute -left-[9px] top-0 w-0 h-0 border-t-[10px] border-t-white/10 border-l-[10px] border-l-transparent" />
+                      </div>
+
+                      {/* Format Helper - Subtle Chat Note */}
+                      <div className="flex items-start gap-3 px-2">
+                        <div className="h-5 w-5 rounded-full bg-indigo-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <Info className="h-2.5 w-2.5 text-indigo-400" />
+                        </div>
+                        <p className="text-[10px] font-medium text-slate-500 leading-relaxed italic">
+                          Tip: Use the format "[Theme]. Start with [Intro]. Build through [Action]. Peak with [Climax]. Resolve with [Outro]." for best results.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                      <div className="flex gap-4">
+                        <div className="flex items-center gap-2">
+                          <div className={cn("h-1 w-1 rounded-full animate-pulse", textPrompt ? "bg-[#ff007f]" : "bg-slate-700")} />
+                          <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI Synthesis Active</span>
+                        </div>
+                      </div>
+                      
+                      {/* Music Upload Slot Integrated */}
+                      <button 
+                        onClick={() => {
+                          const input = document.createElement('input');
+                          input.type = 'file';
+                          input.accept = 'audio/*,video/mp4';
+                          input.onchange = (e) => {
+                            const file = (e.target as HTMLInputElement).files?.[0];
+                            if (file) setMusicFile(file);
+                          };
+                          input.click();
+                        }}
+                        className={cn(
+                          "px-4 py-2 rounded-xl border transition-all flex items-center gap-3 group/music",
+                          musicFile ? "bg-indigo-500/10 border-indigo-500/40 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.1)]" : "bg-white/5 border-white/10 text-slate-500 hover:bg-white/10 hover:border-white/20"
+                        )}
+                      >
+                        {musicFile ? <Zap className="h-3 w-3 animate-pulse" /> : <Plus className="h-3 w-3 group-hover/music:rotate-90 transition-transform" />}
+                        <span className="text-[9px] font-black uppercase tracking-widest">
+                          {musicFile ? musicFile.name.substring(0, 15) + "..." : "Add Soundtrack"}
+                        </span>
+                      </button>
+                    </div>
+                  </div>
                 ) : (
-                  <div className="text-center space-y-4">
-                    <div className="h-12 w-12 rounded-xl bg-white/5 border border-white/10 text-indigo-400/50 flex items-center justify-center mx-auto group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-400 transition-all">
-                      <Plus className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-white uppercase tracking-widest mb-1 group-hover:text-cyan-400 transition-colors">Bind Style Reference</p>
-                      <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest">MP4 / MOV / AVI</p>
-                    </div>
+                  <div 
+                    {...getRefProps()}
+                    className="flex-1 flex flex-col items-center justify-center p-12 cursor-pointer group/drop animate-in fade-in slide-in-from-right-4 duration-500"
+                  >
+                    <input {...getRefInputProps()} />
+                    {refFile ? (
+                      <div className="absolute inset-0 group/video">
+                        <video src={URL.createObjectURL(refFile)} className="w-full h-full object-cover opacity-80" />
+                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/video:opacity-100 transition-all flex flex-col items-center justify-center backdrop-blur-sm">
+                          <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-4">
+                            <Video className="h-8 w-8 text-cyan-400" />
+                          </div>
+                          <p className="text-xs font-black text-white uppercase tracking-[0.4em] mb-2">{refFile.name}</p>
+                          <button 
+                            onClick={(e) => { e.stopPropagation(); setRefFile(null); }}
+                            className="px-6 py-2 rounded-xl bg-red-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-red-500 transition-all shadow-2xl"
+                          >
+                            Replace Reference
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-center space-y-6">
+                        <div className="h-20 w-20 rounded-3xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mx-auto group-hover/drop:scale-110 group-hover/drop:bg-cyan-500 group-hover/drop:text-white transition-all duration-500 shadow-2xl">
+                          <Upload className="h-8 w-8" />
+                        </div>
+                        <div className="space-y-2">
+                          <p className="text-xs font-black text-white uppercase tracking-[0.4em]">Bind Style Reference</p>
+                          <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Drag and drop a video to mimic its DNA</p>
+                        </div>
+                        <div className="pt-4 flex items-center justify-center gap-3">
+                          <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">MP4</div>
+                          <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">MOV</div>
+                          <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">AVI</div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Clips Module - Glass Slate */}
+            {/* 02. Source Injection - Glass Slate */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <div className="h-1.5 w-1.5 rounded-full bg-indigo-500 shadow-[0_0_12px_rgba(99,102,241,1)]" />
@@ -248,13 +491,33 @@ export default function StudioPage() {
                 ) : (
                   <div className="w-full p-6">
                     <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
-                      {materialFiles.map((file, i) => (
-                        <div key={i} className="aspect-square rounded-xl bg-black border border-white/10 overflow-hidden relative group/item shadow-2xl">
-                          <video src={URL.createObjectURL(file)} className="w-full h-full object-cover opacity-90" />
-                          <button onClick={(e) => { e.stopPropagation(); setMaterialFiles(prev => prev.filter((_, idx) => idx !== i)); }} className="absolute inset-0 bg-red-600 text-white opacity-0 group-hover/item:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm shadow-xl"><X className="h-4 w-4" /></button>
-                        </div>
-                      ))}
-                      <div className="aspect-square rounded-xl border border-dashed border-white/10 flex items-center justify-center text-slate-700 hover:border-indigo-500/40 transition-all bg-white/[0.02] active:scale-95"><Plus className="h-4 w-4" /></div>
+                      {materialFiles.map((file, i) => {
+                        const previewUrl = previews[file.name + file.size];
+                        return (
+                          <div key={i} className="aspect-square rounded-xl bg-black border border-white/10 overflow-hidden relative group/item shadow-2xl flex items-center justify-center">
+                            {previewUrl ? (
+                              <img src={previewUrl} className="w-full h-full object-cover opacity-90" alt="preview" />
+                            ) : (
+                              <div className="flex flex-col items-center justify-center gap-1">
+                                <Video className="h-4 w-4 text-slate-800 animate-pulse" />
+                                <span className="text-[6px] font-black text-slate-800 uppercase tracking-tighter">Loading</span>
+                              </div>
+                            )}
+                            <button onClick={(e) => { e.stopPropagation(); setMaterialFiles(prev => prev.filter((_, idx) => idx !== i)); }} className="absolute inset-0 bg-red-600 text-white opacity-0 group-hover/item:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm shadow-xl z-10"><X className="h-4 w-4" /></button>
+                          </div>
+                        );
+                      })}
+                      <div className="aspect-square rounded-xl border border-dashed border-white/10 flex items-center justify-center text-slate-700 hover:border-indigo-500/40 transition-all bg-white/[0.02] active:scale-95 cursor-pointer" onClick={() => {
+                        const input = document.createElement('input');
+                        input.type = 'file';
+                        input.multiple = true;
+                        input.accept = 'video/*';
+                        input.onchange = (e) => {
+                          const files = (e.target as HTMLInputElement).files;
+                          if (files) onDropMaterial(Array.from(files));
+                        };
+                        input.click();
+                      }}><Plus className="h-4 w-4" /></div>
                     </div>
                     <div className="mt-4 flex items-center gap-2">
                       <div className="px-2 py-0.5 rounded bg-indigo-500/20 text-[8px] font-black text-indigo-400 uppercase border border-indigo-500/20">{materialFiles.length} Streams Injected</div>
@@ -263,6 +526,87 @@ export default function StudioPage() {
                 )}
               </div>
             </div>
+
+            {/* Library Health Panel */}
+            {libraryHealth && (
+              <div className="glass-premium rounded-xl px-5 py-6 border border-white/5 bg-white/[0.01]">
+                <div className="flex items-center gap-3 mb-4">
+                  <Activity className="h-3.5 w-3.5 text-cyan-400" />
+                  <h3 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Library Health</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Avg Quality</p>
+                    <p className="text-xl font-black text-white font-mono">{libraryHealth.avg_quality.toFixed(1)}<span className="text-[10px] text-slate-600 ml-1">/5</span></p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Asset Count</p>
+                    <p className="text-xl font-black text-white font-mono">{libraryHealth.asset_count}</p>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-white/5">
+                  <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2">Energy Distribution</p>
+                  <div className="flex gap-1 h-1.5">
+                    {['High', 'Medium', 'Low'].map(e => (
+                      <div 
+                        key={e} 
+                        className={cn(
+                          "h-full rounded-full transition-all duration-1000",
+                          e === 'High' ? "bg-[#ff007f]" : e === 'Medium' ? "bg-cyan-400" : "bg-indigo-500"
+                        )}
+                        style={{ width: `${((libraryHealth.energy_distribution[e] || 0) / libraryHealth.asset_count) * 100}%` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-white/5">
+                  <div className="flex items-center justify-between">
+                    <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Readiness Score</p>
+                    <p className="text-[10px] font-black text-cyan-400 font-mono">{Math.round(libraryHealth.confidence_score)}%</p>
+                  </div>
+                  <div className="h-1 w-full bg-white/5 rounded-full mt-2 overflow-hidden">
+                    <div className="h-full bg-cyan-400 transition-all duration-1000" style={{ width: `${libraryHealth.confidence_score}%` }} />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Blueprint Preview Panel */}
+            {blueprint && (
+              <div className="glass-premium rounded-xl px-5 py-6 border border-indigo-500/20 bg-indigo-500/[0.02] shadow-[0_0_30px_rgba(99,102,241,0.05)]">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <Layers className="h-3.5 w-3.5 text-indigo-400" />
+                    <h3 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Blueprint Preview</h3>
+                  </div>
+                  <div className="px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-[8px] font-black text-indigo-400 uppercase tracking-widest">DNA Locked</div>
+                </div>
+                <div className="space-y-4">
+                  <div className="space-y-1">
+                    <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Strategy</p>
+                    <p className="text-[11px] font-bold text-slate-300 leading-relaxed uppercase tracking-tight italic">"{blueprint.plan_summary || blueprint.narrative_message}"</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Arc Sequence</p>
+                    <div className="flex gap-1 overflow-hidden rounded-lg h-8 border border-white/5">
+                      {blueprint.segments?.map((seg: any, i: number) => (
+                        <div 
+                          key={i} 
+                          className={cn(
+                            "h-full flex items-center justify-center text-[7px] font-black transition-all",
+                            seg.energy === 'High' ? "bg-[#ff007f] text-white" : seg.energy === 'Medium' ? "bg-cyan-500 text-black" : "bg-indigo-600 text-white"
+                          )}
+                          style={{ width: `${(seg.duration / blueprint.total_duration) * 100}%` }}
+                          title={`${seg.arc_stage}: ${seg.energy}`}
+                        >
+                          {seg.duration > 1.5 && seg.arc_stage[0]}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Logic Sidebar - Command Center Layout */}
@@ -277,8 +621,16 @@ export default function StudioPage() {
                   <span>System Telemetry</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <div className="h-1.5 w-1.5 rounded-full bg-cyan-400 glow-cyan animate-pulse" />
-                  <span className="text-[8px] font-black text-cyan-400/60 uppercase tracking-widest">Syncing</span>
+                  {isGenerating && (
+                    <div className="flex items-center gap-2 mr-2">
+                      <div className="h-1 w-20 bg-white/5 rounded-full overflow-hidden border border-white/5">
+                        <div className="h-full bg-cyan-400 transition-all duration-500" style={{ width: `${progress}%` }} />
+                      </div>
+                      <span className="text-[8px] font-mono text-cyan-400">{Math.round(progress)}%</span>
+                    </div>
+                  )}
+                  <div className={cn("h-1.5 w-1.5 rounded-full glow-cyan", isGenerating ? "bg-cyan-400 animate-pulse" : "bg-slate-700")} />
+                  <span className="text-[8px] font-black text-cyan-400/60 uppercase tracking-widest">{isGenerating ? "Processing" : "Idle"}</span>
                 </div>
               </div>
 
@@ -303,7 +655,7 @@ export default function StudioPage() {
               <div className="p-5 bg-white/[0.02] border-t border-white/5 relative z-10">
                 <button
                   onClick={startMimic}
-                  disabled={isGenerating || !refFile || materialFiles.length === 0 || isIdLoading}
+                  disabled={isGenerating || (!refFile && !textPrompt) || materialFiles.length === 0 || isIdLoading}
                   className={cn(
                     "w-full h-14 rounded-xl font-black text-[11px] uppercase tracking-[0.25em] transition-all duration-700 flex flex-col items-center justify-center relative overflow-hidden group/execute border",
                     isGenerating
@@ -403,7 +755,7 @@ export default function StudioPage() {
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-purple-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
-                  <div className="h-4 w-4 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover/bp:bg-purple-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(191,0,255,0.2)] group-hover/bp:shadow-[0_0_20px_rgba(191,0,255,0.4)]"><Zap className="h-2.5 w-2.5" /></div>
+                  <div className="h-4 w-4 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover/bp:bg-purple-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(191,0,255,0.2)] group-hover/bp:shadow-[0_0_191,0,255,0.4)]"><Zap className="h-2.5 w-2.5" /></div>
                   Failure as Signal
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
@@ -412,7 +764,7 @@ export default function StudioPage() {
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-lime-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
-                  <div className="h-4 w-4 rounded-lg bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 group-hover/bp:bg-lime-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(204,255,0,0.2)] group-hover/bp:shadow-[0_0_20px_rgba(204,255,0,0.4)]"><BrainCircuit className="h-2.5 w-2.5" /></div>
+                  <div className="h-4 w-4 rounded-lg bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 group-hover/bp:bg-lime-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(204,255,0,0.2)] group-hover/bp:shadow-[0_0_204,255,0,0.4)]"><BrainCircuit className="h-2.5 w-2.5" /></div>
                   Temporal Intelligence
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
@@ -464,94 +816,7 @@ export default function StudioPage() {
           )}
         </div>
 
-        {/* Tier 1 Feature: Pipeline Visualization Modal */}
-        {isGenerating && (
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[200] flex items-center justify-center p-6 animate-in fade-in zoom-in duration-500">
-            <div className="w-full max-w-[700px] glass-premium rounded-2xl p-10 border border-white/5 shadow-[0_0_100px_rgba(0,212,255,0.1)] relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent pulse-cyan" />
-
-              <div className="flex flex-col space-y-8">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 glow-cyan">
-                      <Cpu className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white tracking-tight uppercase">System Pipeline Sync</h3>
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Protocol v7.0.4-SYNTH | PID: {currentSessionId?.slice(0, 8)}</p>
-                    </div>
-                  </div>
-                  <div className="px-3 py-1 rounded bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-black text-indigo-400 uppercase tracking-[0.2em]">
-                    Gemini Orchestration
-                  </div>
-                </div>
-
-                {/* Pipeline Stages */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-4 p-3 rounded-lg bg-white/[0.03] border border-white/5 group transition-all">
-                    <div className="h-2 w-2 rounded-full bg-lime-400 glow-lime" />
-                    <span className="flex-1 text-xs font-bold text-white uppercase tracking-wider">Asset Validation</span>
-                    <span className="text-[10px] font-mono text-slate-500">0.4s</span>
-                  </div>
-
-                  <div className={cn(
-                    "flex items-center gap-4 p-3 rounded-lg border transition-all",
-                    progress > 10 ? "bg-white/[0.03] border-white/5" : "bg-cyan-500/5 border-cyan-500/20 glow-cyan animate-pulse"
-                  )}>
-                    <div className={cn("h-2 w-2 rounded-full", progress > 20 ? "bg-lime-400 glow-lime" : "bg-cyan-400 glow-cyan animate-pulse")} />
-                    <span className="flex-1 text-xs font-bold text-white uppercase tracking-wider">Multimodal Analysis</span>
-                    <span className="px-2 py-0.5 rounded bg-cyan-500/20 text-[8px] font-black text-cyan-400 uppercase">Gemini</span>
-                  </div>
-
-                  <div className={cn(
-                    "flex items-center gap-4 p-3 rounded-lg border transition-all",
-                    progress > 40 ? "bg-white/[0.03] border-white/5" : progress > 20 ? "bg-purple-500/5 border-purple-500/20 animate-pulse" : "opacity-30 border-white/5"
-                  )}>
-                    <div className={cn("h-2 w-2 rounded-full", progress > 50 ? "bg-lime-400 glow-lime" : progress > 20 ? "bg-purple-400 glow-purple animate-pulse" : "bg-slate-700")} />
-                    <span className="flex-1 text-xs font-bold text-white uppercase tracking-wider">Temporal Synthesis</span>
-                    <span className="text-[10px] font-mono text-slate-500">CORE-EDITOR</span>
-                  </div>
-
-                  <div className={cn(
-                    "flex items-center gap-4 p-3 rounded-lg border transition-all",
-                    progress > 70 ? "bg-white/[0.03] border-white/5" : progress > 50 ? "bg-pink-500/5 border-pink-500/20 animate-pulse" : "opacity-30 border-white/5"
-                  )}>
-                    <div className={cn("h-2 w-2 rounded-full", progress > 80 ? "bg-lime-400 glow-lime" : progress > 50 ? "bg-pink-400 glow-pink animate-pulse" : "bg-slate-700")} />
-                    <span className="flex-1 text-xs font-bold text-white uppercase tracking-wider">Editing Grammar Reasoning</span>
-                    <span className="text-[10px] font-mono text-slate-500">GEMINI-3</span>
-                  </div>
-
-                  <div className={cn(
-                    "flex items-center gap-4 p-3 rounded-lg border transition-all",
-                    progress > 95 ? "bg-white/[0.03] border-white/5" : progress > 80 ? "bg-white/5 border-white/10 animate-pulse" : "opacity-30 border-white/5"
-                  )}>
-                    <div className={cn("h-2 w-2 rounded-full", progress > 98 ? "bg-lime-400 glow-lime" : "bg-slate-700")} />
-                    <span className="flex-1 text-xs font-bold text-white uppercase tracking-wider">Sequence Locking</span>
-                    <span className="text-[10px] font-mono text-slate-500">FINALIZING</span>
-                  </div>
-                </div>
-
-                {/* Main Progress Tracker */}
-                <div className="space-y-3 pt-4">
-                  <div className="flex justify-between items-end">
-                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global Protocol Sync</span>
-                    <span className="text-4xl font-black text-white font-mono">{Math.round(progress)}%</span>
-                  </div>
-                  <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden p-[1px] border border-white/5">
-                    <div className="h-full bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 transition-all duration-1000 rounded-full glow-cyan" style={{ width: `${progress}%` }} />
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between gap-4 pt-4 border-t border-white/5 italic">
-                  <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Autonomous system coordination in progress...</p>
-                  <p className="text-[9px] font-bold text-cyan-400 uppercase tracking-widest leading-relaxed">{statusMsg}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
+        {/* Tier 1 Feature: Pipeline Visualization Modal - REMOVED FOR BETTER UX */}
       </div>
     </div>
   );

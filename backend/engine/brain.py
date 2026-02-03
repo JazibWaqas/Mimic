@@ -908,8 +908,13 @@ def analyze_reference_video(
     print(f"{'='*60}\n")
     
     # Check cache first
-    cache_dir = Path(__file__).parent.parent.parent / "data" / "cache"
-    cache_dir.mkdir(parents=True, exist_ok=True)
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    cache_dir = BASE_DIR / "data" / "cache"
+    ref_cache_dir = cache_dir / "references"
+    muted_cache_dir = cache_dir / "muted"
+    
+    ref_cache_dir.mkdir(parents=True, exist_ok=True)
+    muted_cache_dir.mkdir(parents=True, exist_ok=True)
     
     # Cache key includes file hash AND number of hints to ensure fresh analysis if hints change
     import hashlib
@@ -919,15 +924,15 @@ def analyze_reference_video(
     if scene_timestamps:
         import hashlib
         hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
-        cache_file = cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
-        fallback_cache_file = cache_dir / f"ref_{file_hash}_hints0.json"
+        cache_file = ref_cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
+        fallback_cache_file = ref_cache_dir / f"ref_{file_hash}_hints0.json"
     else:
-        cache_file = cache_dir / f"ref_{file_hash}_hints0.json"
+        cache_file = ref_cache_dir / f"ref_{file_hash}_hints0.json"
         fallback_cache_file = None
     
     # Try primary cache first, then fallback to any existing cache for this video (Cache Inheritance)
     if not cache_file.exists():
-        fallback_candidates = list(cache_dir.glob(f"ref_{file_hash}_*.json"))
+        fallback_candidates = list(ref_cache_dir.glob(f"ref_{file_hash}_*.json"))
         if fallback_candidates:
             # Sort to get the most substantial one (more data = better intelligence)
             fallback_candidates.sort(key=lambda x: x.stat().st_size, reverse=True)
@@ -972,7 +977,7 @@ def analyze_reference_video(
     
     # Bypass recitation blocks by muting reference for analysis
     # This is safe because we only need visual rhythm/energy for analysis
-    muted_path = str(cache_dir / f"muted_{file_hash}.mp4")
+    muted_path = str(muted_cache_dir / f"muted_{file_hash}.mp4")
     if not Path(muted_path).exists():
         print(f"[BRAIN] Creating muted copy for analysis: {muted_path}")
         remove_audio(video_path, muted_path)
@@ -1201,60 +1206,42 @@ def analyze_clip(clip_path: str, api_key: str | None = None) -> tuple[EnergyLeve
 
 def analyze_all_clips(clip_paths: List[str], api_key: str | None = None, use_comprehensive: bool = True) -> ClipIndex:
     """
-    Analyze all user clips and build a ClipIndex with comprehensive best moment data.
-    
-    OPTIMIZATION: 
-    - Uses comprehensive prompt to get energy, motion, AND best moments in ONE call per clip
-    - Rate limiting to prevent quota issues
-    - Caching to avoid redundant analysis
-    
-    Args:
-        clip_paths: List of paths to user clips
-        api_key: Optional Gemini API key
-        use_comprehensive: If True, use comprehensive prompt (default). 
-                          If False, use legacy simple prompt.
-    
-    Returns:
-        ClipIndex with full best_moments data for each clip
+    Analyze all user clips in PARALLEL using Gemini 3.
+    Leverages multiple API keys to bypass sequential latency.
     """
+    import concurrent.futures
     print(f"\n{'='*60}")
-    print(f"[BRAIN] ANALYZING USER CLIPS ({len(clip_paths)} total)")
-    print(f"[BRAIN] Mode: {'COMPREHENSIVE (energy + best moments)' if use_comprehensive else 'SIMPLE (energy only)'}")
+    print(f"[BRAIN] PARALLEL ANALYSIS: {len(clip_paths)} clips")
+    print(f"[BRAIN] Model: gemini-3-flash-preview")
     print(f"{'='*60}\n")
 
-    clip_metadata_list = []
+    clip_metadata_list = [None] * len(clip_paths)
 
-    for i, clip_path in enumerate(clip_paths):
-        print(f"\n[{i+1}/{len(clip_paths)}] Processing {Path(clip_path).name}")
-
+    def process_single_clip(index, clip_path):
         from engine.processors import get_video_duration
         duration = get_video_duration(clip_path)
-
-        # Initialize model for each clip to handle key rotation properly
+        
+        # Each thread gets its own model instance/key rotation context
         model = initialize_gemini(api_key)
         try:
-            if use_comprehensive:
-                clip_metadata = _analyze_single_clip_comprehensive(model, clip_path, duration)
-            else:
-                # Legacy mode - just energy/motion
-                energy, motion = _analyze_single_clip_simple(model, clip_path)
-                clip_metadata = ClipMetadata(
-                    filename=Path(clip_path).name,
-                    filepath=str(clip_path),
-                    duration=duration,
-                    energy=energy,
-                    motion=motion
-                )
+            return _analyze_single_clip_comprehensive(model, clip_path, duration)
         except Exception as e:
-            print(f"    [ERROR] Analysis failed for {Path(clip_path).name}: {e}")
-            # DO NOT use defaults - this would poison the cache
-            # Let the exception propagate to the orchestrator
-            raise Exception(f"Failed to analyze {Path(clip_path).name}: {e}")
-        
-        clip_metadata_list.append(clip_metadata)
+            print(f"    [ERROR] Parallel analysis failed for {Path(clip_path).name}: {e}")
+            raise e
+
+    # Use ThreadPoolExecutor for I/O bound API calls
+    # 5 workers is a safe balance for 28 keys to avoid hitting global IP limits
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_clip = {executor.submit(process_single_clip, i, path): i for i, path in enumerate(clip_paths)}
+        for future in concurrent.futures.as_completed(future_to_clip):
+            idx = future_to_clip[future]
+            try:
+                clip_metadata_list[idx] = future.result()
+            except Exception as e:
+                # Propagate failure to orchestrator
+                raise e
     
-    print(f"\n[OK] All {len(clip_paths)} clips analyzed")
-    print(f"[OK] Rate limiter status: {rate_limiter.requests_in_last_minute} requests in last minute\n")
+    print(f"\n[OK] All {len(clip_paths)} clips analyzed in parallel")
     return ClipIndex(clips=clip_metadata_list)
 
 
@@ -1274,14 +1261,16 @@ def _analyze_single_clip_comprehensive(
     print(f"  Analyzing comprehensively: {Path(clip_path).name}...")
     
     # Check cache
-    cache_dir = Path(__file__).parent.parent.parent / "data" / "cache"
-    cache_dir.mkdir(parents=True, exist_ok=True)
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    cache_dir = BASE_DIR / "data" / "cache"
+    clip_cache_dir = cache_dir / "clips"
+    clip_cache_dir.mkdir(parents=True, exist_ok=True)
     
     import hashlib
     with open(clip_path, 'rb') as f:
         file_hash = hashlib.md5(f.read()).hexdigest()[:12]
     
-    cache_file = cache_dir / f"clip_comprehensive_{file_hash}.json"
+    cache_file = clip_cache_dir / f"clip_comprehensive_{file_hash}.json"
     
     if cache_file.exists():
         try:

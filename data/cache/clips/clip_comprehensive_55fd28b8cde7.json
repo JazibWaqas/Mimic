@@ -1,0 +1,54 @@
+{
+  "energy": "Medium",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Activity-Travel",
+    "Object-Vehicle"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Nostalgic",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Night travel sequences",
+    "Rainy atmosphere montages",
+    "Lo-fi music backgrounds"
+  ],
+  "avoid_for": [
+    "High-action sports",
+    "Bright daytime scenes"
+  ],
+  "vibes": [],
+  "content_description": "A first-person perspective of driving through city traffic at night during a rainstorm.",
+  "best_moments": {
+    "High": {
+      "start": 24.5,
+      "end": 27.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Increased visual activity from windshield wipers and bright light reflections on the wet road."
+    },
+    "Medium": {
+      "start": 10.0,
+      "end": 13.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady driving pace through traffic with consistent motion and lighting."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Darker, slower start to the drive with minimal external light interference."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:17:04"
+}

@@ -21,9 +21,10 @@ export const api = {
     if (!res.ok) throw new Error("Identity scan failed");
     return res.json();
   },
-  uploadFiles: async (reference: File, clips: File[]) => {
+  uploadFiles: async (reference: File | undefined, clips: File[], music?: File) => {
     const formData = new FormData();
-    formData.append("reference", reference);
+    if (reference) formData.append("reference", reference);
+    if (music) formData.append("music", music);
     clips.forEach((clip) => formData.append("clips", clip));
 
     const res = await fetch(`${API_BASE}/api/upload`, {
@@ -35,8 +36,17 @@ export const api = {
     return res.json();
   },
 
-  startGeneration: async (sessionId: string) => {
-    const res = await fetch(`${API_BASE}/api/generate/${sessionId}`, {
+  startGeneration: async (sessionId: string, textPrompt?: string, targetDuration?: number) => {
+    let url = `${API_BASE}/api/generate/${sessionId}`;
+    const params = new URLSearchParams();
+    if (textPrompt) params.append("text_prompt", textPrompt);
+    if (targetDuration) params.append("target_duration", targetDuration.toString());
+    
+    if (params.toString()) {
+      url += `?${params.toString()}`;
+    }
+
+    const res = await fetch(url, {
       method: "POST",
     });
 

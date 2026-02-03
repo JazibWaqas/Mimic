@@ -8,6 +8,7 @@ import sys
 from fastapi import FastAPI, UploadFile, File, WebSocket, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+import mimetypes
 from fastapi.staticfiles import StaticFiles
 import uuid
 from pathlib import Path
@@ -19,7 +20,7 @@ import hashlib
 from dotenv import load_dotenv
 from models import *
 from engine.orchestrator import run_mimic_pipeline
-from engine.processors import generate_thumbnail
+from engine.processors import generate_thumbnail, convert_to_mp4
 from utils import ensure_directory, cleanup_session
 
 # Load environment variables
@@ -27,14 +28,22 @@ load_dotenv()
 
 # Root Directory Setup - Matching test_ref.py structure
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMP_DIR = BASE_DIR / "temp"  # Only for intermediate processing files
 DATA_DIR = BASE_DIR / "data"
+TEMP_DIR = BASE_DIR / "temp"
 SAMPLES_DIR = DATA_DIR / "samples"
-CLIPS_DIR = SAMPLES_DIR / "clips"  # All user clips go here
-REFERENCES_DIR = SAMPLES_DIR / "reference"  # All reference videos go here
-RESULTS_DIR = DATA_DIR / "results"  # Final output videos
-CACHE_DIR = DATA_DIR / "cache"      # Cached AI analyses
-THUMBNAILS_DIR = DATA_DIR / "cache" / "thumbnails"
+CLIPS_DIR = SAMPLES_DIR / "clips"
+REFERENCES_DIR = SAMPLES_DIR / "reference"
+RESULTS_DIR = DATA_DIR / "results"
+CACHE_DIR = DATA_DIR / "cache"
+
+# Sub-cache organization
+THUMBNAILS_DIR = CACHE_DIR / "thumbnails"
+STANDARDIZED_DIR = CACHE_DIR / "standardized"
+MUTED_DIR = CACHE_DIR / "muted"
+ADVISOR_CACHE_DIR = CACHE_DIR / "advisor"
+CLIP_CACHE_DIR = CACHE_DIR / "clips"
+REF_CACHE_DIR = CACHE_DIR / "references"
+CRITIQUE_CACHE_DIR = CACHE_DIR / "critiques"
 
 # Ensure dirs exist
 CLIPS_DIR.mkdir(parents=True, exist_ok=True)
@@ -42,16 +51,29 @@ REFERENCES_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 THUMBNAILS_DIR.mkdir(parents=True, exist_ok=True)
+STANDARDIZED_DIR.mkdir(parents=True, exist_ok=True)
+MUTED_DIR.mkdir(parents=True, exist_ok=True)
+ADVISOR_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+CLIP_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+REF_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+CRITIQUE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
 TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="MIMIC API", version="1.0.0")
 
 # CORS for Next.js frontend - Apply Fix 1 from Section 9.5
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+ALLOWED_ORIGINS = [
+    FRONTEND_URL,
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001"
+]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],  # Specific URL, not "*"
+    allow_origins=ALLOWED_ORIGINS,  # Allow common dev ports
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -59,6 +81,7 @@ app.add_middleware(
 
 # Track active sessions
 active_sessions = {}
+video_exts = {".mp4", ".mov", ".avi", ".mpg", ".mpeg", ".3gp", ".m4v", ".mkv"}
 
 # ============================================================================
 # ENDPOINTS
@@ -69,9 +92,12 @@ async def identify_reference(reference: UploadFile = File(...)):
     """
     Fast identity scan of reference video to determine session_id.
     """
-    # Validate file extension
-    if not reference.filename.lower().endswith('.mp4'):
-        raise HTTPException(status_code=400, detail="Only .mp4 files are supported")
+    ext = Path(reference.filename).suffix.lower()
+    if ext not in video_exts:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported reference format '{ext}'. Allowed: {', '.join(sorted(video_exts))}"
+        )
     
     content = await reference.read()
     content_hash = hashlib.md5(content).hexdigest()[:12]
@@ -79,70 +105,95 @@ async def identify_reference(reference: UploadFile = File(...)):
 
 @app.post("/api/upload")
 async def upload_files(
-    reference: UploadFile = File(...),
-    clips: List[UploadFile] = File(...)
+    reference: Optional[UploadFile] = File(None),
+    clips: List[UploadFile] = File(...),
+    music: Optional[UploadFile] = File(None)
 ):
     """
-    Upload reference video and user clips.
-    Saves directly to data/samples/ structure (matching test_ref.py).
-    
-    Returns:
-        {
-            "session_id": "uuid",
-            "reference": {"filename": "...", "size": ...},
-            "clips": [{"filename": "...", "size": ...}, ...]
-        }
+    Upload reference video (optional), user clips, and music (optional).
+    Saves directly to data/samples/ structure.
     """
-    # Validate reference file extension
-    if not reference.filename.lower().endswith('.mp4'):
-        raise HTTPException(status_code=400, detail="Reference must be .mp4 format")
+    if reference:
+        ext = Path(reference.filename).suffix.lower()
+        if ext not in video_exts:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Reference format '{ext}' is not supported. Allowed: {', '.join(sorted(video_exts))}"
+            )
     
-    # Validate clip file extensions
+    if music and not (music.filename.lower().endswith('.mp3') or music.filename.lower().endswith('.wav') or music.filename.lower().endswith('.mp4')):
+        raise HTTPException(status_code=400, detail="Music must be .mp3, .wav, or .mp4 format")
+    
     for clip in clips:
-        if not clip.filename.lower().endswith('.mp4'):
-            raise HTTPException(status_code=400, detail=f"All clips must be .mp4 format (invalid: {clip.filename})")
+        ext = Path(clip.filename).suffix.lower()
+        if ext not in video_exts:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Clip format '{ext}' is not supported for {clip.filename}. Allowed: {', '.join(sorted(video_exts))}"
+            )
     
-    # Calculate reference hash for deterministic session mapping
-    ref_content = await reference.read()
-    ref_hash = hashlib.md5(ref_content).hexdigest()[:12]
-    session_id = f"sess_{ref_hash}"
+    # Calculate session_id
+    if reference:
+        ref_content = await reference.read()
+        ref_hash = hashlib.md5(ref_content).hexdigest()[:12]
+        session_id = f"sess_{ref_hash}"
+    elif music:
+        music_content = await music.read()
+        music_hash = hashlib.md5(music_content).hexdigest()[:12]
+        session_id = f"text_music_{music_hash}"
+    else:
+        session_id = f"text_{uuid.uuid4().hex[:12]}"
     
     print(f"\n[UPLOAD] New upload request")
     print(f"[UPLOAD] Session ID: {session_id}")
-    print(f"[UPLOAD] Reference: {reference.filename}")
-    print(f"[UPLOAD] Clips: {len(clips)} files")
     
-    
-    # Check if file with same content already exists
-    existing_ref = None
-    for existing_file in REFERENCES_DIR.glob("*.mp4"):
-        if existing_file.is_file():
-            try:
-                with open(existing_file, 'rb') as f:
-                    existing_hash = hashlib.md5(f.read()).hexdigest()[:12]
-                if existing_hash == ref_hash:
-                    existing_ref = existing_file
-                    print(f"[UPLOAD] Reference content already exists: {existing_file.name} (reusing)")
-                    break
-            except Exception:
-                continue
-    
-    if existing_ref:
-        ref_path = existing_ref
-    else:
-        # Save new reference
-        ref_path = REFERENCES_DIR / reference.filename
-        if ref_path.exists():
-            base_name = ref_path.stem
-            counter = 1
-            while ref_path.exists():
-                ref_path = REFERENCES_DIR / f"{base_name}_{counter}{ref_path.suffix}"
-                counter += 1
-            print(f"[UPLOAD] Reference filename conflict, saved as: {ref_path.name}")
+    # Save Music if provided
+    music_path = None
+    if music:
+        music_dir = DATA_DIR / "samples" / "music"
+        music_dir.mkdir(parents=True, exist_ok=True)
+        music_path = music_dir / music.filename
         
-        with open(ref_path, "wb") as f:
-            f.write(ref_content)
-        print(f"[UPLOAD] Reference saved to: {ref_path}")
+        # Reset read pointer if we read it for hash
+        if not reference: await music.seek(0)
+        content = await music.read()
+        
+        with open(music_path, "wb") as f:
+            f.write(content)
+        print(f"[UPLOAD] Music saved to: {music_path}")
+
+    ref_path = None
+    if reference:
+        # Check if file with same content already exists
+        existing_ref = None
+        for existing_file in REFERENCES_DIR.glob("*.mp4"):
+            if existing_file.is_file():
+                try:
+                    with open(existing_file, 'rb') as f:
+                        existing_hash = hashlib.md5(f.read()).hexdigest()[:12]
+                    if existing_hash == ref_hash:
+                        existing_ref = existing_file
+                        print(f"[UPLOAD] Reference content already exists: {existing_file.name} (reusing)")
+                        break
+                except Exception:
+                    continue
+        
+        if existing_ref:
+            ref_path = existing_ref
+        else:
+            # Save new reference
+            ref_path = REFERENCES_DIR / reference.filename
+            if ref_path.exists():
+                base_name = ref_path.stem
+                counter = 1
+                while ref_path.exists():
+                    ref_path = REFERENCES_DIR / f"{base_name}_{counter}{ref_path.suffix}"
+                    counter += 1
+                print(f"[UPLOAD] Reference filename conflict, saved as: {ref_path.name}")
+            
+            with open(ref_path, "wb") as f:
+                f.write(ref_content)
+            print(f"[UPLOAD] Reference saved to: {ref_path}")
     
     # Save clips to data/samples/clips/ (matching test_ref.py)
     clip_paths = []
@@ -160,6 +211,9 @@ async def upload_files(
     
     print(f"[UPLOAD] Protocol initialized - Cross-referencing {len(existing_hashes)} library assets...")
     
+    temp_upload_dir = TEMP_DIR / "uploads"
+    temp_upload_dir.mkdir(parents=True, exist_ok=True)
+
     for clip in clips:
         clip_content = await clip.read()
         # Fast hash for incoming content: if large, hash start and end
@@ -181,7 +235,9 @@ async def upload_files(
             continue
         
         # Save new clip
-        clip_path = CLIPS_DIR / clip.filename
+        clip_ext = Path(clip.filename).suffix.lower()
+        target_name = f"{Path(clip.filename).stem}.mp4" if clip_ext != ".mp4" else clip.filename
+        clip_path = CLIPS_DIR / target_name
         if clip_path.exists():
             base_name = clip_path.stem
             counter = 1
@@ -189,9 +245,26 @@ async def upload_files(
                 clip_path = CLIPS_DIR / f"{base_name}_{counter}{clip_path.suffix}"
                 counter += 1
             print(f"[UPLOAD] Clip filename conflict, saved as: {clip_path.name}")
-        
-        with open(clip_path, "wb") as f:
-            f.write(clip_content)
+
+        if clip_ext != ".mp4":
+            raw_path = temp_upload_dir / clip.filename
+            with open(raw_path, "wb") as f:
+                f.write(clip_content)
+            try:
+                convert_to_mp4(str(raw_path), str(clip_path))
+            except Exception as e:
+                raise HTTPException(
+                    status_code=400,
+                    detail=f"Conversion failed for {clip.filename}. {e}"
+                )
+            try:
+                raw_path.unlink()
+            except Exception:
+                pass
+        else:
+            with open(clip_path, "wb") as f:
+                f.write(clip_content)
+
         clip_paths.append(str(clip_path))
         print(f"[UPLOAD] New clip saved: {clip_path.name}")
     
@@ -199,7 +272,8 @@ async def upload_files(
     
     # Store session info
     active_sessions[session_id] = {
-        "reference_path": str(ref_path),
+        "reference_path": str(ref_path) if ref_path else None,
+        "music_path": str(music_path) if music_path else None,
         "clip_paths": clip_paths,
         "status": "uploaded",
         "progress": 0.0,
@@ -209,27 +283,49 @@ async def upload_files(
     
     print(f"[UPLOAD] Protocol initialized - session {session_id[:8]} active\n")
     
+    reference_payload = {
+        "filename": ref_path.name if ref_path else "text_prompt",
+        "size": ref_path.stat().st_size if ref_path else 0
+    }
+    if ref_path:
+        ref_hash = get_file_hash(ref_path)
+        ref_thumb_name = f"thumb_ref_{ref_hash}.jpg"
+        ref_thumb_path = THUMBNAILS_DIR / ref_thumb_name
+        if not ref_thumb_path.exists():
+            generate_thumbnail(str(ref_path), str(ref_thumb_path))
+        reference_payload["thumbnail_url"] = f"/api/files/thumbnails/{ref_thumb_name}"
+
+    clips_payload = []
+    for p in clip_paths:
+        clip_path = Path(p)
+        clip_hash = get_file_hash(clip_path)
+        thumb_name = f"thumb_clip_{clip_hash}.jpg"
+        thumb_path = THUMBNAILS_DIR / thumb_name
+        if not thumb_path.exists():
+            generate_thumbnail(str(clip_path), str(thumb_path))
+        clips_payload.append({
+            "filename": clip_path.name,
+            "size": clip_path.stat().st_size,
+            "thumbnail_url": f"/api/files/thumbnails/{thumb_name}"
+        })
+
     return {
         "session_id": session_id,
-        "reference": {
-            "filename": ref_path.name,
-            "size": ref_path.stat().st_size
-        },
-        "clips": [
-            {"filename": Path(p).name, "size": Path(p).stat().st_size}
-            for p in clip_paths
-        ]
+        "reference": reference_payload,
+        "clips": clips_payload
     }
 
 
 @app.post("/api/generate/{session_id}")
-async def generate_video(session_id: str, background_tasks: BackgroundTasks):
+async def generate_video(
+    session_id: str, 
+    background_tasks: BackgroundTasks,
+    text_prompt: Optional[str] = None,
+    target_duration: float = 15.0
+):
     """
     Start video generation pipeline.
     Client should connect to WebSocket for real-time progress.
-    
-    Returns:
-        {"status": "processing", "session_id": "..."}
     """
     # Session recovery not needed - files are in data/samples/ and session info is in memory
     if session_id not in active_sessions:
@@ -266,19 +362,32 @@ async def generate_video(session_id: str, background_tasks: BackgroundTasks):
     
     # Run pipeline in background
     print(f"[GENERATE] Executing iteration v{current_iteration} for session: {session_id}")
+    if text_prompt:
+        print(f"[GENERATE] Text Prompt: {text_prompt}")
     
     background_tasks.add_task(
         process_video_pipeline,
         session_id,
         session.get("reference_path"),
         session.get("clip_paths"),
-        current_iteration
+        current_iteration,
+        text_prompt,
+        target_duration,
+        session.get("music_path")
     )
     
     return {"status": "processing", "session_id": session_id, "iteration": current_iteration}
 
 
-def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: List[str] = None, iteration: int = 1):
+def process_video_pipeline(
+    session_id: str, 
+    ref_path: str = None, 
+    clip_paths: List[str] = None, 
+    iteration: int = 1,
+    text_prompt: Optional[str] = None,
+    target_duration: float = 15.0,
+    music_path: Optional[str] = None
+):
     """
     Run the MIMIC pipeline with progress updates.
     Uses Gemini API for analysis.
@@ -354,7 +463,10 @@ def process_video_pipeline(session_id: str, ref_path: str = None, clip_paths: Li
             session_id=session_id,
             output_dir=str(RESULTS_DIR),
             progress_callback=progress_callback,
-            iteration=iteration
+            iteration=iteration,
+            text_prompt=text_prompt,
+            target_duration=target_duration,
+            music_path=music_path
         )
         
         elapsed = time.time() - start_time
@@ -575,7 +687,7 @@ async def list_reference_samples():
     
     references = []
     for ref_path in REFERENCES_DIR.iterdir():
-        if ref_path.is_file() and ref_path.suffix.lower() == '.mp4':
+        if ref_path.is_file() and ref_path.suffix.lower() in video_exts:
              ref_hash = get_file_hash(ref_path)
              thumb_name = f"thumb_ref_{ref_hash}.jpg"
              thumb_path = THUMBNAILS_DIR / thumb_name
@@ -605,7 +717,7 @@ async def list_all_clips():
     # Read all clips from data/samples/clips/ (matching test_ref.py)
     if CLIPS_DIR.exists():
         for clip_path in CLIPS_DIR.iterdir():
-            if clip_path.is_file() and clip_path.suffix.lower() == '.mp4':
+            if clip_path.is_file() and clip_path.suffix.lower() in video_exts:
                 clip_hash = get_file_hash(clip_path)
                 thumb_name = f"thumb_clip_{clip_hash}.jpg"
                 thumb_path = THUMBNAILS_DIR / thumb_name
@@ -763,8 +875,8 @@ async def get_intelligence(type: str, filename: str):
     
     Types: 
     - results: Look for master JSON in data/results/
-    - references: Look for ref_{hash}_h*.json in data/cache/
-    - clips: Look for clip_comprehensive_{hash}.json in data/cache/
+    - references: Look for ref_{hash}_h*.json in data/cache/references/
+    - clips: Look for clip_comprehensive_{hash}.json in data/cache/clips/
     """
     try:
         if type == "results":
@@ -792,7 +904,7 @@ async def get_intelligence(type: str, filename: str):
             
             ref_hash = get_file_hash(ref_path)
             # Reference cache naming: ref_{hash}_h{fingerprint}.json
-            matches = list(CACHE_DIR.glob(f"ref_{ref_hash}_h*.json"))
+            matches = list(REF_CACHE_DIR.glob(f"ref_{ref_hash}_h*.json"))
             if matches:
                 with open(matches[0], 'r', encoding='utf-8') as f:
                     return json.load(f)
@@ -804,7 +916,7 @@ async def get_intelligence(type: str, filename: str):
             
             clip_hash = get_file_hash(clip_path)
             # Clip cache naming: clip_comprehensive_{hash}.json
-            json_path = CACHE_DIR / f"clip_comprehensive_{clip_hash}.json"
+            json_path = CLIP_CACHE_DIR / f"clip_comprehensive_{clip_hash}.json"
             if json_path.exists():
                 with open(json_path, 'r', encoding='utf-8') as f:
                     return json.load(f)
@@ -839,7 +951,7 @@ async def serve_result_file(filename: str):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(
         path=str(result_path),
-        media_type="video/mp4",
+        media_type=mimetypes.guess_type(str(result_path))[0] or "application/octet-stream",
         filename=filename
     )
 
@@ -853,7 +965,7 @@ async def serve_reference_file(filename: str):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(
         path=str(ref_path),
-        media_type="video/mp4",
+        media_type=mimetypes.guess_type(str(ref_path))[0] or "application/octet-stream",
         filename=filename
     )
 
@@ -867,7 +979,7 @@ async def serve_sample_clip_file(filename: str):
         raise HTTPException(status_code=404, detail="File not found")
     return FileResponse(
         path=str(clip_path),
-        media_type="video/mp4",
+        media_type=mimetypes.guess_type(str(clip_path))[0] or "application/octet-stream",
         filename=filename
     )
 

@@ -1,0 +1,53 @@
+{
+  "energy": "Medium",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Object-Animal",
+    "Place-Nature"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Establishing shots of exotic locations"
+  ],
+  "avoid_for": [
+    "Intimate close-up moments",
+    "High-end cinematic productions"
+  ],
+  "vibes": [],
+  "content_description": "A decorated camel walks along a sunny beach as the camera pans across the shoreline.",
+  "best_moments": {
+    "High": {
+      "start": 2.8,
+      "end": 4.8,
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Fast camera pan across the camel creates a burst of visual energy."
+    },
+    "Medium": {
+      "start": 4.8,
+      "end": 6.8,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady camera movement following the camel along the beach."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Calm opening shot of ocean waves with minimal camera movement."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:23:20"
+}

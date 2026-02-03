@@ -34,8 +34,10 @@ YOUR HIERARCHY OF JUDGMENT (CRITICAL):
 1. NARRATIVE ADHERENCE: Did the edit respect the "Text Overlay" intent and "Dominant Narrative"? 
    (NOTE: If no explicit text overlay exists, infer narrative intent from the Reference Blueprint's narrative_message and emotional_intent).
 2. SEMANTIC FLOW: Did the "Vibe" of the clips match the "Vibe" of the reference segments?
-3. RHYTHMIC PRECISION: How well did the cuts align with the "Beat Sync" and "Energy" requirements?
+3. RHYTHMIC PRECISION: How well did the cuts align with the "Beat Sync" and "Energy" requirements? 
+   (NOTE: For text-based edits, rhythm is inferred at a default 120 BPM).
 4. MATERIAL QUALITY: The visual appeal and relevance of the source clips themselves.
+   (NOTE: Check the blueprint's "assumed_material" list. If the edit drifted, was it because the library lacked these assumed assets?)
 
 DEFINITIONS (USE THESE):
 - "Star Performer": A clip that satisfied the Narrative Intent (Text Overlay) AND matched the segment's Vibe perfectly.
@@ -52,7 +54,9 @@ YOUR TASKS:
 3. List specific Star Performers by clip filename.
 4. List specific Dead Weight clips by filename. Frame these as "necessary compromises" due to library constraints, not as errors.
 5. Suggest Missing Ingredients as concrete, filmable shots (not abstract advice).
-6. Provide a brief Technical Fidelity note that evaluates execution quality independently of footage quality.
+6. Create 'Remake Actions': 2-3 structured deltas for the next iteration.
+   - format: {"type": "increase_energy" | "change_subject" | "fix_pacing", "segment": "Intro" | "Build-up" | "Peak" | "Outro", "suggestion": "..."}
+7. Provide a brief Technical Fidelity note that evaluates execution quality independently of footage quality.
 
 SCORING GUIDELINE:
 - overall_score reflects the NARRATIVE COHESION and VIEWING EXPERIENCE.
@@ -70,6 +74,9 @@ OUTPUT FORMAT (JSON ONLY):
     "Group motion (friends walking or dancing together)",
     "Transitional filler shots for pacing"
   ],
+  "remake_actions": [
+    {{ "type": "increase_energy", "segment": "Peak", "suggestion": "Add at least 2 more Dynamic/High clips" }}
+  ],
   "technical_fidelity": "Beat alignment and energy progression were executed cleanly. Narrative intent was preserved, but limited by clip variety."
 }}
 """
@@ -79,13 +86,19 @@ def reflect_on_edit(
     edl: EDL,
     clip_index: ClipIndex,
     advisor: Optional[AdvisorHints] = None,
-    cache_dir: Path = Path("data/cache"),
+    cache_dir: Optional[Path] = None,
     force_refresh: bool = False
 ) -> DirectorCritique:
     """
     Call Gemini to generate a post-render critique.
     Uses hash-based caching to avoid redundant API calls.
     """
+    if cache_dir is None:
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        cache_dir = BASE_DIR / "data" / "cache" / "critiques"
+    
+    cache_dir.mkdir(parents=True, exist_ok=True)
+
     # Create a unique hash for this specific edit (Blueprint + EDL + Advisor)
     # This ensures that if the pacing or clips change, the critique regenerates.
     edl_hash = hashlib.md5(edl.model_dump_json().encode()).hexdigest()[:12]
@@ -108,20 +121,35 @@ def reflect_on_edit(
     # Extract key decisions for the prompt
     decisions = []
     for d in edl.decisions[:15]: # Limit to first 15 to save tokens
-        decisions.append(f"Seg {d.segment_id}: {d.clip_path.split('/')[-1]} ({d.reasoning})")
+        # Use filename only for prompt clarity
+        clip_name = d.clip_path.split('/')[-1].split('\\')[-1]
+        decisions.append(f"Seg {d.segment_id}: {clip_name} ({d.reasoning})")
     edl_summary = " | ".join(decisions)
 
-    prompt = REFLECTOR_PROMPT.format(
-        blueprint_summary=blueprint_summary,
-        advisor_summary=advisor_summary,
-        edl_summary=edl_summary
-    )
+    # Use a dictionary for formatting to avoid KeyError with {type} in the prompt
+    format_vars = {
+        "blueprint_summary": blueprint_summary,
+        "advisor_summary": advisor_summary,
+        "edl_summary": edl_summary
+    }
 
     for attempt in range(GeminiConfig.MAX_RETRIES):
         try:
             model = initialize_gemini()
             rate_limiter.wait_if_needed()
-            response = model.generate_content([prompt])
+            
+            # Use safe formatting to avoid issues with JSON braces in the prompt
+            # We must escape double braces for the final prompt if we use .format()
+            # but since we are doing manual replace, we just replace the placeholders.
+            final_prompt = REFLECTOR_PROMPT
+            for key, val in format_vars.items():
+                final_prompt = final_prompt.replace("{" + key + "}", str(val))
+            
+            # CRITICAL: The prompt itself contains JSON examples with { "type": ... }
+            # We must ensure we don't have any unescaped single braces that .format() would catch.
+            # But since we aren't using .format() on the whole thing anymore, this is safe.
+            
+            response = model.generate_content([final_prompt])
             
             data = _parse_json_response(response.text)
             critique = DirectorCritique(**data)

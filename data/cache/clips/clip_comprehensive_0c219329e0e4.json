@@ -1,0 +1,54 @@
+{
+  "energy": "Medium",
+  "motion": "Gentle",
+  "intensity": 1,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel transitions",
+    "Walking sequences",
+    "Establishing location"
+  ],
+  "avoid_for": [
+    "High-energy action",
+    "Intimate close-ups"
+  ],
+  "vibes": [],
+  "content_description": "Two people walking away from the camera down a tiled outdoor corridor.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.1,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "The most active part of the clip as the subjects move further into the frame."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Consistent walking pace and steady camera tracking."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 1.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial framing of the subjects and the environment."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:25:30"
+}

@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Place-Nature",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Transitions"
+  ],
+  "avoid_for": [
+    "Static scenes",
+    "Interviews"
+  ],
+  "vibes": [],
+  "content_description": "A sunset view through a moving vehicle window with silhouettes of trees passing by.",
+  "best_moments": {
+    "High": {
+      "start": 7.5,
+      "end": 10.5,
+      "moment_role": "Transition",
+      "stable_moment": false,
+      "reason": "Fastest motion and most vibrant colors as the vehicle speeds up."
+    },
+    "Medium": {
+      "start": 4.0,
+      "end": 7.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady movement showing the sunset clearly through the window."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial dark framing providing a slow reveal of the scene."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 03:08:04"
+}

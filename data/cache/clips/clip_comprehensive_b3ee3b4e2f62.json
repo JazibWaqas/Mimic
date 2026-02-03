@@ -1,0 +1,53 @@
+{
+  "energy": "Medium",
+  "motion": "Gentle",
+  "intensity": 1,
+  "primary_subject": [
+    "Place-Nature",
+    "People-Solo"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Reflection"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Opening establishing shots",
+    "Travel montages"
+  ],
+  "avoid_for": [
+    "High-energy peaks",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "A person looks out over a mountain landscape as the camera pans across the horizon towards the sun.",
+  "best_moments": {
+    "High": {
+      "start": 3.0,
+      "end": 5.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "The pan accelerates slightly towards the sun, creating the most visual change."
+    },
+    "Medium": {
+      "start": 1.0,
+      "end": 4.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "A steady, controlled pan across the forested hills and distant horizon."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "The initial moment showing the person looking out, with minimal camera movement."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:19:54"
+}

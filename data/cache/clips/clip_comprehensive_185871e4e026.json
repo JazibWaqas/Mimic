@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Candid group moments"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Professional corporate interviews"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends in a car with a sunroof are laughing and joking together.",
+  "best_moments": {
+    "High": {
+      "start": 28.5,
+      "end": 32.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and high-energy shouting at the end of the joke."
+    },
+    "Medium": {
+      "start": 12.0,
+      "end": 15.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Animated conversation with moderate movement and engagement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Relatively calmer start to the conversation before the energy ramps up."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:22:42"
+}

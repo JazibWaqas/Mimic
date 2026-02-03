@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Travel montages"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Intimate close-up moments"
+  ],
+  "vibes": [],
+  "content_description": "Two young men shouting and laughing while leaning out of a car sunroof on a highway at night.",
+  "best_moments": {
+    "High": {
+      "start": 10.5,
+      "end": 13.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak shouting and expressive joy with bright streetlights."
+    },
+    "Medium": {
+      "start": 4.0,
+      "end": 7.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Transition from sitting to looking out at the road with moderate excitement."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial dark shot before the main action and shouting begins."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 03:03:38"
+}

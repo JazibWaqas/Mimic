@@ -21,13 +21,14 @@ import hashlib
 import shutil
 from pathlib import Path
 from typing import Callable, List, Optional
-from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints
+from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints, LibraryHealth
 
 from engine.brain import (
     analyze_reference_video,
     analyze_all_clips,
     create_fallback_blueprint
 )
+from engine.generator import generate_blueprint_from_text
 from engine.reflector import reflect_on_edit
 from engine.editor import match_clips_to_blueprint, validate_edl, print_edl_summary
 from engine.processors import (
@@ -102,39 +103,33 @@ def _merge_scene_and_beat_timestamps(
 # ============================================================================
 
 def run_mimic_pipeline(
-    reference_path: str,
+    reference_path: Optional[str],
     clip_paths: List[str],
     session_id: str,
     output_dir: str,
     api_key: str | None = None,
     progress_callback: Callable[[int, int, str], None] | None = None,
-    iteration: int = 1
+    iteration: int = 1,
+    text_prompt: Optional[str] = None,
+    target_duration: float = 15.0,
+    music_path: Optional[str] = None
 ) -> PipelineResult:
     """
     Execute the complete MIMIC pipeline.
     
     STAGES:
+    0. Generate Blueprint from text (if no reference)
     1. Validate inputs
-    2. Analyze reference video (Gemini)
+    2. Analyze reference video (Gemini) - SKIPPED if Stage 0 used
     3. Analyze user clips (Gemini)
     4. Match clips to blueprint segments (Editor)
     5. Render video (FFmpeg)
-    
-    Args:
-        reference_path: Path to reference video
-        clip_paths: List of paths to user clips
-        session_id: Unique session identifier
-        output_dir: Directory for final output
-        api_key: Optional Gemini API key (uses env var if None)
-        progress_callback: Optional callback(current_step, total_steps, message)
-    
-    Returns:
-        PipelineResult with success status and output path
+    6. Reflect & Critique
     """
     start_time = time.time()
     
     # Setup file logging and results naming
-    ref_name = Path(reference_path).stem
+    ref_name = Path(reference_path).stem if reference_path else "text_prompt"
     # Use 'master' if no session_id is provided, otherwise first 12 chars
     tag = session_id if len(session_id) < 12 else session_id[:12]
     
@@ -149,7 +144,7 @@ def run_mimic_pipeline(
     
     class Tee:
         def __init__(self, *files):
-            self.files = files
+            self.files = [f for f in files if f is not None]
         def write(self, s):
             for f in self.files:
                 f.write(s)
@@ -165,13 +160,14 @@ def run_mimic_pipeline(
                     pass
     
     try:
-        log_file = open(log_path, 'w', encoding='utf-8')
+        if log_path:
+            log_file = open(log_path, 'w', encoding='utf-8')
         sys.stdout = Tee(original_stdout, log_file)
         print("=" * 80)
-        print(f"PIPELINE RUN: {Path(reference_path).name.upper()}")
+        print(f"PIPELINE RUN: {Path(reference_path).name.upper() if reference_path else 'TEXT_PROMPT'}")
         print("=" * 80)
         print(f"Session ID: {session_id}")
-        print(f"Reference: {Path(reference_path).name}")
+        print(f"Reference: {Path(reference_path).name if reference_path else 'None (Creator Mode)'}")
         print(f"Clips: {len(clip_paths)}")
         print(f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}")
         print()
@@ -198,6 +194,7 @@ def run_mimic_pipeline(
         # Setup session directories
         # Use absolute path to ensure consistency regardless of CWD
         BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        DATA_DIR = BASE_DIR / "data"
         
         # Permanent uploads are in data/uploads/{session_id}/
         # Temporary processing files go to temp/{session_id}/
@@ -206,7 +203,8 @@ def run_mimic_pipeline(
         segments_dir = temp_session_dir / "segments"
         
         # PERSISTENT CACHE FOR STANDARDIZED CLIPS
-        persistent_standardized_cache = BASE_DIR / "data" / "cache" / "standardized"
+        persistent_standardized_cache = DATA_DIR / "cache" / "standardized"
+        persistent_standardized_cache.mkdir(parents=True, exist_ok=True)
         
         ensure_directory(temp_session_dir)
         ensure_directory(standardized_dir)
@@ -218,46 +216,70 @@ def run_mimic_pipeline(
         # Only temp/ files (standardized, segments) can be cleaned up
         
         # ==================================================================
-        # STEP 2: ANALYZE REFERENCE
+        # STEP 2: ANALYZE REFERENCE / GENERATE BLUEPRINT
         # ==================================================================
-        update_progress(2, TOTAL_STEPS, "Detecting visual cuts and analyzing reference structure...")
-        
-        # Setup audio analysis path
-        audio_analysis_path = temp_session_dir / "ref_analysis_audio.wav"
-        ref_bpm = 120.0
-        
-        try:
-            # [STEP 2] Visual Scene Change Detection (The "Eyes")
-            print(f"  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.12)...")
-            scene_changes = detect_scene_changes(reference_path, threshold=0.12)
+        if text_prompt:
+            update_progress(2, TOTAL_STEPS, "Synthesizing Blueprint from text prompt...")
+            blueprint = generate_blueprint_from_text(text_prompt, target_duration, api_key)
             
-            # 2b. Extract audio and detect BPM (Dynamic Rhythm)
-            if extract_audio_wav(reference_path, str(audio_analysis_path)):
-                ref_bpm = detect_bpm(str(audio_analysis_path))
+            # Handle Music for Text-to-Edit Mode
+            # Prioritize dedicated music_path, fallback to reference_path if provided
+            audio_source = music_path if music_path else reference_path
             
-            # 2c. HYBRID DETECTION: Merge visual cuts + beat-aligned subdivision
-            # This ensures no segment is longer than ~2 seconds (critical for rhythm-based edits)
-            ref_duration = get_video_duration(reference_path)
-            beat_grid = get_beat_grid(ref_duration, int(ref_bpm))
-            combined_timestamps = _merge_scene_and_beat_timestamps(
-                scene_changes, 
-                beat_grid, 
-                max_gap=3.0
-            )
+            if audio_source:
+                print(f"  [MUSIC] Analyzing audio source: {Path(audio_source).name}")
+                # Extract audio and detect BPM for the provided music
+                audio_analysis_path = temp_session_dir / "music_analysis.wav"
+                if extract_audio_wav(audio_source, str(audio_analysis_path)):
+                    ref_bpm = detect_bpm(str(audio_analysis_path))
+                    print(f"  [MUSIC] Detected BPM: {ref_bpm:.2f}")
+                else:
+                    ref_bpm = 120.0
+                    print(f"  [WARN] Music analysis failed, using default 120 BPM")
+            else:
+                ref_bpm = 120.0
+                print(f"  [WARN] No audio source provided for text-based edit, using default 120 BPM")
+                
+            print(f"[OK] Gemini successfully synthesized blueprint from text: {len(blueprint.segments)} segments.")
+        else:
+            update_progress(2, TOTAL_STEPS, "Detecting visual cuts and analyzing reference structure...")
             
-            print(f"  [HYBRID] Visual cuts: {len(scene_changes)}, Beat-enhanced: {len(combined_timestamps)}")
+            # Setup audio analysis path
+            audio_analysis_path = temp_session_dir / "ref_analysis_audio.wav"
+            ref_bpm = 120.0
             
-            # 2d. Analyze with Gemini using hybrid timestamps
-            blueprint = analyze_reference_video(
-                reference_path, 
-                api_key=api_key,
-                scene_timestamps=combined_timestamps
-            )
-            print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
-        except Exception as e:
-            print(f"[ERROR] Gemini reference analysis failed: {e}")
-            print("    FALLING BACK to linear 2-second segments. Results will be generic.")
-            blueprint = create_fallback_blueprint(reference_path)
+            try:
+                # [STEP 2] Visual Scene Change Detection (The "Eyes")
+                print(f"  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.12)...")
+                scene_changes = detect_scene_changes(reference_path, threshold=0.12)
+                
+                # 2b. Extract audio and detect BPM (Dynamic Rhythm)
+                if extract_audio_wav(reference_path, str(audio_analysis_path)):
+                    ref_bpm = detect_bpm(str(audio_analysis_path))
+                
+                # 2c. HYBRID DETECTION: Merge visual cuts + beat-aligned subdivision
+                # This ensures no segment is longer than ~2 seconds (critical for rhythm-based edits)
+                ref_duration = get_video_duration(reference_path)
+                beat_grid = get_beat_grid(ref_duration, int(ref_bpm))
+                combined_timestamps = _merge_scene_and_beat_timestamps(
+                    scene_changes, 
+                    beat_grid, 
+                    max_gap=3.0
+                )
+                
+                print(f"  [HYBRID] Visual cuts: {len(scene_changes)}, Beat-enhanced: {len(combined_timestamps)}")
+                
+                # 2d. Analyze with Gemini using hybrid timestamps
+                blueprint = analyze_reference_video(
+                    reference_path, 
+                    api_key=api_key,
+                    scene_timestamps=combined_timestamps
+                )
+                print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
+            except Exception as e:
+                print(f"[ERROR] Gemini reference analysis failed: {e}")
+                print("    FALLING BACK to linear 2-second segments. Results will be generic.")
+                blueprint = create_fallback_blueprint(reference_path)
         
         # ==================================================================
         # STEP 3: ANALYZE USER CLIPS
@@ -269,6 +291,31 @@ def run_mimic_pipeline(
             # We pass clip_paths (originals) to leverage the cache
             clip_index = analyze_all_clips(clip_paths, api_key)
             print(f"[OK] Gemini successfully analyzed {len(clip_index.clips)} clips (using originals for cache).")
+            
+            # Compute Library Health
+            clips = clip_index.clips
+            avg_quality = sum(c.clip_quality for c in clips) / len(clips) if clips else 0
+            energy_dist = Counter(c.energy.value for c in clips)
+            subject_dist = Counter()
+            for c in clips:
+                for s in c.primary_subject:
+                    subject_dist[s] += 1
+            
+            # Simple confidence score (0-100)
+            # Factors: count, quality, diversity
+            base_score = min(len(clips) * 5, 40) # Up to 40 pts for count
+            quality_score = avg_quality * 10 # Up to 50 pts for quality
+            diversity_score = min(len(subject_dist) * 5, 10) # Up to 10 pts for diversity
+            
+            library_health = LibraryHealth(
+                asset_count=len(clips),
+                avg_quality=avg_quality,
+                energy_distribution=dict(energy_dist),
+                primary_subject_distribution=dict(subject_dist),
+                confidence_score=base_score + quality_score + diversity_score
+            )
+            print(f"  ✅ Library Health: {library_health.confidence_score:.1f}% readiness")
+            
         except Exception as e:
             print(f"[ERROR] Gemini clip analysis failed: {e}")
             print("    FALLING BACK to default energy levels. Edit quality will be reduced.")
@@ -380,7 +427,12 @@ def run_mimic_pipeline(
         
         # Handle audio
         audio_path = temp_session_dir / "ref_audio.aac"
-        audio_extracted = extract_audio(reference_path, str(audio_path))
+        # Prioritize music_path, then reference_path
+        source_audio_path = music_path if music_path else reference_path
+        
+        audio_extracted = False
+        if source_audio_path:
+            audio_extracted = extract_audio(source_audio_path, str(audio_path))
         
         # Final output (use full session_id to prevent collisions)
         output_filename = f"{base_output_name}.mp4"
@@ -448,6 +500,7 @@ def run_mimic_pipeline(
             edl=edl,
             advisor=advisor_hints,
             critique=critique,
+            library_health=library_health,
             iteration=iteration,
             processing_time_seconds=processing_time
         )
@@ -715,7 +768,7 @@ def _print_comprehensive_analysis(blueprint: StyleBlueprint, edl: EDL, clip_inde
         print(f"\n{'='*80}\n")
 
 
-def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
+def _validate_inputs(reference_path: Optional[str], clip_paths: List[str]) -> None:
     """
     Validate inputs before pipeline execution.
     
@@ -723,19 +776,20 @@ def _validate_inputs(reference_path: str, clip_paths: List[str]) -> None:
         ValueError: If inputs are invalid
     """
     
-    # Check reference video exists
-    if not Path(reference_path).exists():
-        raise ValueError(f"Reference video not found: {reference_path}")
-    
-    # Check reference duration (3-20 seconds)
-    try:
-        ref_duration = get_video_duration(reference_path)
-        if not (3.0 <= ref_duration <= 60.0):
-            raise ValueError(
-                f"Reference video must be 3-60 seconds (got {ref_duration:.1f}s)"
-            )
-    except Exception as e:
-        raise ValueError(f"Could not read reference video: {e}")
+    # Check reference video exists (only if no text prompt)
+    if reference_path:
+        if not Path(reference_path).exists():
+            raise ValueError(f"Reference video not found: {reference_path}")
+        
+        # Check reference duration (3-20 seconds)
+        try:
+            ref_duration = get_video_duration(reference_path)
+            if not (3.0 <= ref_duration <= 60.0):
+                raise ValueError(
+                    f"Reference video must be 3-60 seconds (got {ref_duration:.1f}s)"
+                )
+        except Exception as e:
+            raise ValueError(f"Could not read reference video: {e}")
     
     # Check clip count (minimum 2)
     if len(clip_paths) < 2:

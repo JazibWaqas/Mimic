@@ -1,0 +1,57 @@
+{
+  "energy": "Medium",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Place-Nature",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel vlogs",
+    "Nature transitions",
+    "Hiking montages"
+  ],
+  "avoid_for": [
+    "High-energy action scenes",
+    "Professional cinematic landscapes"
+  ],
+  "vibes": [
+    "Nature",
+    "Travel"
+  ],
+  "content_description": "A first-person perspective of walking along a rocky, wooded trail.",
+  "best_moments": {
+    "High": {
+      "start": 28.0,
+      "end": 31.0,
+      "moment_role": "Build",
+      "stable_moment": false,
+      "reason": "Increased camera movement and more rugged terrain interaction."
+    },
+    "Medium": {
+      "start": 10.0,
+      "end": 13.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady, consistent walking pace through the forest."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup of the trail with slower, more deliberate movement."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 03:08:14"
+}

@@ -616,6 +616,26 @@ def generate_thumbnail(video_path: str, thumbnail_path: str, time: float = 2.0) 
     return False
 
 
+def convert_to_mp4(input_path: str, output_path: str) -> None:
+    cmd = [
+        "ffmpeg",
+        "-i", input_path,
+        "-c:v", "libx264",
+        "-preset", "veryfast",
+        "-crf", "22",
+        "-c:a", "aac",
+        "-b:a", "192k",
+        "-movflags", "+faststart",
+        "-y",
+        output_path
+    ]
+    try:
+        subprocess.run(cmd, capture_output=True, text=True, check=True)
+    except subprocess.CalledProcessError as e:
+        stderr = e.stderr or "Unknown FFmpeg error"
+        raise RuntimeError(f"MP4 conversion failed: {stderr}")
+
+
 # ============================================================================
 # VALIDATION
 # ============================================================================

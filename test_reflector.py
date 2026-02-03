@@ -81,6 +81,12 @@ def run_reflection_on_existing_results():
                 f.write("\nREMAKE CHECKLIST (MISSING INGREDIENTS):\n")
                 for item in critique.missing_ingredients:
                     f.write(f"  📋 {item}\n")
+                
+                if critique.remake_actions:
+                    f.write("\nACTIONABLE DELTAS (FOR NEXT ITERATION):\n")
+                    for action in critique.remake_actions:
+                        f.write(f"  🚀 [{action.get('type', 'update')}] {action.get('segment', 'General')}: {action.get('suggestion', '')}\n")
+
                 f.write("\nTECHNICAL FIDELITY:\n")
                 f.write(f"  🔧 {critique.technical_fidelity}\n\n")
                 f.write("="*80 + "\n")

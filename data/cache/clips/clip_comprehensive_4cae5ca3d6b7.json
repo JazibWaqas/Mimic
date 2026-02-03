@@ -1,0 +1,54 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Celebration"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 4,
+  "best_for": [
+    "High-energy peaks",
+    "Celebration montages",
+    "Travel vlogs"
+  ],
+  "avoid_for": [
+    "Calm reflective outros",
+    "Serious dramatic scenes"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men enthusiastically singing and dancing inside a car with an open sunroof.",
+  "best_moments": {
+    "High": {
+      "start": 1.5,
+      "end": 4.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak celebration with hands in the air and high physical activity."
+    },
+    "Medium": {
+      "start": 8.0,
+      "end": 11.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Sustained group singing with moderate movement."
+    },
+    "Low": {
+      "start": 24.5,
+      "end": 27.5,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "Post-celebration laughter and relaxed interaction."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 03:09:04"
+}

@@ -1,0 +1,55 @@
+{
+  "energy": "Medium",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel vlogs",
+    "Transition sequences",
+    "Scenic montages"
+  ],
+  "avoid_for": [
+    "High-action scenes",
+    "Static interviews",
+    "Intimate close-ups"
+  ],
+  "vibes": [],
+  "content_description": "A group of people walking down a colorful staircase on a sunny hillside.",
+  "best_moments": {
+    "High": {
+      "start": 6.0,
+      "end": 9.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Increased camera movement and subject descent towards the end of the path."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 6.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady walking pace and clear view of the colorful stairs."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup of the walk with relatively less camera motion."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:23:15"
+}

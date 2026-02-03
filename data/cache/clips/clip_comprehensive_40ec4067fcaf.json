@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Family home videos",
+    "Candid childhood montages"
+  ],
+  "avoid_for": [
+    "Professional cinematic productions",
+    "Serious or somber narratives"
+  ],
+  "vibes": [],
+  "content_description": "Three children lie on a patterned rug, laughing as an adult playfully arranges them into a shape.",
+  "best_moments": {
+    "High": {
+      "start": 5.0,
+      "end": 8.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak group laughter and expressive joy."
+    },
+    "Medium": {
+      "start": 24.0,
+      "end": 27.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Moderate movement as the children are playfully adjusted."
+    },
+    "Low": {
+      "start": 33.0,
+      "end": 36.0,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "The children settle into a final pose with calmer expressions."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-03 19:56:49"
+}

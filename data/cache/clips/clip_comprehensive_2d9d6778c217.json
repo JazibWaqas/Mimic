@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 2,
+  "best_for": [
+    "Candid social media clips",
+    "Laughter-filled montages"
+  ],
+  "avoid_for": [
+    "Formal presentations",
+    "Stable landscape shots"
+  ],
+  "vibes": [],
+  "content_description": "Three friends laugh and interact while filming themselves outdoors, with the camera oriented upside down.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Initial laughter and close-up interaction."
+    },
+    "Medium": {
+      "start": 5.0,
+      "end": 8.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Subjects adjusting hair and talking moderately."
+    },
+    "Low": {
+      "start": 15.0,
+      "end": 18.0,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "A moment of relative stillness and quiet interaction."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:24:48"
+}

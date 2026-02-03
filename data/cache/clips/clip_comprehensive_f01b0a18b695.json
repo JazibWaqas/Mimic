@@ -1,0 +1,55 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "Activity-Travel",
+    "Object-Vehicle"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Build",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Night drive sequences",
+    "Transitions"
+  ],
+  "avoid_for": [
+    "Calm reflective moments",
+    "Intimate close-ups"
+  ],
+  "vibes": [],
+  "content_description": "A night-time drive from the interior of a car with music playing and city lights passing by.",
+  "best_moments": {
+    "High": {
+      "start": 28.5,
+      "end": 31.5,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak speed on the speedometer and highest vocal energy in the audio."
+    },
+    "Medium": {
+      "start": 10.0,
+      "end": 13.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady driving while passing other vehicles with consistent visual flow."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial setup of the night drive with relatively lower speed and intensity."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:17:45"
+}

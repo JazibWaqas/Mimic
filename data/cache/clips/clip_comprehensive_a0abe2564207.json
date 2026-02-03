@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 1,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Build",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Casual social montages",
+    "Vlog-style interactions"
+  ],
+  "avoid_for": [
+    "Professional cinematic sequences",
+    "Calm reflective scenes"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men are looking at and discussing a piece of clothing at an outdoor night market.",
+  "best_moments": {
+    "High": {
+      "start": 8.0,
+      "end": 11.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Peak laughter and expressive facial reactions from the group."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 6.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Steady interaction and dialogue as they examine the clothing."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Initial calm setup showing the group focusing on the item."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:37:01"
+}

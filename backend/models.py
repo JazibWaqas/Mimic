@@ -5,7 +5,7 @@ These are the ONLY valid data structures. Do not create ad-hoc dictionaries.
 
 from pydantic import BaseModel, Field, field_validator
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 # ============================================================================
 # ENUMS (Controlled Vocabularies)
@@ -82,6 +82,7 @@ class Segment(BaseModel):
     relation_to_previous: str = Field("None", description="How this relates to previous shot: Setup | Payoff | Contrast | Continuation | None")
     expected_hold: str = Field("Normal", description="How long viewer should rest: Short | Normal | Long")
     camera_movement: str = Field("", description="Camera motion: Locked | Handheld | Smooth pan | Erratic | Mixed")
+    emotional_guidance: str = Field("", description="What the viewer should feel (e.g. anticipation, joy)")
     
     @field_validator('end')
     @classmethod
@@ -107,6 +108,11 @@ class StyleBlueprint(BaseModel):
     """
     total_duration: float = Field(..., gt=0, description="Total video length in seconds")
     segments: List[Segment] = Field(..., min_length=1, description="Ordered list of segments")
+    
+    # Creator Mode (v11.0+)
+    text_prompt: Optional[str] = Field(None, description="The natural language prompt used to generate this blueprint")
+    plan_summary: str = Field("", description="A 2-3 sentence human-readable explanation of the editing plan")
+    assumed_material: List[str] = Field(default_factory=list, description="Footage types assumed by the generator to make the vision work")
     
     # Professional Editing Metadata
     editing_style: str = Field("General", description="The editing style (e.g. Cinematic, Vlog, Montage, TikTok/Reel)")
@@ -218,6 +224,16 @@ class LibraryAlignment(BaseModel):
     editorial_tradeoffs: List[str] = Field(default_factory=list)
     constraint_gaps: List[str] = Field(default_factory=list)
 
+class LibraryHealth(BaseModel):
+    """
+    Aggregated metrics of the user's clip library.
+    """
+    asset_count: int = Field(0)
+    avg_quality: float = Field(0.0)
+    energy_distribution: dict = Field(default_factory=dict)
+    primary_subject_distribution: dict = Field(default_factory=dict)
+    confidence_score: float = Field(0.0, description="0-100 score of library readiness for the edit")
+
 class DirectorCritique(BaseModel):
     """
     Post-render AI reflection on the final edit quality.
@@ -227,6 +243,7 @@ class DirectorCritique(BaseModel):
     star_performers: List[str] = Field(default_factory=list, description="Clips that carried the narrative perfectly")
     dead_weight: List[str] = Field(default_factory=list, description="Clips that were used but didn't fit the vibe/quality")
     missing_ingredients: List[str] = Field(default_factory=list, description="Specific shot types/vibes needed to reach 10/10")
+    remake_actions: List[dict] = Field(default_factory=list, description="Structured deltas for the next iteration (type, segment, suggestion)")
     technical_fidelity: str = Field(..., description="Assessment of beat-sync and energy matching")
 
 class AdvisorHints(BaseModel):
@@ -451,6 +468,7 @@ class PipelineResult(BaseModel):
     edl: EDL | None = None
     advisor: AdvisorHints | None = None  # NEW: Strategic guidance used
     critique: DirectorCritique | None = None # NEW: Post-render reflection
+    library_health: LibraryHealth | None = None # NEW: Aggregated library metrics
     iteration: int = Field(1, description="The version/iteration of this result")
     error: str | None = None
     processing_time_seconds: float | None = None

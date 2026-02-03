@@ -1,0 +1,53 @@
+{
+  "energy": "Medium",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Travel"
+  ],
+  "narrative_utility": [
+    "Transition",
+    "Establishing"
+  ],
+  "emotional_tone": [
+    "Adventurous",
+    "Peaceful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Travel montages",
+    "Transition sequences"
+  ],
+  "avoid_for": [
+    "High-intensity action",
+    "Intimate close-ups"
+  ],
+  "vibes": [],
+  "content_description": "A group of people walks along a snowy mountain path surrounded by pine trees.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Most active camera movement and subject interaction at the start."
+    },
+    "Medium": {
+      "start": 3.0,
+      "end": 5.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady walking pace as the group moves along the path."
+    },
+    "Low": {
+      "start": 6.5,
+      "end": 7.918005,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Calm pan away from the subjects to the forest landscape."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:58:55"
+}

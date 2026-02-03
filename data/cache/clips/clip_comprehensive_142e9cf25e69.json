@@ -1,0 +1,53 @@
+{
+  "energy": "High",
+  "motion": "Kinetic",
+  "intensity": 3,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build"
+  ],
+  "emotional_tone": [
+    "Energetic",
+    "Joyful"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "High-energy peaks",
+    "Chaotic travel montages"
+  ],
+  "avoid_for": [
+    "Calm reflective moments",
+    "Professional interviews"
+  ],
+  "vibes": [],
+  "content_description": "Friends shouting and laughing while driving in a car at night with music playing.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 6.5,
+      "moment_role": "Climax",
+      "stable_moment": false,
+      "reason": "Peak shouting and rapid camera movement creating high visual and auditory intensity."
+    },
+    "Medium": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Initial energy buildup with driving context and moderate shouting."
+    },
+    "Low": {
+      "start": 9.5,
+      "end": 12.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Energy tapers off slightly at the end of the clip as the shouting subsides."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 03:04:56"
+}

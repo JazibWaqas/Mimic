@@ -30,7 +30,7 @@ import time
 def get_advisor_suggestions(
     blueprint: StyleBlueprint,
     clip_index: ClipIndex,
-    cache_dir: Path = Path("data/cache"),
+    cache_dir: Optional[Path] = None,
     force_refresh: bool = False
 ) -> Optional[AdvisorHints]:
     """
@@ -42,12 +42,16 @@ def get_advisor_suggestions(
     Args:
         blueprint: Analyzed reference structure with narrative intent
         clip_index: Analyzed user clips with semantic metadata
-        cache_dir: Directory for caching advisor results
+        cache_dir: Directory for caching advisor results (defaults to root data/cache/advisor)
         force_refresh: If True, bypass cache and regenerate
     
     Returns:
         AdvisorHints if successful, None if failure (graceful degradation)
     """
+    if cache_dir is None:
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        cache_dir = BASE_DIR / "data" / "cache" / "advisor"
+
     print(f"\n{'='*60}")
     print(f"[ADVISOR] GENERATING STRATEGIC GUIDANCE")
     print(f"{'='*60}")

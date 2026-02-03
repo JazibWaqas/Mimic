@@ -1,0 +1,52 @@
+{
+  "energy": "Medium",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Energetic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Group outing montages",
+    "Transition shots of arrival"
+  ],
+  "avoid_for": [
+    "Intimate close-up moments",
+    "High-action peaks"
+  ],
+  "vibes": [],
+  "content_description": "A group of young men walking towards a building entrance in an outdoor paved area.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 2.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Most dynamic camera movement and group activity at the start."
+    },
+    "Medium": {
+      "start": 2.0,
+      "end": 4.0,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Steady tracking of the group walking at a consistent pace."
+    },
+    "Low": {
+      "start": 3.9651039999999997,
+      "end": 4.065104,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Final approach with reduced camera motion and clearer view of the building."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 02:29:52"
+}

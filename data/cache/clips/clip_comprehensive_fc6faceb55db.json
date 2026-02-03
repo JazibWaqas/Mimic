@@ -1,0 +1,55 @@
+{
+  "energy": "High",
+  "motion": "Active",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Group",
+    "Activity-Leisure"
+  ],
+  "narrative_utility": [
+    "Peak",
+    "Build",
+    "Transition"
+  ],
+  "emotional_tone": [
+    "Joyful",
+    "Adventurous"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Casual vlog segments",
+    "Friendship montages",
+    "Transitioning between locations"
+  ],
+  "avoid_for": [
+    "Professional corporate videos",
+    "High-fidelity cinematic scenes"
+  ],
+  "vibes": [],
+  "content_description": "A group of friends laughs in an elevator and then walks through a dark building to a rooftop at night.",
+  "best_moments": {
+    "High": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Climax",
+      "stable_moment": true,
+      "reason": "Intense laughter and group interaction in the elevator."
+    },
+    "Medium": {
+      "start": 38.0,
+      "end": 41.0,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Group interaction in a dark room using a flashlight."
+    },
+    "Low": {
+      "start": 68.63433300000001,
+      "end": 68.734333,
+      "moment_role": "Reflection",
+      "stable_moment": true,
+      "reason": "Calmer moment standing at a doorway at the end."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-02-01 03:27:40"
+}

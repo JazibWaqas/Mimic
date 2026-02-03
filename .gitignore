@@ -20,6 +20,7 @@ frontend/.env.test.local
 frontend/.env.production.local
 
 # Results and Cache (Heavy Files)
+data/samples/clips/
 data/cache/standardized/
 temp/
 

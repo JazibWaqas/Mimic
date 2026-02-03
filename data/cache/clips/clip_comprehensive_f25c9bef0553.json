@@ -1,0 +1,53 @@
+{
+  "energy": "Low",
+  "motion": "Gentle",
+  "intensity": 2,
+  "primary_subject": [
+    "People-Crowd",
+    "Place-Nature"
+  ],
+  "narrative_utility": [
+    "Establishing",
+    "Reflection"
+  ],
+  "emotional_tone": [
+    "Peaceful",
+    "Nostalgic"
+  ],
+  "clip_quality": 3,
+  "best_for": [
+    "Atmospheric transitions",
+    "Travel montages"
+  ],
+  "avoid_for": [
+    "High-energy action",
+    "Fast-paced sequences"
+  ],
+  "vibes": [],
+  "content_description": "A hazy sunset scene on a crowded beach with people and horses walking along the shore.",
+  "best_moments": {
+    "High": {
+      "start": 3.5,
+      "end": 6.5,
+      "moment_role": "Build",
+      "stable_moment": true,
+      "reason": "Relative peak in movement as more figures cross the frame."
+    },
+    "Medium": {
+      "start": 1.5,
+      "end": 4.5,
+      "moment_role": "Transition",
+      "stable_moment": true,
+      "reason": "Consistent walking pace and steady visual flow."
+    },
+    "Low": {
+      "start": 0.0,
+      "end": 3.0,
+      "moment_role": "Establishing",
+      "stable_moment": true,
+      "reason": "Calm opening focusing on the sun and the horizon."
+    }
+  },
+  "_cache_version": "7.0",
+  "_cached_at": "2026-01-28 03:07:21"
+}

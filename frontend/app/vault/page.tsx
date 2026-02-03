@@ -241,7 +241,7 @@ export default function VaultPage() {
                             )}
                         >
                             <div className="flex items-center gap-3">
-                                <div className="w-20 h-12 rounded-lg bg-black relative overflow-hidden shrink-0 border border-white/10">
+                                <div className="w-20 h-12 rounded-lg bg-black relative overflow-hidden shrink-0 border border-white/10 flex items-center justify-center">
                                     {(res as any).thumbnail_url ? (
                                         <img
                                             src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${(res as any).thumbnail_url}`}
@@ -249,7 +249,13 @@ export default function VaultPage() {
                                             className="w-full h-full object-cover opacity-80"
                                         />
                                     ) : (
-                                        <video src={getVideoUrl(res)} className="w-full h-full object-cover opacity-60" />
+                                        <video 
+                                            src={getVideoUrl(res) + "#t=0.5"} 
+                                            className="w-full h-full object-cover opacity-60"
+                                            muted
+                                            playsInline
+                                            preload="metadata"
+                                        />
                                     )}
                                 </div>
                                 <div className="min-w-0">
@@ -281,10 +287,10 @@ export default function VaultPage() {
                                 >
                                     <div
                                         className={cn(
-                                            "relative w-full aspect-[16/11] rounded-lg overflow-hidden border transition-all duration-500",
+                                            "relative w-full aspect-[16/11] rounded-lg overflow-hidden border transition-all duration-500 flex items-center justify-center bg-[#0a0c14]",
                                             isSelected
-                                                ? "border-cyan-400 bg-[#0a0c10]"
-                                                : "border-white/10 bg-[#0a0c14] opacity-60 hover:opacity-80"
+                                                ? "border-cyan-400"
+                                                : "border-white/10 opacity-60 hover:opacity-80"
                                         )}
                                     >
                                         {item.thumbnail_url ? (
@@ -294,7 +300,13 @@ export default function VaultPage() {
                                                 className="w-full h-full object-cover"
                                             />
                                         ) : (
-                                            <video src={getVideoUrl(item)} className="w-full h-full object-cover" />
+                                            <video 
+                                                src={getVideoUrl(item) + "#t=0.5"} 
+                                                className="w-full h-full object-cover opacity-60"
+                                                muted
+                                                playsInline
+                                                preload="metadata"
+                                            />
                                         )}
                                         <div className={cn(
                                             "absolute bottom-1 right-1 px-1 py-0.5 rounded text-[7px] font-black uppercase",
@@ -321,11 +333,24 @@ export default function VaultPage() {
                         <div className="space-y-5 relative z-10">
                             <div className="space-y-4 border-b border-white/5 pb-4">
                                 <div className="space-y-1">
-                                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
+                                        {intelligence?.blueprint?.text_prompt && (
+                                            <span className="px-1.5 py-0.5 rounded bg-[#ff007f]/10 border border-[#ff007f]/20 text-[7px] font-black text-[#ff007f] uppercase tracking-widest">Creator_Mode</span>
+                                        )}
+                                    </div>
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
-                                        {intelligence?.advisor?.dominant_narrative || "Rhythmic Consistency & Energy Matching"}
+                                        {intelligence?.advisor?.dominant_narrative || intelligence?.blueprint?.narrative_message || "Rhythmic Consistency & Energy Matching"}
                                     </p>
                                 </div>
+                                {intelligence?.blueprint?.plan_summary && (
+                                    <div className="space-y-1">
+                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Plan_Summary</span>
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed border-l border-white/10 pl-3">
+                                            {intelligence.blueprint.plan_summary}
+                                        </p>
+                                    </div>
+                                )}
                                 <div className="space-y-1">
                                     <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Priority_Rules</span>
                                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
@@ -553,17 +578,36 @@ export default function VaultPage() {
                                         </div>
                                     </div>
 
-                                    {/* Missing Ingredients */}
-                                    <div className="pt-4 border-t border-white/5">
-                                        <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-3">Remake_Checklist</p>
-                                        <div className="space-y-2">
-                                            {intelligence.critique.missing_ingredients?.slice(0, 3).map((item: string, i: number) => (
-                                                <div key={i} className="flex items-center gap-2">
-                                                    <div className="h-1 w-1 rounded-full bg-indigo-500/40" />
-                                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{item}</p>
-                                                </div>
-                                            ))}
+                                    {/* Missing Ingredients & Remake Actions */}
+                                    <div className="pt-4 border-t border-white/5 space-y-4">
+                                        <div>
+                                            <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-3">Remake_Checklist</p>
+                                            <div className="space-y-2">
+                                                {intelligence.critique.missing_ingredients?.slice(0, 3).map((item: string, i: number) => (
+                                                    <div key={i} className="flex items-center gap-2">
+                                                        <div className="h-1 w-1 rounded-full bg-indigo-500/40" />
+                                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{item}</p>
+                                                    </div>
+                                                ))}
+                                            </div>
                                         </div>
+
+                                        {intelligence.critique.remake_actions?.length > 0 && (
+                                            <div>
+                                                <p className="text-[8px] font-black text-[#ff007f] uppercase tracking-widest mb-3">Actionable_Deltas</p>
+                                                <div className="space-y-2">
+                                                    {intelligence.critique.remake_actions.map((action: any, i: number) => (
+                                                        <div key={i} className="bg-white/[0.02] border border-white/5 rounded-lg p-2 flex flex-col gap-1">
+                                                            <div className="flex items-center justify-between">
+                                                                <span className="text-[7px] font-black text-[#ff007f] uppercase">{action.type}</span>
+                                                                <span className="text-[7px] font-black text-slate-600 uppercase">{action.segment}</span>
+                                                            </div>
+                                                            <p className="text-[9px] font-bold text-slate-300 leading-tight uppercase">{action.suggestion}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </>
                             ) : (

@@ -1,0 +1,92 @@
+{
+  "text_overlay_intent": "The text is a manifesto for the 'now,' demanding raw, unpolished, high-presence group moments that prioritize living experience over curated memory. It requires footage where the subjects are fully immersed in the act of being together, rather than performing for a camera.",
+  "dominant_narrative": "A defiant celebration of shared youth and immediate presence, capturing the raw energy of friendship before it crystallizes into nostalgia.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Shared anticipation and the physical act of 'arriving' together.",
+      "supporting_material": "POV travel shots or movement toward a destination.",
+      "intent_diluting_material": "Static landscapes or solo shots that lack a sense of 'we'.",
+      "reasoning": "The story begins with the collective journey; we need to establish the group as a single unit moving through space.",
+      "recommended_clips": [
+        "clip13.mp4",
+        "clip44.mp4",
+        "clip7.mp4",
+        "clip28.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Candid, messy interactions and the 'in-between' moments of friendship.",
+      "supporting_material": "Close-ups of shared food, games, or tactile group activities.",
+      "intent_diluting_material": "Polished, posed shots or disconnected scenic b-roll.",
+      "reasoning": "This stage must bridge the gap between arriving and the peak by showing the texture of the group's bond through casual, unforced proximity.",
+      "recommended_clips": [
+        "clip25.mp4",
+        "clip40.mp4",
+        "clip53.mp4",
+        "clip20.mp4",
+        "clip58.mp4",
+        "clip3.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Uninhibited, high-velocity joy and collective release.",
+      "supporting_material": "Dynamic camera movement, light leaks, and rhythmic, high-motion action.",
+      "intent_diluting_material": "Any shot where the subject is aware of the camera or standing still.",
+      "reasoning": "The 'Relentless' pacing demands a sensory overload of 'now.' These clips must feel like the peak of a life-changing night or trip.",
+      "recommended_clips": [
+        "clip16.mp4",
+        "clip22.mp4",
+        "clip21.mp4",
+        "clip38.mp4",
+        "clip15.mp4",
+        "clip1.mp4",
+        "clip36.mp4",
+        "clip26.mp4",
+        "clip19.mp4",
+        "clip23.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "A final, visceral punctuation of the present moment.",
+      "supporting_material": "High-energy environmental impact or a final group shout.",
+      "intent_diluting_material": "Slow fades or quiet, reflective solo shots.",
+      "reasoning": "The text says 'these moments are not stories'—the edit should end on a high, living note rather than a somber 'goodbye.'",
+      "recommended_clips": [
+        "clip55.mp4",
+        "clip18.mp4"
+      ],
+      "required_energy": "High"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundance of high-energy 'People-Group' content, particularly in car and celebration settings.",
+      "Strong selection of candid laughter and unpolished interactions that match the 'not stories' intent."
+    ],
+    "editorial_tradeoffs": [
+      "The library is heavily weighted toward car interiors and urban celebrations; the 'outdoor scenic' requirement from the reference will be fulfilled by travel transitions rather than peak action.",
+      "High-energy peaks will rely on nighttime/indoor footage due to the lack of high-intensity daylight group activities."
+    ],
+    "constraint_gaps": [
+      "Lacks intimate, slow-motion close-ups of faces to ground the 'nostalgic' tone during the build-up.",
+      "Missing high-energy nature-based group activities (e.g., cliff jumping, swimming) to balance the car-heavy peak."
+    ]
+  },
+  "editorial_strategy": "Prioritize the 'unfiltered' group shots where the camera feels like a participant, not an observer. If the camera is shaking and people are laughing hysterically, it takes precedence over technical quality. We are editing for the feeling of being there, not the memory of having been there.",
+  "remake_strategy": "To reach Director's Cut quality, inject 3-4 slow-motion close-ups of genuine facial expressions (laughter, shouting) to provide emotional anchors amidst the high-speed montage. Replace 2 car-interior clips in the peak with high-intensity outdoor group action to better align with the 'scenic' reference intent.",
+  "primary_narrative_subject": "People-Group",
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Object-Detail"
+  ],
+  "subject_lock_strength": 1.0,
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.0",
+  "cached_at": "2026-01-31T21:40:52.713616"
+}
