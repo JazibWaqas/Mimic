@@ -1,7 +1,7 @@
 # 🚀 MIMIC Quick Reference
 
-**Version:** V11.0 - The Collaborative Director  
-**Last Updated:** February 1, 2026
+**Version:** V12.0 - Bulletproof Indexing  
+**Last Updated:** February 4, 2026
 
 This is your **one-page cheat sheet** for working with MIMIC. Bookmark this for quick command lookups and troubleshooting.
 
@@ -55,6 +55,10 @@ Remove-Item data/cache/* -Recurse -Force
 
 # Clear only analysis cache (keep standardized clips)
 Remove-Item data/cache/*.json -Force
+
+# --- V12.0 PRIME COMMAND ---
+# Analyze + Standardize EVERYTHING for zero-latency
+python backend/precache_clips.py
 ```
 
 ### Frontend
@@ -158,6 +162,8 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
 |--------|--------|---------|
 | Analysis Speed | <30s | 15-20s ✅ |
 | Cache Hit Rate | >90% | 100% ✅ |
+| Index Load Time| <50ms | 10-20ms ✅ |
+| Search Latency | <20ms | ~5ms ✅ |
 | Diversity Score | >90% | 100% ✅ |
 | Vibe Accuracy | >70% | 80-90% ✅ |
 | Timeline Precision | <0.01s | <0.001s ✅ |

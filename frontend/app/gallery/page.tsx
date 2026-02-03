@@ -69,7 +69,16 @@ export default function LibraryPage() {
         else if (selectedCategory === "synthesis_output") items = [...results];
 
         if (searchQuery.trim()) {
-            items = items.filter(item => item.filename.toLowerCase().includes(searchQuery.toLowerCase()));
+            const q = searchQuery.toLowerCase();
+            items = items.filter(item => {
+                const nameMatch = item.filename.toLowerCase().includes(q);
+                // Smart Search: Check AI metadata if it exists
+                const vibesMatch = (item as Clip).vibes?.some(v => v.toLowerCase().includes(q));
+                const subjectsMatch = (item as Clip).subjects?.some(s => s.toLowerCase().includes(q));
+                const descMatch = (item as Clip).description && String((item as Clip).description).toLowerCase().includes(q);
+
+                return nameMatch || vibesMatch || subjectsMatch || descMatch;
+            });
         }
 
         const sorted = items.sort((a, b) => (b.created_at || 0) - (a.created_at || 0));

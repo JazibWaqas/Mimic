@@ -12,7 +12,7 @@ import mimetypes
 from fastapi.staticfiles import StaticFiles
 import uuid
 from pathlib import Path
-from typing import List
+from typing import List, Optional, Dict
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 import json
@@ -114,48 +114,177 @@ load_source_map()
 
 class LibraryIndex:
     """
-    Singleton index for the entire clip library. 
-    Prevents repeated O(N) filesystem scans on every upload.
+    Singleton index for the entire MIMIC library (clips, results, references).
+    Prevents repeated O(N) filesystem scans on every request.
+    Handles background thumbnail generation.
     """
+    _clips: List[dict] = []
+    _results: List[dict] = []
+    _references: List[dict] = []
     _hashes: dict[str, Path] = {}
+    
     _last_refresh: float = 0
-    _refresh_interval: float = 60.0 # Refresh every minute
+    _refresh_interval: float = 30.0 # Refresh every 30 seconds if requested
     _lock = asyncio.Lock()
+    _is_refreshing = False
+
+    @classmethod
+    async def get_clips(cls, limit: int = None, offset: int = 0) -> List[dict]:
+        await cls._ensure_fresh()
+        data = cls._clips
+        if limit is not None:
+            return data[offset : offset + limit]
+        return data
+
+    @classmethod
+    async def get_results(cls, limit: int = None, offset: int = 0) -> List[dict]:
+        await cls._ensure_fresh()
+        data = cls._results
+        if limit is not None:
+            return data[offset : offset + limit]
+        return data
+
+    @classmethod
+    async def get_references(cls, limit: int = None, offset: int = 0) -> List[dict]:
+        await cls._ensure_fresh()
+        data = cls._references
+        if limit is not None:
+            return data[offset : offset + limit]
+        return data
 
     @classmethod
     async def get_hashes(cls) -> dict[str, Path]:
-        async with cls._lock:
-            now = time.time()
-            if not cls._hashes or (now - cls._last_refresh > cls._refresh_interval):
-                await cls._refresh()
-            return cls._hashes.copy()
+        await cls._ensure_fresh()
+        return cls._hashes.copy()
 
     @classmethod
-    def update(cls, clip_hash: str, path: Path):
-        """Immediate update when a new clip is added."""
+    async def _ensure_fresh(cls):
+        now = time.time()
+        if not cls._last_refresh or (now - cls._last_refresh > cls._refresh_interval):
+            if not cls._is_refreshing:
+                await cls._refresh()
+
+    @classmethod
+    def update_sync(cls, clip_hash: str, path: Path):
+        """Immediate manual update when a new clip is added/uploaded."""
         cls._hashes[clip_hash] = path
+        # We don't fully rebuild the lists here to keep upload fast, 
+        # a refresh will catch the metadata soon.
 
     @classmethod
     async def _refresh(cls):
-        print(f"[INDEX] Refreshing clip library index...")
-        new_hashes = {}
-        
-        # Parallel scan using thread pool (v12.4 optimized)
-        files = [p for p in CLIPS_DIR.glob("*.mp4") if p.is_file()]
-        
-        with ThreadPoolExecutor(max_workers=10) as executor:
-            # We use get_file_hash which is fast (uses mtime/size cache)
-            # but we still pool it to minimize OS-level stat latency.
-            results = list(executor.map(lambda p: (get_file_hash(p), p), files))
-            for h, p in results:
-                if h: new_hashes[h] = p
-        
-        # Save registry once after batch processing
-        save_hash_registry()
-        
-        cls._hashes = new_hashes
-        cls._last_refresh = time.time()
-        print(f"[INDEX] Scanned {len(new_hashes)} clips in library.")
+        async with cls._lock:
+            if cls._is_refreshing: return
+            cls._is_refreshing = True
+            
+            start_time = time.time()
+            print(f"[INDEX] Global Refresh Started...")
+            
+            try:
+                new_clips = []
+                new_results = []
+                new_references = []
+                new_hashes = {}
+                
+                # 1. Scan Clips
+                if CLIPS_DIR.exists():
+                    clip_files = [p for p in CLIPS_DIR.glob("*.mp4") if p.is_file()]
+                    with ThreadPoolExecutor(max_workers=10) as executor:
+                        results = list(executor.map(lambda p: cls._process_file(p, "clip"), clip_files))
+                        for meta, p, h in results:
+                            if meta: 
+                                new_clips.append(meta)
+                                if h: new_hashes[h] = p
+                
+                # 2. Scan Results
+                if RESULTS_DIR.exists():
+                    result_files = [p for p in RESULTS_DIR.glob("*.mp4") if p.is_file()]
+                    with ThreadPoolExecutor(max_workers=10) as executor:
+                        results = list(executor.map(lambda p: cls._process_file(p, "result"), result_files))
+                        for meta, p, h in results:
+                            if meta: 
+                                new_results.append(meta)
+                                # We don't necessarily need results in the global clip hash index
+                
+                # 3. Scan References
+                if REFERENCES_DIR.exists():
+                    ref_files = [p for p in REFERENCES_DIR.glob("*.mp4") if p.is_file()]
+                    with ThreadPoolExecutor(max_workers=10) as executor:
+                        results = list(executor.map(lambda p: cls._process_file(p, "ref"), ref_files))
+                        for meta, p, h in results:
+                            if meta: 
+                                new_references.append(meta)
+
+                # Sort all by newest first
+                new_clips.sort(key=lambda x: x["created_at"], reverse=True)
+                new_results.sort(key=lambda x: x["created_at"], reverse=True)
+                new_references.sort(key=lambda x: x["created_at"], reverse=True)
+                
+                # Atomic Swap
+                cls._clips = new_clips
+                cls._results = new_results
+                cls._references = new_references
+                cls._hashes = new_hashes
+                cls._last_refresh = time.time()
+                
+                save_hash_registry()
+                elapsed = time.time() - start_time
+                print(f"[INDEX] Refresh Complete ({elapsed:.2f}s). Index: {len(new_clips)} clips, {len(new_results)} results, {len(new_references)} refs.")
+                
+            except Exception as e:
+                print(f"[INDEX] Refresh Error: {e}")
+            finally:
+                cls._is_refreshing = False
+
+    @staticmethod
+    def _process_file(p: Path, type_tag: str):
+        """Helper to extract metadata and ensure thumbnail exists in a thread-safe way."""
+        try:
+            h = get_file_hash(p)
+            if not h: return None, p, None
+            
+            thumb_name = f"thumb_{type_tag}_{h}.jpg"
+            thumb_path = THUMBNAILS_DIR / thumb_name
+            
+            # Background thumbnailing if missing
+            if not thumb_path.exists():
+                try:
+                    generate_thumbnail(str(p), str(thumb_path))
+                except Exception as te:
+                    print(f"[THUMB] Failed for {p.name}: {te}")
+
+            stat = p.stat()
+            meta = {
+                "filename": p.name,
+                "path": f"/api/files/{'samples/clips' if type_tag == 'clip' else 'results' if type_tag == 'result' else 'references'}/{p.name}",
+                "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
+                "size": stat.st_size,
+                "created_at": stat.st_mtime,
+                "hash": h
+            }
+            
+            if type_tag == "clip":
+                meta["session_id"] = "samples" # Backward compat
+                # Load AI metadata if it exists (Smart Search)
+                intelligence_path = CLIP_CACHE_DIR / f"clip_comprehensive_{h}.json"
+                if intelligence_path.exists():
+                    try:
+                        with open(intelligence_path, 'r', encoding='utf-8') as f:
+                            intel = json.load(f)
+                            meta["vibes"] = intel.get("vibes", [])
+                            meta["subjects"] = intel.get("primary_subject", [])
+                            meta["description"] = intel.get("content_description", "")
+                            meta["energy"] = intel.get("energy", "Unknown")
+                            meta["quality"] = intel.get("clip_quality", 0)
+                    except: pass
+            elif type_tag == "result":
+                meta["original_filename"] = p.name
+                meta["original_size"] = stat.st_size
+                
+            return meta, p, h
+        except Exception as e:
+            print(f"[INDEX] Error processing {p}: {e}")
+            return None, p, None
 
 # ============================================================================
 # ENDPOINTS
@@ -351,7 +480,7 @@ async def upload_files(
 
         # 3. Update the mapping for future fast-tracking
         source_map[clip_hash] = str(clip_path)
-        LibraryIndex.update(clip_hash, clip_path) # Update global index immediately
+        LibraryIndex.update_sync(clip_hash, clip_path) # Update global index immediately
         return {
             "path": str(clip_path),
             "original_filename": clip.filename,
@@ -801,65 +930,22 @@ async def delete_session(session_id: str):
 # Files are served via /api/files/ endpoints for better control
 
 @app.get("/api/references")
-async def list_reference_samples():
+async def list_reference_samples(limit: Optional[int] = None, offset: int = 0):
     """
-    List all reference videos from data/samples/reference/ (matching test_ref.py structure).
+    List all reference videos from data/samples/reference/.
+    Uses the LibraryIndex in-memory cache for speed.
     """
-    if not REFERENCES_DIR.exists():
-        return {"references": []}
-    
-    references = []
-    for ref_path in REFERENCES_DIR.iterdir():
-        if ref_path.is_file() and ref_path.suffix.lower() in video_exts:
-             ref_hash = get_file_hash(ref_path)
-             thumb_name = f"thumb_ref_{ref_hash}.jpg"
-             thumb_path = THUMBNAILS_DIR / thumb_name
-             
-             if not thumb_path.exists():
-                 generate_thumbnail(str(ref_path), str(thumb_path))
-                 
-             references.append({
-                "filename": ref_path.name,
-                "path": f"/api/files/references/{ref_path.name}",
-                "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
-                "size": ref_path.stat().st_size,
-                "created_at": ref_path.stat().st_mtime
-            })
-    # Sort by newest first
-    references.sort(key=lambda x: x["created_at"], reverse=True)
+    references = await LibraryIndex.get_references(limit=limit, offset=offset)
     return {"references": references}
 
 @app.get("/api/clips")
-async def list_all_clips():
+async def list_all_clips(limit: Optional[int] = None, offset: int = 0):
     """
-    List all clips from data/samples/clips/ (matching test_ref.py structure).
-    Used for the 'Gallery' page.
+    List all clips from data/samples/clips/.
+    Uses the LibraryIndex in-memory cache for speed.
     """
-    all_clips = []
-    
-    # Read all clips from data/samples/clips/ (matching test_ref.py)
-    if CLIPS_DIR.exists():
-        for clip_path in CLIPS_DIR.iterdir():
-            if clip_path.is_file() and clip_path.suffix.lower() in video_exts:
-                clip_hash = get_file_hash(clip_path)
-                thumb_name = f"thumb_clip_{clip_hash}.jpg"
-                thumb_path = THUMBNAILS_DIR / thumb_name
-                
-                if not thumb_path.exists():
-                    generate_thumbnail(str(clip_path), str(thumb_path))
-                
-                all_clips.append({
-                    "session_id": "samples",
-                    "filename": clip_path.name,
-                    "path": f"/api/files/samples/clips/{clip_path.name}",
-                    "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
-                    "size": clip_path.stat().st_size,
-                    "created_at": clip_path.stat().st_mtime
-                })
-    
-    # Sort by newest first
-    all_clips.sort(key=lambda x: x["created_at"], reverse=True)
-    print(f"[API] Returning {len(all_clips)} clips from {CLIPS_DIR}")
+    all_clips = await LibraryIndex.get_clips(limit=limit, offset=offset)
+    print(f"[API] Returning {len(all_clips)} clips from LibraryIndex")
     return {"clips": all_clips}
 
 @app.delete("/api/clips/{session_id}/{filename}")
@@ -875,36 +961,12 @@ async def delete_specific_clip(session_id: str, filename: str):
     raise HTTPException(status_code=404, detail="Clip not found")
 
 @app.get("/api/results")
-async def list_all_results():
+async def list_all_results(limit: Optional[int] = None, offset: int = 0):
     """
     List all generated videos in the results folder.
-    Used for the 'Vault' page.
+    Uses the LibraryIndex in-memory cache for speed.
     """
-    results = []
-    for result_path in RESULTS_DIR.glob("*.mp4"):
-        if result_path.is_file():
-            res_hash = get_file_hash(result_path) # Might be slow for large results, but okay for list
-            thumb_name = f"thumb_res_{res_hash}.jpg"
-            thumb_path = THUMBNAILS_DIR / thumb_name
-            
-            if not thumb_path.exists():
-                generate_thumbnail(str(result_path), str(thumb_path))
-                
-            results.append({
-                "filename": result_path.name,
-                "path": f"/api/files/results/{result_path.name}",
-                "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
-                "size": result_path.stat().st_size,
-                "created_at": result_path.stat().st_mtime
-            })
-    # Sort by newest first
-    results.sort(key=lambda x: x["created_at"], reverse=True)
-    
-    # Pre-generate signatures for the vault list
-    for res in results:
-        res["original_filename"] = res["filename"]
-        res["original_size"] = res["size"]
-        
+    results = await LibraryIndex.get_results(limit=limit, offset=offset)
     return {"results": results}
 
 @app.delete("/api/results/{filename}")
@@ -1093,6 +1155,27 @@ async def serve_thumbnail_file(filename: str):
 async def health():
     return {"status": "healthy"}
 
+# ============================================================================
+# BACKGROUND REFRESH LOOP
+# ============================================================================
+
+async def refresh_index_loop():
+    """Background task to keep the LibraryIndex fresh."""
+    while True:
+        try:
+            # We use the internal _refresh to avoid the interval check 
+            # and ensure it actually refreshes.
+            await LibraryIndex._refresh()
+        except Exception as e:
+            print(f"[BACK] Refresh loop error: {e}")
+        await asyncio.sleep(60) # Refresh every minute
+
+@app.on_event("startup")
+async def startup_event():
+    # Initial refresh
+    asyncio.create_task(LibraryIndex._refresh())
+    # Start periodic refresh loop
+    asyncio.create_task(refresh_index_loop())
 
 if __name__ == "__main__":
     import uvicorn

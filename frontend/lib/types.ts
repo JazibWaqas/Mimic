@@ -13,6 +13,11 @@ export interface Clip {
     size: number;
     created_at: number;
     tags?: string[];
+    vibes?: string[];
+    subjects?: string[];
+    description?: string[];
+    energy?: string;
+    quality?: number;
 }
 
 export interface Result {

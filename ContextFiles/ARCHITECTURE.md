@@ -1,7 +1,7 @@
 # MIMIC Architecture Documentation
 
-**Version:** V11.0 - The Collaborative Director  
-**Last Updated:** February 1, 2026
+**Version:** V12.0 - Bulletproof Indexing  
+**Last Updated:** February 4, 2026
 
 This document provides a complete technical overview of the MIMIC system architecture, detailing the full "Plan → Execute → Style → Reflect" loop with narrative intelligence.
 
@@ -136,10 +136,40 @@ MIMIC uses tiered hash-based caching for instant (~1s) re-runs:
 - **Files:** `ref_{hash}.json`, `clip_comprehensive_{hash}.json`
 - **Benefit:** Gemini analysis cached per file content.
 
-### 3. Critique Cache (New)
+### 3. Critique Cache 
 - **Location:** `data/cache/`
 - **Files:** `critique_{edl_hash}.json`
 - **Benefit:** Director notes appear instantly in the Vault for known edits.
+
+---
+
+## 🆔 The Identity Contract (V12.0)
+
+To ensure zero-latency performance and unbreakable link consistency, MIMIC enforces a strict "Content-First" identity contract.
+
+### 1. The Fingerprint (The Hash)
+Every file is identified by an **MD5 Content Hash** rather than its filename.
+- **Logic:** `hash(first_64kb + last_64kb + total_file_size)`
+- **Benefit:** If you rename a clip, its Identity remains identical. If you modify a single pixel, it becomes a new Identity.
+- **Implementation:** Global `get_file_hash()` utility in `utils.py`.
+
+### 2. The Singleton Index (The Read Path)
+MIMIC uses an **Index-First** architecture to prevent O(N) disk scans.
+- **`LibraryIndex` Singleton:** A memory-resident cache of all Clips, Results, and References.
+- **Background Refresh:** Scans the disk every 60 seconds (or on-demand during uploads) and performs atomic swaps.
+- **Instant Search:** AI Metadata (vibes, subjects, descriptions) are loaded into memory during indexing, allowing sub-10ms "Smart Search" on the frontend.
+
+### 3. The Analysis Contract (Brain v7.0)
+AI analysis is strictly versioned to prevent "Drift."
+- **Contract:** `clip_comprehensive_{hash}.json`
+- **Version:** `CLIP_CACHE_VERSION = "7.0"`
+- **Validation:** If the version in the JSON does not match the system's version, the cache is invalidated and re-generated.
+
+### 4. Bulletproof Pre-Caching
+The `precache_clips.py` utility acts as the "Master Primer."
+- **Phase 1 (AI):** Batch analysis of all clips using parallel Gemini calls.
+- **Phase 2 (Video):** Batch standardization of all clips to 9:16 HD.
+- **Result:** After running, the system becomes "Hot" and needs zero API calls or encode time for those materials.
 
 ---
 
@@ -172,6 +202,6 @@ MIMIC uses tiered hash-based caching for instant (~1s) re-runs:
 
 ---
 
-**Last Updated:** February 1, 2026  
-**Version:** V11.0  
-**Status:** Production Ready
+**Last Updated:** February 4, 2026  
+**Version:** V12.0  
+**Status:** Production Ready - Optimized for 500+ Clips

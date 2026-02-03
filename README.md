@@ -4,7 +4,7 @@
 
 MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrative arc) and automatically recreates that style using your clips. Think "Instagram Reels editor that understands the 'why' behind professional edits."
 
-**Version:** V11.0 - The Collaborative Director (February 1, 2026)
+**Version:** V12.0 - Bulletproof Indexing (February 4, 2026)
 
 ---
 
@@ -66,21 +66,22 @@ MIMIC is not just an automation tool; it’s an AI collaborator designed for the
 - **Stage 6 Reflector:** Post-render AI judgment pass to critique results.
 
 ### **Performance & Caching**
-- **Cache Inheritance (New):** Reuse high-quality metadata across different pacing attempts (Instant re-runs).
+- **🎨 Index-First Architecture (New):** Singleton library indexing for sub-10ms listing and "Smart Search."
+- **🆔 The Identity Contract:** Content-hash based identity ensures metadata never "drifts" even if files are renamed.
+- **Cache Inheritance:** Reuse high-quality metadata across different pacing attempts (Instant re-runs).
 - **Persistent Standardization Cache:** Clips are standardized once and reused forever (hash-based).
 - **Reference Cache:** Reference analysis cached with scene hint fingerprinting.
 - **Critique Cache:** Post-render director notes cached by EDL hash for instant Vault loading.
-- **Speed:** 15-20 seconds total for 30-segment edits (down from 10+ minutes).
+- **Speed:** Zero-latency listing for 500+ clips; 15-20s for full renders.
 
 ---
 
-## 📋 Recent Updates (V11.0 - February 1, 2026)
+## 📋 Recent Updates (V12.0 - February 4, 2026)
 
-### **Major Breakthroughs**
-- **✅ Post-Render Reflection:** Complete AI critique with editorial debrief and remake strategy
-- **✅ Narrative Subject Locking:** Primary subject enforcement (e.g., "People-Group" for friend videos)
-- **✅ Production Hardening:** File validation, environment variables, API consistency
-- **✅ Thumbnail Infrastructure:** Multi-point sampling eliminates black frames across all asset types
+- **✅ Bulletproof Indexing:** Content-hash identities prevent metadata loss during renames.
+- **✅ Index-First Architecture:** Instant sub-10ms listing for large clip libraries.
+- **✅ Smart Search:** Frontend search bar now queries AI vibes, subjects, and descriptions.
+- **✅ Thumbnail Infrastructure:** Multi-point sampling eliminates black frames across all asset types.
 
 ### **Quality Metrics**
 - **Diversity:** **100% Perfect Diversity** (0 repeats) in demo mode

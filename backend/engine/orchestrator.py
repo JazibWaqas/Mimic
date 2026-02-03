@@ -376,6 +376,10 @@ def run_mimic_pipeline(
         
         print(f"[OK] All clips standardized (cached or new) and ready for render.")
         
+        # Hardening (v12.5): Persist the hash registry now so we don't lose the fingerprints
+        from utils import save_hash_registry
+        save_hash_registry()
+        
         # ==================================================================
         # STEP 4: MATCH & EDIT
         # ==================================================================
