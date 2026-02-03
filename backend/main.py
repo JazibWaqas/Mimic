@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 from models import *
 from engine.orchestrator import run_mimic_pipeline
 from engine.processors import generate_thumbnail, convert_to_mp4
-from utils import ensure_directory, cleanup_session, get_file_hash, get_content_hash, save_hash_registry
+from utils import ensure_directory, cleanup_session, get_file_hash, get_bytes_hash, register_file_hash, save_hash_registry
 
 # Load environment variables
 load_dotenv()
@@ -283,24 +283,25 @@ async def upload_files(
 
     async def process_clip(clip):
         clip_content = await clip.read()
-        # Use consistent content-based hash (V12.4)
-        clip_hash = get_content_hash(clip_content)
         file_size = len(clip_content)
+        clip_ext = Path(clip.filename).suffix.lower()
+        clip_hash = get_bytes_hash(clip_content) if clip_ext == ".mp4" else ""
         
         # 1. Direct Content Check (Source-to-Source)
         # If we've seen THESE EXACT BYTES before, return the previous path immediately
-        if clip_hash in source_map:
+        if clip_hash and clip_hash in source_map:
             cached_path = Path(source_map[clip_hash])
             if cached_path.exists():
                 return {
                     "path": str(cached_path),
                     "original_filename": clip.filename,
                     "original_size": file_size,
-                    "was_skipped": True
+                    "was_skipped": True,
+                    "clip_hash": clip_hash
                 }
         
         # 2. Library Cross-Reference (for direct MP4 uploads)
-        if clip_hash in existing_hashes:
+        if clip_hash and clip_hash in existing_hashes:
             existing_clip = existing_hashes[clip_hash]
             # Update source map for future speed
             source_map[clip_hash] = str(existing_clip)
@@ -308,11 +309,11 @@ async def upload_files(
                 "path": str(existing_clip),
                 "original_filename": clip.filename,
                 "original_size": file_size,
-                "was_skipped": True
+                "was_skipped": True,
+                "clip_hash": clip_hash
             }
         
         # Save new clip
-        clip_ext = Path(clip.filename).suffix.lower()
         target_name = f"{Path(clip.filename).stem}.mp4" if clip_ext != ".mp4" else clip.filename
         clip_path = CLIPS_DIR / target_name
         
@@ -343,6 +344,11 @@ async def upload_files(
             with open(clip_path, "wb") as f:
                 f.write(clip_content)
 
+        clip_hash = get_file_hash(clip_path)
+        if not clip_hash:
+            clip_hash = get_bytes_hash(clip_content)
+            register_file_hash(clip_path, clip_hash)
+
         # 3. Update the mapping for future fast-tracking
         source_map[clip_hash] = str(clip_path)
         LibraryIndex.update(clip_hash, clip_path) # Update global index immediately
@@ -350,7 +356,8 @@ async def upload_files(
             "path": str(clip_path),
             "original_filename": clip.filename,
             "original_size": file_size,
-            "was_skipped": False
+            "was_skipped": False,
+            "clip_hash": clip_hash
         }
 
     # Process clips in parallel using asyncio.gather
@@ -419,7 +426,8 @@ async def upload_files(
                 "size": clip_path.stat().st_size,
                 "original_filename": res["original_filename"],
                 "original_size": res["original_size"],
-                "thumbnail_url": thumb_url
+                "thumbnail_url": thumb_url,
+                "clip_hash": res.get("clip_hash") or clip_hash
             }
             
         clips_payload = list(executor.map(get_payload_with_meta, clip_results))

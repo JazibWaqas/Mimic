@@ -8,6 +8,7 @@ export interface Clip {
     session_id: string;
     filename: string;
     path: string;
+    clip_hash?: string;
     thumbnail_url?: string;
     size: number;
     created_at: number;

@@ -105,7 +105,9 @@ export default function VaultPage() {
         const fetchIntel = async () => {
             setIntelLoading(true);
             try {
-                const data = await api.fetchIntelligence(viewMode, selectedItem.filename);
+                const key =
+                    viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
+                const data = await api.fetchIntelligence(viewMode, key);
                 setIntelligence(data);
             } catch (err) {
                 setIntelligence(null);

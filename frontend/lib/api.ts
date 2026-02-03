@@ -100,11 +100,11 @@ export const api = {
     return res.json();
   },
 
-  fetchIntelligence: async (type: string, filename: string) => {
-    const cacheKey = `${type}:${filename}`;
+  fetchIntelligence: async (type: string, key: string) => {
+    const cacheKey = `${type}:${key}`;
     if (intelCache.has(cacheKey)) return intelCache.get(cacheKey);
 
-    const res = await fetch(`${API_BASE}/api/intelligence?type=${type}&filename=${encodeURIComponent(filename)}`);
+    const res = await fetch(`${API_BASE}/api/intelligence?type=${type}&filename=${encodeURIComponent(key)}`);
     if (!res.ok) throw new Error("Intelligence data not found");
     const data = await res.json();
     intelCache.set(cacheKey, data);

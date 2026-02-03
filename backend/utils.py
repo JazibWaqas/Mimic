@@ -89,8 +89,6 @@ def get_fast_hash(path: str | Path) -> str:
                 f.seek(max(0, file_size - 64 * 1024))
                 hasher.update(f.read(64 * 1024))
         
-        # v12.7: Reverted to Legacy Hash (No size included) to match existing cache
-        # hasher.update(str(file_size).encode()) 
         return hasher.hexdigest()
     except Exception:
         # Fallback to filename hash if reading fails
@@ -146,15 +144,9 @@ def get_file_hash(path: str | Path) -> str:
         mtime = stat.st_mtime
         size = stat.st_size
         
-        # Try multiple key formats for backward compatibility (v12.5 Hardened)
-        # Format 1: Int mtime (Modern)
         key_int = f"{p.name}_{int(mtime)}_{size}"
-        # Format 2: Float mtime (Legacy)
-        key_float = f"{p.name}_{mtime}_{size}"
-        
-        for key in [key_int, key_float]:
-            if key in _hash_cache:
-                return _hash_cache[key]
+        if key_int in _hash_cache:
+            return _hash_cache[key_int]
         
         # Cache miss: do the work
         h = get_fast_hash(p)
@@ -165,22 +157,32 @@ def get_file_hash(path: str | Path) -> str:
     except:
         return ""
 
-def get_content_hash(content: bytes) -> str:
-    """
-    Consistency Helper: Generate a hash from bytes that matches the get_fast_hash logic.
-    Used for UploadFiles before they hit the disk.
-    """
+def get_bytes_hash(content: bytes) -> str:
     import hashlib
     file_size = len(content)
     hasher = hashlib.md5()
-    
     if file_size < 128 * 1024:
         hasher.update(content)
     else:
         hasher.update(content[:64 * 1024])
         hasher.update(content[-64 * 1024:])
-    
-    hasher.update(str(file_size).encode())
     return hasher.hexdigest()
+
+
+def register_file_hash(path: str | Path, value: str) -> None:
+    _ensure_registry_loaded()
+    p = Path(path)
+    if not p.exists():
+        return
+    try:
+        stat = p.stat()
+        key_int = f"{p.name}_{int(stat.st_mtime)}_{stat.st_size}"
+        _hash_cache[key_int] = value
+    except:
+        return
+
+
+def get_content_hash(content: bytes) -> str:
+    return get_bytes_hash(content)
 
 
