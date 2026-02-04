@@ -58,6 +58,16 @@ def get_advisor_suggestions(
     
     cache_dir.mkdir(parents=True, exist_ok=True)
     
+    # v12.1 Authority Assertion: Handshake between Reference and Advisor
+    from engine.brain import REFERENCE_CACHE_VERSION
+    blueprint_ver = blueprint.contract.get("version", "0.0") if blueprint.contract else "0.0"
+    if blueprint_ver != REFERENCE_CACHE_VERSION:
+        print(f"  ❌ AUTHORITY FAILURE: Blueprint version ({blueprint_ver}) != Required ({REFERENCE_CACHE_VERSION})")
+        print(f"  ⚠️ Skipping strategic guidance. Please re-analyze reference {blueprint.contract.get('source_hash', 'unknown') if blueprint.contract else ''}")
+        return None
+    
+    print(f"  🤝 Authority Confirmed: v{blueprint_ver} Director-Soul Intelligence active.")
+    
     ref_hash = hashlib.md5(
         (blueprint.narrative_message + str(blueprint.segments)).encode()
     ).hexdigest()[:12]

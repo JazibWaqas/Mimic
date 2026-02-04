@@ -83,6 +83,7 @@ app.add_middleware(
 
 # Track active sessions
 active_sessions = {}
+session_locks: Dict[str, asyncio.Lock] = {} # Lock for each session to prevent race conditions
 video_exts = {".mp4", ".mov", ".avi", ".mpg", ".mpeg", ".3gp", ".m4v", ".mkv"}
 
 # ============================================================================
@@ -110,7 +111,30 @@ def save_source_map():
     except Exception as e:
         print(f"[WARN] Failed to save source_map: {e}")
 
+# Session Persistence (v12.1): Track active sessions across restarts
+SESSIONS_PATH = CACHE_DIR / "active_sessions.json"
+
+def load_active_sessions():
+    global active_sessions
+    if SESSIONS_PATH.exists():
+        try:
+            with open(SESSIONS_PATH, "r", encoding="utf-8") as f:
+                active_sessions = json.load(f)
+                print(f"[RECOVERY] Restored {len(active_sessions)} active sessions from disk.")
+        except Exception as e:
+            print(f"[WARN] Failed to load sessions: {e}")
+            active_sessions = {}
+
+def save_active_sessions():
+    try:
+        # We don't save the locks, they are ephemeral
+        with open(SESSIONS_PATH, "w", encoding="utf-8") as f:
+            json.dump(active_sessions, f, indent=2)
+    except Exception as e:
+        print(f"[WARN] Failed to save sessions: {e}")
+
 load_source_map()
+load_active_sessions()
 
 class LibraryIndex:
     """
@@ -240,13 +264,17 @@ class LibraryIndex:
     def _process_file(p: Path, type_tag: str):
         """Helper to extract metadata and ensure thumbnail exists in a thread-safe way."""
         try:
+            # 1. Identity Verification (Source of Truth)
+            # v12.1: We must use content hash for identity unification
             h = get_file_hash(p)
-            if not h: return None, p, None
+            if not h: 
+                print(f"[INDEX] ERR: Could not compute identity for {p.name}")
+                return None, p, None
             
+            # 2. Thumbnail Linkage (Deterministic)
             thumb_name = f"thumb_{type_tag}_{h}.jpg"
             thumb_path = THUMBNAILS_DIR / thumb_name
             
-            # Background thumbnailing if missing
             if not thumb_path.exists():
                 try:
                     generate_thumbnail(str(p), str(thumb_path))
@@ -260,30 +288,73 @@ class LibraryIndex:
                 "thumbnail_url": f"/api/files/thumbnails/{thumb_name}",
                 "size": stat.st_size,
                 "created_at": stat.st_mtime,
-                "hash": h
+                "hash": h,
+                "intelligence_status": "missing", # Default
+                "version": "unknown"
             }
             
+            # 3. Intelligence Contract Enforcement
             if type_tag == "clip":
-                meta["session_id"] = "samples" # Backward compat
-                # Load AI metadata if it exists (Smart Search)
+                meta["session_id"] = "samples" 
                 intelligence_path = CLIP_CACHE_DIR / f"clip_comprehensive_{h}.json"
                 if intelligence_path.exists():
                     try:
                         with open(intelligence_path, 'r', encoding='utf-8') as f:
                             intel = json.load(f)
-                            meta["vibes"] = intel.get("vibes", [])
-                            meta["subjects"] = intel.get("primary_subject", [])
-                            meta["description"] = intel.get("content_description", "")
-                            meta["energy"] = intel.get("energy", "Unknown")
-                            meta["quality"] = intel.get("clip_quality", 0)
-                    except: pass
+                            # Verify Version Contract (v12.1 Invariant)
+                            cache_ver = intel.get("_cache_version", intel.get("cache_version", "0.0"))
+                            from engine.brain import CLIP_CACHE_VERSION
+                            
+                            if cache_ver == CLIP_CACHE_VERSION:
+                                meta["intelligence_status"] = "authoritative"
+                                meta["vibes"] = intel.get("vibes", [])
+                                meta["subjects"] = intel.get("primary_subject", [])
+                                meta["description"] = intel.get("content_description", "")
+                                meta["energy"] = intel.get("energy", "Unknown")
+                                meta["quality"] = intel.get("clip_quality", 0)
+                                meta["version"] = cache_ver
+                            else:
+                                meta["intelligence_status"] = "legacy"
+                                meta["version"] = cache_ver
+                    except Exception as e:
+                        print(f"[INDEX] ERR: Failed to read contract for {p.name}: {e}")
+            
+            elif type_tag == "ref":
+                # Find best matching reference intelligence
+                from engine.brain import REFERENCE_CACHE_VERSION
+                # v12.1 Refined pattern: catch vX and legacy formats
+                matches = list(REF_CACHE_DIR.glob(f"ref_{h}_*.json"))
+                if matches:
+                    # Sort candidates by version match and time
+                    candidates = []
+                    for m in matches:
+                        try:
+                            with open(m, 'r', encoding='utf-8') as f:
+                                intel = json.load(f)
+                                ver = intel.get("_contract", {}).get("version", intel.get("_cache_version", "0.0"))
+                                candidates.append({"ver": ver, "mtime": m.stat().st_mtime})
+                        except: continue
+                    
+                    if candidates:
+                        candidates.sort(key=lambda x: (x["ver"] == REFERENCE_CACHE_VERSION, x["mtime"]), reverse=True)
+                        best = candidates[0]
+                        meta["version"] = best["ver"]
+                        if best["ver"] == REFERENCE_CACHE_VERSION:
+                            meta["intelligence_status"] = "authoritative"
+                        else:
+                            meta["intelligence_status"] = "legacy"
+
             elif type_tag == "result":
                 meta["original_filename"] = p.name
                 meta["original_size"] = stat.st_size
+                # Results often have a .json sidecar
+                json_path = p.with_suffix(".json")
+                if json_path.exists():
+                    meta["intelligence_status"] = "authoritative"
                 
             return meta, p, h
         except Exception as e:
-            print(f"[INDEX] Error processing {p}: {e}")
+            print(f"[INDEX] Global Error processing {p}: {e}")
             return None, p, None
 
 # ============================================================================
@@ -513,8 +584,10 @@ async def upload_files(
         "status": "uploaded",
         "progress": 0.0,
         "logs": [],
-        "iteration": 0
+        "iteration": 0,
+        "created_at": time.time()
     }
+    save_active_sessions()
     
     print(f"[UPLOAD] Protocol initialized - session {session_id[:8]} active\n")
     
@@ -585,32 +658,38 @@ async def generate_video(
     
     session = active_sessions[session_id]
     
-    if session["status"] == "processing":
-        return {"status": "already_processing", "session_id": session_id}
+    # মার্ক as processing
+    # v12.1: Implement session locking to prevent race conditions
+    if session_id not in session_locks:
+        session_locks[session_id] = asyncio.Lock()
     
-    # Prepare for iteration - detect next number from disk to stay persistent
-    tag = session_id if len(session_id) < 12 else session_id[:12]
-    existing_versions = []
-    
-    # Scan RESULTS_DIR for existing versions of this session
-    if RESULTS_DIR.exists():
-        for f in RESULTS_DIR.glob(f"*_{tag}_v*.mp4"):
-            try:
-                # Extract N from ..._vN
-                v_part = f.stem.split("_v")[-1]
-                if v_part.isdigit():
-                    existing_versions.append(int(v_part))
-            except: pass
-            
-    # Default to memory count if not found on disk, but prioritize disk
-    disk_max = max(existing_versions) if existing_versions else 0
-    current_iteration = max(disk_max + 1, session.get("iteration", 0) + 1)
-    
-    session["iteration"] = current_iteration
-    
-    # Mark as processing
-    session["status"] = "processing"
-    session["progress"] = 0.0
+    async with session_locks[session_id]:
+        if session["status"] == "processing":
+            return {"status": "already_processing", "session_id": session_id}
+        
+        # Prepare for iteration - detect next number from disk to stay persistent
+        tag = session_id if len(session_id) < 12 else session_id[:12]
+        existing_versions = []
+        
+        # Scan RESULTS_DIR for existing versions of this session
+        if RESULTS_DIR.exists():
+            for f in RESULTS_DIR.glob(f"*_{tag}_v*.mp4"):
+                try:
+                    # Extract N from ..._vN
+                    v_part = f.stem.split("_v")[-1]
+                    if v_part.isdigit():
+                        existing_versions.append(int(v_part))
+                except: pass
+                
+        # Default to memory count if not found on disk, but prioritize disk
+        disk_max = max(existing_versions) if existing_versions else 0
+        current_iteration = max(disk_max + 1, session.get("iteration", 0) + 1)
+        
+        session["iteration"] = current_iteration
+        
+        # Mark as processing
+        session["status"] = "processing"
+        session["progress"] = 0.0
     
     # Run pipeline in background
     print(f"[GENERATE] Executing iteration v{current_iteration} for session: {session_id}")
@@ -726,10 +805,30 @@ def process_video_pipeline(
         if result.success:
             print(f"\n[PIPELINE] SUCCESS - Pipeline completed in {elapsed:.1f}s")
             print(f"[PIPELINE] Output: {result.output_path}")
+            
+            # Generate thumbnail for the result immediately for Vault UI
+            res_path = Path(result.output_path)
+            res_hash = get_file_hash(res_path)
+            res_thumb_name = f"thumb_res_{res_hash}.jpg"
+            res_thumb_path = THUMBNAILS_DIR / res_thumb_name
+            res_thumb_url = None
+            try:
+                if not res_thumb_path.exists():
+                    generate_thumbnail(str(res_path), str(res_thumb_path))
+                res_thumb_url = f"/api/files/thumbnails/{res_thumb_name}"
+            except Exception as te:
+                print(f"[THUMB] Result thumbnail failed: {te}")
+
             active_sessions[session_id]["status"] = "complete"
             active_sessions[session_id]["output_path"] = result.output_path
+            active_sessions[session_id]["thumbnail_url"] = res_thumb_url
             active_sessions[session_id]["blueprint"] = result.blueprint.model_dump() if result.blueprint else None
             active_sessions[session_id]["clip_index"] = result.clip_index.model_dump() if result.clip_index else None
+            
+            save_active_sessions()
+            
+            # Trigger index refresh to ensure Vault page sees the new result immediately
+            asyncio.run_coroutine_threadsafe(LibraryIndex._refresh(), asyncio.get_event_loop())
         else:
             print(f"\n[PIPELINE] FAILED - Error: {result.error}")
             active_sessions[session_id]["status"] = "error"
@@ -1055,11 +1154,46 @@ async def get_intelligence(type: str, filename: str):
                 raise HTTPException(status_code=404, detail="Reference video not found")
             
             ref_hash = get_file_hash(ref_path)
-            # Reference cache naming: ref_{hash}_h{fingerprint}.json
-            matches = list(REF_CACHE_DIR.glob(f"ref_{ref_hash}_h*.json"))
-            if matches:
-                with open(matches[0], 'r', encoding='utf-8') as f:
-                    return json.load(f)
+            # Reference cache naming: ref_{hash}_v{ver}_h{fingerprint}.json
+            # v12.1 Resolve Ambiguity: Find ALL matches, prioritize correct version, then latest time.
+            from engine.brain import REFERENCE_CACHE_VERSION
+            matches = list(REF_CACHE_DIR.glob(f"ref_{ref_hash}_*.json"))
+            if not matches:
+                 return {"status": "pending", "message": "Reference analysis missing"}
+            
+            # Create candidates list with metadata for sorting
+            candidates = []
+            for m in matches:
+                try:
+                    with open(m, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        ver = data.get("_cache_version", data.get("cache_version", "0.0"))
+                        candidates.append({
+                            "path": m,
+                            "version": ver,
+                            "mtime": m.stat().st_mtime,
+                            "data": data
+                        })
+                except: continue
+            
+            if not candidates:
+                 return {"status": "pending", "message": "Reference analysis unreadable"}
+
+            # SORT: 1. Current Version Matches first, 2. Latest time first
+            candidates.sort(key=lambda x: (x["version"] == REFERENCE_CACHE_VERSION, x["mtime"]), reverse=True)
+            
+            target = candidates[0]
+            data = target["data"]
+            
+            # Inject authority indicators for frontend peace of mind
+            data["_status"] = "complete"
+            data["_authority"] = "authoritative" if target["version"] == REFERENCE_CACHE_VERSION else "legacy"
+            data["_engine_version"] = target["version"]
+            
+            if target["version"] != REFERENCE_CACHE_VERSION:
+                print(f"[INTEL] WARN: Serving legacy intelligence ({target['version']}) for {filename}")
+            
+            return data
 
         elif type == "clips":
             clip_path = CLIPS_DIR / filename
@@ -1071,7 +1205,13 @@ async def get_intelligence(type: str, filename: str):
             json_path = CLIP_CACHE_DIR / f"clip_comprehensive_{clip_hash}.json"
             if json_path.exists():
                 with open(json_path, 'r', encoding='utf-8') as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    # Verify Version Contract
+                    from engine.brain import CLIP_CACHE_VERSION
+                    ver = data.get("_cache_version", data.get("cache_version", "0.0"))
+                    if ver != CLIP_CACHE_VERSION:
+                         print(f"[INTEL] WARN: Serving legacy intelligence ({ver}) for clip {filename}")
+                    return data
                     
         # If we reached here, the intelligence is not yet on disk
         return {

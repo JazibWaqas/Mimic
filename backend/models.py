@@ -3,7 +3,7 @@ Data models for MIMIC project.
 These are the ONLY valid data structures. Do not create ad-hoc dictionaries.
 """
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from enum import Enum
 from typing import List, Optional
 
@@ -84,6 +84,25 @@ class Segment(BaseModel):
     camera_movement: str = Field("", description="Camera motion: Locked | Handheld | Smooth pan | Erratic | Mixed")
     emotional_guidance: str = Field("", description="What the viewer should feel (e.g. anticipation, joy)")
     
+    # Director Soul (v12.1)
+    media_type: str = Field("Video", description="Video | Still")
+    shot_scale_role: str = Field("", description="World-Building | Action-Link | Intimacy-Focus")
+    temporal_weight: str = Field("Push", description="Push (fast/tension) vs Breath (emotional/resting)")
+    emotional_anchor: bool = Field(False, description="Whether this segment is a key narrative turning point")
+    audio_driver: str = Field("", description="Music-Rhythm | Sound-Event | Emotional-Silence")
+    audio_priority: str = Field("", description="Music > SFX | SFX > Music | Silence > All")
+    cut_motivation: str = Field("", description="Rhythmic-Snap | Graphic-Match | Action-Completion | Narrative-Shift")
+    transition_intent: dict = Field(default_factory=dict, description="Detailed transition mechanics: type, mechanism, strength")
+    continuity_hook: dict = Field(default_factory=dict, description="Hooks for visual flow: opens, resolves, type")
+    
+    @field_validator('shot_scale_role', 'temporal_weight', 'cut_motivation')
+    @classmethod
+    def validate_director_soul(cls, v, info):
+        """v12.1 Assertion: Ensure semantic depth is present."""
+        if not v or v == "":
+            raise ValueError(f"Field {info.field_name} is required for v12.1 analysis. The pipeline is falling back to legacy data—re-analyze the reference.")
+        return v
+    
     @field_validator('end')
     @classmethod
     def end_after_start(cls, v, info):
@@ -106,6 +125,8 @@ class StyleBlueprint(BaseModel):
     Complete analysis of reference video structure.
     This is the "editing DNA" we'll apply to user clips.
     """
+    model_config = ConfigDict(populate_by_name=True)
+    
     total_duration: float = Field(..., gt=0, description="Total video length in seconds")
     segments: List[Segment] = Field(..., min_length=1, description="Ordered list of segments")
     
@@ -139,20 +160,32 @@ class StyleBlueprint(BaseModel):
     visual_effects: List[str] = Field(default_factory=list, description="Recurring effects: Film grain, Light leaks, etc.")
     shot_variety: dict = Field(default_factory=dict, description="Shot scale variety: dominant_scale, variety_level")
     
+    # Global Style Branding (v12.1)
+    stylistic_invariants: List[str] = Field(default_factory=list, description="Fixed rules for this specific edit (e.g. 'Hard cuts only')")
+    peak_density: str = Field("Moderate", description="How crowded the peaks are: Sparse | Moderate | Dense")
+    
     # Editing Style (v8.0+)
     cut_style: str = Field("", description="How cuts are executed: Hard cuts | Cross dissolves | Match cuts | Jump cuts | Mixed")
     transition_effects: List[str] = Field(default_factory=list, description="Special transitions: Whip pans, Zooms, Morphs, None")
+    
+    # Metadata Invariants (v12.1)
+    reference_audio: str = Field("original", description="original | muted. Tracks if the source was muted during analysis.")
     
     # Audio & Music (v8.0+)
     music_sync: str = Field("", description="Cut-music alignment: Tightly synced | Loosely synced | Independent")
     audio_style: dict = Field(default_factory=dict, description="Audio characteristics: genre, vocal_presence, energy")
     music_structure: dict = Field(default_factory=dict, description="Music structure: phrases, accent_moments, ending_type")
     
-    # Text Styling (v8.0+)
+    # Text Styling & Identity (v12.1 Refined)
     text_style: dict = Field(default_factory=dict, description="Typography design: font_style, animation, placement, color_effects")
+    text_behavior: dict = Field(default_factory=dict, description="Logic of text: appearance_logic, entry_moment, exit_rule, priority")
+    text_cadence: str = Field("", description="Rhythm of text: Per-cut | Per-beat | Per-phrase | Static")
     
     overall_reasoning: str = Field("", description="AI's holistic thinking about this video's structure")
     ideal_material_suggestions: List[str] = Field(default_factory=list, description="Suggestions for the user on what clips would work best")
+    
+    # Identity Passport (v12.1)
+    contract: dict = Field(default_factory=dict, alias="_contract", serialization_alias="_contract", validation_alias="_contract", description="Self-describing identity: version, type, source_hash")
     
     @field_validator('segments')
     @classmethod
@@ -318,24 +351,10 @@ class BestMoment(BaseModel):
 class ClipMetadata(BaseModel):
     """
     Comprehensive analysis result for a single user clip.
-    
-    Contains overall energy/motion PLUS pre-computed best moments for each
-    energy level, enabling instant lookup during segment matching without
-    additional API calls.
-    
-    Example: {
-        "filename": "dance_clip.mp4",
-        "filepath": "/temp/abc123/clips/dance_clip.mp4",
-        "duration": 15.2,
-        "energy": "High",
-        "motion": "Dynamic",
-        "best_moments": {
-            "High": {"start": 8.2, "end": 10.5, "reason": "Peak dance move"},
-            "Medium": {"start": 4.0, "end": 6.2, "reason": "Moderate movement"},
-            "Low": {"start": 0.0, "end": 2.0, "reason": "Calm intro"}
-        }
-    }
+    ...
     """
+    model_config = ConfigDict(populate_by_name=True)
+    
     filename: str
     filepath: str
     duration: float = Field(..., gt=0)
@@ -364,6 +383,9 @@ class ClipMetadata(BaseModel):
         None, 
         description="Best moments keyed by energy level (High/Medium/Low)"
     )
+
+    # Identity Passport (v12.1)
+    contract: dict = Field(default_factory=dict, alias="_contract", serialization_alias="_contract", validation_alias="_contract", description="Self-describing identity: version, type, source_hash")
     
     # Legacy fields for backward compatibility (deprecated - use best_moments instead)
     best_moment_start: float | None = Field(None, ge=0, description="DEPRECATED: Use best_moments instead")
@@ -461,6 +483,8 @@ class PipelineResult(BaseModel):
     """
     Final output from orchestrator.run_mimic_pipeline().
     """
+    model_config = ConfigDict(populate_by_name=True)
+    
     success: bool
     output_path: str | None = None
     blueprint: StyleBlueprint | None = None
@@ -472,4 +496,7 @@ class PipelineResult(BaseModel):
     iteration: int = Field(1, description="The version/iteration of this result")
     error: str | None = None
     processing_time_seconds: float | None = None
+    
+    # Identity Passport (v12.1)
+    contract: dict = Field(default_factory=dict, alias="_contract", serialization_alias="_contract", validation_alias="_contract", description="Result identity contract")
 

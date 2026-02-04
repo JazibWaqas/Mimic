@@ -26,7 +26,8 @@ from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints,
 from engine.brain import (
     analyze_reference_video,
     analyze_all_clips,
-    create_fallback_blueprint
+    create_fallback_blueprint,
+    REFERENCE_CACHE_VERSION
 )
 from engine.generator import generate_blueprint_from_text
 from engine.reflector import reflect_on_edit
@@ -516,7 +517,13 @@ def run_mimic_pipeline(
             critique=critique,
             library_health=library_health,
             iteration=iteration,
-            processing_time_seconds=processing_time
+            processing_time_seconds=processing_time,
+            contract={
+                "type": "result",
+                "version": REFERENCE_CACHE_VERSION,
+                "session_id": session_id,
+                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+            }
         )
         
         # SAVE INTELLIGENCE REPORT FOR FRONTEND (Master Whitebox File)

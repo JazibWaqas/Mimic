@@ -22,13 +22,8 @@ from utils.api_key_manager import get_key_manager, get_api_key, rotate_api_key
 
 # Separate cache versioning for reference vs clip analysis
 # Reference and clip analysis use different prompts and should be versioned independently
-REFERENCE_CACHE_VERSION = "8.0"  # v8.0: Editorial intelligence (shot_function, relation_to_previous, expected_hold, camera_movement), visual style (color_grading, visual_effects), music structure, text styling (Jan 31, 2026)
+REFERENCE_CACHE_VERSION = "12.1"  # v12.1: Director-Soul Intelligence: Sensory Contracts, Pacing Authority, Narrative Scale Role (Feb 4, 2026)
 CLIP_CACHE_VERSION = "7.0"        # v7.0: Enhanced analysis with intensity, motion granularity, semantic content, and moment roles (Jan 27, 2026)
-# v5.0: Fixed string corruption bug + vibes loading (Jan 21, 2026)
-# v4.0: Added vibes, content_description, and reasoning (Jan 19, 2026)
-# v3.0: Comprehensive clip analysis with best moments (Jan 9, 2025)
-# v2.0: Updated to detect actual cut points (Jan 9, 2025)
-# v1.0: Initial prompt (3-8 segments, basic energy/motion)
 
 # ============================================================================
 # PROMPTS (These are CRITICAL—do not modify without testing)
@@ -37,115 +32,152 @@ CLIP_CACHE_VERSION = "7.0"        # v7.0: Enhanced analysis with intensity, moti
 REFERENCE_ANALYSIS_PROMPT = """
 You are a professional video editor, creative director, and post-production supervisor analyzing a REFERENCE VIDEO.
 
-Your task is to extract EVERY aspect of this video's creative DNA — not just how it looks, but why each editorial decision works. This analysis will be used to recreate the EXACT editorial structure, semantic intent, and stylistic execution with different footage.
+Your task is to extract the COMPLETE editorial intelligence of this video — not just how it looks, but WHY every decision works.
 
-Think like a human editor, not a tagging system.
+This analysis will be used by an automated editorial system to recreate the SAME narrative logic, pacing authority, stylistic rules, continuity intelligence, and emotional restraint using different footage.
+
+Think like a human editor making intentional decisions under real-world constraints.
+Do NOT think like a tagging system.
+
+IMPORTANT:
+- The reference video MAY be muted or have no audio.
+- If audio is unavailable, INFER editorial audio motivation based on visual causality, rhythm, and cinematic convention.
+- Always prioritize editorial intent over literal signal detection.
 
 ---
 
 ## 1. TEXT & NARRATIVE CONTEXT
 
 - text_overlay:
-  Extract ALL readable on-screen text that appears in the video.
-  If multiple text elements appear, list them all separated by " | ".
+  Extract ALL readable on-screen text.
+  If multiple text elements appear, list them separated by " | ".
 
 - text_style:
-  Describe the typography and text design:
-  * Font style (e.g., Bold Sans-serif, Handwritten, Serif, Monospace)
-  * Text animation (e.g., Static, Fade-in, Typewriter, Slide, Glitch)
-  * Text placement (e.g., Center, Top-third, Bottom-third, Corner)
-  * Text color and effects (e.g., White with glow, Gradient, Outline, Shadow)
+  * font_style (e.g., Bold Sans-serif, Serif, Handwritten, Stencil)
+  * animation (Static, Fade, Typewriter, Flash-on, Slide, Glitch)
+  * placement (Center, Top-third, Bottom-third, Corner)
+  * color_effects (Color, outline, glow, shadow, gradient)
+
+- text_behavior:
+  * appearance_logic (Intro-only, Beat-driven, Continuous, Narrative punctuation)
+  * entry_moment (Opening-frame, First-push, Beat-drop, Narrative-shift)
+  * exit_rule (Cut-with-shot, Hold-past-frame, Fade-consistent)
+  * priority (Primary | Secondary | Decorative)
+
+- text_cadence:
+  Per-cut | Per-beat | Per-phrase | Static
 
 - narrative_message:
-  In ONE sentence, explain what this edit is trying to communicate emotionally or philosophically.
+  ONE sentence describing the emotional or philosophical message.
 
 - intent_clarity:
-  "Clear" | "Implicit" | "Ambiguous"
+  Clear | Implicit | Ambiguous
 
 ---
 
 ## 2. VISUAL STYLE & AESTHETICS
 
 - color_grading:
-  * Tone: Warm | Cool | Neutral | Desaturated | Vibrant
-  * Contrast: High | Medium | Low
-  * Specific look (e.g., Vintage film, Analog VHS, Teal-Orange, Moody dark)
+  * tone (Warm | Cool | Neutral | Desaturated | Vibrant)
+  * contrast (High | Medium | Low)
+  * specific_look (e.g., Teal-Orange, Filmic, Vintage, Commercial Clean)
 
 - aspect_ratio:
-  16:9 | 9:16 | 1:1 | 4:5 | 21:9 | Other
+  16:9 | 9:16 | 1:1 | 4:5 | 21:9 | Mixed
 
 - visual_effects:
-  List ALL recurring effects (Film grain, Light leaks, VHS noise, Chromatic aberration, Slow motion, Speed ramps, Vignette, Glitch, None).
+  List ALL recurring effects (Grain, Slow motion, Speed ramps, VHS noise, Motion blur, Vignette, None).
+
+- stylistic_invariants:
+  Rules that NEVER break in this edit (e.g., “Hard cuts only”, “Center text only”, “Golden hour lighting”).
 
 - shot_variety:
-  * Dominant scale: Extreme CU | CU | Medium | Wide | Extreme Wide | Mixed
-  * Variety level: Consistent | Moderate | High variety
+  * dominant_scale (Extreme CU | CU | Medium | Wide | Extreme Wide | Mixed)
+  * variety_level (Consistent | Moderate | High variety)
 
 ---
 
 ## 3. EDITING STYLE & RHYTHM
 
 - editing_style:
-  (Cinematic montage, Memory reel, Travel edit, Music video, Vlog, Documentary)
+  Cinematic montage | Music video | Memory reel | Travel edit | Documentary
 
 - cut_style:
-  Hard cuts | Cross dissolves | Match cuts | Jump cuts | Mixed
+  Hard cuts | Cross dissolves | Match cuts | Mixed
 
 - transition_effects:
-  (Whip pans, Zooms, Morphs, None)
+  List if explicitly visible, otherwise [].
 
 - emotional_intent:
-  (Nostalgic, Reflective, Energetic, Playful, Dramatic, Peaceful)
+  Energetic | Nostalgic | Triumphant | Reflective | Aggressive | Peaceful
 
 - arc_description:
-  Describe the emotional and energy progression over time.
+  Describe how emotion and energy evolve over time.
 
 - pacing_feel:
-  Breathable | Relentless | Steady | Syncopated | Reflective
+  Breathable | Relentless | Syncopated | Steady | Reflective
 
 - visual_balance:
-  People-centric | Place-centric | Balanced | Action-focused | Atmosphere-focused
+  People-centric | Action-focused | Place-centric | Balanced
+
+- peak_density:
+  Sparse | Moderate | Dense
 
 ---
 
-## 4. AUDIO & MUSIC RELATIONSHIP
+## 4. AUDIO & EDITORIAL SOUND LOGIC
+
+(Note: Audio may be muted. Infer intent if needed.)
 
 - music_sync:
   Tightly synced | Loosely synced | Independent
 
 - audio_style:
-  * Genre
-  * Vocal presence: Instrumental | Vocals | Mixed
-  * Energy: High | Mid | Slow/Ambient
+  * genre
+  * vocal_presence (Instrumental | Vocals | Mixed)
+  * energy (Low | Medium | High)
 
 ---
 
 ## 5. CONTENT REQUIREMENTS (EDITORIAL CONSTRAINTS)
 
 - must_have_content:
-  3–5 moment types this edit fundamentally relies on (describe meaning, not mechanics).
+  3–5 moment types the edit relies on (describe meaning, not mechanics).
 
 - should_have_content:
-  2–3 moment types that would strengthen the edit.
+  2–3 moment types that strengthen the edit.
 
 - avoid_content:
-  Content that would break the emotional or narrative intent.
+  Content that breaks the intent.
 
 ---
 
-## 6. SEGMENT STRUCTURE (CUT-TO-CUT)
+## 6. SEGMENT STRUCTURE (CUT-TO-CUT INTELLIGENCE)
 
 Identify EVERY REAL CUT and define segments.
 
 For EACH segment:
 
-- energy: Low | Medium | High
-- motion: Static | Dynamic
-- vibe: Single-word visible subject or activity
-- shot_scale: Extreme CU | CU | Medium | Wide | Extreme Wide
-- arc_stage: Intro | Build-up | Peak | Outro
+- media_type:
+  Video | Still
 
-### Editorial Intelligence (REQUIRED)
+- energy:
+  Low | Medium | High
+
+- motion:
+  Static | Dynamic
+
+- vibe:
+  Single-word description of visible action or feeling
+
+- shot_scale:
+  Extreme CU | CU | Medium | Wide | Extreme Wide
+
+- shot_scale_role:
+  World-Building | Action-Link | Intimacy-Focus
+
+- arc_stage:
+  Intro | Build-up | Peak | Outro
 
 - shot_function:
   Establish | Action | Reaction | Detail | Transition | Release | Button
@@ -156,30 +188,57 @@ For EACH segment:
 - expected_hold:
   Short | Normal | Long
 
+RULE:
+- If temporal_weight is Breath, expected_hold should be Normal or Long.
+- If temporal_weight is Push, expected_hold should generally be Short unless strong narrative emphasis exists.
+
+- temporal_weight:
+  Push | Breath
+
+- emotional_anchor:
+  true | false
+
+- audio_driver:
+  Music-Rhythm | Sound-Event | Emotional-Silence
+
+- audio_priority:
+  Music > SFX | SFX > Music | Silence > All
+
+- cut_motivation:
+  Rhythmic-Snap | Graphic-Match | Action-Completion | Narrative-Shift
+
+- transition_intent:
+  * type (Hard | Motion-Carry | Match | Temporal-Compress | Temporal-Stretch | Graphic)
+  * mechanism (e.g., Directional motion, Scale-in, Shape match, Speed ramp)
+  * strength (Subtle | Normal | Aggressive)
+
+- continuity_hook:
+  * opens (actions or visual states initiated here)
+  * resolves (actions or visual states completed here)
+  * type (Physical-Action | Motion-Direction | Object-Interaction | Gaze | Spatial-Movement | None)
+
 - camera_movement:
   Locked | Handheld | Smooth pan | Erratic | Mixed
 
 Rules:
 - Detect REAL cuts only
-- Segment IDs must be sequential
+- Segment IDs sequential
 - Final segment must end exactly at total_duration
 
 ---
 
 ## 7. MUSIC STRUCTURE (EDITORIAL)
 
-Analyze music structurally, not technically.
-
 - music_structure:
-  * phrases (intro, main, breakdown, resolve)
-  * accent_moments (drops, emphasized beats)
-  * ending_type (hard stop, fade, loop)
+  * phrases (intro, build, drop, resolve)
+  * accent_moments (timestamps or descriptions)
+  * ending_type (Hard stop | Fade | Loop)
 
 ---
 
 ## OUTPUT REQUIREMENTS
 
-- Output VALID JSON ONLY
+- VALID JSON ONLY
 - No markdown
 - No explanations
 - Fill ALL fields (use "" or [] if not applicable)
@@ -190,26 +249,17 @@ Analyze music structurally, not technically.
 
 {
   "text_overlay": "",
-  "text_style": {
-    "font_style": "",
-    "animation": "",
-    "placement": "",
-    "color_effects": ""
-  },
+  "text_style": {},
+  "text_behavior": {},
+  "text_cadence": "",
   "narrative_message": "",
   "intent_clarity": "",
 
-  "color_grading": {
-    "tone": "",
-    "contrast": "",
-    "specific_look": ""
-  },
+  "color_grading": {},
   "aspect_ratio": "",
   "visual_effects": [],
-  "shot_variety": {
-    "dominant_scale": "",
-    "variety_level": ""
-  },
+  "stylistic_invariants": [],
+  "shot_variety": {},
 
   "editing_style": "",
   "cut_style": "",
@@ -218,43 +268,20 @@ Analyze music structurally, not technically.
   "arc_description": "",
   "pacing_feel": "",
   "visual_balance": "",
+  "peak_density": "",
 
   "music_sync": "",
-  "audio_style": {
-    "genre": "",
-    "vocal_presence": "",
-    "energy": ""
-  },
+  "audio_style": {},
 
   "must_have_content": [],
   "should_have_content": [],
   "avoid_content": [],
 
-  "music_structure": {
-    "phrases": [],
-    "accent_moments": [],
-    "ending_type": ""
-  },
+  "music_structure": {},
 
   "total_duration": 0.0,
 
-  "segments": [
-    {
-      "id": 1,
-      "start": 0.0,
-      "end": 1.0,
-      "duration": 1.0,
-      "energy": "Medium",
-      "motion": "Dynamic",
-      "vibe": "People",
-      "shot_scale": "Wide",
-      "arc_stage": "Intro",
-      "shot_function": "Establish",
-      "relation_to_previous": "None",
-      "expected_hold": "Normal",
-      "camera_movement": "Handheld"
-    }
-  ],
+  "segments": [],
 
   "overall_reasoning": "",
   "ideal_material_suggestions": []
@@ -876,7 +903,13 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
             ))
             segment_id += 1
     
-    print(f"[SUBDIVISION] {len(blueprint.segments)} segments -> {len(new_segments)} segments (max {max_segment_duration:.1f}s each)")
+    segment_count_original = len(blueprint.segments)
+    segment_count_new = len(new_segments)
+    drift = segment_count_new - segment_count_original
+    if drift > 0:
+        print(f"[SUBDIVISION] Structural drift detected: +{drift} segments added (Original: {segment_count_original}, Final: {segment_count_new} | max {max_segment_duration:.1f}s each)")
+    else:
+        print(f"[SUBDIVISION] No drift: Rhythm preserved (Segments: {segment_count_original})")
     
     # Create new blueprint with subdivided segments, preserving style metadata
     return StyleBlueprint(
@@ -886,7 +919,8 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
         emotional_intent=blueprint.emotional_intent,
         arc_description=blueprint.arc_description,
         overall_reasoning=blueprint.overall_reasoning,
-        ideal_material_suggestions=blueprint.ideal_material_suggestions
+        ideal_material_suggestions=blueprint.ideal_material_suggestions,
+        reference_audio=blueprint.reference_audio
     )
 
 
@@ -920,45 +954,55 @@ def analyze_reference_video(
     from utils import get_file_hash, save_hash_registry
     file_hash = get_file_hash(video_path)
     
-    # Try primary cache first
+    # v12.1 INVARIANT: Authoritative Cache Lookup
+    # We scan all matches and find the best candidate based on (Version, Fingerprint, Time)
     matches = list(ref_cache_dir.glob(f"ref_{file_hash}_*.json"))
+    best_candidate_path = None
     
-    # v12.5 Hardened: Legacy 12-char fallback
-    if not matches and len(file_hash) > 12:
-        legacy_hash = file_hash[:12]
-        matches = list(ref_cache_dir.glob(f"ref_{legacy_hash}_*.json"))
-        
-    if matches:
-        # Use the most specific/recent one
-        cache_file = sorted(matches)[-1]
-    else:
-        # Define where we WOULD save a new one (using modern 32-char)
-        if scene_timestamps:
-            import hashlib
-            hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
-            cache_file = ref_cache_dir / f"ref_{file_hash}_h{hint_hash}.json"
-        else:
-            cache_file = ref_cache_dir / f"ref_{file_hash}_hints0.json"
+    # Pre-calculate hint_hash for exact matching if requested
+    hint_tag = ""
+    if scene_timestamps:
+        import hashlib
+        hint_hash = hashlib.md5(",".join(map(lambda x: f"{x:.2f}", scene_timestamps)).encode()).hexdigest()[:8]
+        hint_tag = f"h{hint_hash}"
 
-    # Try primary cache first, then fallback to any existing cache for this video (Cache Inheritance)
-    if not cache_file.exists():
-        fallback_candidates = list(ref_cache_dir.glob(f"ref_{file_hash}_*.json"))
-        # Also check legacy if current is missing
-        if not fallback_candidates and len(file_hash) > 12:
-            fallback_candidates = list(ref_cache_dir.glob(f"ref_{file_hash[:12]}_*.json"))
-            
-        if fallback_candidates:
-            # Sort to get the most substantial one (more data = better intelligence)
-            fallback_candidates.sort(key=lambda x: x.stat().st_size, reverse=True)
-            print(f"[CACHE] Inheriting intelligence from previous analysis: {fallback_candidates[0].name}")
-            cache_file = fallback_candidates[0]
-        elif fallback_cache_file and fallback_cache_file.exists():
-            print(f"[CACHE] Falling back to general analysis: {fallback_cache_file.name}")
-            cache_file = fallback_cache_file
-    
+    candidates = []
+    for m in matches:
+        try:
+            with open(m, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                ver = data.get("_cache_version", data.get("cache_version", "0.0"))
+                candidates.append({
+                    "path": m,
+                    "version": ver,
+                    "mtime": m.stat().st_mtime,
+                    "is_hint_match": hint_tag and hint_tag in m.name
+                })
+        except: continue
+
+    if candidates:
+        # Sort Rule: 
+        # 1. Match current version (REFERENCE_CACHE_VERSION)
+        # 2. Match exact hint fingerprint
+        # 3. Newest modification time
+        candidates.sort(key=lambda x: (
+            x["version"] == REFERENCE_CACHE_VERSION,
+            x["is_hint_match"],
+            x["mtime"]
+        ), reverse=True)
+        best_candidate_path = candidates[0]["path"]
+
+    # Define the "Ideal" save path if we have to re-analyze (V12.1: Versioned)
+    if hint_tag:
+        ideal_cache_path = ref_cache_dir / f"ref_{file_hash}_v{REFERENCE_CACHE_VERSION}_{hint_tag}.json"
+    else:
+        ideal_cache_path = ref_cache_dir / f"ref_{file_hash}_v{REFERENCE_CACHE_VERSION}_hints0.json"
+
+    cache_file = best_candidate_path or ideal_cache_path
+
     if cache_file.exists():
-        cache_type = "Hybrid Rhythmic" if "hints0" not in cache_file.name else "General"
-        print(f"[CACHE] Found {cache_type} analysis: {cache_file.name}")
+        cache_type = "Hybrid Rhythmic" if "h" in cache_file.name else "General"
+        print(f"[CACHE] Loaded {cache_type} analysis: {cache_file.name}")
         try:
             # Read cache with UTF-8 encoding to handle emojis/unicode from Gemini
             with open(cache_file, encoding='utf-8') as f:
@@ -970,7 +1014,10 @@ def analyze_reference_video(
                 print(f"[CACHE] Reference version mismatch ({cache_version} vs {REFERENCE_CACHE_VERSION}). Re-analyzing...")
                 cache_file.unlink()  # Safe: file is closed
             else:
+                # Hydrate the blueprint, preserving the contract if it exists in the cache
                 blueprint_data = {k: v for k, v in cache_data.items() if not k.startswith("_")}
+                if "_contract" in cache_data:
+                    blueprint_data["contract"] = cache_data["_contract"]
                 blueprint = StyleBlueprint(**blueprint_data)
 
                 # Apply subdivision only if cache was not created with scene hints
@@ -1070,7 +1117,17 @@ Rules for hinted analysis:
                 json_data["segments"] = reconstructed_segments
                 del json_data["codes"]
 
+            # Passport Block (v12.1 Identity Invariant)
+            passport = {
+                "type": "reference",
+                "version": REFERENCE_CACHE_VERSION,
+                "source_hash": file_hash,
+                "fingerprint": hint_tag if hint_tag else "hints0"
+            }
+            
             blueprint = StyleBlueprint(**json_data)
+            blueprint.contract = passport
+            blueprint.reference_audio = "muted" # v12.1 Explainability invariant
 
             # Apply subdivision only if no scene hints (preserve original rhythm when mimicking)
             if not scene_timestamps:
@@ -1082,13 +1139,15 @@ Rules for hinted analysis:
             # Save ORIGINAL to cache with UTF-8 encoding
             cache_data = {
                 **json_data,
+                "reference_audio": "muted",
+                "_contract": passport,
                 "_cache_version": REFERENCE_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
             with open(cache_file, 'w', encoding='utf-8') as f:
                 json.dump(cache_data, f, indent=2, ensure_ascii=False)
             
-            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments.")
+            print(f"[OK] Analysis complete: {len(blueprint.segments)} segments (Auth: v{REFERENCE_CACHE_VERSION})")
             return blueprint
             
         except Exception as e:
@@ -1362,7 +1421,12 @@ def _analyze_single_clip_comprehensive(
                         avoid_for=avoid_for,
                         vibes=vibes,
                         content_description=content_description,
-                        best_moments=best_moments
+                        best_moments=best_moments,
+                        contract=cache_data.get("_contract", {
+                            "type": "clip",
+                            "version": cache_version,
+                            "source_hash": file_hash
+                        })
                     )
         except Exception as e:
             print(f"    [WARN] Cache corrupted: {e}. Re-analyzing...")
@@ -1448,9 +1512,14 @@ def _analyze_single_clip_comprehensive(
                     )
             
             # Save to cache (v7.0+ enhanced format)
+            passport = {
+                "type": "clip",
+                "version": CLIP_CACHE_VERSION,
+                "source_hash": file_hash
+            }
             cache_data = {
                 "energy": energy.value,
-                "motion": motion_str,  # Save the raw motion string (STILL/GENTLE/ACTIVE/KINETIC)
+                "motion": motion_str,
                 "intensity": intensity,
                 "primary_subject": primary_subject,
                 "narrative_utility": narrative_utility,
@@ -1470,6 +1539,7 @@ def _analyze_single_clip_comprehensive(
                     }
                     for level, bm in best_moments.items()
                 },
+                "_contract": passport,
                 "_cache_version": CLIP_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
             }
@@ -1491,6 +1561,7 @@ def _analyze_single_clip_comprehensive(
             if vibes:
                 print(f"    Derived vibes: {', '.join(vibes)}")
             
+            # Create the metadata object with a valid passport
             return ClipMetadata(
                 filename=Path(clip_path).name,
                 filepath=str(clip_path),
@@ -1506,7 +1577,12 @@ def _analyze_single_clip_comprehensive(
                 avoid_for=avoid_for,
                 vibes=vibes,
                 content_description=content_description,
-                best_moments=best_moments
+                best_moments=best_moments,
+                contract={
+                    "type": "clip",
+                    "version": CLIP_CACHE_VERSION,
+                    "source_hash": file_hash
+                }
             )
             
         except Exception as e:

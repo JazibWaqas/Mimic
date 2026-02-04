@@ -135,6 +135,7 @@ def match_clips_to_blueprint(
     # TRANSITION MEMORY: Track the last clip's motion for smooth flow
     last_clip_motion = None
     last_clip_content = None
+    last_shot_scale = None # v12.1: Track last shot scale for variety
     
     # Group clips by energy for fast lookup
     energy_pools = _create_energy_pools(clip_index)
@@ -276,7 +277,7 @@ def match_clips_to_blueprint(
                 "calm": ["peaceful", "sunset", "lifestyle", "aesthetic", "still", "chill"]
             }
 
-            def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
+            def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe, last_scale=None, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
                 """
                 NEW INTELLIGENT SCORING SYSTEM (v9.0)
                 
@@ -284,8 +285,9 @@ def match_clips_to_blueprint(
                 1. STRATEGIC LAYER (Advisor): 40-80 points
                 2. NARRATIVE LAYER (Vibe/Function): 25-30 points  
                 3. QUALITY LAYER (Best Moments): 10-15 points
-                4. VARIETY LAYER (Freshness): -20 to +20 points
+                4. VARIETY LAYER (Freshness/Scale): -20 to +20 points
                 5. PENALTY LAYER (Avoid/Wrong Arc): -20 to -50 points
+                """
                 """
                 score = 100.0  # Base score
                 reasons = []
@@ -303,11 +305,11 @@ def match_clips_to_blueprint(
                     
                     if target_subject in clip_primary_subjects:
                         narrative_subject_match = True
-                        # NARRATIVE FULFILLMENT (v10.0):
-                        # Use a large bonus for the FIRST use to establish the anchor.
-                        # Subsequent uses get a much smaller "maintenance" bonus.
+                        # NARRATIVE FULFILLMENT (v12.1):
+                        # Rebalanced: Advisor provides strong tie-breaker pressure,
+                        # but no longer overpowers visual coherence or quality.
                         usage = clip_usage_count[clip.filename]
-                        bonus = 200.0 if usage == 0 else 30.0
+                        bonus = 50.0 if usage == 0 else 15.0
                         score += bonus
                         reasons.append("⚓ANCHOR" if usage == 0 else "⚓RECAP")
                     else:
@@ -319,8 +321,8 @@ def match_clips_to_blueprint(
                                 is_supporting = True
                         
                         if not is_supporting:
-                            # Hard penalty for losing the narrative thread (the "Forest/Food" penalty)
-                            penalty = 150.0 * getattr(advisor, 'subject_lock_strength', 1.0)
+                            # Balanced penalty for losing the narrative thread
+                            penalty = 40.0 * getattr(advisor, 'subject_lock_strength', 1.0)
                             score -= penalty
                             reasons.append(f"🚫Filler")
 
@@ -341,7 +343,7 @@ def match_clips_to_blueprint(
                         if guidance.recommended_clips and clip.filename in guidance.recommended_clips:
                             # This clip is explicitly recommended by Advisor for this arc stage
                             advisor_primary_carrier = True
-                            score += 150  # MASSIVE bonus - overrides everything
+                            score += 40.0  # Balanced bonus - strong guidance, not total dictatorship
                             reasons.append(f"🎯PRIMARY")
                 
                 # Standard Advisor bonus (for non-primary recommendations)
@@ -429,6 +431,22 @@ def match_clips_to_blueprint(
                     if is_scale_match:
                         score += 15.0
                         reasons.append(f"Scale:{seg_scale[:2]}")
+
+                # 4b. Shot Scale Variety (v12.1: +10 points for alternating)
+                # If we don't have a rigid scale requirement from the reference,
+                # or as a secondary signal, we prefer alternating scales.
+                if last_scale:
+                    # Infer clip's scale from primary subject
+                    clip_primary_subs = [s.lower() for s in clip.primary_subject]
+                    current_clip_scale = "Medium"
+                    if any(s in ["people-solo", "object-detail"] for s in clip_primary_subs):
+                        current_clip_scale = "Close"
+                    elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
+                        current_clip_scale = "Wide"
+                    
+                    if current_clip_scale != last_scale:
+                        score += 10.0
+                        reasons.append("Alt")
                 
                 # 5. Emotional Tone Match (+10 points)
                 if hasattr(clip, 'emotional_tone') and clip.emotional_tone:
@@ -468,15 +486,15 @@ def match_clips_to_blueprint(
                     score += 20.0  # Fresh clip bonus
                     reasons.append("✨New")
                 else:
-                    # TIERED EMOTIONAL TAX (v10.0):
-                    # Replace linear penalty with tiered exponential decay.
-                    # 1st reuse: -60, 2nd reuse: -200, 3rd+ reuse: -500
+                    # v12.1 REBALANCED REUSE:
+                    # We prefer quality repetition over poor-quality 'freshness'.
+                    # 1st reuse: -30, 2nd reuse: -80, 3rd+ reuse: -180
                     if usage == 1:
-                        penalty = 60.0
+                        penalty = 30.0
                     elif usage == 2:
-                        penalty = 200.0
+                        penalty = 80.0
                     else:
-                        penalty = 500.0
+                        penalty = 180.0
                     
                     score -= penalty
                     reasons.append(f"Used:{usage}x")
@@ -585,7 +603,7 @@ def match_clips_to_blueprint(
             scored_clips = []
             for c in available_clips:
                 # We pass the motion of the last selected clip to maintain flow
-                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, last_clip_motion, last_used_clip, advisor_hints)
+                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, last_clip_motion, last_used_clip, last_shot_scale, advisor_hints)
                 scored_clips.append((c, total_score, reasoning, vibe_matched))
 
             # Sort by total score
@@ -647,17 +665,20 @@ def match_clips_to_blueprint(
             
             should_subdivide = False
             
-            # Smart Subdivision thresholds based on Director Intent (expected_hold)
+            # HOLD-DRIVEN RESTRAINT (v12.1):
+            # The 'Hyper-Cutter' is now bounded by the reference's hold intent.
             if hold == "short":
-                max_hold = 1.2
+                max_hold = 1.3
             elif hold == "long":
-                max_hold = 5.0 # Allow deep scenic holds
+                max_hold = 6.0 # Allow deep scenic holds as requested
             else:
-                max_hold = 3.0 # Standard social media patience
+                max_hold = 3.5 # Standard social media patience
                 
-            # Override: In 'Peak' or 'Build-up', we tend to want more energy (tighter cuts)
-            if arc_stage in ["build-up", "peak"] and hold != "long":
-                max_hold = min(max_hold, 1.8)
+            # 'Peak' only tightens if the hold isn't explicitly 'Long' or 'Normal'
+            if arc_stage == "peak" and hold == "short":
+                max_hold = 0.8
+            elif arc_stage in ["build-up", "peak"] and hold == "normal":
+                max_hold = 2.0
                 
             if segment.duration > max_hold:
                 should_subdivide = True
@@ -666,9 +687,13 @@ def match_clips_to_blueprint(
                 use_duration = segment_remaining
                 is_last_cut_of_segment = True
             else:
-                # Subdivide based on BEAT VALUES and NARRATIVE PACING (v8.1)
+                # Subdivide based on BEAT VALUES and NARRATIVE PACING (v12.1)
                 if beat_grid and bpm > 0:
                     seconds_per_beat = 60.0 / bpm
+                    
+                    # INVENTORY AWARENESS: If we are low on high-energy clips, slow the pacing
+                    energy_pool_size = len(energy_pools.get(segment.energy.value, []))
+                    inventory_deficit = energy_pool_size < 3 # Rough heuristic
                     
                     # Determine multiplier from hold intent
                     if hold == "short":
@@ -678,21 +703,23 @@ def match_clips_to_blueprint(
                     else:
                         multiplier = 2  # 2 beats (Normal)
                         
+                    # Slow down multiplier if inventory is weak to prevent clip shredding
+                    if inventory_deficit and arc_stage != "peak":
+                        multiplier *= 2
+                        
                     # Arc Stage context
-                    if arc_stage == "peak":
+                    if arc_stage == "peak" and not inventory_deficit:
                         multiplier = 1  
-                    elif arc_stage == "outro" and hold == "long":
-                        multiplier = 8  # Extra long hold
                     
                     use_duration = seconds_per_beat * multiplier
                 else:
                     # Fallback to random weighted by intent
                     if hold == "short":
-                        use_duration = random.uniform(0.4, 0.7)
+                        use_duration = random.uniform(0.5, 1.0)
                     elif hold == "long":
-                        use_duration = random.uniform(2.5, 4.5)
+                        use_duration = random.uniform(3.0, 5.5)
                     else:
-                        use_duration = random.uniform(1.0, 1.8)
+                        use_duration = random.uniform(1.8, 3.0)
                 
                 # Check if we overshot the segment
                 if use_duration >= segment_remaining - 0.2:
@@ -814,6 +841,14 @@ def match_clips_to_blueprint(
             # Transition memory for next iteration
             last_clip_motion = selected_clip.motion
             last_clip_content = selected_clip.content_description
+            
+            # Update last shot scale for variety tracking
+            clip_primary_subs = [s.lower() for s in selected_clip.primary_subject]
+            last_shot_scale = "Medium"
+            if any(s in ["people-solo", "object-detail"] for s in clip_primary_subs):
+                last_shot_scale = "Close"
+            elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
+                last_shot_scale = "Wide"
             
             # Update clip tracking (save old value before updating)
             second_last_clip = last_used_clip
