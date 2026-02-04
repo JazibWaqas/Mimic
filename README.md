@@ -4,7 +4,7 @@
 
 MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrative arc) and automatically recreates that style using your clips. Think "Instagram Reels editor that understands the 'why' behind professional edits."
 
-**Version:** V12.0 - Bulletproof Indexing (February 4, 2026)
+**Version:** V12.1 - Content-First Authority (February 4, 2026)
 
 ---
 
@@ -67,21 +67,21 @@ MIMIC is not just an automation tool; it’s an AI collaborator designed for the
 
 ### **Performance & Caching**
 - **🎨 Index-First Architecture (New):** Singleton library indexing for sub-10ms listing and "Smart Search."
-- **🆔 The Identity Contract:** Content-hash based identity ensures metadata never "drifts" even if files are renamed.
+- **🆔 The Identity Contract:** Content-hash based identity ensures metadata never "drifts" even if files are renamed. See [IDENTITY.md](ContextFiles/IDENTITY.md).
 - **Cache Inheritance:** Reuse high-quality metadata across different pacing attempts (Instant re-runs).
-- **Persistent Standardization Cache:** Clips are standardized once and reused forever (hash-based).
+- **Persistent Standardization Cache:** Clips encoded once, reused forever (`std_{hash}.mp4`).
 - **Reference Cache:** Reference analysis cached with scene hint fingerprinting.
 - **Critique Cache:** Post-render director notes cached by EDL hash for instant Vault loading.
 - **Speed:** Zero-latency listing for 500+ clips; 15-20s for full renders.
 
 ---
 
-## 📋 Recent Updates (V12.0 - February 4, 2026)
+## 📋 Recent Updates (V12.1 - February 4, 2026)
 
-- **✅ Bulletproof Indexing:** Content-hash identities prevent metadata loss during renames.
-- **✅ Index-First Architecture:** Instant sub-10ms listing for large clip libraries.
+- **✅ Content-First Authority:** 32-Char MD5 identity prevents "re-pacing loops" and metadata drift.
+- **✅ Idempotent Refresh:** Refresh loop is purely observational; zero re-processing of known assets.
+- **✅ Unified Thumbnails:** `thumb_{hash}.jpg` naming eliminates redundant generation.
 - **✅ Smart Search:** Frontend search bar now queries AI vibes, subjects, and descriptions.
-- **✅ Thumbnail Infrastructure:** Multi-point sampling eliminates black frames across all asset types.
 
 ### **Quality Metrics**
 - **Diversity:** **100% Perfect Diversity** (0 repeats) in demo mode
@@ -242,10 +242,8 @@ GEMINI_API_KEY=primary_key_here
 ## 📚 Documentation
 
 - **README.md** (this file) - Quick start and overview
-- **ContextFiles/STATUS.md** - Complete project state and history
-- **ContextFiles/ARCHITECTURE.md** - System design and algorithms
+- **ContextFiles/ARCHITECTURE.md** - **The Bible**: Complete system design, Identity Contract (v12.1), and Project Status.
 - **ContextFiles/DIAGNOSTIC_LOG.md** - Bug history and forensics
-- **ContextFiles/NEXT_SESSION.md** - Action plan for next session
 
 ---
 
