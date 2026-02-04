@@ -190,43 +190,43 @@ No markdown. No commentary. No apologies.
 
 ## JSON SCHEMA
 
-{
+{{
   "text_overlay_intent": "",
   "dominant_narrative": "",
   "primary_narrative_subject": "",
   "allowed_supporting_subjects": [],
   "subject_lock_strength": 0.0,
 
-  "arc_stage_guidance": {
-    "Intro": {
+  "arc_stage_guidance": {{
+    "Intro": {{
       "primary_emotional_carrier": "",
       "supporting_material": "",
       "intent_diluting_material": "",
       "reasoning": "",
       "exemplar_clips": [],
       "required_energy": ""
-    },
-    "Build-up": { ... },
-    "Peak": { ... },
-    "Outro": { ... }
-  },
+    }},
+    "Build-up": {{ ... }},
+    "Peak": {{ ... }},
+    "Outro": {{ ... }}
+  }},
 
   "editorial_motifs": [
-    {
+    {{
       "trigger": "",
       "desired_continuity": "",
       "priority": ""
-    }
+    }}
   ],
 
-  "library_alignment": {
+  "library_alignment": {{
     "strengths": [],
     "editorial_tradeoffs": [],
     "constraint_gaps": []
-  },
+  }},
 
   "editorial_strategy": "",
   "remake_strategy": ""
-}
+}}
 """
 

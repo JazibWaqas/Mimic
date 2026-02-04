@@ -77,7 +77,10 @@ def get_advisor_suggestions(
         "".join(sorted(c.filename for c in clip_index.clips)).encode()
     ).hexdigest()
     
-    cache_file = cache_dir / f"advisor_{ref_hash}_{library_hash}.json"
+    # Include prompt version in cache key to invalidate on prompt changes
+    prompt_hash = hashlib.md5(ADVISOR_PROMPT.encode()).hexdigest()[:8]
+    
+    cache_file = cache_dir / f"advisor_{ref_hash}_{library_hash}_{prompt_hash}.json"
     
     if not force_refresh and cache_file.exists():
         try:
@@ -110,8 +113,18 @@ def get_advisor_suggestions(
         try:
             model = initialize_gemini()
             
+            # Use corrective prompt on retry
+            current_prompt = prompt
+            if attempt > 0:
+                current_prompt = f"""{prompt}
+
+CRITICAL: Your previous response was malformed JSON. 
+Return ONLY valid JSON matching the schema EXACTLY. 
+Do not add commentary. Do not explain. Only JSON.
+"""
+            
             rate_limiter.wait_if_needed()
-            response = model.generate_content([prompt])
+            response = model.generate_content([current_prompt])
             
             if not response.candidates or response.candidates[0].finish_reason != 1:
                 reason = "UNKNOWN"
@@ -120,9 +133,46 @@ def get_advisor_suggestions(
                     reason = FinishReason(response.candidates[0].finish_reason).name
                 raise ValueError(f"Gemini blocked the response. Reason: {reason}")
             
-            data = _parse_json_response(response.text)
+            raw_response_text = response.text
+            
+            # P0: Parse with detailed error handling
+            try:
+                data = _parse_json_response(raw_response_text)
+            except Exception as parse_error:
+                # P0: Persist raw response on parse failure
+                raw_file = cache_dir / f"advisor_raw_{ref_hash}_{library_hash}_attempt{attempt + 1}.txt"
+                raw_file.write_text(
+                    f"=== ADVISOR RAW RESPONSE (PARSE FAILED) ===\n"
+                    f"Timestamp: {datetime.utcnow().isoformat()}\n"
+                    f"Model: {GeminiConfig.MODEL_NAME}\n"
+                    f"Attempt: {attempt + 1}/{GeminiConfig.MAX_RETRIES}\n"
+                    f"Error: {parse_error}\n\n"
+                    f"=== RAW RESPONSE ===\n{raw_response_text}\n",
+                    encoding='utf-8'
+                )
+                print(f"  🔴 JSON PARSE FAILED - Raw response saved to: {raw_file.name}")
+                raise ValueError(f"JSON parsing failed: {parse_error}") from parse_error
             
             cached_at = datetime.utcnow().isoformat()
+            
+            # P0: Validate required fields before Pydantic parsing
+            required_fields = ['text_overlay_intent', 'dominant_narrative', 'arc_stage_guidance']
+            missing_fields = [f for f in required_fields if f not in data]
+            if missing_fields:
+                raw_file = cache_dir / f"advisor_raw_{ref_hash}_{library_hash}_attempt{attempt + 1}.txt"
+                raw_file.write_text(
+                    f"=== ADVISOR RAW RESPONSE (MISSING FIELDS) ===\n"
+                    f"Timestamp: {datetime.utcnow().isoformat()}\n"
+                    f"Model: {GeminiConfig.MODEL_NAME}\n"
+                    f"Attempt: {attempt + 1}/{GeminiConfig.MAX_RETRIES}\n"
+                    f"Missing Fields: {missing_fields}\n\n"
+                    f"=== RAW RESPONSE ===\n{raw_response_text}\n\n"
+                    f"=== PARSED DATA ===\n{json.dumps(data, indent=2)}\n",
+                    encoding='utf-8'
+                )
+                print(f"  🔴 SCHEMA VALIDATION FAILED - Missing fields: {missing_fields}")
+                print(f"  🔴 Raw response saved to: {raw_file.name}")
+                raise ValueError(f"Missing required fields: {missing_fields}")
             
             # Parse arc stage guidance (intent-driven)
             arc_guidance = {}
@@ -135,8 +185,16 @@ def get_advisor_suggestions(
                 except Exception as e:
                     print(f"  ⚠️ Failed to parse guidance for {stage}: {e}")
             
+            # Validate arc stage coverage
+            blueprint_stages = {seg.arc_stage for seg in blueprint.segments}
+            missing_stages = blueprint_stages - set(arc_guidance.keys())
+            if missing_stages:
+                print(f"  ⚠️ Advisor provided incomplete arc coverage. Missing: {missing_stages}")
+                print(f"  ⚙️ These stages will use energy/motion matching only")
+
+            
             # Parse narrative subject lock (v9.5+)
-            from models import NarrativeSubject
+            from models import NarrativeSubject, LibraryAlignment
             primary_subject = None
             if data.get('primary_narrative_subject'):
                 try:
@@ -150,22 +208,48 @@ def get_advisor_suggestions(
                     allowed_subjects.append(NarrativeSubject(s))
                 except ValueError:
                     pass
+            
+            # Parse library_alignment
+            library_alignment_data = data.get('library_alignment', {})
+            if isinstance(library_alignment_data, dict):
+                library_alignment = LibraryAlignment(**library_alignment_data)
+            else:
+                library_alignment = LibraryAlignment()
 
-            hints = AdvisorHints(
-                text_overlay_intent=data.get('text_overlay_intent', ''),
-                dominant_narrative=data.get('dominant_narrative', ''),
-                
-                primary_narrative_subject=primary_subject,
-                allowed_supporting_subjects=allowed_subjects,
-                subject_lock_strength=float(data.get('subject_lock_strength', 1.0)),
-                
-                arc_stage_guidance=arc_guidance,
-                library_alignment=data.get('library_alignment', {}),
-                editorial_strategy=data.get('editorial_strategy', ''),
-                remake_strategy=data.get('remake_strategy', ''),
-                cached_at=cached_at,
-                cache_version="4.0"
-            )
+            # P0: Wrap Pydantic validation with error handling
+            try:
+                hints = AdvisorHints(
+                    text_overlay_intent=data.get('text_overlay_intent', ''),
+                    dominant_narrative=data.get('dominant_narrative', ''),
+                    
+                    primary_narrative_subject=primary_subject,
+                    allowed_supporting_subjects=allowed_subjects,
+                    subject_lock_strength=float(data.get('subject_lock_strength', 1.0)),
+                    
+                    arc_stage_guidance=arc_guidance,
+                    library_alignment=library_alignment,
+                    editorial_strategy=data.get('editorial_strategy', ''),
+                    remake_strategy=data.get('remake_strategy', ''),
+                    editorial_motifs=data.get('editorial_motifs', []),
+                    cached_at=cached_at,
+                    cache_version="4.0"
+                )
+            except Exception as pydantic_error:
+                # P0: Persist raw response on Pydantic validation failure
+                raw_file = cache_dir / f"advisor_raw_{ref_hash}_{library_hash}_attempt{attempt + 1}.txt"
+                raw_file.write_text(
+                    f"=== ADVISOR RAW RESPONSE (PYDANTIC VALIDATION FAILED) ===\n"
+                    f"Timestamp: {datetime.utcnow().isoformat()}\n"
+                    f"Model: {GeminiConfig.MODEL_NAME}\n"
+                    f"Attempt: {attempt + 1}/{GeminiConfig.MAX_RETRIES}\n"
+                    f"Error: {pydantic_error}\n\n"
+                    f"=== RAW RESPONSE ===\n{raw_response_text}\n\n"
+                    f"=== PARSED DATA ===\n{json.dumps(data, indent=2)}\n",
+                    encoding='utf-8'
+                )
+                print(f"  🔴 PYDANTIC VALIDATION FAILED: {pydantic_error}")
+                print(f"  🔴 Raw response saved to: {raw_file.name}")
+                raise ValueError(f"Pydantic validation failed: {pydantic_error}") from pydantic_error
             
             cache_file.write_text(hints.model_dump_json(indent=2), encoding='utf-8')
             print(f"  ✅ Advisor hints generated and cached")
@@ -176,12 +260,17 @@ def get_advisor_suggestions(
             return hints
             
         except Exception as e:
-            print(f"  ⚠️ Advisor attempt {attempt + 1} failed: {e}")
+            print(f"  🔴 Advisor attempt {attempt + 1}/{GeminiConfig.MAX_RETRIES} failed: {e}")
             if _handle_rate_limit_error(e, "advisor"):
                 continue
             if attempt == GeminiConfig.MAX_RETRIES - 1:
-                print(f"  ❌ Advisor failed after all retries")
-                print(f"  ⚙️ Falling back to base matcher (no advisor influence)")
+                print(f"\n{'='*60}")
+                print(f"  ❌❌❌ ADVISOR FAILED AFTER ALL RETRIES ❌❌❌")
+                print(f"{'='*60}")
+                print(f"  ⚠️ SEMANTIC MATCHING DISABLED - Vibe accuracy will be 0%")
+                print(f"  ⚠️ System will fall back to energy/motion matching only")
+                print(f"  ⚠️ Check advisor_raw_*.txt files in cache for debugging")
+                print(f"{'='*60}\n")
                 return None
             time.sleep(GeminiConfig.RETRY_DELAY)
     

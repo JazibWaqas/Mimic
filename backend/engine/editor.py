@@ -74,39 +74,35 @@ def match_clips_to_blueprint(
     # Get Gemini Advisor suggestions (optional, degrades gracefully)
     advisor_hints: Optional[AdvisorHints] = None
     if use_advisor:
-        try:
-            # === SCARCITY REPORT (v12.4 Phase 3) ===
-            # Pre-calculate library scarcity to guide Advisor's intent reach.
-            scarcity_report = {}
-            total_clips = len(clip_index.clips)
-            if total_clips > 0:
-                # 1. Energy scarcity
-                for energy_lv in ["High", "Medium", "Low"]:
-                    count = sum(1 for c in clip_index.clips if c.energy.value == energy_lv)
-                    ratio = count / total_clips
-                    if ratio < 0.15: scarcity_report[energy_lv] = "very_scarce"
-                    elif ratio < 0.30: scarcity_report[energy_lv] = "scarce"
-                    else: scarcity_report[energy_lv] = "abundant"
-                    
-                # 2. Subject scarcity (Top categories)
-                subject_counts = Counter()
-                for c in clip_index.clips:
-                    for s in (c.primary_subject or []):
-                        subject_counts[s] += 1
+        # === SCARCITY REPORT (v12.4 Phase 3) ===
+        # Pre-calculate library scarcity to guide Advisor's intent reach.
+        scarcity_report = {}
+        total_clips = len(clip_index.clips)
+        if total_clips > 0:
+            # 1. Energy scarcity
+            for energy_lv in ["High", "Medium", "Low"]:
+                count = sum(1 for c in clip_index.clips if c.energy.value == energy_lv)
+                ratio = count / total_clips
+                if ratio < 0.15: scarcity_report[energy_lv] = "very_scarce"
+                elif ratio < 0.30: scarcity_report[energy_lv] = "scarce"
+                else: scarcity_report[energy_lv] = "abundant"
                 
-                for subj, count in subject_counts.items():
-                    ratio = count / total_clips
-                    if ratio < 0.1: scarcity_report[subj] = "scarce"
-                    elif ratio > 0.4: scarcity_report[subj] = "abundant"
+            # 2. Subject scarcity (Top categories)
+            subject_counts = Counter()
+            for c in clip_index.clips:
+                for s in (c.primary_subject or []):
+                    subject_counts[s] += 1
+            
+            for subj, count in subject_counts.items():
+                ratio = count / total_clips
+                if ratio < 0.1: scarcity_report[subj] = "scarce"
+                elif ratio > 0.4: scarcity_report[subj] = "abundant"
 
-            advisor_hints = get_advisor_suggestions(blueprint, clip_index, scarcity_report=scarcity_report)
-            if advisor_hints:
-                print(f"  ✅ Advisor enabled: Strategic guidance active")
-            else:
-                print(f"  ⚙️ Advisor disabled: Using base matcher only")
-        except Exception as e:
-            print(f"  ⚠️ Advisor failed, continuing without: {e}")
-            advisor_hints = None
+        advisor_hints = get_advisor_suggestions(blueprint, clip_index, scarcity_report=scarcity_report)
+        if advisor_hints:
+            print(f"  ✅ Advisor enabled: Strategic guidance active")
+        else:
+            print(f"  ⚙️ Advisor disabled: Using base matcher only")
     else:
         print(f"  ⚙️ Advisor disabled by config")
     

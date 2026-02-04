@@ -8,7 +8,7 @@ and have no side effects. They do NOT manage state or session data.
 import subprocess
 import json
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 # ============================================================================
 # VIDEO INFORMATION

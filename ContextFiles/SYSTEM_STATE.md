@@ -32,7 +32,32 @@
 
 ## 🔧 **RECENT FIXES (Feb 5, 2026)**
 
-### **1. Progressive Audio Authority** ✅ CRITICAL FIX
+### **1. Advisor Schema Enforcement** ✅ P0 CRITICAL FIX
+**Problem:** Advisor JSON parsing failures were silent, causing 0% vibe matching without visibility. System fell back to "dumb matching" gracefully but masked critical AI failures.
+
+**Fix Applied:**
+- **Raw Response Persistence:** On any failure (parse/validation), saves `advisor_raw_*.txt` with full response, timestamp, model name, and error details
+- **Schema Validation:** Validates required fields (`text_overlay_intent`, `dominant_narrative`, `arc_stage_guidance`) before Pydantic parsing
+- **Retry with Corrective Prompt:** Second attempt includes explicit "return ONLY valid JSON" instruction
+- **Loud Failure Reporting:** Terminal shows clear ❌❌❌ banners when Advisor fails, warning that semantic matching is disabled
+- **Missing Field Handling:** Added `editorial_motifs` field that was in prompt but not in parsing code
+- **Prompt Versioning:** Cache key now includes prompt hash (8-char) to invalidate on prompt changes
+- **Arc Coverage Validation:** Warns if Advisor provides incomplete arc stage guidance
+
+**Impact:** 
+- Advisor failures are now **visible and debuggable** (no more silent degradation)
+- Raw responses persist for audit and debugging
+- Retry logic gives Gemini a second chance with clearer instructions
+- Vibe matching failures are **loud** instead of hidden
+- Prompt changes automatically invalidate stale cache
+- Incomplete guidance is detected and reported
+
+**Files Modified:**
+- `backend/engine/gemini_advisor.py` (lines 70-193)
+
+---
+
+### **2. Progressive Audio Authority** ✅ CRITICAL FIX
 **Problem:** System always analyzed muted copy → `audio_confidence` always "Inferred" → beat snapping globally disabled even when audio was present.
 
 **Fix Applied:**
