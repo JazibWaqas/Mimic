@@ -29,11 +29,11 @@ from engine.gemini_advisor import get_advisor_suggestions, compute_advisor_bonus
 def match_clips_to_blueprint(
     blueprint: StyleBlueprint,
     clip_index: ClipIndex,
-    find_best_moments: bool = False,  # Ignored - best moments come from comprehensive analysis
-    api_key: str | None = None,
-    reference_path: str | None = None,  # NEW: For beat detection
-    bpm: float = 120.0,  # NEW: Dynamic BPM detection
-    use_advisor: bool = True  # NEW: Enable Gemini Advisor for strategic guidance
+    find_best_moments: bool = False,
+    api_key: Optional[str] = None,
+    reference_path: Optional[str] = None,
+    bpm: float = 120.0,
+    use_advisor: bool = True
 ) -> Tuple[EDL, Optional[AdvisorHints]]:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
@@ -91,7 +91,7 @@ def match_clips_to_blueprint(
                 # 2. Subject scarcity (Top categories)
                 subject_counts = Counter()
                 for c in clip_index.clips:
-                    for s in c.primary_subject:
+                    for s in (c.primary_subject or []):
                         subject_counts[s] += 1
                 
                 for subj, count in subject_counts.items():
@@ -294,9 +294,9 @@ def match_clips_to_blueprint(
                 guidance = advisor_hints.arc_stage_guidance.get(segment.arc_stage)
                 if guidance and guidance.required_energy:
                     try:
-                        active_energy_requirement = EnergyLevel(guidance.required_energy)
+                        active_energy_requirement = EnergyLevel[guidance.required_energy.upper()]
                         print(f"      ⚡ADVISOR OVERRIDE: Using {active_energy_requirement.value} energy for {segment.arc_stage}")
-                    except ValueError:
+                    except (ValueError, KeyError):
                         pass
 
             # Step 1: Get energy-compatible clips (Soft constraints)
@@ -340,14 +340,14 @@ def match_clips_to_blueprint(
 
             def infer_shot_scale(clip: ClipMetadata) -> str:
                 """Infer clip's scale from primary subject tags."""
-                clip_primary_subs = [s.lower() for s in clip.primary_subject]
+                clip_primary_subs = [s.lower() for s in (clip.primary_subject or [])]
                 if any(s in ["people-solo", "object-detail"] for s in clip_primary_subs):
                     return "Close"
                 elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
                     return "Wide"
                 return "Medium"
 
-            def compute_continuity_bonus(candidate: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints]) -> tuple[float, list[str]]:
+            def compute_continuity_bonus(candidate: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints]) -> Tuple[float, List[str]]:
                 """
                 v12.1: The Continuity Engine.
                 Calculates bonuses based on Advisor-declared motifs.
@@ -401,24 +401,16 @@ def match_clips_to_blueprint(
                     # 4. Semantic-Resonance (Lyrics/Text triggers)
                     if continuity_type == "Semantic-Resonance" and trigger:
                         # Check if trigger keyword is in clip's subject or description
-                        clip_text = " ".join(candidate.primary_subject + candidate.vibes).lower()
+                        clip_text = " ".join((candidate.primary_subject or []) + (candidate.vibes or [])).lower()
                         if trigger in clip_text or trigger in cand_content:
                             bonus += (40.0 * weight)
                             reasons.append(f"🔗{trigger[:5]}")
 
                 return bonus, reasons
 
-            def score_clip_smart(clip: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
+            def score_clip_smart(clip: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints] = None) -> Tuple[float, str, bool]:
                 """
                 NEW INTELLIGENT SCORING SYSTEM (v9.0)
-                
-                Scoring Hierarchy:
-                1. STRATEGIC LAYER (Advisor): 40-80 points
-                2. NARRATIVE LAYER (Vibe/Function): 25-30 points  
-                3. QUALITY LAYER (Best Moments): 10-15 points
-                4. VARIETY LAYER (Freshness/Scale): -20 to +20 points
-                5. PENALTY LAYER (Avoid/Wrong Arc): -20 to -50 points
-                """
                 """
                 score = 100.0  # Base score
                 reasons = []
@@ -432,7 +424,7 @@ def match_clips_to_blueprint(
                 narrative_subject_match = False
                 if advisor and advisor.primary_narrative_subject:
                     target_subject = advisor.primary_narrative_subject.value
-                    clip_primary_subjects = [s for s in clip.primary_subject]
+                    clip_primary_subjects = [s for s in (clip.primary_subject or [])]
                     
                     if target_subject in clip_primary_subjects:
                         narrative_subject_match = True
@@ -491,7 +483,7 @@ def match_clips_to_blueprint(
                 
                 # 1. Direct Vibe Match (+30 points)
                 target_vibe = (segment.vibe or "general").lower()
-                clip_vibes = [v.lower() for v in clip.vibes]
+                clip_vibes = [v.lower() for v in (clip.vibes or [])]
                 
                 if any(target_vibe in v or v in target_vibe for v in clip_vibes):
                     score += 30.0
@@ -528,7 +520,7 @@ def match_clips_to_blueprint(
                 
                 # 3. Subject Consistency (+20 points)
                 seg_vibe_lower = (segment.vibe or "").lower()
-                clip_subjects = [s.lower() for s in clip.primary_subject]
+                clip_subjects = [s.lower() for s in (clip.primary_subject or [])]
                 
                 subject_map = {
                     "friends": ["people-group", "activity-celebration", "people-solo"],
@@ -551,13 +543,13 @@ def match_clips_to_blueprint(
                     is_scale_match = False
                     if seg_scale in ["Wide", "Extreme Wide"]:
                         is_scale_match = "establishing" in [u.lower() for u in clip.narrative_utility] or \
-                                         any("place" in s.lower() for s in clip.primary_subject)
+                                         any("place" in s.lower() for s in (clip.primary_subject or []))
                     elif seg_scale == "Medium":
                         is_scale_match = any(u.lower() in ["build", "transition"] for u in clip.narrative_utility) or \
-                                         any("people-group" in s.lower() for s in clip.primary_subject)
+                                         any("people-group" in s.lower() for s in (clip.primary_subject or []))
                     elif "Close" in seg_scale:
                         is_scale_match = any(u.lower() == "peak" for u in clip.narrative_utility) or \
-                                         any("people-solo" in s.lower() for s in clip.primary_subject)
+                                         any("people-solo" in s.lower() for s in (clip.primary_subject or []))
                     
                     if is_scale_match:
                         score += 15.0
@@ -647,9 +639,9 @@ def match_clips_to_blueprint(
                     # Advisor override: match against required energy, not segment energy
                     # Use EnergyLevel from global scope (models)
                     try:
-                        target_energy = EnergyLevel(required_energy_override)
+                        target_energy = EnergyLevel[required_energy_override.upper()]
                         reasons.append(f"🎯{required_energy_override}")
-                    except (ValueError, TypeError):
+                    except (ValueError, KeyError, TypeError):
                         pass
                 
                 if clip.energy != target_energy:
@@ -1106,12 +1098,8 @@ def match_clips_to_blueprint(
 
 
 def _create_energy_pools(clip_index: ClipIndex) -> Dict[EnergyLevel, List[ClipMetadata]]:
-    """
-    Group clips by energy level for efficient matching.
-    
-    Returns:
-        Dictionary mapping EnergyLevel → List[ClipMetadata]
-    """
+    # Group clips by energy level for efficient matching.
+    # Returns: Dictionary mapping EnergyLevel -> List[ClipMetadata]
     pools = defaultdict(list)
     for clip in clip_index.clips:
         pools[clip.energy].append(clip)
@@ -1123,7 +1111,7 @@ def _create_energy_pools(clip_index: ClipIndex) -> Dict[EnergyLevel, List[ClipMe
 # ============================================================================
 
 def print_edl_summary(edl: EDL, blueprint: StyleBlueprint, clip_index: ClipIndex) -> None:
-    """Print human-readable EDL summary for debugging."""
+    # Print human-readable EDL summary for debugging.
     print(f"\n{'='*60}")
     print(f"[EDL] EDIT DECISION LIST SUMMARY")
     print(f"{'='*60}\n")
@@ -1179,17 +1167,9 @@ def print_edl_summary(edl: EDL, blueprint: StyleBlueprint, clip_index: ClipIndex
 
 
 def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:
-    """
-    Validate EDL for continuity and timing errors.
-    
-    Validates:
-    - Timeline continuity (no gaps/overlaps)
-    - Total duration matches blueprint (±0.5s tolerance)
-    - All clips exist and timestamps are valid
-    
-    Returns:
-        True if valid, raises ValueError if issues found
-    """
+    # Validate EDL for continuity and timing errors.
+    # Checks timeline continuity, duration matching, and clip validity.
+    # Returns: True if valid, raises ValueError if issues found
     # Check timeline continuity
     for i in range(len(edl.decisions) - 1):
         current = edl.decisions[i]
@@ -1206,7 +1186,7 @@ def validate_edl(edl: EDL, blueprint: StyleBlueprint) -> bool:
         total_duration = edl.decisions[-1].timeline_end
         expected = blueprint.total_duration
         
-        # Strict tolerance: ±0.5s
+        # Strict tolerance: +/-0.5s
         if abs(total_duration - expected) > 0.5:
             raise ValueError(
                 f"EDL total duration ({total_duration:.2f}s) "

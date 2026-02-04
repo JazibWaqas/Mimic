@@ -101,7 +101,7 @@ def reflect_on_edit(
 
     # Create a unique hash for this specific edit (Blueprint + EDL + Advisor)
     # This ensures that if the pacing or clips change, the critique regenerates.
-    edl_hash = hashlib.md5(edl.model_dump_json().encode()).hexdigest()[:12]
+    edl_hash = hashlib.md5(edl.model_dump_json().encode()).hexdigest()
     cache_file = cache_dir / f"critique_{edl_hash}.json"
 
     if not force_refresh and cache_file.exists():

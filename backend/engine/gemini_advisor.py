@@ -71,11 +71,11 @@ def get_advisor_suggestions(
     
     ref_hash = hashlib.md5(
         (blueprint.narrative_message + str(blueprint.segments)).encode()
-    ).hexdigest()[:12]
+    ).hexdigest()
     
     library_hash = hashlib.md5(
         "".join(sorted(c.filename for c in clip_index.clips)).encode()
-    ).hexdigest()[:12]
+    ).hexdigest()
     
     cache_file = cache_dir / f"advisor_{ref_hash}_{library_hash}.json"
     

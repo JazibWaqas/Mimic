@@ -105,32 +105,37 @@ import json
 import hashlib
 import time
 
-# Resolve Root correctly (MIMIC/backend/utils.py -> MIMIC/)
+import threading
+
 _ROOT_DIR = Path(__file__).resolve().parent.parent
 _HASH_REGISTRY_PATH = _ROOT_DIR / "data" / "cache" / "hash_registry.json"
 _hash_cache = {}
 _registry_loaded = False
+_registry_lock = threading.Lock()
 
 def _ensure_registry_loaded():
     global _hash_cache, _registry_loaded
     if _registry_loaded: return
     
-    _HASH_REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
-    if _HASH_REGISTRY_PATH.exists():
-        try:
-            with open(_HASH_REGISTRY_PATH, "r", encoding="utf-8") as f:
-                _hash_cache = json.load(f)
-        except:
-            _hash_cache = {}
-    _registry_loaded = True
+    with _registry_lock:
+        if _registry_loaded: return # Double check
+        _HASH_REGISTRY_PATH.parent.mkdir(parents=True, exist_ok=True)
+        if _HASH_REGISTRY_PATH.exists():
+            try:
+                with open(_HASH_REGISTRY_PATH, "r", encoding="utf-8") as f:
+                    _hash_cache = json.load(f)
+            except:
+                _hash_cache = {}
+        _registry_loaded = True
 
 def save_hash_registry():
     """Manually persist the hash registry to disk."""
     if not _registry_loaded: return
-    try:
-        with open(_HASH_REGISTRY_PATH, "w", encoding="utf-8") as f:
-            json.dump(_hash_cache, f)
-    except: pass
+    with _registry_lock:
+        try:
+            with open(_HASH_REGISTRY_PATH, "w", encoding="utf-8") as f:
+                json.dump(_hash_cache, f)
+        except: pass
 
 def get_file_hash(path: str | Path) -> str:
     """
@@ -147,14 +152,18 @@ def get_file_hash(path: str | Path) -> str:
         size = stat.st_size
         
         key_int = f"{int(mtime)}_{size}"
-        if key_int in _hash_cache:
-            return _hash_cache[key_int]
         
-        # Cache miss: do the work
+        with _registry_lock:
+            if key_int in _hash_cache:
+                return _hash_cache[key_int]
+        
+        # Cache miss: do the work (outside lock to avoid blocking other lookups)
         h = get_fast_hash(p)
         if h:
-            _hash_cache[key_int] = h
-            # We don't save immediately to avoid disk thrashing during scans
+            with _registry_lock:
+                _hash_cache[key_int] = h
+            # Save immediately to ensure persistence if called outside refresh loop
+            save_hash_registry()
         return h
     except:
         return ""

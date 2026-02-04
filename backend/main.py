@@ -272,7 +272,8 @@ class LibraryIndex:
                 return None, p, None
             
             # 2. Thumbnail Linkage (Deterministic)
-            thumb_name = f"thumb_{type_tag}_{h}.jpg"
+            # v12.1 Unified: Use a single content-based thumbnail for all views
+            thumb_name = f"thumb_{h}.jpg"
             thumb_path = THUMBNAILS_DIR / thumb_name
             
             if not thumb_path.exists():
@@ -409,11 +410,11 @@ async def upload_files(
     # Calculate session_id
     if reference:
         ref_content = await reference.read()
-        ref_hash = hashlib.md5(ref_content).hexdigest()[:12]
+        ref_hash = hashlib.md5(ref_content).hexdigest()
         session_id = f"sess_{ref_hash}"
     elif music:
         music_content = await music.read()
-        music_hash = hashlib.md5(music_content).hexdigest()[:12]
+        music_hash = hashlib.md5(music_content).hexdigest()
         session_id = f"text_music_{music_hash}"
     else:
         session_id = f"text_{uuid.uuid4().hex[:12]}"
@@ -444,7 +445,7 @@ async def upload_files(
             if existing_file.is_file():
                 try:
                     with open(existing_file, 'rb') as f:
-                        existing_hash = hashlib.md5(f.read()).hexdigest()[:12]
+                        existing_hash = hashlib.md5(f.read()).hexdigest()
                     if existing_hash == ref_hash:
                         existing_ref = existing_file
                         print(f"[UPLOAD] Reference content already exists: {existing_file.name} (reusing)")
@@ -596,13 +597,14 @@ async def upload_files(
         "size": ref_path.stat().st_size if ref_path else 0
     }
     if ref_path:
-        ref_hash = get_file_hash(ref_path)
-        ref_thumb_name = f"thumb_ref_{ref_hash}.jpg"
+        # v12.1 Unified Thumbnail
+        ref_thumb_name = f"thumb_{ref_hash}.jpg"
         ref_thumb_path = THUMBNAILS_DIR / ref_thumb_name
         try:
             if not ref_thumb_path.exists():
                 generate_thumbnail(str(ref_path), str(ref_thumb_path))
             reference_payload["thumbnail_url"] = f"/api/files/thumbnails/{ref_thumb_name}"
+            
             # Signature for frontend matching
             reference_payload["original_filename"] = getattr(reference, "filename", ref_path.name)
             reference_payload["original_size"] = ref_path.stat().st_size
@@ -613,7 +615,8 @@ async def upload_files(
         def get_payload_with_meta(res):
             clip_path = Path(res["path"])
             clip_hash = get_file_hash(clip_path)
-            thumb_name = f"thumb_clip_{clip_hash}.jpg"
+            # v12.1 Unified Thumbnail
+            thumb_name = f"thumb_{clip_hash}.jpg"
             thumb_path = THUMBNAILS_DIR / thumb_name
             try:
                 if not thumb_path.exists():
@@ -809,7 +812,8 @@ def process_video_pipeline(
             # Generate thumbnail for the result immediately for Vault UI
             res_path = Path(result.output_path)
             res_hash = get_file_hash(res_path)
-            res_thumb_name = f"thumb_res_{res_hash}.jpg"
+            # v12.1 Unified Thumbnail: Content-addressed only
+            res_thumb_name = f"thumb_{res_hash}.jpg"
             res_thumb_path = THUMBNAILS_DIR / res_thumb_name
             res_thumb_url = None
             try:

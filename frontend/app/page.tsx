@@ -31,18 +31,20 @@ export default function StudioPage() {
   const [lastMaterialHash, setLastMaterialHash] = useState<string | null>(null);
   const [generationError, setGenerationError] = useState(false);
   const searchParams = useSearchParams();
-  const logEndRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const processedThumbs = useRef<Set<string>>(new Set());
 
+  // Smart Telemetry Auto-Scroll (User-Aware)
   useEffect(() => {
-    if (logEndRef.current) {
-      const container = logEndRef.current.parentElement;
-      if (container) {
-        container.scrollTo({
-          top: container.scrollHeight,
-          behavior: "smooth"
-        });
-      }
+    const container = scrollRef.current;
+    if (!container) return;
+
+    // Only auto-scroll if user is currently at the bottom (or logs are new)
+    const threshold = 120;
+    const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight <= threshold;
+
+    if (isNearBottom || logMessages.length < 3) {
+      container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
     }
   }, [logMessages]);
 
@@ -708,7 +710,7 @@ export default function StudioPage() {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto custom-scrollbar px-5 py-6 space-y-3 font-mono text-[14px] relative z-10 leading-relaxed bg-black/20">
+              <div ref={scrollRef} className="flex-1 overflow-y-auto custom-scrollbar px-5 py-6 space-y-3 font-mono text-[14px] relative z-10 leading-relaxed bg-black/20 overscroll-contain">
                 {logMessages.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center opacity-20">
                     <Activity className="h-8 w-8 mb-4 text-indigo-400 animate-pulse" />
@@ -722,7 +724,7 @@ export default function StudioPage() {
                     </div>
                   ))
                 )}
-                <div ref={logEndRef} />
+                <div />
               </div>
 
               {/* TACTICAL EXECUTE BUTTON - Permanent Adrenaline State */}
