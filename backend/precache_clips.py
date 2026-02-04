@@ -68,9 +68,17 @@ def main():
         
         print(f"  [RUN] Standardizing: {p.name}...")
         try:
+            # find energy for this clip (v12.5 Context-Aware)
+            from models import EnergyLevel
+            clip_energy = EnergyLevel.MEDIUM
+            for cm in clip_index.clips:
+                if cm.filename == p.name:
+                    clip_energy = cm.energy  # Pass ENUM, not string
+                    break
+            
             # We standardize to a temp file first then move to cache to avoid partials
             temp_out = standardized_cache / f"tmp_{h}.mp4"
-            standardize_clip(str(p), str(temp_out))
+            standardize_clip(str(p), str(temp_out), energy=clip_energy)
             temp_out.rename(cached_path)
             return True
         except Exception as e:

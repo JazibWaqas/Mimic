@@ -113,7 +113,7 @@ def match_clips_to_blueprint(
     # PHASE 2: Generate beat grid for audio sync
     beat_grid = []
     if reference_path and has_audio(reference_path) and bpm and bpm > 0:
-        beat_grid = get_beat_grid(blueprint.total_duration, bpm=int(round(bpm)))
+        beat_grid = get_beat_grid(blueprint.total_duration, bpm=bpm)
         print(f"  🎵 Beat grid generated: {len(beat_grid)} beats at {bpm:.2f} BPM")
     
     # Phase 2b: Intelligent Beat Extraction (v8.0)
@@ -277,7 +277,7 @@ def match_clips_to_blueprint(
         # Fill this segment with MULTIPLE RAPID CUTS to match fast-paced editing
         cuts_in_segment = 0
         # Dynamic loop protection: more cuts allowed for longer segments (min 10)
-        max_cuts_per_segment = max(10, int(segment.duration / 0.2))
+        max_cuts_per_segment = min(12, max(4, int(segment.duration / 0.6)))
         
         while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
             # Update remaining duration based on current timeline position
@@ -990,7 +990,6 @@ def match_clips_to_blueprint(
         print(f"   ⚠️ {total_clips - unique_clips_used} clips were not used.")
     
     # Check for repeats
-    from collections import Counter
     clip_uses = Counter(d.clip_path for d in decisions)
     repeats = [(path.split('\\')[-1], count) for path, count in clip_uses.items() if count > 1]
     

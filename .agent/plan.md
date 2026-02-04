@@ -64,7 +64,7 @@ Anti-patterns that score poorly:
 
 ### What MIMIC Is (One Sentence)
 
-**MIMIC is a structure-transfer video editing system that uses Gemini 3 to understand editing intent and narrative flow from a reference video, then deterministically executes a new edit with different footage — and explains why it worked.**
+MIMIC is a translation engine that converts human creative intent into deterministic editorial structure, executes under real-world constraints, and explains the outcome transparently.
 
 ### Core Insight
 

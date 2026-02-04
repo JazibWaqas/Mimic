@@ -20,7 +20,7 @@ if sys.platform == 'win32':
 import hashlib
 import shutil
 from pathlib import Path
-from typing import Callable, List, Optional
+from typing import Callable, List, Optional, Tuple, Dict
 from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints, LibraryHealth
 
 from engine.brain import (
@@ -73,13 +73,15 @@ def _merge_scene_and_beat_timestamps(
         # Find nearest beat to the visual cut
         nearest_beat = min(beat_grid, key=lambda x: abs(x - scene_cut))
         # Only snap if the beat is close enough (within 0.25s), otherwise keep the visual cut
-        if abs(nearest_beat - scene_cut) < 0.25:
+        # V12.1 GUARD: Never snap to 0.0 (it creates zero-duration segments)
+        if abs(nearest_beat - scene_cut) < 0.25 and nearest_beat > 0.1:
             combined_dict[nearest_beat] = "visual"
-        else:
+        elif scene_cut > 0.1:
             combined_dict[scene_cut] = "visual"
     
     # 2. Safety Subdivision (Only for EXTREME gaps)
-    all_ts = sorted(list(combined_dict.keys()) + [0.0])
+    # Ensure 0.0 is there but not duplicated
+    all_ts = sorted(list(set(combined_dict.keys()) | {0.0}))
     
     for i in range(len(all_ts) - 1):
         start = all_ts[i]
@@ -269,7 +271,7 @@ def run_mimic_pipeline(
                 
                 # 2c. HYBRID DETECTION: Merge visual cuts + beat-aligned subdivision
                 ref_duration = get_video_duration(reference_path)
-                beat_grid = get_beat_grid(ref_duration, int(ref_bpm))
+                beat_grid = get_beat_grid(ref_duration, ref_bpm)
                 combined_hints = _merge_scene_and_beat_timestamps(
                     scene_changes, 
                     beat_grid, 
@@ -288,6 +290,7 @@ def run_mimic_pipeline(
                     scene_timestamps=raw_timestamps
                 )
 
+
                 # v12.1: Transfer cut origins to Segments for Pacing Authority
                 # combined_hints has N timestamps. Segments 2..N+1 start at these points.
                 # Segment 1 always starts at 0.0 (visual origin).
@@ -296,6 +299,13 @@ def run_mimic_pipeline(
                         segment.cut_origin = "visual"
                     elif i-1 < len(combined_hints):
                         segment.cut_origin = combined_hints[i-1][1]
+                
+                # v12.1 ROBUSTNESS: Validate all segments have cut_origin
+                # If scene detection failed or combined_hints was malformed, ensure safe defaults
+                for segment in blueprint.segments:
+                    if not hasattr(segment, 'cut_origin') or segment.cut_origin not in ["visual", "beat"]:
+                        segment.cut_origin = "visual"  # Safe default: protect from subdivision
+
 
                 print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
             except Exception as e:
@@ -371,7 +381,15 @@ def run_mimic_pipeline(
                 shutil.copy2(str(cached_path), str(output_path))
             else:
                 print(f"  [NEW] Standardizing clip {i}/{len(clip_paths)}: {input_p.name} (first-time processing)...")
-                standardize_clip(str(input_p), str(output_path))
+                # find energy for this clip (v12.5 Context-Aware)
+                from models import EnergyLevel
+                clip_energy = EnergyLevel.MEDIUM
+                for cm in clip_index.clips:
+                    if cm.filename == input_p.name:
+                        # Pass the ENUM object, not the string value
+                        clip_energy = cm.energy 
+                        break
+                standardize_clip(str(input_p), str(output_path), energy=clip_energy)
                 # Save to persistent cache
                 shutil.copy2(str(output_path), str(cached_path))
                 print(f"  [CACHE] Saved standardized clip to persistent storage.")

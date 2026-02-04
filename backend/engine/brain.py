@@ -1104,19 +1104,20 @@ def analyze_reference_video(
             print(f"[WARN] Cache issue: {e}. Re-analyzing...")
     
     # Prepare Prompt
-    from .processors import get_video_duration, remove_audio
+    from .processors import get_video_duration, remove_audio, has_audio
     duration = get_video_duration(video_path)
     
-    # Bypass recitation blocks by muting reference for analysis
-    # This is safe because we only need visual rhythm/energy for analysis
+    # v12.1 PROGRESSIVE AUDIO AUTHORITY (Fail-Soft Strategy)
+    # Try with original audio first → fallback to muted only if blocked
+    # This preserves maximum rhythm fidelity while maintaining safety
+    
     muted_path = str(muted_cache_dir / f"muted_{file_hash}.mp4")
-    if not Path(muted_path).exists():
-        print(f"[BRAIN] Creating muted copy for analysis: {muted_path}")
-        remove_audio(video_path, muted_path)
+    audio_was_present = has_audio(video_path)
     
-    analysis_video_path = muted_path
-    
-    analysis_video_path = muted_path
+    # Start with original (audio-first attempt)
+    analysis_video_path = video_path
+    audio_mode = "original" if audio_was_present else "silent"
+    used_muted_fallback = False
     
     prompt = REFERENCE_ANALYSIS_PROMPT
     if scene_timestamps:
@@ -1160,7 +1161,26 @@ Rules for hinted analysis:
                         reason = str(response.candidates[0].finish_reason)
                     except:
                         reason = "UNKNOWN_ERROR"
-                raise ValueError(f"Gemini blocked the response. Reason: {reason}")
+                
+                # v12.1 PROGRESSIVE AUDIO FALLBACK
+                # If blocked and we haven't tried muted yet, retry with muted copy
+                if not used_muted_fallback and audio_was_present:
+                    print(f"[BRAIN] Gemini blocked original audio (Reason: {reason})")
+                    print(f"[BRAIN] Retrying with muted copy for safety...")
+                    
+                    # Create muted copy if needed
+                    if not Path(muted_path).exists():
+                        print(f"[BRAIN] Creating muted copy: {muted_path}")
+                        remove_audio(video_path, muted_path)
+                    
+                    # Switch to muted and retry
+                    analysis_video_path = muted_path
+                    audio_mode = "muted"
+                    used_muted_fallback = True
+                    continue  # Retry with muted
+                else:
+                    # Either already tried muted, or no audio to begin with
+                    raise ValueError(f"Gemini blocked the response. Reason: {reason}")
 
             json_data = _parse_json_response(response.text)
             
@@ -1201,8 +1221,17 @@ Rules for hinted analysis:
             
             blueprint = StyleBlueprint(**json_data)
             blueprint.contract = passport
-            blueprint.reference_audio = "muted" # v12.1 Explainability invariant
-            blueprint.audio_confidence = "Inferred"
+            
+            # v12.1 PROGRESSIVE AUDIO AUTHORITY - Set confidence based on which mode succeeded
+            blueprint.reference_audio = audio_mode
+            if audio_mode == "original":
+                # Audio analysis succeeded - enable beat snapping
+                blueprint.audio_confidence = "Observed"
+                print(f"[BRAIN] ✅ Audio analysis succeeded - beat snapping ENABLED")
+            else:
+                # Used muted fallback or no audio - disable beat snapping
+                blueprint.audio_confidence = "Inferred"
+                print(f"[BRAIN] ⚠️ Audio {audio_mode} - beat snapping DISABLED")
 
             # Apply subdivision only if no scene hints AND style is explicitly fast
             if not scene_timestamps:
@@ -1218,8 +1247,8 @@ Rules for hinted analysis:
             # Save ORIGINAL to cache with UTF-8 encoding
             cache_data = {
                 **json_data,
-                "reference_audio": "muted",
-                "audio_confidence": "Inferred",
+                "reference_audio": audio_mode,
+                "audio_confidence": blueprint.audio_confidence,
                 "_contract": passport,
                 "_cache_version": REFERENCE_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")

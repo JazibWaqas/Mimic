@@ -255,47 +255,82 @@ def extract_audio_wav(video_path: str, wav_output_path: str) -> bool:
 # VIDEO STANDARDIZATION
 # ============================================================================
 
-def standardize_clip(input_path: str, output_path: str) -> None:
+def standardize_clip(input_path: str, output_path: str, energy: Optional["EnergyLevel"] = None, is_reference: bool = False) -> None:
     """
     Standardize video to 1080x1920 (vertical), 30fps, h.264, AAC audio.
     
-    Strategy: Scale to fit within 1080x1920, then pad to exact dimensions.
-    This preserves the full composition (Letterbox Mode) and avoids destructive cropping.
+    NEW (v12.5): Context-Aware Geometry.
+    Chooses between 4 modes based on source aspect ratio and clip energy.
     
     Args:
         input_path: Source video file
         output_path: Destination for standardized video
-    
-    Raises:
-        RuntimeError: If FFmpeg command fails
+        energy: Optional[EnergyLevel] = None
+        is_reference: bool = False
     """
+    # 1. Get info to determine mode
+    try:
+        info = get_video_info(input_path)
+        video_stream = next((s for s in info.get("streams", []) if s.get("codec_type") == "video"), None)
+        if not video_stream:
+            video_stream = info.get("streams", [{}])[0]
+        
+        width = int(video_stream.get("width", 1080))
+        height = int(video_stream.get("height", 1920))
+        aspect = width / height
+    except Exception as e:
+        print(f"  [WARN] Failed to get video info for {input_path}, defaulting to cinematic_pad: {e}")
+        aspect = 1.77
+        energy = energy or EnergyLevel.MEDIUM
+
+    # 2. Classifier (per User Recommendation)
+    from models import EnergyLevel  # Delay import to avoid circular dependency
+    
+    if is_reference:
+        mode = "cinematic_pad"
+        # Reference Rule: References must NEVER be cropped. Always pad.
+        geometry_filters = "scale=1080:-2:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2"
+    elif aspect >= 1.9:
+        mode = "cinematic_pad"
+        # Cinematic Preserve: Fit height to 1080 width, results in clear letterboxing
+        geometry_filters = "scale=1080:-2:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2"
+    elif aspect <= 0.8:
+        mode = "vertical_native"
+        # Creator Vertical: Fill screen completely for near-vertical content
+        geometry_filters = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
+    elif energy == EnergyLevel.HIGH:
+        mode = "smart_crop"
+        # High Energy: Zoom in to fill screen for kinetic impact
+        geometry_filters = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
+    else:
+        mode = "smart_pad"
+        # Smart Pad: Compromise (Mild zoom + thin bars)
+        # Never crop width below 1080. Scale down to fit 1080 width (aspect decreases), then pad height.
+        # This implementation scales to strictly fit inside 1080x1920, effectively identical to cinematic_pad
+        # but logically distinct for future tuning.
+        geometry_filters = "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2"
+
+    print(f"  [GEOMETRY] Mode: {mode} (Aspect: {aspect:.2f}, Energy: {energy})")
+
     cmd = [
         "ffmpeg",
         "-i", input_path,
         "-vf", (
-            # 1. Geometry: Orientation + Scale (Letterbox / Cinematic Safe Mode)
-            # Scales to fit within 1080x1920, then pads with black bars to fill.
-            # Preserves full composition, avoids awkward cropping.
-            "scale=1080:1920:force_original_aspect_ratio=decrease,"
-            "pad=1080:1920:(ow-iw)/2:(oh-ih)/2,"
+            f"{geometry_filters},"
             "fps=30,"                           # Force consistent 30fps
-            # 2. Visual Excellence: The 'High-Def Master' Stack
-            "unsharp=3:3:0.8:3:3:0.5,"          # Edge-pop for HD clarity
-            "eq=contrast=1.07:brightness=0.0:saturation=1.15," # Vibrant & Clear
-            "noise=alls=0.5:allf=t+u,"          # Micro-grain for pro-texture
             "format=yuv420p,"                   # Ensure maximal compatibility
             "setsar=1"
         ),
         "-c:v", "libx264",
-        "-crf", "22",               # High Fidelity (Balanced for size)
-        "-preset", "medium",        # Faster than 'slow' for better UX
+        "-crf", "22",               # High Fidelity
+        "-preset", "medium",
         "-c:a", "aac",
         "-b:a", "192k",
-        "-ar", "44100",             # Standardize sample rate for sync
-        "-map_metadata", "-1",      # Strip all metadata to prevent orientation tags
-        "-metadata:s:v:0", "rotate=0", # Explicitly clear rotation flag
+        "-ar", "44100",             # Standardize sample rate
+        "-map_metadata", "-1",      # Strip all metadata
+        "-metadata:s:v:0", "rotate=0", 
         "-movflags", "+faststart",
-        "-y",                       # Overwrite output file
+        "-y",
         output_path
     ]
 
