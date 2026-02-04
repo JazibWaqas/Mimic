@@ -553,6 +553,10 @@ def merge_audio_video(
     """
     Merge audio track onto video.
     
+    P1 SAFEGUARD (v12.6): Video duration is AUTHORITATIVE.
+    If audio < video, audio is padded with silence to match video duration.
+    This enforces the invariant: "Video timing is sacred, audio adapts."
+    
     OPTIMIZED: Video stream is copied (already encoded), only audio is re-encoded.
     This prevents double-encoding quality loss and speeds up rendering.
     
@@ -560,8 +564,17 @@ def merge_audio_video(
         video_path: Video file (can be silent)
         audio_path: Audio file to overlay
         output_path: Destination for merged video
-        trim_to_shortest: If True, trim to shortest input (prevent black frames)
+        trim_to_shortest: DEPRECATED - kept for API compatibility but ignored
     """
+    # P1 SAFEGUARD: Detect durations and pad audio if needed
+    try:
+        video_duration = get_video_duration(video_path)
+        audio_duration = get_video_duration(audio_path)
+    except Exception as e:
+        print(f"  [WARN] Could not detect durations, proceeding without padding: {e}")
+        video_duration = None
+        audio_duration = None
+    
     cmd = [
         "ffmpeg",
         "-i", video_path,
@@ -573,8 +586,15 @@ def merge_audio_video(
         "-map", "1:a:0",  # Take audio from second input
     ]
     
-    if trim_to_shortest:
-        cmd.append("-shortest")  # Stop at shortest stream
+    # P1 SAFEGUARD: Audio padding if needed
+    if video_duration and audio_duration and audio_duration < video_duration:
+        pad_duration = video_duration - audio_duration
+        print(f"  [AUDIO PAD] Video is {pad_duration:.2f}s longer than audio - padding with silence")
+        # Use apad filter to pad audio with silence to match video duration
+        cmd.extend(["-af", f"apad=pad_dur={pad_duration:.3f}"])
+    
+    # CRITICAL: Never use -shortest (video timing is sacred)
+    # trim_to_shortest parameter is ignored for safety
     
     cmd.extend(["-y", output_path])
     

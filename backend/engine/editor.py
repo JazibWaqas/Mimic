@@ -275,6 +275,7 @@ def match_clips_to_blueprint(
         # Dynamic loop protection: more cuts allowed for longer segments (min 10)
         max_cuts_per_segment = min(12, max(4, int(segment.duration / 0.6)))
         
+        force_loop_clip = None
         while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
             # Update remaining duration based on current timeline position
             segment_remaining = max(0.0, segment.end - timeline_position)
@@ -323,6 +324,28 @@ def match_clips_to_blueprint(
             
             import random
 
+            # === P0 FIX #1: VIBE SEMANTIC BRIDGE ===
+            # Maps clip-level descriptive tags (nouns) → editorial intent vibes (abstractions)
+            # This solves the 0% vibe matching issue by bridging semantic spaces.
+            VIBE_SEMANTIC_BRIDGE = {
+                # Vehicle-related clips → Speed/Power/Adrenaline vibes
+                "vehicle": ["speed", "power", "adrenaline", "launch", "precision", "freedom"],
+                "solo": ["heroic", "focus", "determination", "struggle", "intense"],
+                "group": ["unity", "heroic", "celebration", "camaraderie"],
+                "crowd": ["scale", "epic", "energy", "intensity"],
+                "urban": ["grit", "intensity", "modern", "solemn"],
+                "nature": ["majestic", "freedom", "peaceful", "silence"],
+                "travel": ["adventure", "freedom", "exploration"],
+                "celebration": ["joy", "triumph", "energy"],
+                "indoor": ["intimate", "focus", "calm"],
+                # Reverse mappings for flexibility
+                "speed": ["vehicle", "action", "dynamic"],
+                "power": ["vehicle", "action"],
+                "heroic": ["solo", "group"],
+                "majestic": ["nature", "wide"],
+                "silence": ["nature", "calm", "peaceful"]
+            }
+            
             # SEMANTIC NEIGHBORS (The "Artistic Neighbor" map)
             # This prevents deficits by allowing similar vibes to count as matches
             SEMANTIC_MAP = {
@@ -424,11 +447,11 @@ def match_clips_to_blueprint(
                     
                     if target_subject in clip_primary_subjects:
                         narrative_subject_match = True
-                        # NARRATIVE FULFILLMENT (v12.1):
-                        # Rebalanced: Advisor provides strong tie-breaker pressure,
-                        # but no longer overpowers visual coherence or quality.
+                        # P0 FIX #3: NARRATIVE ANCHOR DEMOTION (Lock → Bias)
+                        # DEMOTED BONUS (was +50/+15, now +25/+10)
+                        # Narrative anchor is now a TIE-BREAKER, not a PRIMARY SELECTOR
                         usage = clip_usage_count[clip.filename]
-                        bonus = 50.0 if usage == 0 else 15.0
+                        bonus = 25.0 if usage == 0 else 10.0
                         score += bonus
                         reasons.append("⚓ANCHOR" if usage == 0 else "⚓RECAP")
                     else:
@@ -440,8 +463,9 @@ def match_clips_to_blueprint(
                                 is_supporting = True
                         
                         if not is_supporting:
-                            # Balanced penalty for losing the narrative thread
-                            penalty = 40.0 * getattr(advisor, 'subject_lock_strength', 1.0)
+                            # P0 FIX #3: DEMOTED PENALTY (was -40, now -15)
+                            # Allow vibe/scale/function to override if they're strong matches
+                            penalty = 15.0 * getattr(advisor, 'subject_lock_strength', 1.0)
                             score -= penalty
                             reasons.append(f"🚫Filler")
 
@@ -462,7 +486,8 @@ def match_clips_to_blueprint(
                         if guidance.recommended_clips and clip.filename in guidance.recommended_clips:
                             # This clip is explicitly recommended by Advisor for this arc stage
                             advisor_primary_carrier = True
-                            score += 40.0  # Balanced bonus - strong guidance, not total dictatorship
+                            # P0 FIX #2: INCREASED from 40 to ensure Advisor guidance wins
+                            score += 60.0
                             reasons.append(f"🎯PRIMARY")
                 
                 # Standard Advisor bonus (for non-primary recommendations)
@@ -477,23 +502,57 @@ def match_clips_to_blueprint(
 
                 # === NARRATIVE LAYER: Semantic Matching ===
                 
-                # 1. Direct Vibe Match (+30 points)
+                # P0 FIX #1: ENHANCED VIBE MATCHING with Semantic Bridge
+                # Priority order:
+                # 1. Direct match (exact string)
+                # 2. Semantic bridge (Vehicle → Speed, Solo → Heroic, etc.)
+                # 3. Semantic neighbor (legacy fallback)
+                
                 target_vibe = (segment.vibe or "general").lower()
                 clip_vibes = [v.lower() for v in (clip.vibes or [])]
                 
+                # 1. Direct Vibe Match (+40 points) - INCREASED from +30
                 if any(target_vibe in v or v in target_vibe for v in clip_vibes):
-                    score += 30.0
+                    score += 40.0
                     reasons.append(f"Vibe:{segment.vibe}")
                     vibe_matched = True
                 else:
-                    # Semantic neighbor match (+15 points)
-                    for category, neighbors in SEMANTIC_MAP.items():
-                        if target_vibe in neighbors or target_vibe == category:
-                            if any(v in neighbors for v in clip_vibes):
-                                score += 15.0
-                                reasons.append(f"Nearby:{category}")
+                    # 2. Semantic Bridge Match (+30 points) - NEW
+                    # Check if any clip vibe maps to the target vibe via semantic bridge
+                    bridge_matched = False
+                    for clip_vibe in clip_vibes:
+                        if clip_vibe in VIBE_SEMANTIC_BRIDGE:
+                            mapped_vibes = VIBE_SEMANTIC_BRIDGE[clip_vibe]
+                            if target_vibe in mapped_vibes:
+                                # INTENSITY GATING: Prevent false positives
+                                high_energy_vibes = ["speed", "adrenaline", "power", "launch", "precision"]
+                                if target_vibe in high_energy_vibes and getattr(clip, 'intensity', 1) < 2:
+                                    continue  # Skip low-intensity clips for high-energy vibes
+                                score += 30.0
+                                reasons.append(f"Bridge:{clip_vibe}→{segment.vibe}")
                                 vibe_matched = True
+                                bridge_matched = True
                                 break
+                    
+                    # Also check reverse: does target vibe map to any clip vibe?
+                    if not bridge_matched and target_vibe in VIBE_SEMANTIC_BRIDGE:
+                        mapped_vibes = VIBE_SEMANTIC_BRIDGE[target_vibe]
+                        if any(v in mapped_vibes for v in clip_vibes):
+                            score += 30.0
+                            reasons.append(f"Bridge:{segment.vibe}→{clip_vibes[0]}")
+                            vibe_matched = True
+                            bridge_matched = True
+                    
+                    # 3. Semantic neighbor match (+15 points) - LEGACY FALLBACK
+                    if not bridge_matched:
+                        for category, neighbors in SEMANTIC_MAP.items():
+                            if target_vibe in neighbors or target_vibe == category:
+                                if any(v in neighbors for v in clip_vibes):
+                                    score += 15.0
+                                    reasons.append(f"Nearby:{category}")
+                                    vibe_matched = True
+                                    break
+                
                 
                 # 2. Shot Function Match (+25 points)
                 function_to_utility = {
@@ -716,12 +775,53 @@ def match_clips_to_blueprint(
                 
                 return score, reasoning, vibe_matched
 
-            # Calculate scores for available clips
+            # REFERENCE AUTHORITY (v12.7): Pre-calculate duration constraints
+            # We must know if this is a sacred cut BEFORE selecting a clip.
+            cut_origin = getattr(segment, 'cut_origin', 'visual')
+            is_sacred_cut = (cut_origin == 'visual')  # Visual cuts are sacred
+            min_required = segment_remaining - 0.1    # Tolerance
+
+            # FORCE LOOP OVERRIDE (v13.0): Hybrid System Directive 2.2
+            # If we enter loop mode, we MUST reuse the same clip.
+            loop_mode = False
+            if force_loop_clip:
+                available_clips = [force_loop_clip]
+                print(f"    🔄 FORCE LOOP: Restricting selection to {force_loop_clip.filename} to maintain continuity.")
+                loop_mode = True
+
+            # Calculate scores with STRICT duration filtering
             scored_clips = []
+            valid_candidates_found = False
+
             for c in available_clips:
+                # GUARD: Sacred Cut Duration Check
+                # If segment is 'visual', we MUST NOT subdivide it.
+                # Clip must be long enough to cover the remaining time.
+                # EXCEPTION: If we are in loop_mode, we accept the short clip explicitly.
+                if is_sacred_cut and not loop_mode and c.duration < min_required:
+                    continue  # HARD REJECT: Clip is physically too short
+
                 # We pass the context to maintain stateful flow
                 total_score, reasoning, vibe_matched = score_clip_smart(c, segment, ctx, advisor_hints)
                 scored_clips.append((c, total_score, reasoning, vibe_matched))
+                valid_candidates_found = True
+
+            # FALLBACK: If strict filter eliminated ALL clips (Emergency Mode)
+            if not valid_candidates_found:
+                print(f"    ⚠️ CRITICAL: No clips match duration ({min_required:.2f}s) for sacred cut! Reference authority compromised.")
+                print(f"    ⚠️ Fallback: Selecting longest available clips to minimize fragmentation.")
+                
+                # Re-score ALL clips, but prioritize DURATION over everything else
+                scored_clips = []
+                for c in available_clips:
+                    total_score, reasoning, vibe_matched = score_clip_smart(c, segment, ctx, advisor_hints)
+                    
+                    # Massive bonus for duration to get as close as possible
+                    duration_score = c.duration * 50.0 
+                    total_score += duration_score
+                    reasoning = f"⚠️Rescue (len={c.duration:.1f}s)"
+                    
+                    scored_clips.append((c, total_score, reasoning, vibe_matched))
 
             # Sort by total score
             scored_clips.sort(key=lambda x: x[1], reverse=True)
@@ -836,9 +936,18 @@ def match_clips_to_blueprint(
             beat_aligned = False
             beat_target = None
             
-            if beat_grid and not is_last_cut_of_segment and getattr(blueprint, "audio_confidence", "Observed") == "Observed":
-                target_end = timeline_position + use_duration
-                aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.15)
+            # PRECISION TIMING FIXES (v12.6):
+            # FIX #2: Beat Phase Offset (-80ms for human anticipation)
+            # FIX #3: Tighter tolerance (0.15s → 0.10s)
+            # FIX #4: Never snap first cut after beat drop/energy transition
+            BEAT_PHASE_OFFSET = -0.08  # Editors cut BEFORE the beat, not on it
+            
+            # FIX #4: Disable beat snapping for first cut in segment (let drops breathe)
+            allow_beat_snapping = cuts_in_segment > 0
+            
+            if beat_grid and not is_last_cut_of_segment and allow_beat_snapping and getattr(blueprint, "audio_confidence", "Observed") == "Observed":
+                target_end = timeline_position + use_duration + BEAT_PHASE_OFFSET  # Apply phase offset
+                aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.10)  # Tightened from 0.15
                 
                 # TIMING GUARD: Never allow a beat to snap outside the current segment.
                 # Must be inside the segment with at least 100ms breathing room from edges.
@@ -901,6 +1010,17 @@ def match_clips_to_blueprint(
             
             # FINAL CALCULATION
             actual_duration = clip_end - clip_start
+
+            # TRIGGER FORCE LOOP (v13.0): Hybrid System Directive 2.2
+            # If a sacred cut falls short, strict mode triggers a LOOP of the same clip.
+            remaining_dur = segment.end - timeline_position
+            if is_sacred_cut and actual_duration < (remaining_dur - 0.05):
+                # We are short. If we are NOT already forcing loop, we trigger it.
+                if not force_loop_clip:
+                     print(f"    🔄 SHORT CLIP ({actual_duration:.2f}s < {remaining_dur:.2f}s) ON SACRED SEGMENT. TRIGGERING LOOP.")
+                     force_loop_clip = selected_clip
+                     is_last_cut_of_segment = False # Force next iteration
+
             
             # SAFETY: Ensure clip_end is always greater than clip_start
             if clip_end <= clip_start or clip_end <= 0:
@@ -913,9 +1033,11 @@ def match_clips_to_blueprint(
             decision_start = timeline_position
             decision_end = decision_start + actual_duration
             
-            # If this was supposed to be the last cut, FORCE the snap
-            if is_last_cut_of_segment:
-                decision_end = segment.end
+            # REMOVED LYING EDL LOGIC (v12.7):
+            # We no longer force decision_end = segment.end.
+            # If actual_duration is short, the loop will run again to fill the gap.
+            # if is_last_cut_of_segment:
+            #    decision_end = segment.end
 
             decision = EditDecision(
                 segment_id=segment.id,
@@ -966,6 +1088,20 @@ def match_clips_to_blueprint(
                  # Emergency: segment was never even started? 
                  # This shouldn't happen with the while loop, but let's be safe
                  timeline_position = segment.end
+
+        # === SEGMENT LOGGING (Directive 8) ===
+        seg_decisions = [d for d in decisions if d.segment_id == segment.id]
+        rendered_dur = sum(d.timeline_end - d.timeline_start for d in seg_decisions)
+        ref_dur = segment.duration
+        cuts_used = len(seg_decisions)
+        
+        loop_status = "No"
+        if cuts_used > 1 and is_sacred_cut:
+            loop_status = "Yes (Fallback Triggered)"
+            
+        print(f"[SEGMENT {segment.id} LOG] Ref: {ref_dur:.2f}s | Rendered: {rendered_dur:.2f}s | Cuts: {cuts_used} | Looped: {loop_status} | Auth: Reference")
+        if abs(rendered_dur - ref_dur) > 0.05:
+            print(f"    ❌ TIME DRIFT DETECTED: {rendered_dur - ref_dur:.3f}s")
 
     
     edl = EDL(decisions=decisions)

@@ -488,11 +488,14 @@ def run_mimic_pipeline(
             final_output_path.unlink()
         
         if audio_extracted:
+            # CRITICAL FIX: trim_to_shortest=False to prevent video truncation
+            # If audio is shorter than video, video will play with silence at end
+            # This prevents losing the last 3 seconds of the edit
             merge_audio_video(
                 str(render_source),
                 str(audio_path),
                 str(final_output_path),
-                trim_to_shortest=True
+                trim_to_shortest=False  # Changed from True - prevents truncation
             )
         else:
             create_silent_video(str(render_source), str(final_output_path))

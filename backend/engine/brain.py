@@ -914,9 +914,16 @@ def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 
     
     V12.1 PACING GUARD: Subdivision is DISABLED by default to preserve 
     the editorial intent extracted from the reference. Default raised to 4.5s.
+    
+    CRITICAL FIX (v12.7): Hard-disabled to enforce Reference Authority.
+    The Brain must NEVER mutate the blueprint structure.
     """
-    if not enabled:
-        return blueprint
+    # ALWAYS return blueprint unmodified. Structure is a contract.
+    return blueprint
+    
+    # OLD LOGIC DISABLED:
+    # if not enabled:
+    #     return blueprint
     new_segments = []
     segment_id = 1
     
