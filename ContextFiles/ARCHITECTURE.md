@@ -1,9 +1,9 @@
 # MIMIC Architecture Documentation
 
-**Version:** V12.1 - Content-First Authority  
-**Last Updated:** February 4, 2026
+**Version:** V12.1 - Director vs. Metronome  
+**Last Updated:** February 5, 2026
 
-This document provides a complete technical overview of the MIMIC system architecture, governed by the [Identity Contract](#ii-the-identity-contract-v121).
+This document provides a complete technical overview of the MIMIC system architecture, governed by the [Identity Contract](#ii-the-identity-contract-v121) and the [Pacing Authority Model](#iii-pacing-authority-model-v121).
 
 ---
 
@@ -70,8 +70,11 @@ MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footag
 ### Stage 5: Semantic Editing (Editor)
 - **Stateful Continuity-Aware Scoring:** Balances energy fidelity, vibe alignment, and novelty with rolling context.
 - **Narrative Budgeting:** Tracks "Emotional Capital" to prevent clip fatigue.
-- **Beat Synchronization:** Snaps cuts to detected BPM for musical alignment (when audio detectable).
-- **Subject Lock Enforcement:** Applies strong narrative bonus (≈ +50 initial, decaying on reuse), balanced against reuse bonuses.
+- **Pacing Authority (V12.1):** Implements "Director over Metronome" logic.
+    - **Sacred Cuts:** Prevents subdivision of segments derived from real reference camera cuts.
+    - **Inferred Sync:** Automatically relaxes beat-snapping if audio was muted during reference analysis (`audio_confidence == "Inferred"`).
+    - **Narrative Jitter:** Uses logic-driven durations with human-like variation (±10%) instead of rigid beat math.
+- **Subject Lock Enforcement:** Applies strong narrative bonus (~+50), balanced against reuse bonuses.
 
 ### Stage 6: Aesthetic Styling (Stylist)
 - **Typography Mapping:** Reference text style → High-end fonts (Georgia, Futura, etc.).
@@ -190,5 +193,23 @@ elif clip_usage_count[clip] >= 3:
 
 ---
 
-**Last Updated:** February 4, 2026
+## 🕒 III. Pacing Authority Model (V12.1)
+
+MIMIC V12.1 solves the "Mechanical Metronome" problem by inverting the authority of the music grid.
+
+### 1. The Conflict: Director vs. Metronome
+- **Old Way:** Beats dictated duration. Result: Machine-gun pacing and emotional exhaustion.
+- **New Way (V12.1):** Narrative intent dictates duration; Beats provide snapping.
+
+### 2. Implementation Rules
+1. **Sacred Cuts:** If a segment start-time originates from a visual cut (`cut_origin == "visual"`), subdivision is FORBIDDEN.
+2. **Emotional Registration:** Minimum holds are strictly enforced (1.2s for Peak, 2.5s for Normal).
+3. **Audio Confidence:** If audio is muted during analysis, the system marks rhythm as `Inferred` and disables strict beat-snapping to prevent rhythmic "guessing" errors.
+4. **Contextual Scaling:** AI analysis requests "Best Moments" relative to energy:
+   - Low: 3-6s
+   - High: 1.2-3s
+
+---
+
+**Last Updated:** February 5, 2026
 **Version:** V12.1

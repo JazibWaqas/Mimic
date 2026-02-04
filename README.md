@@ -78,10 +78,12 @@ MIMIC is not just an automation tool; it’s an AI collaborator designed for the
 
 ## 📋 Recent Updates (V12.1 - February 4, 2026)
 
-- **✅ Content-First Authority:** 32-Char MD5 identity prevents "re-pacing loops" and metadata drift.
-- **✅ Idempotent Refresh:** Refresh loop is purely observational; zero re-processing of known assets.
-- **✅ Unified Thumbnails:** `thumb_{hash}.jpg` naming eliminates redundant generation.
-- **✅ Smart Search:** Frontend search bar now queries AI vibes, subjects, and descriptions.
+- **✅ Content-First Authority (V12.1):** 32-Char MD5 identity prevents re-pacing loops.
+- **✅ Sacred Visual Cuts (V12.1):** Real camera cuts from reference are protected from subdivision.
+- **✅ Inverted Beat Authority (V12.1):** Narrative intent sets pacing; beats are used for ornamentation/snapping only.
+- **✅ Contextual Holds (V12.1):** AI selects 1.2s-6s clips based on energy level (Kinetic vs. Breathable).
+- **✅ Idempotent Refresh:** Zero re-processing of known assets.
+- **✅ Unified Thumbnails:** Content-hash naming eliminates redundant generation.
 
 ### **Quality Metrics**
 - **Diversity:** **100% Perfect Diversity** (0 repeats) in demo mode

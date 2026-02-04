@@ -1,16 +1,16 @@
-# 🌊 MIMIC - Agentic Development Flow (V9.0)
+# 🌊 MIMIC - Agentic Development Flow (V12.1)
 
-This document details the exact sequence of logic implemented in the MIMIC pipeline as of **January 31, 2026**.
+This document details the exact sequence of logic implemented in the MIMIC pipeline as of **February 5, 2026**.
 
 ---
 
 ## 🚀 The Agentic Flow (Plan -> Execute -> Style)
 
 ### 1. Pre-Analysis (The Brain)
-- **Visual Scene Grounding:** FFmpeg identifies physical cuts to anchor the AI's temporal reasoning.
-- **Rhythmic Extraction:** Librosa extracts the BPM and beat grid from the reference audio.
-- **Adaptive Rhythm Calculation:** Determines the ideal shot density (e.g., Respecting Cinematic Holds vs. High-Energy Riffs).
-- **Gemini Analysis:** mapping the "Aesthetic Blueprint" (Energy, Motion, Vibes, Arc Stage, Typography, Tone).
+- **Visual Scene Grounding:** FFmpeg identifies physical cuts as **"Sacred Cuts"** to protect the reference's original soul.
+- **Rhythmic Extraction:** Librosa extracts BPM/beat grid.
+- **Pacing Authority (V12.1):** Inverts the authority. Narrative intent (Editor) now leads, and Beats follow as ornament.
+- **Gemini Analysis:** Extracts the "Editorial DNA" (Energy, Motion, Vibes, Arc Stage, Typography, Tone). Requests contextual "Best Moments" (1.2s-6s).
 
 ### 2. Strategic Planning (The Advisor)
 - **Library Audit:** The Advisor scans materials to identify coverage (e.g., "Need more Medium-energy clips").
@@ -18,7 +18,8 @@ This document details the exact sequence of logic implemented in the MIMIC pipel
 
 ### 3. Selective Assembly (The Editor)
 - **Weighted-Greedy Search:** Scores clips based on Discovery Bonus (+40), Vibe Match (+15), and Arc Consistency (+10).
-- **Beat-Snapping:** Every decision is mathematically aligned to a musical anchor.
+- **Director-Led Pacing:** Calculates narrative duration first (with jitter) before snapping to beats.
+- **Beat-Snapping:** Snaps to beats ONLY if audio was detectable and correctly analyzed.
 - **Micro-Moment Extraction:** High-precision FFmpeg surgical cuts.
 
 ### 4. Aesthetic Styling (The Stylist)
@@ -38,5 +39,5 @@ This document details the exact sequence of logic implemented in the MIMIC pipel
 
 ---
 
-**Last Updated:** January 31, 2026  
-**Status:** � V9.0 Finalized  
+**Last Updated:** February 5, 2026  
+**Status:** 💎 V12.1 Director Grade  

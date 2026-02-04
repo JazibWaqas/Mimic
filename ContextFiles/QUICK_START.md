@@ -1,8 +1,8 @@
 # MIMIC - Quick Start Guide for New Sessions
 
-**Version:** V7.1 - Semantic Maturation  
-**Status:** 🟡 **FINAL POLISH IN PROGRESS**  
-**Last Updated:** January 30, 2026
+**Version:** V12.1 - Director vs. Metronome  
+**Status:** 💎 **PRODUCTION READY**  
+**Last Updated:** February 5, 2026
 
 ---
 
@@ -10,7 +10,7 @@
 
 MIMIC is an AI-powered video editing system that learns from professional reference videos and automatically recreates that editing style using your raw clips.
 
-**Current Goal:** Implementing **Stage 6 Reflector** - a closed-loop AI judge that watches the final render to provide critical feedback.
+**Current Goal:** Maintaining **Pacing Authority** - ensuring the "Director" intent leads over the mechanical beat grid.
 
 ---
 

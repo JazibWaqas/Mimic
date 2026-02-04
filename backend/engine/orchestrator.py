@@ -58,45 +58,43 @@ from collections import defaultdict, Counter
 def _merge_scene_and_beat_timestamps(
     scene_timestamps: List[float],
     beat_grid: List[float],
-    max_gap: float = 3.0
-) -> List[float]:
+    max_gap: float = 8.0
+) -> List[Tuple[float, str]]:
     """
-    Merge visual scene cuts with beat-aligned timestamps using LOCAL ADAPTIVE PACING.
+    Merge visual scene cuts with beat-aligned timestamps.
+    Returns list of (timestamp, origin) tuples where origin is 'visual' or 'beat'.
     
-    It respects the user's intended pacing (long shots stay long, fast shots stay fast)
-    but ensures every cut is 'snapped' to a musical beat.
+    Raising max_gap to 8.0s (Cinematic Safety) to prevent 'Mechanical Metronome' 
+    subdivision of long emotional holds.
     """
     # 1. Start with 'Beat-Snapped' visual cuts
-    combined = set()
+    combined_dict = {} # timestamp -> origin
     for scene_cut in scene_timestamps:
         # Find nearest beat to the visual cut
         nearest_beat = min(beat_grid, key=lambda x: abs(x - scene_cut))
         # Only snap if the beat is close enough (within 0.25s), otherwise keep the visual cut
         if abs(nearest_beat - scene_cut) < 0.25:
-            combined.add(nearest_beat)
+            combined_dict[nearest_beat] = "visual"
         else:
-            combined.add(scene_cut)
+            combined_dict[scene_cut] = "visual"
     
     # 2. Safety Subdivision (Only for EXTREME gaps)
-    # We only insert extra beat cuts if a shot is longer than the reference allowed
-    # Defaulting to 3.0s as a 'Cinematic' safety limit
-    all_cuts = sorted(list(combined) + [0.0])
-    final_timestamps = set(combined)
+    all_ts = sorted(list(combined_dict.keys()) + [0.0])
     
-    for i in range(len(all_cuts) - 1):
-        start = all_cuts[i]
-        end = all_cuts[i + 1]
+    for i in range(len(all_ts) - 1):
+        start = all_ts[i]
+        end = all_ts[i + 1]
         gap = end - start
         
         # If the gap is massive (stagnant), insert ONE beat-aligned cut in the middle
-        # This keeps the video 'Alive' without breaking the cinematic hold
         if gap > max_gap:
             midpoint = start + (gap / 2)
             nearest_mid_beat = min(beat_grid, key=lambda x: abs(x - midpoint))
             if start < nearest_mid_beat < end:
-                final_timestamps.add(nearest_mid_beat)
+                combined_dict[nearest_mid_beat] = "beat"
                 
-    return sorted(list(final_timestamps))
+    # Sort and return as tuples
+    return sorted([(ts, origin) for ts, origin in combined_dict.items()])
 
 
 # ============================================================================
@@ -270,23 +268,35 @@ def run_mimic_pipeline(
                     ref_bpm = detect_bpm(str(audio_analysis_path))
                 
                 # 2c. HYBRID DETECTION: Merge visual cuts + beat-aligned subdivision
-                # This ensures no segment is longer than ~2 seconds (critical for rhythm-based edits)
                 ref_duration = get_video_duration(reference_path)
                 beat_grid = get_beat_grid(ref_duration, int(ref_bpm))
-                combined_timestamps = _merge_scene_and_beat_timestamps(
+                combined_hints = _merge_scene_and_beat_timestamps(
                     scene_changes, 
                     beat_grid, 
-                    max_gap=3.0
+                    max_gap=8.0 # Cinematic Breath: Allow up to 8s holds without forcing cuts
                 )
                 
-                print(f"  [HYBRID] Visual cuts: {len(scene_changes)}, Beat-enhanced: {len(combined_timestamps)}")
+                # Extract just the raw floats for Gemini's prompt
+                raw_timestamps = [t[0] for t in combined_hints]
+                
+                print(f"  [HYBRID] Visual cuts: {len(scene_changes)}, Beat-enhanced: {len(combined_hints)}")
                 
                 # 2d. Analyze with Gemini using hybrid timestamps
                 blueprint = analyze_reference_video(
                     reference_path, 
                     api_key=api_key,
-                    scene_timestamps=combined_timestamps
+                    scene_timestamps=raw_timestamps
                 )
+
+                # v12.1: Transfer cut origins to Segments for Pacing Authority
+                # combined_hints has N timestamps. Segments 2..N+1 start at these points.
+                # Segment 1 always starts at 0.0 (visual origin).
+                for i, segment in enumerate(blueprint.segments):
+                    if i == 0:
+                        segment.cut_origin = "visual"
+                    elif i-1 < len(combined_hints):
+                        segment.cut_origin = combined_hints[i-1][1]
+
                 print(f"[OK] Gemini successfully analyzed reference: {len(blueprint.segments)} segments found.")
             except Exception as e:
                 print(f"[ERROR] Gemini reference analysis failed: {e}")
@@ -433,7 +443,8 @@ def run_mimic_pipeline(
                 str(styled_video_path),
                 blueprint.text_overlay,
                 blueprint.text_style,
-                blueprint.color_grading
+                blueprint.color_grading,
+                text_events=blueprint.text_events # v12.2 Timed Text
             )
             render_source = styled_video_path
         except Exception as e:

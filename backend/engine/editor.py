@@ -776,71 +776,52 @@ def match_clips_to_blueprint(
                 print(f"  🧠 AI: {thinking}")
                 print(f"  📎 Selected: {selected_clip.filename} (Score: {selected_score:.1f})")
 
-            # === PACING LOGIC: BPM-RELATIVE MIMIC BEHAVIOR ===
-            # High quality editing snaps to beats or 1/2 beats.
+            # === PACING LOGIC: DIRECTOR-FIRST PACING (v12.1) ===
+            # Authority Inversion: Visual intent leads, Beats follow as ornament.
             
-            # MONTAGE MODE: Determine if we should subdivide this reference segment.
-            # We only subdivide if the segment is long AND doesn't have an explicit 'Long' hold request.
             hold = getattr(segment, 'expected_hold', 'Normal').lower()
             arc_stage = segment.arc_stage.lower()
+            cut_origin = getattr(segment, 'cut_origin', 'visual')
             
-            should_subdivide = False
-            
-            # HOLD-DRIVEN RESTRAINT (v12.1):
-            # The 'Hyper-Cutter' is now bounded by the reference's hold intent.
+            # 1. HOLD-DRIVEN RESTRAINT: Minimums for Emotional Registration (Human-centric)
             if hold == "short":
-                max_hold = 1.3
+                max_hold = 1.8  # register shot
             elif hold == "long":
-                max_hold = 6.0 # Allow deep scenic holds as requested
+                max_hold = 12.0 # deep cinematic holds
             else:
-                max_hold = 3.5 # Standard social media patience
+                max_hold = 4.5  # standard patience
                 
-            # 'Peak' only tightens if the hold isn't explicitly 'Long' or 'Normal'
+            # 'Peak' intensity allows for kinetic cutting but still needs registration
             if arc_stage == "peak" and hold == "short":
-                max_hold = 0.8
+                max_hold = 1.2
             elif arc_stage in ["build-up", "peak"] and hold == "normal":
-                max_hold = 2.0
+                max_hold = 2.5
                 
-            if segment.duration > max_hold:
-                should_subdivide = True
+            # 2. SACRED VISUAL CUTS: Do NOT subdivide shots that were intentional in the reference.
+            should_subdivide = False
+            if cut_origin != "visual":
+                if segment.duration > max_hold:
+                    should_subdivide = True
             
+            # 3. DURATION CALCULATION: Editor-first (Jittered)
             if not should_subdivide:
                 use_duration = segment_remaining
                 is_last_cut_of_segment = True
             else:
-                # Subdivide based on BEAT VALUES and NARRATIVE PACING (v12.1)
-                if beat_grid and bpm > 0:
-                    seconds_per_beat = 60.0 / bpm
-                    
-                    # INVENTORY AWARENESS: If we are low on high-energy clips, slow the pacing
-                    energy_pool_size = len(energy_pools.get(segment.energy.value, []))
-                    inventory_deficit = energy_pool_size < 3 # Rough heuristic
-                    
-                    # Determine multiplier from hold intent
-                    if hold == "short":
-                        multiplier = 1  # 1 beat
-                    elif hold == "long":
-                        multiplier = 4  # 4 beats (1 bar)
-                    else:
-                        multiplier = 2  # 2 beats (Normal)
-                        
-                    # Slow down multiplier if inventory is weak to prevent clip shredding
-                    if inventory_deficit and arc_stage != "peak":
-                        multiplier *= 2
-                        
-                    # Arc Stage context
-                    if arc_stage == "peak" and not inventory_deficit:
-                        multiplier = 1  
-                    
-                    use_duration = seconds_per_beat * multiplier
+                # Logic-driven duration with variation to prevent mechanical loops
+                import random
+                if hold == "short":
+                    base = 1.2
+                elif hold == "long":
+                    base = 5.0
                 else:
-                    # Fallback to random weighted by intent
-                    if hold == "short":
-                        use_duration = random.uniform(0.5, 1.0)
-                    elif hold == "long":
-                        use_duration = random.uniform(3.0, 5.5)
-                    else:
-                        use_duration = random.uniform(1.8, 3.0)
+                    base = 2.5
+                    
+                # Kinetic bonus for Peak stage
+                if arc_stage == "peak":
+                    base *= 0.7
+                    
+                use_duration = base * random.uniform(0.9, 1.1)
                 
                 # Check if we overshot the segment
                 if use_duration >= segment_remaining - 0.2:
@@ -859,7 +840,7 @@ def match_clips_to_blueprint(
             beat_aligned = False
             beat_target = None
             
-            if beat_grid and not is_last_cut_of_segment:
+            if beat_grid and not is_last_cut_of_segment and getattr(blueprint, "audio_confidence", "Observed") == "Observed":
                 target_end = timeline_position + use_duration
                 aligned_end = align_to_nearest_beat(target_end, beat_grid, tolerance=0.15)
                 

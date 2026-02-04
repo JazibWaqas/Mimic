@@ -4,58 +4,34 @@ This document identifies the critical files in the MIMIC project and how they co
 
 ---
 
-## 🏗️ Technical Architecture Map (Updated Jan 19, 2026 - 22:10 PM)
+## 🏗️ Technical Architecture Map (Updated February 5, 2026)
 
 ### 1. The Core Engine (Backend Logic)
 These files reside in `backend/engine/` and form the heart of the system.
 
 | File | Responsibility | Connected To |
 |------|--------------|--------------|
-| `orchestrator.py` | **The Brain.** Orchestrates the entire pipeline. Now includes **Scene Detection** as a pre-analysis step. | Calls `brain.py`, `editor.py`, `processors.py`. |
-| `brain.py` | **AI Integration.** Handles Gemini 3 API calls with **Compact Hint Encoding** (`HD, MS` codes). | Called by `orchestrator.py`. Uses `models.py`. |
-| `editor.py` | **Matching Algorithm.** Match clips to segments. Now respects **Visual Scene Anchors**. | Called by `orchestrator.py`. Uses `models.py`. |
-| `processors.py` | **Video Execution.** FFmpeg wrappers. Includes **Scene Detection** (`detect_scene_changes`). | Called by `orchestrator.py`. |
-
-### 2. The API Layer (Backend Entry)
-| File | Responsibility | Connected To |
-|------|--------------|--------------|
-| `main.py` | **FastAPI Server.** Defines REST endpoints and WebSockets for progress tracking. | Calls `orchestrator.py`. Communicates with Frontend. |
-| `models.py` | **Data Structures.** Pydantic models that ensure data consistency across the backend. | Used by almost every backend file. |
-| `utils.py` | **Utility functions.** File management, directory creation, and session cleanup. | Used across the backend. |
-
-### 3. The Frontend (Next.js)
-| File | Responsibility | Connected To |
-|------|--------------|--------------|
-| `app/page.tsx` | Landing Page. | Links to `/upload`. |
-| `app/upload/page.tsx` | File upload interface (Auto/Manual modes). | Calls `lib/api.ts`. |
-| `app/generate/[id]/page.tsx` | Progress tracking page. | Connects to WebSocket in `main.py`. |
-| `app/result/[id]/page.tsx` | Results gallery & side-by-side comparison. | Fetches results from `main.py`. |
-| `lib/api.ts` | API Client. | Acts as the bridge between Frontend and Backend REST API. |
+| `orchestrator.py` | **The Controller.** Orchestrates the 7-stage pipeline. Merges physical cuts with beat grids and assigns `cut_origin`. | Calls `brain.py`, `editor.py`, `processors.py`. |
+| `brain.py` | **The AI.** Handles Gemini 3 API calls. Extracts "Editorial DNA" and "Contextual Best Moments." | Called by `orchestrator.py`. Uses `models.py`. |
+| `editor.py` | **The Matcher.** implements **Director-First Pacing**. Uses narrative intent to lead and beats to snap. | Called by `orchestrator.py`. Uses `models.py`. |
+| `processors.py` | **The Hand.** FFmpeg wrappers for standardized encoding, scene detection, and surgical cutting. | Called by `orchestrator.py`. |
+| `reflector.py` | **The Critic.** Performs post-render AI reflection to judge story transfer. | Final stage of pipeline. |
 
 ---
 
-## 🔄 The Flow (How it's linked)
+## 🔄 The Flow (V12.1 Authority Model)
 
-1.  **Frontend (`upload/page.tsx`)** sends files to **Backend (`main.py` -> `/api/upload`)**.
-2.  **Backend** creates a `session_id` and saves files to `data/uploads/{session_id}/`.
-3.  **Frontend** redirects to `/generate/{session_id}` and triggers **Backend (`/api/generate`)**.
-4.  **Backend (`main.py`)** starts a background task calling **`orchestrator.py:run_mimic_pipeline`**.
-5.  **`orchestrator.py`** then:
-    - Calls **`processors.py`** to detect physical scene cuts in the reference first.
-    - Calls **`brain.py`** to analyze the reference using those cuts as **anchors**.
-    - Calls **`brain.py`** to analyze clips comprehensively (one call per clip).
-    - Calls **`editor.py`** to create an EDL aligned to the **scene-anchored segments**.
-    - Calls **`processors.py`** to render the final video using FFmpeg.
-6.  **Backend (`main.py`)** sends updates via **WebSocket** to **Frontend (`ProgressTracker.tsx`)**.
-7.  **Frontend** displays the final video from `data/results/`.
+1.  **Reference Analysis:** `orchestrator.py` detects physical cuts and marks them as **"Sacred."**
+2.  **Instruction extraction:** `brain.py` defines the energy and arc stages.
+3.  **Clip Strategy:** `brain.py` finds best moments matching the energy-specific hold times (1.2s-6s).
+4.  **Pacing Decision:** `editor.py` calculates a narrative duration first. If a cut is "Sacred", it **refuses** to subdivide it.
+5.  **Rhythmic Snapping:** If audio is present, the narrative durations snap to the nearest beat.
+6.  **Rendering:** FFmpeg executes the decisions.
+7.  **Reflection:** Gemini watches the final MP4 and provides a Director's Monologue.
 
 ---
 
-## ✅ What is Correct?
-- **`editor.py`** is the LATEST matching engine. It implements the high-energy rapid cuts that make the edits feel professional.
-- **`brain.py`** uses Gemini 3 comprehensively. One API call per clip extracts everything needed.
-- **`models.py`** is the single source of truth for data structures.
-
-## ⚠️ What was Incorrect?
-- `editor_fixed.py` was a redundant older version (now removed).
-- Documentation (Master Build Plan) was outdated relative to recent "Rapid Cuts" improvements.
+## ✅ The V12.1 Ground Truth
+- **Editorial Intent > Beat Grid:** The most important rule in the codebase.
+- **Sacred Cuts:** Real camera changes from the reference are never artificiality chopped.
+- **Registration over Speed:** Ensuring the human eye has time (~1.2s) to register a shot.

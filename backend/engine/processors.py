@@ -259,8 +259,8 @@ def standardize_clip(input_path: str, output_path: str) -> None:
     """
     Standardize video to 1080x1920 (vertical), 30fps, h.264, AAC audio.
     
-    Strategy: Scale to fit within 1080x1920, then crop to exact dimensions.
-    This prevents black bars while maintaining aspect ratio.
+    Strategy: Scale to fit within 1080x1920, then pad to exact dimensions.
+    This preserves the full composition (Letterbox Mode) and avoids destructive cropping.
     
     Args:
         input_path: Source video file
@@ -273,11 +273,12 @@ def standardize_clip(input_path: str, output_path: str) -> None:
         "ffmpeg",
         "-i", input_path,
         "-vf", (
-            # 1. Geometry: Orientation + Scale and Crop to 9:16 vertical
-            # Note: FFmpeg handles rotation metadata (autorotate) BEFORE the filter chain.
-            "scale=1080:1920:force_original_aspect_ratio=increase,"
-            "crop=1080:1920:(in_w-1080)/2:(in_h-1920)/2,"
-            "fps=30,"                           # Force consistent 30fps after geometric conforming
+            # 1. Geometry: Orientation + Scale (Letterbox / Cinematic Safe Mode)
+            # Scales to fit within 1080x1920, then pads with black bars to fill.
+            # Preserves full composition, avoids awkward cropping.
+            "scale=1080:1920:force_original_aspect_ratio=decrease,"
+            "pad=1080:1920:(ow-iw)/2:(oh-ih)/2,"
+            "fps=30,"                           # Force consistent 30fps
             # 2. Visual Excellence: The 'High-Def Master' Stack
             "unsharp=3:3:0.8:3:3:0.5,"          # Edge-pop for HD clarity
             "eq=contrast=1.07:brightness=0.0:saturation=1.15," # Vibrant & Clear

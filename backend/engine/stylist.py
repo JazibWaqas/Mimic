@@ -12,15 +12,28 @@ def apply_visual_styling(
     output_video: str,
     text_overlay: str,
     text_style: Dict[str, Any],
-    color_grading: Dict[str, Any] = None
+    color_grading: Dict[str, Any] = None,
+    text_events: List[Any] = None # v12.2 Support for timed text
 ) -> None:
     """
     Apply visual styling and text overlay to a video using FFmpeg.
+    Supports both legacy global overlay and v12.2 timed text events.
     """
     
-    # If no text overlay, just copy and return
-    if not text_overlay:
-        print(f"  [STYLIST] No text overlay requested. Skipping text rendering.")
+    has_timed_events = bool(text_events and len(text_events) > 0)
+    
+    # SAFETY NET: Cap extreme complexity to prevent rendering failures
+    if has_timed_events and len(text_events) > 25:
+         print(f"  [STYLIST] Excessive text events ({len(text_events)}). Falling back to static mode.")
+         has_timed_events = False
+    
+    # Priority Gate: If timed events exist (and passed safety), they OVERRIDE global static text.
+    has_global_text = bool(text_overlay and text_overlay.strip())
+    if has_timed_events:
+        has_global_text = False
+    
+    if not has_global_text and not has_timed_events and not color_grading:
+        print(f"  [STYLIST] No styling requested. Copying passthrough.")
         import shutil
         shutil.copy2(input_video, output_video)
         return
@@ -33,7 +46,7 @@ def apply_visual_styling(
         "serif": "georgia.ttf",
         "sans-serif": "arial.ttf",
         "mono": "consola.ttf",
-        "handwritten": "lhandw.ttf",
+        "handwritten": "lhandw.ttf", # Often needs custom install, fallback safe
         "bold": "arialbd.ttf"
     }
     
@@ -41,38 +54,13 @@ def apply_visual_styling(
     font_file = font_map.get(font_style_raw, "arial.ttf")
     font_path = Path("C:/Windows/Fonts") / font_file
     
-    # Fallback if font isn't found
-    if font_path.exists():
-        # THE GOLD STANDARD FOR WINDOWS FONT PATHS IN FFMPEG:
-        # 1. Use forward slashes
-        # 2. ESCAPE THE COLON WITH DOUBLE BACKSLASH: C\\:/...
-        # 3. DO NOT wrap in single quotes if using this escaping style
-        active_font = str(font_path).replace("\\", "/").replace(":", "\\\\:")
-    else:
-        active_font = "Arial"
-    
-    # 2. Color Mapping - High-End Minimalist
+    # We rely on default font usage if path is tricky, but setup color
     font_color = "white"
     color_effects = text_style.get("color_effects", "").lower()
     if "gold" in color_effects or "yellow" in color_effects:
         font_color = "0xEEEEEE" 
 
-    # 3. Text Processing (Multi-line Support with Auto-Wrapping)
-    import textwrap
-    
-    raw_lines = text_overlay.replace("|", "\n").split("\n")
-    
-    wrapped_lines = []
-    for line in raw_lines:
-        if len(line.strip()) > 35:
-            wrapped_lines.extend(textwrap.wrap(line.strip(), width=35))
-        else:
-            if line.strip():
-                wrapped_lines.append(line.strip())
-    
-    lines = wrapped_lines
-    
-    # 4. Build Filter Chain
+    # 2. Build Filter Chain
     filters = []
     
     # A. Color Grading
@@ -86,39 +74,80 @@ def apply_visual_styling(
         if "high" in contrast:
             filters.append("eq=contrast=1.15:saturation=1.1")
 
-    # B. Multi-line DrawText (Manual stacking for perfect alignment)
-    placement = text_style.get("placement", "top").lower()
-    font_size = 42
-    line_height = font_size * 1.5
-    
-    if "top" in placement:
-        base_y = "base_y=h/5"
-    elif "bottom" in placement:
-        base_y = f"base_y=h*0.8 - ({len(lines)} * {line_height}/2)"
-    else:
-        base_y = f"base_y=(h - ({len(lines)} * {line_height}))/2"
+    # B1. Legacy Global Text (Center/Top/Bottom static)
+    if has_global_text:
+        import textwrap
+        raw_lines = text_overlay.replace("|", "\n").split("\n")
+        lines = []
+        for line in raw_lines:
+            if len(line.strip()) > 35:
+                lines.extend(textwrap.wrap(line.strip(), width=35))
+            else:
+                if line.strip(): lines.append(line.strip())
+        
+        placement = text_style.get("placement", "center").lower()
+        font_size = 42
+        line_height = font_size * 1.5
+        
+        if "top" in placement:
+            base_y_expr = "h/5"
+        elif "bottom" in placement:
+            base_y_expr = f"h*0.8 - ({len(lines)} * {line_height}/2)"
+        else:
+            base_y_expr = f"(h - ({len(lines)} * {line_height}))/2"
+            
+        for i, line in enumerate(lines):
+            clean_l = _sanitize_text_for_ffmpeg(line)
+            y_offset = f"({base_y_expr}) + {i * line_height}"
+            drawtext = (
+                f"drawtext=text='{clean_l}':"
+                f"x=(w-text_w)/2:y={y_offset}:"
+                f"fontsize={font_size}:fontcolor={font_color}:"
+                f"shadowcolor=black@0.4:shadowx=2:shadowy=2"
+            )
+            filters.append(drawtext)
 
-    for i, line in enumerate(lines):
-        # DEMO-READY HARDENING:
-        # FFmpeg filtergraphs on Windows are notoriously fragile with punctuation.
-        # For the demo, we strip characters that act as filter delimiters (comma, colon, quote).
-        # This is better than a crashed video.
-        clean_l = line.replace(":", "").replace(",", "").replace("'", "").replace('"', "").replace("\\", "")
-        # Remove any other non-standard chars that might break the shell
-        clean_l = "".join(c for c in clean_l if c.isalnum() or c in " .!?#@%&*()-_=+[]{}|;~")
-        
-        y_offset = f"({base_y.split('=')[1]}) + {i * line_height}"
-        
-        # We use the absolute simplest drawtext syntax that works on all Windows FFmpeg builds
-        drawtext = (
-            f"drawtext=text='{clean_l}':"
-            f"x=(w-text_w)/2:y={y_offset}:"
-            f"fontsize={font_size}:fontcolor={font_color}:"
-            f"shadowcolor=black@0.4:shadowx=2:shadowy=2"
-        )
-        # We also omit fontfile to use the system default, which is safer than a broken path
-        filters.append(drawtext)
+    # B2. v12.2 Timed Text Events
+    if has_timed_events:
+        for evt in text_events:
+            # Safely access attributes whether it's a dict or Pydantic model
+            content = getattr(evt, 'content', evt.get('content') if isinstance(evt, dict) else str(evt))
+            start_t = getattr(evt, 'start', evt.get('start', 0) if isinstance(evt, dict) else 0)
+            end_t = getattr(evt, 'end', evt.get('end', 5) if isinstance(evt, dict) else 5)
+            role = getattr(evt, 'role', evt.get('role', 'Decorative') if isinstance(evt, dict) else "").lower()
+            
+            clean_content = _sanitize_text_for_ffmpeg(content)
+            
+            # Dynamic Sizing based on Role
+            evt_font_size = 64 if "anchor" in role else 48
+                
+            # Dynamic Placement
+            # Anchors = Center, Emphasis = Slightly higher, Decorative = Bottom
+            if "anchor" in role:
+                x_pos = "(w-text_w)/2"
+                y_pos = "(h-text_h)/2" 
+            elif "emphasis" in role:
+                x_pos = "(w-text_w)/2"
+                y_pos = "(h-text_h)/3"
+            else:
+                x_pos = "(w-text_w)/2"
+                y_pos = "h-(h/5)"
+            
+            drawtext = (
+                f"drawtext=text='{clean_content}':"
+                f"enable='between(t,{start_t},{end_t})':"
+                f"x={x_pos}:y={y_pos}:"
+                f"fontsize={evt_font_size}:fontcolor={font_color}:"
+                f"shadowcolor=black@0.8:shadowx=3:shadowy=3"
+            )
+            filters.append(drawtext)
     
+    # If no filters (e.g. empty inputs), just copy
+    if not filters:
+        import shutil
+        shutil.copy2(input_video, output_video)
+        return
+        
     filter_chain = ",".join(filters)
     
     # 5. FFmpeg Execution
@@ -133,12 +162,17 @@ def apply_visual_styling(
         output_video
     ]
     
-    print(f"  [STYLIST] Applying Demo-Safe Aesthetic: {len(lines)} lines")
+    print(f"  [STYLIST] Applying v12.2 Styles: {len(filters)} filters (Timed Events: {len(text_events) if text_events else 0})")
     try:
-        # We use a short timeout for the stylist to avoid hanging
-        subprocess.run(cmd, check=True, capture_output=True, timeout=30)
+        # Increased timeout for complex filter chains
+        subprocess.run(cmd, check=True, capture_output=True, timeout=60)
         print(f"  [OK] Stylized video ready: {Path(output_video).name}")
     except Exception as e:
         print(f"  [WARN] Stylist failed (likely FFmpeg syntax), falling back to unstylized: {e}")
         import shutil
         shutil.copy2(input_video, output_video)
+
+def _sanitize_text_for_ffmpeg(text: str) -> str:
+    """Helper to strip dangerous characters for Windows FFmpeg."""
+    clean = text.replace(":", "").replace(",", "").replace("'", "").replace('"', "").replace("\\", "")
+    return "".join(c for c in clean if c.isalnum() or c in " .!?#@%&*()-_=+[]{}|;~")

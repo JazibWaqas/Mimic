@@ -173,16 +173,18 @@ export default function StudioPage() {
     if (acceptedFiles?.length > 0) {
       setMaterialFiles(prev => [...prev, ...acceptedFiles]);
 
-      // Generate client-side thumbnails immediately
-      acceptedFiles.forEach(async (file) => {
+      // Batch thumbnail generation to prevent N re-renders
+      const newPreviews: Record<string, string> = {};
+      await Promise.all(acceptedFiles.map(async (file) => {
         const thumb = await generateThumbnail(file);
         if (thumb) {
-          setPreviews(prev => ({
-            ...prev,
-            [file.name + file.size]: thumb
-          }));
+          newPreviews[file.name + file.size] = thumb;
         }
-      });
+      }));
+
+      if (Object.keys(newPreviews).length > 0) {
+        setPreviews(prev => ({ ...prev, ...newPreviews }));
+      }
 
       toast.success(`${acceptedFiles.length} Clips Added`);
     }
@@ -402,12 +404,14 @@ export default function StudioPage() {
               </div>
 
               {/* Taller Unified Box (320px) */}
-              <div className={cn(
-                "min-h-[320px] rounded-2xl border transition-all duration-700 relative overflow-hidden flex flex-col",
-                activeMode === "text" ? "border-[#ff007f]/20 bg-[#ff007f]/[0.02]" : "border-cyan-500/20 bg-cyan-500/[0.02]"
-              )}>
+              <div
+                key={activeMode}
+                className={cn(
+                  "min-h-[320px] rounded-2xl border relative overflow-hidden flex flex-col",
+                  activeMode === "text" ? "border-[#ff007f]/20 bg-[#ff007f]/[0.02]" : "border-cyan-500/20 bg-cyan-500/[0.02]"
+                )}>
                 {activeMode === "text" ? (
-                  <div className="flex-1 flex flex-col p-8 space-y-6 animate-in fade-in slide-in-from-left-4 duration-500">
+                  <div className="flex-1 flex flex-col p-8 space-y-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="h-8 w-8 rounded-full bg-[#ff007f]/10 border border-[#ff007f]/20 flex items-center justify-center">
@@ -478,7 +482,7 @@ export default function StudioPage() {
                 ) : (
                   <div
                     {...getRefProps()}
-                    className="flex-1 flex flex-col items-center justify-center p-12 cursor-pointer group/drop animate-in fade-in slide-in-from-right-4 duration-500"
+                    className="flex-1 flex flex-col items-center justify-center p-12 cursor-pointer group/drop"
                   >
                     <input {...getRefInputProps()} />
                     {refFile ? (
@@ -717,7 +721,7 @@ export default function StudioPage() {
                     <p className="font-black uppercase tracking-[0.4em] italic text-[10px]">Awaiting Protocol</p>
                   </div>
                 ) : (
-                  logMessages.map((msg, i) => (
+                  logMessages.slice(-100).map((msg, i) => (
                     <div key={i} className="flex gap-4 text-slate-400 hover:text-white transition-colors animate-in fade-in slide-in-from-left-2 duration-300">
                       <span className="text-indigo-500/40 shrink-0 select-none font-bold text-[10px] mt-1">{(i + 1).toString().padStart(2, '0')}</span>
                       <span className={cn("inline-block", msg.includes('ERROR') ? 'text-red-500' : msg.includes('GEMINI') ? 'text-cyan-400 font-bold' : '')}>{msg}</span>

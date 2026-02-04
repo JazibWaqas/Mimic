@@ -831,8 +831,11 @@ def process_video_pipeline(
             
             save_active_sessions()
             
-            # Trigger index refresh to ensure Vault page sees the new result immediately
-            asyncio.run_coroutine_threadsafe(LibraryIndex._refresh(), asyncio.get_event_loop())
+            # Trigger index refresh safely in background thread
+            try:
+                asyncio.run(LibraryIndex._refresh())
+            except Exception as e:
+                print(f"[WARN] Post-render index refresh skipped: {e}")
         else:
             print(f"\n[PIPELINE] FAILED - Error: {result.error}")
             active_sessions[session_id]["status"] = "error"

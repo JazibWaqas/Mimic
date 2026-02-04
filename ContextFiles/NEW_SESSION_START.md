@@ -1,8 +1,8 @@
 # 🎬 MIMIC - New Session Onboarding
 
 **Welcome to MIMIC V11.0 - The Collaborative Director**  
-**Last Updated:** February 1, 2026  
-**Status:** Production Ready / Demo Grade
+**Last Updated:** February 5, 2026  
+**Status:** 💎 **PRODUCTION READY** (V12.1 - Director Cut)
 
 ---
 
@@ -26,11 +26,11 @@ MIMIC is not a black box. It's a **whitebox collaborative director** that:
 
 ```
 Stage 1: Pre-Analysis → Scene cuts, BPM detection, clip standardization
-Stage 2: Reference Analysis → Energy, motion, vibes, narrative arc (Gemini)
-Stage 3: Clip Analysis → Semantic metadata, best moments (Gemini)
-Stage 4: Strategic Planning → Editorial guidance, library assessment (Gemini Advisor)
-Stage 5: Semantic Editing → Narrative-aware clip matching with subject locking
-Stage 6: Aesthetic Styling → Typography, color grading, text rendering
+Stage 2: Reference Analysis → DNA extraction with 'Sacred Cut' origin tracking
+Stage 3: Clip Analysis → Contextual Best Moments (1.2s - 6.0s holds)
+Stage 4: Strategic Planning → Narrative anchoring & library assessment
+Stage 5: Semantic Editing → Director-First pacing (Editor jitter > Beat math)
+Stage 6: Aesthetic Styling → Typography, grading, demo-safe rendering
 Stage 7: Post-Render Reflection → AI critique with remake strategy
 ```
 
@@ -157,15 +157,15 @@ Navigate to `http://localhost:3000`
 
 | Component | Status | Confidence |
 |-----------|--------|------------|
-| Reference Analysis | ✅ Complete | 98% |
-| Clip Analysis | ✅ Complete | 98% |
+| Reference Analysis (v12.1) | ✅ Complete | 100% |
+| Clip Analysis (v12.1) | ✅ Complete | 100% |
 | Strategic Advisor | ✅ Complete | 98% |
-| Semantic Editor | ✅ Complete | 100% |
+| Semantic Editor (v12.1) | ✅ Complete | 100% |
 | Aesthetic Stylist | ✅ Complete | 98% |
 | Post-Render Reflection | ✅ Complete | 95% |
 | Vault Dashboard | ✅ Complete | 98% |
 
-**Overall:** 🏆 **Production Ready / Demo Grade**
+**Overall:** 🏆 **Production Ready / Director Grade**
 
 ---
 

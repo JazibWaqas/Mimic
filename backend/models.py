@@ -95,6 +95,9 @@ class Segment(BaseModel):
     transition_intent: dict = Field(default_factory=dict, description="Detailed transition mechanics: type, mechanism, strength")
     continuity_hook: dict = Field(default_factory=dict, description="Hooks for visual flow: opens, resolves, type")
     
+    # v12.1 Internal Tracking
+    cut_origin: str = Field("visual", description="visual | beat")
+    
     @field_validator('shot_scale_role', 'temporal_weight', 'cut_motivation')
     @classmethod
     def validate_director_soul(cls, v, info):
@@ -118,6 +121,19 @@ class Segment(BaseModel):
             if abs(v - expected) > 0.01:  # Allow 10ms float precision
                 raise ValueError(f'duration must equal end - start')
         return v
+
+
+class TextEvent(BaseModel):
+    """
+    Timed text overlay event (v12.2).
+    """
+    content: str = Field(..., description="Visible text content")
+    start: float = Field(..., ge=0, description="Start time in seconds")
+    end: float = Field(..., gt=0, description="End time in seconds")
+    duration: float = Field(..., gt=0, description="Duration in seconds")
+    sync_driver: str = Field("Visual-hit", description="Beat | Lyric | Narrative | Visual-hit")
+    role: str = Field("Decorative", description="Narrative-Anchor | Emphasis | Decorative | Branding")
+    confidence: str = Field("Medium", description="High | Medium | Low")
 
 
 class StyleBlueprint(BaseModel):
@@ -146,6 +162,9 @@ class StyleBlueprint(BaseModel):
     narrative_message: str = Field("", description="What the edit is trying to communicate in one sentence")
     intent_clarity: str = Field("Implicit", description="How explicit the intent is: Clear, Implicit, or Ambiguous")
     
+    # Dynamic Text Engine (v12.2)
+    text_events: List[TextEvent] = Field(default_factory=list, description="Timed editorial text events")
+    
     # Content Requirements (Intent-Level)
     must_have_content: List[str] = Field(default_factory=list, description="3-5 types of moments this edit fundamentally relies on")
     should_have_content: List[str] = Field(default_factory=list, description="2-3 types of moments that would strengthen the edit")
@@ -171,6 +190,7 @@ class StyleBlueprint(BaseModel):
     
     # Metadata Invariants (v12.1)
     reference_audio: str = Field("original", description="original | muted. Tracks if the source was muted during analysis.")
+    audio_confidence: str = Field("Observed", description="Observed | Inferred. Tracks if audio was directly analyzed or inferred from visual rhythm.")
     
     # Audio & Music (v8.0+)
     music_sync: str = Field("", description="Cut-music alignment: Tightly synced | Loosely synced | Independent")

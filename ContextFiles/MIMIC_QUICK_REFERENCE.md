@@ -1,7 +1,7 @@
 # 🚀 MIMIC Quick Reference
 
-**Version:** V12.0 - Bulletproof Indexing  
-**Last Updated:** February 4, 2026
+**Version:** V12.1 - Director vs. Metronome  
+**Last Updated:** February 5, 2026
 
 This is your **one-page cheat sheet** for working with MIMIC. Bookmark this for quick command lookups and troubleshooting.
 
@@ -126,13 +126,10 @@ Mimic/
 ## 🎨 Key Concepts
 
 ### Narrative Subject Locking
-When text overlay demands specific content (e.g., "friends"), the system enforces primary subject matching with +200 bonus for correct subjects.
+When text overlay demands specific content (e.g., "friends"), the system enforces primary subject matching with +50-200 bonus for correct subjects.
 
-### Emotional Capital
-Tracks clip usage to prevent "star" clip fatigue. Discovery bonus (+40) for first use, overuse penalty (-30) after 3+ uses.
-
-### Adaptive Rhythm
-Respects cinematic holds (>2s in Intro/Outro) while maintaining beat-sync for high-energy sections.
+### Pacing Authority (V12.1)
+The "Director" (Narrative intent) now has authority over the "Metronome" (Beat grid). Sacred visual cuts are protected from subdivision, and minimum holds (1.2s-2.5s) ensure emotional registration.
 
 ### Cache Inheritance
 Reuses expensive AI analysis even if pacing changes. Keyed by content hash, not filename.

@@ -1,61 +1,45 @@
 # MIMIC Diagnostic Log - Bug Forensics
 
 **Purpose:** Complete forensic record of all bugs discovered, root causes, and fixes applied.  
-**Last Updated:** January 31, 2026, 00:20 PKT
+**Last Updated:** February 5, 2026, 00:30 PKT
 
 ---
 
-## 🐛 Bug #1: BPM Drift (Hardcoded Tempo)
-**Status:** ✅ FIXED (Jan 15)
+## 🐛 Bug #11: The Mechanical Metronome (ARCHITECTURAL)
+**Status:** ✅ FIXED (Feb 5)
+**Problem:** The system followed the BPM grid so strictly that it subdivided intentional cinematic holds in the reference, leading to "machine-gun" pacing and emotional exhaustion.
+**Fix:** Inverted the authority model.
+1. Implemented **Sacred Visual Cuts** (marked as `visual` origin) that cannot be subdivided.
+2. Switched from beat-math duration to **Narrative Duration** with human-like jitter (±10%).
+3. Raised minimum holds (registration threshold) to 1.2s - 2.5s.
+4. Added `audio_confidence` to relax snapping when audio is muted/inferred.
 
-## 🐛 Bug #2: Model Not Reinitializing After Key Rotation
-**Status:** ✅ FIXED (Jan 19)
-
-## 🐛 Bug #3: Upload/Analysis Key Mismatch (403 Errors)
-**Status:** ✅ FIXED (Jan 19)
-
-## 🐛 Bug #4: Upload Rotation Conflict
-**Status:** ✅ FIXED (Jan 19)
-
-## 🐛 Bug #5: Rate Limiter Too Aggressive
-**Status:** ✅ FIXED (Jan 19)
-
-## 🐛 Bug #6: Defaults Poisoning Cache
-**Status:** ✅ FIXED (Jan 19)
-
-## 🐛 Bug #7: Vibes Not Being Parsed or Saved
-**Status:** ✅ FIXED (Jan 19)
-
-## 🐛 Bug #8: Moment vs Segment Primitive Mismatch (ARCHITECTURAL)
-**Status:** ✅ FIXED (Jan 21) - Implemented snap-to-blueprint duration enforcement.
-
-## 🐛 Bug #9: Float Precision Timeline Gaps (MATHEMATICAL)
-**Status:** ✅ FIXED (Jan 21) - Implemented explicit boundary enforcement: start[n] = end[n-1].
-
-## 🐛 Bug #10: Cache Poisoning with Defaults (DATA INTEGRITY)
-**Status:** ✅ FIXED (Jan 21) - Added strict validation; defaults are rejected and never cached.
+## 🐛 Bug #12: Strategic Subdivision Logic (PACING)
+**Status:** ✅ FIXED (Feb 5)
+**Problem:** `subdivide_segments()` was chopping reference shots into 2s chunks before AI analysis, overriding the reference's rhythm.
+**Fix:** Disabled subdivision by default. Enabled it only for explicitly high-energy styles (e.g., Music Video) and raised the threshold to 4.5s.
 
 ---
 
-## 🔍 V7.1 Current Audit
+## 🔍 V12.1 Current Audit
 
-### 📊 Metric #1: The Rhythm Gap
-**Observed:** Cuts sometimes lag slightly behind beats in complex references.
-**Status:** Improved in V7.1 via hybrid scene/beat grid anchors.
+### 📊 Metric #1: Pacing Naturalism
+**Observed:** Edits now "breathe" correctly. Long scenic holds are preserved.
+**Status:** Exceptional (V12.1)
 
-### 📊 Metric #2: Library Exhaustion
-**Observed:** Repetition increases significantly when library size is < 10 clips.
-**Status:** Mitigated by Discovery Bonus logic.
+### 📊 Metric #2: Rhythmic Soul
+**Observed:** Cuts feel musical but not mechanical. Rhythm is "felt" through alignment rather than forced through duration.
+**Status:** Correct Narrative/Beat balance achieved.
 
 ---
 
-## 🤝 Project Health: ACTIVE
+## 🤝 Project Health: DIRECTOR GRADE
 
 | Severity | Count | Status |
 | :--- | :--- | :--- |
-| Critical | 4 | ✅ All Fixed |
-| High | 2 | ✅ All Fixed |
+| Critical | 5 | ✅ All Fixed |
+| High | 3 | ✅ All Fixed |
 | Medium | 4 | ✅ All Fixed |
 | Minor/UI | 8 | ✅ All Fixed |
 
-**Final Audit Result:** Zero blockers for Stages 1-5. Evolution to Stage 6 (Reflection) is the next technological hurdle.
+**Final Audit Result:** System has transitioned from an "Automation Specimen" to a "Creative Director." Zero known pacing blockers.

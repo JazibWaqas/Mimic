@@ -46,10 +46,10 @@ IMPORTANT:
 
 ---
 
-## 1. TEXT & NARRATIVE CONTEXT
+## 1. TEXT & NARRATIVE CONTEXT (GLOBAL)
 
 - text_overlay:
-  Extract ALL readable on-screen text.
+  Extract ALL readable on-screen text across the video.
   If multiple text elements appear, list them separated by " | ".
 
 - text_style:
@@ -75,6 +75,49 @@ IMPORTANT:
 
 ---
 
+## 1B. TEXT EVENTS (EDITORIAL TIMELINE)
+
+If on-screen text appears rhythmically, per-beat, or per-phrase
+(as flashes, punches, or narrative anchors),
+you MUST extract them as timed editorial events.
+
+IMPORTANT GATING RULE:
+- ONLY extract 'text_events' if text content CHANGES or flashes RHYTHMICALLY.
+- If text is static/persistent (e.g. Title Card, Credits, Watermark) across multiple shots, DO NOT create text events. Return "text_events": [].
+- Only separate events if they are Editorially Distinct (different phrases or sync points).
+
+For EACH text event, provide:
+
+- content:
+  The visible word or phrase (exact casing if clear).
+
+- start:
+  Approximate start time in seconds.
+
+- end:
+  Approximate end time in seconds.
+
+- duration:
+  end - start (seconds).
+
+- sync_driver:
+  Beat | Lyric | Narrative | Visual-hit
+
+- role:
+  Narrative-Anchor | Emphasis | Decorative | Branding
+
+- confidence:
+  High | Medium | Low
+
+RULES:
+- Include text flashes even if extremely brief (<0.3s).
+- Timing precision within ±0.1s is acceptable.
+- Do NOT invent text that is not visible.
+- If text is continuous for an entire segment, still list it once with correct timing.
+- If NO on-screen text exists, return "text_events": [].
+
+---
+
 ## 2. VISUAL STYLE & AESTHETICS
 
 - color_grading:
@@ -89,7 +132,7 @@ IMPORTANT:
   List ALL recurring effects (Grain, Slow motion, Speed ramps, VHS noise, Motion blur, Vignette, None).
 
 - stylistic_invariants:
-  Rules that NEVER break in this edit (e.g., “Hard cuts only”, “Center text only”, “Golden hour lighting”).
+  Rules that NEVER break in this edit (e.g., “Hard cuts only”, “Center text only”).
 
 - shot_variety:
   * dominant_scale (Extreme CU | CU | Medium | Wide | Extreme Wide | Mixed)
@@ -158,6 +201,18 @@ Identify EVERY REAL CUT and define segments.
 
 For EACH segment:
 
+- id:
+  Sequential number (1, 2, 3...)
+
+- start:
+  Start time in seconds (float)
+
+- end:
+  End time in seconds (float)
+
+- duration:
+  Segment length in seconds (float)
+
 - media_type:
   Video | Still
 
@@ -221,9 +276,10 @@ RULE:
   Locked | Handheld | Smooth pan | Erratic | Mixed
 
 Rules:
-- Detect REAL cuts only
-- Segment IDs sequential
-- Final segment must end exactly at total_duration
+- Detect REAL cuts only.
+- Segment IDs sequential.
+- Final segment must end exactly at total_duration.
+- STOP generating segments once the final segment end == total_duration. Do NOT create additional segments.
 
 ---
 
@@ -252,6 +308,10 @@ Rules:
   "text_style": {},
   "text_behavior": {},
   "text_cadence": "",
+  "text_events": [
+    { "content": "Sample", "start": 0.0, "end": 1.0, "duration": 1.0, "role": "Decorative" }
+  ],
+
   "narrative_message": "",
   "intent_clarity": "",
 
@@ -281,7 +341,9 @@ Rules:
 
   "total_duration": 0.0,
 
-  "segments": [],
+  "segments": [
+    { "id": 1, "start": 0.0, "end": 2.0, "duration": 2.0, "media_type": "Video", "energy": "Medium" }
+  ],
 
   "overall_reasoning": "",
   "ideal_material_suggestions": []
@@ -321,10 +383,10 @@ You are a professional video editor analyzing a clip to find the SINGLE BEST MOM
 TARGET PROFILE:
 - Energy: {target_energy}
 - Motion: {target_motion}
-- Desired Duration: {target_duration:.2f} seconds
+- Expected Scale: {target_duration:.2f} seconds (Contextual: Low=3-6s, Med=2-4s, High=1.2-3s)
 
 YOUR TASK:
-Watch the ENTIRE clip and identify the SINGLE BEST continuous moment (lasting approximately {target_duration:.2f} seconds) that best matches the target profile.
+Watch the ENTIRE clip and identify the SINGLE BEST continuous moment that best matches the target profile and the target duration of approximately {target_duration:.2f} seconds.
 
 CRITERIA FOR "BEST MOMENT":
 1. The moment should have energy level matching "{target_energy}"
@@ -345,7 +407,7 @@ IMPORTANT:
 - best_moment_start must be >= 0
 - best_moment_end must be > best_moment_start
 - best_moment_end must be <= clip duration
-- The duration (best_moment_end - best_moment_start) should be approximately {target_duration:.2f} seconds
+- The duration should respect the TARGET SCALE for the energy level.
 - If no good moment exists, return the closest match you can find
 
 Respond ONLY with valid JSON. Do not include explanations, markdown, or any other text.
@@ -490,7 +552,12 @@ Describe content, not interpretation.
 ## 4. BEST MOMENTS (TEMPORAL SELECTION)
 
 For EACH energy level (High / Medium / Low),
-identify the SINGLE BEST continuous moment lasting approximately 2–4 seconds.
+identify the SINGLE BEST continuous moment.
+
+EXPECTED DURATIONS:
+- LOW Energy: 3.0s to 6.0s (Cinematic holds)
+- MEDIUM Energy: 2.0s to 4.0s (Standard pacing)
+- HIGH Energy: 1.2s to 3.0s (Kinetic registration)
 
 For each moment, provide:
 - start (seconds, decimal)
@@ -648,7 +715,7 @@ class GeminiConfig:
         "temperature": 0.1,  # Low temperature for consistency
         "top_p": 0.95,
         "top_k": 40,
-        "max_output_tokens": 8192  # Increased for deep reference analysis
+        "max_output_tokens": 100000  # v12.2 Maximize headroom for analysis
     }
 
     # Safety settings to prevent false positive blocks during hackathon
@@ -841,13 +908,15 @@ def _parse_json_response(response_text: str) -> dict:
 # PUBLIC API
 # ============================================================================
 
-def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 2.0) -> StyleBlueprint:
+def subdivide_segments(blueprint: StyleBlueprint, max_segment_duration: float = 4.5, enabled: bool = False) -> StyleBlueprint:
     """
     Split long segments into smaller chunks if they exceed the max duration.
     
-    With real scene detection, we want to respect the original cuts more,
-    so we increase the default max duration to 2.0s.
+    V12.1 PACING GUARD: Subdivision is DISABLED by default to preserve 
+    the editorial intent extracted from the reference. Default raised to 4.5s.
     """
+    if not enabled:
+        return blueprint
     new_segments = []
     segment_id = 1
     
@@ -1023,8 +1092,10 @@ def analyze_reference_video(
                 # Apply subdivision only if cache was not created with scene hints
                 # (preserve original rhythm when mimicking detected cuts)
                 if "hints0" in cache_file.name:
-                    blueprint = subdivide_segments(blueprint)
-                    print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (subdivided)")
+                    force_subdivide = blueprint.editing_style in ["Music video", "Fast montage", "TikTok/Reel"]
+                    blueprint = subdivide_segments(blueprint, enabled=force_subdivide)
+                    msg = "subdivided" if force_subdivide else "preserved original rhythm"
+                    print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments ({msg})")
                 else:
                     print(f"[OK] Loaded from cache: {len(blueprint.segments)} segments (preserved original rhythm)")
 
@@ -1084,8 +1155,11 @@ Rules for hinted analysis:
             if not response.candidates or response.candidates[0].finish_reason != 1:
                 reason = "UNKNOWN"
                 if response.candidates:
-                    from google.generativeai.types import FinishReason
-                    reason = FinishReason(response.candidates[0].finish_reason).name
+                    # Safely get reason without potentially broken imports
+                    try:
+                        reason = str(response.candidates[0].finish_reason)
+                    except:
+                        reason = "UNKNOWN_ERROR"
                 raise ValueError(f"Gemini blocked the response. Reason: {reason}")
 
             json_data = _parse_json_response(response.text)
@@ -1128,18 +1202,24 @@ Rules for hinted analysis:
             blueprint = StyleBlueprint(**json_data)
             blueprint.contract = passport
             blueprint.reference_audio = "muted" # v12.1 Explainability invariant
+            blueprint.audio_confidence = "Inferred"
 
-            # Apply subdivision only if no scene hints (preserve original rhythm when mimicking)
+            # Apply subdivision only if no scene hints AND style is explicitly fast
             if not scene_timestamps:
-                blueprint = subdivide_segments(blueprint)
-                print(f"[OK] Applied subdivision: {len(blueprint.segments)} segments")
+                force_subdivide = blueprint.editing_style in ["Music video", "Fast montage", "TikTok/Reel"]
+                blueprint = subdivide_segments(blueprint, enabled=force_subdivide)
+                if force_subdivide:
+                    print(f"[OK] Applied subdivision: {len(blueprint.segments)} segments")
+                else:
+                    print(f"[OK] Style '{blueprint.editing_style}' protected from subdivision: {len(blueprint.segments)} segments")
             else:
-                print(f"[OK] Preserved original cut rhythm: {len(blueprint.segments)} segments (no subdivision)")
+                print(f"[OK] Preserved visual cut rhythm: {len(blueprint.segments)} segments (no subdivision)")
             
             # Save ORIGINAL to cache with UTF-8 encoding
             cache_data = {
                 **json_data,
                 "reference_audio": "muted",
+                "audio_confidence": "Inferred",
                 "_contract": passport,
                 "_cache_version": REFERENCE_CACHE_VERSION,
                 "_cached_at": time.strftime("%Y-%m-%d %H:%M:%S")
@@ -1692,14 +1772,25 @@ def create_fallback_blueprint(video_path: str) -> StyleBlueprint:
     segment_id = 1
     
     while current_time < duration:
-        end_time = min(current_time + 2.0, duration)
+        # Fallback to breathable segments (3.5s avg)
+        import random
+        hold_time = random.uniform(3.0, 4.0)
+        end_time = min(current_time + hold_time, duration)
+        
+        # Energy Ramp
+        progress = current_time / duration
+        if progress < 0.2: energy = EnergyLevel.LOW
+        elif progress < 0.7: energy = EnergyLevel.MEDIUM
+        else: energy = EnergyLevel.HIGH
+
         segments.append(Segment(
             id=segment_id,
             start=current_time,
             end=end_time,
             duration=end_time - current_time,
-            energy=EnergyLevel.MEDIUM,  # Default to medium
-            motion=MotionType.DYNAMIC
+            energy=energy,
+            motion=MotionType.DYNAMIC,
+            arc_stage="Peak" if progress > 0.7 else "Build-up" if progress > 0.2 else "Intro"
         ))
         current_time = end_time
         segment_id += 1
