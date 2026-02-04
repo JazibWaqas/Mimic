@@ -1,7 +1,7 @@
-# MIMIC - SYSTEM STATE (V12.1)
+# MIMIC - SYSTEM STATE (V13.2)
 
 **Last Updated:** February 5, 2026  
-**Version:** V12.1 "Director vs. Metronome"  
+**Version:** V13.2 "Semantic Intelligence"  
 **Status:** Production Ready / Demo Grade
 
 ---
@@ -31,6 +31,57 @@
 ---
 
 ## 🔧 **RECENT FIXES (Feb 5, 2026)**
+
+### **0. V13.2 Semantic Intelligence Enhancements** ✅ NEW
+**Problem:** System had limited vocabulary for nostalgia, childhood, celebration, and cinematic reels. Emotional tone matching was basic.
+
+**Fix Applied:**
+- **Expanded SEMANTIC_MAP:** Added 6 new categories:
+  - `nostalgia`: memories, childhood, family, vintage, throwback, warmth, home
+  - `celebration`: party, dance, cheers, toast, birthday, wedding, confetti
+  - `intimate`: close, embrace, love, tender, personal, romantic
+  - `childhood`: playing, laughter, discovery, wonder, games, school, innocence
+  - `cinematic`: epic, dramatic, hero, iconic, majestic, grand, powerful
+  - `transition`: walking, driving, flying, moving, passing, flowing
+- **Emotional Tone → Vibe Bridge:** Maps clip tones (e.g., "Nostalgic") to segment vibes (e.g., "memories")
+- **Arc-Stage Tone Affinity:** Outro prefers nostalgic/peaceful, Peak prefers energetic/dramatic
+
+**Impact:**
+- ✅ My Year reels now match nostalgia/memory vibes correctly
+- ✅ Friends Trip reels prioritize celebration/joyful clips
+- ✅ Cinematic reels find dramatic/epic content
+- ✅ Childhood reels surface innocence/wonder moments
+
+**Files Modified:**
+- `backend/engine/editor.py` (lines 376-407, 676-735)
+
+---
+
+### **0b. V13.1 REFERENCE MODE System Audit** ✅ VERIFIED
+**Problem:** Needed verification that REFERENCE mode correctly enforces structure as a contract.
+
+**Audit Results (All Pass):**
+| Component | Status | Notes |
+|-----------|--------|-------|
+| **Brain** | ✅ PASS | Produces immutable blueprint; subdivision disabled |
+| **Advisor** | ✅ PASS | Bias-only; never overrides timing or structure |
+| **Editor** | ✅ PASS | Looping removed, lying EDL removed, mode enforced |
+| **Cache** | ✅ PASS | Hash-based, versioned, deterministic |
+| **Logging** | ✅ PASS | Honest about gaps and underfills |
+
+**Bug Fixed:** `cut_origin` was referenced before being defined in editor.py line 299. Now correctly set from segment before sacred cut check.
+
+**Reference Mode Guarantees Verified:**
+1. ✅ No looping - clips never repeated to fake duration
+2. ✅ No lying EDL - timeline_end equals actual rendered frames
+3. ✅ Sacred cuts use max 2 clips
+4. ✅ Beat grid decorative only - never overrides structure
+5. ✅ Gaps logged honestly, not hidden
+
+**Files Modified:**
+- `backend/engine/editor.py` (lines 297-305: cut_origin fix)
+
+---
 
 ### **1. Advisor Schema Enforcement** ✅ P0 CRITICAL FIX
 **Problem:** Advisor JSON parsing failures were silent, causing 0% vibe matching without visibility. System fell back to "dumb matching" gracefully but masked critical AI failures.
@@ -316,7 +367,6 @@ All critical bugs have been resolved. System is demo-ready.
 - ✅ Two-edit demo (credibility + generalization)
 - ✅ Vault intelligence display
 - ✅ Clear tagline
-
 **Estimated Total:** 78-90/100 (Top 10 guaranteed, Top 3 stretch)
 
 ---
@@ -328,11 +378,17 @@ All critical bugs have been resolved. System is demo-ready.
 - [ ] Test progressive audio authority with music-heavy reference
 - [ ] Verify cache invalidation works correctly
 
-### **Post-Submission (V13.0)**
+### **Completed (V13.2)**
+- [x] ~~Vibe Engineering 2.0 (semantic neighbor expansion)~~ - **DONE: 12 semantic categories**
+- [x] ~~Emotional Tone → Vibe Bridge~~ - **DONE: 7 tone mappings**
+- [x] ~~Arc-Stage Tone Affinity~~ - **DONE: 4 stage preferences**
+- [x] ~~Reference Mode System Audit~~ - **DONE: All 5 components pass**
+
+### **Post-Submission (V14.0)**
 - [ ] Audio polish (cross-fades between segments)
-- [ ] Vibe Engineering 2.0 (semantic neighbor expansion)
 - [ ] Recursive Refinement (AI suggests, user approves, re-render)
 - [ ] Multi-Model Ensembles (Gemini 3 Flash + Pro voting)
+- [ ] My Year Anthology Mode (multi-arc structure)
 
 ---
 

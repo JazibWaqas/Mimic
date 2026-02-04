@@ -1,12 +1,30 @@
 """
-Editor module: Clip-to-segment matching algorithm (FIXED VERSION).
+Editor module: Clip-to-segment matching algorithm (v13.2 Semantic Intelligence).
 
-FIXES APPLIED:
-1. Simplified algorithm - no complex spillover logic
-2. Proper clip rotation - ensures all clips are used
-3. Fills segments completely - matches reference duration
-4. Uses best moments when available
-5. Prevents back-to-back repeats of same clip
+v13.2 SEMANTIC INTELLIGENCE ENHANCEMENTS:
+- Expanded SEMANTIC_MAP for nostalgia, celebration, intimate, childhood, cinematic reels
+- Emotional Tone → Vibe Bridge: Nostalgic clips match "memories" vibes
+- Arc-Stage Tone Affinity: Outro prefers nostalgic/peaceful tones
+- Reel-type coverage: Friends trips, My Year, Travel, Nostalgia, Cinematic
+
+v13.1 REFERENCE MODE GUARANTEES:
+1. Reference timing is a contract - segments are immutable
+2. No looping - clips are never repeated to fake duration
+3. No lying EDL - timeline_end equals actual rendered frames
+4. Sacred cuts (cut_origin="visual") use max 2 clips
+5. Beat grid is decorative only - never overrides structure
+
+v13.1 MODE SYSTEM:
+- REFERENCE: Strict style-transfer for demo (default)
+- PROMPT: Creative invention allowed (future)
+
+PRESERVED FEATURES (Intelligent Selection):
+- Best moments system
+- Vibe/semantic bridge scoring
+- Advisor bias (not authority)
+- Energy eligibility with soft fallback
+- Variety/cooldown systems
+- Comprehensive logging
 """
 
 from typing import List, Dict, Optional, Tuple
@@ -33,7 +51,8 @@ def match_clips_to_blueprint(
     api_key: Optional[str] = None,
     reference_path: Optional[str] = None,
     bpm: float = 120.0,
-    use_advisor: bool = True
+    use_advisor: bool = True,
+    mode: str = "REFERENCE"  # REFERENCE = strict structure | PROMPT = creative invention
 ) -> Tuple[EDL, Optional[AdvisorHints]]:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
@@ -62,8 +81,14 @@ def match_clips_to_blueprint(
         EDL (Edit Decision List) with frame-accurate instructions
     """
     print(f"\n{'='*60}")
-    print(f"[EDITOR] MATCHING CLIPS TO BLUEPRINT (FIXED VERSION)")
+    print(f"[EDITOR] MATCHING CLIPS TO BLUEPRINT ({mode} MODE)")
     print(f"{'='*60}")
+    
+    # MODE ENFORCEMENT (v13.1 Reference Authority)
+    if mode == "REFERENCE":
+        print(f"  🔒 REFERENCE MODE: Structure is sacred, no looping, no lying EDL")
+    else:
+        print(f"  🎨 PROMPT MODE: Creative invention allowed")
     print(f"  Segments: {len(blueprint.segments)}")
     print(f"  Clips: {len(clip_index.clips)}")
     
@@ -275,7 +300,15 @@ def match_clips_to_blueprint(
         # Dynamic loop protection: more cuts allowed for longer segments (min 10)
         max_cuts_per_segment = min(12, max(4, int(segment.duration / 0.6)))
         
-        force_loop_clip = None
+        # v13.1: Get cut_origin from segment for sacred cut enforcement
+        cut_origin = getattr(segment, 'cut_origin', 'visual')
+        
+        # v13.1: SACRED CUT ENFORCEMENT
+        # In REFERENCE mode, visual cuts may use at most 2 clips (no fragmentation)
+        is_sacred_cut_ref = (mode == "REFERENCE" and cut_origin == "visual")
+        if is_sacred_cut_ref:
+            max_cuts_per_segment = 2  # Hard limit for reference authority
+        
         while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
             # Update remaining duration based on current timeline position
             segment_remaining = max(0.0, segment.end - timeline_position)
@@ -348,13 +381,35 @@ def match_clips_to_blueprint(
             
             # SEMANTIC NEIGHBORS (The "Artistic Neighbor" map)
             # This prevents deficits by allowing similar vibes to count as matches
+            # v13.2: Expanded for nostalgia, celebration, and cinematic reel support
             SEMANTIC_MAP = {
-                "nature": ["outdoors", "scenic", "landscape", "trees", "forest", "mountain", "beach", "sky", "view"],
-                "urban": ["city", "street", "architecture", "building", "lights", "night", "traffic", "walking"],
-                "travel": ["adventure", "road", "plane", "car", "explore", "vacation", "scenic"],
-                "friends": ["social", "laughing", "group", "candid", "casual", "fun", "lifestyle"],
-                "action": ["fast", "sport", "intense", "thrill", "dynamic", "movement", "energy"],
-                "calm": ["peaceful", "sunset", "lifestyle", "aesthetic", "still", "chill"]
+                # Nature & Outdoors
+                "nature": ["outdoors", "scenic", "landscape", "trees", "forest", "mountain", "beach", "sky", "view", "sunset", "sunrise"],
+                # Urban & City
+                "urban": ["city", "street", "architecture", "building", "lights", "night", "traffic", "walking", "downtown", "skyline"],
+                # Travel & Adventure
+                "travel": ["adventure", "road", "plane", "car", "explore", "vacation", "scenic", "journey", "trip", "destination"],
+                # Friends & Social
+                "friends": ["social", "laughing", "group", "candid", "casual", "fun", "lifestyle", "bonding", "together", "hangout"],
+                # Action & Energy
+                "action": ["fast", "sport", "intense", "thrill", "dynamic", "movement", "energy", "adrenaline", "power", "speed"],
+                # Calm & Peaceful
+                "calm": ["peaceful", "sunset", "lifestyle", "aesthetic", "still", "chill", "serene", "quiet", "gentle", "soft"],
+                
+                # v13.2: NEW CATEGORIES for expanded reel support
+                
+                # Nostalgia & Memories (My Year Reels, Throwback Reels)
+                "nostalgia": ["memories", "childhood", "family", "vintage", "throwback", "old", "retro", "warmth", "home", "past", "remember", "moments"],
+                # Celebration & Joy (Friends Trip, Birthday, Wedding Reels)
+                "celebration": ["party", "dance", "cheers", "toast", "birthday", "wedding", "confetti", "fireworks", "clapping", "hugging", "joy"],
+                # Intimate & Close (Personal Reels, Couple Reels)
+                "intimate": ["close", "embrace", "love", "tender", "personal", "private", "romantic", "connection", "kiss", "hold"],
+                # Childhood & Innocence (Nostalgia Reels)
+                "childhood": ["playing", "laughter", "discovery", "wonder", "games", "school", "toys", "running", "innocence", "youth"],
+                # Cinematic & Dramatic (Professional Reels)
+                "cinematic": ["epic", "dramatic", "hero", "iconic", "majestic", "grand", "sweeping", "intense", "powerful", "legendary"],
+                # Transition & Movement (All Reels)
+                "transition": ["walking", "driving", "flying", "moving", "passing", "flowing", "shifting", "changing"]
             }
 
             def infer_shot_scale(clip: ClipMetadata) -> str:
@@ -624,13 +679,63 @@ def match_clips_to_blueprint(
                 score += continuity_bonus
                 reasons.extend(continuity_reasons)
                 
-                # 5. Emotional Tone Match (+10 points)
+                # 5. Emotional Tone Match (v13.2: Enhanced for reel-type coverage)
+                # Maps clip emotional_tone to segment vibe/intent for better semantic matching
                 if hasattr(clip, 'emotional_tone') and clip.emotional_tone:
-                    seg_intent = getattr(blueprint, 'emotional_intent', '').lower()
                     clip_tones = [t.lower() for t in clip.emotional_tone]
+                    seg_vibe_lower = (segment.vibe or "").lower()
+                    seg_intent = getattr(blueprint, 'emotional_intent', '').lower()
+                    
+                    # v13.2: Emotional Tone → Vibe/Intent Bridge
+                    # This enables "Nostalgic" clips to match "memories" vibes, etc.
+                    EMOTIONAL_TONE_BRIDGE = {
+                        # Nostalgia & Memory Reels
+                        "nostalgic": ["memories", "throwback", "warmth", "childhood", "home", "past", "remember", "family", "old", "vintage"],
+                        # Celebration & Friends Reels
+                        "joyful": ["friends", "celebration", "fun", "happy", "party", "dance", "cheers", "toast", "birthday", "wedding"],
+                        "energetic": ["action", "party", "dance", "adrenaline", "power", "speed", "intense", "thrill", "dynamic"],
+                        # Calm & Reflection Reels
+                        "peaceful": ["calm", "nature", "sunset", "escape", "serene", "quiet", "gentle", "soft", "still"],
+                        # Travel & Adventure Reels
+                        "adventurous": ["travel", "explore", "journey", "destination", "road", "adventure", "trip", "scenic"],
+                        # Intimate & Personal Reels
+                        "intimate": ["close", "love", "personal", "romantic", "connection", "tender", "embrace"],
+                        # Cinematic & Dramatic Reels
+                        "dramatic": ["cinematic", "epic", "hero", "iconic", "majestic", "grand", "intense", "powerful"]
+                    }
+                    
+                    tone_matched = False
+                    
+                    # 5a. Direct intent match (+10 points)
                     if seg_intent and any(seg_intent in t or t in seg_intent for t in clip_tones):
                         score += 10.0
                         reasons.append("Tone")
+                        tone_matched = True
+                    
+                    # 5b. Tone→Vibe bridge match (+12 points) - NEW
+                    if not tone_matched:
+                        for tone in clip_tones:
+                            if tone in EMOTIONAL_TONE_BRIDGE:
+                                bridge_vibes = EMOTIONAL_TONE_BRIDGE[tone]
+                                if any(v in seg_vibe_lower for v in bridge_vibes) or seg_vibe_lower in bridge_vibes:
+                                    score += 12.0
+                                    reasons.append(f"ToneBridge:{tone[:4]}→{seg_vibe_lower[:4]}")
+                                    tone_matched = True
+                                    break
+                    
+                    # 5c. Arc-stage tone affinity (+8 points) - NEW
+                    # Certain tones fit certain arc stages naturally
+                    if not tone_matched:
+                        arc_tone_affinity = {
+                            "Intro": ["peaceful", "nostalgic", "adventurous"],
+                            "Build-up": ["energetic", "adventurous", "dramatic"],
+                            "Peak": ["joyful", "energetic", "dramatic"],
+                            "Outro": ["nostalgic", "peaceful", "intimate"]
+                        }
+                        preferred_tones = arc_tone_affinity.get(segment.arc_stage, [])
+                        if any(t in preferred_tones for t in clip_tones):
+                            score += 8.0
+                            reasons.append(f"ArcTone:{segment.arc_stage[:3]}")
 
                 # === QUALITY LAYER: Best Moment Matching ===
                 
@@ -781,25 +886,22 @@ def match_clips_to_blueprint(
             is_sacred_cut = (cut_origin == 'visual')  # Visual cuts are sacred
             min_required = segment_remaining - 0.1    # Tolerance
 
-            # FORCE LOOP OVERRIDE (v13.0): Hybrid System Directive 2.2
-            # If we enter loop mode, we MUST reuse the same clip.
-            loop_mode = False
-            if force_loop_clip:
-                available_clips = [force_loop_clip]
-                print(f"    🔄 FORCE LOOP: Restricting selection to {force_loop_clip.filename} to maintain continuity.")
-                loop_mode = True
-
-            # Calculate scores with STRICT duration filtering
+            # v13.1: REFERENCE MODE - No looping, no creative invention
+            # Calculate scores with duration filtering (relaxed to 85% in REFERENCE mode)
             scored_clips = []
             valid_candidates_found = False
+            
+            # v13.1: Duration threshold for eligibility
+            # In REFERENCE mode: clip must cover >= 85% of remaining segment
+            # This prevents fragmentation while allowing practical flexibility
+            MIN_COVERAGE_RATIO = 0.85 if mode == "REFERENCE" else 0.5
+            min_eligible_duration = segment_remaining * MIN_COVERAGE_RATIO
 
             for c in available_clips:
-                # GUARD: Sacred Cut Duration Check
-                # If segment is 'visual', we MUST NOT subdivide it.
-                # Clip must be long enough to cover the remaining time.
-                # EXCEPTION: If we are in loop_mode, we accept the short clip explicitly.
-                if is_sacred_cut and not loop_mode and c.duration < min_required:
-                    continue  # HARD REJECT: Clip is physically too short
+                # GUARD: Duration eligibility (soft gate in REFERENCE mode)
+                # Instead of hard reject, we'll penalize short clips heavily
+                if is_sacred_cut and c.duration < min_eligible_duration:
+                    continue  # Skip clips that can't cover enough of sacred segment
 
                 # We pass the context to maintain stateful flow
                 total_score, reasoning, vibe_matched = score_clip_smart(c, segment, ctx, advisor_hints)
@@ -1011,15 +1113,13 @@ def match_clips_to_blueprint(
             # FINAL CALCULATION
             actual_duration = clip_end - clip_start
 
-            # TRIGGER FORCE LOOP (v13.0): Hybrid System Directive 2.2
-            # If a sacred cut falls short, strict mode triggers a LOOP of the same clip.
+            # v13.1: REFERENCE MODE - NO LOOPING
+            # If a sacred cut can't be filled, we accept the underfill honestly
+            # rather than creating visual artifacts through looping
             remaining_dur = segment.end - timeline_position
-            if is_sacred_cut and actual_duration < (remaining_dur - 0.05):
-                # We are short. If we are NOT already forcing loop, we trigger it.
-                if not force_loop_clip:
-                     print(f"    🔄 SHORT CLIP ({actual_duration:.2f}s < {remaining_dur:.2f}s) ON SACRED SEGMENT. TRIGGERING LOOP.")
-                     force_loop_clip = selected_clip
-                     is_last_cut_of_segment = False # Force next iteration
+            if mode == "REFERENCE" and is_sacred_cut and actual_duration < (remaining_dur - 0.05):
+                # Accept underfill for sacred cuts - honesty over hacks
+                print(f"    ⚠️ UNDERFILL ({actual_duration:.2f}s < {remaining_dur:.2f}s) - Accepting honestly (no loop)")
 
             
             # SAFETY: Ensure clip_end is always greater than clip_start
@@ -1073,21 +1173,25 @@ def match_clips_to_blueprint(
                   f"[{clip_start:.2f}s-{clip_end:.2f}s] ({actual_duration:.2f}s) "
                   f"→ timeline [{decision.timeline_start:.6f}s-{decision.timeline_end:.6f}s]")
 
-        # Ensure segment is fully filled (Gap-Filler)
-        # v11.1: Aggressive gap filling to ensure total duration matches blueprint
+        # v13.1: HONEST GAP HANDLING (No Lying EDL)
+        # In REFERENCE mode: NEVER stretch timeline_end beyond actual frames
+        # This prevents "lying" about duration which causes sync issues downstream
         gap = segment.end - timeline_position
         if gap > 0.001:
-             print(f"    🔗 Filling gap in segment {segment.id} ({gap:.4f}s remaining)")
-             if decisions:
-                 # Stretch the last decision to fill the gap
-                 decisions[-1].timeline_end = segment.end
-                 # Also update the clip_end to keep it proportional (if clip has room)
-                 # But for now, just stretching the timeline is safer for sync
-                 timeline_position = segment.end
-             else:
-                 # Emergency: segment was never even started? 
-                 # This shouldn't happen with the while loop, but let's be safe
-                 timeline_position = segment.end
+            if mode == "REFERENCE":
+                # REFERENCE MODE: Accept gap honestly, log it
+                print(f"    ⚠️ GAP in segment {segment.id} ({gap:.4f}s) - Accepting honestly (no stretch)")
+                # Move timeline to segment end to maintain continuity
+                # But DO NOT modify the decision's timeline_end
+                timeline_position = segment.end
+            else:
+                # PROMPT MODE: Allow gap filling (legacy behavior)
+                print(f"    🔗 Filling gap in segment {segment.id} ({gap:.4f}s remaining)")
+                if decisions:
+                    decisions[-1].timeline_end = segment.end
+                    timeline_position = segment.end
+                else:
+                    timeline_position = segment.end
 
         # === SEGMENT LOGGING (Directive 8) ===
         seg_decisions = [d for d in decisions if d.segment_id == segment.id]
@@ -1095,11 +1199,8 @@ def match_clips_to_blueprint(
         ref_dur = segment.duration
         cuts_used = len(seg_decisions)
         
-        loop_status = "No"
-        if cuts_used > 1 and is_sacred_cut:
-            loop_status = "Yes (Fallback Triggered)"
-            
-        print(f"[SEGMENT {segment.id} LOG] Ref: {ref_dur:.2f}s | Rendered: {rendered_dur:.2f}s | Cuts: {cuts_used} | Looped: {loop_status} | Auth: Reference")
+        # v13.1: Updated logging (no loop status in REFERENCE mode)       
+        print(f"[SEGMENT {segment.id} LOG] Ref: {ref_dur:.2f}s | Rendered: {rendered_dur:.2f}s | Cuts: {cuts_used} | Mode: {mode}")
         if abs(rendered_dur - ref_dur) > 0.05:
             print(f"    ❌ TIME DRIFT DETECTED: {rendered_dur - ref_dur:.3f}s")
 
