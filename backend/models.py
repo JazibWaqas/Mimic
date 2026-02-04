@@ -129,6 +129,7 @@ class StyleBlueprint(BaseModel):
     
     total_duration: float = Field(..., gt=0, description="Total video length in seconds")
     segments: List[Segment] = Field(..., min_length=1, description="Ordered list of segments")
+    phrases: List[dict] = Field(default_factory=list, description="Logical grouping of segments for continuity (v12.4)")
     
     # Creator Mode (v11.0+)
     text_prompt: Optional[str] = Field(None, description="The natural language prompt used to generate this blueprint")
@@ -307,13 +308,15 @@ class AdvisorHints(BaseModel):
     allowed_supporting_subjects: List[NarrativeSubject] = Field(default_factory=list, description="Subjects allowed as fillers/transitions")
     subject_lock_strength: float = Field(1.0, description="Confidence in subject lock (0.0=advisory, 1.0=forced anchor)")
     
+    editorial_motifs: List[dict] = Field(default_factory=list, description="High-level continuity patterns (Scale-Escalation, Motion-Carry, etc.)")
+    
     # Legacy fields (for backward compatibility with v2.0 cache)
     library_assessment: LibraryAssessment | None = Field(None, description="DEPRECATED: Use library_alignment")
     creative_audit: CreativeAudit | None = Field(None, description="DEPRECATED: Merged into library_alignment")
     overall_strategy: str = Field("", description="DEPRECATED: Use editorial_strategy")
     required_improvements: List[str] = Field(default_factory=list, description="DEPRECATED: No longer used")
     
-    cache_version: str = Field("3.4", description="Advisor cache version (3.4 = primary_narrative_subject support)")
+    cache_version: str = Field("4.0", description="Advisor cache version (4.0 = editorial_motifs support)")
     cached_at: str = Field("", description="ISO timestamp when cached")
 
 

@@ -48,5 +48,6 @@ export interface DirectorCritique {
     star_performers: string[];
     dead_weight: string[];
     missing_ingredients: string[];
+    remake_actions: { type: string; segment: string; suggestion: string }[];
     technical_fidelity: string;
 }

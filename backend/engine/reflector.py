@@ -27,7 +27,7 @@ IMPORTANT SYSTEM CONSTRAINTS (DO NOT VIOLATE):
 
 CONTEXT PROVIDED:
 - Reference Blueprint Summary: {blueprint_summary}
-- Strategic Plan (Pre-edit Intent): {advisor_summary}
+- Strategic Context (The Plan): {strategic_context}
 - Final Edit Decisions (EDL with reasoning): {edl_summary}
 
 YOUR HIERARCHY OF JUDGMENT (CRITICAL):
@@ -116,11 +116,34 @@ def reflect_on_edit(
     
     # Summarize data for prompt
     blueprint_summary = f"Style: {blueprint.editing_style}, Intent: {blueprint.emotional_intent}, Message: {blueprint.narrative_message}"
-    advisor_summary = advisor.editorial_strategy if advisor else "No strategic plan used."
+    
+    # v12.1 STRATEGIC CONTEXT SYNTHESIS
+    strategic_parts = []
+    if advisor:
+        if advisor.editorial_strategy:
+            strategic_parts.append(f"STRATEGY: {advisor.editorial_strategy}")
+        
+        if advisor.primary_narrative_subject:
+            strength = getattr(advisor, 'subject_lock_strength', 1.0)
+            lock_type = "HARD LOCK" if strength >= 0.9 else "Soft Preference"
+            strategic_parts.append(f"PRIMARY ANCHOR: {advisor.primary_narrative_subject.value} ({lock_type})")
+        
+        if hasattr(advisor, 'editorial_motifs') and advisor.editorial_motifs:
+            motifs = [f"{m.get('desired_continuity')} ({m.get('trigger', 'general')})" for m in advisor.editorial_motifs]
+            strategic_parts.append(f"ACTIVE MOTIFS: {', '.join(motifs)}")
+            
+        if advisor.library_alignment:
+            gaps = advisor.library_alignment.constraint_gaps
+            if gaps:
+                strategic_parts.append(f"KNOWN CONSTRAINTS: {', '.join(gaps)}")
+    else:
+        strategic_parts.append("No strategic guidance was active.")
+        
+    strategic_context = "\n".join(strategic_parts)
     
     # Extract key decisions for the prompt
     decisions = []
-    for d in edl.decisions[:15]: # Limit to first 15 to save tokens
+    for d in edl.decisions[:20]: # Expanded to 20 for better visibility
         # Use filename only for prompt clarity
         clip_name = d.clip_path.split('/')[-1].split('\\')[-1]
         decisions.append(f"Seg {d.segment_id}: {clip_name} ({d.reasoning})")
@@ -129,7 +152,7 @@ def reflect_on_edit(
     # Use a dictionary for formatting to avoid KeyError with {type} in the prompt
     format_vars = {
         "blueprint_summary": blueprint_summary,
-        "advisor_summary": advisor_summary,
+        "strategic_context": strategic_context,
         "edl_summary": edl_summary
     }
 
@@ -139,8 +162,6 @@ def reflect_on_edit(
             rate_limiter.wait_if_needed()
             
             # Use safe formatting to avoid issues with JSON braces in the prompt
-            # We must escape double braces for the final prompt if we use .format()
-            # but since we are doing manual replace, we just replace the placeholders.
             final_prompt = REFLECTOR_PROMPT
             for key, val in format_vars.items():
                 final_prompt = final_prompt.replace("{" + key + "}", str(val))

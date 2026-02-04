@@ -75,7 +75,31 @@ def match_clips_to_blueprint(
     advisor_hints: Optional[AdvisorHints] = None
     if use_advisor:
         try:
-            advisor_hints = get_advisor_suggestions(blueprint, clip_index)
+            # === SCARCITY REPORT (v12.4 Phase 3) ===
+            # Pre-calculate library scarcity to guide Advisor's intent reach.
+            scarcity_report = {}
+            total_clips = len(clip_index.clips)
+            if total_clips > 0:
+                # 1. Energy scarcity
+                for energy_lv in ["High", "Medium", "Low"]:
+                    count = sum(1 for c in clip_index.clips if c.energy.value == energy_lv)
+                    ratio = count / total_clips
+                    if ratio < 0.15: scarcity_report[energy_lv] = "very_scarce"
+                    elif ratio < 0.30: scarcity_report[energy_lv] = "scarce"
+                    else: scarcity_report[energy_lv] = "abundant"
+                    
+                # 2. Subject scarcity (Top categories)
+                subject_counts = Counter()
+                for c in clip_index.clips:
+                    for s in c.primary_subject:
+                        subject_counts[s] += 1
+                
+                for subj, count in subject_counts.items():
+                    ratio = count / total_clips
+                    if ratio < 0.1: scarcity_report[subj] = "scarce"
+                    elif ratio > 0.4: scarcity_report[subj] = "abundant"
+
+            advisor_hints = get_advisor_suggestions(blueprint, clip_index, scarcity_report=scarcity_report)
             if advisor_hints:
                 print(f"  ✅ Advisor enabled: Strategic guidance active")
             else:
@@ -132,10 +156,47 @@ def match_clips_to_blueprint(
     clip_last_used_at = {clip.filename: -999.0 for clip in clip_index.clips}
     # MIN_CLIP_REUSE_GAP is now calculated dynamically inside the segment loop to be energy-aware
     
-    # TRANSITION MEMORY: Track the last clip's motion for smooth flow
-    last_clip_motion = None
-    last_clip_content = None
-    last_shot_scale = None # v12.1: Track last shot scale for variety
+    # TRANSITION MEMORY: Track the last clip's details for smooth flow
+    # Context object for stateful scoring (Phase 1 Refactor)
+    class MatchContext:
+        def __init__(self):
+            self.last_filename = None
+            self.last_motion = None
+            self.last_scale = None
+            self.last_subjects = []
+            self.last_content = ""
+            self.timeline_pos = 0.0
+            self.usage_count = clip_usage_count
+            self.last_used_at = clip_last_used_at
+
+    ctx = MatchContext()
+
+    # === PHRASE GROUPING (v12.4 Phase 2) ===
+    # Groups segments by arc_stage for motif feasibility checks.
+    # We derive these on the fly to avoid breaking legacy blueprint models.
+    phrases = []
+    current_phrase_ids = []
+    if blueprint.segments:
+        for seg in blueprint.segments:
+            if not current_phrase_ids:
+                current_phrase_ids.append(seg.id)
+            else:
+                prev_seg = blueprint.segments[current_phrase_ids[-1] - 1]
+                if seg.arc_stage == prev_seg.arc_stage:
+                    current_phrase_ids.append(seg.id)
+                else:
+                    duration = sum(blueprint.segments[sid-1].duration for sid in current_phrase_ids)
+                    phrases.append({"segments": current_phrase_ids, "duration": duration})
+                    current_phrase_ids = [seg.id]
+        if current_phrase_ids:
+            duration = sum(blueprint.segments[sid-1].duration for sid in current_phrase_ids)
+            phrases.append({"segments": current_phrase_ids, "duration": duration})
+
+    # Map segment ID to its phrase duration for fast lookup
+    seg_phrase_duration = {}
+    for phrase in phrases:
+        for sid in phrase["segments"]:
+            seg_phrase_duration[sid] = phrase["duration"]
     
     # Group clips by energy for fast lookup
     energy_pools = _create_energy_pools(clip_index)
@@ -277,7 +338,77 @@ def match_clips_to_blueprint(
                 "calm": ["peaceful", "sunset", "lifestyle", "aesthetic", "still", "chill"]
             }
 
-            def score_clip_smart(clip: ClipMetadata, segment, last_motion, last_vibe, last_scale=None, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
+            def infer_shot_scale(clip: ClipMetadata) -> str:
+                """Infer clip's scale from primary subject tags."""
+                clip_primary_subs = [s.lower() for s in clip.primary_subject]
+                if any(s in ["people-solo", "object-detail"] for s in clip_primary_subs):
+                    return "Close"
+                elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
+                    return "Wide"
+                return "Medium"
+
+            def compute_continuity_bonus(candidate: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints]) -> tuple[float, list[str]]:
+                """
+                v12.1: The Continuity Engine.
+                Calculates bonuses based on Advisor-declared motifs.
+                """
+                bonus = 0.0
+                reasons = []
+                
+                if not advisor or not hasattr(advisor, 'editorial_motifs'):
+                    return 0.0, []
+                
+                motifs = getattr(advisor, 'editorial_motifs', [])
+                cand_scale = infer_shot_scale(candidate)
+                cand_content = (candidate.content_description or "").lower()
+                
+                for motif in motifs:
+                    trigger = motif.get('trigger', '').lower()
+                    continuity_type = motif.get('desired_continuity', '')
+                    priority = motif.get('priority', 'Medium')
+                    
+                    # Priority multiplier
+                    weight = 1.0
+                    if priority == 'High': weight = 2.0
+                    elif priority == 'Low': weight = 0.5
+                    
+                    # 1. Scale-Escalation (Wide -> Medium -> Close)
+                    if continuity_type == "Scale-Escalation" and ctx.last_scale:
+                        if ctx.last_scale == "Wide" and cand_scale in ["Medium", "Close"]:
+                            bonus += (20.0 * weight)
+                            reasons.append("📈Escalation")
+                        elif ctx.last_scale == "Medium" and cand_scale == "Close":
+                            bonus += (25.0 * weight)
+                            reasons.append("📈Intimacy")
+
+                    # 2. Motion-Carry (Match physical direction or energy flow)
+                    if continuity_type == "Motion-Carry" and ctx.last_motion:
+                        if candidate.motion == ctx.last_motion:
+                            bonus += (15.0 * weight)
+                            reasons.append("➡️Flow")
+
+                    # 3. ACTION-COMPLETION / GRAPHIC-MATCH (Advanced: Requires duration)
+                    if continuity_type in ["Action-Completion", "Graphic-Match"]:
+                        phrase_dur = seg_phrase_duration.get(segment.id, 0.0)
+                        if phrase_dur >= 1.2:
+                            bonus += (30.0 * weight)
+                            reasons.append(f"🔄{continuity_type[:4]}")
+                        else:
+                            # Observability Gap Closed (v12.1 Final):
+                            # Explicitly log that the motif was considered but rejected for feasibility.
+                            reasons.append(f"⚠️{continuity_type[:3]}_SKIP")
+
+                    # 4. Semantic-Resonance (Lyrics/Text triggers)
+                    if continuity_type == "Semantic-Resonance" and trigger:
+                        # Check if trigger keyword is in clip's subject or description
+                        clip_text = " ".join(candidate.primary_subject + candidate.vibes).lower()
+                        if trigger in clip_text or trigger in cand_content:
+                            bonus += (40.0 * weight)
+                            reasons.append(f"🔗{trigger[:5]}")
+
+                return bonus, reasons
+
+            def score_clip_smart(clip: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints] = None) -> tuple[float, str, bool]:
                 """
                 NEW INTELLIGENT SCORING SYSTEM (v9.0)
                 
@@ -435,18 +566,16 @@ def match_clips_to_blueprint(
                 # 4b. Shot Scale Variety (v12.1: +10 points for alternating)
                 # If we don't have a rigid scale requirement from the reference,
                 # or as a secondary signal, we prefer alternating scales.
-                if last_scale:
-                    # Infer clip's scale from primary subject
-                    clip_primary_subs = [s.lower() for s in clip.primary_subject]
-                    current_clip_scale = "Medium"
-                    if any(s in ["people-solo", "object-detail"] for s in clip_primary_subs):
-                        current_clip_scale = "Close"
-                    elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
-                        current_clip_scale = "Wide"
-                    
-                    if current_clip_scale != last_scale:
+                if ctx.last_scale:
+                    current_clip_scale = infer_shot_scale(clip)
+                    if current_clip_scale != ctx.last_scale:
                         score += 10.0
                         reasons.append("Alt")
+                
+                # === CONTINUITY ENGINE (v12.1 Motifs) ===
+                continuity_bonus, continuity_reasons = compute_continuity_bonus(clip, segment, ctx, advisor)
+                score += continuity_bonus
+                reasons.extend(continuity_reasons)
                 
                 # 5. Emotional Tone Match (+10 points)
                 if hasattr(clip, 'emotional_tone') and clip.emotional_tone:
@@ -550,10 +679,10 @@ def match_clips_to_blueprint(
                     score += 10.0
                     reasons.append("Light")
                 
-                # 4. Motion Continuity (+5 points)
-                if last_motion and clip.motion == last_motion:
+                # 4. Motion Continuity (Legacy)
+                if ctx.last_motion and clip.motion == ctx.last_motion:
                     score += 5.0
-                    reasons.append("Flow")
+                    reasons.append("Move")
 
                 # === NARRATIVE REASONING SYNTHESIS (v9.5) ===
                 narrative_parts = []
@@ -602,8 +731,8 @@ def match_clips_to_blueprint(
             # Calculate scores for available clips
             scored_clips = []
             for c in available_clips:
-                # We pass the motion of the last selected clip to maintain flow
-                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, last_clip_motion, last_used_clip, last_shot_scale, advisor_hints)
+                # We pass the context to maintain stateful flow
+                total_score, reasoning, vibe_matched = score_clip_smart(c, segment, ctx, advisor_hints)
                 scored_clips.append((c, total_score, reasoning, vibe_matched))
 
             # Sort by total score
@@ -831,26 +960,20 @@ def match_clips_to_blueprint(
             )
             decisions.append(decision)
             
-            # Update Trackers
-            timeline_position = decision_end # The head moves to the exact end of last decision
+            # Update Context and Trackers
+            ctx.timeline_pos = decision_end
+            ctx.last_motion = selected_clip.motion
+            ctx.last_content = selected_clip.content_description
+            ctx.last_subjects = selected_clip.primary_subject
+            ctx.last_scale = infer_shot_scale(selected_clip)
+            
+            timeline_position = decision_end
             clip_current_position[selected_clip.filename] = clip_end
             clip_usage_count[selected_clip.filename] += 1
-            clip_last_used_at[selected_clip.filename] = timeline_position  # Visual cooldown tracking
+            clip_last_used_at[selected_clip.filename] = timeline_position
             clip_used_intervals[selected_clip.filename].append((clip_start, clip_end))
             
-            # Transition memory for next iteration
-            last_clip_motion = selected_clip.motion
-            last_clip_content = selected_clip.content_description
-            
-            # Update last shot scale for variety tracking
-            clip_primary_subs = [s.lower() for s in selected_clip.primary_subject]
-            last_shot_scale = "Medium"
-            if any(s in ["people-solo", "object-detail"] for s in clip_primary_subs):
-                last_shot_scale = "Close"
-            elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
-                last_shot_scale = "Wide"
-            
-            # Update clip tracking (save old value before updating)
+            # Variety tracking
             second_last_clip = last_used_clip
             last_used_clip = selected_clip.filename
             cuts_in_segment += 1

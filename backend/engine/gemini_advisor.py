@@ -31,7 +31,8 @@ def get_advisor_suggestions(
     blueprint: StyleBlueprint,
     clip_index: ClipIndex,
     cache_dir: Optional[Path] = None,
-    force_refresh: bool = False
+    force_refresh: bool = False,
+    scarcity_report: Optional[dict] = None
 ) -> Optional[AdvisorHints]:
     """
     Get Gemini's strategic suggestions for clip selection.
@@ -101,7 +102,8 @@ def get_advisor_suggestions(
     
     prompt = ADVISOR_PROMPT.format(
         blueprint_summary=blueprint_summary,
-        clip_library_summary=library_summary
+        clip_library_summary=library_summary,
+        scarcity_report=json.dumps(scarcity_report or {}, indent=2)
     )
     
     for attempt in range(GeminiConfig.MAX_RETRIES):
