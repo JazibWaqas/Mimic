@@ -259,11 +259,12 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
     """
     Standardize video to 1080x1920 (vertical), 30fps, h.264, AAC audio.
     
-    v12.6: UNIFORM CINEMATIC PRESERVE
-    - Removed conditional geometry logic (aspect ratio, energy-based cropping)
-    - Single mode: preserve source framing, scale to fit 1080 width, pad to 1920 height
-    - Optimized for premium cinematic sources (Top Gun, F1, professional footage)
-    - High quality settings for 3K+ OLED displays (CRF 18, slow preset)
+    v14.2: ADAPTIVE STANDARDIZATION (Aspect-Ratio Aware)
+    - Vertical clips (9:16, phone): Smart Crop (zoom-to-fill) - looks premium
+    - Horizontal clips (16:9, nostalgia): Letterbox (preserve-all) - keeps context
+    - Square/other: Letterbox (safe default)
+    
+    This ensures phone clips look modern while childhood memories preserve the full scene.
     
     Args:
         input_path: Source video file
@@ -271,12 +272,14 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
         energy: DEPRECATED - no longer used for geometry decisions
         is_reference: DEPRECATED - no longer special-cased
     """
-    # V14.1 SMART CROP (Zoom-to-Fill)
-    # Scales until the frame is full, then crops the overflow.
-    # Matches the 'object-cover' aesthetic preferred for phone/creator content.
-    geometry_filters = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
+    # V14.4 PREMIUM NOSTALGIA PRESERVE
+    # - Uniform Letterbox: Preserves 100% of the nostalgic context.
+    # - hqdn3d: Removes dancing grain/noise from old footage.
+    # - unsharp: Restores edge clarity lost during upscale.
+    # - lanczos: High-precision upscaling for sharper results.
+    geometry_filters = "scale=1080:-2:flags=lanczos:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black,hqdn3d=1.5:1.5:6:6,unsharp=3:3:0.5:3:3:0.5"
     
-    print(f"  [GEOMETRY] Mode: smart_crop (zoom-to-fill)")
+    print(f"  [GEOMETRY] Mode: premium_nostalgia_letterbox (clean + sharp)")
 
     cmd = [
         "ffmpeg",
@@ -288,7 +291,7 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
             "setsar=1"
         ),
         "-c:v", "h264_qsv",         # Intel QuickSync GPU encode (5-10x faster than libx264)
-        "-global_quality", "23",     # QSV quality level (lower=better, 23 is high quality)
+        "-global_quality", "20",     # QSV quality level (lower=better, 20 is near-lossless)
         "-preset", "slow",          # Better compression efficiency
         "-c:a", "aac",
         "-b:a", "256k",             # Improved audio bitrate
