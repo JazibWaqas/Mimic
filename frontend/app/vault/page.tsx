@@ -15,7 +15,10 @@ import {
     MessageSquare,
     ChevronDown,
     Video,
-    Search
+    Search,
+    ChevronUp,
+    FolderOpen,
+    Type
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -43,6 +46,68 @@ export default function VaultPage() {
     const [duration, setDuration] = useState(0);
     const [isCabinetOpen, setIsCabinetOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+
+    // Text Overlay Modal State
+    const [isTextModalOpen, setIsTextModalOpen] = useState(false);
+    const [textContent, setTextContent] = useState("");
+    const [textPlacement, setTextPlacement] = useState("center");
+    const [textFont, setTextFont] = useState("sans-serif");
+    const [isApplyingText, setIsApplyingText] = useState(false);
+
+    // Collapsible sections state
+    const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+        strategy: true,
+        critique: true,
+        ledger: true
+    });
+
+    // Handle text overlay application
+    const handleApplyTextOverlay = async () => {
+        if (!selectedItem || viewMode !== "results") {
+            toast.error("Please select a result video first");
+            return;
+        }
+        
+        setIsApplyingText(true);
+        try {
+            const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+            const response = await fetch(
+                `${API_BASE}/api/results/${selectedItem.filename}/text-overlay`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        text_content: textContent,
+                        placement: textPlacement,
+                        font_style: textFont
+                    })
+                }
+            );
+            
+            if (!response.ok) {
+                throw new Error("Failed to apply text overlay");
+            }
+            
+            toast.success("Text overlay applied. Reloading video...");
+            setIsTextModalOpen(false);
+
+            // Delay reload slightly to ensure file swap finishes
+            setTimeout(() => {
+                window.location.reload();
+            }, 1200);
+        } catch (err) {
+            toast.error("Failed to apply text overlay");
+            console.error(err);
+        } finally {
+            setIsApplyingText(false);
+        }
+    };
+
+    const toggleSection = (section: string) => {
+        setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
+    };
 
     // Refs
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -127,8 +192,22 @@ export default function VaultPage() {
 
     const getVideoUrl = (item: AssetItem) => {
         const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-        const path = "path" in item ? item.path : (item as any).url;
-        return `${API_BASE}${path}`;
+        // Handle different path properties that might exist on different item types
+        let path = "";
+        if ("path" in item && item.path) {
+            path = item.path;
+        } else if ("filepath" in item && (item as any).filepath) {
+            path = (item as any).filepath;
+        } else if ("url" in item && (item as any).url) {
+            path = (item as any).url;
+        }
+        // Ensure path starts with /
+        if (path && !path.startsWith("/")) {
+            path = "/" + path;
+        }
+        // Add cache busting parameter to prevent browser caching after edits
+        const cacheBust = Date.now();
+        return `${API_BASE}${path}?v=${cacheBust}`;
     };
 
     // Video events
@@ -325,66 +404,77 @@ export default function VaultPage() {
             </div>
 
             <main className="max-w-[1400px] mx-auto px-10 py-8 grid grid-cols-[300px_1fr_400px] gap-10 flex-1 overflow-hidden">
-                {/* LEFT: Edit Structure */}
-                <aside className="space-y-6">
-                    <div className="glass-premium rounded-2xl p-6 border-l-2 border-l-indigo-500/30 relative overflow-hidden group">
-                        <div className="flex items-center gap-2 mb-4">
-                            <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
-                            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Operational_Strategy</h3>
-                        </div>
-                        <div className="space-y-5 relative z-10">
-                            <div className="space-y-4 border-b border-white/5 pb-4">
-                                <div className="space-y-1">
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
-                                        {intelligence?.blueprint?.text_prompt && (
-                                            <span className="px-1.5 py-0.5 rounded bg-[#ff007f]/10 border border-[#ff007f]/20 text-[7px] font-black text-[#ff007f] uppercase tracking-widest">Creator_Mode</span>
-                                        )}
-                                    </div>
-                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
-                                        {intelligence?.advisor?.dominant_narrative || intelligence?.blueprint?.narrative_message || "Rhythmic Consistency & Energy Matching"}
-                                    </p>
-                                </div>
-                                {intelligence?.blueprint?.plan_summary && (
+                {/* LEFT: Operational Strategy - Collapsible */}
+                <aside className="space-y-4">
+                    <div className="glass-premium rounded-2xl border-l-2 border-l-indigo-500/30 relative overflow-hidden group">
+                        {/* Collapsible Header */}
+                        <button 
+                            onClick={() => toggleSection('strategy')}
+                            className="w-full p-5 flex items-center justify-between hover:bg-white/[0.02] transition-colors"
+                        >
+                            <div className="flex items-center gap-2">
+                                <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
+                                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Operational_Strategy</h3>
+                            </div>
+                            {expandedSections.strategy ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
+                        </button>
+                        
+                        {/* Collapsible Content */}
+                        {expandedSections.strategy && (
+                            <div className="px-5 pb-5 space-y-5 relative z-10">
+                                <div className="space-y-4 border-b border-white/5 pb-4">
                                     <div className="space-y-1">
-                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Plan_Summary</span>
-                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed border-l border-white/10 pl-3">
-                                            {intelligence.blueprint.plan_summary}
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
+                                            {intelligence?.blueprint?.text_prompt && (
+                                                <span className="px-1.5 py-0.5 rounded bg-[#ff007f]/10 border border-[#ff007f]/20 text-[7px] font-black text-[#ff007f] uppercase tracking-widest">Creator_Mode</span>
+                                            )}
+                                        </div>
+                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
+                                            {intelligence?.advisor?.dominant_narrative || intelligence?.blueprint?.narrative_message || "Rhythmic Consistency & Energy Matching"}
                                         </p>
                                     </div>
-                                )}
-                                <div className="space-y-1">
-                                    <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Priority_Rules</span>
-                                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
-                                        {intelligence?.advisor?.editorial_strategy || "Prioritize sync-lock on primary beat grid."}
-                                    </p>
+                                    {intelligence?.blueprint?.plan_summary && (
+                                        <div className="space-y-1">
+                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Plan_Summary</span>
+                                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed border-l border-white/10 pl-3">
+                                                {intelligence.blueprint.plan_summary}
+                                            </p>
+                                        </div>
+                                    )}
+                                    <div className="space-y-1">
+                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Priority_Rules</span>
+                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
+                                            {intelligence?.advisor?.editorial_strategy || "Prioritize sync-lock on primary beat grid."}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="flex justify-between items-end border-b border-white/5 pb-4">
-                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Rhythmic_Constraint</span>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-xl font-black text-cyan-400 font-mono tracking-tighter">{intelligence?.bpm || 128}</span>
-                                    <span className="text-[8px] text-cyan-900 font-black uppercase">BPM</span>
+                                <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Rhythmic_Constraint</span>
+                                    <div className="flex items-baseline gap-1">
+                                        <span className="text-xl font-black text-cyan-400 font-mono tracking-tighter">{intelligence?.bpm || 128}</span>
+                                        <span className="text-[8px] text-cyan-900 font-black uppercase">BPM</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="mt-6">
-                                <div className="h-16 flex items-center gap-1.5 opacity-80">
-                                    {[30, 45, 80, 100, 70, 90, 50, 40].map((h, i) => (
-                                        <div
-                                            key={i}
-                                            className={cn(
-                                                "flex-1 rounded-sm border transition-all duration-700",
-                                                i === 3 ? "bg-cyan-500 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]" : "bg-indigo-500/20 border-indigo-500/10"
-                                            )}
-                                            style={{ height: `${h}%` }}
-                                        />
-                                    ))}
+                                <div className="mt-6">
+                                    <div className="h-16 flex items-center gap-1.5 opacity-80">
+                                        {[30, 45, 80, 100, 70, 90, 50, 40].map((h, i) => (
+                                            <div
+                                                key={i}
+                                                className={cn(
+                                                    "flex-1 rounded-sm border transition-all duration-700",
+                                                    i === 3 ? "bg-cyan-500 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]" : "bg-indigo-500/20 border-indigo-500/10"
+                                                )}
+                                                style={{ height: `${h}%` }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <div className="mt-3 text-[9px] text-center font-black text-slate-600 uppercase tracking-widest">Structural Intensity Map</div>
                                 </div>
-                                <div className="mt-3 text-[9px] text-center font-black text-slate-600 uppercase tracking-widest">Structural Intensity Map</div>
                             </div>
-                        </div>
+                        )}
                     </div>
 
                     {/* RECOMMENDED ACTIONS */}
@@ -425,6 +515,7 @@ export default function VaultPage() {
                     <div className="w-[400px] h-[710px] rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl relative group ring-1 ring-white/5 hover:ring-indigo-500/30 transition-all duration-700">
                         {selectedItem ? (
                             <video
+                                key={selectedItem.filename} // FORCE RE-RENDER WHEN ITEM CHANGES
                                 ref={videoRef}
                                 src={getVideoUrl(selectedItem)}
                                 onTimeUpdate={handleTimeUpdate}
@@ -439,8 +530,21 @@ export default function VaultPage() {
                             </div>
                         )}
 
-
-
+                        {/* Text Overlay Button - Top Right */}
+                        {selectedItem && viewMode === "results" && (
+                            <button
+                                onClick={() => {
+                                    // Pre-populate with current text from intelligence
+                                    const currentText = intelligence?.blueprint?.text_overlay || "";
+                                    setTextContent(currentText);
+                                    setIsTextModalOpen(true);
+                                }}
+                                className="absolute top-4 right-4 z-20 px-3 py-2 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-black/80 hover:border-cyan-500/30 transition-all flex items-center gap-2 group"
+                            >
+                                <Type className="w-4 h-4 text-cyan-400" />
+                                <span className="text-[10px] font-black uppercase tracking-widest">Edit Text</span>
+                            </button>
+                        )}
                     </div>
 
                     {/* Mini Timeline Control - Fused to Player */}
@@ -474,152 +578,176 @@ export default function VaultPage() {
 
                 {/* RIGHT: Telemetry-Inspired Intelligence Panel */}
                 <aside className="space-y-4 pr-2 flex flex-col h-[760px]">
-                    {/* EDITORIAL LEDGER - Fixed Volume */}
-                    <div className="flex-1 flex flex-col min-h-0">
-                        <div className="flex items-center gap-3 px-2 mb-4 shrink-0">
-                            <div className="h-1 w-6 bg-cyan-700/40 rounded-full" />
-                            <h3 className="text-[10px] font-black text-slate-600 uppercase tracking-[0.4em]">Editorial_Ledger</h3>
-                        </div>
+                    {/* EDITORIAL LEDGER - Collapsible */}
+                    <div className="flex-1 flex flex-col min-h-0 border border-white/10 rounded-2xl overflow-hidden bg-[#0a0c14]/40">
+                        {/* Collapsible Header */}
+                        <button 
+                            onClick={() => toggleSection('ledger')}
+                            className="w-full px-5 py-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors shrink-0"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="h-1 w-6 bg-cyan-700/40 rounded-full" />
+                                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Editorial_Ledger</h3>
+                                {intelligence?.edl?.decisions?.length > 0 && (
+                                    <span className="text-[9px] font-black text-slate-600 uppercase">
+                                        {intelligence.edl.decisions.length} segments
+                                    </span>
+                                )}
+                            </div>
+                            {expandedSections.ledger ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
+                        </button>
 
-                        <div className="flex-1 overflow-y-auto custom-scrollbar-thin pr-2 space-y-3 min-h-0">
-
-                            {!intelligence?.edl?.decisions?.length ? (
-                                <div className="bg-[#0a0c14]/40 border border-dashed border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-                                    <MonitorPlay className="h-8 w-8 text-slate-700 mb-3 animate-pulse" />
-                                    <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-relaxed">
-                                        Editorial debrief pending<br />
-                                        <span className="opacity-50 font-bold">Synchronizing decision telemetry...</span>
-                                    </p>
-                                </div>
-                            ) : (
-                                intelligence.edl.decisions.map((decision: any, idx: number) => {
-                                    const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
-                                    return (
-                                        <div key={idx} className={cn(
-                                            "bg-[#0a0c14]/40 border rounded-xl p-4 transition-all duration-500 backdrop-blur-sm relative overflow-hidden group/decision",
-                                            isActive
-                                                ? "border-cyan-500/40 shadow-[0_0_25px_rgba(0,212,255,0.1)] scale-[1.01] z-10"
-                                                : "border-white/5 opacity-40"
-                                        )}>
-                                            {isActive && <div className="absolute top-0 left-0 w-full h-[1.5px] bg-cyan-500/50 animate-shimmer" />}
-                                            <div className="flex items-center justify-between mb-3">
-                                                <div className="flex items-center gap-3">
-                                                    <div className={cn("h-1.5 w-1.5 rounded-full", isActive ? "bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" : "bg-slate-700")} />
-                                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] font-mono">
-                                                        SEG_{decision.segment_id || idx + 1}
-                                                    </span>
+                        {/* Collapsible Content */}
+                        {expandedSections.ledger && (
+                            <div className="flex-1 overflow-y-auto custom-scrollbar-thin px-5 pb-4 space-y-3 min-h-0">
+                                {!intelligence?.edl?.decisions?.length ? (
+                                    <div className="bg-[#0a0c14]/40 border border-dashed border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+                                        <MonitorPlay className="h-8 w-8 text-slate-700 mb-3 animate-pulse" />
+                                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-relaxed">
+                                            Editorial debrief pending<br />
+                                            <span className="opacity-50 font-bold">Synchronizing decision telemetry...</span>
+                                        </p>
+                                    </div>
+                                ) : (
+                                    intelligence.edl.decisions.map((decision: any, idx: number) => {
+                                        const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
+                                        return (
+                                            <div key={idx} className={cn(
+                                                "bg-[#0a0c14]/60 border rounded-xl p-4 transition-all duration-500 backdrop-blur-sm relative overflow-hidden group/decision",
+                                                isActive
+                                                    ? "border-cyan-500/40 shadow-[0_0_25px_rgba(0,212,255,0.1)] scale-[1.01] z-10"
+                                                    : "border-white/5 opacity-40"
+                                            )}>
+                                                {isActive && <div className="absolute top-0 left-0 w-full h-[1.5px] bg-cyan-500/50 animate-shimmer" />}
+                                                <div className="flex items-center justify-between mb-3">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className={cn("h-1.5 w-1.5 rounded-full", isActive ? "bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" : "bg-slate-700")} />
+                                                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] font-mono">
+                                                            SEG_{decision.segment_id || idx + 1}
+                                                        </span>
+                                                    </div>
+                                                    <span className="text-[8px] font-black text-cyan-500/60 uppercase tracking-widest font-mono">BASIS: VALIDATED</span>
                                                 </div>
-                                                <span className="text-[8px] font-black text-cyan-500/60 uppercase tracking-widest font-mono">BASIS: VALIDATED</span>
-                                            </div>
-                                            <div className="flex gap-4">
-                                                <div className="w-16 h-16 rounded-xl bg-black/50 border border-white/10 overflow-hidden shrink-0 group-hover/decision:border-[#ff007f]/30 transition-colors">
-                                                    <div className="w-full h-full flex items-center justify-center bg-indigo-500/5">
-                                                        <Video className="h-4 w-4 text-indigo-500/30" />
+                                                <div className="flex gap-4">
+                                                    <div className="w-16 h-16 rounded-xl bg-black/50 border border-white/10 overflow-hidden shrink-0 group-hover/decision:border-[#ff007f]/30 transition-colors">
+                                                        <div className="w-full h-full flex items-center justify-center bg-indigo-500/5">
+                                                            <Video className="h-4 w-4 text-indigo-500/30" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="min-w-0 flex-1 flex flex-col justify-center">
+                                                        <p className="text-[10px] font-black text-white uppercase tracking-tight truncate mb-1">
+                                                            {decision.clip_path?.split(/[\\/]/).pop() || "Unknown Clip"}
+                                                        </p>
+                                                        <p className="text-[9px] text-slate-400 font-bold uppercase leading-snug">
+                                                            {decision.reasoning || "Optimized for visual energy mapping."}
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div className="min-w-0 flex-1 flex flex-col justify-center">
-                                                    <p className="text-[10px] font-black text-white uppercase tracking-tight truncate mb-1">
-                                                        {decision.clip_path?.split(/[\\/]/).pop() || "Unknown Clip"}
-                                                    </p>
-                                                    <p className="text-[9px] text-slate-400 font-bold uppercase leading-snug">
-                                                        {decision.reasoning || "Optimized for visual energy mapping."}
-                                                    </p>
-                                                </div>
                                             </div>
-                                        </div>
-                                    );
-                                })
-                            )}
-                        </div>
+                                        );
+                                    })
+                                )}
+                            </div>
+                        )}
                     </div>
 
-                    {/* DIRECTOR'S CRITIQUE - The "Soul" of the Whitebox (v11.0) */}
+                    {/* DIRECTOR'S CRITIQUE - Collapsible */}
                     <div className={cn(
-                        "bg-[#0a0c10] border rounded-2xl p-6 shadow-[inset_0_0_30px_rgba(34,211,238,0.03)] shrink-0 group/critique transition-all duration-700",
+                        "bg-[#0a0c10] border rounded-2xl shadow-[inset_0_0_30px_rgba(34,211,238,0.03)] shrink-0 group/critique transition-all duration-700 overflow-hidden",
                         intelligence?.critique ? "border-cyan-500/20 hover:border-cyan-500/40" : "border-white/5 opacity-60"
                     )}>
-                        <div className="flex items-center justify-between mb-5">
+                        {/* Collapsible Header */}
+                        <button 
+                            onClick={() => toggleSection('critique')}
+                            className="w-full p-5 flex items-center justify-between hover:bg-white/[0.02] transition-colors"
+                        >
                             <div className="flex items-center gap-3">
                                 <BrainCircuit className="w-4 h-4 text-cyan-400 group-hover/critique:scale-110 transition-transform" />
                                 <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em]">Director_Critique</h3>
                             </div>
-                            {intelligence?.critique?.overall_score && (
-                                <div className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-black font-mono">
-                                    {intelligence.critique.overall_score.toFixed(1)}/10
-                                </div>
-                            )}
-                        </div>
-
-                        <div className="space-y-6">
-                            {intelligence?.critique ? (
-                                <>
-                                    {/* Monologue */}
-                                    <div className="border-l-2 border-cyan-500/40 pl-5 py-1">
-                                        <p className="text-[12px] font-bold text-slate-200 leading-relaxed italic">
-                                            "{intelligence.critique.monologue}"
-                                        </p>
+                            <div className="flex items-center gap-2">
+                                {intelligence?.critique?.overall_score && (
+                                    <div className="px-2 py-0.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-black font-mono">
+                                        {intelligence.critique.overall_score.toFixed(1)}/10
                                     </div>
+                                )}
+                                {expandedSections.critique ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
+                            </div>
+                        </button>
 
-                                    {/* Star Performers & Dead Weight */}
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div className="space-y-2">
-                                            <p className="text-[8px] font-black text-lime-500 uppercase tracking-widest">Star_Performers</p>
-                                            <div className="space-y-1">
-                                                {intelligence.critique.star_performers?.slice(0, 2).map((s: string, i: number) => (
-                                                    <p key={i} className="text-[9px] font-bold text-slate-400 truncate uppercase">{s}</p>
-                                                ))}
-                                            </div>
+                        {/* Collapsible Content */}
+                        {expandedSections.critique && (
+                            <div className="px-5 pb-5 space-y-6">
+                                {intelligence?.critique ? (
+                                    <>
+                                        {/* Monologue */}
+                                        <div className="border-l-2 border-cyan-500/40 pl-5 py-1">
+                                            <p className="text-[12px] font-bold text-slate-200 leading-relaxed italic">
+                                                "{intelligence.critique.monologue}"
+                                            </p>
                                         </div>
-                                        <div className="space-y-2">
-                                            <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">Dead_Weight</p>
-                                            <div className="space-y-1">
-                                                {intelligence.critique.dead_weight?.slice(0, 2).map((s: string, i: number) => (
-                                                    <p key={i} className="text-[9px] font-bold text-slate-500 truncate uppercase">{s}</p>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    {/* Missing Ingredients & Remake Actions */}
-                                    <div className="pt-4 border-t border-white/5 space-y-4">
-                                        <div>
-                                            <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-3">Remake_Checklist</p>
+                                        {/* Star Performers & Dead Weight */}
+                                        <div className="grid grid-cols-2 gap-4">
                                             <div className="space-y-2">
-                                                {intelligence.critique.missing_ingredients?.slice(0, 3).map((item: string, i: number) => (
-                                                    <div key={i} className="flex items-center gap-2">
-                                                        <div className="h-1 w-1 rounded-full bg-indigo-500/40" />
-                                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{item}</p>
-                                                    </div>
-                                                ))}
+                                                <p className="text-[8px] font-black text-lime-500 uppercase tracking-widest">Star_Performers</p>
+                                                <div className="space-y-1">
+                                                    {intelligence.critique.star_performers?.slice(0, 2).map((s: string, i: number) => (
+                                                        <p key={i} className="text-[9px] font-bold text-slate-400 truncate uppercase">{s}</p>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div className="space-y-2">
+                                                <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">Dead_Weight</p>
+                                                <div className="space-y-1">
+                                                    {intelligence.critique.dead_weight?.slice(0, 2).map((s: string, i: number) => (
+                                                        <p key={i} className="text-[9px] font-bold text-slate-500 truncate uppercase">{s}</p>
+                                                    ))}
+                                                </div>
                                             </div>
                                         </div>
 
-                                        {intelligence.critique.remake_actions?.length > 0 && (
+                                        {/* Missing Ingredients & Remake Actions */}
+                                        <div className="pt-4 border-t border-white/5 space-y-4">
                                             <div>
-                                                <p className="text-[8px] font-black text-[#ff007f] uppercase tracking-widest mb-3">Actionable_Deltas</p>
+                                                <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-3">Remake_Checklist</p>
                                                 <div className="space-y-2">
-                                                    {intelligence.critique.remake_actions.map((action: any, i: number) => (
-                                                        <div key={i} className="bg-white/[0.02] border border-white/5 rounded-lg p-2 flex flex-col gap-1">
-                                                            <div className="flex items-center justify-between">
-                                                                <span className="text-[7px] font-black text-[#ff007f] uppercase">{action.type}</span>
-                                                                <span className="text-[7px] font-black text-slate-600 uppercase">{action.segment}</span>
-                                                            </div>
-                                                            <p className="text-[9px] font-bold text-slate-300 leading-tight uppercase">{action.suggestion}</p>
+                                                    {intelligence.critique.missing_ingredients?.slice(0, 3).map((item: string, i: number) => (
+                                                        <div key={i} className="flex items-center gap-2">
+                                                            <div className="h-1 w-1 rounded-full bg-indigo-500/40" />
+                                                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{item}</p>
                                                         </div>
                                                     ))}
                                                 </div>
                                             </div>
-                                        )}
+
+                                            {intelligence.critique.remake_actions?.length > 0 && (
+                                                <div>
+                                                    <p className="text-[8px] font-black text-[#ff007f] uppercase tracking-widest mb-3">Actionable_Deltas</p>
+                                                    <div className="space-y-2">
+                                                        {intelligence.critique.remake_actions.map((action: any, i: number) => (
+                                                            <div key={i} className="bg-white/[0.02] border border-white/5 rounded-lg p-2 flex flex-col gap-1">
+                                                                <div className="flex items-center justify-between">
+                                                                    <span className="text-[7px] font-black text-[#ff007f] uppercase">{action.type}</span>
+                                                                    <span className="text-[7px] font-black text-slate-600 uppercase">{action.segment}</span>
+                                                                </div>
+                                                                <p className="text-[9px] font-bold text-slate-300 leading-tight uppercase">{action.suggestion}</p>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="border-l-2 border-white/10 pl-5 py-2">
+                                        <p className="text-[11px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
+                                            Director reflection pending. Synthesis must be re-run to generate post-render critique data.
+                                        </p>
                                     </div>
-                                </>
-                            ) : (
-                                <div className="border-l-2 border-white/10 pl-5 py-2">
-                                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
-                                        Director reflection pending. Synthesis must be re-run to generate post-render critique data.
-                                    </p>
-                                </div>
-                            )}
-                        </div>
+                                )}
+                            </div>
+                        )}
                     </div>
 
 
@@ -627,7 +755,110 @@ export default function VaultPage() {
 
                 </aside>
             </main>
+
+            {/* Text Overlay Modal */}
+            {isTextModalOpen && (
+                <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm">
+                    <div className="w-[400px] bg-[#0a0c14] border border-white/10 rounded-2xl p-6 shadow-2xl">
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                                <Type className="w-5 h-5 text-cyan-400" />
+                                <h3 className="text-sm font-black text-white uppercase tracking-[0.3em]">Edit Text Overlay</h3>
+                            </div>
+                            <button 
+                                onClick={() => setIsTextModalOpen(false)}
+                                className="p-1 hover:bg-white/10 rounded-full transition-all"
+                            >
+                                <X className="w-5 h-5 text-slate-400" />
+                            </button>
+                        </div>
+
+                        <div className="space-y-4">
+                            {/* Text Content */}
+                            <div>
+                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Text Content</label>
+                                <textarea
+                                    value={textContent}
+                                    onChange={(e) => setTextContent(e.target.value)}
+                                    placeholder="Enter text to display..."
+                                    className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-sm text-white placeholder-slate-600 outline-none focus:border-cyan-500/30 transition-colors resize-none h-20"
+                                />
+                            </div>
+
+                            {/* Placement */}
+                            <div>
+                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Placement</label>
+                                <div className="grid grid-cols-3 gap-2">
+                                    {["top", "center", "bottom"].map((pos) => (
+                                        <button
+                                            key={pos}
+                                            onClick={() => setTextPlacement(pos)}
+                                            className={cn(
+                                                "px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
+                                                textPlacement === pos
+                                                    ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-400"
+                                                    : "bg-black/50 border border-white/10 text-slate-500 hover:border-white/20"
+                                            )}
+                                        >
+                                            {pos}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Font Style */}
+                            <div>
+                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Font Style</label>
+                                <div className="grid grid-cols-2 gap-2">
+                                    {[
+                                        { val: "sans-serif", label: "Sans" },
+                                        { val: "serif", label: "Serif" },
+                                        { val: "bold", label: "Bold" },
+                                        { val: "mono", label: "Mono" }
+                                    ].map((font) => (
+                                        <button
+                                            key={font.val}
+                                            onClick={() => setTextFont(font.val)}
+                                            className={cn(
+                                                "px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
+                                                textFont === font.val
+                                                    ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-400"
+                                                    : "bg-black/50 border border-white/10 text-slate-500 hover:border-white/20"
+                                            )}
+                                        >
+                                            {font.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex gap-3 mt-6">
+                            <button
+                                onClick={() => setIsTextModalOpen(false)}
+                                className="flex-1 py-3 rounded-lg border border-white/10 text-slate-400 text-[11px] font-black uppercase tracking-widest hover:bg-white/5 transition-all"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleApplyTextOverlay}
+                                disabled={isApplyingText}
+                                className={cn(
+                                    "flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
+                                    isApplyingText
+                                        ? "bg-cyan-500/20 text-cyan-500/50 cursor-not-allowed"
+                                        : "bg-cyan-500 text-black hover:bg-cyan-400"
+                                )}
+                            >
+                                {isApplyingText ? "Rendering..." : "Apply"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
+
 

@@ -5,7 +5,7 @@ Handles file uploads, Gemini 3 processing, and video rendering.
 
 import os
 import sys
-from fastapi import FastAPI, UploadFile, File, WebSocket, HTTPException, BackgroundTasks
+from fastapi import FastAPI, UploadFile, File, WebSocket, HTTPException, BackgroundTasks, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import mimetypes
@@ -1301,6 +1301,115 @@ async def serve_thumbnail_file(filename: str):
 @app.get("/health")
 async def health():
     return {"status": "healthy"}
+
+@app.post("/api/results/{filename}/text-overlay")
+async def edit_text_overlay(
+    filename: str,
+    text_content: str = Body("", embed=True),
+    placement: str = Body("center", embed=True),
+    font_style: str = Body("sans-serif", embed=True)
+):
+    """
+    Edit text overlay on an existing result video.
+    Uses clean master approach - always applies text to clean version,
+    never stacks text on already-burned text.
+    """
+    from engine.stylist import apply_visual_styling
+    
+    print(f"[TEXT-OVERLAY] Request received for {filename}")
+    print(f"[TEXT-OVERLAY] Text content: '{text_content}', placement: {placement}, font: {font_style}")
+    
+    result_path = RESULTS_DIR / filename
+    if not result_path.exists():
+        print(f"[TEXT-OVERLAY] ERROR: File not found: {result_path}")
+        raise HTTPException(status_code=404, detail="Result video not found")
+    
+    # Check for clean master
+    clean_master_path = RESULTS_DIR / f"{Path(filename).stem}_clean.mp4"
+    
+    # Determine source video (clean master if exists, otherwise current)
+    if clean_master_path.exists():
+        source_video = str(clean_master_path)
+        print(f"[TEXT-OVERLAY] Using clean master: {clean_master_path}")
+    else:
+        # First edit - current video becomes clean master
+        source_video = str(result_path)
+        print(f"[TEXT-OVERLAY] Creating clean master from: {result_path}")
+        # Copy current to clean master
+        import shutil
+        shutil.copy2(source_video, clean_master_path)
+        print(f"[TEXT-OVERLAY] Clean master created: {clean_master_path}")
+    
+    # Temp output path
+    temp_output = RESULTS_DIR / f"{Path(filename).stem}_restyled.mp4"
+    
+    # Remove old temp if exists
+    if temp_output.exists():
+        temp_output.unlink()
+    
+    try:
+        # Apply text styling to clean master
+        text_style = {
+            "font_style": font_style,
+            "placement": placement
+        }
+        
+        print(f"[TEXT-OVERLAY] Applying text to source...")
+        apply_visual_styling(
+            input_video=source_video,
+            output_video=str(temp_output),
+            text_overlay=text_content,
+            text_style=text_style
+        )
+        
+        # Check if temp output was created
+        if not temp_output.exists():
+            print(f"[TEXT-OVERLAY] ERROR: No output file created")
+            raise Exception("Styling failed - no output file created")
+        
+        print(f"[TEXT-OVERLAY] Output created: {temp_output}")
+        
+        # Replace original with restyled version
+        print(f"[TEXT-OVERLAY] Replacing original with restyled version...")
+        result_path.unlink()  # Delete old
+        temp_output.rename(result_path)  # Move new to original name
+        
+        # Update result JSON (so modal shows current text)
+        json_path = RESULTS_DIR / f"{Path(filename).stem}.json"
+        if json_path.exists():
+            try:
+                with open(json_path, "r", encoding="utf-8") as f:
+                    result_data = json.load(f)
+                blueprint = result_data.get("blueprint") or {}
+                blueprint["text_overlay"] = text_content
+                blueprint["text_style"] = {
+                    "font_style": font_style,
+                    "placement": placement
+                }
+                result_data["blueprint"] = blueprint
+                with open(json_path, "w", encoding="utf-8") as f:
+                    json.dump(result_data, f, indent=2)
+            except Exception as json_error:
+                print(f"[TEXT-OVERLAY] WARN: Failed updating result JSON: {json_error}")
+
+        print(f"[TEXT-OVERLAY] SUCCESS: Text overlay applied")
+        
+        return {
+            "status": "success",
+            "filename": filename,
+            "text_overlay": text_content,
+            "placement": placement
+        }
+        
+    except Exception as e:
+        print(f"[TEXT-OVERLAY] EXCEPTION: {e}")
+        import traceback
+        traceback.print_exc()
+        # Cleanup temp if exists
+        if temp_output.exists():
+            temp_output.unlink()
+        raise HTTPException(status_code=500, detail=f"Restyling failed: {str(e)}")
+
 
 # ============================================================================
 # BACKGROUND REFRESH LOOP
