@@ -350,12 +350,12 @@ export default function StudioPage() {
                   Studio {searchParams.get("refine") ? <span className="text-[#ff007f] ml-2 animate-pulse">V2_Refinement</span> : "V1"}
                 </h1>
               </div>
-              <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">Integrated Gemini 4_Iterative Engine</p>
+              <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">AI Creative Engine</p>
             </div>
             <div className="space-y-1.5 ml-10 border-l-2 border-white/5 pl-6 py-1">
-              <h2 className="text-lg font-bold text-white/90">Edit Videos by Reference Using Gemini 3</h2>
+              <h2 className="text-lg font-bold text-white/90">Remix your videos with Gemini 3</h2>
               <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                Upload a reference video and your raw clips. This system analyzes the reference's cut structure, pacing, energy, and rhythm, then automatically edits your footage to match the style using Gemini 3.
+                Upload a reference and your clips. Mimic analyzes the vibe, pacing, and energy to automatically edit your footage into a masterpiece.
               </p>
             </div>
           </div>
@@ -665,17 +665,17 @@ export default function StudioPage() {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <Layers className="h-3.5 w-3.5 text-indigo-400" />
-                    <h3 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Blueprint Preview</h3>
+                    <h3 className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Edit Plan</h3>
                   </div>
-                  <div className="px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-[8px] font-black text-indigo-400 uppercase tracking-widest">DNA Locked</div>
+                  <div className="px-2 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 text-[8px] font-black text-indigo-400 uppercase tracking-widest">Locked In</div>
                 </div>
                 <div className="space-y-4">
                   <div className="space-y-1">
-                    <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Strategy</p>
+                    <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">The Vibe</p>
                     <p className="text-[11px] font-bold text-slate-300 leading-relaxed uppercase tracking-tight italic">"{blueprint.plan_summary || blueprint.narrative_message}"</p>
                   </div>
                   <div className="space-y-2">
-                    <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Arc Sequence</p>
+                    <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Story Arc</p>
                     <div className="flex gap-1 overflow-hidden rounded-lg h-8 border border-white/5">
                       {blueprint.segments?.map((seg: any, i: number) => (
                         <div
@@ -706,7 +706,7 @@ export default function StudioPage() {
               <div className="px-5 py-4 border-b border-indigo-500/10 flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-3 text-[10px] font-black text-white uppercase tracking-[0.2em]">
                   <Terminal className="h-3.5 w-3.5 text-cyan-400" />
-                  <span>System Telemetry</span>
+                  <span>AI Reasoning</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   {isGenerating && (
@@ -800,15 +800,15 @@ export default function StudioPage() {
 
             <div className={cn(
               "glass-premium rounded-xl px-5 py-6 transition-all duration-1000 border relative overflow-hidden",
-              recommendations.length > 0 ? "border-indigo-500/40 bg-indigo-500/[0.03] shadow-[0_0_30px_rgba(99,102,241,0.1)]" : "border-white/5 opacity-60"
+              recommendations.length > 0 ? "border-indigo-500/40 bg-indigo-500/[0.03] shadow-[0_0_30px_rgba(99,102,241,0.1)] animate-synthesis" : "border-white/5 opacity-60"
             )}>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em]">
                   <Sparkles className={cn("h-3.5 w-3.5", recommendations.length > 0 ? "text-[#ccff00]" : "text-pink-400")} />
-                  <span className={cn(recommendations.length > 0 ? "text-[#ccff00]" : "text-white")}>Agent Feedback</span>
+                  <span className={cn(recommendations.length > 0 ? "text-[#ccff00]" : "text-white")}>AI Insights</span>
                 </div>
                 {recommendations.length > 0 && (
-                  <div className="px-2 py-0.5 rounded bg-[#ccff00]/10 border border-[#ccff00]/20 text-[8px] font-black text-[#ccff00] uppercase animate-pulse">New Intel</div>
+                  <div className="px-2 py-0.5 rounded bg-[#ccff00]/10 border border-[#ccff00]/20 text-[8px] font-black text-[#ccff00] uppercase animate-pulse">Thinking...</div>
                 )}
               </div>
               <div className="space-y-4">
@@ -842,7 +842,7 @@ export default function StudioPage() {
 
           <div className="space-y-8 relative z-10">
             <div className="flex items-center justify-between">
-              <h3 className="text-[11px] font-black text-indigo-400 uppercase tracking-[0.5em]">Operational Blueprint</h3>
+              <h3 className="text-[11px] font-black text-indigo-400 uppercase tracking-[0.5em]">How it Works</h3>
               <div className="flex gap-2">
                 <div className="h-1 w-6 bg-indigo-500/20 rounded-full" />
                 <div className="h-1 w-1 bg-indigo-500/40 rounded-full" />
@@ -853,28 +853,28 @@ export default function StudioPage() {
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-cyan-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover/bp:bg-cyan-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(34,211,238,0.2)] group-hover/bp:shadow-[0_0_20px_rgba(34,211,238,0.4)]"><Layers className="h-2.5 w-2.5" /></div>
-                  Taste Under Constraint
+                  Smart Selection
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Making intelligent editorial compromises when matching source material to reference DNA.
+                  Mimic picks your best moments to match the vibe and energy of the reference.
                 </p>
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-purple-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover/bp:bg-purple-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(191,0,255,0.2)] group-hover/bp:shadow-[0_0_191,0,255,0.4)]"><Zap className="h-2.5 w-2.5" /></div>
-                  Failure as Signal
+                  Perfect Pacing
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Treating "mismatches" as editorial breakthroughs. The system identifies constraint gaps to guide the perfect remake.
+                  Every cut is timed to the beat and the visual rhythm of the original edit.
                 </p>
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-lime-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 group-hover/bp:bg-lime-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(204,255,0,0.2)] group-hover/bp:shadow-[0_0_204,255,0,0.4)]"><BrainCircuit className="h-2.5 w-2.5" /></div>
-                  Temporal Intelligence
+                  AI Storytelling
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Using Gemini 3 to reason over entire video sequences to understand energy shifts and motion patterns for humanly intuitive edits.
+                  Gemini 3 understands the story you're trying to tell and makes it feel cinematic.
                 </p>
               </div>
             </div>

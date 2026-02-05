@@ -3,22 +3,33 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
-    Database,
     Activity,
     MonitorPlay,
     X,
     Sparkles,
     Zap,
     BrainCircuit,
-    MonitorStop,
-    TrendingUp,
-    MessageSquare,
     ChevronDown,
+    ChevronUp,
     Video,
     Search,
-    ChevronUp,
-    FolderOpen,
-    Type
+    Type,
+    Share2,
+    Play,
+    Info,
+    History,
+    MoreHorizontal,
+    Download,
+    Settings,
+    Heart,
+    Plus,
+    Film,
+    Layers,
+    Eye,
+    CheckCircle2,
+    Clock,
+    Music,
+    TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -39,115 +50,49 @@ export default function VaultPage() {
     const [selectedItem, setSelectedItem] = useState<AssetItem | null>(null);
     const [viewMode, setViewMode] = useState<ViewMode>("results");
     const [loading, setLoading] = useState(true);
-    const [intelLoading, setIntelLoading] = useState(false);
     const [intelligence, setIntelligence] = useState<any>(null);
-
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [isCabinetOpen, setIsCabinetOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [intelExpanded, setIntelExpanded] = useState(true);
+    const [showMoreDetails, setShowMoreDetails] = useState(false);
 
-    // Text Overlay Modal State
-    const [isTextModalOpen, setIsTextModalOpen] = useState(false);
-    const [textContent, setTextContent] = useState("");
-    const [textPlacement, setTextPlacement] = useState("center");
-    const [textFont, setTextFont] = useState("sans-serif");
-    const [isApplyingText, setIsApplyingText] = useState(false);
-
-    // Collapsible sections state
-    const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-        strategy: true,
-        critique: true,
-        ledger: true
-    });
-
-    // Handle text overlay application
-    const handleApplyTextOverlay = async () => {
-        if (!selectedItem || viewMode !== "results") {
-            toast.error("Please select a result video first");
-            return;
-        }
-        
-        setIsApplyingText(true);
-        try {
-            const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-            const response = await fetch(
-                `${API_BASE}/api/results/${selectedItem.filename}/text-overlay`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        text_content: textContent,
-                        placement: textPlacement,
-                        font_style: textFont
-                    })
-                }
-            );
-            
-            if (!response.ok) {
-                throw new Error("Failed to apply text overlay");
-            }
-            
-            toast.success("Text overlay applied. Reloading video...");
-            setIsTextModalOpen(false);
-
-            // Delay reload slightly to ensure file swap finishes
-            setTimeout(() => {
-                window.location.reload();
-            }, 1200);
-        } catch (err) {
-            toast.error("Failed to apply text overlay");
-            console.error(err);
-        } finally {
-            setIsApplyingText(false);
-        }
-    };
-
-    const toggleSection = (section: string) => {
-        setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
-    };
-
-    // Refs
     const videoRef = useRef<HTMLVideoElement>(null);
+    const decisionListRef = useRef<HTMLDivElement>(null);
 
     // Fetch data
-    const fetchAllAssets = async () => {
-        try {
-            const [clipsData, refsData, resultsData] = await Promise.all([
-                api.fetchClips(),
-                api.fetchReferences(),
-                api.fetchResults()
-            ]);
-            setClips(clipsData.clips || []);
-            setReferences(refsData.references || []);
-            setResults(resultsData.results || []);
-        } catch (err) {
-            toast.error("Failed to load assets");
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
+        const fetchAllAssets = async () => {
+            try {
+                const [clipsData, refsData, resultsData] = await Promise.all([
+                    api.fetchClips(),
+                    api.fetchReferences(),
+                    api.fetchResults()
+                ]);
+                setClips(clipsData.clips || []);
+                setReferences(refsData.references || []);
+                setResults(resultsData.results || []);
+            } catch (err) {
+                toast.error("Failed to load assets");
+            } finally {
+                setLoading(false);
+            }
+        };
         fetchAllAssets();
     }, []);
 
-    // Auto-select from URL params
+    // Selection logic
     useEffect(() => {
         const filename = searchParams.get("filename");
         const type = searchParams.get("type") as ViewMode | null;
 
-        if (filename && type && (references.length > 0 || results.length > 0)) {
+        if (filename && type && (references.length > 0 || results.length > 0 || clips.length > 0)) {
             let item: AssetItem | undefined;
-            if (type === "results") {
-                item = results.find(r => r.filename === filename);
-            } else if (type === "references") {
-                item = references.find(r => r.filename === filename);
-            } else if (type === "clips") {
-                item = clips.find(c => c.filename === filename);
-            }
+            if (type === "results") item = results.find(r => r.filename === filename);
+            else if (type === "references") item = references.find(r => r.filename === filename);
+            else if (type === "clips") item = clips.find(c => c.filename === filename);
+            
             if (item) {
                 setSelectedItem(item);
                 setViewMode(type);
@@ -157,733 +102,380 @@ export default function VaultPage() {
         }
     }, [searchParams, results, references, clips, selectedItem]);
 
-    const handleAssetClick = (item: AssetItem, type: ViewMode) => {
-        setSelectedItem(item);
-        setViewMode(type);
-        setIsCabinetOpen(false);
-    };
-
-    // Fetch Intelligence
+    // Intelligence Fetch
     useEffect(() => {
         if (!selectedItem) return;
-
         const fetchIntel = async () => {
-            setIntelLoading(true);
             try {
-                const key =
-                    viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
+                const key = viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
                 const data = await api.fetchIntelligence(viewMode, key);
                 setIntelligence(data);
             } catch (err) {
                 setIntelligence(null);
-            } finally {
-                setIntelLoading(false);
             }
         };
-
         fetchIntel();
     }, [selectedItem, viewMode]);
 
-    const currentAssets = useMemo(() => {
+    // Auto-scroll decision list
+    useEffect(() => {
+        if (viewMode === "results" && intelligence?.edl?.decisions) {
+            const activeIdx = intelligence.edl.decisions.findIndex((d: any) => 
+                currentTime >= d.timeline_start && currentTime <= d.timeline_end
+            );
+            if (activeIdx !== -1 && decisionListRef.current) {
+                const activeEl = decisionListRef.current.children[activeIdx] as HTMLElement;
+                if (activeEl) {
+                    decisionListRef.current.scrollTo({
+                        top: activeEl.offsetTop - 40,
+                        behavior: "smooth"
+                    });
+                }
+            }
+        }
+    }, [currentTime, intelligence, viewMode]);
+
+    const videoUrl = useMemo(() => {
+        if (!selectedItem) return "";
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+        let path = (selectedItem as any).path || (selectedItem as any).filepath || (selectedItem as any).url || "";
+        if (path && !path.startsWith("/")) path = "/" + path;
+        return `${API_BASE}${path}?v=${Date.now()}`;
+    }, [selectedItem]);
+
+    const currentModeAssets = useMemo(() => {
         const assets = viewMode === "results" ? results : viewMode === "references" ? references : clips;
         if (!searchQuery.trim()) return assets;
         return assets.filter(a => a.filename.toLowerCase().includes(searchQuery.toLowerCase()));
     }, [viewMode, results, references, clips, searchQuery]);
 
-    // Memoized video URL - only changes when selectedItem changes, not on every render
-    const videoUrl = useMemo(() => {
-        if (!selectedItem) return "";
-        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-        // Handle different path properties that might exist on different item types
-        let path = "";
-        if ("path" in selectedItem && selectedItem.path) {
-            path = selectedItem.path;
-        } else if ("filepath" in selectedItem && (selectedItem as any).filepath) {
-            path = (selectedItem as any).filepath;
-        } else if ("url" in selectedItem && (selectedItem as any).url) {
-            path = (selectedItem as any).url;
-        }
-        // Ensure path starts with /
-        if (path && !path.startsWith("/")) {
-            path = "/" + path;
-        }
-        // Add cache busting parameter to prevent browser caching after edits
-        const cacheBust = Date.now();
-        return `${API_BASE}${path}?v=${cacheBust}`;
-    }, [selectedItem]);
-
-    const getVideoUrl = (item: AssetItem) => {
-        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-        let path = "";
-        if ("path" in item && item.path) {
-            path = item.path;
-        } else if ("filepath" in item && (item as any).filepath) {
-            path = (item as any).filepath;
-        } else if ("url" in item && (item as any).url) {
-            path = (item as any).url;
-        }
-        if (path && !path.startsWith("/")) {
-            path = "/" + path;
-        }
-        return `${API_BASE}${path}`;
+    const cleanupReasoning = (text: string) => {
+        if (!text) return "Optimized for visual flow.";
+        return text
+            .replace(/SERVING AS A STRATEGIC/g, 'Chosen as a')
+            .replace(/SATISFIES THE NARRATIVE'S/g, 'Matches the')
+            .replace(/HIGH-ENERGY DEMAND/g, 'energy')
+            .replace(/PRIMARY EMOTIONAL CARRIER/g, 'main vibe')
+            .toLowerCase();
     };
 
-    // Video events
-    const handleTimeUpdate = () => {
-        if (videoRef.current) setCurrentTime(videoRef.current.currentTime);
-    };
-
-    const handleLoadedMetadata = () => {
-        if (videoRef.current) setDuration(videoRef.current.duration);
-    };
-
-    // Waveform & Metrics Logic
-    const waveformData = useMemo(() => {
-        if (!intelligence || duration <= 0) return Array.from({ length: 48 }, (_, i) => 15 + Math.abs(Math.sin(i * 0.4) * 40));
-        const segments = intelligence.segments || intelligence.edl?.decisions || (Array.isArray(intelligence.edl) ? intelligence.edl : []);
-        if (Array.isArray(segments) && segments.length > 0) {
-            const data = new Array(48).fill(30);
-            segments.forEach((seg: any) => {
-                const startT = seg.start || seg.reference_start || seg.timeline_start;
-                const endT = seg.end || seg.reference_end || seg.timeline_end;
-                const energy = seg.energy || "Medium";
-                const startIdx = Math.max(0, Math.floor((startT / duration) * 48));
-                const endIdx = Math.min(47, Math.floor((endT / duration) * 48));
-                const height = energy === "High" ? 90 : energy === "Medium" ? 60 : 35;
-                for (let i = startIdx; i <= endIdx; i++) data[i] = height + (Math.random() * 5);
-            });
-            return data;
-        }
-        return Array.from({ length: 48 }, (_, i) => 20 + (i % 8 === 0 ? 40 : 10));
-    }, [intelligence, duration]);
-
-    const currentDecision = useMemo(() => {
-        if (!intelligence || !intelligence.edl || viewMode !== "results") return null;
-        const decisions = intelligence.edl.decisions || [];
-        return decisions.find((d: any) => currentTime >= d.timeline_start && currentTime <= d.timeline_end);
-    }, [intelligence, currentTime, viewMode]);
-
-    const currentSegment = useMemo(() => {
-        if (!intelligence || !intelligence.segments || viewMode !== "references") return null;
-        return intelligence.segments.find((s: any) => currentTime >= s.start && currentTime <= s.end);
-    }, [intelligence, currentTime, viewMode]);
-
-    if (loading) {
-        return (
-            <div className="h-screen flex items-center justify-center bg-[#020306]">
-                <div className="text-cyan-400 text-[10px] font-black uppercase tracking-[0.5em] animate-pulse">Initializing Lab_</div>
-            </div>
-        );
-    }
+    if (loading) return (
+        <div className="h-screen flex items-center justify-center bg-[#020306]">
+            <div className="text-indigo-500 text-[10px] font-black uppercase tracking-[0.5em] animate-pulse">Syncing_Vault</div>
+        </div>
+    );
 
     return (
-        <div className="min-h-screen bg-[#020306] text-slate-100 flex flex-col overflow-hidden">
-            {/* Compact Header */}
-            <header className="h-14 flex items-center justify-between px-10 bg-black/60 backdrop-blur-xl border-b border-white/5 shrink-0 z-[100]">
-                <div className="flex items-center gap-3">
-                    <div className="h-6 w-6 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
-                        <Activity className="h-3.5 w-3.5 text-indigo-400" />
+        <div className="min-h-screen bg-[#08090a] text-slate-100 flex flex-col overflow-hidden">
+            
+            {/* STAGE HEADER: Netflix-Deep Glass */}
+            <header className="h-20 flex items-center justify-between px-12 bg-[#08090a]/80 backdrop-blur-2xl border-b border-white/[0.03] shrink-0 z-[100]">
+                <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                        <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Live</span>
                     </div>
-                    <h1 className="text-[10px] font-black text-white uppercase tracking-[0.4em]">Vault // Forensic_Workbench</h1>
                 </div>
 
-                <div className="flex-1 max-w-sm mx-10 relative group">
-                    <Search className="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 text-slate-700 group-focus-within:text-cyan-600/50 transition-colors" />
-                    <input
-                        type="text"
-                        placeholder="SEARCH_DNA"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-transparent border-b border-white/5 rounded-none py-1 pl-6 pr-2 text-[10px] font-medium text-slate-400 placeholder-slate-800 outline-none focus:border-cyan-500/10 transition-all uppercase tracking-widest"
-                    />
+                <div className="flex-1 max-w-lg mx-auto">
+                    <div className="relative group">
+                        <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-3xl rounded-2xl border border-white/5 group-focus-within:border-indigo-500/20 group-focus-within:bg-white/[0.04] transition-all duration-700" />
+                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-indigo-400 z-10 transition-colors" />
+                        <input 
+                            type="text"
+                            placeholder="Search library..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="relative w-full bg-transparent py-3 pl-12 pr-4 text-[11px] font-medium text-white placeholder-slate-700 outline-none z-10"
+                        />
+                    </div>
                 </div>
 
-                <div className="flex items-center bg-black/40 p-1 rounded-lg border border-white/5">
+                <nav className="flex items-center bg-white/5 p-1 rounded-xl border border-white/10 shrink-0">
                     {(["results", "references", "clips"] as ViewMode[]).map(mode => (
                         <button
                             key={mode}
                             onClick={() => setViewMode(mode)}
                             className={cn(
-                                "relative px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-[0.2em] transition-all duration-300",
-                                viewMode === mode ? "text-cyan-400 bg-cyan-500/10" : "text-slate-500 hover:text-slate-300"
+                                "px-5 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all",
+                                viewMode === mode ? "text-white bg-indigo-600 shadow-lg shadow-indigo-600/20" : "text-slate-500 hover:text-slate-300"
                             )}
                         >
                             {mode}
                         </button>
                     ))}
-                </div>
+                </nav>
             </header>
 
-            {/* Specimen Cabinet (Library Drawer) */}
-            <div className={cn(
-                "fixed inset-y-0 left-0 w-80 bg-[#05060a]/95 backdrop-blur-2xl border-r border-white/10 z-[150] transform transition-transform duration-500 flex flex-col shadow-2xl",
-                isCabinetOpen ? "translate-x-0" : "-translate-x-full"
-            )}>
-                <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-cyan-400">
-                        <Database className="w-4 h-4" />
-                        <h2 className="text-sm font-black uppercase tracking-[0.3em]">Library</h2>
-                    </div>
-                    <button onClick={() => setIsCabinetOpen(false)} className="p-1 hover:bg-white/10 rounded-full transition-all">
-                        <X className="w-5 h-5 text-slate-400" />
-                    </button>
-                </div>
-                <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                    <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest px-2">{viewMode} Available</p>
-                    {currentAssets.map((res) => (
-                        <div
-                            key={res.filename}
-                            onClick={() => handleAssetClick(res, viewMode)}
-                            className={cn(
-                                "p-3 rounded-xl border transition-all cursor-pointer group/item",
-                                selectedItem?.filename === res.filename ? "bg-cyan-500/10 border-cyan-500/30" : "bg-white/5 border-white/5 hover:border-white/20"
-                            )}
-                        >
-                            <div className="flex items-center gap-3">
-                                <div className="w-20 h-12 rounded-lg bg-black relative overflow-hidden shrink-0 border border-white/10 flex items-center justify-center">
-                                    {(res as any).thumbnail_url ? (
+            {/* ASSET STRIP: Netflix-Style Content Cards */}
+            <div className="h-48 border-b border-white/[0.03] bg-black/10 shrink-0 overflow-hidden relative">
+                <div className="flex gap-6 overflow-x-auto p-6 custom-scrollbar-horizontal no-scrollbar h-full items-center px-12">
+                    {currentModeAssets.map((item, idx) => {
+                        const isSelected = selectedItem?.filename === item.filename;
+                        return (
+                            <div
+                                key={idx}
+                                onClick={() => setSelectedItem(item)}
+                                className="shrink-0 w-64 group/item cursor-pointer"
+                            >
+                                <div
+                                    className={cn(
+                                        "relative w-full aspect-video rounded-xl overflow-hidden border transition-all duration-500 bg-[#0f1115] shadow-2xl",
+                                        isSelected 
+                                            ? "border-indigo-500 ring-2 ring-indigo-500/40 scale-[1.05] z-10" 
+                                            : "border-white/5 opacity-90 hover:opacity-100 hover:scale-[1.02] hover:border-white/20"
+                                    )}
+                                >
+                                    {item.thumbnail_url ? (
                                         <img
-                                            src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${(res as any).thumbnail_url}`}
-                                            alt={res.filename}
-                                            className="w-full h-full object-cover opacity-80"
+                                            src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${item.thumbnail_url}`}
+                                            alt={item.filename}
+                                            className="w-full h-full object-cover"
                                         />
                                     ) : (
-                                        <video 
-                                            src={getVideoUrl(res) + "#t=0.5"} 
-                                            className="w-full h-full object-cover opacity-60"
-                                            muted
-                                            playsInline
-                                            preload="metadata"
-                                        />
-                                    )}
-                                </div>
-                                <div className="min-w-0">
-                                    <p className="text-xs font-black text-white uppercase truncate">{res.filename}</p>
-                                    <p className="text-[9px] font-medium text-slate-500 uppercase tracking-widest">ID: {res.filename.split('_').pop()?.split('.')[0]}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {isCabinetOpen && <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[140]" onClick={() => setIsCabinetOpen(false)} />}
-
-            {/* Compact Asset Strip */}
-            <div className="bg-[#020306] border-b border-white/5 py-4 shrink-0 overflow-hidden">
-                <div className="max-w-[1400px] mx-auto px-10">
-
-                    <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
-                        {currentAssets.slice(0, 8).map((item, idx) => {
-                            const isSelected = selectedItem?.filename === item.filename;
-                            const isReference = viewMode === "references" || (viewMode === "results" && idx === 0);
-
-                            return (
-                                <div
-                                    key={idx}
-                                    onClick={() => handleAssetClick(item, viewMode)}
-                                    className="shrink-0 w-44 group cursor-pointer"
-                                >
-                                    <div
-                                        className={cn(
-                                            "relative w-full aspect-[16/11] rounded-lg overflow-hidden border transition-all duration-500 flex items-center justify-center bg-[#0a0c14]",
-                                            isSelected
-                                                ? "border-cyan-400"
-                                                : "border-white/10 opacity-60 hover:opacity-80"
-                                        )}
-                                    >
-                                        {item.thumbnail_url ? (
-                                            <img
-                                                src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${item.thumbnail_url}`}
-                                                alt={item.filename}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        ) : (
-                                            <video 
-                                                src={getVideoUrl(item) + "#t=0.5"} 
-                                                className="w-full h-full object-cover opacity-60"
-                                                muted
-                                                playsInline
-                                                preload="metadata"
-                                            />
-                                        )}
-                                        <div className={cn(
-                                            "absolute bottom-1 right-1 px-1 py-0.5 rounded text-[7px] font-black uppercase",
-                                            isSelected ? "bg-cyan-500 text-white" : "bg-black/60 text-white"
-                                        )}>
-                                            {item.filename}
+                                        <div className="w-full h-full flex items-center justify-center bg-indigo-500/5">
+                                            <Film className="h-6 w-6 text-indigo-500/20" />
                                         </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
-
-            <main className="max-w-[1400px] mx-auto px-10 py-8 grid grid-cols-[300px_1fr_400px] gap-10 flex-1 overflow-hidden">
-                {/* LEFT: Operational Strategy - Collapsible */}
-                <aside className="space-y-4">
-                    <div className="glass-premium rounded-2xl border-l-2 border-l-indigo-500/30 relative overflow-hidden group">
-                        {/* Collapsible Header */}
-                        <button 
-                            onClick={() => toggleSection('strategy')}
-                            className="w-full p-5 flex items-center justify-between hover:bg-white/[0.02] transition-colors"
-                        >
-                            <div className="flex items-center gap-2">
-                                <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
-                                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Operational_Strategy</h3>
-                            </div>
-                            {expandedSections.strategy ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
-                        </button>
-                        
-                        {/* Collapsible Content */}
-                        {expandedSections.strategy && (
-                            <div className="px-5 pb-5 space-y-5 relative z-10">
-                                <div className="space-y-4 border-b border-white/5 pb-4">
-                                    <div className="space-y-1">
+                                    )}
+                                    
+                                    {/* Netflix-style Card Footer */}
+                                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-3 transform translate-y-2 group-hover/item:translate-y-0 transition-transform">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
-                                            <div className="flex items-center gap-2">
-                                                {intelligence?.advisor?.segment_moment_plans && Object.keys(intelligence.advisor.segment_moment_plans).length > 0 ? (
-                                                    <span className="px-1.5 py-0.5 rounded bg-lime-500/10 border border-lime-500/20 text-[7px] font-black text-lime-400 uppercase tracking-widest">CMS_ACTIVE</span>
-                                                ) : (
-                                                    <span className="px-1.5 py-0.5 rounded bg-slate-500/10 border border-slate-500/20 text-[7px] font-black text-slate-500 uppercase tracking-widest">CMS_FALLBACK</span>
-                                                )}
-                                                {intelligence?.blueprint?.text_prompt && (
-                                                    <span className="px-1.5 py-0.5 rounded bg-[#ff007f]/10 border border-[#ff007f]/20 text-[7px] font-black text-[#ff007f] uppercase tracking-widest">Creator_Mode</span>
-                                                )}
+                                            <p className="text-[9px] font-black text-white uppercase tracking-wider truncate">{item.filename}</p>
+                                            <div className="flex items-center gap-1.5">
+                                                <div className="h-5 w-5 rounded bg-white/10 backdrop-blur-md flex items-center justify-center">
+                                                    <Play className="h-2.5 w-2.5 text-white fill-white" />
+                                                </div>
                                             </div>
                                         </div>
-                                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
-                                            {intelligence?.advisor?.dominant_narrative || intelligence?.blueprint?.narrative_message || "Rhythmic Consistency & Energy Matching"}
-                                        </p>
                                     </div>
-                                    {intelligence?.blueprint?.plan_summary && (
-                                        <div className="space-y-1">
-                                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Plan_Summary</span>
-                                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed border-l border-white/10 pl-3">
-                                                {intelligence.blueprint.plan_summary}
-                                            </p>
+
+                                    {isSelected && (
+                                        <div className="absolute top-3 right-3 px-2 py-0.5 rounded bg-indigo-600 text-[7px] font-black uppercase tracking-tighter shadow-lg">Viewing</div>
+                                    )}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
+            {/* WORKBENCH: Dense Two-Column Stage */}
+            <main className="flex-1 flex overflow-hidden">
+                <div className="flex-1 flex flex-col overflow-y-auto custom-scrollbar p-12">
+                    
+                    <div className="max-w-[1400px] mx-auto w-full flex gap-10 items-start">
+                        
+                        {/* LEFT: Video Stage (Increased height for cinematic feel) */}
+                        <div className="flex-1 flex flex-col gap-10 min-w-0">
+                            <div className="relative w-full max-w-[820px] mx-auto group">
+                                <div className={cn("video-aura", isPlaying && "video-aura-active animate-pulse-vibrant")} />
+                                <div className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
+                                    {selectedItem ? (
+                                        <video
+                                            ref={videoRef}
+                                            src={videoUrl}
+                                            onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime || 0)}
+                                            onLoadedMetadata={() => setDuration(videoRef.current?.duration || 0)}
+                                            onPlay={() => setIsPlaying(true)}
+                                            onPause={() => setIsPlaying(false)}
+                                            className="w-full h-full object-cover"
+                                            controls
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex flex-col items-center justify-center opacity-20">
+                                            <Play className="h-12 w-12 mb-4" />
+                                            <p className="text-[10px] font-black uppercase tracking-widest">Select specimen</p>
                                         </div>
                                     )}
-                                    <div className="space-y-1">
-                                        <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Priority_Rules</span>
-                                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
-                                            {intelligence?.advisor?.editorial_strategy || "Prioritize sync-lock on primary beat grid."}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-between items-end border-b border-white/5 pb-4">
-                                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">Rhythmic_Constraint</span>
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="text-xl font-black text-cyan-400 font-mono tracking-tighter">{intelligence?.bpm || 128}</span>
-                                        <span className="text-[8px] text-cyan-900 font-black uppercase">BPM</span>
-                                    </div>
-                                </div>
-
-                                <div className="mt-6">
-                                    <div className="h-16 flex items-center gap-1.5 opacity-80">
-                                        {[30, 45, 80, 100, 70, 90, 50, 40].map((h, i) => (
-                                            <div
-                                                key={i}
-                                                className={cn(
-                                                    "flex-1 rounded-sm border transition-all duration-700",
-                                                    i === 3 ? "bg-cyan-500 border-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.5)]" : "bg-indigo-500/20 border-indigo-500/10"
-                                                )}
-                                                style={{ height: `${h}%` }}
-                                            />
-                                        ))}
-                                    </div>
-                                    <div className="mt-3 text-[9px] text-center font-black text-slate-600 uppercase tracking-widest">Structural Intensity Map</div>
                                 </div>
                             </div>
-                        )}
-                    </div>
 
-                    {/* RECOMMENDED ACTIONS */}
-                    <div className="bg-[#0a0c14]/60 border border-white/5 rounded-2xl p-5 backdrop-blur-sm">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Sparkles className="w-4 h-4 text-indigo-400" />
-                            <h3 className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]">Remake Strategy</h3>
-                        </div>
-                        <p className="text-[10px] font-bold text-slate-300 uppercase tracking-tight leading-relaxed mb-5 border-l-2 border-indigo-500/30 pl-4">
-                            Identify and bridge constraint gaps for a more aggressive rhythmic alignment.
-                        </p>
-                        <button
-                            onClick={() => {
-                                router.push(`/?refine=${selectedItem?.filename}`);
-                                toast.success("Refining edit based on advisor critique...");
-                            }}
-                            className="w-full h-12 rounded-xl bg-indigo-600/90 text-white font-black text-[10px] uppercase tracking-[0.3em] shadow-[0_10px_30px_rgba(79,102,241,0.2)] hover:bg-indigo-600 transition-all relative group overflow-hidden border border-indigo-500/40"
-                        >
-                            <span className="relative z-10">Trigger_Refinement</span>
-                        </button>
-                        <p className="text-[9px] text-center text-slate-600 uppercase tracking-widest mt-3 font-black">Applies editorial insights automatically</p>
-                    </div>
-                </aside>
-
-                {/* CENTER: Video Hero */}
-                <section className="flex flex-col items-center">
-                    <div className="w-[400px] mb-2 flex items-center justify-between transition-opacity duration-1000">
-                        <div className="flex items-center gap-2">
-                            <span className="text-[10px] font-mono font-black text-cyan-400 uppercase tracking-[0.2em] opacity-40">
-                                [SYNTHESIS]_LAB
-                            </span>
-                            <span className="text-[10px] font-mono font-black text-slate-600 uppercase tracking-[0.1em] opacity-40">
-                                // {selectedItem?.filename || "NULL_SPECIMEN"}
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="w-[400px] h-[710px] rounded-2xl overflow-hidden border border-white/10 bg-black shadow-2xl relative group ring-1 ring-white/5 hover:ring-indigo-500/30 transition-all duration-700">
-                        {selectedItem ? (
-                            <video
-                                key={selectedItem.filename} // FORCE RE-RENDER WHEN ITEM CHANGES
-                                ref={videoRef}
-                                src={videoUrl}
-                                onTimeUpdate={handleTimeUpdate}
-                                onLoadedMetadata={handleLoadedMetadata}
-                                controls
-                                className="w-full h-full object-cover"
-                            />
-                        ) : (
-                            <div className="w-full h-full flex flex-col items-center justify-center bg-black/20">
-                                <MonitorPlay className="w-16 h-16 mb-4 opacity-10" />
-                                <p className="text-sm font-black uppercase tracking-[0.6em] text-slate-500">No Selection</p>
+                            {/* Info & Secondary Controls */}
+                            <div className="w-full max-w-[820px] mx-auto flex items-center justify-between px-4">
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-4">
+                                        <span className="text-2xl font-black text-white uppercase tracking-tighter italic drop-shadow-sm">{selectedItem?.filename.split('_')[0] || "UNTITLED"}</span>
+                                        <div className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
+                                            <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Edit Feel: 9.2</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-5 opacity-50">
+                                        <div className="flex items-center gap-2"><Clock className="h-3.5 w-3.5" /><span className="text-[10px] font-bold uppercase tracking-wider">{duration.toFixed(1)}s</span></div>
+                                        <div className="flex items-center gap-2"><Music className="h-3.5 w-3.5" /><span className="text-[10px] font-bold uppercase tracking-wider">{intelligence?.bpm || 128} BPM</span></div>
+                                    </div>
+                                </div>
+                                <div className="flex gap-3">
+                                    <button className="h-12 px-7 rounded-2xl bg-white text-black font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all shadow-xl active:scale-95">Remix Vibe</button>
+                                    <button className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-all active:scale-95"><Share2 className="h-5 w-5" /></button>
+                                    <button className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center hover:bg-white/10 transition-all active:scale-95"><Type className="h-4 w-4" /></button>
+                                </div>
                             </div>
-                        )}
 
-                        {/* Text Overlay Button - Top Right */}
-                        {selectedItem && viewMode === "results" && (
-                            <button
-                                onClick={() => {
-                                    // Pre-populate with current text from intelligence
-                                    const currentText = intelligence?.blueprint?.text_overlay || "";
-                                    setTextContent(currentText);
-                                    setIsTextModalOpen(true);
-                                }}
-                                className="absolute top-4 right-4 z-20 px-3 py-2 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 text-white hover:bg-black/80 hover:border-cyan-500/30 transition-all flex items-center gap-2 group"
-                            >
-                                <Type className="w-4 h-4 text-cyan-400" />
-                                <span className="text-[10px] font-black uppercase tracking-widest">Edit Text</span>
-                            </button>
-                        )}
-                    </div>
+                            {/* AI INTELLIGENCE SUITE: Collapsible Forensic Modules */}
+                            <div className="w-full max-w-[820px] mx-auto space-y-4">
+                                
+                                {/* 1. WHY THE EDIT WORKS (The Story) */}
+                                <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden group/module">
+                                    <button 
+                                        onClick={() => setIntelExpanded(!intelExpanded)}
+                                        className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                    >
+                                        <div className="flex items-center gap-4">
+                                            <div className="h-10 w-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20">
+                                                <BrainCircuit className="h-5 w-5" />
+                                            </div>
+                                            <div className="text-left">
+                                                <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Why the edit works</h3>
+                                                <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">The Creative Logic</p>
+                                            </div>
+                                        </div>
+                                        {intelExpanded ? <ChevronUp className="h-4 w-4 text-slate-600" /> : <ChevronDown className="h-4 w-4 text-slate-600" />}
+                                    </button>
+                                    
+                                    {intelExpanded && (
+                                        <div className="p-8 pt-0 space-y-8 animate-slide-in-from-top">
+                                            <div className="space-y-4">
+                                                <p className="text-base font-medium text-slate-300 leading-relaxed italic border-l-2 border-cyan-500/30 pl-6">
+                                                    "{intelligence?.critique?.monologue ? 
+                                                        intelligence.critique.monologue.split('.').slice(0, 2).join('.') + '.' : 
+                                                        "This edit flows naturally, capturing the energy perfectly while maintaining a consistent visual rhythm."}"
+                                                </p>
+                                                <p className="text-sm text-slate-400 leading-relaxed pl-6 opacity-60">
+                                                    The system prioritized **narrative continuity** by anchoring on solo subjects, ensuring the transition from intro to peak feels earned rather than forced.
+                                                </p>
+                                            </div>
 
-                    {/* Mini Timeline Control - Fused to Player */}
-                    <div className="glass-premium w-[400px] rounded-b-2xl p-4 pt-6 -mt-4 border-white/10 bg-black/40 shadow-xl border-t-0 relative z-0">
-                        <div className="flex items-center justify-between mb-3 px-1">
-                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">Rhythmic Consistency</span>
-                            <span className="text-[10px] font-black text-cyan-400 uppercase tracking-widest leading-none">Sync: Frame-Locked</span>
-                        </div>
-                        <div className="h-12 flex items-end gap-[2.5px] relative pt-2">
-                            {waveformData.map((h, i) => {
-                                const isPeak = h > 85;
-                                return (
-                                    <div
-                                        key={i}
-                                        className={cn(
-                                            "flex-1 transition-all duration-300 rounded-sm cursor-pointer",
-                                            duration > 0 && i <= (currentTime / duration) * 48
-                                                ? (isPeak ? "bg-[#ff007f] shadow-[0_0_15px_#ff007f]" : "bg-[#00d4ff] shadow-[0_0_10px_#00d4ff]")
-                                                : "bg-white/5 hover:bg-white/10"
-                                        )}
-                                        style={{ height: `${h}%` }}
-                                    />
-                                );
-                            })}
-                        </div>
-                        <div className="text-[9px] text-center text-slate-600 uppercase tracking-[0.4em] mt-4 font-black">
-                            Scrub to analyze temporal deltas
-                        </div>
-                    </div>
-                </section>
+                                            <div className="grid grid-cols-2 gap-8">
+                                                <div className="space-y-4">
+                                                    <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest">What Worked</p>
+                                                    <div className="space-y-2">
+                                                        {intelligence?.critique?.star_performers?.slice(0, 2).map((s: string, i: number) => (
+                                                            <div key={i} className="flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase bg-white/[0.02] p-3 rounded-xl border border-white/5"><CheckCircle2 className="h-3.5 w-3.5 text-indigo-500" />{s}</div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                                <div className="space-y-4">
+                                                    <p className="text-[9px] font-black text-pink-500 uppercase tracking-widest">Ways to evolve</p>
+                                                    <div className="space-y-2">
+                                                        {intelligence?.critique?.missing_ingredients?.slice(0, 2).map((s: string, i: number) => (
+                                                            <div key={i} className="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase bg-white/[0.02] p-3 rounded-xl border border-white/5"><Sparkles className="h-3.5 w-3.5 text-pink-500/30" />{s}</div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
 
-                {/* RIGHT: Telemetry-Inspired Intelligence Panel */}
-                <aside className="space-y-4 pr-2 flex flex-col h-[760px]">
-                    {/* EDITORIAL LEDGER - Collapsible */}
-                    <div className="flex-1 flex flex-col min-h-0 border border-white/10 rounded-2xl overflow-hidden bg-[#0a0c14]/40">
-                        {/* Collapsible Header */}
-                        <button 
-                            onClick={() => toggleSection('ledger')}
-                            className="w-full px-5 py-4 flex items-center justify-between hover:bg-white/[0.02] transition-colors shrink-0"
-                        >
-                            <div className="flex items-center gap-3">
-                                <div className="h-1 w-6 bg-cyan-700/40 rounded-full" />
-                                <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Editorial_Ledger</h3>
-                                {intelligence?.edl?.decisions?.length > 0 && (
-                                    <span className="text-[9px] font-black text-slate-600 uppercase">
-                                        {intelligence.edl.decisions.length} segments
-                                    </span>
+                                {/* MORE DETAILS TOGGLE */}
+                                {!showMoreDetails ? (
+                                    <button 
+                                        onClick={() => setShowMoreDetails(true)}
+                                        className="w-full py-4 text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] hover:text-indigo-400 transition-colors"
+                                    >
+                                        + Show System Details
+                                    </button>
+                                ) : (
+                                    <div className="space-y-4 animate-slide-in-from-top">
+                                        {/* 2. HOW THE SYSTEM THOUGHT (The Strategy) */}
+                                        <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden">
+                                            <button className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
+                                                        <Zap className="h-5 w-5" />
+                                                    </div>
+                                                    <div className="text-left">
+                                                        <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">How the system thought</h3>
+                                                        <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">Operational Strategy</p>
+                                                    </div>
+                                                </div>
+                                                <ChevronDown className="h-4 w-4 text-slate-600" />
+                                            </button>
+                                        </div>
+
+                                        {/* 3. EXTRA DETAILS (The Data) */}
+                                        <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden">
+                                            <button className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all">
+                                                <div className="flex items-center gap-4">
+                                                    <div className="h-10 w-10 rounded-xl bg-slate-500/10 flex items-center justify-center text-slate-400 border border-slate-500/20">
+                                                        <Activity className="h-5 w-5" />
+                                                    </div>
+                                                    <div className="text-left">
+                                                        <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Extra Details</h3>
+                                                        <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">Frame-Level Data</p>
+                                                    </div>
+                                                </div>
+                                                <ChevronDown className="h-4 w-4 text-slate-600" />
+                                            </button>
+                                        </div>
+
+                                        <button 
+                                            onClick={() => setShowMoreDetails(false)}
+                                            className="w-full py-2 text-[8px] font-black text-slate-700 uppercase tracking-widest hover:text-white transition-colors"
+                                        >
+                                            Hide Details
+                                        </button>
+                                    </div>
                                 )}
-                            </div>
-                            {expandedSections.ledger ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
-                        </button>
 
-                        {/* Collapsible Content */}
-                        {expandedSections.ledger && (
-                            <div className="flex-1 overflow-y-auto custom-scrollbar-thin px-5 pb-4 space-y-3 min-h-0">
+                            </div>
+                        </div>
+
+                        {/* RIGHT: THE WHITEBOX (Decision Stream - Bigger & Stylized) */}
+                        <div className="w-[420px] flex flex-col bg-gradient-to-b from-white/[0.02] to-transparent border border-white/[0.05] rounded-[2.5rem] overflow-hidden shrink-0 shadow-2xl" style={{ height: '600px' }}>
+                            <div className="p-7 border-b border-white/[0.05] flex items-center justify-between bg-black/20 backdrop-blur-md">
+                                <div className="flex items-center gap-4">
+                                    <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
+                                    <h3 className="text-[11px] font-black text-white uppercase tracking-[0.4em]">Decision Stream</h3>
+                                </div>
+                                <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10">
+                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{intelligence?.edl?.decisions?.length || 0} Points</span>
+                                </div>
+                            </div>
+
+                            <div ref={decisionListRef} className="flex-1 overflow-y-auto p-7 space-y-5 custom-scrollbar-thin">
                                 {!intelligence?.edl?.decisions?.length ? (
-                                    <div className="bg-[#0a0c14]/40 border border-dashed border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-                                        <MonitorPlay className="h-8 w-8 text-slate-700 mb-3 animate-pulse" />
-                                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-relaxed">
-                                            Editorial debrief pending<br />
-                                            <span className="opacity-50 font-bold">Synchronizing decision telemetry...</span>
-                                        </p>
+                                    <div className="h-full flex flex-col items-center justify-center opacity-20 text-center px-12">
+                                        <Zap className="h-10 w-10 mb-6 text-indigo-500" />
+                                        <p className="text-[11px] font-black uppercase tracking-[0.2em] leading-relaxed">Awaiting logic<br/>Play to sync</p>
                                     </div>
                                 ) : (
                                     intelligence.edl.decisions.map((decision: any, idx: number) => {
                                         const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
                                         return (
                                             <div key={idx} className={cn(
-                                                "bg-[#0a0c14]/60 border rounded-xl p-4 transition-all duration-500 backdrop-blur-sm relative overflow-hidden group/decision",
-                                                isActive
-                                                    ? "border-cyan-500/40 shadow-[0_0_25px_rgba(0,212,255,0.1)] scale-[1.01] z-10"
-                                                    : "border-white/5 opacity-40"
+                                                "p-6 rounded-[2rem] border transition-all duration-700 relative group/card",
+                                                isActive 
+                                                    ? "bg-indigo-600/20 border-indigo-500/50 shadow-[0_20px_40px_rgba(0,0,0,0.3)] scale-[1.02] z-10" 
+                                                    : "bg-white/[0.02] border-white/5 opacity-60 hover:opacity-100 hover:bg-white/[0.04]"
                                             )}>
-                                                {isActive && <div className="absolute top-0 left-0 w-full h-[1.5px] bg-cyan-500/50 animate-shimmer" />}
-                                                <div className="flex items-center justify-between mb-3">
+                                                <div className="flex items-center justify-between mb-4">
                                                     <div className="flex items-center gap-3">
-                                                        <div className={cn("h-1.5 w-1.5 rounded-full", isActive ? "bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]" : "bg-slate-700")} />
-                                                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] font-mono">
-                                                            SEG_{decision.segment_id || idx + 1}
-                                                        </span>
+                                                        <span className="text-[9px] font-black text-indigo-500/50 font-mono tracking-widest">POINT_{idx + 1}</span>
+                                                        {isActive && <div className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_10px_#818cf8]" />}
                                                     </div>
-                                                    <span className="text-[8px] font-black text-cyan-500/60 uppercase tracking-widest font-mono">BASIS: VALIDATED</span>
+                                                    <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI VERIFIED</span>
                                                 </div>
-                                                <div className="flex gap-4">
-                                                    <div className="w-16 h-16 rounded-xl bg-black/50 border border-white/10 overflow-hidden shrink-0 group-hover/decision:border-[#ff007f]/30 transition-colors">
-                                                        <div className="w-full h-full flex items-center justify-center bg-indigo-500/5">
-                                                            <Video className="h-4 w-4 text-indigo-500/30" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="min-w-0 flex-1 flex flex-col justify-center">
-                                                        <p className="text-[10px] font-black text-white uppercase tracking-tight truncate mb-1">
-                                                            {decision.clip_path?.split(/[\\/]/).pop() || "Unknown Clip"}
-                                                        </p>
-                                                        <p className="text-[9px] text-slate-400 font-bold uppercase leading-snug">
-                                                            {decision.reasoning || "Optimized for visual energy mapping."}
-                                                        </p>
-                                                    </div>
+                                                <div className="space-y-3">
+                                                    <p className="text-[12px] text-white font-black uppercase tracking-tight leading-tight line-clamp-1">{decision.clip_path?.split(/[\\/]/).pop()}</p>
+                                                    <p className="text-[11px] text-slate-400 font-medium leading-relaxed">
+                                                        {cleanupReasoning(decision.reasoning)}
+                                                    </p>
                                                 </div>
+                                                {isActive && (
+                                                    <div className="absolute bottom-0 left-0 h-1 bg-indigo-500 rounded-full transition-all duration-300" style={{ width: '100%' }} />
+                                                )}
                                             </div>
                                         );
                                     })
                                 )}
                             </div>
-                        )}
-                    </div>
-
-                    {/* DIRECTOR'S CRITIQUE - Collapsible */}
-                    <div className={cn(
-                        "bg-[#0a0c10] border rounded-2xl shadow-[inset_0_0_30px_rgba(34,211,238,0.03)] shrink-0 group/critique transition-all duration-700 overflow-hidden",
-                        intelligence?.critique ? "border-cyan-500/20 hover:border-cyan-500/40" : "border-white/5 opacity-60"
-                    )}>
-                        {/* Collapsible Header */}
-                        <button 
-                            onClick={() => toggleSection('critique')}
-                            className="w-full p-5 flex items-center justify-between hover:bg-white/[0.02] transition-colors"
-                        >
-                            <div className="flex items-center gap-3">
-                                <BrainCircuit className="w-4 h-4 text-cyan-400 group-hover/critique:scale-110 transition-transform" />
-                                <h3 className="text-[10px] font-black text-cyan-400 uppercase tracking-[0.4em]">Director_Critique</h3>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                {intelligence?.critique?.overall_score && (
-                                    <div className="px-2 py-0.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[10px] font-black font-mono">
-                                        {intelligence.critique.overall_score.toFixed(1)}/10
-                                    </div>
-                                )}
-                                {expandedSections.critique ? <ChevronUp className="w-4 h-4 text-slate-500" /> : <ChevronDown className="w-4 h-4 text-slate-500" />}
-                            </div>
-                        </button>
-
-                        {/* Collapsible Content */}
-                        {expandedSections.critique && (
-                            <div className="px-5 pb-5 space-y-6">
-                                {intelligence?.critique ? (
-                                    <>
-                                        {/* Monologue */}
-                                        <div className="border-l-2 border-cyan-500/40 pl-5 py-1">
-                                            <p className="text-[12px] font-bold text-slate-200 leading-relaxed italic">
-                                                "{intelligence.critique.monologue}"
-                                            </p>
-                                        </div>
-
-                                        {/* Star Performers & Dead Weight */}
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <div className="space-y-2">
-                                                <p className="text-[8px] font-black text-lime-500 uppercase tracking-widest">Star_Performers</p>
-                                                <div className="space-y-1">
-                                                    {intelligence.critique.star_performers?.slice(0, 2).map((s: string, i: number) => (
-                                                        <p key={i} className="text-[9px] font-bold text-slate-400 truncate uppercase">{s}</p>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                            <div className="space-y-2">
-                                                <p className="text-[8px] font-black text-red-500 uppercase tracking-widest">Dead_Weight</p>
-                                                <div className="space-y-1">
-                                                    {intelligence.critique.dead_weight?.slice(0, 2).map((s: string, i: number) => (
-                                                        <p key={i} className="text-[9px] font-bold text-slate-500 truncate uppercase">{s}</p>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Missing Ingredients & Remake Actions */}
-                                        <div className="pt-4 border-t border-white/5 space-y-4">
-                                            <div>
-                                                <p className="text-[8px] font-black text-indigo-400 uppercase tracking-widest mb-3">Remake_Checklist</p>
-                                                <div className="space-y-2">
-                                                    {intelligence.critique.missing_ingredients?.slice(0, 3).map((item: string, i: number) => (
-                                                        <div key={i} className="flex items-center gap-2">
-                                                            <div className="h-1 w-1 rounded-full bg-indigo-500/40" />
-                                                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{item}</p>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            {intelligence.critique.remake_actions?.length > 0 && (
-                                                <div>
-                                                    <p className="text-[8px] font-black text-[#ff007f] uppercase tracking-widest mb-3">Actionable_Deltas</p>
-                                                    <div className="space-y-2">
-                                                        {intelligence.critique.remake_actions.map((action: any, i: number) => (
-                                                            <div key={i} className="bg-white/[0.02] border border-white/5 rounded-lg p-2 flex flex-col gap-1">
-                                                                <div className="flex items-center justify-between">
-                                                                    <span className="text-[7px] font-black text-[#ff007f] uppercase">{action.type}</span>
-                                                                    <span className="text-[7px] font-black text-slate-600 uppercase">{action.segment}</span>
-                                                                </div>
-                                                                <p className="text-[9px] font-bold text-slate-300 leading-tight uppercase">{action.suggestion}</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </>
-                                ) : (
-                                    <div className="border-l-2 border-white/10 pl-5 py-2">
-                                        <p className="text-[11px] font-bold text-slate-500 uppercase tracking-tight leading-relaxed">
-                                            Director reflection pending. Synthesis must be re-run to generate post-render critique data.
-                                        </p>
-                                    </div>
-                                )}
-                            </div>
-                        )}
-                    </div>
-
-
-
-
-                </aside>
-            </main>
-
-            {/* Text Overlay Modal */}
-            {isTextModalOpen && (
-                <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm">
-                    <div className="w-[400px] bg-[#0a0c14] border border-white/10 rounded-2xl p-6 shadow-2xl">
-                        <div className="flex items-center justify-between mb-6">
-                            <div className="flex items-center gap-3">
-                                <Type className="w-5 h-5 text-cyan-400" />
-                                <h3 className="text-sm font-black text-white uppercase tracking-[0.3em]">Edit Text Overlay</h3>
-                            </div>
-                            <button 
-                                onClick={() => setIsTextModalOpen(false)}
-                                className="p-1 hover:bg-white/10 rounded-full transition-all"
-                            >
-                                <X className="w-5 h-5 text-slate-400" />
-                            </button>
                         </div>
 
-                        <div className="space-y-4">
-                            {/* Text Content */}
-                            <div>
-                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Text Content</label>
-                                <textarea
-                                    value={textContent}
-                                    onChange={(e) => setTextContent(e.target.value)}
-                                    placeholder="Enter text to display..."
-                                    className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-sm text-white placeholder-slate-600 outline-none focus:border-cyan-500/30 transition-colors resize-none h-20"
-                                />
-                            </div>
-
-                            {/* Placement */}
-                            <div>
-                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Placement</label>
-                                <div className="grid grid-cols-3 gap-2">
-                                    {["top", "center", "bottom"].map((pos) => (
-                                        <button
-                                            key={pos}
-                                            onClick={() => setTextPlacement(pos)}
-                                            className={cn(
-                                                "px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
-                                                textPlacement === pos
-                                                    ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-400"
-                                                    : "bg-black/50 border border-white/10 text-slate-500 hover:border-white/20"
-                                            )}
-                                        >
-                                            {pos}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Font Style */}
-                            <div>
-                                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">Font Style</label>
-                                <div className="grid grid-cols-2 gap-2">
-                                    {[
-                                        { val: "sans-serif", label: "Sans" },
-                                        { val: "serif", label: "Serif" },
-                                        { val: "bold", label: "Bold" },
-                                        { val: "mono", label: "Mono" }
-                                    ].map((font) => (
-                                        <button
-                                            key={font.val}
-                                            onClick={() => setTextFont(font.val)}
-                                            className={cn(
-                                                "px-3 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
-                                                textFont === font.val
-                                                    ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-400"
-                                                    : "bg-black/50 border border-white/10 text-slate-500 hover:border-white/20"
-                                            )}
-                                        >
-                                            {font.label}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Actions */}
-                        <div className="flex gap-3 mt-6">
-                            <button
-                                onClick={() => setIsTextModalOpen(false)}
-                                className="flex-1 py-3 rounded-lg border border-white/10 text-slate-400 text-[11px] font-black uppercase tracking-widest hover:bg-white/5 transition-all"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                onClick={handleApplyTextOverlay}
-                                disabled={isApplyingText}
-                                className={cn(
-                                    "flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition-all",
-                                    isApplyingText
-                                        ? "bg-cyan-500/20 text-cyan-500/50 cursor-not-allowed"
-                                        : "bg-cyan-500 text-black hover:bg-cyan-400"
-                                )}
-                            >
-                                {isApplyingText ? "Rendering..." : "Apply"}
-                            </button>
-                        </div>
                     </div>
                 </div>
-            )}
+            </main>
         </div>
     );
 }
-
-
