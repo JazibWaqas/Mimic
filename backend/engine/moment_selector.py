@@ -11,27 +11,25 @@ import json
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 
-from google import genai
-from google.genai import types
+import google.generativeai as genai
 
-from backend.models import (
+from models import (
     MomentCandidate, 
     ContextualMomentSelection, 
     SegmentMomentPlan,
     ClipMetadata,
     ClipIndex,
     StyleBlueprint,
-    VideoSegment
+    Segment
 )
-from backend.config import get_gemini_model, get_gemini_config
-from backend.utils import generate_cache_key, get_cache_path, load_json_cache, save_json_cache
+from engine.brain import initialize_gemini, GeminiConfig, rate_limiter, _handle_rate_limit_error
 from engine.gemini_moment_prompt import CONTEXTUAL_MOMENT_PROMPT
 
 
 def build_moment_candidates(
     clip_index: ClipIndex,
     target_energy: str,
-    segment: VideoSegment,
+    segment: Segment,
     beat_grid: List[float],
     previous_selection: Optional[MomentCandidate] = None
 ) -> List[MomentCandidate]:
@@ -96,7 +94,7 @@ def build_moment_candidates(
 
 def _calculate_semantic_alignment(
     clip: ClipMetadata, 
-    segment: VideoSegment,
+    segment: Segment,
     moment
 ) -> float:
     """
@@ -224,7 +222,7 @@ def _calculate_continuity(
 
 
 def select_moment_with_advisor(
-    segment: VideoSegment,
+    segment: Segment,
     candidates: List[MomentCandidate],
     beat_grid: List[float],
     blueprint: StyleBlueprint,
@@ -298,14 +296,15 @@ def select_moment_with_advisor(
     
     # Call Gemini
     try:
-        model = get_gemini_model()
-        config = get_gemini_config()
+        model = initialize_gemini()
         
-        response = model.models.generate_content(
-            model=model,
-            contents=prompt,
-            config=config
-        )
+        rate_limiter.wait_if_needed()
+        response = model.generate_content([prompt])
+        
+        # Check for blocked response
+        if not response.candidates or response.candidates[0].finish_reason != 1:
+            print(f"    [Advisor Moment Selection blocked by Gemini]")
+            return None
         
         # Parse response
         selection_data = json.loads(response.text)
@@ -332,6 +331,9 @@ def select_moment_with_advisor(
         )
         
     except Exception as e:
+        if _handle_rate_limit_error(e, "moment selection"):
+            # Retry after rotation (would need proper retry loop in production)
+            pass
         print(f"    [Advisor Moment Selection Failed: {e}]")
         return None
 
@@ -355,7 +357,7 @@ def _find_phrase_boundaries(beat_grid: List[float]) -> List[float]:
 
 
 def plan_segment_moments(
-    segment: VideoSegment,
+    segment: Segment,
     selection: ContextualMomentSelection,
     clip_index: ClipIndex,
     beat_grid: List[float]
