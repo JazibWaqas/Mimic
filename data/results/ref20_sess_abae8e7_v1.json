@@ -3085,7 +3085,7 @@
         "clip_end": 0.23,
         "timeline_start": 0.0,
         "timeline_end": 0.23,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Intro stage. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Intro stage. The visual content captures the 'Intense' atmosphere perfectly. Maintains visual freshness.",
         "vibe_match": true
       },
       {
@@ -3095,94 +3095,94 @@
         "clip_end": 8.87,
         "timeline_start": 0.23,
         "timeline_end": 0.5999999999999992,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_004.mp4",
-        "clip_start": 10.0,
-        "clip_end": 10.270000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_002.mp4",
+        "clip_start": 5.5,
+        "clip_end": 5.7700000000000005,
         "timeline_start": 0.5999999999999992,
-        "timeline_end": 0.8700000000000006,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
+        "timeline_end": 0.8699999999999997,
+        "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
       },
       {
         "segment_id": 4,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_005.mp4",
-        "clip_start": 1.5,
-        "clip_end": 1.8399999999999994,
-        "timeline_start": 0.8700000000000006,
-        "timeline_end": 1.21,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_004.mp4",
+        "clip_start": 10.0,
+        "clip_end": 10.34,
+        "timeline_start": 0.8699999999999997,
+        "timeline_end": 1.2099999999999995,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Intro stage. The visual content captures the 'Intense' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 5,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_008.mp4",
-        "clip_start": 10.5,
-        "clip_end": 11.1,
-        "timeline_start": 1.21,
-        "timeline_end": 1.8099999999999996,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
-        "vibe_match": false
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_005.mp4",
+        "clip_start": 1.5,
+        "clip_end": 2.1000000000000005,
+        "timeline_start": 1.2099999999999995,
+        "timeline_end": 1.81,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": true
       },
       {
         "segment_id": 6,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_010.mp4",
-        "clip_start": 3.5,
-        "clip_end": 4.1000000000000005,
-        "timeline_start": 1.8099999999999996,
-        "timeline_end": 2.41,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_008.mp4",
+        "clip_start": 10.5,
+        "clip_end": 11.1,
+        "timeline_start": 1.81,
+        "timeline_end": 2.4099999999999997,
         "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
         "vibe_match": false
       },
       {
         "segment_id": 7,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_012.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.6099999999999999,
-        "timeline_start": 2.41,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_010.mp4",
+        "clip_start": 3.5,
+        "clip_end": 4.11,
+        "timeline_start": 2.4099999999999997,
         "timeline_end": 3.02,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
         "vibe_match": false
       },
       {
         "segment_id": 8,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_013.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_012.mp4",
         "clip_start": 0.0,
         "clip_end": 0.6000000000000001,
         "timeline_start": 3.02,
         "timeline_end": 3.62,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 9,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_014.mp4",
-        "clip_start": 2.5,
-        "clip_end": 3.096,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_013.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.6100000000000003,
         "timeline_start": 3.62,
         "timeline_end": 4.23,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
+        "reasoning": "🌟 Serving as a strategic 'Detail' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
       },
       {
         "segment_id": 10,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_015.mp4",
-        "clip_start": 5.5,
-        "clip_end": 6.1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_006.mp4",
+        "clip_start": 15.0,
+        "clip_end": 15.6,
         "timeline_start": 4.23,
         "timeline_end": 4.83,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 11,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_017.mp4",
-        "clip_start": 3.5,
-        "clip_end": 4.1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_014.mp4",
+        "clip_start": 1.0,
+        "clip_end": 1.5999999999999996,
         "timeline_start": 4.83,
         "timeline_end": 5.43,
         "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
@@ -3190,69 +3190,69 @@
       },
       {
         "segment_id": 12,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_019.mp4",
-        "clip_start": 5.5,
-        "clip_end": 6.11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_009.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.6100000000000003,
         "timeline_start": 5.43,
         "timeline_end": 6.04,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
-      },
-      {
-        "segment_id": 13,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_022.mp4",
-        "clip_start": 6.5,
-        "clip_end": 7.1,
-        "timeline_start": 6.04,
-        "timeline_end": 6.64,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 14,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_023.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.6000000000000005,
-        "timeline_start": 6.64,
-        "timeline_end": 7.24,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 15,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_024.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.6099999999999994,
-        "timeline_start": 7.24,
-        "timeline_end": 7.85,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
-      },
-      {
-        "segment_id": 16,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_030.mp4",
-        "clip_start": 7.5,
-        "clip_end": 8.1,
-        "timeline_start": 7.85,
-        "timeline_end": 8.45,
         "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
+        "segment_id": 13,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_017.mp4",
+        "clip_start": 22.5,
+        "clip_end": 23.1,
+        "timeline_start": 6.04,
+        "timeline_end": 6.6400000000000015,
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 14,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_019.mp4",
+        "clip_start": 5.5,
+        "clip_end": 6.099999999999999,
+        "timeline_start": 6.6400000000000015,
+        "timeline_end": 7.24,
+        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 15,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_022.mp4",
+        "clip_start": 6.5,
+        "clip_end": 7.109999999999999,
+        "timeline_start": 7.24,
+        "timeline_end": 7.85,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 16,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_023.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5999999999999996,
+        "timeline_start": 7.85,
+        "timeline_end": 8.45,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "vibe_match": false
+      },
+      {
         "segment_id": 17,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_020.mp4",
-        "clip_start": 4.0,
-        "clip_end": 4.610000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_007.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.6100000000000012,
         "timeline_start": 8.45,
         "timeline_end": 9.06,
-        "reasoning": "🌟 Serving as a strategic 'Release' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "reasoning": "🌟 Serving as a strategic 'Release' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 18,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_027.mp4",
-        "clip_start": 1.5,
-        "clip_end": 2.0999999999999996,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_024.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5999999999999996,
         "timeline_start": 9.06,
         "timeline_end": 9.66,
         "reasoning": "🌟 Serving as a strategic 'Detail' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
@@ -3270,19 +3270,19 @@
       },
       {
         "segment_id": 20,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_024.mp4",
-        "clip_start": 0.6099999999999994,
-        "clip_end": 1.2199999999999989,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_027.mp4",
+        "clip_start": 1.5,
+        "clip_end": 2.1099999999999994,
         "timeline_start": 10.26,
         "timeline_end": 10.87,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
+        "reasoning": "🌟 Serving as a strategic 'Detail' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 21,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_006.mp4",
-        "clip_start": 15.0,
-        "clip_end": 15.600000000000001,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_018.mp4",
+        "clip_start": 1.0,
+        "clip_end": 1.6000000000000014,
         "timeline_start": 10.87,
         "timeline_end": 11.47,
         "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
@@ -3290,32 +3290,32 @@
       },
       {
         "segment_id": 22,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_019.mp4",
-        "clip_start": 2.0,
-        "clip_end": 2.26,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_030.mp4",
+        "clip_start": 17.5,
+        "clip_end": 17.759999999999998,
         "timeline_start": 11.47,
-        "timeline_end": 11.73,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
-        "vibe_match": true
+        "timeline_end": 11.729999999999999,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
       },
       {
         "segment_id": 23,
         "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_028.mp4",
         "clip_start": 12.0,
-        "clip_end": 12.34,
-        "timeline_start": 11.73,
+        "clip_end": 12.340000000000002,
+        "timeline_start": 11.729999999999999,
         "timeline_end": 12.07,
         "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
         "vibe_match": false
       },
       {
         "segment_id": 24,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_004.mp4",
-        "clip_start": 10.270000000000001,
-        "clip_end": 10.88,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_003.mp4",
+        "clip_start": 0.23,
+        "clip_end": 0.8399999999999994,
         "timeline_start": 12.07,
         "timeline_end": 12.68,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
+        "reasoning": "🌟 The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment.",
         "vibe_match": true
       },
       {
@@ -3330,11 +3330,11 @@
       },
       {
         "segment_id": 26,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_017.mp4",
-        "clip_start": 22.5,
-        "clip_end": 23.11,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_004.mp4",
+        "clip_start": 10.34,
+        "clip_end": 10.950000000000001,
         "timeline_start": 13.28,
-        "timeline_end": 13.889999999999999,
+        "timeline_end": 13.89,
         "reasoning": "🌟 Serving as a strategic 'Detail' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
         "vibe_match": true
       },
@@ -3342,121 +3342,123 @@
         "segment_id": 27,
         "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_029.mp4",
         "clip_start": 0.0,
-        "clip_end": 0.6000000000000014,
-        "timeline_start": 13.889999999999999,
+        "clip_end": 0.5999999999999996,
+        "timeline_start": 13.89,
         "timeline_end": 14.49,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 28,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_007.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.39937499999999915,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_abae8e7bd11d4e98ce53e24bc3e9e45f\\standardized\\clip_013.mp4",
+        "clip_start": 0.6100000000000003,
+        "clip_end": 1.0093749999999995,
         "timeline_start": 14.49,
         "timeline_end": 14.889375,
-        "reasoning": "🌟 Serving as a strategic 'Button' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
         "vibe_match": false
       }
     ]
   },
   "advisor": {
-    "text_overlay_intent": "The text functions as a digital signature and aggressive call-to-action, demanding a visual style that mirrors the 'edit culture' of social media—where the editor's presence is as loud and high-status as the luxury brands listed.",
-    "dominant_narrative": "A relentless pursuit of speed and prestige, where the mechanical violence of racing meets the polished glamour of the Formula 1 lifestyle.",
+    "text_overlay_intent": "The text demands a high-status, brand-aligned 'hype' aesthetic that positions the editor as a stylist of elite speed and luxury. It requires a visual language that treats racing not just as a sport, but as a prestigious, high-stakes lifestyle event worthy of global sponsorship.",
+    "dominant_narrative": "A visceral exploration of the intersection between mechanical violence, human discipline, and the neon-lit glamour of elite motorsport.",
     "arc_stage_guidance": {
       "Intro": {
-        "primary_emotional_carrier": "Anticipation and Atmosphere",
-        "supporting_material": "Aerial night views, urban billboards, and technical preparation.",
-        "intent_diluting_material": "Daytime casual shots or slow-moving crowds.",
-        "reasoning": "The intro must establish the 'world' of the edit—high-stakes, night-time, and technologically advanced—to justify the high-energy peak later.",
+        "primary_emotional_carrier": "Anticipation and Scale",
+        "supporting_material": "Atmospheric urban nightscapes and technical preparations.",
+        "intent_diluting_material": "Mid-race action or chaotic crashes; the intro must feel like the 'calm before the storm'.",
+        "reasoning": "To mirror the reference's rhythmic build, we must establish the environment and the 'stakes' before unleashing the full kinetic energy of the cars.",
         "recommended_clips": [
           "clip51.mp4",
           "clip74.mp4",
-          "clip61.mp4"
+          "clip63.mp4",
+          "clip52.mp4"
         ],
-        "required_energy": "High"
+        "required_energy": "Medium"
       },
       "Build-up": {
-        "primary_emotional_carrier": "Technical Precision and Human Focus",
-        "supporting_material": "Wind tunnel testing, driver training, and pit lane preparations.",
-        "intent_diluting_material": "Generic racing shots without a specific focal point or subject.",
-        "reasoning": "This stage bridges the gap between the 'idea' of racing and the 'reality' of the machine, focusing on the effort behind the speed.",
+        "primary_emotional_carrier": "Human Discipline and Technical Precision",
+        "supporting_material": "Training montages, pit crew movements, and wind tunnel testing.",
+        "intent_diluting_material": "Crowd reactions or generic travel shots that lack a sense of urgency.",
+        "reasoning": "The build-up connects the machine to the man; showing the effort behind the speed justifies the 'high-octane' payoff of the peak.",
         "recommended_clips": [
-          "clip52.mp4",
+          "clip62.mp4",
           "clip65.mp4",
           "clip75.mp4",
-          "clip62.mp4"
+          "clip53.mp4"
         ],
         "required_energy": "High"
       },
       "Peak": {
-        "primary_emotional_carrier": "Kinetic Violence and Sensory Overload",
-        "supporting_material": "Crashes, fireworks, onboard perspectives, and podium celebrations.",
-        "intent_diluting_material": "Medium-shot tracking of cars that lack a sense of extreme velocity.",
-        "reasoning": "The peak must deliver on the 'relentless' promise of the reference, using the most visually explosive and high-contrast material available.",
+        "primary_emotional_carrier": "Kinetic Aggression and Spectacle",
+        "supporting_material": "Crashes, sparks, fireworks, and high-speed onboard perspectives.",
+        "intent_diluting_material": "Static wide shots or slow-motion that doesn't involve high-contrast lighting.",
+        "reasoning": "This stage must be 'relentless' as per the reference. It is the sensory overload where the brand names and the racing action merge into a single high-energy experience.",
         "recommended_clips": [
-          "clip58.mp4",
           "clip71.mp4",
-          "clip72.mp4",
-          "clip70.mp4",
-          "clip78.mp4"
+          "clip58.mp4",
+          "clip78.mp4",
+          "clip57.mp4",
+          "clip56.mp4",
+          "clip70.mp4"
         ],
         "required_energy": "High"
       },
       "Outro": {
-        "primary_emotional_carrier": "Legacy and Brand Authority",
-        "supporting_material": "Victory celebrations, branding backdrops, and reflective moments.",
-        "intent_diluting_material": "Abrupt endings or low-quality archival footage.",
-        "reasoning": "The outro serves as the 'button,' reinforcing the lifestyle and status elements established by the text overlays.",
+        "primary_emotional_carrier": "Status and Resolution",
+        "supporting_material": "Victory celebrations, billboards, and the 'button' shot of a car exiting frame.",
+        "intent_diluting_material": "Ongoing high-speed racing; the energy must pivot from 'action' to 'achievement'.",
+        "reasoning": "The outro serves as the 'call to action' for the social media intent, leaving the viewer with the lingering feeling of prestige and success.",
         "recommended_clips": [
           "clip77.mp4",
-          "clip73.mp4",
-          "clip60.mp4"
+          "clip61.mp4",
+          "clip66.mp4"
         ],
-        "required_energy": "High"
+        "required_energy": "Medium"
       }
     },
     "library_alignment": {
       "strengths": [
         "Abundant high-energy racing footage",
-        "Strong night-time and firework visuals matching the reference aesthetic",
-        "High-quality technical and training shots to support the build-up"
+        "Strong night-time and firework visual assets",
+        "Excellent technical/training B-roll to support the 'Build-up' phase"
       ],
       "editorial_tradeoffs": [
-        "Using fictional racing footage (Brad Pitt/APXGP) to supplement real-world F1 intensity",
-        "Relying on training montages to maintain energy when racing clips are exhausted"
+        "Lack of explicit 'wealth' symbols (money/watches) requires using Las Vegas urban nightscapes and high-end car details as proxies for glamour."
       ],
       "constraint_gaps": [
-        "Limited 'lifestyle/wealth' symbols (money) as requested, requiring urban Las Vegas shots to act as proxies for glamour"
+        "The library is heavily skewed toward 'High' energy, making it difficult to create a truly 'Low' energy reflective moment if the edit requires a mid-point breather."
       ]
     },
-    "editorial_strategy": "Maintain a 'relentless' rhythmic structure by prioritizing clips with internal camera motion and high-contrast lighting. Use the 'technical' clips to create a sense of mounting pressure before releasing into the 'peak' racing sequences.",
-    "remake_strategy": "To elevate this to a Director's Cut, integrate more macro-photography of engine components and high-fidelity sound design of downshifts to ground the visual speed in auditory weight.",
+    "editorial_strategy": "The edit must prioritize 'Motion-Carry' transitions where the direction of a car's movement or a driver's physical action dictates the next cut. By desaturating the high-energy racing clips to match the 'Filmic' reference look, the system will unify the disparate training and racing footage into a singular narrative of elite performance.",
+    "remake_strategy": "To fully realize the Director's Cut, additional macro-photography of luxury brand assets (Rolex/IWC watches, Tommy Hilfiger textures) should be intercut during the 'Build-up' to explicitly ground the racing in the lifestyle glamour suggested by the text overlays.",
     "primary_narrative_subject": null,
     "allowed_supporting_subjects": [
       "People-Solo",
       "People-Group",
-      "Place-Urban"
+      "Place-Urban",
+      "Object-Detail"
     ],
     "subject_lock_strength": 0.8,
     "editorial_motifs": [
       {
-        "trigger": "Mechanical details or technical testing",
+        "trigger": "Mechanical ignition or start lights",
         "desired_continuity": "Scale-Escalation",
-        "priority": "Medium"
-      },
-      {
-        "trigger": "High-speed racing maneuvers",
-        "desired_continuity": "Motion-Carry",
         "priority": "High"
       },
       {
-        "trigger": "Night racing and stadium lights",
-        "desired_continuity": "Graphic-Match",
+        "trigger": "Physical exertion (boxing/training)",
+        "desired_continuity": "Motion-Carry",
         "priority": "Medium"
       },
       {
-        "trigger": "Victory or crash events",
+        "trigger": "Night racing with fireworks",
+        "desired_continuity": "Graphic-Match",
+        "priority": "High"
+      },
+      {
+        "trigger": "High-speed impact or crash",
         "desired_continuity": "Emotional-Release",
         "priority": "High"
       }
@@ -3467,40 +3469,40 @@
     "overall_strategy": "",
     "required_improvements": [],
     "cache_version": "4.1",
-    "cached_at": "2026-02-05T11:44:38.110046"
+    "cached_at": "2026-02-05T23:07:31.310016"
   },
   "critique": {
     "overall_score": 8.2,
-    "monologue": "Based on the observed segments, the edit successfully translates the high-octane pressure of Formula 1 by anchoring the narrative in intense emotional carriers and rapid-fire action sequences. The system effectively navigated the lack of explicit wealth symbols by leaning into the 'Action' and 'Intense' tags to maintain the relentless pace required by the blueprint. While the rhythmic progression from build-up to peak is technically sound, the reliance on repeated assets in the finale highlights a library constraint rather than a failure in logic, though it slightly dampens the 'Peak' impact.",
+    "monologue": "Based on the observed segments, the system successfully translated the high-octane F1 brief into a relentless rhythmic experience, leaning heavily into the 'Intense' and 'Action' tags to maintain momentum. The 'Motion-Carry' strategy is evident in the rapid succession of action-oriented clips, though the narrative's 'precision' and 'glamour' elements are occasionally sidelined by the sheer volume of high-energy racing footage. While the system executed the 'Scale-Escalation' motif well during the build-up, the lack of true low-energy assets in the library forced a 'Release' stage that remains at a high simmer rather than providing a necessary cinematic breath.",
     "star_performers": [
       "clip_003.mp4",
-      "clip_014.mp4",
-      "clip_024.mp4",
-      "clip_001.mp4"
+      "clip_005.mp4",
+      "clip_009.mp4",
+      "clip_013.mp4"
     ],
     "dead_weight": [
-      "clip_013.mp4",
-      "clip_015.mp4",
-      "clip_021.mp4"
+      "clip_001.mp4",
+      "clip_007.mp4",
+      "clip_027.mp4"
     ],
     "missing_ingredients": [
-      "Macro shots of engine components or tire textures for Scale-Escalation",
-      "Wide-angle motion-blur shots of the Las Vegas strip at night for Glamour proxies",
-      "Extreme close-ups of driver eyes or pit crew hands for Technical Precision"
+      "Ultra-slow-motion 'glamour' shots of drivers or paddock luxury",
+      "Extreme wide-angle 'Scale' shots of the starting grid or grandstands",
+      "Static, low-energy 'Atmospheric' shots (e.g., heat haze on tarmac) for mid-point pacing"
     ],
     "remake_actions": [
       {
-        "type": "change_subject",
-        "segment": "Build-up",
-        "suggestion": "Replace generic action shots (013, 015) with technical/mechanical detail shots to satisfy the 'Scale-Escalation' motif."
+        "type": "fix_pacing",
+        "segment": "Intro",
+        "suggestion": "Replace the early 'Reaction' shot (clip_001) with a 'Motion-Carry' action shot to prevent an early stall in momentum."
       },
       {
-        "type": "fix_pacing",
-        "segment": "Peak",
-        "suggestion": "Replace the duplicate use of clip_024 in Segment 20 with a unique high-contrast night racing shot to maintain visual freshness."
+        "type": "change_subject",
+        "segment": "Outro",
+        "suggestion": "Swap the final 'Detail' shot (clip_027) for a 'Wide' or 'Glamour' shot to better satisfy the lifestyle/celebration aspect of the brief."
       }
     ],
-    "technical_fidelity": "The system adhered strictly to the energy gating and segment-specific roles (Intro, Build-up, Peak, Release). Lighting consistency was prioritized in the majority of segments, ensuring a professional visual flow despite limited source variety."
+    "technical_fidelity": "The system demonstrated high adherence to the energy-gating and stage-based narrative structure. The transition from 'Build-up' to 'Peak' was handled with logical clip-type escalation, and the use of 'Detail' shots (clip_013, clip_024) correctly addressed the 'technical precision' requirement of the blueprint."
   },
   "library_health": {
     "asset_count": 30,
@@ -3525,11 +3527,11 @@
   },
   "iteration": 1,
   "error": null,
-  "processing_time_seconds": 180.92695713043213,
+  "processing_time_seconds": 37.498650550842285,
   "contract": {
     "type": "result",
     "version": "12.1",
     "session_id": "sess_abae8e7bd11d4e98ce53e24bc3e9e45f",
-    "timestamp": "2026-02-05 16:45:28"
+    "timestamp": "2026-02-06 04:07:56"
   }
 }

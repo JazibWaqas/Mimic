@@ -1,100 +1,102 @@
 {
-  "text_overlay_intent": "The text functions as a digital signature and aggressive call-to-action, demanding a visual style that mirrors the 'edit culture' of social media—where the editor's presence is as loud and high-status as the luxury brands listed.",
-  "dominant_narrative": "A relentless pursuit of speed and prestige, where the mechanical violence of racing meets the polished glamour of the Formula 1 lifestyle.",
+  "text_overlay_intent": "The text demands a high-status, brand-aligned 'hype' aesthetic that positions the editor as a stylist of elite speed and luxury. It requires a visual language that treats racing not just as a sport, but as a prestigious, high-stakes lifestyle event worthy of global sponsorship.",
+  "dominant_narrative": "A visceral exploration of the intersection between mechanical violence, human discipline, and the neon-lit glamour of elite motorsport.",
   "arc_stage_guidance": {
     "Intro": {
-      "primary_emotional_carrier": "Anticipation and Atmosphere",
-      "supporting_material": "Aerial night views, urban billboards, and technical preparation.",
-      "intent_diluting_material": "Daytime casual shots or slow-moving crowds.",
-      "reasoning": "The intro must establish the 'world' of the edit—high-stakes, night-time, and technologically advanced—to justify the high-energy peak later.",
+      "primary_emotional_carrier": "Anticipation and Scale",
+      "supporting_material": "Atmospheric urban nightscapes and technical preparations.",
+      "intent_diluting_material": "Mid-race action or chaotic crashes; the intro must feel like the 'calm before the storm'.",
+      "reasoning": "To mirror the reference's rhythmic build, we must establish the environment and the 'stakes' before unleashing the full kinetic energy of the cars.",
       "recommended_clips": [
         "clip51.mp4",
         "clip74.mp4",
-        "clip61.mp4"
+        "clip63.mp4",
+        "clip52.mp4"
       ],
-      "required_energy": "High"
+      "required_energy": "Medium"
     },
     "Build-up": {
-      "primary_emotional_carrier": "Technical Precision and Human Focus",
-      "supporting_material": "Wind tunnel testing, driver training, and pit lane preparations.",
-      "intent_diluting_material": "Generic racing shots without a specific focal point or subject.",
-      "reasoning": "This stage bridges the gap between the 'idea' of racing and the 'reality' of the machine, focusing on the effort behind the speed.",
+      "primary_emotional_carrier": "Human Discipline and Technical Precision",
+      "supporting_material": "Training montages, pit crew movements, and wind tunnel testing.",
+      "intent_diluting_material": "Crowd reactions or generic travel shots that lack a sense of urgency.",
+      "reasoning": "The build-up connects the machine to the man; showing the effort behind the speed justifies the 'high-octane' payoff of the peak.",
       "recommended_clips": [
-        "clip52.mp4",
+        "clip62.mp4",
         "clip65.mp4",
         "clip75.mp4",
-        "clip62.mp4"
+        "clip53.mp4"
       ],
       "required_energy": "High"
     },
     "Peak": {
-      "primary_emotional_carrier": "Kinetic Violence and Sensory Overload",
-      "supporting_material": "Crashes, fireworks, onboard perspectives, and podium celebrations.",
-      "intent_diluting_material": "Medium-shot tracking of cars that lack a sense of extreme velocity.",
-      "reasoning": "The peak must deliver on the 'relentless' promise of the reference, using the most visually explosive and high-contrast material available.",
+      "primary_emotional_carrier": "Kinetic Aggression and Spectacle",
+      "supporting_material": "Crashes, sparks, fireworks, and high-speed onboard perspectives.",
+      "intent_diluting_material": "Static wide shots or slow-motion that doesn't involve high-contrast lighting.",
+      "reasoning": "This stage must be 'relentless' as per the reference. It is the sensory overload where the brand names and the racing action merge into a single high-energy experience.",
       "recommended_clips": [
-        "clip58.mp4",
         "clip71.mp4",
-        "clip72.mp4",
-        "clip70.mp4",
-        "clip78.mp4"
+        "clip58.mp4",
+        "clip78.mp4",
+        "clip57.mp4",
+        "clip56.mp4",
+        "clip70.mp4"
       ],
       "required_energy": "High"
     },
     "Outro": {
-      "primary_emotional_carrier": "Legacy and Brand Authority",
-      "supporting_material": "Victory celebrations, branding backdrops, and reflective moments.",
-      "intent_diluting_material": "Abrupt endings or low-quality archival footage.",
-      "reasoning": "The outro serves as the 'button,' reinforcing the lifestyle and status elements established by the text overlays.",
+      "primary_emotional_carrier": "Status and Resolution",
+      "supporting_material": "Victory celebrations, billboards, and the 'button' shot of a car exiting frame.",
+      "intent_diluting_material": "Ongoing high-speed racing; the energy must pivot from 'action' to 'achievement'.",
+      "reasoning": "The outro serves as the 'call to action' for the social media intent, leaving the viewer with the lingering feeling of prestige and success.",
       "recommended_clips": [
         "clip77.mp4",
-        "clip73.mp4",
-        "clip60.mp4"
+        "clip61.mp4",
+        "clip66.mp4"
       ],
-      "required_energy": "High"
+      "required_energy": "Medium"
     }
   },
   "library_alignment": {
     "strengths": [
       "Abundant high-energy racing footage",
-      "Strong night-time and firework visuals matching the reference aesthetic",
-      "High-quality technical and training shots to support the build-up"
+      "Strong night-time and firework visual assets",
+      "Excellent technical/training B-roll to support the 'Build-up' phase"
     ],
     "editorial_tradeoffs": [
-      "Using fictional racing footage (Brad Pitt/APXGP) to supplement real-world F1 intensity",
-      "Relying on training montages to maintain energy when racing clips are exhausted"
+      "Lack of explicit 'wealth' symbols (money/watches) requires using Las Vegas urban nightscapes and high-end car details as proxies for glamour."
     ],
     "constraint_gaps": [
-      "Limited 'lifestyle/wealth' symbols (money) as requested, requiring urban Las Vegas shots to act as proxies for glamour"
+      "The library is heavily skewed toward 'High' energy, making it difficult to create a truly 'Low' energy reflective moment if the edit requires a mid-point breather."
     ]
   },
-  "editorial_strategy": "Maintain a 'relentless' rhythmic structure by prioritizing clips with internal camera motion and high-contrast lighting. Use the 'technical' clips to create a sense of mounting pressure before releasing into the 'peak' racing sequences.",
-  "remake_strategy": "To elevate this to a Director's Cut, integrate more macro-photography of engine components and high-fidelity sound design of downshifts to ground the visual speed in auditory weight.",
+  "editorial_strategy": "The edit must prioritize 'Motion-Carry' transitions where the direction of a car's movement or a driver's physical action dictates the next cut. By desaturating the high-energy racing clips to match the 'Filmic' reference look, the system will unify the disparate training and racing footage into a singular narrative of elite performance.",
+  "remake_strategy": "To fully realize the Director's Cut, additional macro-photography of luxury brand assets (Rolex/IWC watches, Tommy Hilfiger textures) should be intercut during the 'Build-up' to explicitly ground the racing in the lifestyle glamour suggested by the text overlays.",
   "primary_narrative_subject": null,
   "allowed_supporting_subjects": [
     "People-Solo",
     "People-Group",
-    "Place-Urban"
+    "Place-Urban",
+    "Object-Detail"
   ],
   "subject_lock_strength": 0.8,
   "editorial_motifs": [
     {
-      "trigger": "Mechanical details or technical testing",
+      "trigger": "Mechanical ignition or start lights",
       "desired_continuity": "Scale-Escalation",
-      "priority": "Medium"
-    },
-    {
-      "trigger": "High-speed racing maneuvers",
-      "desired_continuity": "Motion-Carry",
       "priority": "High"
     },
     {
-      "trigger": "Night racing and stadium lights",
-      "desired_continuity": "Graphic-Match",
+      "trigger": "Physical exertion (boxing/training)",
+      "desired_continuity": "Motion-Carry",
       "priority": "Medium"
     },
     {
-      "trigger": "Victory or crash events",
+      "trigger": "Night racing with fireworks",
+      "desired_continuity": "Graphic-Match",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed impact or crash",
       "desired_continuity": "Emotional-Release",
       "priority": "High"
     }
@@ -105,5 +107,5 @@
   "overall_strategy": "",
   "required_improvements": [],
   "cache_version": "4.1",
-  "cached_at": "2026-02-05T11:44:38.110046"
+  "cached_at": "2026-02-05T23:07:31.310016"
 }
