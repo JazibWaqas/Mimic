@@ -1,0 +1,110 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands a narrative of elite, high-stakes performance where the human and machine are indistinguishable. It requires imagery that feels 'larger than life,' emphasizing legacy, precision, and the heavy burden of being the best.",
+  "dominant_narrative": "A cinematic tribute to the relentless pursuit of speed and the visceral adrenaline of elite competitive racing.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Anticipation and the 'Weight of the Legend.'",
+      "supporting_material": "Static mechanical details or wide establishing shots of the 'arena.'",
+      "intent_diluting_material": "Crowds or chaotic motion that distracts from the singular focus of the hero.",
+      "reasoning": "To mirror the 'Maverick' ethos, we must first establish the gravity of the environment before the engines start.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip63.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "The physical and technical preparation for battle.",
+      "supporting_material": "Training montages, wind tunnels, and close-ups of gear.",
+      "intent_diluting_material": "Celebratory or joyful expressions; the mood should remain stoic and focused.",
+      "reasoning": "The build-up must translate the 'Top Gun' training intensity into the racing world, showing the toll of high-G performance.",
+      "recommended_clips": [
+        "clip52.mp4",
+        "clip62.mp4",
+        "clip65.mp4",
+        "clip75.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Pure, unadulterated kinetic energy and high-stakes danger.",
+      "supporting_material": "Onboard perspectives, crashes, and rapid-fire mechanical motion.",
+      "intent_diluting_material": "Wide shots that diminish the sense of speed or 'safe' looking maneuvers.",
+      "reasoning": "This is the 'dogfight' equivalent. The edit must feel breathless, favoring shots where the vehicle is pushed to its absolute limit.",
+      "recommended_clips": [
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip76.mp4",
+        "clip78.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "The 'Button'—a sense of legacy and the quiet after the storm.",
+      "supporting_material": "Walking away from the machine, sunset vistas, or symbolic gestures of camaraderie.",
+      "intent_diluting_material": "Abrupt cuts or unresolved high-energy motion.",
+      "reasoning": "The conclusion must provide a 'hero's exit' that validates the preceding intensity, leaving the viewer with a sense of awe.",
+      "recommended_clips": [
+        "clip61.mp4",
+        "clip64.mp4",
+        "clip77.mp4",
+        "clip49.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage that matches the 'adrenaline' requirement.",
+      "Strong technical/mechanical clips (wind tunnel, start lights) to build narrative depth.",
+      "High-quality 5/5 clips provide the necessary 'filmic' polish."
+    ],
+    "editorial_tradeoffs": [
+      "F1 racing must serve as a thematic proxy for naval aviation; the 'Maverick' persona is projected onto the driver.",
+      "Training/boxing footage is used to simulate the physical rigors of flight training."
+    ],
+    "constraint_gaps": [
+      "Lack of actual aircraft necessitates a heavy reliance on 'Object-Vehicle' speed to maintain the Top Gun energy.",
+      "Scarcity of 'Low' energy clips makes the 'Solemn' requirement for the outro difficult to sustain without careful selection."
+    ]
+  },
+  "editorial_strategy": "The edit will pivot the 'Top Gun' aviation theme into a high-stakes Formula 1 narrative. By treating the race car as a fighter jet and the driver as a 'Maverick' figure, we maintain the emotional core of elite heroism. The pacing will be syncopated, using technical preparation to justify the explosive, high-energy peak.",
+  "remake_strategy": "To achieve a true Director's Cut, integrate 21:9 anamorphic plates of desert landscapes to mimic the 'Mojave' look. Add extreme macro close-ups of eyes and sweat to heighten the human stakes against the cold machinery.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical ignition or start lights",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed vehicle tracking",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "The driver's eyes or focused face",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "A crash or moment of failure",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-05T11:27:11.400576"
+}

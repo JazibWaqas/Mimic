@@ -1492,9 +1492,14 @@ def match_clips_to_blueprint(
             if mode == "REFERENCE":
                 # REFERENCE MODE: Accept gap honestly, log it
                 print(f"    ⚠️ GAP in segment {segment.id} ({gap:.4f}s) - Accepting honestly (no stretch)")
-                # Move timeline to segment end to maintain continuity
-                # But DO NOT modify the decision's timeline_end
-                timeline_position = segment.end
+                # CRITICAL FIX: Extend last decision to segment end to maintain timeline continuity
+                # This prevents gaps between segments while still being honest about clip content
+                if decisions and decisions[-1].segment_id == segment.id:
+                    decisions[-1].timeline_end = segment.end
+                    timeline_position = segment.end
+                    print(f"    🔧 Extended decision {len(decisions)} timeline to segment end: {segment.end:.4f}s")
+                else:
+                    timeline_position = segment.end
             else:
                 # PROMPT MODE: Allow gap filling (legacy behavior)
                 print(f"    🔗 Filling gap in segment {segment.id} ({gap:.4f}s remaining)")

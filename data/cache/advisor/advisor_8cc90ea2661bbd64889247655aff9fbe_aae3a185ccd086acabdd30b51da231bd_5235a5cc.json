@@ -1,0 +1,114 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands a cinematic reverence for military heritage coupled with the visceral, individualistic defiance of the 'Maverick' archetype; it requires a balance of solemn legacy and law-breaking speed.",
+  "dominant_narrative": "A visceral exploration of elite naval aviation where the weight of historical legacy fuels the high-stakes, adrenaline-driven pursuit of the future.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Legacy and Preparation",
+      "supporting_material": "Close-ups of flight gear, naval insignia, and carrier environments.",
+      "intent_diluting_material": "High-speed chaotic motion or loud explosions.",
+      "reasoning": "The intro must establish the 'Top Gun' institution before Maverick disrupts it; we need the weight of the uniform and the scale of the carrier to set the stakes.",
+      "recommended_clips": [
+        "clip_006.mp4",
+        "clip_005.mp4",
+        "clip_002.mp4",
+        "clip_018.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Anticipation and Ignition",
+      "supporting_material": "Cockpit checks, engine ignitions, deck crew signals, and motorcycle reveals.",
+      "intent_diluting_material": "Static landscapes without a human or mechanical catalyst.",
+      "reasoning": "This stage is about the transition from stillness to kinetic energy; every shot should feel like a spring being coiled.",
+      "recommended_clips": [
+        "clip_008.mp4",
+        "clip_012.mp4",
+        "clip_036.mp4",
+        "clip_009.mp4",
+        "clip_010.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Extreme Adrenaline and Mastery",
+      "supporting_material": "Sharp banking maneuvers, dogfights, vapor cones, and intense pilot facial expressions.",
+      "intent_diluting_material": "Wide shots that lose the sense of speed or intimate domestic moments.",
+      "reasoning": "The peak must deliver on the 'Maverick' promise—breaking limits. The edit should favor shots where the environment is a blur and the pilot is under G-force pressure.",
+      "recommended_clips": [
+        "clip_021.mp4",
+        "clip_047.mp4",
+        "clip_040.mp4",
+        "clip_048.mp4",
+        "clip_023.mp4",
+        "clip_039.mp4",
+        "clip_045.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Triumphant Reflection",
+      "supporting_material": "Sunset silhouettes, beach celebrations, old photographs, and slow-moving aircraft.",
+      "intent_diluting_material": "Aggressive cutting or jarring mechanical noises.",
+      "reasoning": "The 'Button' of the film is the legacy. We return to the human element to show that the speed was for a purpose—camaraderie and survival.",
+      "recommended_clips": [
+        "clip_034.mp4",
+        "clip_017.mp4",
+        "clip_024.mp4",
+        "clip_004.mp4",
+        "clip_033.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-quality aerial maneuvers and cockpit close-ups.",
+      "Strong selection of 'Golden Hour' and high-contrast cinematic lighting.",
+      "Excellent 'Legacy' anchors including naval uniforms and vintage photographs."
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of 'Medium' energy clips requires using 'High' energy clips with slower internal motion to bridge the Build-up.",
+      "Limited 'Group' celebration footage means the camaraderie theme must be concentrated in the Outro."
+    ],
+    "constraint_gaps": [
+      "Lack of diverse 'Indoor' facility shots may make the 'Intro' feel overly reliant on the aircraft carrier deck."
+    ]
+  },
+  "editorial_strategy": "Prioritize the 'Human in the Machine' by intercutting intense pilot close-ups with the external physics of the jets. The edit must ensure the action feels earned by grounding the high-energy peaks in the quiet, reflective preparation of the intro and the nostalgic weight of the outro.",
+  "remake_strategy": "To achieve a Director's Cut, additional footage of ground-level camaraderie and 'Low' energy silhouettes in hangars would deepen the emotional stakes. Expanding the 'Build-up' with more technical, mechanical close-ups would enhance the 'Syncopated' pacing before the aerial release.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.85,
+  "editorial_motifs": [
+    {
+      "trigger": "Pilot eye contact or visor adjustment",
+      "desired_continuity": "Action-Completion",
+      "priority": "High"
+    },
+    {
+      "trigger": "Mechanical ignition (afterburners/engine)",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Nostalgic photographs or medals",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "High-speed jet flyover",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-05T11:34:28.328144"
+}

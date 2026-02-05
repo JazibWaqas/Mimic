@@ -414,6 +414,16 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(4, TOTAL_STEPS, "Creating edit sequence...")
         
+        # CLIP LIBRARY SANITY CHECK (v14.0 diagnostic)
+        segment_count = len(blueprint.segments)
+        clip_count = len(clip_index.clips)
+        if segment_count > 15 and clip_count < 10:
+            print(f"\n   ⚠️  CLIP LIBRARY WARNING:")
+            print(f"      Reference has {segment_count} segments but only {clip_count} clips available.")
+            print(f"      This will cause heavy clip repetition and reduced edit quality.")
+            print(f"      Recommendation: Add {segment_count - clip_count}+ more clips for better diversity.")
+            print()
+        
         edl, advisor_hints = match_clips_to_blueprint(
             blueprint, 
             clip_index, 

@@ -34,13 +34,151 @@ import time
 # ============================================================================
 # V14.0 CONTEXTUAL MOMENT SELECTION - FEATURE FLAG
 # ============================================================================
-# Phase 1: Minimal activation - enable for testing one segment at a time
-# Phase 2: Expand to visual-origin segments after Phase 1 validates
+# Phase 1: Minimal activation - visual origin + Long hold + Intro/Peak only
+# Phase 2: Expand to all visual-origin segments after validation
 ENABLE_CONTEXTUAL_MOMENTS = True
 
 # Which segments to process with V14.0 (empty = all, or list of segment IDs)
-# Phase 1: Start with just segment 1 or a peak segment
-V14_SEGMENT_WHITELIST = [1]  # Only segment 1 for Phase 1 testing
+# Phase 1: Intro (segment 1) + Peak (segment 7) with visual origin + Long hold
+V14_SEGMENT_WHITELIST = [1, 7]
+
+
+def _should_use_v14_moment_selection(segment) -> bool:
+    """
+    Determine if a segment should use V14.0 contextual moment selection.
+    
+    Criteria (all must match):
+    - Segment ID in whitelist
+    - cut_origin == "visual" (sacred cuts, no subdivision risk)
+    - expected_hold == "Long" (where music phrasing matters most)
+    """
+    if not V14_SEGMENT_WHITELIST:
+        return True  # Whitelist empty = process all
+    
+    if segment.id not in V14_SEGMENT_WHITELIST:
+        return False
+    
+    # Must be visual origin (sacred cuts, no subdivision)
+    cut_origin = getattr(segment, 'cut_origin', 'visual')
+    if cut_origin != 'visual':
+        return False
+    
+    # Must be Long hold (where contextual selection matters most)
+    expected_hold = getattr(segment, 'expected_hold', 'Normal')
+    if expected_hold != 'Long':
+        return False
+    
+    return True
+
+
+def _generate_moment_plans_for_hints(
+    hints: AdvisorHints,
+    blueprint: StyleBlueprint,
+    clip_index: ClipIndex
+) -> AdvisorHints:
+    """
+    Generate contextual moment plans for cached hints that lack them.
+    
+    This is the V14.0 moment selection logic extracted for reuse.
+    Called when cached hints are loaded but ENABLE_CONTEXTUAL_MOMENTS is True.
+    """
+    from typing import Dict, Any
+    from engine.moment_selector import build_moment_candidates, select_moment_with_advisor, plan_segment_moments
+    
+    print(f"\n  🎯 V14.0: Generating contextual moment plans...")
+    segment_moment_plans: Dict[str, Any] = {}
+    
+    # Get beat grid for musical alignment scoring
+    from engine.processors import get_beat_grid
+    beat_grid = []
+    
+    # Determine which segments to process
+    # Phase 1: Only segments matching visual + Long + whitelist criteria
+    target_segments = []
+    for seg in blueprint.segments:
+        if _should_use_v14_moment_selection(seg):
+            target_segments.append(seg)
+    
+    if not target_segments:
+        print(f"  ⚙️ V14.0: No segments match criteria (visual + Long + whitelist)")
+        print(f"     Whitelist: {V14_SEGMENT_WHITELIST}")
+    else:
+        print(f"     Processing {len(target_segments)} segment(s) with V14.0")
+    
+    previous_selection = None
+    for segment in target_segments:
+        try:
+            print(f"     Segment {segment.id}: Building candidates...", end=" ")
+            
+            # Build moment candidates for this segment
+            candidates = build_moment_candidates(
+                clip_index=clip_index,
+                target_energy=segment.energy.value,
+                segment=segment,
+                beat_grid=beat_grid,
+                previous_selection=previous_selection
+            )
+            
+            if not candidates:
+                print(f"⚠️ No candidates")
+                continue
+            
+            print(f"✓ {len(candidates)} candidates")
+            
+            # Calculate CDE for this segment
+            from engine.editor import calculate_cut_density_expectation
+            cde = calculate_cut_density_expectation(segment, beat_grid, blueprint, "REFERENCE")
+            
+            # Call Advisor to select the best moment
+            print(f"     Segment {segment.id}: Calling Advisor...", end=" ")
+            selection = select_moment_with_advisor(
+                segment=segment,
+                candidates=candidates,
+                beat_grid=beat_grid,
+                blueprint=blueprint,
+                previous_selection=previous_selection,
+                cde=cde
+            )
+            
+            if not selection:
+                print(f"⚠️ No selection")
+                continue
+            
+            print(f"✓ Selected {selection.selection.clip_filename}")
+            
+            # Plan the complete segment (chain moments if needed)
+            plan = plan_segment_moments(
+                segment=segment,
+                selection=selection,
+                clip_index=clip_index,
+                beat_grid=beat_grid
+            )
+            
+            # Store the plan
+            plan_key = str(segment.id)
+            segment_moment_plans[plan_key] = plan
+            
+            # Update previous selection for continuity
+            previous_selection = selection.selection
+            
+            print(f"     ✓ Plan: {len(plan.moments)} moment(s), {plan.total_duration:.2f}s")
+            if plan.chaining_reason:
+                print(f"       Chaining: {plan.chaining_reason}")
+            
+        except Exception as e:
+            # Per-segment try/except: any failure falls back to V13.2 for this segment
+            print(f"     ⚠️ Segment {segment.id} V14.0 failed: {e}")
+            print(f"        Falling back to V13.2 CDE-based matching for this segment")
+            continue
+    
+    # Attach moment plans to hints
+    if segment_moment_plans:
+        hints.segment_moment_plans = segment_moment_plans
+        print(f"  ✅ V14.0: {len(segment_moment_plans)} segment(s) with contextual moment plans")
+    else:
+        print(f"  ⚙️ V14.0: No moment plans generated, using V13.2 fallback")
+    
+    return hints
 
 
 def get_advisor_suggestions(
@@ -110,6 +248,15 @@ def get_advisor_suggestions(
             else:
                 hints = AdvisorHints(**data)
                 print(f"  ✅ Loaded from cache: {cache_file.name}")
+                
+                # V14.0: If cached hints lack moment plans but V14 is enabled, generate them now
+                if ENABLE_CONTEXTUAL_MOMENTS and not hints.segment_moment_plans:
+                    print(f"  🎯 V14.0: Cached hints lack moment plans, generating now...")
+                    hints = _generate_moment_plans_for_hints(hints, blueprint, clip_index)
+                    # Update cache with moment plans
+                    cache_file.write_text(hints.model_dump_json(indent=2), encoding='utf-8')
+                    print(f"  ✅ Cache updated with moment plans")
+                
                 return hints
         except Exception as e:
             print(f"  ⚠️ Cache corrupted, regenerating: {e}")
@@ -279,18 +426,17 @@ Do not add commentary. Do not explain. Only JSON.
                 beat_grid = []
                 
                 # Determine which segments to process
-                # Phase 1: Whitelist only (safer testing)
-                # Phase 2: All visual-origin segments
+                # Phase 1: Only segments matching visual + Long + whitelist criteria
                 target_segments = []
                 for seg in blueprint.segments:
-                    if V14_SEGMENT_WHITELIST and seg.id in V14_SEGMENT_WHITELIST:
+                    if _should_use_v14_moment_selection(seg):
                         target_segments.append(seg)
-                    elif not V14_SEGMENT_WHITELIST:
-                        # If whitelist is empty, process visual-origin segments
-                        if getattr(seg, 'cut_origin', 'visual') == 'visual':
-                            target_segments.append(seg)
                 
-                print(f"     Processing {len(target_segments)} segment(s) with V14.0")
+                if not target_segments:
+                    print(f"  ⚙️ V14.0: No segments match criteria (visual + Long + whitelist)")
+                    print(f"     Whitelist: {V14_SEGMENT_WHITELIST}")
+                else:
+                    print(f"     Processing {len(target_segments)} segment(s) with V14.0")
                 
                 previous_selection = None
                 for segment in target_segments:

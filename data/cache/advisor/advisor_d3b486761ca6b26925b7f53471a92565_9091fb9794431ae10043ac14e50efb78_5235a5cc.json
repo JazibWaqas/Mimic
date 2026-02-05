@@ -1,0 +1,109 @@
+{
+  "text_overlay_intent": "The text functions as a digital signature and aggressive call-to-action, demanding a visual style that mirrors the 'edit culture' of social media—where the editor's presence is as loud and high-status as the luxury brands listed.",
+  "dominant_narrative": "A relentless pursuit of speed and prestige, where the mechanical violence of racing meets the polished glamour of the Formula 1 lifestyle.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "Anticipation and Atmosphere",
+      "supporting_material": "Aerial night views, urban billboards, and technical preparation.",
+      "intent_diluting_material": "Daytime casual shots or slow-moving crowds.",
+      "reasoning": "The intro must establish the 'world' of the edit—high-stakes, night-time, and technologically advanced—to justify the high-energy peak later.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip61.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "Technical Precision and Human Focus",
+      "supporting_material": "Wind tunnel testing, driver training, and pit lane preparations.",
+      "intent_diluting_material": "Generic racing shots without a specific focal point or subject.",
+      "reasoning": "This stage bridges the gap between the 'idea' of racing and the 'reality' of the machine, focusing on the effort behind the speed.",
+      "recommended_clips": [
+        "clip52.mp4",
+        "clip65.mp4",
+        "clip75.mp4",
+        "clip62.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "Kinetic Violence and Sensory Overload",
+      "supporting_material": "Crashes, fireworks, onboard perspectives, and podium celebrations.",
+      "intent_diluting_material": "Medium-shot tracking of cars that lack a sense of extreme velocity.",
+      "reasoning": "The peak must deliver on the 'relentless' promise of the reference, using the most visually explosive and high-contrast material available.",
+      "recommended_clips": [
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip70.mp4",
+        "clip78.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "Legacy and Brand Authority",
+      "supporting_material": "Victory celebrations, branding backdrops, and reflective moments.",
+      "intent_diluting_material": "Abrupt endings or low-quality archival footage.",
+      "reasoning": "The outro serves as the 'button,' reinforcing the lifestyle and status elements established by the text overlays.",
+      "recommended_clips": [
+        "clip77.mp4",
+        "clip73.mp4",
+        "clip60.mp4"
+      ],
+      "required_energy": "High"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage",
+      "Strong night-time and firework visuals matching the reference aesthetic",
+      "High-quality technical and training shots to support the build-up"
+    ],
+    "editorial_tradeoffs": [
+      "Using fictional racing footage (Brad Pitt/APXGP) to supplement real-world F1 intensity",
+      "Relying on training montages to maintain energy when racing clips are exhausted"
+    ],
+    "constraint_gaps": [
+      "Limited 'lifestyle/wealth' symbols (money) as requested, requiring urban Las Vegas shots to act as proxies for glamour"
+    ]
+  },
+  "editorial_strategy": "Maintain a 'relentless' rhythmic structure by prioritizing clips with internal camera motion and high-contrast lighting. Use the 'technical' clips to create a sense of mounting pressure before releasing into the 'peak' racing sequences.",
+  "remake_strategy": "To elevate this to a Director's Cut, integrate more macro-photography of engine components and high-fidelity sound design of downshifts to ground the visual speed in auditory weight.",
+  "primary_narrative_subject": null,
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical details or technical testing",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "High-speed racing maneuvers",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Night racing and stadium lights",
+      "desired_continuity": "Graphic-Match",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Victory or crash events",
+      "desired_continuity": "Emotional-Release",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-05T11:44:38.110046"
+}

@@ -190,16 +190,18 @@ export default function VaultPage() {
         return assets.filter(a => a.filename.toLowerCase().includes(searchQuery.toLowerCase()));
     }, [viewMode, results, references, clips, searchQuery]);
 
-    const getVideoUrl = (item: AssetItem) => {
+    // Memoized video URL - only changes when selectedItem changes, not on every render
+    const videoUrl = useMemo(() => {
+        if (!selectedItem) return "";
         const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
         // Handle different path properties that might exist on different item types
         let path = "";
-        if ("path" in item && item.path) {
-            path = item.path;
-        } else if ("filepath" in item && (item as any).filepath) {
-            path = (item as any).filepath;
-        } else if ("url" in item && (item as any).url) {
-            path = (item as any).url;
+        if ("path" in selectedItem && selectedItem.path) {
+            path = selectedItem.path;
+        } else if ("filepath" in selectedItem && (selectedItem as any).filepath) {
+            path = (selectedItem as any).filepath;
+        } else if ("url" in selectedItem && (selectedItem as any).url) {
+            path = (selectedItem as any).url;
         }
         // Ensure path starts with /
         if (path && !path.startsWith("/")) {
@@ -208,6 +210,22 @@ export default function VaultPage() {
         // Add cache busting parameter to prevent browser caching after edits
         const cacheBust = Date.now();
         return `${API_BASE}${path}?v=${cacheBust}`;
+    }, [selectedItem]);
+
+    const getVideoUrl = (item: AssetItem) => {
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+        let path = "";
+        if ("path" in item && item.path) {
+            path = item.path;
+        } else if ("filepath" in item && (item as any).filepath) {
+            path = (item as any).filepath;
+        } else if ("url" in item && (item as any).url) {
+            path = (item as any).url;
+        }
+        if (path && !path.startsWith("/")) {
+            path = "/" + path;
+        }
+        return `${API_BASE}${path}`;
     };
 
     // Video events
@@ -426,9 +444,16 @@ export default function VaultPage() {
                                     <div className="space-y-1">
                                         <div className="flex items-center justify-between">
                                             <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Intent_Profile</span>
-                                            {intelligence?.blueprint?.text_prompt && (
-                                                <span className="px-1.5 py-0.5 rounded bg-[#ff007f]/10 border border-[#ff007f]/20 text-[7px] font-black text-[#ff007f] uppercase tracking-widest">Creator_Mode</span>
-                                            )}
+                                            <div className="flex items-center gap-2">
+                                                {intelligence?.advisor?.segment_moment_plans && Object.keys(intelligence.advisor.segment_moment_plans).length > 0 ? (
+                                                    <span className="px-1.5 py-0.5 rounded bg-lime-500/10 border border-lime-500/20 text-[7px] font-black text-lime-400 uppercase tracking-widest">CMS_ACTIVE</span>
+                                                ) : (
+                                                    <span className="px-1.5 py-0.5 rounded bg-slate-500/10 border border-slate-500/20 text-[7px] font-black text-slate-500 uppercase tracking-widest">CMS_FALLBACK</span>
+                                                )}
+                                                {intelligence?.blueprint?.text_prompt && (
+                                                    <span className="px-1.5 py-0.5 rounded bg-[#ff007f]/10 border border-[#ff007f]/20 text-[7px] font-black text-[#ff007f] uppercase tracking-widest">Creator_Mode</span>
+                                                )}
+                                            </div>
                                         </div>
                                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tight leading-relaxed">
                                             {intelligence?.advisor?.dominant_narrative || intelligence?.blueprint?.narrative_message || "Rhythmic Consistency & Energy Matching"}
@@ -517,7 +542,7 @@ export default function VaultPage() {
                             <video
                                 key={selectedItem.filename} // FORCE RE-RENDER WHEN ITEM CHANGES
                                 ref={videoRef}
-                                src={getVideoUrl(selectedItem)}
+                                src={videoUrl}
                                 onTimeUpdate={handleTimeUpdate}
                                 onLoadedMetadata={handleLoadedMetadata}
                                 controls
