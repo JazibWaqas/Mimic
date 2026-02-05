@@ -1,7 +1,7 @@
 # MIMIC - SYSTEM STATE (V13.2)
 
 **Last Updated:** February 5, 2026  
-**Version:** V13.2 "Semantic Intelligence"  
+**Version:** V14.1 "Advisor-Driven Contextual Selection"  
 **Status:** Production Ready / Demo Grade
 
 ---
@@ -30,12 +30,21 @@
 
 ---
 
-## 🔧 **RECENT FIXES (Feb 5, 2026)**
+## 🔧 **Recent Fixes (Feb 5, 2026)**
 
-### **0. V13.2 Semantic Intelligence Enhancements** ✅ NEW
-**Problem:** System had limited vocabulary for nostalgia, childhood, celebration, and cinematic reels. Emotional tone matching was basic.
+### **0c. V14.0-V14.1 Advisor-Driven Contextual Moment Selection** ✅ NEW
+**Problem:** Original best-moment logic was clip-centric, not reference-centric. A clip with 10 valid micro-moments was treated as having one "best" moment, reused even when a different part would fit the current segment better.
 
 **Fix Applied:**
+- **Architectural Shift:** From clip-centric to reference-conditioned moment selection
+- **New Data Models:** `MomentCandidate`, `ContextualMomentSelection`, `SegmentMomentPlan`
+- **New Files:** `moment_selector.py` (selection engine), `gemini_moment_prompt.py` (contextual prompt)
+- **Three Hard Rules (v14.1):**
+  1. **Restraint Rule:** Prefer fewest moments necessary. Multiple moments are last resort.
+  2. **Hold Authority Rule:** For Long holds, stability outweighs semantic richness.
+  3. **Music Precedence Rule:** Phrase boundaries > beat accents unless CDE = Dense.
+- **Qualitative Scoring:** Strong/Acceptable/Poor instead of 0-10 (prevents pseudo-precision)
+- **Role Separation:** Advisor decides (reasoning), Matcher executes (deterministic)
 - **Expanded SEMANTIC_MAP:** Added 6 new categories:
   - `nostalgia`: memories, childhood, family, vintage, throwback, warmth, home
   - `celebration`: party, dance, cheers, toast, birthday, wedding, confetti

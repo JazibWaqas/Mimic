@@ -3,9 +3,9 @@ Data models for MIMIC project.
 These are the ONLY valid data structures. Do not create ad-hoc dictionaries.
 """
 
+from typing import List, Optional, Dict, Any
 from pydantic import BaseModel, Field, field_validator, ConfigDict
 from enum import Enum
-from typing import List, Optional
 
 # ============================================================================
 # ENUMS (Controlled Vocabularies)
@@ -300,12 +300,66 @@ class DirectorCritique(BaseModel):
     remake_actions: List[dict] = Field(default_factory=list, description="Structured deltas for the next iteration (type, segment, suggestion)")
     technical_fidelity: str = Field(..., description="Assessment of beat-sync and energy matching")
 
+
+# ============================================================================
+# ADVISOR-DRIVEN CONTEXTUAL MOMENT SELECTION (v14.0)
+# ============================================================================
+
+class MomentCandidate(BaseModel):
+    """
+    A candidate moment from a clip for consideration by the Advisor.
+    Best moments are now candidates, not absolute truth.
+    The Advisor selects which moment fits a specific reference segment.
+    """
+    clip_filename: str
+    moment_energy_level: str  # "High", "Medium", or "Low"
+    start: float
+    end: float
+    duration: float
+    moment_role: str
+    stable_moment: bool
+    reason: str
+    # Scoring context (filled by editor, used by Advisor)
+    semantic_score: float = Field(0.0, description="How well content matches segment vibe")
+    musical_alignment: float = Field(0.0, description="Alignment with beat/phrase (0-1)")
+    narrative_continuity: float = Field(0.0, description="Flow from previous decisions (0-1)")
+
+
+class ContextualMomentSelection(BaseModel):
+    """
+    The Advisor's selection of a specific moment for a specific segment.
+    This is the Advisor acting as editor, choosing the right moment
+    from the right clip for the right narrative moment.
+    """
+    segment_id: int
+    selection: MomentCandidate
+    reasoning: str = Field(..., description="Why this moment for THIS segment")
+    confidence: str = Field(..., description="High, Medium, or Low")
+    alternatives_considered: List[Dict[str, Any]] = Field(default_factory=list)
+    continuity_notes: str = Field("", description="How this flows from previous cuts")
+
+
+class SegmentMomentPlan(BaseModel):
+    """
+    A complete plan for a segment, potentially using multiple moments
+    if the duration requires it (chained from same or different clips).
+    """
+    segment_id: int
+    moments: List[MomentCandidate]  # Ordered sequence to fill segment duration
+    total_duration: float
+    is_single_moment: bool = Field(True, description="True if one moment fills the segment")
+    chaining_reason: str | None = Field(None, description="Why multiple moments were needed")
+
+
 class AdvisorHints(BaseModel):
     """
     Complete Gemini Advisor output containing editorial intent reasoning.
     
     ENDGAME VERSION (v3.0): Includes text overlay interpretation as the highest
     authority signal, with clear reasoning hierarchy.
+    
+    v14.0 UPDATE: Adds segment-level moment selection guidance for Advisor-as-Editor
+    contextual moment reasoning.
     
     This is generated once per reference+library combination and cached.
     The hints express editorial intent that the matcher translates into scoring pressure.
@@ -330,13 +384,20 @@ class AdvisorHints(BaseModel):
     
     editorial_motifs: List[dict] = Field(default_factory=list, description="High-level continuity patterns (Scale-Escalation, Motion-Carry, etc.)")
     
+    # v14.0: Advisor-Driven Contextual Moment Selection
+    # Keyed by segment_id, contains the Advisor's moment-level selection for each segment
+    segment_moment_plans: Dict[str, SegmentMomentPlan] = Field(
+        default_factory=dict,
+        description="Per-segment moment plans from Advisor (v14.0 contextual selection)"
+    )
+    
     # Legacy fields (for backward compatibility with v2.0 cache)
     library_assessment: LibraryAssessment | None = Field(None, description="DEPRECATED: Use library_alignment")
     creative_audit: CreativeAudit | None = Field(None, description="DEPRECATED: Merged into library_alignment")
     overall_strategy: str = Field("", description="DEPRECATED: Use editorial_strategy")
     required_improvements: List[str] = Field(default_factory=list, description="DEPRECATED: No longer used")
     
-    cache_version: str = Field("4.0", description="Advisor cache version (4.0 = editorial_motifs support)")
+    cache_version: str = Field("4.1", description="Advisor cache version (4.1 = v14.0 contextual moment support)")
     cached_at: str = Field("", description="ISO timestamp when cached")
 
 

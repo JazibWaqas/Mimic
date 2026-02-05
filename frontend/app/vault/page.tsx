@@ -519,7 +519,7 @@ export default function VaultPage() {
                                                 </div>
                                                 <div className="min-w-0 flex-1 flex flex-col justify-center">
                                                     <p className="text-[10px] font-black text-white uppercase tracking-tight truncate mb-1">
-                                                        {decision.clip_filename}
+                                                        {decision.clip_path?.split(/[\\/]/).pop() || "Unknown Clip"}
                                                     </p>
                                                     <p className="text-[9px] text-slate-400 font-bold uppercase leading-snug">
                                                         {decision.reasoning || "Optimized for visual energy mapping."}

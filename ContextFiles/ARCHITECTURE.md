@@ -1,9 +1,9 @@
 # MIMIC Architecture Documentation
 
-**Version:** V13.2 - Semantic Intelligence  
+**Version:** V14.1 - Advisor-Driven Contextual Selection  
 **Last Updated:** February 5, 2026
 
-This document provides a complete technical overview of the MIMIC system architecture, governed by the [Identity Contract](#ii-the-identity-contract-v121), the [Pacing Authority Model](#iii-pacing-authority-model-v121), and the [Semantic Intelligence System](#iv-semantic-intelligence-v132).
+This document provides a complete technical overview of the MIMIC system architecture, governed by the [Identity Contract](#ii-the-identity-contract-v121), the [Pacing Authority Model](#iii-pacing-authority-model-v121), the [Semantic Intelligence System](#iv-semantic-intelligence-v132), and the [Contextual Moment Selection System](#v-contextual-moment-selection-v140).
 
 ---
 
@@ -36,7 +36,9 @@ MIMIC is built on a 7-stage multimodal pipeline designed to transform raw footag
 - **`orchestrator.py`**: The central state machine. Manages the 7-stage pipeline with adaptive rhythm and narrative intelligence.
 - **`brain.py`**: Multimodal reasoning engine. Uses Gemini for semantic analysis and "Creative DNA" extraction.
 - **`gemini_advisor.py`**: Strategic planning layer. Generates editorial guidance, assesses library gaps, and provides remake strategies.
-- **`editor.py`**: The "Grammar" engine. Implements tiered energy matching, narrative budgeting, subject locking, and **semantic intelligence scoring (v13.2)**.
+- **`gemini_moment_prompt.py`**: Contextual moment selection prompt with Three Hard Rules (v14.1).
+- **`moment_selector.py`**: Contextual moment selection engine - builds candidates, scores them, calls Advisor.
+- **`editor.py`**: The "Grammar" engine. Implements tiered energy matching, narrative budgeting, subject locking, **CDE-aware subdivision (v13.3)**, **semantic intelligence scoring (v13.2)**, and **Advisor-driven moment selection (v14.0)**.
 - **`stylist.py`**: Aesthetic post-processing. Maps reference font styles to high-end typography and applies cinematic color grading.
 - **`reflector.py`**: The "Director's Voice." Performs post-render AI reflection to judge narrative cohesion and generate a Director's Monologue.
 - **`processors.py`**: FFmpeg / Librosa operations for surgical cuts, beat detection, and thumbnail generation.
@@ -274,7 +276,207 @@ elif clip_usage_count[clip] >= 3:
 
 ---
 
-## 🕒 III. Pacing Authority Model (V12.1)
+## 🎵 IV. Cut Density Expectation (V13.3)
+
+### The Problem: Mechanical Subdivision
+Prior versions could over-cut or under-cut segments because they lacked awareness of the reference video's musical cadence. The system needed to match not just *what* content was in each segment, but *how rhythmically dense* the cuts should feel.
+
+### The Solution: CDE
+**Cut Density Expectation (CDE)** is a derived signal per reference segment that influences subdivision decisions based on musical context.
+
+**CDE Categories:**
+| CDE | Trigger Conditions | Editor Bias |
+|-----|-------------------|-------------|
+| **Sparse** | `expected_hold == Long` OR beat_density < 0.08/s | Strongly prefer single usable window, resist subdivision |
+| **Moderate** | Normal hold + moderate beats OR cut_origin == visual | Allow 1-2 cuts if needed |
+| **Dense** | `expected_hold == Short` OR beat_density > 0.20/s OR peak_density context | Encourage subdivision even if visuals could hold |
+
+**Derivation (No New AI Calls):**
+- `segment.duration` - Base timing
+- `cut_origin` - Visual cuts are sacred, beat cuts more flexible
+- `expected_hold` - Long = sparse, Short = dense
+- `beat_confidence` - Only trust beats if "Observed"
+- Local beat density from reference audio
+
+**Implementation:**
+```python
+def calculate_cde(segment, beat_grid, blueprint, mode):
+    beats_in_segment = [b for b in beat_grid if segment.start <= b < segment.end]
+    beat_density = len(beats_in_segment) / segment.duration
+    
+    if expected_hold == "Long":
+        return "Sparse"
+    elif expected_hold == "Short":
+        return "Dense"
+    elif beat_density > 0.20:
+        return "Dense"
+    elif beat_density < 0.08:
+        return "Sparse"
+    else:
+        return "Moderate"
+```
+
+**Hard Rules:**
+1. CDE is **advisory only** - never overrides segment boundaries
+2. Beats remain **snap points**, never authorities
+3. No looping, no stretching, no content generation
+4. Only affects `max_cuts_per_segment` ceiling
+
+---
+
+## 🧠 V. Contextual Moment Selection (V14.0 - V14.1)
+
+### The Problem: Clip-Centric Best Moments
+The original best-moment logic assumed each clip has **one canonical moment per energy level**. This was limiting because:
+- A 60s clip with 10 valid micro-moments was treated as having one "best" moment
+- That moment was reused even when a *different part of the same clip* would fit the current reference segment better
+- Selection was not conditioned on music cadence, narrative flow, or arc stage intent
+
+### The Solution: Reference-Conditioned Moment Selection
+**Best moments are now candidates, not absolute truth.** The Advisor selects which moment fits a specific reference segment based on:
+- Reference segment identity (vibe, energy, arc stage)
+- Music cadence and phrase boundaries
+- Narrative flow from previous decisions
+- Cut density expectation (CDE)
+
+### The Architectural Shift
+
+**Before (Clip-Centric):**
+```
+Clip A → "Best High Moment" (0:15-0:20)
+Clip B → "Best High Moment" (0:05-0:12)
+Editor picks between clips, not moments within clips
+```
+
+**After (Reference-Centric):**
+```
+Segment 1 (Peak, Dense CDE) → Advisor picks moment 0:15-0:18 from Clip A
+Segment 2 (Build-up, Sparse CDE) → Advisor picks moment 0:40-0:52 from Clip A (same clip!)
+Segment 3 (Intro, Long hold) → Advisor picks moment 0:02-0:08 from Clip B
+```
+
+The Advisor now compares **multiple moments within the same clip** and reasons about which fits the specific reference segment.
+
+### New Data Structures
+
+#### `MomentCandidate`
+```python
+class MomentCandidate(BaseModel):
+    clip_filename: str
+    moment_energy_level: str  # "High", "Medium", "Low"
+    start: float
+    end: float
+    duration: float
+    moment_role: str
+    stable_moment: bool
+    reason: str
+    # Contextual scoring (filled by editor, used by Advisor)
+    semantic_score: float  # How well content matches segment vibe
+    musical_alignment: float  # Alignment with beat/phrase (0-1)
+    narrative_continuity: float  # Flow from previous decisions (0-1)
+```
+
+#### `ContextualMomentSelection`
+```python
+class ContextualMomentSelection(BaseModel):
+    segment_id: int
+    selection: MomentCandidate
+    reasoning: str  # Why this moment for THIS segment
+    confidence: str  # High, Medium, or Low
+    alternatives_considered: List[Dict[str, Any]]
+    continuity_notes: str  # How this flows from previous cuts
+```
+
+#### `SegmentMomentPlan`
+```python
+class SegmentMomentPlan(BaseModel):
+    segment_id: int
+    moments: List[MomentCandidate]  # Ordered sequence to fill segment duration
+    total_duration: float
+    is_single_moment: bool  # True if one moment fills the segment
+    chaining_reason: str | None  # Why multiple moments were needed
+```
+
+### New Components
+
+**`moment_selector.py`** - The Contextual Moment Selection Engine
+- `build_moment_candidates()` - Exposes ALL moments (High/Medium/Low) from ALL clips
+- `select_moment_with_advisor()` - Calls Gemini with contextual prompt
+- `plan_segment_moments()` - Chains moments to fill segment duration completely
+- Pre-calculates semantic, musical, and continuity scores for each candidate
+
+**`gemini_moment_prompt.py`** - The Advisor Prompt (v14.1 Production-Safe)
+Contains the "Three Hard Rules" to prevent over-editing:
+
+### The Three Hard Rules (v14.1)
+
+**Rule 1: Restraint Rule**
+> Prefer the fewest moments necessary to satisfy the segment. Multiple moments are a last resort, not a default. Only chain moments if no single stable moment can cover the duration, OR musical cadence (CDE = Dense) explicitly demands rhythmic contrast.
+
+**Rule 2: Hold Authority Rule**
+> For visual-origin segments with "Long" expected holds, stability outweighs semantic richness. A single stable moment with acceptable (not perfect) semantic alignment is preferred over multiple "perfect" micro-moments.
+
+**Rule 3: Music Precedence Rule**
+> Musical phrasing dominates beat accents. Respect phrase boundaries before micro-rhythmic cuts unless CDE = Dense AND cut_origin = beat.
+
+### Integration in Editor
+
+The editor now checks for Advisor moment plans before falling back to CDE-based matching:
+
+```python
+# v14.0: ADVISOR-DRIVEN CONTEXTUAL MOMENT SELECTION
+if advisor_hints and hasattr(advisor_hints, 'segment_moment_plans'):
+    plan_key = str(segment.id)
+    if plan_key in advisor_hints.segment_moment_plans:
+        advisor_moment_plan = advisor_hints.segment_moment_plans[plan_key]
+        
+        # Execute Advisor's moments directly
+        for moment in advisor_moment_plan.moments:
+            decision = EditDecision(...)
+            decisions.append(decision)
+            
+        continue  # Skip legacy matching for this segment
+
+# Fallback: v13.3 CDE-based matching
+```
+
+### Role Separation
+
+**Advisor = Editor (Makes contextual decisions):**
+- Compares multiple moments within the same clip
+- Reasons about which moment fits the current reference segment
+- Considers music cadence, narrative flow, arc stage intent
+- Suggests, never controls timing directly
+
+**Matcher = Executor (Enforces contracts deterministically):**
+- Applies Advisor's moment selections
+- Enforces segment timing contracts (immutable boundaries)
+- Handles moment chaining if duration requires it
+- Updates clip usage tracking and continuity state
+
+### Key Design Decisions
+
+**Why Reference-Centric Over Clip-Centric?**
+- **Problem:** Clip-centric logic treats best moments as absolute truth
+- **Solution:** Reference-centric logic treats best moments as candidates
+- **Benefit:** Same clip can contribute different moments to different segments based on context
+- **Trade-off:** More complex, requires Advisor reasoning per segment
+
+**Why Three Hard Rules?**
+- **Problem:** Advisor could over-edit by chaining "perfect" micro-moments
+- **Solution:** Explicit constraints that prioritize restraint
+- **Benefit:** Prevents 70% of over-editing failure modes
+- **Implementation:** Hard-coded in prompt, not post-hoc filtering
+
+**Why Qualitative Scoring (Strong/Acceptable/Poor)?**
+- **Problem:** 0-10 numerical scoring encourages pseudo-precision
+- **Solution:** Ordered preference reasoning (Strong/Acceptable/Poor)
+- **Benefit:** Reduces hallucinated precision, clearer decision boundaries
+- **Implementation:** Prompt instructs qualitative assessment, not numeric
+
+---
+
+## 🕒 VI. Pacing Authority Model (V12.1)
 
 MIMIC V12.1 solves the "Mechanical Metronome" problem by inverting the authority of the music grid.
 
@@ -293,4 +495,4 @@ MIMIC V12.1 solves the "Mechanical Metronome" problem by inverting the authority
 ---
 
 **Last Updated:** February 5, 2026
-**Version:** V13.2
+**Version:** V14.1

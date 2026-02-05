@@ -85,7 +85,7 @@ def main():
             print(f"  [ERROR] Failed to standardize {p.name}: {e}")
             return False
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         results = list(executor.map(process_standardization, clip_paths))
     
     success_count = sum(1 for r in results if r)

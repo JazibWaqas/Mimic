@@ -33,6 +33,7 @@ export default function StudioPage() {
   const searchParams = useSearchParams();
   const scrollRef = useRef<HTMLDivElement>(null);
   const processedThumbs = useRef<Set<string>>(new Set());
+  const refVideoUrlRef = useRef<string | null>(null);
 
   // Smart Telemetry Auto-Scroll (User-Aware)
   useEffect(() => {
@@ -84,6 +85,28 @@ export default function StudioPage() {
     };
     healMissingPreviews();
   }, [materialFiles, previews]);
+
+  // Manage ref video URL to prevent memory leaks
+  useEffect(() => {
+    if (refFile) {
+      // Revoke old URL if exists
+      if (refVideoUrlRef.current) {
+        URL.revokeObjectURL(refVideoUrlRef.current);
+      }
+      refVideoUrlRef.current = URL.createObjectURL(refFile);
+    } else {
+      if (refVideoUrlRef.current) {
+        URL.revokeObjectURL(refVideoUrlRef.current);
+        refVideoUrlRef.current = null;
+      }
+    }
+    return () => {
+      if (refVideoUrlRef.current) {
+        URL.revokeObjectURL(refVideoUrlRef.current);
+        refVideoUrlRef.current = null;
+      }
+    };
+  }, [refFile]);
 
 
   const onDropRef = useCallback(async (acceptedFiles: File[]) => {
@@ -173,18 +196,14 @@ export default function StudioPage() {
     if (acceptedFiles?.length > 0) {
       setMaterialFiles(prev => [...prev, ...acceptedFiles]);
 
-      // Batch thumbnail generation to prevent N re-renders
-      const newPreviews: Record<string, string> = {};
-      await Promise.all(acceptedFiles.map(async (file) => {
+      // Generate thumbnails in parallel but update state as each is ready
+      // This prevents UI blocking while thumbnails are being created
+      acceptedFiles.forEach(async (file) => {
         const thumb = await generateThumbnail(file);
         if (thumb) {
-          newPreviews[file.name + file.size] = thumb;
+          setPreviews(prev => ({ ...prev, [file.name + file.size]: thumb }));
         }
-      }));
-
-      if (Object.keys(newPreviews).length > 0) {
-        setPreviews(prev => ({ ...prev, ...newPreviews }));
-      }
+      });
 
       toast.success(`${acceptedFiles.length} Clips Added`);
     }
@@ -403,122 +422,126 @@ export default function StudioPage() {
                 </div>
               </div>
 
-              {/* Taller Unified Box (320px) */}
-              <div
-                key={activeMode}
-                className={cn(
-                  "min-h-[320px] rounded-2xl border relative overflow-hidden flex flex-col",
-                  activeMode === "text" ? "border-[#ff007f]/20 bg-[#ff007f]/[0.02]" : "border-cyan-500/20 bg-cyan-500/[0.02]"
+              {/* Taller Unified Box (320px) - Grid stacked layers for smooth transition */}
+              <div className="relative grid grid-cols-1 grid-rows-1 h-[320px] rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden">
+                {/* Animated border color overlay */}
+                <div className={cn(
+                  "absolute inset-0 rounded-2xl pointer-events-none transition-colors duration-500 z-20",
+                  activeMode === "text" ? "border border-[#ff007f]/20" : "border border-cyan-500/20"
+                )} />
+                
+                {/* Text/Creator Mode Layer */}
+                <div className={cn(
+                  "col-start-1 row-start-1 flex flex-col p-8 space-y-6 transition-opacity duration-300",
+                  activeMode === "text" ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none z-0"
                 )}>
-                {activeMode === "text" ? (
-                  <div className="flex-1 flex flex-col p-8 space-y-6">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="h-8 w-8 rounded-full bg-[#ff007f]/10 border border-[#ff007f]/20 flex items-center justify-center">
-                          <BrainCircuit className="h-4 w-4 text-[#ff007f]" />
-                        </div>
-                        <div className="space-y-0.5">
-                          <p className="text-[10px] font-black text-white uppercase tracking-widest">Director's Chat</p>
-                          <p className="text-[8px] font-bold text-slate-600 uppercase tracking-tight">Describe your vision below</p>
-                        </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-[#ff007f]/10 border border-[#ff007f]/20 flex items-center justify-center">
+                        <BrainCircuit className="h-4 w-4 text-[#ff007f]" />
                       </div>
-                    </div>
-
-                    <div className="flex-1 flex flex-col gap-4">
-                      {/* Chat-style Bubble for Prompt */}
-                      <div className="bg-white/[0.03] border border-white/10 rounded-2xl rounded-tl-none p-5 relative group/bubble transition-all hover:bg-white/[0.05]">
-                        <textarea
-                          value={textPrompt}
-                          onChange={(e) => setTextPrompt(e.target.value)}
-                          placeholder="Example: 'A nostalgic 15s travel reel. Start with a slow cinematic wide shot of the mountains. Build energy with quick candid cuts of us laughing. Peak with high-intensity dancing and movement. Resolve with a quiet sunset shot.'"
-                          className="w-full bg-transparent text-sm font-medium text-slate-300 placeholder:text-slate-700 outline-none resize-none custom-scrollbar leading-relaxed min-h-[120px]"
-                        />
-                        <div className="absolute -left-[9px] top-0 w-0 h-0 border-t-[10px] border-t-white/10 border-l-[10px] border-l-transparent" />
+                      <div className="space-y-0.5">
+                        <p className="text-[10px] font-black text-white uppercase tracking-widest">Director's Chat</p>
+                        <p className="text-[8px] font-bold text-slate-600 uppercase tracking-tight">Describe your vision below</p>
                       </div>
-
-                      {/* Format Helper - Subtle Chat Note */}
-                      <div className="flex items-start gap-3 px-2">
-                        <div className="h-5 w-5 rounded-full bg-indigo-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                          <Info className="h-2.5 w-2.5 text-indigo-400" />
-                        </div>
-                        <p className="text-[10px] font-medium text-slate-500 leading-relaxed italic">
-                          Tip: Use the format "[Theme]. Start with [Intro]. Build through [Action]. Peak with [Climax]. Resolve with [Outro]." for best results.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                      <div className="flex gap-4">
-                        <div className="flex items-center gap-2">
-                          <div className={cn("h-1 w-1 rounded-full animate-pulse", textPrompt ? "bg-[#ff007f]" : "bg-slate-700")} />
-                          <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI Synthesis Active</span>
-                        </div>
-                      </div>
-
-                      {/* Music Upload Slot Integrated */}
-                      <button
-                        onClick={() => {
-                          const input = document.createElement('input');
-                          input.type = 'file';
-                          input.accept = 'audio/*,video/mp4';
-                          input.onchange = (e) => {
-                            const file = (e.target as HTMLInputElement).files?.[0];
-                            if (file) setMusicFile(file);
-                          };
-                          input.click();
-                        }}
-                        className={cn(
-                          "px-4 py-2 rounded-xl border transition-all flex items-center gap-3 group/music",
-                          musicFile ? "bg-indigo-500/10 border-indigo-500/40 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.1)]" : "bg-white/5 border-white/10 text-slate-500 hover:bg-white/10 hover:border-white/20"
-                        )}
-                      >
-                        {musicFile ? <Zap className="h-3 w-3 animate-pulse" /> : <Plus className="h-3 w-3 group-hover/music:rotate-90 transition-transform" />}
-                        <span className="text-[9px] font-black uppercase tracking-widest">
-                          {musicFile ? musicFile.name.substring(0, 15) + "..." : "Add Soundtrack"}
-                        </span>
-                      </button>
                     </div>
                   </div>
-                ) : (
-                  <div
-                    {...getRefProps()}
-                    className="flex-1 flex flex-col items-center justify-center p-12 cursor-pointer group/drop"
-                  >
-                    <input {...getRefInputProps()} />
-                    {refFile ? (
-                      <div className="absolute inset-0 group/video">
-                        <video src={URL.createObjectURL(refFile)} className="w-full h-full object-cover opacity-80" />
-                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/video:opacity-100 transition-all flex flex-col items-center justify-center backdrop-blur-sm">
-                          <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-4">
-                            <Video className="h-8 w-8 text-cyan-400" />
-                          </div>
-                          <p className="text-xs font-black text-white uppercase tracking-[0.4em] mb-2">{refFile.name}</p>
-                          <button
-                            onClick={(e) => { e.stopPropagation(); setRefFile(null); }}
-                            className="px-6 py-2 rounded-xl bg-red-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-red-500 transition-all shadow-2xl"
-                          >
-                            Replace Reference
-                          </button>
-                        </div>
+
+                  <div className="flex-1 flex flex-col gap-4 min-h-0">
+                    <div className="bg-white/[0.03] border border-white/10 rounded-2xl rounded-tl-none p-5 relative group/bubble transition-all hover:bg-white/[0.05]">
+                      <textarea
+                        value={textPrompt}
+                        onChange={(e) => setTextPrompt(e.target.value)}
+                        placeholder="Example: 'A nostalgic 15s travel reel. Start with a slow cinematic wide shot of the mountains. Build energy with quick candid cuts of us laughing. Peak with high-intensity dancing and movement. Resolve with a quiet sunset shot.'"
+                        className="w-full bg-transparent text-sm font-medium text-slate-300 placeholder:text-slate-700 outline-none resize-none custom-scrollbar leading-relaxed h-[120px]"
+                      />
+                      <div className="absolute -left-[9px] top-0 w-0 h-0 border-t-[10px] border-t-white/10 border-l-[10px] border-l-transparent" />
+                    </div>
+
+                    <div className="flex items-start gap-3 px-2">
+                      <div className="h-5 w-5 rounded-full bg-indigo-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                        <Info className="h-2.5 w-2.5 text-indigo-400" />
                       </div>
-                    ) : (
-                      <div className="text-center space-y-6">
-                        <div className="h-20 w-20 rounded-3xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mx-auto group-hover/drop:scale-110 group-hover/drop:bg-cyan-500 group-hover/drop:text-white transition-all duration-500 shadow-2xl">
-                          <Upload className="h-8 w-8" />
-                        </div>
-                        <div className="space-y-2">
-                          <p className="text-xs font-black text-white uppercase tracking-[0.4em]">Bind Style Reference</p>
-                          <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Drag and drop a video to mimic its DNA</p>
-                        </div>
-                        <div className="pt-4 flex items-center justify-center gap-3">
-                          <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">MP4</div>
-                          <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">MOV</div>
-                          <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">AVI</div>
-                        </div>
-                      </div>
-                    )}
+                      <p className="text-[10px] font-medium text-slate-500 leading-relaxed italic">
+                        Tip: Use the format "[Theme]. Start with [Intro]. Build through [Action]. Peak with [Climax]. Resolve with [Outro]." for best results.
+                      </p>
+                    </div>
                   </div>
-                )}
+
+                  <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                    <div className="flex gap-4">
+                      <div className="flex items-center gap-2">
+                        <div className={cn("h-1 w-1 rounded-full animate-pulse", textPrompt ? "bg-[#ff007f]" : "bg-slate-700")} />
+                        <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI Synthesis Active</span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        const input = document.createElement('input');
+                        input.type = 'file';
+                        input.accept = 'audio/*,video/mp4';
+                        input.onchange = (e) => {
+                          const file = (e.target as HTMLInputElement).files?.[0];
+                          if (file) setMusicFile(file);
+                        };
+                        input.click();
+                      }}
+                      className={cn(
+                        "px-4 py-2 rounded-xl border transition-all flex items-center gap-3 group/music",
+                        musicFile ? "bg-indigo-500/10 border-indigo-500/40 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.1)]" : "bg-white/5 border-white/10 text-slate-500 hover:bg-white/10 hover:border-white/20"
+                      )}
+                    >
+                      {musicFile ? <Zap className="h-3 w-3 animate-pulse" /> : <Plus className="h-3 w-3 group-hover/music:rotate-90 transition-transform" />}
+                      <span className="text-[9px] font-black uppercase tracking-widest">
+                        {musicFile ? musicFile.name.substring(0, 15) + "..." : "Add Soundtrack"}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Video/Mimic Mode Layer */}
+                <div
+                  {...getRefProps()}
+                  className={cn(
+                    "col-start-1 row-start-1 flex flex-col items-center justify-center p-12 cursor-pointer group/drop transition-opacity duration-300",
+                    activeMode === "video" ? "opacity-100 pointer-events-auto z-10" : "opacity-0 pointer-events-none z-0"
+                  )}
+                >
+                  <input {...getRefInputProps()} />
+                  {refFile ? (
+                    <div className="absolute inset-0 group/video">
+                      <video src={refVideoUrlRef.current || undefined} className="w-full h-full object-cover opacity-80" />
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/video:opacity-100 transition-all flex flex-col items-center justify-center backdrop-blur-sm">
+                        <div className="h-16 w-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-4">
+                          <Video className="h-8 w-8 text-cyan-400" />
+                        </div>
+                        <p className="text-xs font-black text-white uppercase tracking-[0.4em] mb-2">{refFile.name}</p>
+                        <button
+                          onClick={(e) => { e.stopPropagation(); setRefFile(null); }}
+                          className="px-6 py-2 rounded-xl bg-red-600 text-white text-[10px] font-black uppercase tracking-widest hover:bg-red-500 transition-all shadow-2xl"
+                        >
+                          Replace Reference
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center space-y-6">
+                      <div className="h-20 w-20 rounded-3xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mx-auto group-hover/drop:scale-110 group-hover/drop:bg-cyan-500 group-hover/drop:text-white transition-all duration-500 shadow-2xl">
+                        <Upload className="h-8 w-8" />
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-xs font-black text-white uppercase tracking-[0.4em]">Bind Style Reference</p>
+                        <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Drag and drop a video to mimic its DNA</p>
+                      </div>
+                      <div className="pt-4 flex items-center justify-center gap-3">
+                        <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">MP4</div>
+                        <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">MOV</div>
+                        <div className="px-2 py-1 rounded bg-white/5 border border-white/10 text-[8px] font-black text-slate-500 uppercase">AVI</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 

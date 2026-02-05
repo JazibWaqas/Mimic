@@ -562,7 +562,7 @@ def run_mimic_pipeline(
         try:
             print(f"[PROCESS] Exporting master intelligence report...")
             if result.advisor:
-                print(f"   (Intelligence data confirmed: {len(result.advisor.overall_strategy)} chars)")
+                print(f"   (Intelligence data confirmed: {len(result.advisor.editorial_strategy)} chars)")
             
             with open(json_report_path, "w", encoding="utf-8") as jf:
                 json_data = result.model_dump_json(indent=2)

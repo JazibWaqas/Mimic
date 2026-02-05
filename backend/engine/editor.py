@@ -38,10 +38,183 @@ from models import (
     EnergyLevel,
     MotionType,
     ClipMetadata,
-    AdvisorHints
+    AdvisorHints,
+    MomentCandidate,
+    SegmentMomentPlan,
+    ContextualMomentSelection
 )
 from engine.processors import has_audio, get_beat_grid, align_to_nearest_beat
 from engine.gemini_advisor import get_advisor_suggestions, compute_advisor_bonus
+from engine.moment_selector import (
+    build_moment_candidates,
+    select_moment_with_advisor,
+    plan_segment_moments
+)
+
+
+# ============================================================================
+# CUT DENSITY EXPECTATION (CDE) - v13.3 Music-Aware Subdivision Bias
+# ============================================================================
+# CDE is a deterministic, derived signal that biases subdivision decisions
+# based on musical cadence from reference audio analysis.
+# 
+# Hard Rules:
+# - CDE is advisory, not absolute
+# - Beats remain snap points only, never authorities  
+# - Only applies in REFERENCE mode
+# - No new AI calls, derived from existing data only
+# ============================================================================
+
+def calculate_cut_density_expectation(
+    segment,
+    beat_grid: List[float],
+    blueprint: StyleBlueprint,
+    mode: str
+) -> str:
+    """
+    Calculate Cut Density Expectation (CDE) for a segment.
+    
+    CDE ∈ {Sparse, Moderate, Dense}
+    
+    Derived deterministically from:
+    - segment.duration
+    - segment.cut_origin
+    - segment.expected_hold
+    - beat density (beats/sec within segment window)
+    - blueprint.peak_density (global musical density context)
+    
+    Args:
+        segment: The blueprint segment being analyzed
+        beat_grid: List of beat timestamps from reference audio
+        blueprint: The full blueprint for global context
+        mode: "REFERENCE" or "PROMPT" (CDE only applies in REFERENCE)
+    
+    Returns:
+        str: One of "Sparse", "Moderate", "Dense"
+    """
+    # CDE only applies in REFERENCE mode
+    if mode != "REFERENCE":
+        return "Moderate"  # Neutral default for creative mode
+    
+    # === BASELINE FROM SEGMENT METADATA ===
+    duration = segment.duration
+    cut_origin = getattr(segment, 'cut_origin', 'visual')
+    expected_hold = getattr(segment, 'expected_hold', 'Normal')
+    
+    # Calculate local beat density (beats per second within this segment)
+    segment_beats = [b for b in beat_grid if segment.start <= b < segment.end]
+    local_beat_density = len(segment_beats) / duration if duration > 0 else 0
+    
+    # === SIGNAL 1: CUT ORIGIN ===
+    # Beat-origin cuts suggest musical intention for density
+    if cut_origin == 'beat':
+        origin_bias = "Dense"
+    else:
+        origin_bias = "Moderate"  # Visual cuts default to moderate
+    
+    # === SIGNAL 2: EXPECTED HOLD ===
+    # Long holds suggest sparse cutting, Short holds suggest dense
+    hold_to_density = {
+        'Long': 'Sparse',
+        'Normal': 'Moderate', 
+        'Short': 'Dense'
+    }
+    hold_bias = hold_to_density.get(expected_hold, 'Moderate')
+    
+    # === SIGNAL 3: LOCAL BEAT DENSITY ===
+    # Derive density class from beats/second
+    # Typical ranges: Sparse < 0.5, Moderate 0.5-1.5, Dense > 1.5
+    if local_beat_density < 0.5:
+        beat_bias = "Sparse"
+    elif local_beat_density < 1.5:
+        beat_bias = "Moderate"
+    else:
+        beat_bias = "Dense"
+    
+    # === SIGNAL 4: GLOBAL PEAK DENSITY CONTEXT ===
+    # If this is a Peak segment and global density is high, bias toward Dense
+    global_density = getattr(blueprint, 'peak_density', 'Moderate')
+    if segment.arc_stage == 'Peak' and global_density == 'Dense':
+        peak_bias = "Dense"
+    elif segment.arc_stage == 'Intro' and global_density == 'Sparse':
+        peak_bias = "Sparse"
+    else:
+        peak_bias = "Moderate"
+    
+    # === CONFLICT RESOLUTION (Weighted Voting) ===
+    # Hold bias has highest weight (it's the director's intent)
+    # Beat bias is second (musical reality)
+    # Origin and peak are tie-breakers
+    
+    votes = {
+        'Sparse': 0,
+        'Moderate': 0,
+        'Dense': 0
+    }
+    
+    # Weighted voting
+    votes[hold_bias] += 3  # Director intent: highest weight
+    votes[beat_bias] += 2  # Musical reality: high weight  
+    votes[origin_bias] += 1  # Cut origin: tie-breaker
+    votes[peak_bias] += 1  # Global context: tie-breaker
+    
+    # === DURATION REALITY CHECK ===
+    # Very short segments (< 1s) cannot be Sparse regardless of votes
+    if duration < 1.0:
+        # Force at least Moderate for sub-second segments
+        if votes['Sparse'] > votes['Moderate'] and votes['Sparse'] > votes['Dense']:
+            votes['Moderate'] += 2  # Boost moderate to override sparse
+    
+    # Very long segments (> 3s) with beat-origin should respect musical intent
+    if duration > 3.0 and cut_origin == 'beat' and len(segment_beats) > 3:
+        votes['Dense'] += 1  # Slight boost to honor musical phrasing
+    
+    # === FINAL CDE SELECTION ===
+    max_votes = max(votes.values())
+    winners = [k for k, v in votes.items() if v == max_votes]
+    
+    # Default hierarchy for ties: Moderate > Sparse > Dense
+    # (Prefer conservative cutting when uncertain)
+    if 'Moderate' in winners:
+        cde = 'Moderate'
+    elif 'Sparse' in winners:
+        cde = 'Sparse'
+    else:
+        cde = 'Dense'
+    
+    return cde
+
+
+def get_cde_max_cuts(cde: str, base_max: int, is_sacred_cut: bool) -> int:
+    """
+    Apply CDE bias to max_cuts_per_segment.
+    
+    CDE only influences the ceiling - it never forces subdivision.
+    The editor can always choose fewer cuts if content demands it.
+    
+    | CDE       | Effect on max_cuts                                      |
+    |-----------|-----------------------------------------------------------|
+    | Sparse    | Strongly prefer single usable window, resist subdivision  |
+    | Moderate  | Allow 1-2 cuts if needed (baseline)                       |
+    | Dense     | Encourage subdivision even if visuals could hold          |
+    """
+    if is_sacred_cut:
+        # Sacred cuts have hard ceiling of 2, CDE can only reduce
+        if cde == 'Sparse':
+            return 1  # Strongly prefer single window
+        else:
+            return 2  # Allow up to 2 for Moderate/Dense
+    
+    # Non-sacred cuts: CDE biases the ceiling
+    if cde == 'Sparse':
+        # Sparse: Cap at max(2, base/2) - resist fragmentation
+        return min(base_max, max(2, base_max // 2))
+    elif cde == 'Dense':
+        # Dense: Increase ceiling by 50% (but hard cap at 12)
+        return min(12, int(base_max * 1.5))
+    else:
+        # Moderate: Use base calculation
+        return base_max
 
 
 def match_clips_to_blueprint(
@@ -308,6 +481,78 @@ def match_clips_to_blueprint(
         is_sacred_cut_ref = (mode == "REFERENCE" and cut_origin == "visual")
         if is_sacred_cut_ref:
             max_cuts_per_segment = 2  # Hard limit for reference authority
+        
+        # v13.3: CUT DENSITY EXPECTATION (CDE) - Music-aware subdivision bias
+        # Calculate CDE from existing beat/musical data to influence cut density
+        cde = calculate_cut_density_expectation(segment, beat_grid, blueprint, mode)
+        
+        # Apply CDE bias to max_cuts (advisory - only affects ceiling)
+        max_cuts_per_segment = get_cde_max_cuts(cde, max_cuts_per_segment, is_sacred_cut_ref)
+        
+        # Log CDE decision for observability (only in REFERENCE mode)
+        if mode == "REFERENCE":
+            segment_beats = [b for b in beat_grid if segment.start <= b < segment.end]
+            beat_density = len(segment_beats) / segment.duration if segment.duration > 0 else 0
+            print(f"    🎵 CDE: {cde} (beats: {len(segment_beats)}, density: {beat_density:.2f}/s, hold: {getattr(segment, 'expected_hold', 'Normal')}, origin: {cut_origin})")
+            print(f"    📐 max_cuts: {max_cuts_per_segment}")
+        
+        # v14.0: ADVISOR-DRIVEN CONTEXTUAL MOMENT SELECTION
+        # Check if Advisor has pre-computed moment plans for this segment
+        advisor_moment_plan = None
+        if advisor_hints and hasattr(advisor_hints, 'segment_moment_plans'):
+            plan_key = str(segment.id)
+            if plan_key in advisor_hints.segment_moment_plans:
+                advisor_moment_plan = advisor_hints.segment_moment_plans[plan_key]
+                print(f"    🎯 Advisor moment plan: {len(advisor_moment_plan.moments)} moment(s)")
+                for m in advisor_moment_plan.moments:
+                    print(f"       - {m.clip_filename} [{m.start:.2f}s-{m.end:.2f}s] ({m.duration:.2f}s, {m.moment_role})")
+        
+        # If Advisor provided a moment plan, execute it directly
+        if advisor_moment_plan and advisor_moment_plan.moments:
+            for moment in advisor_moment_plan.moments:
+                # Find the clip
+                selected_clip = next(
+                    (c for c in clip_index.clips if c.filename == moment.clip_filename),
+                    None
+                )
+                if not selected_clip:
+                    print(f"    [WARN] Advisor-recommended clip {moment.clip_filename} not found")
+                    continue
+                
+                # Calculate actual duration to use
+                use_duration = min(moment.duration, segment_remaining)
+                
+                # Create decision
+                decision = EditDecision(
+                    segment_id=segment.id,
+                    clip_path=selected_clip.filepath,
+                    clip_start=moment.start,
+                    clip_end=moment.start + use_duration,
+                    timeline_start=timeline_position,
+                    timeline_end=timeline_position + use_duration,
+                    reasoning=f"Advisor-selected: {moment.reason or 'Contextual moment selection'}",
+                    vibe_match=True  # Assume Advisor made good choice
+                )
+                decisions.append(decision)
+                
+                # Update tracking
+                timeline_position += use_duration
+                segment_remaining -= use_duration
+                clip_usage_count[selected_clip.filename] += 1
+                clip_last_used_at[selected_clip.filename] = timeline_position
+                clip_current_position[selected_clip.filename] = moment.start + use_duration
+                cuts_in_segment += 1
+                
+                print(f"    ✂️ Cut {cuts_in_segment}: {selected_clip.filename} "
+                      f"[{moment.start:.2f}s-{moment.start + use_duration:.2f}s] "
+                      f"({use_duration:.2f}s) → timeline [{decision.timeline_start:.6f}s-{decision.timeline_end:.6f}s]")
+                print(f"       Advisor reasoning: {moment.reason or 'No specific reason provided'}")
+                
+                if segment_remaining <= 0.05:
+                    break
+            
+            # Skip the rest of the loop for this segment - Advisor handled it
+            continue
         
         while segment_remaining > 0.05 and cuts_in_segment < max_cuts_per_segment:
             # Update remaining duration based on current timeline position
@@ -841,7 +1086,7 @@ def match_clips_to_blueprint(
                 
                 # 1. Strategic Identity (The Anchor)
                 if narrative_subject_match:
-                    target_sub = advisor.primary_narrative_subject.value if advisor else "Subject"
+                    target_sub = advisor.primary_narrative_subject.value if advisor and advisor.primary_narrative_subject else "Subject"
                     narrative_parts.append(f"Prioritizing narrative continuity by anchoring on '{target_sub}' as requested by the text intent.")
                 elif "🚫Filler" in str(reasons):
                     narrative_parts.append("Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor.")
@@ -1074,10 +1319,76 @@ def match_clips_to_blueprint(
             clip_start = None
             clip_end = None
             
+            # v13.2: USABLE WINDOW - Derived from BestMoment, conditioned on segment contract
+            # This replaces hard best_moment boundaries with extension capability for sacred cuts
             if selected_clip.best_moments:
-                best_moment = selected_clip.get_best_moment_for_energy(segment.energy)
-                if best_moment:
-                    window_start, window_end = best_moment
+                best_moment_data = selected_clip.get_best_moment_for_energy(segment.energy)
+                if best_moment_data:
+                    window_start, window_end = best_moment_data
+                    
+                    # Check if this is a sacred visual cut eligible for window extension
+                    # Conditions: visual origin, stable moment, longer duration needed
+                    can_extend = False
+                    moment_obj = None
+                    switched_moment = False
+                    
+                    # Retrieve the full BestMoment object for stable_moment check
+                    if selected_clip.best_moments and segment.energy.value in selected_clip.best_moments:
+                        moment_obj = selected_clip.best_moments[segment.energy.value]
+                        
+                    if (mode == "REFERENCE" and 
+                        cut_origin == "visual" and 
+                        moment_obj and 
+                        moment_obj.stable_moment):
+                        
+                        # Calculate if extension is needed and possible
+                        moment_duration = window_end - window_start
+                        segment_remaining = segment.end - timeline_position
+                        
+                        # Extension needed if moment is shorter than what we need
+                        if moment_duration < segment_remaining - 0.05:
+                            # Calculate max extension limits
+                            max_hold_limit = 12.0 if hold == "long" else (1.8 if hold == "short" else 4.5)
+                            usable_duration_needed = min(segment_remaining, max_hold_limit)
+                            
+                            # Can we extend within clip bounds?
+                            # Try extending forward first (beyond window_end)
+                            max_possible_end = min(window_start + usable_duration_needed, selected_clip.duration)
+                            
+                            if max_possible_end > window_end + 0.1:
+                                # Extension is possible - expand the usable window
+                                window_end = max_possible_end
+                                can_extend = True
+                                print(f"    📐 UsableWindow extended: {window_start:.2f}s-{window_end:.2f}s (stable moment)")
+                            else:
+                                # Extension NOT possible - check if other moments in same clip can satisfy
+                                # Look for compatible moments (similar moment_role, stable, sufficient duration)
+                                target_role = moment_obj.moment_role
+                                best_alternative = None
+                                best_alt_duration = 0
+                                
+                                for level_name, moment in selected_clip.best_moments.items():
+                                    if level_name == segment.energy.value:
+                                        continue  # Skip the one we already checked
+                                    
+                                    alt_duration = moment.end - moment.start
+                                    # Check compatibility: stable and long enough
+                                    if (moment.stable_moment and 
+                                        alt_duration >= segment_remaining - 0.05 and
+                                        alt_duration > best_alt_duration):
+                                        # Check role similarity (e.g., Build/Climax/Establishing can substitute)
+                                        compatible_roles = [target_role, "Build", "Climax", "Establishing"]
+                                        if moment.moment_role in compatible_roles or target_role in compatible_roles:
+                                            best_alternative = (level_name, moment)
+                                            best_alt_duration = alt_duration
+                                
+                                if best_alternative:
+                                    alt_level, alt_moment = best_alternative
+                                    window_start, window_end = alt_moment.start, alt_moment.end
+                                    switched_moment = True
+                                    print(f"    🔄 Switched to {alt_level} moment: {window_start:.2f}s-{window_end:.2f}s "
+                                          f"({window_end-window_start:.2f}s, role: {alt_moment.moment_role})")
+                    
                     current_pos = clip_current_position[selected_clip.filename]
                     
                     # Start from current pos if it's in window, else reset to window start
@@ -1086,7 +1397,7 @@ def match_clips_to_blueprint(
                     else:
                         clip_start = window_start
                     
-                    # End is clip_start + use_duration, capped by window end
+                    # End is clip_start + use_duration, capped by (potentially extended/switched) window_end
                     clip_end = min(clip_start + use_duration, window_end)
                     
                     # If the window is too small for the duration, use sequential fallback
