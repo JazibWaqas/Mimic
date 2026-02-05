@@ -1420,7 +1420,7 @@ def analyze_all_clips(clip_paths: List[str], api_key: str | None = None, use_com
 
     # Use ThreadPoolExecutor for I/O bound API calls
     # 5 workers is a safe balance for 28 keys to avoid hitting global IP limits
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_clip = {executor.submit(process_single_clip, i, path): i for i, path in enumerate(clip_paths)}
         for future in concurrent.futures.as_completed(future_to_clip):
             idx = future_to_clip[future]

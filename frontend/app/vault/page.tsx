@@ -92,7 +92,7 @@ export default function VaultPage() {
             if (type === "results") item = results.find(r => r.filename === filename);
             else if (type === "references") item = references.find(r => r.filename === filename);
             else if (type === "clips") item = clips.find(c => c.filename === filename);
-            
+
             if (item) {
                 setSelectedItem(item);
                 setViewMode(type);
@@ -120,7 +120,7 @@ export default function VaultPage() {
     // Auto-scroll decision list
     useEffect(() => {
         if (viewMode === "results" && intelligence?.edl?.decisions) {
-            const activeIdx = intelligence.edl.decisions.findIndex((d: any) => 
+            const activeIdx = intelligence.edl.decisions.findIndex((d: any) =>
                 currentTime >= d.timeline_start && currentTime <= d.timeline_end
             );
             if (activeIdx !== -1 && decisionListRef.current) {
@@ -167,7 +167,7 @@ export default function VaultPage() {
 
     return (
         <div className="min-h-screen bg-[#08090a] text-slate-100 flex flex-col overflow-hidden">
-            
+
             {/* STAGE HEADER: Netflix-Deep Glass */}
             <header className="h-20 flex items-center justify-between px-12 bg-[#08090a]/80 backdrop-blur-2xl border-b border-white/[0.03] shrink-0 z-[100]">
                 <div className="flex items-center gap-6">
@@ -181,7 +181,7 @@ export default function VaultPage() {
                     <div className="relative group">
                         <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-3xl rounded-2xl border border-white/5 group-focus-within:border-indigo-500/20 group-focus-within:bg-white/[0.04] transition-all duration-700" />
                         <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-indigo-400 z-10 transition-colors" />
-                        <input 
+                        <input
                             type="text"
                             placeholder="Search library..."
                             value={searchQuery}
@@ -221,8 +221,8 @@ export default function VaultPage() {
                                 <div
                                     className={cn(
                                         "relative w-full aspect-video rounded-xl overflow-hidden border transition-all duration-500 bg-[#0f1115] shadow-2xl",
-                                        isSelected 
-                                            ? "border-indigo-500 ring-2 ring-indigo-500/40 scale-[1.05] z-10" 
+                                        isSelected
+                                            ? "border-indigo-500 ring-2 ring-indigo-500/40 scale-[1.05] z-10"
                                             : "border-white/5 opacity-90 hover:opacity-100 hover:scale-[1.02] hover:border-white/20"
                                     )}
                                 >
@@ -237,7 +237,7 @@ export default function VaultPage() {
                                             <Film className="h-6 w-6 text-indigo-500/20" />
                                         </div>
                                     )}
-                                    
+
                                     {/* Netflix-style Card Footer */}
                                     <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent flex flex-col justify-end p-3 transform translate-y-2 group-hover/item:translate-y-0 transition-transform">
                                         <div className="flex items-center justify-between">
@@ -263,9 +263,9 @@ export default function VaultPage() {
             {/* WORKBENCH: Dense Two-Column Stage */}
             <main className="flex-1 flex overflow-hidden">
                 <div className="flex-1 flex flex-col overflow-y-auto custom-scrollbar p-12">
-                    
+
                     <div className="max-w-[1400px] mx-auto w-full flex gap-10 items-start">
-                        
+
                         {/* LEFT: Video Stage (Increased height for cinematic feel) */}
                         <div className="flex-1 flex flex-col gap-10 min-w-0">
                             <div className="relative w-full max-w-[820px] mx-auto group">
@@ -314,10 +314,10 @@ export default function VaultPage() {
 
                             {/* AI INTELLIGENCE SUITE: Collapsible Forensic Modules */}
                             <div className="w-full max-w-[820px] mx-auto space-y-4">
-                                
+
                                 {/* 1. WHY THE EDIT WORKS (The Story) */}
                                 <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden group/module">
-                                    <button 
+                                    <button
                                         onClick={() => setIntelExpanded(!intelExpanded)}
                                         className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
                                     >
@@ -332,13 +332,13 @@ export default function VaultPage() {
                                         </div>
                                         {intelExpanded ? <ChevronUp className="h-4 w-4 text-slate-600" /> : <ChevronDown className="h-4 w-4 text-slate-600" />}
                                     </button>
-                                    
+
                                     {intelExpanded && (
                                         <div className="p-8 pt-0 space-y-8 animate-slide-in-from-top">
                                             <div className="space-y-4">
                                                 <p className="text-base font-medium text-slate-300 leading-relaxed italic border-l-2 border-cyan-500/30 pl-6">
-                                                    "{intelligence?.critique?.monologue ? 
-                                                        intelligence.critique.monologue.split('.').slice(0, 2).join('.') + '.' : 
+                                                    "{intelligence?.critique?.monologue ?
+                                                        intelligence.critique.monologue.split('.').slice(0, 2).join('.') + '.' :
                                                         "This edit flows naturally, capturing the energy perfectly while maintaining a consistent visual rhythm."}"
                                                 </p>
                                                 <p className="text-sm text-slate-400 leading-relaxed pl-6 opacity-60">
@@ -370,7 +370,7 @@ export default function VaultPage() {
 
                                 {/* MORE DETAILS TOGGLE */}
                                 {!showMoreDetails ? (
-                                    <button 
+                                    <button
                                         onClick={() => setShowMoreDetails(true)}
                                         className="w-full py-4 text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] hover:text-indigo-400 transition-colors"
                                     >
@@ -410,7 +410,7 @@ export default function VaultPage() {
                                             </button>
                                         </div>
 
-                                        <button 
+                                        <button
                                             onClick={() => setShowMoreDetails(false)}
                                             className="w-full py-2 text-[8px] font-black text-slate-700 uppercase tracking-widest hover:text-white transition-colors"
                                         >
@@ -438,7 +438,7 @@ export default function VaultPage() {
                                 {!intelligence?.edl?.decisions?.length ? (
                                     <div className="h-full flex flex-col items-center justify-center opacity-20 text-center px-12">
                                         <Zap className="h-10 w-10 mb-6 text-indigo-500" />
-                                        <p className="text-[11px] font-black uppercase tracking-[0.2em] leading-relaxed">Awaiting logic<br/>Play to sync</p>
+                                        <p className="text-[11px] font-black uppercase tracking-[0.2em] leading-relaxed">Awaiting logic<br />Play to sync</p>
                                     </div>
                                 ) : (
                                     intelligence.edl.decisions.map((decision: any, idx: number) => {
@@ -446,8 +446,8 @@ export default function VaultPage() {
                                         return (
                                             <div key={idx} className={cn(
                                                 "p-6 rounded-[2rem] border transition-all duration-700 relative group/card",
-                                                isActive 
-                                                    ? "bg-indigo-600/20 border-indigo-500/50 shadow-[0_20px_40px_rgba(0,0,0,0.3)] scale-[1.02] z-10" 
+                                                isActive
+                                                    ? "bg-indigo-600/20 border-indigo-500/50 shadow-[0_20px_40px_rgba(0,0,0,0.3)] scale-[1.02] z-10"
                                                     : "bg-white/[0.02] border-white/5 opacity-60 hover:opacity-100 hover:bg-white/[0.04]"
                                             )}>
                                                 <div className="flex items-center justify-between mb-4">

@@ -271,11 +271,12 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
         energy: DEPRECATED - no longer used for geometry decisions
         is_reference: DEPRECATED - no longer special-cased
     """
-    # UNIFORM CINEMATIC PRESERVE
-    # Always preserve source framing, never crop, never zoom
-    geometry_filters = "scale=1080:-2:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2"
+    # V14.1 SMART CROP (Zoom-to-Fill)
+    # Scales until the frame is full, then crops the overflow.
+    # Matches the 'object-cover' aesthetic preferred for phone/creator content.
+    geometry_filters = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
     
-    print(f"  [GEOMETRY] Mode: cinematic_preserve (uniform)")
+    print(f"  [GEOMETRY] Mode: smart_crop (zoom-to-fill)")
 
     cmd = [
         "ffmpeg",
