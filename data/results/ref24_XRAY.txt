@@ -1,0 +1,795 @@
+================================================================================
+X-RAY DIAGNOSTIC REPORT - REFERENCE MODE LOCK
+================================================================================
+Reference: ref24
+Total Segments: 16
+Total Clips: 30
+================================================================================
+
+================================================================================
+SEGMENT 1 X-RAY | 0.00s-3.42s | Intro | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip50.mp4 | SCORE: 200.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip61.mp4 | SCORE: 188.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -12.0 points
+
+   #3 | clip63.mp4 | SCORE: 180.0
+   Vibes: Group, Crowd
+   Subjects: People-Group, People-Crowd
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -20.0 points
+
+   #4 | clip64.mp4 | SCORE: 178.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -22.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip50.mp4
+   Final Score: 200.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 2 X-RAY | 3.42s-7.28s | Intro | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip61.mp4 | SCORE: 203.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip64.mp4 | SCORE: 193.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+   #3 | clip63.mp4 | SCORE: 185.0
+   Vibes: Group, Crowd
+   Subjects: People-Group, People-Crowd
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -18.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip61.mp4
+   Final Score: 203.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 3 X-RAY | 7.28s-11.23s | Intro | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip63.mp4 | SCORE: 195.0
+   Vibes: Group, Crowd
+   Subjects: People-Group, People-Crowd
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip64.mp4 | SCORE: 183.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -12.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip63.mp4
+   Final Score: 195.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 4 X-RAY | 11.23s-14.47s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip49.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip52.mp4 | SCORE: 213.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip64.mp4 | SCORE: 213.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+   #4 | clip65.mp4 | SCORE: 213.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip72.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip49.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 5 X-RAY | 14.47s-17.58s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip52.mp4 | SCORE: 213.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip54.mp4 | SCORE: 213.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip55.mp4 | SCORE: 213.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip65.mp4 | SCORE: 213.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip72.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip52.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 6 X-RAY | 17.58s-20.89s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip54.mp4 | SCORE: 213.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip55.mp4 | SCORE: 213.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip64.mp4 | SCORE: 213.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+   #4 | clip78.mp4 | SCORE: 213.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip56.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip54.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 7 X-RAY | 20.89s-24.83s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip64.mp4 | SCORE: 213.0
+   Vibes: Group, Urban
+   Subjects: People-Group, Place-Urban
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+
+   #2 | clip65.mp4 | SCORE: 213.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip72.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip51.mp4 | SCORE: 203.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+   #5 | clip53.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip64.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 8 X-RAY | 24.83s-28.78s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip55.mp4 | SCORE: 213.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip65.mp4 | SCORE: 213.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip72.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip78.mp4 | SCORE: 213.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip51.mp4 | SCORE: 203.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip55.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 9 X-RAY | 28.78s-32.63s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip78.mp4 | SCORE: 213.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip56.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+   #3 | clip57.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+   #4 | clip58.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+   #5 | clip59.mp4 | SCORE: 203.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip78.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 10 X-RAY | 32.63s-36.24s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip72.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip51.mp4 | SCORE: 203.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -10.0 points
+
+   #3 | clip53.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+   #4 | clip62.mp4 | SCORE: 203.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+   #5 | clip67.mp4 | SCORE: 203.0
+   Vibes: Solo, Celebration
+   Subjects: People-Solo, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip72.mp4
+   Final Score: 213.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 11 X-RAY | 36.24s-39.88s | Build-up | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip56.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+
+   #2 | clip57.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip58.mp4 | SCORE: 203.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+   #4 | clip59.mp4 | SCORE: 203.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip60.mp4 | SCORE: 203.0
+   Vibes: Crowd, Vehicle
+   Subjects: People-Crowd, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip56.mp4
+   Final Score: 203.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 12 X-RAY | 39.88s-43.46s | Peak | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip51.mp4 | SCORE: 223.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+
+   #2 | clip53.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip62.mp4 | SCORE: 223.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip67.mp4 | SCORE: 223.0
+   Vibes: Solo, Celebration
+   Subjects: People-Solo, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip71.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Urban
+   Subjects: Object-Vehicle, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip51.mp4
+   Final Score: 223.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 13 X-RAY | 43.46s-46.91s | Peak | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip57.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip58.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+   #3 | clip59.mp4 | SCORE: 223.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip60.mp4 | SCORE: 223.0
+   Vibes: Crowd, Vehicle
+   Subjects: People-Crowd, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip66.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip57.mp4
+   Final Score: 223.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 14 X-RAY | 46.91s-50.20s | Peak | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip58.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+
+   #2 | clip59.mp4 | SCORE: 223.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip60.mp4 | SCORE: 223.0
+   Vibes: Crowd, Vehicle
+   Subjects: People-Crowd, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip66.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip69.mp4 | SCORE: 223.0
+   Vibes: Crowd, Vehicle
+   Subjects: People-Crowd, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip58.mp4
+   Final Score: 223.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 15 X-RAY | 50.20s-53.31s | Peak | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip62.mp4 | SCORE: 223.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip67.mp4 | SCORE: 223.0
+   Vibes: Solo, Celebration
+   Subjects: People-Solo, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip71.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Urban
+   Subjects: Object-Vehicle, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+   #4 | clip75.mp4 | SCORE: 223.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #5 | clip59.mp4 | SCORE: 213.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip62.mp4
+   Final Score: 223.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 16 X-RAY | 53.31s-53.82s | Peak | Vibe: General
+================================================================================
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip67.mp4 | SCORE: 223.0
+   Vibes: Solo, Celebration
+   Subjects: People-Solo, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+
+   #2 | clip71.mp4 | SCORE: 223.0
+   Vibes: Vehicle, Urban
+   Subjects: Object-Vehicle, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness.
+   Delta from winner: -0.0 points
+
+   #3 | clip75.mp4 | SCORE: 223.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip60.mp4 | SCORE: 213.0
+   Vibes: Crowd, Vehicle
+   Subjects: People-Crowd, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+   #5 | clip66.mp4 | SCORE: 213.0
+   Vibes: Vehicle, Crowd
+   Subjects: Object-Vehicle, People-Crowd
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip67.mp4
+   Final Score: 223.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+END OF X-RAY REPORT
+================================================================================

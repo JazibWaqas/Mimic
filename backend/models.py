@@ -226,9 +226,22 @@ class StyleBlueprint(BaseModel):
         
         # Check total duration matches last segment end
         if 'total_duration' in info.data:
-            expected = v[-1].end
-            if abs(info.data['total_duration'] - expected) > 0.01:
-                raise ValueError(f'total_duration must equal last segment end')
+            expected_duration = info.data['total_duration']
+            last_segment_end = v[-1].end
+            gap = expected_duration - last_segment_end
+            
+            # If Gemini truncated the video (common bug), auto-extend the last segment
+            if gap > 0.1:  # More than 100ms gap
+                print(f"[VALIDATION] Gemini truncated analysis: video is {expected_duration:.2f}s but segments end at {last_segment_end:.2f}s")
+                print(f"[VALIDATION] Auto-extending last segment by {gap:.2f}s to match video duration")
+                
+                # Extend the last segment to match video duration
+                v[-1].end = expected_duration
+                v[-1].duration = v[-1].end - v[-1].start
+                
+            # If segments extend beyond video (shouldn't happen, but check)
+            elif gap < -0.1:  # Segments go 100ms+ past video end
+                raise ValueError(f'Segments extend beyond video duration (video: {expected_duration:.2f}s, segments end: {last_segment_end:.2f}s)')
         
         return v
 

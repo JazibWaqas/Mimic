@@ -1080,7 +1080,7 @@ def match_clips_to_blueprint(
                 # 3. Lighting Continuity (+10 points)
                 content = (clip.content_description or "").lower()
                 is_night_segment = any(kw in target_vibe for kw in ["night", "dark", "evening"])
-                is_night_clip = any(kw in content or kw in str(clip_vibes) for kw in ["night", "dark", "evening", "neon"])
+                is_night_clip = any(kw in content or kw in str(clip_descriptors) for kw in ["night", "dark", "evening", "neon"])
                 
                 if is_night_segment == is_night_clip:
                     score += 10.0

@@ -1,0 +1,363 @@
+{
+  "text_overlay": "oh ! to be this young again >",
+  "text_style": {
+    "font_style": "Serif",
+    "animation": "Static",
+    "placement": "Center",
+    "color_effects": "White"
+  },
+  "text_behavior": {
+    "appearance_logic": "Continuous",
+    "entry_moment": "Opening-frame",
+    "exit_rule": "Hold-past-frame",
+    "priority": "Primary"
+  },
+  "text_cadence": "Static",
+  "text_events": [],
+  "narrative_message": "A nostalgic reflection on the carefree joy and boundless energy of childhood.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Neutral",
+    "contrast": "Medium",
+    "specific_look": "Vintage VHS"
+  },
+  "aspect_ratio": "1:1",
+  "visual_effects": [
+    "VHS noise",
+    "Grain",
+    "Vignette",
+    "Scan lines"
+  ],
+  "stylistic_invariants": [
+    "Static center text overlay",
+    "Hard cuts on musical beats",
+    "Consistent VHS aesthetic"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Medium",
+    "variety_level": "Moderate"
+  },
+  "editing_style": "Memory reel",
+  "cut_style": "Hard cuts",
+  "transition_effects": [],
+  "emotional_intent": "Nostalgic",
+  "arc_description": "The edit moves through various snapshots of play, building energy through movement before settling into a quiet, reflective ending.",
+  "pacing_feel": "Steady",
+  "visual_balance": "People-centric",
+  "peak_density": "Moderate",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Pop/Indie",
+    "vocal_presence": "Vocals",
+    "energy": "Medium"
+  },
+  "must_have_content": [
+    "Children in active play",
+    "Candid, unposed moments",
+    "Vintage or low-fi texture",
+    "Playground or recreational settings"
+  ],
+  "should_have_content": [
+    "Close-ups of facial expressions",
+    "Group interactions",
+    "Rhythmic movement (jumping, swinging)"
+  ],
+  "avoid_content": [
+    "Modern high-definition footage",
+    "Staged or professional acting",
+    "Modern technology or gadgets"
+  ],
+  "music_structure": {
+    "phrases": [
+      "Intro verse",
+      "Chorus build",
+      "Resolution"
+    ],
+    "accent_moments": [
+      "1.35",
+      "2.69",
+      "4.71",
+      "7.07",
+      "8.75",
+      "9.8",
+      "11.1"
+    ],
+    "ending_type": "Hard stop"
+  },
+  "total_duration": 12.25873,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 1.35,
+      "duration": 1.35,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Playful",
+      "shot_scale": "Medium",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Intro",
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Normal",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "jumping action",
+        "resolves": "None",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 2,
+      "start": 1.35,
+      "end": 2.69,
+      "duration": 1.34,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Energetic",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "dancing",
+        "resolves": "jumping",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 3,
+      "start": 2.69,
+      "end": 4.71,
+      "duration": 2.02,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Intimate",
+      "shot_scale": "CU",
+      "shot_scale_role": "Intimacy-Focus",
+      "arc_stage": "Build-up",
+      "shot_function": "Detail",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "temporal_weight": "Breath",
+      "emotional_anchor": true,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "opening snack",
+        "resolves": "None",
+        "type": "Object-Interaction"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 4,
+      "start": 4.71,
+      "end": 7.07,
+      "duration": 2.36,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Joyful",
+      "shot_scale": "Wide",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Setup",
+      "expected_hold": "Long",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "seesaw motion",
+        "resolves": "None",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 5,
+      "start": 7.07,
+      "end": 8.75,
+      "duration": 1.68,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Chaotic",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "jumping",
+        "resolves": "None",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 6,
+      "start": 8.75,
+      "end": 9.8,
+      "duration": 1.05,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Determined",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "climbing",
+        "resolves": "None",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 7,
+      "start": 9.8,
+      "end": 11.1,
+      "duration": 1.3,
+      "media_type": "Video",
+      "energy": "Low",
+      "motion": "Dynamic",
+      "vibe": "Peaceful",
+      "shot_scale": "Wide",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Outro",
+      "shot_function": "Release",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "swinging",
+        "resolves": "None",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 8,
+      "start": 11.1,
+      "end": 12.25873,
+      "duration": 1.15873,
+      "media_type": "Video",
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Finality",
+      "shot_scale": "Wide",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Outro",
+      "shot_function": "Button",
+      "relation_to_previous": "None",
+      "expected_hold": "Normal",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Emotional-Silence",
+      "audio_priority": "Silence > All",
+      "cut_motivation": "Narrative-Shift",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "None",
+        "resolves": "None",
+        "type": "None"
+      },
+      "camera_movement": "Locked"
+    }
+  ],
+  "overall_reasoning": "The video functions as a nostalgic montage, using a heavy VHS filter and a square aspect ratio to simulate a home video from the past. The static text overlay acts as a persistent narrative anchor, framing the energetic play of the children as a lost ideal. The editing is tightly bound to the rhythm of the music, with hard cuts emphasizing the beat and creating a sense of rapid, fleeting memories.",
+  "ideal_material_suggestions": [
+    "Candid footage of children playing outdoors in golden hour light.",
+    "Low-angle shots of kids jumping on trampolines or running through sprinklers.",
+    "Close-ups of messy faces and hands playing with toys.",
+    "Footage with natural camera shake and soft focus to enhance the vintage feel."
+  ],
+  "reference_audio": "original",
+  "audio_confidence": "Observed",
+  "_contract": {
+    "type": "reference",
+    "version": "12.1",
+    "source_hash": "347f7da21ba5dbdccbdcf514ebca6601",
+    "fingerprint": "hf9a25724"
+  },
+  "_cache_version": "12.1",
+  "_cached_at": "2026-02-06 16:00:40"
+}

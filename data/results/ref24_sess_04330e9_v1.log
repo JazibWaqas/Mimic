@@ -1,0 +1,705 @@
+================================================================================
+PIPELINE RUN: REF24.MP4
+================================================================================
+Session ID: sess_04330e9121e48c4dc1c84ff1167a43b6
+Reference: ref24.mp4
+Clips: 30
+Timestamp: 2026-02-06 15:28:39
+
+[PROGRESS] Step 1/5: Validating inputs...
+
+[1/5] Validating inputs...
+[WS] Connection attempt for session: sess_04330e9121e48c4dc1c84ff1167a43b6
+[WS] Origin: http://localhost:3000
+[WS] Connection accepted for session: sess_04330e9121e48c4dc1c84ff1167a43b6
+[WS] Session found: sess_04330e9121e48c4dc1c84ff1167a43b6
+[PROGRESS] Step 2/5: Detecting visual cuts and analyzing reference structure...
+
+[2/5] Detecting visual cuts and analyzing reference structure...
+  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.12)...
+  [DIAGNOSTIC] Detecting visual scene changes (threshold=0.12)...
+  [OK] Detected 94 visual cuts.
+  [BEAT] Detecting BPM for ref_analysis_audio.wav...
+  [OK] Detected BPM: 107.67
+  [HYBRID] Visual cuts: 94, Beat-enhanced: 63
+
+============================================================
+[BRAIN] ANALYZING REFERENCE VIDEO: ref24.mp4
+[BRAIN] Using 63 visual scene anchors.
+============================================================
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+Uploading ref24.mp4...
+Waiting for video processing (state: PROCESSING)...
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.18s). Index: 224 clips, 3 results, 20 refs.
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/j22gfd8082ny
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.11s). Index: 224 clips, 3 results, 20 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.13s). Index: 224 clips, 3 results, 20 refs.
+[RETRY DEBUG] Reference analysis attempt 1 failed: 1 validation error for StyleBlueprint
+segments
+  Value error, total_duration must equal last segment end [type=value_error, input_value=[{'id': 1, 'start': 0.0, ...ra_movement': 'Locked'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.6/v/value_error
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+Uploading ref24.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/43oghv70nvuj
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.12s). Index: 224 clips, 3 results, 20 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.10s). Index: 224 clips, 3 results, 20 refs.
+[RETRY DEBUG] Reference analysis attempt 2 failed: 1 validation error for StyleBlueprint
+segments
+  Value error, total_duration must equal last segment end [type=value_error, input_value=[{'id': 1, 'start': 0.0, ...ra_movement': 'Locked'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.6/v/value_error
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+Uploading ref24.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/h67s9tcr5vdz
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.42s). Index: 224 clips, 3 results, 20 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.09s). Index: 224 clips, 3 results, 20 refs.
+[RETRY DEBUG] Reference analysis attempt 3 failed: 1 validation error for StyleBlueprint
+segments
+  Value error, total_duration must equal last segment end [type=value_error, input_value=[{'id': 1, 'start': 0.0, ...ra_movement': 'Locked'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.6/v/value_error
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+Uploading ref24.mp4...
+Waiting for video processing (state: PROCESSING)...
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/c7zaj4kqfbmn
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.11s). Index: 224 clips, 3 results, 20 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.06s). Index: 224 clips, 3 results, 20 refs.
+[RETRY DEBUG] Reference analysis attempt 4 failed: 1 validation error for StyleBlueprint
+segments
+  Value error, total_duration must equal last segment end [type=value_error, input_value=[{'id': 1, 'start': 0.0, ...ovement': 'Smooth pan'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.6/v/value_error
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+Uploading ref24.mp4...
+Waiting for video processing (state: PROCESSING)...
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.06s). Index: 224 clips, 3 results, 20 refs.
+Upload complete: https://generativelanguage.googleapis.com/v1beta/files/m8yx8vsk1ga5
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.06s). Index: 224 clips, 3 results, 20 refs.
+[WS] Error in WebSocket handler: 
+[WS] Connection closed for session: sess_04330e9121e48c4dc1c84ff1167a43b6
+[RETRY DEBUG] Reference analysis attempt 5 failed: 1 validation error for StyleBlueprint
+segments
+  Value error, total_duration must equal last segment end [type=value_error, input_value=[{'id': 1, 'start': 0.0, ...ra_movement': 'Locked'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.6/v/value_error
+[ERROR] Gemini reference analysis failed: Failed to analyze reference: 1 validation error for StyleBlueprint
+segments
+  Value error, total_duration must equal last segment end [type=value_error, input_value=[{'id': 1, 'start': 0.0, ...ra_movement': 'Locked'}], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.6/v/value_error
+    FALLING BACK to linear 2-second segments. Results will be generic.
+[WARN] Using fallback mode: Linear 2-second segments
+[PROGRESS] Step 3/5: Analyzing user clips with Gemini AI...
+
+[3/5] Analyzing user clips with Gemini AI...
+
+============================================================
+[BRAIN] PARALLEL ANALYSIS: 30 clips
+[BRAIN] Model: gemini-3-flash-preview
+============================================================
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+
+  Analyzing comprehensively: clip50.mp4...  Analyzing comprehensively: clip49.mp4...
+
+  Analyzing comprehensively: clip52.mp4...
+  Analyzing comprehensively: clip53.mp4...
+  Analyzing comprehensively: clip51.mp4...[OK] Using Gemini 3 model: gemini-3-flash-preview
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Loaded: Low/Dynamic/intensity=1 with 3 best moments
+    [CACHE] Subject: People-Solo, Object-Vehicle
+
+    [CACHE] Derived vibes: Solo, Vehicle
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+
+
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Subject: People-Solo, Place-Urban    [CACHE] Subject: People-Group, Place-Indoor    [CACHE] Subject: Object-Vehicle, Place-Nature
+  Analyzing comprehensively: clip54.mp4...
+
+
+
+
+    [CACHE] Derived vibes: Solo, Urban
+  Analyzing comprehensively: clip55.mp4...    [CACHE] Derived vibes: Group, Indoor    [CACHE] Derived vibes: Vehicle, Nature
+    [CACHE] Subject: Object-Vehicle, People-Solo
+
+
+    [CACHE] Derived vibes: Vehicle, Solo    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Subject: Object-Vehicle
+  Analyzing comprehensively: clip56.mp4...
+
+
+    [CACHE] Derived vibes: Vehicle    [CACHE] Subject: Object-Vehicle
+
+    [CACHE] Derived vibes: Vehicle
+[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: Object-Vehicle, People-Crowd
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Derived vibes: Vehicle, Crowd
+  Analyzing comprehensively: clip57.mp4...
+  Analyzing comprehensively: clip58.mp4...
+
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+
+    [CACHE] Subject: Object-Vehicle, Activity-Travel[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+[OK] Using Gemini 3 model: gemini-3-flash-preview  Analyzing comprehensively: clip59.mp4...    [CACHE] Subject: Object-Vehicle, People-Crowd    [CACHE] Derived vibes: Vehicle, Travel
+
+
+
+
+  Analyzing comprehensively: clip60.mp4...
+    [CACHE] Derived vibes: Vehicle, Crowd  Analyzing comprehensively: clip62.mp4...[OK] Using Gemini 3 model: gemini-3-flash-preview  Analyzing comprehensively: clip61.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview  Analyzing comprehensively: clip63.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+
+    [CACHE] Subject: Object-Vehicle  Analyzing comprehensively: clip64.mp4...
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments  Analyzing comprehensively: clip65.mp4...
+
+
+
+    [CACHE] Subject: People-Group, Place-Urban    [CACHE] Subject: People-Solo    [CACHE] Subject: People-Crowd, Object-Vehicle    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Loaded: Medium/Dynamic/intensity=2 with 3 best moments    [CACHE] Derived vibes: Vehicle
+
+
+    [CACHE] Derived vibes: Group, Urban
+    [CACHE] Derived vibes: Solo
+
+    [CACHE] Subject: People-Group, People-Crowd    [CACHE] Derived vibes: Crowd, Vehicle
+
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments    [CACHE] Subject: People-Group, Place-Urban
+
+
+
+    [CACHE] Derived vibes: Group, Urban    [CACHE] Subject: People-Solo, Place-Urban    [CACHE] Derived vibes: Group, Crowd
+
+    [CACHE] Derived vibes: Solo, Urban
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip66.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: Object-Vehicle, People-Crowd
+    [CACHE] Derived vibes: Vehicle, Crowd
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+  Analyzing comprehensively: clip67.mp4...  Analyzing comprehensively: clip68.mp4...
+
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+
+    [CACHE] Subject: People-Solo, Activity-Celebration    [CACHE] Subject: Object-Vehicle, Place-Urban
+
+    [CACHE] Derived vibes: Vehicle, Urban    [CACHE] Derived vibes: Solo, Celebration
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip71.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: Object-Vehicle, Place-Urban
+    [CACHE] Derived vibes: Vehicle, Urban
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip72.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip69.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments  Analyzing comprehensively: clip73.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+
+
+  Analyzing comprehensively: clip75.mp4...  Analyzing comprehensively: clip74.mp4...    [CACHE] Subject: People-Crowd, Object-Vehicle    [CACHE] Subject: Object-Vehicle, People-Solo
+
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: Object-Vehicle
+    [CACHE] Derived vibes: Crowd, Vehicle    [CACHE] Derived vibes: Vehicle, Solo
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments  Analyzing comprehensively: clip70.mp4...
+
+
+
+    [CACHE] Derived vibes: Vehicle
+    [CACHE] Subject: People-Group    [CACHE] Subject: People-Solo, Object-Vehicle
+
+
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Derived vibes: Group    [CACHE] Derived vibes: Solo, Vehicle
+
+
+    [CACHE] Subject: People-Crowd, Object-Vehicle[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+    [CACHE] Derived vibes: Crowd, Vehicle  Analyzing comprehensively: clip76.mp4...
+
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: Object-Vehicle, People-Crowd
+    [CACHE] Derived vibes: Vehicle, Crowd
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip78.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Object-Vehicle
+    [CACHE] Derived vibes: Group, Vehicle
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip77.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Crowd, Object-Vehicle
+    [CACHE] Derived vibes: Crowd, Vehicle
+
+[OK] All 30 clips analyzed in parallel
+[OK] Gemini successfully analyzed 30 clips (using originals for cache).
+  ✅ Library Health: 94.3% readiness
+  [CACHE] Hit! Using persistent standardized clip: clip49.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip50.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip51.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip52.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip53.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip54.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip55.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip56.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip57.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip58.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip59.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip60.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip61.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip62.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip63.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip64.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip65.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip66.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip67.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip68.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip69.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip70.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip71.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip72.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip73.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip74.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip75.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip76.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip77.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip78.mp4
+[OK] All clips standardized (cached or new) and ready for render.
+[PROGRESS] Step 4/5: Creating edit sequence...
+
+[4/5] Creating edit sequence...
+
+============================================================
+[EDITOR] MATCHING CLIPS TO BLUEPRINT (REFERENCE MODE)
+============================================================
+  🔒 REFERENCE MODE: Structure is sacred, no looping, no lying EDL
+  Segments: 16
+  Clips: 30
+  Clips with pre-computed best moments: 30/30
+
+============================================================
+[ADVISOR] GENERATING STRATEGIC GUIDANCE
+============================================================
+  ❌ AUTHORITY FAILURE: Blueprint version (0.0) != Required (12.1)
+  ⚠️ Skipping strategic guidance. Please re-analyze reference 
+  ⚙️ Advisor disabled: Using base matcher only
+  🎵 Beat grid generated: 97 beats at 107.67 BPM
+  ✅ Active beat grid: 97 points
+
+
+📊 CLIP DEMAND ANALYSIS:
+   Reference needs: High=4, Medium=8, Low=4
+   You have:        High=26, Medium=3, Low=1
+   ⚠️ DEFICIT: Need 5 more Medium-energy clips
+   ⚠️ DEFICIT: Need 3 more Low-energy clips
+
+
+Segment 1: 0.00s-3.32s (3.32s, Low/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.81/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip50.mp4 (Score: 200.0)
+    📐 UsableWindow extended: 0.00s-3.32s (stable moment)
+    ✂️ Cut 1: clip50.mp4 [0.00s-3.32s] (3.32s) → timeline [0.000000s-3.315081s]
+[SEGMENT 1 LOG] Ref: 3.32s | Rendered: 3.32s | Cuts: 1 | Mode: REFERENCE
+
+Segment 2: 3.32s-6.48s (3.17s, Low/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.89/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip61.mp4 (Score: 203.0)
+    ✂️ Cut 1: clip61.mp4 [0.00s-3.17s] (3.17s) → timeline [3.315081s-6.481730s]
+[SEGMENT 2 LOG] Ref: 3.17s | Rendered: 3.17s | Cuts: 1 | Mode: REFERENCE
+
+Segment 3: 6.48s-10.01s (3.53s, Low/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.70/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip63.mp4 (Score: 195.0)
+    📐 UsableWindow extended: 0.00s-3.53s (stable moment)
+    ✂️ Cut 1: clip63.mp4 [0.00s-3.53s] (3.53s) → timeline [6.481730s-10.014615s]
+[SEGMENT 3 LOG] Ref: 3.53s | Rendered: 3.53s | Cuts: 1 | Mode: REFERENCE
+
+Segment 4: 10.01s-13.48s (3.47s, Low/Dynamic)
+    🎵 CDE: Moderate (beats: 7, density: 2.02/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness.
+  📎 Selected: clip64.mp4 (Score: 193.0)
+    📐 UsableWindow extended: 0.00s-3.47s (stable moment)
+    ✂️ Cut 1: clip64.mp4 [0.00s-3.47s] (3.47s) → timeline [10.014615s-13.482205s]
+[SEGMENT 4 LOG] Ref: 3.47s | Rendered: 3.47s | Cuts: 1 | Mode: REFERENCE
+
+Segment 5: 13.48s-16.92s (3.44s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.75/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip52.mp4 (Score: 213.0)
+    📐 UsableWindow extended: 2.00s-5.44s (stable moment)
+    ✂️ Cut 1: clip52.mp4 [2.00s-5.44s] (3.44s) → timeline [13.482205s-16.917803s]
+[SEGMENT 5 LOG] Ref: 3.44s | Rendered: 3.44s | Cuts: 1 | Mode: REFERENCE
+
+Segment 6: 16.92s-19.99s (3.07s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 5, density: 1.63/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip49.mp4 (Score: 213.0)
+    ⚠️ UNDERFILL (3.00s < 3.07s) - Accepting honestly (no loop)
+    ✂️ Cut 1: clip49.mp4 [8.50s-11.50s] (3.00s) → timeline [16.917803s-19.917803s]
+    ✂️ Cut 2: clip54.mp4 [8.50s-8.57s] (0.07s) → timeline [19.917803s-19.985392s]
+[SEGMENT 6 LOG] Ref: 3.07s | Rendered: 3.07s | Cuts: 2 | Mode: REFERENCE
+
+Segment 7: 19.99s-23.12s (3.13s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.92/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip65.mp4 (Score: 213.0)
+    📐 UsableWindow extended: 3.50s-6.63s (stable moment)
+    ✂️ Cut 1: clip65.mp4 [3.50s-6.63s] (3.13s) → timeline [19.985392s-23.116009s]
+[SEGMENT 7 LOG] Ref: 3.13s | Rendered: 3.13s | Cuts: 1 | Mode: REFERENCE
+
+Segment 8: 23.12s-26.89s (3.77s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 7, density: 1.86/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip55.mp4 (Score: 213.0)
+    📐 UsableWindow extended: 2.00s-4.55s (stable moment)
+    ⚠️ UNDERFILL (2.55s < 3.77s) - Accepting honestly (no loop)
+    ✂️ Cut 1: clip55.mp4 [2.00s-4.55s] (2.55s) → timeline [23.116009s-25.663009s]
+    ✂️ Cut 2: clip72.mp4 [3.00s-4.22s] (1.22s) → timeline [25.663009s-26.887363s]
+[SEGMENT 8 LOG] Ref: 3.77s | Rendered: 3.77s | Cuts: 2 | Mode: REFERENCE
+
+Segment 9: 26.89s-30.74s (3.85s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 7, density: 1.82/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip78.mp4 (Score: 213.0)
+    📐 UsableWindow extended: 17.50s-21.35s (stable moment)
+    ✂️ Cut 1: clip78.mp4 [17.50s-21.35s] (3.85s) → timeline [26.887363s-30.739829s]
+[SEGMENT 9 LOG] Ref: 3.85s | Rendered: 3.85s | Cuts: 1 | Mode: REFERENCE
+
+Segment 10: 30.74s-34.18s (3.44s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.75/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness.
+  📎 Selected: clip51.mp4 (Score: 203.0)
+    📐 UsableWindow extended: 1.50s-4.94s (stable moment)
+    ✂️ Cut 1: clip51.mp4 [1.50s-4.94s] (3.44s) → timeline [30.739829s-34.175397s]
+[SEGMENT 10 LOG] Ref: 3.44s | Rendered: 3.44s | Cuts: 1 | Mode: REFERENCE
+
+Segment 11: 34.18s-37.34s (3.17s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.89/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness.
+  📎 Selected: clip56.mp4 (Score: 203.0)
+    📐 UsableWindow extended: 2.00s-5.17s (stable moment)
+    ✂️ Cut 1: clip56.mp4 [2.00s-5.17s] (3.17s) → timeline [34.175397s-37.342240s]
+[SEGMENT 11 LOG] Ref: 3.17s | Rendered: 3.17s | Cuts: 1 | Mode: REFERENCE
+
+Segment 12: 37.34s-40.37s (3.03s, Medium/Dynamic)
+    🎵 CDE: Moderate (beats: 5, density: 1.65/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip53.mp4 (Score: 203.0)
+    ✂️ Cut 1: clip53.mp4 [6.00s-9.00s] (3.00s) → timeline [37.342240s-40.342240s]
+    ⚠️ GAP in segment 12 (0.0250s) - Accepting honestly (no stretch)
+    🔧 Extended decision 14 timeline to segment end: 40.3673s
+[SEGMENT 12 LOG] Ref: 3.03s | Rendered: 3.03s | Cuts: 1 | Mode: REFERENCE
+
+Segment 13: 40.37s-43.75s (3.39s, High/Dynamic)
+    🎵 CDE: Moderate (beats: 6, density: 1.77/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip57.mp4 (Score: 223.0)
+    ⚠️ UNDERFILL (3.00s < 3.39s) - Accepting honestly (no loop)
+    ✂️ Cut 1: clip57.mp4 [0.00s-3.00s] (3.00s) → timeline [40.367265s-43.367265s]
+    ✂️ Cut 2: clip62.mp4 [2.50s-2.89s] (0.39s) → timeline [43.367265s-43.754852s]
+[SEGMENT 13 LOG] Ref: 3.39s | Rendered: 3.39s | Cuts: 2 | Mode: REFERENCE
+
+Segment 14: 43.75s-47.52s (3.77s, High/Dynamic)
+    🎵 CDE: Moderate (beats: 7, density: 1.86/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness.
+  📎 Selected: clip58.mp4 (Score: 223.0)
+    📐 UsableWindow extended: 3.50s-7.27s (stable moment)
+    ✂️ Cut 1: clip58.mp4 [3.50s-7.27s] (3.77s) → timeline [43.754852s-47.521236s]
+[SEGMENT 14 LOG] Ref: 3.77s | Rendered: 3.77s | Cuts: 1 | Mode: REFERENCE
+
+Segment 15: 47.52s-51.52s (3.99s, High/Dynamic)
+    🎵 CDE: Moderate (beats: 7, density: 1.75/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip67.mp4 (Score: 223.0)
+    📐 UsableWindow extended: 5.50s-9.49s (stable moment)
+    ✂️ Cut 1: clip67.mp4 [5.50s-9.49s] (3.99s) → timeline [47.521236s-51.516001s]
+[SEGMENT 15 LOG] Ref: 3.99s | Rendered: 3.99s | Cuts: 1 | Mode: REFERENCE
+
+Segment 16: 51.52s-53.82s (2.30s, High/Dynamic)
+    🎵 CDE: Moderate (beats: 4, density: 1.74/s, hold: Normal, origin: visual)
+    📐 max_cuts: 2
+  🧠 AI: 🌟 Maintains visual freshness, lighting consistency.
+  📎 Selected: clip59.mp4 (Score: 223.0)
+    ✂️ Cut 1: clip59.mp4 [1.50s-3.80s] (2.30s) → timeline [51.516001s-53.820998s]
+[SEGMENT 16 LOG] Ref: 2.30s | Rendered: 2.30s | Cuts: 1 | Mode: REFERENCE
+
+============================================================
+[OK] Matching complete: 19 edit decisions
+[OK] Total timeline duration: 53.82s (target: 53.82s)
+
+📊 DIVERSITY REPORT:
+   Unique clips used: 19/30
+   ⚠️ 11 clips were not used.
+
+   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
+
+📋 ENERGY COMPROMISES: 13
+   (Used adjacent energy when exact wasn't available)
+      Medium→High: 10 times
+      Low→Medium: 3 times
+
+💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
+   [Inventory Gaps]
+   → Add 5 more MEDIUM-ENERGY clips (walking, social, casual movement, city life)
+   → Add 3 more LOW-ENERGY clips (scenic, calm, establishing shots, landscapes)
+
+   [Quality Improvements]
+   → 3 segments wanted 'Low' energy but used 'Medium'.
+     Add more 'Nature' or 'Calm' clips to reduce jitter here.
+============================================================
+
+
+🔬 X-RAY diagnostic report exported: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref24_XRAY.txt
+
+============================================================
+[EDL] EDIT DECISION LIST SUMMARY
+============================================================
+
+Total decisions: 19
+Total segments: 16
+Available clips: 30
+
+Clip usage distribution:
+  clip_002.mp4: 1 times
+  clip_013.mp4: 1 times
+  clip_015.mp4: 1 times
+  clip_016.mp4: 1 times
+  clip_004.mp4: 1 times
+  clip_001.mp4: 1 times
+  clip_006.mp4: 1 times
+  clip_017.mp4: 1 times
+  clip_007.mp4: 1 times
+  clip_024.mp4: 1 times
+  clip_030.mp4: 1 times
+  clip_003.mp4: 1 times
+  clip_008.mp4: 1 times
+  clip_005.mp4: 1 times
+  clip_009.mp4: 1 times
+  clip_014.mp4: 1 times
+  clip_010.mp4: 1 times
+  clip_019.mp4: 1 times
+  clip_011.mp4: 1 times
+
+🧠 INTELLIGENCE AUDIT (Narrative Compliance):
+   Vibe Accuracy: 0.0% matching suggested vibes
+
+   Shot Function Breakdown:
+                  : 19 cuts
+
+   Arc Stage Fidelity:
+      Intro       : 0.0% intent alignment
+      Build-up    : 0.0% intent alignment
+      Peak        : 0.0% intent alignment
+
+[PROGRESS] Step 5/5: Rendering final video...
+
+[5/5] Rendering final video...
+    [OK] Segment extracted: 0.00s - 3.32s
+    [OK] Segment extracted: 0.00s - 3.17s
+    [OK] Segment extracted: 0.00s - 3.53s
+    [OK] Segment extracted: 0.00s - 3.47s
+    [OK] Segment extracted: 2.00s - 5.44s
+    [OK] Segment extracted: 8.50s - 11.50s
+    [OK] Segment extracted: 8.50s - 8.57s
+    [OK] Segment extracted: 3.50s - 6.63s
+    [OK] Segment extracted: 2.00s - 4.55s
+    [OK] Segment extracted: 3.00s - 4.22s
+    [OK] Segment extracted: 17.50s - 21.35s
+    [OK] Segment extracted: 1.50s - 4.94s
+    [OK] Segment extracted: 2.00s - 5.17s
+    [OK] Segment extracted: 6.00s - 9.00s
+    [OK] Segment extracted: 0.00s - 3.00s
+    [OK] Segment extracted: 2.50s - 2.89s
+    [OK] Segment extracted: 3.50s - 7.27s
+    [OK] Segment extracted: 5.50s - 9.49s
+    [OK] Segment extracted: 1.50s - 3.80s
+  [OK] Concatenated 19 segments (frame-perfect)
+  [STYLIST] No styling requested. Copying passthrough.
+  [OK] Audio extracted: ref_audio.aac
+  [AUDIO PAD] Video is 0.22s longer than audio - padding with silence
+  [OK] Audio merged onto video (optimized)
+
+================================================================================
+✅ SUCCESS!
+================================================================================
+
+📊 Basic Results:
+   Output: ref24_sess_04330e9_v1.mp4
+   Duration: 54.43s (ref: 53.82s)
+   Difference: 0.61s
+   Processing time: 677.3s
+
+================================================================================
+🧠 COMPREHENSIVE SYSTEM ANALYSIS
+================================================================================
+
+📹 Reference Analysis:
+   Editing Style: General
+   Emotional Intent: Dynamic
+   Arc Description: 
+   Total Segments: 16
+
+📑 BLUEPRINT FULL SEGMENT LIST:
+   01:  0.00- 3.32s | Low    | Vibe: General    | Intro
+   02:  3.32- 6.48s | Low    | Vibe: General    | Intro
+   03:  6.48-10.01s | Low    | Vibe: General    | Intro
+   04: 10.01-13.48s | Low    | Vibe: General    | Intro
+   05: 13.48-16.92s | Medium | Vibe: General    | Build-up
+   06: 16.92-19.99s | Medium | Vibe: General    | Build-up
+   07: 19.99-23.12s | Medium | Vibe: General    | Build-up
+   08: 23.12-26.89s | Medium | Vibe: General    | Build-up
+   09: 26.89-30.74s | Medium | Vibe: General    | Build-up
+   10: 30.74-34.18s | Medium | Vibe: General    | Build-up
+   11: 34.18-37.34s | Medium | Vibe: General    | Build-up
+   12: 37.34-40.37s | Medium | Vibe: General    | Build-up
+   13: 40.37-43.75s | High   | Vibe: General    | Peak
+   14: 43.75-47.52s | High   | Vibe: General    | Peak
+   15: 47.52-51.52s | High   | Vibe: General    | Peak
+   16: 51.52-53.82s | High   | Vibe: General    | Peak
+
+📈 Arc Stage Distribution:
+   Build-up: 8 segments (50.0%)
+   Intro: 4 segments (25.0%)
+   Peak: 4 segments (25.0%)
+
+📎 Clip Usage Analysis:
+   Unique clips used: 19/30
+   Most used clips:
+     clip_002.mp4: 1 times (5.3%)
+     clip_013.mp4: 1 times (5.3%)
+     clip_015.mp4: 1 times (5.3%)
+     clip_016.mp4: 1 times (5.3%)
+     clip_004.mp4: 1 times (5.3%)
+
+🧠 AI Reasoning Breakdown:
+   ✨ Smart Match: 0 (0.0%)
+   🎯 Good Fit: 0 (0.0%)
+   ⚙️ Constraint Relaxation: 0 (0.0%)
+
+🎨 Vibe Matching:
+   Matches: 0/19 (0.0%)
+
+📏 Cut Statistics by Arc Stage:
+   Intro: 4 cuts, avg 3.37s
+   Build-up: 10 cuts, avg 2.69s
+   Peak: 5 cuts, avg 2.69s
+
+📏 Overall Cut Statistics:
+   Total cuts: 19
+   Average cut: 2.83s
+   Shortest cut: 0.07s
+   Longest cut: 3.99s
+
+💭 Sample AI Reasoning (first 5 decisions):
+   1. clip_002.mp4: 🌟 Maintains visual freshness, lighting consistency.
+   2. clip_013.mp4: 🌟 Maintains visual freshness, lighting consistency.
+   3. clip_015.mp4: 🌟 Maintains visual freshness, lighting consistency.
+   4. clip_016.mp4: 🌟 Maintains visual freshness.
+   5. clip_004.mp4: 🌟 Maintains visual freshness, lighting consistency.
+
+📦 CLIP REGISTRY (30 total):
+   01: clip49.mp4      | High   |  15.9s | Vibes: Vehicle, Nature
+   02: clip50.mp4      | Low    |   8.8s | Vibes: Group, Indoor
+   03: clip51.mp4      | High   |   6.5s | Vibes: Solo, Urban
+   04: clip52.mp4      | High   |  13.6s | Vibes: Solo, Vehicle
+   05: clip53.mp4      | High   |  10.4s | Vibes: Vehicle, Solo
+   06: clip54.mp4      | High   |  18.8s | Vibes: Vehicle
+   07: clip55.mp4      | High   |   4.5s | Vibes: Vehicle
+   08: clip56.mp4      | High   |  17.0s | Vibes: Vehicle, Crowd
+   09: clip57.mp4      | High   |   9.8s | Vibes: Vehicle, Travel
+   10: clip58.mp4      | High   |  16.9s | Vibes: Vehicle, Crowd
+   11: clip59.mp4      | High   |   4.9s | Vibes: Vehicle
+   12: clip60.mp4      | High   |   6.5s | Vibes: Crowd, Vehicle
+   13: clip61.mp4      | Medium |   4.2s | Vibes: Group, Urban
+   14: clip62.mp4      | High   |   3.1s | Vibes: Solo
+   15: clip63.mp4      | Medium |   8.7s | Vibes: Group, Crowd
+   16: clip64.mp4      | Medium |   4.4s | Vibes: Group, Urban
+   17: clip65.mp4      | High   |  31.8s | Vibes: Solo, Urban
+   18: clip66.mp4      | High   |   3.0s | Vibes: Vehicle, Crowd
+   19: clip67.mp4      | High   |  13.9s | Vibes: Solo, Celebration
+   20: clip68.mp4      | High   |  17.2s | Vibes: Vehicle, Urban
+   21: clip69.mp4      | High   |  10.7s | Vibes: Crowd, Vehicle
+   22: clip70.mp4      | High   |  15.9s | Vibes: Crowd, Vehicle
+   23: clip71.mp4      | High   |   4.0s | Vibes: Vehicle, Urban
+   24: clip72.mp4      | High   |   8.2s | Vibes: Vehicle, Solo
+   25: clip73.mp4      | High   |   3.0s | Vibes: Group
+   26: clip74.mp4      | High   |   3.1s | Vibes: Vehicle
+   27: clip75.mp4      | High   |   4.9s | Vibes: Solo, Vehicle
+   28: clip76.mp4      | High   |  18.7s | Vibes: Vehicle, Crowd
+   29: clip77.mp4      | High   |  11.3s | Vibes: Crowd, Vehicle
+   30: clip78.mp4      | High   |  48.1s | Vibes: Group, Vehicle
+
+📋 Metadata Coverage:
+   Best Moments: 30/30
+   Vibes: 30/30
+
+🔍 Temporal Precision Check:
+   ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
+
+📦 Material Efficiency:
+   Total source duration available: 347.92s
+   Total duration used in edit: 53.80s
+   Unique clip segments used: 19
+   Utilization Ratio: 15.5%
+
+================================================================================
+🎉 Watch the result: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref24_sess_04330e9_v1.mp4
+================================================================================
+
+[PROGRESS] Step 6/6: Generating post-render reflection...
+
+[6/6] Generating post-render reflection...
+
+[REFLECTOR] Generating Director's Critique...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.27s). Index: 224 clips, 4 results, 20 refs.
+  ✅ Critique cached: critique_f8e3ebb62d69f2cfbadff4bd95dbd128.json
+  ✅ Director's Critique generated (Score: 7.2/10)
+[PROCESS] Exporting master intelligence report...
+[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\ref24_sess_04330e9_v1.json (86427 bytes)

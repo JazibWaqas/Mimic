@@ -463,20 +463,26 @@ def run_mimic_pipeline(
         temp_video_path = temp_session_dir / "temp_video.mp4"
         concatenate_videos(segment_paths, str(temp_video_path))
         
-        # apply visual styling (text overlay, color grading)
-        styled_video_path = temp_session_dir / "temp_video_styled.mp4"
-        try:
-            apply_visual_styling(
-                str(temp_video_path),
-                str(styled_video_path),
-                blueprint.text_overlay,
-                blueprint.text_style,
-                blueprint.color_grading,
-                text_events=blueprint.text_events # v12.2 Timed Text
-            )
-            render_source = styled_video_path
-        except Exception as e:
-            print(f"[WARN] Stylist failed, using unstyled video: {e}")
+        # Apply visual styling (text overlay, color grading)
+        # DISABLED in Reference Mode for demo clarity (focus on timing precision)
+        if reference_path is None:  # Only apply styling in Creator Mode (text prompt)
+            styled_video_path = temp_session_dir / "temp_video_styled.mp4"
+            try:
+                print("[STYLIST] Applying visual styling (Creator Mode)...")
+                apply_visual_styling(
+                    str(temp_video_path),
+                    str(styled_video_path),
+                    blueprint.text_overlay,
+                    blueprint.text_style,
+                    blueprint.color_grading,
+                    text_events=blueprint.text_events # v12.2 Timed Text
+                )
+                render_source = styled_video_path
+            except Exception as e:
+                print(f"[WARN] Stylist failed, using unstyled video: {e}")
+                render_source = temp_video_path
+        else:
+            print("[STYLIST] Skipping visual styling (Reference Mode - demo clarity)")
             render_source = temp_video_path
         
         # Handle audio

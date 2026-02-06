@@ -1,0 +1,117 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' branding demands a cinematic hierarchy where individual grit is validated by the overwhelming power of the machinery. It requires a balance of 'Old Guard' legacy and 'New Frontier' adrenaline.",
+  "dominant_narrative": "A visceral exploration of the bond between an elite aviator and their craft, transitioning from nostalgic legacy to high-stakes aerial dominance.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Mechanical details and establishing vistas.",
+      "intent_diluting_material": "High-speed chaotic cuts or aggressive explosions.",
+      "reasoning": "The intro must establish the 'Legacy' aspect of the narrative. Using PEACE and nostalgic elements like insignia or old photos grounds the high-octane action to follow in a human story.",
+      "recommended_clips": [
+        "clip_002.mp4",
+        "clip_006.mp4",
+        "clip_007.mp4",
+        "clip_010.mp4",
+        "clip_016.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Preparation, engine ignitions, and high-speed ground travel.",
+      "intent_diluting_material": "Static landscapes without a sense of impending motion.",
+      "reasoning": "This stage functions as the 'Pre-flight' checklist. We need to see the pilot's focus (INTENSITY) and the machine's awakening to justify the energy of the peak.",
+      "recommended_clips": [
+        "clip_005.mp4",
+        "clip_008.mp4",
+        "clip_009.mp4",
+        "clip_012.mp4",
+        "clip_019.mp4",
+        "clip_036.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Cockpit reactions, environmental effects (dust/vapor), and explosions.",
+      "intent_diluting_material": "Slow-paced reflections or wide shots that linger too long without kinetic change.",
+      "reasoning": "The Peak is the 'Dogfight.' It must be a relentless display of ACTION. The focus is on the kinetic relationship between the pilot's maneuvers and the jet's response.",
+      "recommended_clips": [
+        "clip_013.mp4",
+        "clip_014.mp4",
+        "clip_021.mp4",
+        "clip_039.mp4",
+        "clip_040.mp4",
+        "clip_045.mp4",
+        "clip_047.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "Sunset vistas, romantic resolution, and symbolic formations.",
+      "intent_diluting_material": "Abrupt cuts or dark, low-quality footage.",
+      "reasoning": "The Outro provides the 'Release.' It should transition from the heat of battle to the warmth of camaraderie (JOY) and the sunset of a mission accomplished.",
+      "recommended_clips": [
+        "clip_004.mp4",
+        "clip_017.mp4",
+        "clip_024.mp4",
+        "clip_030.mp4",
+        "clip_048.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-quality (5/5) jet action footage perfectly matching the 'Top Gun' aesthetic.",
+      "Strong selection of 'High' energy clips for the Peak stage.",
+      "Excellent 'Golden Hour' and 'Teal-Orange' color consistency across key action clips."
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of 'Medium' and 'Low' energy clips requires using 'High' energy clips with slower internal motion for the Build-up.",
+      "Limited 'Indoor' variety means the 'Legacy' narrative must be carried primarily by the 'People-Solo' close-ups."
+    ],
+    "constraint_gaps": [
+      "The lack of 'Medium' energy transition material may result in a more aggressive pacing than the reference's syncopated feel.",
+      "Minimal 'Group' interaction clips outside of the beach scenes limits the 'Camaraderie' narrative to specific beats."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize the 'Pilot-to-Plane' pipeline. We start with the man (Intro), move to the machine (Build-up), explode into the mission (Peak), and return to the legend (Outro). Visuals with high-contrast 'Golden Hour' lighting will be the connective tissue that maintains the filmic look.",
+  "remake_strategy": "To achieve a true Director's Cut, additional 'Low' energy 'Place-Indoor' shots of a hangar or briefing room would deepen the 'Intensity' of the build-up. More 'People-Group' shots in professional settings would also strengthen the 'Elite Naval' legacy beyond the beach celebration.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical ignition or afterburners",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Pilot looking or adjusting visor",
+      "desired_continuity": "Action-Completion",
+      "priority": "High"
+    },
+    {
+      "trigger": "Nostalgic photographs or insignia",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "High-speed low-altitude flight",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-06T10:25:44.116455"
+}

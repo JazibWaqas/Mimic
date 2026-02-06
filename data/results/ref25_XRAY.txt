@@ -1,0 +1,467 @@
+================================================================================
+X-RAY DIAGNOSTIC REPORT - REFERENCE MODE LOCK
+================================================================================
+Reference: ref25
+Total Segments: 8
+Total Clips: 25
+================================================================================
+
+================================================================================
+SEGMENT 1 X-RAY | 0.00s-1.35s | Intro | Vibe: Playful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip88.mp4 | SCORE: 290.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip100.mp4 | SCORE: 265.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -25.0 points
+
+   #3 | clip101.mp4 | SCORE: 250.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Intro stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -40.0 points
+
+   #4 | clip80.mp4 | SCORE: 239.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -51.0 points
+
+   #5 | clip79.mp4 | SCORE: 224.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -66.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip88.mp4
+   Final Score: 290.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 2 X-RAY | 1.35s-2.69s | Build-up | Vibe: Energetic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip90.mp4 | SCORE: 350.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Energetic' atmosphere p
+
+   #2 | clip91.mp4 | SCORE: 350.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Energetic' atmosphere p
+   Delta from winner: -0.0 points
+
+   #3 | clip93.mp4 | SCORE: 350.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Energetic' atmosphere p
+   Delta from winner: -0.0 points
+
+   #4 | clip83.mp4 | SCORE: 325.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -25.0 points
+
+   #5 | clip79.mp4 | SCORE: 308.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -42.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip90.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 3 X-RAY | 2.69s-4.71s | Build-up | Vibe: Intimate
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip83.mp4 | SCORE: 350.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip95.mp4 | SCORE: 335.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #3 | clip91.mp4 | SCORE: 303.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this se
+   Delta from winner: -47.0 points
+
+   #4 | clip93.mp4 | SCORE: 303.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this se
+   Delta from winner: -47.0 points
+
+   #5 | clip79.mp4 | SCORE: 243.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -107.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip83.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 4 X-RAY | 4.71s-7.07s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip79.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip80.mp4 | SCORE: 350.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip81.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip82.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip84.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip79.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 5 X-RAY | 7.07s-8.75s | Peak | Vibe: Chaotic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip80.mp4 | SCORE: 333.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip86.mp4 | SCORE: 333.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip87.mp4 | SCORE: 333.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip99.mp4 | SCORE: 333.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #5 | clip103.mp4 | SCORE: 333.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip80.mp4
+   Final Score: 333.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 6 X-RAY | 8.75s-9.80s | Peak | Vibe: Determined
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip86.mp4 | SCORE: 333.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip87.mp4 | SCORE: 333.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip99.mp4 | SCORE: 333.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip103.mp4 | SCORE: 333.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #5 | clip81.mp4 | SCORE: 298.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -35.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip86.mp4
+   Final Score: 333.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 7 X-RAY | 9.80s-11.10s | Outro | Vibe: Peaceful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip95.mp4 | SCORE: 337.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. The visual content cap
+
+   #2 | clip98.mp4 | SCORE: 305.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -32.0 points
+
+   #3 | clip81.mp4 | SCORE: 295.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -42.0 points
+
+   #4 | clip92.mp4 | SCORE: 295.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -42.0 points
+
+   #5 | clip89.mp4 | SCORE: 270.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -67.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip95.mp4
+   Final Score: 337.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 8 X-RAY | 11.10s-12.26s | Outro | Vibe: Finality
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'oh ! to be this young again >' functions as a wistful sigh, demandin...
+   Dominant Narrative: A visceral, nostalgic journey back to the chaotic and unburdened physical play o...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip98.mp4 | SCORE: 305.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.
+
+   #2 | clip81.mp4 | SCORE: 295.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -10.0 points
+
+   #3 | clip89.mp4 | SCORE: 295.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -10.0 points
+
+   #4 | clip92.mp4 | SCORE: 295.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -10.0 points
+
+   #5 | clip100.mp4 | SCORE: 269.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -36.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip98.mp4
+   Final Score: 305.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+END OF X-RAY REPORT
+================================================================================
