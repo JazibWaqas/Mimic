@@ -43592,5 +43592,4184 @@
         }
       ]
     }
+  },
+  "sess_a874555cbee6db8ca3820b8453751397": {
+    "reference_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\reference\\ref20.mp4",
+    "music_path": null,
+    "clip_paths": [
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip49.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip50.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip51.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip52.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip53.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip54.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip55.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip56.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip57.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip58.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip59.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip60.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip61.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip62.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip63.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip64.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip65.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip66.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip67.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip68.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip69.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip70.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip71.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip72.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip73.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip74.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip75.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip76.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip77.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip78.mp4"
+    ],
+    "status": "complete",
+    "progress": 1.0,
+    "logs": [
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f The visual content captures the 'Hype' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip50.mp4 (Score: 350.0)",
+      "\u2702\ufe0f Cut 1: clip50.mp4 [5.50s-6.04s] (0.54s) \u2192 timeline [12.280000s-12.820000s]",
+      "[SEGMENT 22 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 23: 12.82s-13.35s (0.53s, Low/Static)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip61.mp4 (Score: 350.0)",
+      "\ud83d\udd04 Switched to High moment: 0.00s-3.00s (3.00s, role: Build)",
+      "\u2702\ufe0f Cut 1: clip61.mp4 [0.00s-0.53s] (0.53s) \u2192 timeline [12.820000s-13.350000s]",
+      "[SEGMENT 23 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 24: 13.35s-13.89s (0.54s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip78.mp4 (Score: 350.0)",
+      "\u2702\ufe0f Cut 1: clip78.mp4 [17.50s-18.04s] (0.54s) \u2192 timeline [13.350000s-13.890000s]",
+      "[SEGMENT 24 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 25: 13.89s-14.14s (0.25s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip63.mp4 (Score: 310.0)",
+      "\u2702\ufe0f Cut 1: clip63.mp4 [2.50s-2.75s] (0.25s) \u2192 timeline [13.890000s-14.140000s]",
+      "[SEGMENT 25 LOG] Ref: 0.25s | Rendered: 0.25s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 26: 14.14s-14.42s (0.28s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 1, density: 3.57/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Cinematic' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip62.mp4 (Score: 350.0)",
+      "\u2702\ufe0f Cut 1: clip62.mp4 [2.50s-2.78s] (0.28s) \u2192 timeline [14.140000s-14.420000s]",
+      "[SEGMENT 26 LOG] Ref: 0.28s | Rendered: 0.28s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 27: 14.42s-14.95s (0.53s, Medium/Static)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip77.mp4 (Score: 313.0)",
+      "\u2702\ufe0f Cut 1: clip77.mp4 [2.80s-3.33s] (0.53s) \u2192 timeline [14.420000s-14.950000s]",
+      "[SEGMENT 27 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 28: 14.95s-15.49s (0.54s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+      "\ud83d\udcce Selected: clip64.mp4 (Score: 258.0)",
+      "\u2702\ufe0f Cut 1: clip64.mp4 [0.50s-1.04s] (0.54s) \u2192 timeline [14.950000s-15.490000s]",
+      "[SEGMENT 28 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 29: 15.49s-16.02s (0.53s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly. Maintains visual freshness.",
+      "\ud83d\udcce Selected: clip68.mp4 (Score: 350.0)",
+      "\u2702\ufe0f Cut 1: clip68.mp4 [4.00s-4.53s] (0.53s) \u2192 timeline [15.490000s-16.020000s]",
+      "[SEGMENT 29 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 30: 16.02s-16.56s (0.54s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. The visual content captures the 'Hype' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+      "\ud83d\udcce Selected: clip74.mp4 (Score: 350.0)",
+      "\ud83d\udd04 Switched to Medium moment: 1.50s-3.00s (1.50s, role: Build)",
+      "\u2702\ufe0f Cut 1: clip74.mp4 [1.50s-2.04s] (0.54s) \u2192 timeline [16.020000s-16.560000s]",
+      "[SEGMENT 30 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 31: 16.56s-17.09s (0.53s, Low/Static)",
+      "\ud83c\udfb5 CDE: Dense (beats: 1, density: 1.89/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip61.mp4 (Score: 233.0)",
+      "\ud83d\udd04 Switched to High moment: 0.00s-3.00s (3.00s, role: Build)",
+      "\u2702\ufe0f Cut 1: clip61.mp4 [0.53s-1.06s] (0.53s) \u2192 timeline [16.560000s-17.090000s]",
+      "[SEGMENT 31 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 32: 17.09s-17.62s (0.53s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Acting as the primary emotional carrier for the Outro stage. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip78.mp4 (Score: 235.0)",
+      "\u2702\ufe0f Cut 1: clip78.mp4 [18.04s-18.57s] (0.53s) \u2192 timeline [17.090000s-17.620000s]",
+      "[SEGMENT 32 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 33: 17.62s-18.16s (0.54s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Establish' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip52.mp4 (Score: 214.0)",
+      "\u2702\ufe0f Cut 1: clip52.mp4 [2.17s-2.71s] (0.54s) \u2192 timeline [17.620000s-18.160000s]",
+      "[SEGMENT 33 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 34: 18.16s-18.69s (0.53s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Cinematic' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip63.mp4 (Score: 300.0)",
+      "\u2702\ufe0f Cut 1: clip63.mp4 [5.50s-6.03s] (0.53s) \u2192 timeline [18.160000s-18.690000s]",
+      "[SEGMENT 34 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 35: 18.69s-19.23s (0.54s, Medium/Static)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip67.mp4 (Score: 204.0)",
+      "\u2702\ufe0f Cut 1: clip67.mp4 [2.54s-3.08s] (0.54s) \u2192 timeline [18.690000s-19.230000s]",
+      "[SEGMENT 35 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 36: 19.23s-19.76s (0.53s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Outro stage.",
+      "\ud83d\udcce Selected: clip70.mp4 (Score: 193.0)",
+      "\u2702\ufe0f Cut 1: clip70.mp4 [3.50s-4.03s] (0.53s) \u2192 timeline [19.230000s-19.760000s]",
+      "[SEGMENT 36 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 37: 19.76s-20.29s (0.53s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 1, density: 1.89/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip53.mp4 (Score: 304.0)",
+      "\u2702\ufe0f Cut 1: clip53.mp4 [2.03s-2.56s] (0.53s) \u2192 timeline [19.760000s-20.290000s]",
+      "[SEGMENT 37 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 38: 20.29s-20.83s (0.54s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Outro stage. The visual content captures the 'Hype' atmosphere perfectly. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip77.mp4 (Score: 293.0)",
+      "\u2702\ufe0f Cut 1: clip77.mp4 [0.00s-0.54s] (0.54s) \u2192 timeline [20.290000s-20.830000s]",
+      "[SEGMENT 38 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 39: 20.83s-21.36s (0.53s, Low/Static)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Release' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence.",
+      "\ud83d\udcce Selected: clip51.mp4 (Score: 204.0)",
+      "\u2702\ufe0f Cut 1: clip51.mp4 [3.50s-4.03s] (0.53s) \u2192 timeline [20.830000s-21.360000s]",
+      "[SEGMENT 39 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 40: 21.36s-21.90s (0.54s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 2, density: 3.70/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip65.mp4 (Score: 179.0)",
+      "\u2702\ufe0f Cut 1: clip65.mp4 [3.50s-4.04s] (0.54s) \u2192 timeline [21.360000s-21.900000s]",
+      "[SEGMENT 40 LOG] Ref: 0.54s | Rendered: 0.54s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 41: 21.90s-22.43s (0.53s, Medium/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 0, density: 0.00/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segment.",
+      "\ud83d\udcce Selected: clip64.mp4 (Score: 178.0)",
+      "\u2702\ufe0f Cut 1: clip64.mp4 [1.04s-1.57s] (0.53s) \u2192 timeline [21.900000s-22.430000s]",
+      "[SEGMENT 41 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 42: 22.43s-22.96s (0.53s, High/Dynamic)",
+      "\ud83c\udfb5 CDE: Dense (beats: 1, density: 1.89/s, hold: Short, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 2",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Cinematic' atmosphere perfectly. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip73.mp4 (Score: 290.0)",
+      "\u2702\ufe0f Cut 1: clip73.mp4 [1.56s-2.09s] (0.53s) \u2192 timeline [22.430000s-22.960000s]",
+      "[SEGMENT 42 LOG] Ref: 0.53s | Rendered: 0.53s | Cuts: 1 | Mode: REFERENCE",
+      "Segment 43: 22.96s-25.09s (2.13s, Low/Static)",
+      "\ud83c\udfb5 CDE: Sparse (beats: 4, density: 1.88/s, hold: Long, origin: visual)",
+      "\ud83d\udcd0 max_cuts: 1",
+      "\u26a1ADVISOR OVERRIDE: Using Medium energy for Outro",
+      "\ud83e\udde0 AI: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Release' shot within this sequence. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.",
+      "\ud83d\udcce Selected: clip72.mp4 (Score: 199.0)",
+      "\u2702\ufe0f Cut 1: clip72.mp4 [6.00s-8.13s] (2.13s) \u2192 timeline [22.960000s-25.088005s]",
+      "[SEGMENT 43 LOG] Ref: 2.13s | Rendered: 2.13s | Cuts: 1 | Mode: REFERENCE",
+      "============================================================",
+      "[OK] Matching complete: 43 edit decisions",
+      "[OK] Total timeline duration: 25.09s (target: 25.09s)",
+      "\ud83d\udcca DIVERSITY REPORT:",
+      "Unique clips used: 30/30",
+      "\u2705 PERFECT! Every clip in your library was used.",
+      "\u26a0\ufe0f CLIPS REPEATED:",
+      "clip_004.mp4: 2x",
+      "clip_003.mp4: 2x",
+      "clip_005.mp4: 2x",
+      "clip_017.mp4: 2x",
+      "clip_024.mp4: 2x",
+      "\ud83d\udccb ENERGY COMPROMISES: 24",
+      "(Used adjacent energy when exact wasn't available)",
+      "Medium\u2192High: 17 times",
+      "Low\u2192High: 3 times",
+      "Low\u2192Medium: 2 times",
+      "High\u2192Low: 1 times",
+      "High\u2192Medium: 1 times",
+      "\ud83d\udca1 RECOMMENDATIONS TO IMPROVE THIS EDIT:",
+      "[Inventory Gaps]",
+      "\u2192 Add 17 more MEDIUM-ENERGY clips (walking, social, casual movement, city life)",
+      "\u2192 Add 4 more LOW-ENERGY clips (scenic, calm, establishing shots, landscapes)",
+      "[Quality Improvements]",
+      "\u2192 2 segments wanted 'High' energy but used 'Medium'.",
+      "Add high-intensity clips with 'Urban' or 'Nightlife' vibes to fix this.",
+      "\u2192 5 segments wanted 'Low' energy but used 'Medium'.",
+      "Add more 'Nature' or 'Calm' clips to reduce jitter here.",
+      "============================================================",
+      "\ud83d\udd2c X-RAY diagnostic report exported: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref20_XRAY.txt",
+      "============================================================",
+      "[EDL] EDIT DECISION LIST SUMMARY",
+      "============================================================",
+      "Total decisions: 43",
+      "Total segments: 43",
+      "Available clips: 30",
+      "Clip usage distribution:",
+      "clip_004.mp4: 2 times",
+      "clip_003.mp4: 2 times",
+      "clip_005.mp4: 2 times",
+      "clip_017.mp4: 2 times",
+      "clip_024.mp4: 2 times",
+      "clip_025.mp4: 2 times",
+      "clip_019.mp4: 2 times",
+      "clip_022.mp4: 2 times",
+      "clip_013.mp4: 2 times",
+      "clip_030.mp4: 2 times",
+      "clip_015.mp4: 2 times",
+      "clip_029.mp4: 2 times",
+      "clip_016.mp4: 2 times",
+      "clip_001.mp4: 1 times",
+      "clip_006.mp4: 1 times",
+      "clip_027.mp4: 1 times",
+      "clip_007.mp4: 1 times",
+      "clip_021.mp4: 1 times",
+      "clip_008.mp4: 1 times",
+      "clip_009.mp4: 1 times",
+      "clip_023.mp4: 1 times",
+      "clip_010.mp4: 1 times",
+      "clip_012.mp4: 1 times",
+      "clip_028.mp4: 1 times",
+      "clip_011.mp4: 1 times",
+      "clip_018.mp4: 1 times",
+      "clip_002.mp4: 1 times",
+      "clip_014.mp4: 1 times",
+      "clip_020.mp4: 1 times",
+      "clip_026.mp4: 1 times",
+      "\ud83e\udde0 INTELLIGENCE AUDIT (Narrative Compliance):",
+      "Vibe Accuracy: 39.5% matching suggested vibes",
+      "Shot Function Breakdown:",
+      "Action      : 16 cuts",
+      "Detail      : 9 cuts",
+      "Establish   : 6 cuts",
+      "Release     : 4 cuts",
+      "Reaction    : 3 cuts",
+      "Button      : 3 cuts",
+      "Transition  : 2 cuts",
+      "Arc Stage Fidelity:",
+      "Intro       : 66.7% intent alignment",
+      "Build-up    : 50.0% intent alignment",
+      "Peak        : 30.0% intent alignment",
+      "Outro       : 36.4% intent alignment",
+      "[PROGRESS] Step 5/5: Rendering final video...",
+      "[5/5] Rendering final video...",
+      "[OK] Segment extracted: 2.00s - 2.17s",
+      "[OK] Segment extracted: 8.50s - 8.86s",
+      "[OK] Segment extracted: 1.50s - 2.04s",
+      "[OK] Segment extracted: 1.50s - 2.03s",
+      "[OK] Segment extracted: 15.00s - 15.54s",
+      "[OK] Segment extracted: 22.50s - 23.03s",
+      "[OK] Segment extracted: 1.50s - 2.03s",
+      "[OK] Segment extracted: 0.00s - 0.54s",
+      "[OK] Segment extracted: 3.00s - 3.53s",
+      "[OK] Segment extracted: 1.50s - 2.04s",
+      "[OK] Segment extracted: 10.50s - 11.03s",
+      "[OK] Segment extracted: 0.00s - 0.53s",
+      "[OK] Segment extracted: 0.00s - 0.54s",
+      "[OK] Segment extracted: 5.50s - 6.03s",
+      "[OK] Segment extracted: 5.50s - 6.04s",
+      "[OK] Segment extracted: 0.50s - 1.56s",
+      "[OK] Segment extracted: 5.50s - 7.11s",
+      "[OK] Segment extracted: 1.50s - 2.03s",
+      "[OK] Segment extracted: 2.00s - 2.54s",
+      "[OK] Segment extracted: 0.50s - 1.03s",
+      "[OK] Segment extracted: 6.50s - 7.03s",
+      "[OK] Segment extracted: 5.50s - 6.04s",
+      "[OK] Segment extracted: 0.00s - 0.53s",
+      "[OK] Segment extracted: 17.50s - 18.04s",
+      "[OK] Segment extracted: 2.50s - 2.75s",
+      "[OK] Segment extracted: 2.50s - 2.78s",
+      "[OK] Segment extracted: 2.80s - 3.33s",
+      "[OK] Segment extracted: 0.50s - 1.04s",
+      "[OK] Segment extracted: 4.00s - 4.53s",
+      "[OK] Segment extracted: 1.50s - 2.04s",
+      "[OK] Segment extracted: 0.53s - 1.06s",
+      "[OK] Segment extracted: 18.04s - 18.57s",
+      "[OK] Segment extracted: 2.17s - 2.71s",
+      "[OK] Segment extracted: 5.50s - 6.03s",
+      "[OK] Segment extracted: 2.54s - 3.08s",
+      "[OK] Segment extracted: 3.50s - 4.03s",
+      "[OK] Segment extracted: 2.03s - 2.56s",
+      "[OK] Segment extracted: 0.00s - 0.54s",
+      "[OK] Segment extracted: 3.50s - 4.03s",
+      "[OK] Segment extracted: 3.50s - 4.04s",
+      "[OK] Segment extracted: 1.04s - 1.57s",
+      "[OK] Segment extracted: 1.56s - 2.09s",
+      "[OK] Segment extracted: 6.00s - 8.13s",
+      "[OK] Concatenated 43 segments (frame-perfect)",
+      "[STYLIST] Skipping visual styling (Reference Mode - demo clarity)",
+      "[OK] Audio extracted: ref_audio.aac",
+      "[AUDIO PAD] Video is 0.40s longer than audio - padding with silence",
+      "[OK] Audio merged onto video (optimized)",
+      "================================================================================",
+      "\u2705 SUCCESS!",
+      "================================================================================",
+      "\ud83d\udcca Basic Results:",
+      "Output: ref20_sess_a874555_v1.mp4",
+      "Duration: 26.57s (ref: 25.09s)",
+      "Difference: 1.48s",
+      "Processing time: 201.8s",
+      "================================================================================",
+      "\ud83e\udde0 COMPREHENSIVE SYSTEM ANALYSIS",
+      "================================================================================",
+      "\ud83d\udcf9 Reference Analysis:",
+      "Editing Style: Cinematic montage",
+      "Emotional Intent: Energetic",
+      "Arc Description: Starts with preparation and focus, builds into high-speed racing action, and concludes with a rhythm...",
+      "Total Segments: 43",
+      "\ud83d\udcd1 BLUEPRINT FULL SEGMENT LIST:",
+      "01:  0.00- 0.17s | Medium | Vibe: Anticipation | Intro",
+      "02:  0.17- 0.53s | Medium | Vibe: Focus      | Intro",
+      "03:  0.53- 1.07s | Medium | Vibe: Intensity  | Intro",
+      "04:  1.07- 1.60s | High   | Vibe: Technical  | Build-up",
+      "05:  1.60- 2.14s | High   | Vibe: Speed      | Build-up",
+      "06:  2.14- 2.67s | High   | Vibe: Immersive  | Build-up",
+      "07:  2.67- 3.20s | High   | Vibe: Tension    | Build-up",
+      "08:  3.20- 3.74s | High   | Vibe: Kinetic    | Build-up",
+      "09:  3.74- 4.27s | Medium | Vibe: Prestige   | Build-up",
+      "10:  4.27- 4.81s | Medium | Vibe: Atmosphere | Build-up",
+      "11:  4.81- 5.34s | High   | Vibe: Power      | Build-up",
+      "12:  5.34- 5.87s | High   | Vibe: Action     | Peak",
+      "13:  5.87- 6.41s | High   | Vibe: Velocity   | Peak",
+      "14:  6.41- 6.94s | Medium | Vibe: Branding   | Peak",
+      "15:  6.94- 7.48s | Low    | Vibe: Transition | Peak",
+      "16:  7.48- 8.54s | Medium | Vibe: Preparation | Peak",
+      "17:  8.54-10.15s | Medium | Vibe: Aesthetic  | Peak",
+      "18: 10.15-10.68s | High   | Vibe: Cinematic  | Peak",
+      "19: 10.68-11.22s | Medium | Vibe: Character  | Peak",
+      "20: 11.22-11.75s | Medium | Vibe: Detail     | Peak",
+      "21: 11.75-12.28s | High   | Vibe: Speed      | Peak",
+      "22: 12.28-12.82s | High   | Vibe: Hype       | Outro",
+      "23: 12.82-13.35s | Low    | Vibe: Outro      | Outro",
+      "24: 13.35-13.89s | Medium | Vibe: Preparation | Outro",
+      "25: 13.89-14.14s | Medium | Vibe: Aesthetic  | Outro",
+      "26: 14.14-14.42s | High   | Vibe: Cinematic  | Outro",
+      "27: 14.42-14.95s | Medium | Vibe: Character  | Outro",
+      "28: 14.95-15.49s | Medium | Vibe: Detail     | Outro",
+      "29: 15.49-16.02s | High   | Vibe: Speed      | Outro",
+      "30: 16.02-16.56s | High   | Vibe: Hype       | Outro",
+      "31: 16.56-17.09s | Low    | Vibe: Outro      | Outro",
+      "32: 17.09-17.62s | Medium | Vibe: Preparation | Outro",
+      "33: 17.62-18.16s | Medium | Vibe: Aesthetic  | Outro",
+      "34: 18.16-18.69s | High   | Vibe: Cinematic  | Outro",
+      "35: 18.69-19.23s | Medium | Vibe: Character  | Outro",
+      "36: 19.23-19.76s | Medium | Vibe: Detail     | Outro",
+      "37: 19.76-20.29s | High   | Vibe: Speed      | Outro",
+      "38: 20.29-20.83s | High   | Vibe: Hype       | Outro",
+      "39: 20.83-21.36s | Low    | Vibe: Outro      | Outro",
+      "40: 21.36-21.90s | Medium | Vibe: Preparation | Outro",
+      "41: 21.90-22.43s | Medium | Vibe: Aesthetic  | Outro",
+      "42: 22.43-22.96s | High   | Vibe: Cinematic  | Outro",
+      "43: 22.96-25.09s | Low    | Vibe: Outro      | Outro",
+      "\ud83d\udcc8 Arc Stage Distribution:",
+      "Outro: 22 segments (51.2%)",
+      "Peak: 10 segments (23.3%)",
+      "Build-up: 8 segments (18.6%)",
+      "Intro: 3 segments (7.0%)",
+      "\ud83c\udfa8 Vibe Distribution:",
+      "Speed: 4 segments (9.3%)",
+      "Preparation: 4 segments (9.3%)",
+      "Aesthetic: 4 segments (9.3%)",
+      "Cinematic: 4 segments (9.3%)",
+      "Outro: 4 segments (9.3%)",
+      "Character: 3 segments (7.0%)",
+      "Detail: 3 segments (7.0%)",
+      "Hype: 3 segments (7.0%)",
+      "Anticipation: 1 segments (2.3%)",
+      "Focus: 1 segments (2.3%)",
+      "Intensity: 1 segments (2.3%)",
+      "Technical: 1 segments (2.3%)",
+      "Immersive: 1 segments (2.3%)",
+      "Tension: 1 segments (2.3%)",
+      "Kinetic: 1 segments (2.3%)",
+      "Prestige: 1 segments (2.3%)",
+      "Atmosphere: 1 segments (2.3%)",
+      "Power: 1 segments (2.3%)",
+      "Action: 1 segments (2.3%)",
+      "Velocity: 1 segments (2.3%)",
+      "Branding: 1 segments (2.3%)",
+      "Transition: 1 segments (2.3%)",
+      "\ud83d\udcce Clip Usage Analysis:",
+      "Unique clips used: 30/30",
+      "Most used clips:",
+      "clip_004.mp4: 2 times (4.7%)",
+      "clip_003.mp4: 2 times (4.7%)",
+      "clip_005.mp4: 2 times (4.7%)",
+      "clip_017.mp4: 2 times (4.7%)",
+      "clip_024.mp4: 2 times (4.7%)",
+      "\ud83e\udde0 AI Reasoning Breakdown:",
+      "\u2728 Smart Match: 0 (0.0%)",
+      "\ud83c\udfaf Good Fit: 0 (0.0%)",
+      "\u2699\ufe0f Constraint Relaxation: 0 (0.0%)",
+      "\ud83c\udfa8 Vibe Matching:",
+      "Matches: 17/43 (39.5%)",
+      "\ud83d\udccf Cut Statistics by Arc Stage:",
+      "Intro: 3 cuts, avg 0.36s",
+      "Build-up: 8 cuts, avg 0.53s",
+      "Peak: 10 cuts, avg 0.69s",
+      "Outro: 22 cuts, avg 0.58s",
+      "\ud83d\udccf Overall Cut Statistics:",
+      "Total cuts: 43",
+      "Average cut: 0.58s",
+      "Shortest cut: 0.17s",
+      "Longest cut: 2.13s",
+      "\ud83d\udcad Sample AI Reasoning (first 5 decisions):",
+      "1. clip_004.mp4: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested b...",
+      "2. clip_001.mp4: \ud83c\udf1f Maintaining sequence flow with supporting material, though it drifts from the ...",
+      "3. clip_003.mp4: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested b...",
+      "4. clip_005.mp4: \ud83c\udf1f Prioritizing narrative continuity by anchoring on 'People-Solo' as requested b...",
+      "5. clip_006.mp4: \ud83c\udf1f Maintaining sequence flow with supporting material, though it drifts from the ...",
+      "\ud83d\udce6 CLIP REGISTRY (30 total):",
+      "01: clip49.mp4      | High   |  15.9s | Vibes: Vehicle, Nature",
+      "02: clip50.mp4      | Low    |   8.8s | Vibes: Group, Indoor",
+      "03: clip51.mp4      | High   |   6.5s | Vibes: Solo, Urban",
+      "04: clip52.mp4      | High   |  13.6s | Vibes: Solo, Vehicle",
+      "05: clip53.mp4      | High   |  10.4s | Vibes: Vehicle, Solo",
+      "06: clip54.mp4      | High   |  18.8s | Vibes: Vehicle",
+      "07: clip55.mp4      | High   |   4.5s | Vibes: Vehicle",
+      "08: clip56.mp4      | High   |  17.0s | Vibes: Vehicle, Crowd",
+      "09: clip57.mp4      | High   |   9.8s | Vibes: Vehicle, Travel",
+      "10: clip58.mp4      | High   |  16.9s | Vibes: Vehicle, Crowd",
+      "11: clip59.mp4      | High   |   4.9s | Vibes: Vehicle",
+      "12: clip60.mp4      | High   |   6.5s | Vibes: Crowd, Vehicle",
+      "13: clip61.mp4      | Medium |   4.2s | Vibes: Group, Urban",
+      "14: clip62.mp4      | High   |   3.1s | Vibes: Solo",
+      "15: clip63.mp4      | Medium |   8.7s | Vibes: Group, Crowd",
+      "16: clip64.mp4      | Medium |   4.4s | Vibes: Group, Urban",
+      "17: clip65.mp4      | High   |  31.8s | Vibes: Solo, Urban",
+      "18: clip66.mp4      | High   |   3.0s | Vibes: Vehicle, Crowd",
+      "19: clip67.mp4      | High   |  13.9s | Vibes: Solo, Celebration",
+      "20: clip68.mp4      | High   |  17.2s | Vibes: Vehicle, Urban",
+      "21: clip69.mp4      | High   |  10.7s | Vibes: Crowd, Vehicle",
+      "22: clip70.mp4      | High   |  15.9s | Vibes: Crowd, Vehicle",
+      "23: clip71.mp4      | High   |   4.0s | Vibes: Vehicle, Urban",
+      "24: clip72.mp4      | High   |   8.2s | Vibes: Vehicle, Solo",
+      "25: clip73.mp4      | High   |   3.0s | Vibes: Group",
+      "26: clip74.mp4      | High   |   3.1s | Vibes: Vehicle",
+      "27: clip75.mp4      | High   |   4.9s | Vibes: Solo, Vehicle",
+      "28: clip76.mp4      | High   |  18.7s | Vibes: Vehicle, Crowd",
+      "29: clip77.mp4      | High   |  11.3s | Vibes: Crowd, Vehicle",
+      "30: clip78.mp4      | High   |  48.1s | Vibes: Group, Vehicle",
+      "\ud83d\udccb Metadata Coverage:",
+      "Best Moments: 30/30",
+      "Vibes: 30/30",
+      "\ud83d\udd0d Temporal Precision Check:",
+      "\u2705 TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)",
+      "\ud83d\udce6 Material Efficiency:",
+      "Total source duration available: 347.92s",
+      "Total duration used in edit: 25.09s",
+      "Unique clip segments used: 43",
+      "Utilization Ratio: 7.2%",
+      "\ud83d\udca1 Note: Low utilization suggests clips may not match reference vibes well",
+      "================================================================================",
+      "\ud83d\udca1 POST-EDIT CREATIVE REVIEW (ADVISOR CRITIQUE)",
+      "================================================================================",
+      "\ud83c\udfa8 THE EDITORIAL DEBRIEF:",
+      "\u2705 STRENGTHS:",
+      "- Abundant high-quality, high-energy racing footage.",
+      "- Strong presence of the primary subject (Brad Pitt/Drivers).",
+      "- Excellent variety of night-time racing with high-contrast lighting.",
+      "\u26a0\ufe0f EDITORIAL TRADEOFFS:",
+      "- The scarcity of 'Low' energy clips forces a consistently aggressive pace, sacrificing quiet character moments for constant momentum.",
+      "\ud83d\udd0d CONSTRAINT GAPS:",
+      "- Limited 'Medium' energy establishing shots makes the transition from Intro to Build-up very abrupt.",
+      "\ud83e\udde0 EDITORIAL STRATEGY:",
+      "The edit will prioritize a 'Relentless' pace, using the star power of the lead actors to anchor the high-octane racing action. We will lean into the Teal-Orange filmic grade by favoring night-time racing and high-contrast garage scenes to maintain a premium, cinematic aesthetic.",
+      "\ud83d\ude80 REMAKE STRATEGY (HOW TO REACH DIRECTOR'S CUT):",
+      "To achieve a true Director's Cut, I would integrate more intimate, low-energy dialogue scenes to ground the spectacle. Adding more 'Place-Nature' or 'Place-Indoor' shots would provide the necessary breathing room to make the 'Peak' action feel even more explosive.",
+      "================================================================================",
+      "================================================================================",
+      "\ud83c\udf89 Watch the result: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref20_sess_a874555_v1.mp4",
+      "================================================================================",
+      "[PROGRESS] Step 6/6: Generating post-render reflection...",
+      "[6/6] Generating post-render reflection...",
+      "[REFLECTOR] Generating Director's Critique...",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "\u2705 Critique cached: critique_27503fa4e44f5fbd8186ea1edd2f701e.json",
+      "\u2705 Director's Critique generated (Score: 8.2/10)",
+      "[PROCESS] Exporting master intelligence report...",
+      "(Intelligence data confirmed: 279 chars)",
+      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref20_sess_a874555_v1.json (146174 bytes)",
+      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref20_sess_a874555_v1.log",
+      "[PIPELINE] SUCCESS - Pipeline completed in 228.8s",
+      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref20_sess_a874555_v1.mp4"
+    ],
+    "iteration": 1,
+    "created_at": 1770378890.9663603,
+    "current_step": "Generating post-render reflection...",
+    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref20_sess_a874555_v1.mp4",
+    "thumbnail_url": "/api/files/thumbnails/thumb_e0ad12def5008ff5d19cbecb15cb1585.jpg",
+    "blueprint": {
+      "total_duration": 25.088005,
+      "segments": [
+        {
+          "id": 1,
+          "start": 0.0,
+          "end": 0.17,
+          "duration": 0.17,
+          "energy": "Medium",
+          "motion": "Static",
+          "vibe": "Anticipation",
+          "reasoning": "",
+          "arc_stage": "Intro",
+          "shot_scale": "Wide",
+          "shot_function": "Establish",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Scene in garage",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 2,
+          "start": 0.17,
+          "end": 0.53,
+          "duration": 0.36,
+          "energy": "Medium",
+          "motion": "Static",
+          "vibe": "Focus",
+          "reasoning": "",
+          "arc_stage": "Intro",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Setup",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Intimacy-Focus",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Driver helmet view",
+            "resolves": "None",
+            "type": "Gaze"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 3,
+          "start": 0.53,
+          "end": 1.07,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Static",
+          "vibe": "Intensity",
+          "reasoning": "",
+          "arc_stage": "Intro",
+          "shot_scale": "Extreme CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Intimacy-Focus",
+          "temporal_weight": "Push",
+          "emotional_anchor": true,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Driver eyes",
+            "resolves": "None",
+            "type": "Gaze"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 4,
+          "start": 1.07,
+          "end": 1.6,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Technical",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Setup",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Steering wheel display",
+            "resolves": "None",
+            "type": "Object-Interaction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 5,
+          "start": 1.6,
+          "end": 2.14,
+          "duration": 0.54,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Speed",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Track view",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 6,
+          "start": 2.14,
+          "end": 2.67,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Immersive",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "Medium",
+          "shot_function": "Action",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Erratic",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Cockpit POV",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 7,
+          "start": 2.67,
+          "end": 3.2,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Static",
+          "vibe": "Tension",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Setup",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Starting lights",
+            "resolves": "None",
+            "type": "Object-Interaction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 8,
+          "start": 3.2,
+          "end": 3.74,
+          "duration": 0.54,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Kinetic",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car passing bollard",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 9,
+          "start": 3.74,
+          "end": 4.27,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Prestige",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "Wide",
+          "shot_function": "Transition",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Lewis Hamilton credit",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 10,
+          "start": 4.27,
+          "end": 4.81,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Atmosphere",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "Wide",
+          "shot_function": "Establish",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Crowd view",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 11,
+          "start": 4.81,
+          "end": 5.34,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Power",
+          "reasoning": "",
+          "arc_stage": "Build-up",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Setup",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Exhaust flame",
+            "resolves": "None",
+            "type": "Object-Interaction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 12,
+          "start": 5.34,
+          "end": 5.87,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Action",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Medium",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Erratic",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Driver in cockpit",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 13,
+          "start": 5.87,
+          "end": 6.41,
+          "duration": 0.54,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Velocity",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Track POV fast",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 14,
+          "start": 6.41,
+          "end": 6.94,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Branding",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Mercedes logo on car",
+            "resolves": "None",
+            "type": "Object-Interaction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 15,
+          "start": 6.94,
+          "end": 7.48,
+          "duration": 0.54,
+          "energy": "Low",
+          "motion": "Static",
+          "vibe": "Transition",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Wide",
+          "shot_function": "Transition",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Black screen",
+            "resolves": "None",
+            "type": "None"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 16,
+          "start": 7.48,
+          "end": 8.54,
+          "duration": 1.06,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Preparation",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Setup",
+          "expected_hold": "Normal",
+          "camera_movement": "Handheld",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Breath",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Narrative-Shift",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Pit crew running",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 17,
+          "start": 8.54,
+          "end": 10.15,
+          "duration": 1.61,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Aesthetic",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Wide",
+          "shot_function": "Establish",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Normal",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Breath",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Narrative-Shift",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car profile in garage",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 18,
+          "start": 10.15,
+          "end": 10.68,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Cinematic",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Night racing",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 19,
+          "start": 10.68,
+          "end": 11.22,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Static",
+          "vibe": "Character",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "CU",
+          "shot_function": "Reaction",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Intimacy-Focus",
+          "temporal_weight": "Push",
+          "emotional_anchor": true,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Brad Pitt CU",
+            "resolves": "None",
+            "type": "Gaze"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 20,
+          "start": 11.22,
+          "end": 11.75,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Detail",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Adjusting gloves",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 21,
+          "start": 11.75,
+          "end": 12.28,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Speed",
+          "reasoning": "",
+          "arc_stage": "Peak",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car passing fast",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 22,
+          "start": 12.28,
+          "end": 12.82,
+          "duration": 0.54,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Hype",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Button",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car on track with 2025 text",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 23,
+          "start": 12.82,
+          "end": 13.35,
+          "duration": 0.53,
+          "energy": "Low",
+          "motion": "Static",
+          "vibe": "Outro",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Release",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Lexz logo",
+            "resolves": "None",
+            "type": "None"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 24,
+          "start": 13.35,
+          "end": 13.89,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Preparation",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Handheld",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Pit crew repeat",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 25,
+          "start": 13.89,
+          "end": 14.14,
+          "duration": 0.25,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Aesthetic",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Establish",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car profile repeat",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 26,
+          "start": 14.14,
+          "end": 14.42,
+          "duration": 0.28,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Cinematic",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Night race repeat",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 27,
+          "start": 14.42,
+          "end": 14.95,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Static",
+          "vibe": "Character",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "CU",
+          "shot_function": "Reaction",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Intimacy-Focus",
+          "temporal_weight": "Push",
+          "emotional_anchor": true,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Brad Pitt repeat",
+            "resolves": "None",
+            "type": "Gaze"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 28,
+          "start": 14.95,
+          "end": 15.49,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Detail",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Gloves repeat",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 29,
+          "start": 15.49,
+          "end": 16.02,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Speed",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car passing repeat",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 30,
+          "start": 16.02,
+          "end": 16.56,
+          "duration": 0.54,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Hype",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Button",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car on track repeat",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 31,
+          "start": 16.56,
+          "end": 17.09,
+          "duration": 0.53,
+          "energy": "Low",
+          "motion": "Static",
+          "vibe": "Outro",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Release",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Lexz logo repeat",
+            "resolves": "None",
+            "type": "None"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 32,
+          "start": 17.09,
+          "end": 17.62,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Preparation",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Handheld",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Pit crew repeat 2",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 33,
+          "start": 17.62,
+          "end": 18.16,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Aesthetic",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Establish",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car profile repeat 2",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 34,
+          "start": 18.16,
+          "end": 18.69,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Cinematic",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Night race repeat 2",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 35,
+          "start": 18.69,
+          "end": 19.23,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Static",
+          "vibe": "Character",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "CU",
+          "shot_function": "Reaction",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Intimacy-Focus",
+          "temporal_weight": "Push",
+          "emotional_anchor": true,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Brad Pitt repeat 2",
+            "resolves": "None",
+            "type": "Gaze"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 36,
+          "start": 19.23,
+          "end": 19.76,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Detail",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "CU",
+          "shot_function": "Detail",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Gloves repeat 2",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 37,
+          "start": 19.76,
+          "end": 20.29,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Speed",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car passing repeat 2",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 38,
+          "start": 20.29,
+          "end": 20.83,
+          "duration": 0.54,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Hype",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Button",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car on track repeat 2",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 39,
+          "start": 20.83,
+          "end": 21.36,
+          "duration": 0.53,
+          "energy": "Low",
+          "motion": "Static",
+          "vibe": "Outro",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Release",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Lexz logo repeat 2",
+            "resolves": "None",
+            "type": "None"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 40,
+          "start": 21.36,
+          "end": 21.9,
+          "duration": 0.54,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Preparation",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "None",
+          "expected_hold": "Short",
+          "camera_movement": "Handheld",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Pit crew repeat 3",
+            "resolves": "None",
+            "type": "Physical-Action"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 41,
+          "start": 21.9,
+          "end": 22.43,
+          "duration": 0.53,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "vibe": "Aesthetic",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Establish",
+          "relation_to_previous": "Continuation",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Car profile repeat 3",
+            "resolves": "None",
+            "type": "Spatial-Movement"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 42,
+          "start": 22.43,
+          "end": 22.96,
+          "duration": 0.53,
+          "energy": "High",
+          "motion": "Dynamic",
+          "vibe": "Cinematic",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Action",
+          "relation_to_previous": "Payoff",
+          "expected_hold": "Short",
+          "camera_movement": "Smooth pan",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "Action-Link",
+          "temporal_weight": "Push",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Rhythmic-Snap",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Night race repeat 3",
+            "resolves": "None",
+            "type": "Motion-Direction"
+          },
+          "cut_origin": "visual"
+        },
+        {
+          "id": 43,
+          "start": 22.96,
+          "end": 25.088005,
+          "duration": 2.128005,
+          "energy": "Low",
+          "motion": "Static",
+          "vibe": "Outro",
+          "reasoning": "",
+          "arc_stage": "Outro",
+          "shot_scale": "Wide",
+          "shot_function": "Release",
+          "relation_to_previous": "None",
+          "expected_hold": "Long",
+          "camera_movement": "Locked",
+          "emotional_guidance": "",
+          "media_type": "Video",
+          "shot_scale_role": "World-Building",
+          "temporal_weight": "Breath",
+          "emotional_anchor": false,
+          "audio_driver": "Music-Rhythm",
+          "audio_priority": "Music > SFX",
+          "cut_motivation": "Narrative-Shift",
+          "transition_intent": {
+            "type": "Hard",
+            "mechanism": "None",
+            "strength": "Normal"
+          },
+          "continuity_hook": {
+            "opens": "Final logo",
+            "resolves": "Scene",
+            "type": "None"
+          },
+          "cut_origin": "visual"
+        }
+      ],
+      "phrases": [],
+      "text_prompt": null,
+      "plan_summary": "",
+      "assumed_material": [],
+      "editing_style": "Cinematic montage",
+      "emotional_intent": "Energetic",
+      "arc_description": "Starts with preparation and focus, builds into high-speed racing action, and concludes with a rhythmic title and date reveal.",
+      "text_overlay": "F1 THE MOVIE | DIRECTED BY JOSEPH KOSINSKI | STARRING BRAD PITT & DAMSON IDRIS | PRODUCED BY LEWIS HAMILTON | JERRY BRUCKHEIMER AND JOSEPH KOSINSKI | EDITED BY LEXZ.AE | 2025 | Lexz",
+      "narrative_message": "A high-octane cinematic preview of a Formula 1 racing film, emphasizing speed, prestige, and star power.",
+      "intent_clarity": "Clear",
+      "text_events": [
+        {
+          "content": "F1 THE MOVIE",
+          "start": 0.0,
+          "end": 0.17,
+          "duration": 0.17,
+          "sync_driver": "Narrative",
+          "role": "Branding",
+          "confidence": "High"
+        },
+        {
+          "content": "DIRECTED BY JOSEPH KOSINSKI",
+          "start": 0.53,
+          "end": 1.07,
+          "duration": 0.54,
+          "sync_driver": "Beat",
+          "role": "Narrative-Anchor",
+          "confidence": "High"
+        },
+        {
+          "content": "STARRING BRAD PITT & DAMSON IDRIS",
+          "start": 1.6,
+          "end": 2.14,
+          "duration": 0.54,
+          "sync_driver": "Beat",
+          "role": "Narrative-Anchor",
+          "confidence": "High"
+        },
+        {
+          "content": "PRODUCED BY LEWIS HAMILTON",
+          "start": 3.74,
+          "end": 4.27,
+          "duration": 0.53,
+          "sync_driver": "Beat",
+          "role": "Narrative-Anchor",
+          "confidence": "High"
+        },
+        {
+          "content": "JERRY BRUCKHEIMER AND JOSEPH KOSINSKI",
+          "start": 4.27,
+          "end": 4.81,
+          "duration": 0.54,
+          "sync_driver": "Beat",
+          "role": "Narrative-Anchor",
+          "confidence": "High"
+        },
+        {
+          "content": "EDITED BY LEXZ.AE",
+          "start": 6.41,
+          "end": 6.94,
+          "duration": 0.53,
+          "sync_driver": "Beat",
+          "role": "Branding",
+          "confidence": "High"
+        },
+        {
+          "content": "2025",
+          "start": 12.28,
+          "end": 12.82,
+          "duration": 0.54,
+          "sync_driver": "Beat",
+          "role": "Emphasis",
+          "confidence": "High"
+        },
+        {
+          "content": "Lexz",
+          "start": 12.82,
+          "end": 13.35,
+          "duration": 0.53,
+          "sync_driver": "Beat",
+          "role": "Branding",
+          "confidence": "High"
+        }
+      ],
+      "must_have_content": [
+        "Close-ups of drivers in helmets",
+        "High-speed track shots",
+        "Pit crew/garage scenes",
+        "POV cockpit views"
+      ],
+      "should_have_content": [
+        "Crowd shots",
+        "Cinematic lighting",
+        "Technical details like steering wheels"
+      ],
+      "avoid_content": [
+        "Slow-paced dialogue",
+        "Static long shots without motion",
+        "Low-quality footage"
+      ],
+      "pacing_feel": "Relentless",
+      "visual_balance": "Action-focused",
+      "color_grading": {
+        "tone": "Cool",
+        "contrast": "High",
+        "specific_look": "Teal-Orange Filmic"
+      },
+      "aspect_ratio": "1:1",
+      "visual_effects": [
+        "Motion blur",
+        "Slow motion",
+        "Speed ramps",
+        "Grain"
+      ],
+      "shot_variety": {
+        "dominant_scale": "Mixed",
+        "variety_level": "High variety"
+      },
+      "stylistic_invariants": [
+        "Hard cuts on beats",
+        "Center-aligned text",
+        "High-speed racing footage"
+      ],
+      "peak_density": "Dense",
+      "cut_style": "Hard cuts",
+      "transition_effects": [],
+      "reference_audio": "original",
+      "audio_confidence": "Observed",
+      "music_sync": "Tightly synced",
+      "audio_style": {
+        "genre": "Trap/Hip-hop",
+        "vocal_presence": "Mixed",
+        "energy": "High"
+      },
+      "music_structure": {
+        "phrases": "Intro (0-5s), Build (5-15s), Peak/Drop (15-22s), Resolve/Outro (22-25s)",
+        "accent_moments": "Every beat hit approximately every 0.5 seconds",
+        "ending_type": "Hard stop"
+      },
+      "text_style": {
+        "font_style": "Serif",
+        "animation": "Fade",
+        "placement": "Center",
+        "color_effects": "White"
+      },
+      "text_behavior": {
+        "appearance_logic": "Narrative punctuation",
+        "entry_moment": "Opening-frame",
+        "exit_rule": "Cut-with-shot",
+        "priority": "Primary"
+      },
+      "text_cadence": "Per-phrase",
+      "overall_reasoning": "The edit is a high-energy cinematic trailer designed for social media (1:1 aspect ratio). It uses a syncopated trap beat to drive rapid-fire hard cuts, alternating between technical details (steering wheels, gloves), character focus (Brad Pitt), and high-speed racing action. The first half establishes the film's title and credits through rhythmic text overlays, while the second half intensifies the pace by repeating key action shots in a staccato fashion, leading to a final branding release. The teal-orange color grade and high-contrast lighting enhance the filmic quality.",
+      "ideal_material_suggestions": [
+        "High-resolution racing footage with dynamic camera movement.",
+        "Close-up shots of actors or drivers showing intense focus.",
+        "Technical details of high-performance machinery.",
+        "Cinematic track environments with dramatic lighting (night racing, sunset).",
+        "Fast-paced action sequences with clear directional motion."
+      ],
+      "contract": {
+        "type": "reference",
+        "version": "12.1",
+        "source_hash": "5fc58f296d146fc138d2bf5eefeef31b",
+        "fingerprint": "hb215ca31"
+      }
+    },
+    "clip_index": {
+      "clips": [
+        {
+          "filename": "clip49.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_001.mp4",
+          "duration": 15.941,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "Place-Nature"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Peak",
+            "Transition"
+          ],
+          "emotional_tone": [
+            "Dramatic",
+            "Adventurous"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "Cinematic montages",
+            "Action sequences",
+            "Brand storytelling"
+          ],
+          "avoid_for": [
+            "Intimate close-up moments",
+            "Calm reflective outros"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Nature"
+          ],
+          "content_description": "A cinematic montage featuring crashing ocean waves, a sunset, a high-performance racing car, and a luxury convertible arriving at a laundromat.",
+          "best_moments": {
+            "High": {
+              "start": 6.5,
+              "end": 8.5,
+              "moment_role": "Peak",
+              "stable_moment": true,
+              "reason": "Dynamic aerial tracking shot of a racing car navigating a track curve."
+            },
+            "Medium": {
+              "start": 8.5,
+              "end": 11.5,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Smooth lateral movement of a luxury car pulling into a street scene."
+            },
+            "Low": {
+              "start": 2.5,
+              "end": 4.5,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Calm, contemplative shot of a bird silhouetted against a sunset."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "f5aaf986d5458310f3002b6262daec0c"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip50.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_002.mp4",
+          "duration": 8.848,
+          "energy": "Low",
+          "motion": "Dynamic",
+          "intensity": 1,
+          "primary_subject": [
+            "People-Group",
+            "Place-Indoor"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Intimate",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Establishing shots",
+            "Character introductions",
+            "Reflective narrative moments"
+          ],
+          "avoid_for": [
+            "High-energy peaks",
+            "Action sequences"
+          ],
+          "vibes": [
+            "Group",
+            "Indoor"
+          ],
+          "content_description": "A camera pans from a collection of trophies to reveal two men sitting and talking on a couch in a modern apartment.",
+          "best_moments": {
+            "High": {
+              "start": 5.5,
+              "end": 8.0,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "The peak of character interaction and dialogue within the scene."
+            },
+            "Medium": {
+              "start": 3.0,
+              "end": 5.5,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Smooth camera pan revealing the subjects and the environment."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 3.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Static focus on trophies setting the thematic context of success."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "83e6d60386e56a3df952b85bd37a4235"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip51.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_003.mp4",
+          "duration": 6.466,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Solo",
+            "Place-Urban"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Dramatic",
+            "Energetic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "Opening establishing shots",
+            "Dramatic sports trailers",
+            "Cinematic montages"
+          ],
+          "avoid_for": [
+            "Casual home videos",
+            "Low-budget aesthetic"
+          ],
+          "vibes": [
+            "Solo",
+            "Urban"
+          ],
+          "content_description": "Aerial night view of a lit-up Formula 1 track followed by Brad Pitt examining the track surface.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 1.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "High-energy aerial shot with vibrant lights and scale."
+            },
+            "Medium": {
+              "start": 1.5,
+              "end": 3.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Focused interaction with the track surface providing narrative build."
+            },
+            "Low": {
+              "start": 3.5,
+              "end": 6.0,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Quiet, contemplative close-up with minimal movement."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "809e7857cad6ea2faf694134022033cf"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip52.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_004.mp4",
+          "duration": 13.641,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Solo",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "Cinematic montages",
+            "High-energy peaks",
+            "Opening establishing shots"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Solo",
+            "Vehicle"
+          ],
+          "content_description": "A racing driver and a Formula 1 car being tested in a high-tech wind tunnel.",
+          "best_moments": {
+            "High": {
+              "start": 10.0,
+              "end": 13.0,
+              "moment_role": "Peak",
+              "stable_moment": true,
+              "reason": "Powerful wide shot of the car in the wind tunnel with high visual intensity."
+            },
+            "Medium": {
+              "start": 2.0,
+              "end": 5.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Steady tracking shot of the car through the observation window."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Calm, focused shot of the driver establishing the human element."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "00a5b15c2e28b3e2bf026aa1ea7ff89c"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip53.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_005.mp4",
+          "duration": 10.402,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "Object-Vehicle",
+            "People-Solo"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Sports promos",
+            "Racing montages",
+            "Action sequences"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Nature documentaries"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Solo"
+          ],
+          "content_description": "A professional racing car speeds around a track followed by shots of a driver and racing team in the pits.",
+          "best_moments": {
+            "High": {
+              "start": 1.5,
+              "end": 3.5,
+              "moment_role": "Peak",
+              "stable_moment": true,
+              "reason": "Fast tracking shot of the racing car at high speed"
+            },
+            "Medium": {
+              "start": 6.0,
+              "end": 9.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Steady tracking shot of the racing team walking through the pits"
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Wide aerial establishing shot of the racetrack"
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "b613e642b43859e221b7075c8411f5bd"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip54.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_006.mp4",
+          "duration": 18.817,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Transition"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy peaks",
+            "Sports montages",
+            "Fast-paced transitions"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Vehicle"
+          ],
+          "content_description": "A montage of high-speed racing cars, including GT and Formula 1, performing maneuvers on various tracks.",
+          "best_moments": {
+            "High": {
+              "start": 15.0,
+              "end": 18.0,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Peak visual intensity with tire smoke and aggressive drifting maneuvers."
+            },
+            "Medium": {
+              "start": 8.5,
+              "end": 11.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Fast-paced racing action with multiple cars in frame and steady tracking."
+            },
+            "Low": {
+              "start": 3.5,
+              "end": 5.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Wide establishing shot of the track with minimal subject movement compared to other scenes."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "6489429435a84ff6ddde2e6a4d0f60f0"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip55.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_007.mp4",
+          "duration": 4.547,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Transition",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy action sequences",
+            "Sports montages",
+            "Fast-paced transitions"
+          ],
+          "avoid_for": [
+            "Peaceful transitions",
+            "Slow-paced narratives"
+          ],
+          "vibes": [
+            "Vehicle"
+          ],
+          "content_description": "Formula 1 cars racing at high speed on a track with dynamic on-board and tracking shots.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 2.0,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Intense high-speed racing through a narrow tunnel section with rapid visual changes."
+            },
+            "Medium": {
+              "start": 2.0,
+              "end": 4.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Dynamic tracking shot of the Red Bull car with cinematic lens flare."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Initial frame setting the scene at the Italian GP bridge before the peak action."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "cd53c891782bbbf9f4248be29588d265"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip56.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_008.mp4",
+          "duration": 16.98,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "People-Crowd"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Establishing"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy sports montages",
+            "Action-oriented transitions",
+            "Commercial promos"
+          ],
+          "avoid_for": [
+            "Calm reflective scenes",
+            "Slow-paced narratives"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Crowd"
+          ],
+          "content_description": "A fast-paced montage of Formula 1 and GT racing cars competing on various tracks during day and night.",
+          "best_moments": {
+            "High": {
+              "start": 10.5,
+              "end": 13.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Intense wheel-to-wheel racing action with dynamic tracking shots."
+            },
+            "Medium": {
+              "start": 2.0,
+              "end": 5.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Wide overhead shot of the race track and crowd providing context."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 2.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Close-up of a spinning tire, focusing on a single detail before the action escalates."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "2b24b5fec6f6976285a1ef418f3f75e6"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip57.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_009.mp4",
+          "duration": 9.845,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "Activity-Travel"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy action sequences",
+            "Sports montages",
+            "Fast-paced transitions"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Slow-paced storytelling"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Travel"
+          ],
+          "content_description": "Onboard footage from a Formula 1 car during a high-speed race start with multiple cars competing for position.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 3.0,
+              "moment_role": "Climax",
+              "stable_moment": false,
+              "reason": "Peak chaotic motion and close-quarters racing during the initial start."
+            },
+            "Medium": {
+              "start": 4.0,
+              "end": 7.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Sustained high-speed tracking with slightly more predictable movement."
+            },
+            "Low": {
+              "start": 7.5,
+              "end": 9.845,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "The most stable portion of the clip as the car settles into a racing line."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "abcd468a3d3e9585f0db9d0dc786cd37"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip58.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_010.mp4",
+          "duration": 16.862,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "People-Crowd"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Establishing"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy sports montages",
+            "Action sequences",
+            "Racing highlights"
+          ],
+          "avoid_for": [
+            "Calm reflective scenes",
+            "Slow-paced narratives"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Crowd"
+          ],
+          "content_description": "A montage of high-speed Formula 1 racing action, including race starts, onboard perspectives, and night racing with fireworks.",
+          "best_moments": {
+            "High": {
+              "start": 3.5,
+              "end": 5.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Intense visual activity with fireworks, night racing, and drifting cars."
+            },
+            "Medium": {
+              "start": 5.5,
+              "end": 8.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Sustained high-speed onboard perspective providing a sense of speed and progression."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 2.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Wide high-angle shot of the race start, providing context with relatively stable framing."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "bb97f3f11aa7f1e32e485069d4a5b936"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip59.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_011.mp4",
+          "duration": 4.892,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy peaks",
+            "Sports highlight reels",
+            "Fast-paced transitions"
+          ],
+          "avoid_for": [
+            "Calm reflective intros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Vehicle"
+          ],
+          "content_description": "Formula 1 cars racing at high speed on a track, including an onboard camera perspective.",
+          "best_moments": {
+            "High": {
+              "start": 1.5,
+              "end": 4.0,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Intense onboard footage following multiple cars at high speed."
+            },
+            "Medium": {
+              "start": 0.8,
+              "end": 2.8,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Side-view of multiple cars racing for position on the track."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 2.0,
+              "moment_role": "Establishing",
+              "stable_moment": false,
+              "reason": "Initial fast pass and transition into the main racing group."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "de9d2a743bda8698df2e32d959b9d39f"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip60.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_012.mp4",
+          "duration": 6.472,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Crowd",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Transition",
+            "Peak",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy peaks",
+            "Event promos",
+            "Action transitions"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Crowd",
+            "Vehicle"
+          ],
+          "content_description": "A fast-paced racing sequence transitions to a large crowd cheering in an auditorium.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 1.5,
+              "moment_role": "Transition",
+              "stable_moment": false,
+              "reason": "Kinetic racing POV provides peak visual intensity and rapid movement."
+            },
+            "Medium": {
+              "start": 2.0,
+              "end": 5.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Sustained crowd reaction with expressive but controlled movement."
+            },
+            "Low": {
+              "start": 5.5,
+              "end": 6.472,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "The final moments of the crowd shot where the camera and movement stabilize."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "7b368deafc51ce50295e5eb6fb73b2b7"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip61.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_013.mp4",
+          "duration": 4.187,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Group",
+            "Place-Urban"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Transition",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Adventurous",
+            "Nostalgic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Establishing shots",
+            "Closing sequences",
+            "Travel montages"
+          ],
+          "avoid_for": [
+            "High-energy action",
+            "Intimate close-ups"
+          ],
+          "vibes": [
+            "Group",
+            "Urban"
+          ],
+          "content_description": "Two individuals walk away from a large Formula 1 Las Vegas Grand Prix billboard in a desert urban setting.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 3.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Expressive arm gesture adds a burst of visual energy and character."
+            },
+            "Medium": {
+              "start": 3.0,
+              "end": 4.187,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Steady walking provides consistent movement and clear framing of the subjects."
+            },
+            "Low": {
+              "start": 4.087000000000001,
+              "end": 4.187,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Subjects move further away, allowing the 'See You Next Year' sign to dominate."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "f17ff372a58de3de094836d812549b32"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip62.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_014.mp4",
+          "duration": 3.096,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Solo"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Dramatic montages",
+            "Sports training sequences",
+            "Character introductions"
+          ],
+          "avoid_for": [
+            "Joyful celebrations",
+            "Peaceful nature scenes"
+          ],
+          "vibes": [
+            "Solo"
+          ],
+          "content_description": "A cinematic montage of a man reflecting and training for boxing.",
+          "best_moments": {
+            "High": {
+              "start": 2.5,
+              "end": 3.096,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Fast-paced boxing training with high physical intensity and rapid cuts."
+            },
+            "Medium": {
+              "start": 1.0,
+              "end": 2.5,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Walking sequence with steady camera tracking and moderate movement."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.0,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Initial contemplative close-up with minimal subject movement."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "919004077f225db547cebb84a8aa6ad5"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip63.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_015.mp4",
+          "duration": 8.73,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Group",
+            "People-Crowd"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Dramatic",
+            "Energetic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Establishing shots",
+            "Sports montages",
+            "Building tension"
+          ],
+          "avoid_for": [
+            "Intimate close-up moments",
+            "Calm reflective outros"
+          ],
+          "vibes": [
+            "Group",
+            "Crowd"
+          ],
+          "content_description": "Formula 1 drivers and actors stand on the starting grid during a pre-race ceremony as the camera pans across them.",
+          "best_moments": {
+            "High": {
+              "start": 5.5,
+              "end": 8.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "The reveal of Brad Pitt provides the peak narrative interest and star power in the shot."
+            },
+            "Medium": {
+              "start": 2.5,
+              "end": 5.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Steady camera movement focusing on key figures like Max Verstappen and Damson Idris."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 2.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Initial pan across the grid setting the scene and atmosphere."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "ef9ceef61a4b32a2aea802e108392859"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip64.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_016.mp4",
+          "duration": 4.433,
+          "energy": "Medium",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Group",
+            "Place-Urban"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Adventurous",
+            "Intimate"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Establishing shots",
+            "Travel montages",
+            "Nightlife sequences"
+          ],
+          "avoid_for": [
+            "High-action sequences",
+            "Fast-paced transitions"
+          ],
+          "vibes": [
+            "Group",
+            "Urban"
+          ],
+          "content_description": "Two women stand on a high-rise balcony overlooking the Las Vegas Strip at night.",
+          "best_moments": {
+            "High": {
+              "start": 2.0,
+              "end": 4.433,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Vibrant city lights and traffic movement provide the most visual activity."
+            },
+            "Medium": {
+              "start": 0.5,
+              "end": 3.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Balanced composition showing both the subjects and the iconic skyline."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 2.0,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Initial static frame providing a calm introduction to the scene."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "1549eacc1d91f14cc69fb685dfdd458c"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip65.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_017.mp4",
+          "duration": 31.792,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Solo",
+            "Place-Urban"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Dramatic",
+            "Energetic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "Cinematic trailers",
+            "Narrative montages",
+            "Atmospheric transitions"
+          ],
+          "avoid_for": [
+            "Casual vlogs",
+            "Instructional content"
+          ],
+          "vibes": [
+            "Solo",
+            "Urban"
+          ],
+          "content_description": "A cinematic montage featuring urban landscapes, a man in a training mask, racing technology, and fireworks over a track.",
+          "best_moments": {
+            "High": {
+              "start": 22.5,
+              "end": 25.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Vibrant fireworks display over a crowded racing circuit providing a peak emotional moment."
+            },
+            "Medium": {
+              "start": 3.5,
+              "end": 6.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Intense close-up of a man in a training mask, creating narrative tension and focus."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 3.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "A calm, beautifully composed sunset shot over a mosque and city skyline."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "162d6728d817f61e02804f9bd86f9d83"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip66.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_018.mp4",
+          "duration": 3.05,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "People-Crowd"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy sports montages",
+            "Action sequences",
+            "Opening establishing shots"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Crowd"
+          ],
+          "content_description": "A race car accelerates rapidly down a track, leaving tire smoke behind as it moves away from the camera.",
+          "best_moments": {
+            "High": {
+              "start": 1.0,
+              "end": 3.0,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Peak acceleration with visible tire smoke and rapid movement away from the camera."
+            },
+            "Medium": {
+              "start": 0.5,
+              "end": 1.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "The transition from stationary to movement as the car begins its launch."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 0.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "The initial stationary frame setting the scene before the high-intensity action begins."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "aa56b9df5697d881a54093344ced01b8"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip67.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_019.mp4",
+          "duration": 13.865,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Solo",
+            "Activity-Celebration"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Training montages",
+            "Sports promos",
+            "High-energy peaks"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Solo",
+            "Celebration"
+          ],
+          "content_description": "A montage showing a man's intense physical training and a celebratory firework display at a racetrack.",
+          "best_moments": {
+            "High": {
+              "start": 5.5,
+              "end": 8.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Vibrant fireworks display over a racetrack providing peak visual energy."
+            },
+            "Medium": {
+              "start": 2.0,
+              "end": 4.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Focused physical training with push-ups and sit-ups showing steady effort."
+            },
+            "Low": {
+              "start": 9.5,
+              "end": 12.5,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Calm interior shot of a modern facility with minimal subject movement."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "989f7560d14eddf0e59d9646be0eb71a"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip68.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_020.mp4",
+          "duration": 17.158,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "Place-Urban"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Peak",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy peaks",
+            "Travel and lifestyle montages",
+            "Establishing location shots"
+          ],
+          "avoid_for": [
+            "Intimate close-up moments",
+            "Consistent single-subject narratives"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Urban"
+          ],
+          "content_description": "A montage featuring Formula 1 cars racing at night, a person meditating in a gym, and a man running through Las Vegas.",
+          "best_moments": {
+            "High": {
+              "start": 4.0,
+              "end": 7.0,
+              "moment_role": "Peak",
+              "stable_moment": true,
+              "reason": "High-speed racing action with dynamic camera tracking and clear subject focus."
+            },
+            "Medium": {
+              "start": 13.5,
+              "end": 16.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Steady movement of a runner through a vibrant urban environment at night."
+            },
+            "Low": {
+              "start": 9.5,
+              "end": 12.5,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Static, well-composed shot of meditation providing a calm contrast to the action."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "608685a9370c82c26e32d16232cce0ab"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip69.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_021.mp4",
+          "duration": 10.736,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Crowd",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy peaks",
+            "Sports montages",
+            "Opening establishing shots"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Crowd",
+            "Vehicle"
+          ],
+          "content_description": "A montage of Formula 1 scenes featuring team celebrations, pit lane preparations, a strategy meeting, and a pre-race flyover.",
+          "best_moments": {
+            "High": {
+              "start": 6.5,
+              "end": 9.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Spectacular flyover with colored smoke over a crowded race track."
+            },
+            "Medium": {
+              "start": 1.5,
+              "end": 3.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Active pit lane with crew members preparing cars for the race."
+            },
+            "Low": {
+              "start": 3.5,
+              "end": 5.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Focused team meeting in a modern, quiet indoor environment."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "debd01da0ea08a3d173251f6e6509d95"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip70.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_022.mp4",
+          "duration": 15.857,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Crowd",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy sports promos",
+            "Event highlight reels",
+            "Fast-paced action montages"
+          ],
+          "avoid_for": [
+            "Calm reflective scenes",
+            "Slow-paced storytelling"
+          ],
+          "vibes": [
+            "Crowd",
+            "Vehicle"
+          ],
+          "content_description": "A dynamic montage featuring a crowded nightclub, a podium celebration with confetti, and high-speed racing cars on a track with fireworks.",
+          "best_moments": {
+            "High": {
+              "start": 6.5,
+              "end": 9.5,
+              "moment_role": "Climax",
+              "stable_moment": false,
+              "reason": "Intense racing action with sparks and fireworks creating peak visual energy."
+            },
+            "Medium": {
+              "start": 3.5,
+              "end": 6.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Celebratory confetti scene with clear subject motion and high engagement."
+            },
+            "Low": {
+              "start": 13.5,
+              "end": 15.0,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Relatively static shot of the trackside fence providing a brief visual pause."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "2bf1e6242a8894dcf7493ae773e0e4f4"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip71.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_023.mp4",
+          "duration": 3.968,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "Place-Urban"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Transition",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy peaks",
+            "Action sequences",
+            "Sports montages"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Urban"
+          ],
+          "content_description": "High-speed Formula 1 racing featuring a dramatic crash at night followed by fast daytime driving.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 2.2,
+              "moment_role": "Climax",
+              "stable_moment": false,
+              "reason": "Explosive crash and debris with intense camera movement and high visual chaos."
+            },
+            "Medium": {
+              "start": 2.2,
+              "end": 3.968,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Fast-paced daytime racing with smooth tracking motion and clear subject focus."
+            },
+            "Low": {
+              "start": 3.868,
+              "end": 3.968,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Car driving away on a straight, representing the relatively lowest intensity in the clip."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "c1a3d22eecd4b433cfa8a078441d37ce"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip72.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_024.mp4",
+          "duration": 8.185,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "People-Solo"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Reflection",
+            "Transition"
+          ],
+          "emotional_tone": [
+            "Dramatic",
+            "Energetic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy peaks",
+            "Action sequences",
+            "Dramatic storytelling"
+          ],
+          "avoid_for": [
+            "Calm reflective intros",
+            "Peaceful nature scenes"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Solo"
+          ],
+          "content_description": "A professional race car crashes into a track wall at high speed followed by a close-up of the driver's reaction.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 2.5,
+              "moment_role": "Climax",
+              "stable_moment": false,
+              "reason": "High-speed impact with debris and smoke creating peak visual intensity."
+            },
+            "Medium": {
+              "start": 3.0,
+              "end": 5.5,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "The car comes to a stop and the camera tracks into the cockpit."
+            },
+            "Low": {
+              "start": 6.0,
+              "end": 8.185,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Close-up of the driver's face with minimal movement, conveying a moment of shock or relief."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "c64616f3fde203bf586b0e96abcf6900"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip73.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_025.mp4",
+          "duration": 3.011,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Group"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build"
+          ],
+          "emotional_tone": [
+            "Dramatic",
+            "Energetic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Press event sequences",
+            "Character introductions",
+            "Dramatic montages"
+          ],
+          "avoid_for": [
+            "Quiet emotional scenes",
+            "Nature transitions"
+          ],
+          "vibes": [
+            "Group"
+          ],
+          "content_description": "Two actors in racing gear pose for photos against a branded backdrop with frequent camera flashes.",
+          "best_moments": {
+            "High": {
+              "start": 1.0,
+              "end": 3.011,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Frequent camera flashes create high visual energy and anticipation."
+            },
+            "Medium": {
+              "start": 0.5,
+              "end": 2.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Clear view of the subjects with consistent flash activity."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.0,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Initial moment of the shot before the peak frequency of flashes."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "d4ac6f54bb44b3c98623ac5c1c5aed9e"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip74.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_026.mp4",
+          "duration": 3.086417,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Establishing"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Racing start sequences",
+            "Anticipation builds",
+            "High-stakes transitions"
+          ],
+          "avoid_for": [
+            "Calm reflective moments",
+            "Intimate scenes"
+          ],
+          "vibes": [
+            "Vehicle"
+          ],
+          "content_description": "A sequence of red racing start lights illuminating one by one to build anticipation for a race start.",
+          "best_moments": {
+            "High": {
+              "start": 2.986417,
+              "end": 3.086417,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "All five sets of lights are illuminated, representing peak tension and anticipation."
+            },
+            "Medium": {
+              "start": 1.5,
+              "end": 3.0,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "The lights are mid-sequence, showing clear progression and increasing visual weight."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.5,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "The start of the sequence with fewer lights on, setting the initial context."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "83fac527e8f927ef9cb64bd65df15a72"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip75.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_027.mp4",
+          "duration": 4.923,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Solo",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy action sequences",
+            "Sports montages",
+            "Trailers"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate slow-paced scenes"
+          ],
+          "vibes": [
+            "Solo",
+            "Vehicle"
+          ],
+          "content_description": "A line of Formula 1 cars at a starting grid followed by an intense onboard shot of a driver in the cockpit.",
+          "best_moments": {
+            "High": {
+              "start": 1.5,
+              "end": 4.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Intense onboard shot with camera vibration and focused driver expression."
+            },
+            "Medium": {
+              "start": 0.0,
+              "end": 1.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Tense shot of cars lined up in the pit lane waiting for the start."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Initial static framing of the car tires before the cut to the driver."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "fb798e1594d68506b8ce8698c95ea775"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip76.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_028.mp4",
+          "duration": 18.741,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "Object-Vehicle",
+            "People-Crowd"
+          ],
+          "narrative_utility": [
+            "Establishing",
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy peaks",
+            "Sports promos",
+            "Action sequences"
+          ],
+          "avoid_for": [
+            "Calm reflective outros",
+            "Intimate close-up moments"
+          ],
+          "vibes": [
+            "Vehicle",
+            "Crowd"
+          ],
+          "content_description": "High-speed race cars competing on a track at night under stadium lights and fireworks.",
+          "best_moments": {
+            "High": {
+              "start": 12.0,
+              "end": 15.0,
+              "moment_role": "Peak",
+              "stable_moment": true,
+              "reason": "Climactic racing action with vibrant fireworks and intense speed."
+            },
+            "Medium": {
+              "start": 5.5,
+              "end": 8.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Dynamic overhead transition showing the scale of the track and car positioning."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 3.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "Initial track fly-through setting the scene before the main action begins."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "c98faee317bd5f9fe3ac415402839019"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip77.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_029.mp4",
+          "duration": 11.314,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Crowd",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Transition",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "High-energy peaks",
+            "Sports montages",
+            "Narrative transitions"
+          ],
+          "avoid_for": [
+            "Intimate close-up moments",
+            "Consistent calm pacing"
+          ],
+          "vibes": [
+            "Crowd",
+            "Vehicle"
+          ],
+          "content_description": "A montage of a sports victory celebration, a friendly hug, race cars on a track, and a man resting.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 2.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Intense celebration with confetti and high crowd energy."
+            },
+            "Medium": {
+              "start": 2.8,
+              "end": 4.8,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Expressive hug in a laundromat setting with moderate movement."
+            },
+            "Low": {
+              "start": 9.5,
+              "end": 11.314,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Static shot of a man resting, providing a calm conclusion."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "a64c6ea34a1d312b39bb21b76da8fea7"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip78.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_a874555cbee6db8ca3820b8453751397\\standardized\\clip_030.mp4",
+          "duration": 48.071,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Group",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Joyful"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy sports montages",
+            "Climactic victory sequences",
+            "Fast-paced trailers"
+          ],
+          "avoid_for": [
+            "Quiet ambient backgrounds",
+            "Instructional content"
+          ],
+          "vibes": [
+            "Group",
+            "Vehicle"
+          ],
+          "content_description": "A cinematic montage showcasing the intensity of Formula 1 racing followed by explosive victory celebrations and fireworks.",
+          "best_moments": {
+            "High": {
+              "start": 7.5,
+              "end": 11.0,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Peak emotional intensity with screaming celebration and vibrant fireworks in the background."
+            },
+            "Medium": {
+              "start": 17.5,
+              "end": 20.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Joyful interaction between drivers showing camaraderie and relief after a race."
+            },
+            "Low": {
+              "start": 24.5,
+              "end": 27.5,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "A quiet, emotional close-up of a man's face, providing a contemplative end to the high-energy sequence."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "bb7845d837c7a7f6a6c24346204440a1"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        }
+      ]
+    }
   }
 }
