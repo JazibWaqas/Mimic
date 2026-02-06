@@ -482,9 +482,34 @@ def match_clips_to_blueprint(
     second_last_clip = None  # Track last 2 clips for more variety
 
     
+    # v14.7: SYNC LOCK (Phase 2) - Frame boundary constants
+    SNAP_FPS = 30.0
+    FRAME_DUR = 1.0 / SNAP_FPS
+
+    def snap(d):
+        return round(d / FRAME_DUR) * FRAME_DUR
+
+    # Snap Advisor Plans if they exist (v14.7)
+    if advisor_hints and hasattr(advisor_hints, 'segment_moment_plans'):
+        for plan in advisor_hints.segment_moment_plans.values():
+            for m in plan.moments:
+                m.duration = snap(m.duration)
+                m.start = snap(m.start)
+                m.end = m.start + m.duration
+
     for segment in blueprint.segments:
-        print(f"\nSegment {segment.id}: {segment.start:.2f}s-{segment.end:.2f}s "
-              f"({segment.duration:.2f}s, {segment.energy.value}/{segment.motion.value})")
+        # Snap blueprint boundaries to 30fps frames to prevent "Rounding Drift"
+        orig_start = segment.start
+        orig_end = segment.end
+        
+        segment.start = snap(segment.start)
+        segment.end = snap(segment.end)
+        segment.duration = segment.end - segment.start
+        
+        print(f"\nSegment {segment.id}: {segment.start:.6f}s-{segment.end:.6f}s "
+              f"({segment.duration:.6f}s, {segment.energy.value}/{segment.motion.value})")
+        if abs(segment.start - orig_start) > 0.001:
+            print(f"    📐 v14.7 Frame-Snap: Boundary adjusted for 30fps sync.")
 
         # Guard against timeline drift
         if abs(timeline_position - segment.start) > 0.05:
@@ -547,30 +572,35 @@ def match_clips_to_blueprint(
                 
                 # Calculate actual duration to use
                 use_duration = min(moment.duration, segment_remaining)
+                use_duration = snap(use_duration) # v14.7 Sync Lock
+                if use_duration < FRAME_DUR: use_duration = FRAME_DUR # v14.7 Safety
+                
+                # Snap clip_start at decision time (v14.7)
+                use_clip_start = snap(moment.start)
                 
                 # Create decision
                 decision = EditDecision(
                     segment_id=segment.id,
                     clip_path=selected_clip.filepath,
-                    clip_start=moment.start,
-                    clip_end=moment.start + use_duration,
+                    clip_start=use_clip_start,
+                    clip_end=use_clip_start + use_duration,
                     timeline_start=timeline_position,
-                    timeline_end=timeline_position + use_duration,
+                    timeline_end=snap(timeline_position + use_duration), # v14.7 Sync Lock
                     reasoning=f"Advisor-selected: {moment.reason or 'Contextual moment selection'}",
                     vibe_match=True  # Assume Advisor made good choice
                 )
                 decisions.append(decision)
                 
                 # Update tracking
-                timeline_position += use_duration
-                segment_remaining -= use_duration
+                timeline_position = decision.timeline_end
+                segment_remaining = max(0.0, segment.end - timeline_position)
                 clip_usage_count[selected_clip.filename] += 1
                 clip_last_used_at[selected_clip.filename] = timeline_position
-                clip_current_position[selected_clip.filename] = moment.start + use_duration
+                clip_current_position[selected_clip.filename] = decision.clip_end
                 cuts_in_segment += 1
                 
                 print(f"    ✂️ Cut {cuts_in_segment}: {selected_clip.filename} "
-                      f"[{moment.start:.2f}s-{moment.start + use_duration:.2f}s] "
+                      f"[{decision.clip_start:.2f}s-{decision.clip_end:.2f}s] "
                       f"({use_duration:.2f}s) → timeline [{decision.timeline_start:.6f}s-{decision.timeline_end:.6f}s]")
                 print(f"       Advisor reasoning: {moment.reason or 'No specific reason provided'}")
                 
@@ -1363,7 +1393,8 @@ def match_clips_to_blueprint(
             BEAT_PHASE_OFFSET = -0.08  # Editors cut BEFORE the beat, not on it
             
             # FIX #4: Disable beat snapping for first cut in segment (let drops breathe)
-            allow_beat_snapping = cuts_in_segment > 0
+            # v14.7: Disable beat snapping ENTIRELY in REFERENCE mode for maximum rhythm stability
+            allow_beat_snapping = cuts_in_segment > 0 and mode != "REFERENCE"
             
             if beat_grid and not is_last_cut_of_segment and allow_beat_snapping and getattr(blueprint, "audio_confidence", "Observed") == "Observed":
                 target_end = timeline_position + use_duration + BEAT_PHASE_OFFSET  # Apply phase offset
@@ -1387,13 +1418,18 @@ def match_clips_to_blueprint(
                         "beat_target": beat_target,
                         "timeline_position": timeline_position
                     })
-                        
+                # v14.7 Final Frame-Snap for this cut
+                use_duration = snap(use_duration)
+                
             # PHASE 3: Clip Source Selection (start/end in the raw file)
             clip_start = None
             clip_end = None
             
             # v13.2: USABLE WINDOW - Derived from BestMoment, conditioned on segment contract
             # This replaces hard best_moment boundaries with extension capability for sacred cuts
+            window_start = 0.0
+            window_end = selected_clip.duration
+            
             if selected_clip.best_moments:
                 best_moment_data = selected_clip.get_best_moment_for_energy(segment.energy)
                 if best_moment_data:
@@ -1495,6 +1531,13 @@ def match_clips_to_blueprint(
                 continue
             
             # FINAL CALCULATION
+            # v14.7: Snap BOTH clip_start and use_duration to ensure frame-aligned exit
+            # v14.7 Safety: Clamp snapped clip_start to BestMoment window
+            clip_start = max(snap(clip_start), snap(window_start))
+            use_duration = snap(use_duration)
+            if use_duration < FRAME_DUR: use_duration = FRAME_DUR # Hard frame guard
+            
+            clip_end = min(clip_start + use_duration, snap(window_end))
             actual_duration = clip_end - clip_start
 
             # v13.1: REFERENCE MODE - NO LOOPING
@@ -1515,7 +1558,7 @@ def match_clips_to_blueprint(
             # PHASE 4: Create Decision with Locked Boundaries
             # timeline_start is ALWAYS EXACTLY the previous timeline_end
             decision_start = timeline_position
-            decision_end = decision_start + actual_duration
+            decision_end = snap(decision_start + actual_duration)
             
             # REMOVED LYING EDL LOGIC (v12.7):
             # We no longer force decision_end = segment.end.
@@ -1564,23 +1607,31 @@ def match_clips_to_blueprint(
         if gap > 0.001:
             if mode == "REFERENCE":
                 # REFERENCE MODE: Accept gap honestly, log it
-                print(f"    ⚠️ GAP in segment {segment.id} ({gap:.4f}s) - Accepting honestly (no stretch)")
-                # CRITICAL FIX: Extend last decision to segment end to maintain timeline continuity
-                # This prevents gaps between segments while still being honest about clip content
+                print(f"    ⚠️ GAP in segment {segment.id} ({gap:.4f}s) - Checking for extension safety...")
+                # v14.7 FIX: Only extend timeline if we can consistently extend the clip
                 if decisions and decisions[-1].segment_id == segment.id:
-                    decisions[-1].timeline_end = segment.end
-                    timeline_position = segment.end
-                    print(f"    🔧 Extended decision {len(decisions)} timeline to segment end: {segment.end:.4f}s")
+                    # Find the clip to check duration
+                    clip_path = decisions[-1].clip_path
+                    clip = next((c for c in clip_index.clips if c.filepath == clip_path), None)
+                    extra = segment.end - decisions[-1].timeline_end
+                    
+                    if clip and (decisions[-1].clip_end + extra) <= (clip.duration + 0.002):
+                        # v14.7 FIX: Re-snap after extension to ensure frame integrity
+                        decisions[-1].clip_end = snap(decisions[-1].clip_end + extra)
+                        decisions[-1].timeline_end = snap(segment.end)
+                        timeline_position = decisions[-1].timeline_end
+                        print(f"    🔧 Extended decision {len(decisions)} and clip to segment end: {segment.end:.4f}s")
+                    else:
+                        print(f"    ⚠️ GAP PERMANENT: Last clip {Path(clip_path).name} hits duration limit.")
+                        timeline_position = snap(segment.end)
                 else:
                     timeline_position = segment.end
             else:
                 # PROMPT MODE: Allow gap filling (legacy behavior)
                 print(f"    🔗 Filling gap in segment {segment.id} ({gap:.4f}s remaining)")
+                timeline_position = segment.end
                 if decisions:
                     decisions[-1].timeline_end = segment.end
-                    timeline_position = segment.end
-                else:
-                    timeline_position = segment.end
 
         # === SEGMENT LOGGING (Directive 8) ===
         seg_decisions = [d for d in decisions if d.segment_id == segment.id]
@@ -1594,6 +1645,10 @@ def match_clips_to_blueprint(
             print(f"    ❌ TIME DRIFT DETECTED: {rendered_dur - ref_dur:.3f}s")
 
     
+    # v14.7: Finalize blueprint duration to match snapped segments
+    if blueprint.segments:
+        blueprint.total_duration = blueprint.segments[-1].end
+        
     edl = EDL(decisions=decisions)
     unique_clips_used = len(set(d.clip_path for d in decisions))
     total_clips = len(clip_index.clips)

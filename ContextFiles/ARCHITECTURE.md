@@ -1,9 +1,9 @@
 # MIMIC Architecture Documentation
 
-**Version:** V14.1 - Advisor-Driven Contextual Selection  
-**Last Updated:** February 5, 2026
+**Version:** V14.7.2 - The Clock-Lock  
+**Last Updated:** February 7, 2026
 
-This document provides a complete technical overview of the MIMIC system architecture, governed by the [Identity Contract](#ii-the-identity-contract-v121), the [Pacing Authority Model](#iii-pacing-authority-model-v121), the [Semantic Intelligence System](#iv-semantic-intelligence-v132), and the [Contextual Moment Selection System](#v-contextual-moment-selection-v140).
+This document provides a complete technical overview of the MIMIC system architecture, governed by the [Identity Contract](#ii-the-identity-contract-v121), the [Pacing Authority Model](#iii-pacing-authority-model-v121), the [Semantic Intelligence System](#iv-semantic-intelligence-v132), the [Contextual Moment Selection System](#v-contextual-moment-selection-v140), and the [Clock-Lock Temporal System](#vii-the-clock-lock-v1472).
 
 ---
 
@@ -494,5 +494,32 @@ MIMIC V12.1 solves the "Mechanical Metronome" problem by inverting the authority
 
 ---
 
-**Last Updated:** February 5, 2026
-**Version:** V14.1
+---
+
+## 🕒 VII. The Clock-Lock (v14.7.2)
+
+V14.7.2 represents the mathematical "freezing" of the system's temporal logic, ensuring absolute synchronization between cinematic intent and digital container.
+
+### 1. Absolute CFR Authority
+**The Problem:** Standard FFmpeg `-r 30` flags are ambiguous. They can result in Variable Frame Rate (VFR) containers if the input segments have slight duration variances, leading to progressive audio drift.
+
+**The Solution:**
+- **Explicit Filtergraph:** Use `"-filter:v", "fps=30"` to force a 30fps constant frame rate grid.
+- **Vsync Enforcement:** Use `"-vsync", "cfr"` to ensure that every visual frame is precisely 33.33ms apart, with no fractional PTS (Presentation Timestamp) deviation.
+
+### 2. Video-Sacred Timing
+MIMIC operates on the principle that the **Video Duration is the Authority**.
+- **The Blueprint** defines the ideal duration.
+- **The Editor** snaps boundaries to the nearest 1/30s frame.
+- **The Processor** trims the final audio track to exactly match the rendered video duration using `"-t", f"{video_duration:.4f}"`.
+- **Honest Gaps:** If a clip is too short to fill a segment, the system underfills honestly (v13.1) rather than looping/lying, preserving the 1/30s clock stability.
+
+### 3. Sample-Level Sync
+To prevent micro-clicks and container metadata misalignment:
+- **Audio Re-encoding:** All segment audio is re-encoded to `AAC` during concatenation rather than stream-copying. This ensures consistent encoder delays and eliminates "priming sample" drift between cuts.
+- **Sample Rate Locking:** Audio is normalized to 48kHz to ensure perfect alignment with 30fps video frames.
+
+---
+
+**Last Updated:** February 7, 2026
+**Version:** V14.7.2

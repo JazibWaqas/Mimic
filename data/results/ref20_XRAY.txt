@@ -235,7 +235,7 @@ SEGMENT 4 X-RAY | 1.07s-1.60s | Build-up | Vibe: Technical
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 5 X-RAY | 1.60s-2.14s | Build-up | Vibe: Speed
+SEGMENT 5 X-RAY | 1.60s-2.13s | Build-up | Vibe: Speed
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -292,7 +292,7 @@ SEGMENT 5 X-RAY | 1.60s-2.14s | Build-up | Vibe: Speed
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 6 X-RAY | 2.14s-2.67s | Build-up | Vibe: Immersive
+SEGMENT 6 X-RAY | 2.13s-2.67s | Build-up | Vibe: Immersive
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -406,7 +406,7 @@ SEGMENT 7 X-RAY | 2.67s-3.20s | Build-up | Vibe: Tension
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 8 X-RAY | 3.20s-3.74s | Build-up | Vibe: Kinetic
+SEGMENT 8 X-RAY | 3.20s-3.73s | Build-up | Vibe: Kinetic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -463,7 +463,7 @@ SEGMENT 8 X-RAY | 3.20s-3.74s | Build-up | Vibe: Kinetic
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 9 X-RAY | 3.74s-4.27s | Build-up | Vibe: Prestige
+SEGMENT 9 X-RAY | 3.73s-4.27s | Build-up | Vibe: Prestige
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -520,7 +520,7 @@ SEGMENT 9 X-RAY | 3.74s-4.27s | Build-up | Vibe: Prestige
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 10 X-RAY | 4.27s-4.81s | Build-up | Vibe: Atmosphere
+SEGMENT 10 X-RAY | 4.27s-4.80s | Build-up | Vibe: Atmosphere
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -577,7 +577,7 @@ SEGMENT 10 X-RAY | 4.27s-4.81s | Build-up | Vibe: Atmosphere
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 11 X-RAY | 4.81s-5.34s | Build-up | Vibe: Power
+SEGMENT 11 X-RAY | 4.80s-5.33s | Build-up | Vibe: Power
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -634,7 +634,7 @@ SEGMENT 11 X-RAY | 4.81s-5.34s | Build-up | Vibe: Power
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 12 X-RAY | 5.34s-5.87s | Peak | Vibe: Action
+SEGMENT 12 X-RAY | 5.33s-5.87s | Peak | Vibe: Action
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -691,7 +691,7 @@ SEGMENT 12 X-RAY | 5.34s-5.87s | Peak | Vibe: Action
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 13 X-RAY | 5.87s-6.41s | Peak | Vibe: Velocity
+SEGMENT 13 X-RAY | 5.87s-6.40s | Peak | Vibe: Velocity
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -748,7 +748,7 @@ SEGMENT 13 X-RAY | 5.87s-6.41s | Peak | Vibe: Velocity
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 14 X-RAY | 6.41s-6.94s | Peak | Vibe: Branding
+SEGMENT 14 X-RAY | 6.40s-6.93s | Peak | Vibe: Branding
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -805,7 +805,7 @@ SEGMENT 14 X-RAY | 6.41s-6.94s | Peak | Vibe: Branding
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 15 X-RAY | 6.94s-7.48s | Peak | Vibe: Transition
+SEGMENT 15 X-RAY | 6.93s-7.47s | Peak | Vibe: Transition
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -862,7 +862,7 @@ SEGMENT 15 X-RAY | 6.94s-7.48s | Peak | Vibe: Transition
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 16 X-RAY | 7.48s-8.54s | Peak | Vibe: Preparation
+SEGMENT 16 X-RAY | 7.47s-8.53s | Peak | Vibe: Preparation
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -919,7 +919,7 @@ SEGMENT 16 X-RAY | 7.48s-8.54s | Peak | Vibe: Preparation
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 17 X-RAY | 8.54s-10.15s | Peak | Vibe: Aesthetic
+SEGMENT 17 X-RAY | 8.53s-10.13s | Peak | Vibe: Aesthetic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -976,7 +976,7 @@ SEGMENT 17 X-RAY | 8.54s-10.15s | Peak | Vibe: Aesthetic
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 18 X-RAY | 10.15s-10.68s | Peak | Vibe: Cinematic
+SEGMENT 18 X-RAY | 10.13s-10.67s | Peak | Vibe: Cinematic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1033,7 +1033,7 @@ SEGMENT 18 X-RAY | 10.15s-10.68s | Peak | Vibe: Cinematic
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 19 X-RAY | 10.68s-11.22s | Peak | Vibe: Character
+SEGMENT 19 X-RAY | 10.67s-11.23s | Peak | Vibe: Character
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1090,7 +1090,7 @@ SEGMENT 19 X-RAY | 10.68s-11.22s | Peak | Vibe: Character
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 20 X-RAY | 11.22s-11.75s | Peak | Vibe: Detail
+SEGMENT 20 X-RAY | 11.23s-11.73s | Peak | Vibe: Detail
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1147,7 +1147,7 @@ SEGMENT 20 X-RAY | 11.22s-11.75s | Peak | Vibe: Detail
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 21 X-RAY | 11.75s-12.28s | Peak | Vibe: Speed
+SEGMENT 21 X-RAY | 11.73s-12.27s | Peak | Vibe: Speed
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1204,7 +1204,7 @@ SEGMENT 21 X-RAY | 11.75s-12.28s | Peak | Vibe: Speed
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 22 X-RAY | 12.28s-12.82s | Outro | Vibe: Hype
+SEGMENT 22 X-RAY | 12.27s-12.83s | Outro | Vibe: Hype
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1261,7 +1261,7 @@ SEGMENT 22 X-RAY | 12.28s-12.82s | Outro | Vibe: Hype
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 23 X-RAY | 12.82s-13.35s | Outro | Vibe: Outro
+SEGMENT 23 X-RAY | 12.83s-13.33s | Outro | Vibe: Outro
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1318,7 +1318,7 @@ SEGMENT 23 X-RAY | 12.82s-13.35s | Outro | Vibe: Outro
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 24 X-RAY | 13.35s-13.89s | Outro | Vibe: Preparation
+SEGMENT 24 X-RAY | 13.33s-13.90s | Outro | Vibe: Preparation
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1375,7 +1375,7 @@ SEGMENT 24 X-RAY | 13.35s-13.89s | Outro | Vibe: Preparation
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 25 X-RAY | 13.89s-14.14s | Outro | Vibe: Aesthetic
+SEGMENT 25 X-RAY | 13.90s-14.13s | Outro | Vibe: Aesthetic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1432,7 +1432,7 @@ SEGMENT 25 X-RAY | 13.89s-14.14s | Outro | Vibe: Aesthetic
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 26 X-RAY | 14.14s-14.42s | Outro | Vibe: Cinematic
+SEGMENT 26 X-RAY | 14.13s-14.43s | Outro | Vibe: Cinematic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1493,7 +1493,7 @@ SEGMENT 26 X-RAY | 14.14s-14.42s | Outro | Vibe: Cinematic
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 27 X-RAY | 14.42s-14.95s | Outro | Vibe: Character
+SEGMENT 27 X-RAY | 14.43s-14.93s | Outro | Vibe: Character
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1554,7 +1554,7 @@ SEGMENT 27 X-RAY | 14.42s-14.95s | Outro | Vibe: Character
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 28 X-RAY | 14.95s-15.49s | Outro | Vibe: Detail
+SEGMENT 28 X-RAY | 14.93s-15.50s | Outro | Vibe: Detail
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1615,7 +1615,7 @@ SEGMENT 28 X-RAY | 14.95s-15.49s | Outro | Vibe: Detail
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 29 X-RAY | 15.49s-16.02s | Outro | Vibe: Speed
+SEGMENT 29 X-RAY | 15.50s-16.03s | Outro | Vibe: Speed
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1676,7 +1676,7 @@ SEGMENT 29 X-RAY | 15.49s-16.02s | Outro | Vibe: Speed
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 30 X-RAY | 16.02s-16.56s | Outro | Vibe: Hype
+SEGMENT 30 X-RAY | 16.03s-16.57s | Outro | Vibe: Hype
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1737,7 +1737,7 @@ SEGMENT 30 X-RAY | 16.02s-16.56s | Outro | Vibe: Hype
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 31 X-RAY | 16.56s-17.09s | Outro | Vibe: Outro
+SEGMENT 31 X-RAY | 16.57s-17.10s | Outro | Vibe: Outro
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1798,7 +1798,7 @@ SEGMENT 31 X-RAY | 16.56s-17.09s | Outro | Vibe: Outro
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 32 X-RAY | 17.09s-17.62s | Outro | Vibe: Preparation
+SEGMENT 32 X-RAY | 17.10s-17.63s | Outro | Vibe: Preparation
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1859,7 +1859,7 @@ SEGMENT 32 X-RAY | 17.09s-17.62s | Outro | Vibe: Preparation
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 33 X-RAY | 17.62s-18.16s | Outro | Vibe: Aesthetic
+SEGMENT 33 X-RAY | 17.63s-18.17s | Outro | Vibe: Aesthetic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1920,7 +1920,7 @@ SEGMENT 33 X-RAY | 17.62s-18.16s | Outro | Vibe: Aesthetic
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 34 X-RAY | 18.16s-18.69s | Outro | Vibe: Cinematic
+SEGMENT 34 X-RAY | 18.17s-18.70s | Outro | Vibe: Cinematic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -1981,7 +1981,7 @@ SEGMENT 34 X-RAY | 18.16s-18.69s | Outro | Vibe: Cinematic
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 35 X-RAY | 18.69s-19.23s | Outro | Vibe: Character
+SEGMENT 35 X-RAY | 18.70s-19.23s | Outro | Vibe: Character
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2042,7 +2042,7 @@ SEGMENT 35 X-RAY | 18.69s-19.23s | Outro | Vibe: Character
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 36 X-RAY | 19.23s-19.76s | Outro | Vibe: Detail
+SEGMENT 36 X-RAY | 19.23s-19.77s | Outro | Vibe: Detail
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2103,7 +2103,7 @@ SEGMENT 36 X-RAY | 19.23s-19.76s | Outro | Vibe: Detail
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 37 X-RAY | 19.76s-20.29s | Outro | Vibe: Speed
+SEGMENT 37 X-RAY | 19.77s-20.30s | Outro | Vibe: Speed
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2164,7 +2164,7 @@ SEGMENT 37 X-RAY | 19.76s-20.29s | Outro | Vibe: Speed
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 38 X-RAY | 20.29s-20.83s | Outro | Vibe: Hype
+SEGMENT 38 X-RAY | 20.30s-20.83s | Outro | Vibe: Hype
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2225,7 +2225,7 @@ SEGMENT 38 X-RAY | 20.29s-20.83s | Outro | Vibe: Hype
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 39 X-RAY | 20.83s-21.36s | Outro | Vibe: Outro
+SEGMENT 39 X-RAY | 20.83s-21.37s | Outro | Vibe: Outro
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2286,7 +2286,7 @@ SEGMENT 39 X-RAY | 20.83s-21.36s | Outro | Vibe: Outro
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 40 X-RAY | 21.36s-21.90s | Outro | Vibe: Preparation
+SEGMENT 40 X-RAY | 21.37s-21.90s | Outro | Vibe: Preparation
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2408,7 +2408,7 @@ SEGMENT 41 X-RAY | 21.90s-22.43s | Outro | Vibe: Aesthetic
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 42 X-RAY | 22.43s-22.96s | Outro | Vibe: Cinematic
+SEGMENT 42 X-RAY | 22.43s-22.97s | Outro | Vibe: Cinematic
 ================================================================================
 
 📋 ADVISOR INPUT:
@@ -2469,7 +2469,7 @@ SEGMENT 42 X-RAY | 22.43s-22.96s | Outro | Vibe: Cinematic
    Still won despite penalty - strong match
 
 ================================================================================
-SEGMENT 43 X-RAY | 22.96s-25.09s | Outro | Vibe: Outro
+SEGMENT 43 X-RAY | 22.97s-25.10s | Outro | Vibe: Outro
 ================================================================================
 
 📋 ADVISOR INPUT:

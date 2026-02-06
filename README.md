@@ -4,7 +4,7 @@
 
 MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrative arc) and automatically recreates that style using your clips. Think "Instagram Reels editor that understands the 'why' behind professional edits."
 
-**Version:** V12.1 - Content-First Authority (February 4, 2026)
+**Version:** V14.7.2 - The Clock-Lock (February 7, 2026)
 
 ---
 
@@ -76,14 +76,14 @@ MIMIC is not just an automation tool; it’s an AI collaborator designed for the
 
 ---
 
-## 📋 Recent Updates (V12.1 - February 4, 2026)
+## 📋 Recent Updates (V14.7.2 - February 7, 2026)
 
-- **✅ Content-First Authority (V12.1):** 32-Char MD5 identity prevents re-pacing loops.
+- **✅ Absolute Temporal Authority (V14.7.2):** Clock-Lock system achieves zero drift across high-complexity edits.
+- **✅ Absolute 30fps CFR Lock (V14.7.2):** Eliminates "Floating FPS" issues using explicit filtergraphs and vsync enforcement.
+- **✅ AAC Sample Lock (V14.7.2):** Audio re-encoding during final join ensures frame-perfect alignment and zero micro-clicks.
+- **✅ Advisor-Driven Contextual Selection (V14.1):** Reference-conditioned moment selection replaces clip-centric best moments.
 - **✅ Sacred Visual Cuts (V12.1):** Real camera cuts from reference are protected from subdivision.
-- **✅ Inverted Beat Authority (V12.1):** Narrative intent sets pacing; beats are used for ornamentation/snapping only.
-- **✅ Contextual Holds (V12.1):** AI selects 1.2s-6s clips based on energy level (Kinetic vs. Breathable).
-- **✅ Idempotent Refresh:** Zero re-processing of known assets.
-- **✅ Unified Thumbnails:** Content-hash naming eliminates redundant generation.
+- **✅ ID-First Architecture:** Content-hash based identity ensures metadata never "drifts".
 
 ### **Quality Metrics**
 - **Diversity:** **100% Perfect Diversity** (0 repeats) in demo mode

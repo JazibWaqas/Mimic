@@ -104,7 +104,29 @@
       "priority": "High"
     }
   ],
-  "segment_moment_plans": {},
+  "segment_moment_plans": {
+    "1": {
+      "segment_id": 1,
+      "moments": [
+        {
+          "clip_filename": "clip50.mp4",
+          "moment_energy_level": "Low",
+          "start": 0.0,
+          "end": 4.6,
+          "duration": 4.6,
+          "moment_role": "",
+          "stable_moment": true,
+          "reason": "Clip 50 provides the most effective 'Heroic' introduction by starting with a stable, thematic shot of trophies (0.0-3.0s) which establishes the narrative context of success. By extending the selection into the subsequent 'Transition' moment (3.0-4.6s) within the same clip, we achieve the required 4.6s duration with a single continuous camera move that reveals the subjects, satisfying the 'Long' hold requirement and 'Sparse' musical density without unnecessary cuts.",
+          "semantic_score": 0.0,
+          "musical_alignment": 0.0,
+          "narrative_continuity": 0.0
+        }
+      ],
+      "total_duration": 4.6,
+      "is_single_moment": true,
+      "chaining_reason": null
+    }
+  },
   "library_assessment": null,
   "creative_audit": null,
   "overall_strategy": "",

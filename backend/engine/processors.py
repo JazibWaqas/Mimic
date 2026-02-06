@@ -270,7 +270,7 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
         input_path: Source video file
         output_path: Destination for standardized video
         energy: DEPRECATED - no longer used for geometry decisions
-        is_reference: DEPRECATED - no longer special-cased
+        is_reference: If True, forces precision CPU encoding (libx264) for blueprint accuracy.
     """
     # V14.4 PREMIUM NOSTALGIA PRESERVE
     # - Uniform Letterbox: Preserves 100% of the nostalgic context.
@@ -292,6 +292,7 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
                 "setsar=1"
             ),
             "-c:v", encoder,
+            "-vsync", "cfr",                     # Sync Lock: Ensure grid-aligned source (v14.7)
             "-preset", "slow" if encoder == "h264_qsv" else "veryfast",
             "-c:a", "aac",
             "-b:a", "256k",
@@ -316,12 +317,19 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
         return subprocess.run(cmd, capture_output=True, text=True, check=True)
 
     try:
-        # Try hardware acceleration first (Intel QSV)
-        print(f"  [GEOMETRY] Standardizing with Intel QSV (GPU acceleration)...")
-        run_ffmpeg("h264_qsv")
-        print(f"  [OK] Standardized (QSV): {Path(output_path).name}")
+        # P1 SAFEGUARD: Skip QSV for reference videos to ensure absolute timestamp precision
+        if is_reference:
+            print(f"  [GEOMETRY] Reference Mode detected: forcing libx264 for narrative precision...")
+            run_ffmpeg("libx264")
+            print(f"  [OK] Standardized (Precision CPU): {Path(output_path).name}")
+        else:
+            # Try hardware acceleration first (Intel QSV)
+            print(f"  [GEOMETRY] Standardizing with Intel QSV (GPU acceleration)...")
+            run_ffmpeg("h264_qsv")
+            print(f"  [OK] Standardized (QSV): {Path(output_path).name}")
     except Exception as e:
-        print(f"  [WARN] Intel QSV failed or unavailable. Falling back to libx264 (Software CPU)...")
+        if not is_reference:
+            print(f"  [WARN] Intel QSV failed or unavailable. Falling back to libx264 (Software CPU)...")
         try:
             # Fallback to software encoding (libx264) - universal
             run_ffmpeg("libx264")
@@ -392,6 +400,12 @@ def extract_segment(
 ) -> None:
     """
     Extract a segment from a video (precise frame-accurate cutting).
+    
+    SYNC LOCK (v14.6): Absolute Frame Accuracy.
+    - Moved -ss after -i for decode-accurate seeking (eliminates ±1-2 frame jitter).
+    - Resets PTS for both audio and video per segment.
+    - Forces Constant Frame Rate (CFR) via -vsync.
+    - Relies on upstream standardization for 30fps (no redundant -r 30).
 
     Args:
         input_path: Source video
@@ -402,21 +416,24 @@ def extract_segment(
     cmd = [
         "ffmpeg",
         "-y",
-        "-ss", str(start_time),  # Seek to start (before -i for accuracy)
         "-i", input_path,
-        "-t", str(duration),  # Duration
-        "-c:v", "libx264",  # Re-encode for frame-accurate cuts
+        "-ss", f"{start_time:.4f}",    # Sync Lock: Decode-accurate seeking (v14.6)
+        "-t", f"{duration:.4f}",     # Accurate duration
+        "-vf", "setpts=PTS-STARTPTS",  # Sync Lock: Reset video timestamps
+        "-af", "asetpts=PTS-STARTPTS", # Sync Lock: Reset audio timestamps
+        "-c:v", "libx264",             # Re-encode for precision
         "-preset", "ultrafast",
         "-crf", "23",
         "-c:a", "aac",
         "-b:a", "192k",
+        "-vsync", "cfr",               # Sync Lock: Force constant frame rate
         "-avoid_negative_ts", "make_zero",
         output_path
     ]
 
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(f"    [OK] Segment extracted: {start_time:.2f}s - {start_time + duration:.2f}s")
+        print(f"    [OK] Segment extracted (Sync Lock v14.6): {start_time:.2f}s - {start_time + duration:.2f}s")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Segment extraction failed: {e.stderr}")
 
@@ -504,10 +521,13 @@ def concatenate_videos(input_paths: List[str], output_path: str) -> None:
         "-f", "concat",
         "-safe", "0",
         "-i", str(concat_list_path),
-        "-c:v", "libx264",  # Re-encode video for frame-perfect cuts
-        "-preset", "ultrafast",  # Fast encoding (keeps total time <60s)
-        "-crf", "23",  # Quality (23 = visually lossless)
-        "-c:a", "copy",  # Audio can be copied (no precision needed)
+        "-filter:v", "fps=30", # Sync Lock: Force output frame rate via filter (v14.7.2)
+        "-c:v", "libx264",     # Re-encode video for frame-perfect cuts
+        "-preset", "ultrafast", 
+        "-crf", "23", 
+        "-c:a", "aac",         # Re-encode audio to avoid clicks/metadata gaps (v14.7.2)
+        "-b:a", "192k",
+        "-vsync", "cfr",       # Sync Lock: Force constant frame rate (v14.7.2)
         "-y",
         output_path
     ]
@@ -530,8 +550,7 @@ def concatenate_videos(input_paths: List[str], output_path: str) -> None:
 def merge_audio_video(
     video_path: str,
     audio_path: str,
-    output_path: str,
-    trim_to_shortest: bool = True
+    output_path: str
 ) -> None:
     """
     Merge audio track onto video.
@@ -547,7 +566,6 @@ def merge_audio_video(
         video_path: Video file (can be silent)
         audio_path: Audio file to overlay
         output_path: Destination for merged video
-        trim_to_shortest: DEPRECATED - kept for API compatibility but ignored
     """
     # P1 SAFEGUARD: Detect durations and pad audio if needed
     try:
@@ -575,6 +593,10 @@ def merge_audio_video(
         print(f"  [AUDIO PAD] Video is {pad_duration:.2f}s longer than audio - padding with silence")
         # Use apad filter to pad audio with silence to match video duration
         cmd.extend(["-af", f"apad=pad_dur={pad_duration:.3f}"])
+    
+    # P1 SAFEGUARD: Video duration is sacred, audio MUST NOT outlast it
+    if video_duration:
+        cmd.extend(["-t", f"{video_duration:.4f}"])
     
     # CRITICAL: Never use -shortest (video timing is sacred)
     # trim_to_shortest parameter is ignored for safety

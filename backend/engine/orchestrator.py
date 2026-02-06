@@ -504,14 +504,12 @@ def run_mimic_pipeline(
             final_output_path.unlink()
         
         if audio_extracted:
-            # REFERENCE MODE FIX: trim_to_shortest=True (ALWAYS in Reference Mode)
-            # Reference audio duration is SACRED - video must match it exactly
-            # This prevents silence padding and ensures music doesn't cut abruptly
+            # P1 SAFEGUARD: Video timing is sacred, audio adapts.
+            # Reference audio is merged using the authoritative video duration.
             merge_audio_video(
                 str(render_source),
                 str(audio_path),
-                str(final_output_path),
-                trim_to_shortest=True  # LOCKED: Reference audio is authority
+                str(final_output_path)
             )
         else:
             create_silent_video(str(render_source), str(final_output_path))

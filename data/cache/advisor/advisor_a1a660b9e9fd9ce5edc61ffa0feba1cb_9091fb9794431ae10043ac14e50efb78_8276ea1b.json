@@ -1,0 +1,113 @@
+{
+  "text_overlay_intent": "The presence of elite global brands and F1 terminology demands a narrative of professional dominance, corporate prestige, and the absolute pinnacle of technical achievement.",
+  "dominant_narrative": "The relentless, high-stakes intersection of human focus and mechanical velocity in the world of elite professional racing.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Atmospheric urban nightscapes and technical preparation.",
+      "intent_diluting_material": "High-speed kinetic chaos or celebratory crowds.",
+      "reasoning": "The intro must establish the 'calm before the storm,' focusing on the gravity of the environment and the mental preparation of the driver before the mechanical release.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip52.mp4",
+        "clip63.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Physical training, pit lane logistics, and mechanical testing.",
+      "intent_diluting_material": "Static scenery or non-racing related lifestyle shots.",
+      "reasoning": "This stage bridges the mental focus of the intro to the physical reality of the race, emphasizing the work and technology required to achieve speed.",
+      "recommended_clips": [
+        "clip62.mp4",
+        "clip69.mp4",
+        "clip75.mp4",
+        "clip53.mp4",
+        "clip65.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "High-speed crashes, onboard perspectives, and explosive visual effects like fireworks.",
+      "intent_diluting_material": "Slow-paced character reflections or wide establishing shots without motion.",
+      "reasoning": "The peak is the visceral manifestation of the narrative; it must feel dangerous, fast, and overwhelming to mirror the intensity of a race start and subsequent combat on track.",
+      "recommended_clips": [
+        "clip57.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip58.mp4",
+        "clip76.mp4",
+        "clip56.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Victory celebrations, trophies, and brand-aligned urban iconography.",
+      "intent_diluting_material": "Ongoing high-speed action that prevents a sense of resolution.",
+      "reasoning": "The outro must resolve the kinetic energy into a sense of accomplishment and prestige, reinforcing the brand authority established in the text overlays.",
+      "recommended_clips": [
+        "clip78.mp4",
+        "clip50.mp4",
+        "clip61.mp4",
+        "clip77.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage perfectly aligned with the 'ACTION' vibe.",
+      "Strong selection of F1-specific technical and celebratory content.",
+      "High-quality cinematic assets that match the 'Filmic Teal-Orange' aesthetic."
+    ],
+    "editorial_tradeoffs": [
+      "The scarcity of 'Low' energy clips requires using atmospheric 'High' quality shots with slower internal camera movement to establish the intro.",
+      "Limited 'Place-Nature' assets mean the narrative must remain strictly urban and track-focused."
+    ],
+    "constraint_gaps": [
+      "Lack of intimate 'Object-Detail' shots (pedals, gear shifts) forces a reliance on wider 'Object-Vehicle' shots to convey mechanical power."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize a 'Man vs. Machine' narrative, alternating between the cold, high-tech precision of the Formula 1 cars and the raw physical strain of the driver. By anchoring the high-speed peaks with human reactions (training, focus, celebration), the system will ensure the speed feels earned rather than just decorative.",
+  "remake_strategy": "To elevate this to a Director's Cut, I would integrate macro-cinematography of mechanical components (glowing brake discs, tire textures) and more 'Quiet' moments of the driver in isolation to heighten the contrast against the 'Relentless' racing peaks.",
+  "primary_narrative_subject": null,
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical precision (pedals, steering, lights)",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed vehicle motion",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "On-track impact or crash",
+      "desired_continuity": "Action-Completion",
+      "priority": "High"
+    },
+    {
+      "trigger": "Driver focus to vehicle acceleration",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-06T18:51:03.166659"
+}

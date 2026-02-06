@@ -1,36 +1,49 @@
-# MIMIC - SYSTEM STATE (V13.2)
+# MIMIC - SYSTEM STATE (V14.7.2)
 
-**Last Updated:** February 5, 2026  
-**Version:** V14.1 "Advisor-Driven Contextual Selection"  
-**Status:** Production Ready / Demo Grade
+**Last Updated:** February 7, 2026  
+**Version:** V14.7.2 "The Clock-Lock"  
+**Status:** PRODUCTION FROZEN / Cinematic Grade
 
 ---
 
 ## 🎯 **CURRENT STATUS**
 
-### **What Works (Production Ready)**
+### **What Works (Absolute Temporal Authority)**
+- ✅ **Absolute Clock Lock (v14.7.2):** 30fps CFR globally enforced via `fps=30` and `vsync cfr`.
+- ✅ **Audio Sample Lock:** AAC re-encoding during concatenation eliminates metadata gaps and micro-clicks.
+- ✅ **Sacred Video Trim:** Video duration is the absolute authority; audio is precisely padded/trimmed to match.
+- ✅ **Honest Underfill:** System correctly refuses to "lie" or loop when material is missing (e.g. Ref 19).
+- ✅ **Deterministic Frame-Snap:** Every cut is snapped to the nearest 33.33ms boundary.
 - ✅ All 7 pipeline stages functional
 - ✅ Director-first pacing authority (narrative > beats)
 - ✅ Sacred visual cuts protection
 - ✅ Progressive audio authority (try audio → fallback muted)
 - ✅ Narrative subject locking
-- ✅ Emotional capital management
 - ✅ Hash-based caching (100% hit rate on repeat runs)
 - ✅ Reflector with Director's Monologue
 - ✅ Vault dashboard with intelligence display
-- ✅ Demo-safe text rendering
 - ✅ Zero crash rate (hardened FFmpeg filters)
-
-### **Performance Metrics**
-- **Generation Time:** 15-20s (with cache)
-- **Diversity:** 100% (zero clip repetitions in demo mode)
-- **Beat Sync:** <0.015s deviation
-- **Timeline Integrity:** 0% gaps/overlaps
-- **Best Output Quality:** 7.5-8.0/10
 
 ---
 
-## 🔧 **Recent Fixes (Feb 5, 2026)**
+## 🔧 **Recent Fixes (Feb 7, 2026)**
+
+### **V14.7.2 - The "Clock-Lock" Patch** ✅ CRITICAL SUCCESS
+**Problem:** Residual drift (up to 0.40s) was detected in high-complexity edits. This was caused by FFmpeg's ambiguous handling of non-standard frame rates during concatenation and early fractional PTS drift during standardization.
+
+**Fix Applied:**
+- **Global CFR Lock:** Replaced ambiguous `-r 30` with `"-filter:v", "fps=30"` and `"-vsync", "cfr"` in `processors.py`.
+- **Concat Consistency:** Forced video re-encoding with `libx264` and audio re-encoding with `aac` during the final join.
+- **Duration Authority:** Modified `merge_audio_video` to strictly use `"-t", f"{video_duration:.4f}"`. Video timing is now sacred.
+- **Standardization Guard:** Added `"-vsync", "cfr"` to `standardize_clip` to prevent fractional poisoning at the source.
+
+**Impact:** 
+- ✅ **Zero Drift:** Output containers now precisely match the sum of segment durations.
+- ✅ **Cinematic Sync:** Visual switches land on the nearest frame boundary with 33ms precision.
+- ✅ **Audio Integrity:** No micro-clicks or drift between audio and video tracks.
+
+---
+
 
 ### **0c. V14.0-V14.1 Advisor-Driven Contextual Moment Selection** ✅ NEW
 **Problem:** Original best-moment logic was clip-centric, not reference-centric. A clip with 10 valid micro-moments was treated as having one "best" moment, reused even when a different part would fit the current segment better.

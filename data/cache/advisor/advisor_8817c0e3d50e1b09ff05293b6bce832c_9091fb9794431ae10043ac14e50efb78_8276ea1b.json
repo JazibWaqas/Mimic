@@ -1,0 +1,103 @@
+{
+  "text_overlay_intent": "The text demands a professional, corporate-backed intensity where speed is not accidental but a byproduct of meticulous strategy and elite sponsorship.",
+  "dominant_narrative": "The relentless pursuit of victory through the fusion of human psychological grit and mechanical precision.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Technical car details, atmospheric track lighting, and preparation rituals.",
+      "intent_diluting_material": "Wide shots of empty tracks or casual, low-stakes environments.",
+      "reasoning": "The intro must establish the 'Strategy' and 'Mental Fortitude' aspects of the narrative. We need to see the focus before the movement.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip52.mp4",
+        "clip74.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Driver training, cockpit close-ups, and mechanical testing sequences.",
+      "intent_diluting_material": "Celebratory or joyful crowd shots that break the tension too early.",
+      "reasoning": "This stage bridges the gap between thought and action. It should feel like a coiled spring, focusing on the driver's internal state and the machine's potential.",
+      "recommended_clips": [
+        "clip62.mp4",
+        "clip65.mp4",
+        "clip73.mp4",
+        "clip75.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "High-speed drifting, tire smoke, crashes, and aggressive on-board perspectives.",
+      "intent_diluting_material": "Static shots or slow-motion sequences that lack a sense of forward 'Relentless' momentum.",
+      "reasoning": "The peak is the execution of the 'Strategy.' It must be visceral, high-stakes, and visually aggressive to match the 'Calculated Speed' intent.",
+      "recommended_clips": [
+        "clip56.mp4",
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip76.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Post-race reflection, victory celebrations, or a final 'button' shot of the car/driver.",
+      "intent_diluting_material": "Abrupt cuts to black or unrelated lifestyle footage.",
+      "reasoning": "The outro provides the 'Success' mentioned in the narrative message. It should feel like the resolution of the intense effort shown in the peak.",
+      "recommended_clips": [
+        "clip77.mp4",
+        "clip78.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing and F1-specific footage.",
+      "Strong selection of 'People-Solo' training and focus clips (Brad Pitt, training mask).",
+      "High-quality crash and high-stakes action sequences."
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of 'Medium' energy clips requires using high-energy clips with 'Establishing' utility for the intro.",
+      "The 'Relentless' pacing must be manufactured through tight cutting of high-energy clips rather than relying on varied energy levels."
+    ],
+    "constraint_gaps": [
+      "Lack of specific sponsor-branded close-ups (Shark Ninja, Expensify) mentioned in the text overlay.",
+      "Limited 'Place-Nature' clips to fulfill the 'drifting' and 'smoke' requirements in a non-urban setting."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize the 'Man vs. Machine' narrative by intercutting technical car preparation with intense human focus. We will maintain a 'Relentless' pace by favoring clips with high internal motion and using the driver's training/focus as the narrative anchor that justifies the high-speed racing action.",
+  "remake_strategy": "To elevate this to a Director's Cut, I would integrate macro-photography of the driver's eyes and specific sponsor-branded gear to more literally fulfill the 'Text Overlay' requirements and deepen the 'Strategy' theme.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mental Fortitude / Strategy",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-Speed Motion",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Mechanical Precision to Human Reaction",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-06T18:54:28.098874"
+}
