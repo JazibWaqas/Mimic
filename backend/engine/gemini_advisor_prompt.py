@@ -150,6 +150,19 @@ Example triggers:
 
 ---
 
+## CANONICAL VIBE CATEGORIES (SHARED LANGUAGE)
+
+The system uses a specific "Canonical Map" to understand vibes. You MUST use these exact category names in your `primary_emotional_carrier` and `reasoning` descriptions to ensure the engine recognizes your intent.
+
+1. ACTION: High-speed, racing, kinetic movement, flight, sports, automotive/jet action.
+2. INTENSITY: Dramatic peaks, cinematic power, focused technical work, professional dominance.
+3. JOY: Celebrations, friendship, summers, laughter, high-energy group moments, sparkling moods.
+4. ADVENTURE: Travel, mountains, wilderness, scenery, exploration, trips, hiking.
+5. PEACE: Childhood memories, nostalgia, reflective calm, golden/warm tones, old/vintage footage.
+6. LIFESTYLE: Uni life, student/campus routine, food, cafe, daily vlogs, personal diary moments.
+
+---
+
 ## STEP 6: LIBRARY–REFERENCE ALIGNMENT AUDIT
 
 Provide an honest audit of how the library matches the reference intent.

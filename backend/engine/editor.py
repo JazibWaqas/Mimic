@@ -373,12 +373,12 @@ def match_clips_to_blueprint(
     # This layer maps specific nouns (from clip analysis) to abstract editorial vibes.
     # It also consolidates 'vibes' and 'emotional_tone' into a single descriptor set.
     VIBE_CANONICAL_MAP = {
-        "ACTION": {"action", "racing", "speed", "fast", "adrenaline", "kinetic", "movement", "active", "dynamic", "vehicle", "sport", "drive", "launch"},
-        "INTENSITY": {"intensity", "intense", "dramatic", "hype", "power", "force", "cinematic", "epic", "peak", "mon monologue", "focus", "physical", "technical"},
-        "JOY": {"joy", "joyful", "fun", "laughter", "happy", "celebration", "celebratory", "sparkling", "ecstatic", "together", "candid", "casual", "smile"},
-        "ADVENTURE": {"adventure", "adventurous", "wanderlust", "travel", "explore", "scenic", "journey", "arrival", "mountains", "beach", "wilderness"},
-        "PEACE": {"peaceful", "serene", "reflective", "nostalgic", "nostalgia", "calm", "still", "golden", "sentimental", "memory", "intimate", "quiet", "soft", "warmth"},
-        "PLACE": {"nature", "scenic", "landscape", "outdoors", "urban", "city", "street", "architecture", "indoor", "room", "hotel"}
+        "ACTION": {"action", "racing", "speed", "fast", "adrenaline", "kinetic", "movement", "active", "dynamic", "vehicle", "sport", "drive", "launch", "flight", "jet", "top gun"},
+        "INTENSITY": {"intensity", "intense", "dramatic", "hype", "power", "force", "cinematic", "epic", "peak", "monologue", "focus", "physical", "technical", "professional"},
+        "JOY": {"joy", "joyful", "fun", "laughter", "happy", "celebration", "celebratory", "sparkling", "ecstatic", "together", "candid", "casual", "smile", "friends", "summer"},
+        "ADVENTURE": {"adventure", "adventurous", "wanderlust", "travel", "explore", "scenic", "journey", "arrival", "mountains", "beach", "wilderness", "hiking", "trip"},
+        "PEACE": {"peaceful", "serene", "reflective", "nostalgic", "nostalgia", "calm", "still", "golden", "sentimental", "memory", "intimate", "quiet", "soft", "warmth", "childhood", "vintage", "old"},
+        "LIFESTYLE": {"lifestyle", "uni", "university", "student", "study", "campus", "food", "eating", "cooking", "dinner", "cafe", "vlog", "personal", "daily", "routine"}
     }
 
     def canonicalize(raw_vibe_list):
@@ -1700,7 +1700,9 @@ def match_clips_to_blueprint(
     # Write detailed scoring breakdown to separate file for surgical debugging
     if xray_logs and reference_path:
         ref_name = Path(reference_path).stem
-        xray_path = Path("data/results") / f"{ref_name}_XRAY.txt"
+        # Use absolute path from project root
+        BASE_DIR = Path(__file__).resolve().parent.parent.parent
+        xray_path = BASE_DIR / "data" / "results" / f"{ref_name}_XRAY.txt"
         xray_path.parent.mkdir(parents=True, exist_ok=True)
         
         with open(xray_path, 'w', encoding='utf-8') as f:

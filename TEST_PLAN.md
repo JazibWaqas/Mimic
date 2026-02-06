@@ -1,211 +1,134 @@
-# 🔬 REFERENCE MODE DIAGNOSTIC TEST PLAN
+# 🎯 V14.1 CANONICAL VIBE LAYER - TEST PLAN
 
-**Date**: 2026-02-06  
-**Version**: Reference Mode Lock (Post-Fix)  
-**Purpose**: Validate 3 surgical fixes and collect X-RAY diagnostics
-
----
-
-## ✅ FIXES APPLIED
-
-1. **Audio Sync** (`orchestrator.py:508`)
-   - Changed: `trim_to_shortest=False` → `trim_to_shortest=True`
-   - Impact: No more silence padding, music plays to end
-
-2. **Vibe Priority Inversion** (`editor.py:754, 816`)
-   - Vibe bonus: +40 → **+60** (PRIMARY SELECTOR)
-   - Subject bonus: +25/+10 → **+15/+5** (TIE-BREAKER)
-   - Impact: Vibe matching now wins over subject matching
-
-3. **Diversity Enforcement** (`editor.py:1018-1023`)
-   - Penalties: 30, 80, 180 → **100, 300, 900** (EXPONENTIAL)
-   - Impact: Clip repetition becomes prohibitively expensive
+## ✅ Code Safety Check: PASSED
+- `editor.py` compiles successfully
+- `gemini_advisor_prompt.py` compiles successfully
+- `canonicalize()` function is properly defined and called
+- XRAY output path fixed to root `data/results/`
 
 ---
 
-## 🎯 TEST CASES (Run in Order)
+## 🎬 RECOMMENDED TEST SEQUENCE
 
-### Test 1: **ref4** (Baseline Validation)
-**Purpose**: Confirm all 3 fixes worked  
-**Expected Results**:
-- ✅ Audio duration: 14.23s (matches reference exactly)
-- ✅ Vibe accuracy: >60% (was 3.3%)
-- ✅ No clip repetition (was 5 clips repeated 2x each)
-- ✅ Unique clips used: >30/56 (was 23/56)
+### **Priority 1: High-Impact Demo Tests** (Run these first)
+
+#### **Test 1: ref19 (F1 Racing)**
+**Why**: This was showing 9.1% vibe accuracy. Should jump to 70-90%.
+**Expected Improvement**:
+- Before: System ignored "Racing" clips because they weren't tagged as "Action"
+- After: Canonical map recognizes Racing → ACTION
+- Visual: Should see more F1 car footage, less random filler
+
+**Run Command**: Upload `ref19.mp4` in UI
 
 **What to Check**:
-- Compare final video duration to reference audio duration
-- Check "Vibe Accuracy" line in log
-- Check "CLIPS REPEATED" section (should say "NO CLIPS REPEATED")
-- Review XRAY file for vibe override warnings
+1. XRAY log at `data/results/ref19_XRAY.txt`
+2. Look for "Vibe Match: ✅ YES" entries (should be 70%+)
+3. Final video should feel like an F1 edit, not a random montage
 
 ---
 
-### Test 2: **ref5** (Text Overlay Intelligence)
-**Purpose**: Validate semantic interpretation of "stories we'll tell later"  
-**Expected Results**:
-- ✅ More ACTION clips (Activity-Leisure, Activity-Travel)
-- ✅ Fewer SCENIC clips (Place-Nature alone)
-- ✅ Vibe accuracy: >50% (was 29.2%)
+#### **Test 2: ref5 (Friends Trip)**
+**Why**: This had 33% vibe accuracy. Should jump to 80%+.
+**Expected Improvement**:
+- Before: "Laughter" and "Joyful" clips weren't recognized as "Joy"
+- After: Canonical map recognizes Laughter/Happy/Friends → JOY
+- Visual: Should prioritize friend group shots over scenery
+
+**Run Command**: Upload `ref5.mp4` in UI
 
 **What to Check**:
-- Subject distribution in log (count People-Group vs Place-Nature)
-- XRAY file: Check if "Adventurous" or "Travel" vibes are matched
-- Final video: Does it feel like "action/anticipation" or "scenic/calm"?
+1. XRAY log at `data/results/ref5_XRAY.txt`
+2. Vibe Match rate should be 80%+
+3. Video should feel like a "friends celebration" not a "travel vlog"
 
 ---
 
-### Test 3: **ref22** (Control - No Regression)
-**Purpose**: Ensure fixes didn't break what was already working  
-**Expected Results**:
-- ✅ Vibe accuracy: ≥35.3% (baseline)
-- ✅ No new issues introduced
+### **Priority 2: Edge Case Tests** (Run if P1 succeeds)
 
-**What to Check**:
-- Compare to previous ref22 log (if available)
-- Ensure quality didn't degrade
+#### **Test 3: ref4 (Long Duration Test)**
+**Why**: 7.3MB file, likely has complex arc stages
+**Expected**: Tests if Advisor + Editor stay synced across longer edits
 
 ---
 
-### Test 4: **ref20** (Beat Sync Issues)
-**Purpose**: Isolate rhythm/timing problems  
-**Expected Results**:
-- ✅ Better beat alignment (check beat_alignment_logs)
-- ✅ No perceptual lag on cuts
-
-**What to Check**:
-- XRAY file: Beat alignment section
-- Log: "Beat aligned: YES/NO" for each cut
-- Final video: Do cuts feel on-beat or laggy?
+#### **Test 4: ref10 or ref11 (Short Duration)**
+**Why**: ~2.6-2.9MB, quick turnaround for iteration testing
+**Expected**: Fast feedback loop for debugging
 
 ---
 
-### Test 5: **NEW - Slow Cinematic Reference**
-**Purpose**: Test Long hold + visual cuts (V14.1 edge case)  
-**Pick**: A reference with slow, contemplative pacing (2-4s holds)  
-**Expected Results**:
-- ✅ Sacred cuts preserved (no subdivision)
-- ✅ CDE logic respects "Long" holds
+## 🔍 DEBUGGING CHECKLIST
 
-**What to Check**:
-- Log: "CDE: Sparse" for long segments
-- Log: "max_cuts: 1" for sacred visual cuts
-- XRAY file: No subdivision warnings
+### **If Pipeline Fails to Start:**
+1. Check terminal for Python errors
+2. Verify `data/cache/advisor/` was cleared
+3. Check if Gemini API key is valid
 
----
+### **If Vibe Accuracy is Still Low:**
+1. Open XRAY log: `data/results/refXX_XRAY.txt`
+2. Look for section: "=== SEGMENT X SCORING ==="
+3. Check if "Canonical Match" appears in reasoning
+4. If not, check if clip has `emotional_tone` field populated
 
-## 📊 X-RAY DIAGNOSTIC FILES
-
-Each test will generate: `data/results/{ref_name}_XRAY.txt`
-
-### What's in the XRAY File?
-
-**Per Segment**:
-1. **Advisor Input**
-   - Primary narrative subject
-   - Text overlay intent
-   - Dominant narrative
-
-2. **Top 5 Candidates**
-   - Clip name, score, vibes, subjects, energy
-   - Vibe match: YES/NO
-   - Score delta from winner
-   - Reasoning breakdown
-
-3. **Selection Decision**
-   - Winner clip
-   - Final score
-   - Vibe match: YES/NO
-   - **Subject Override**: ⚠️ YES if subject won over vibe
-   - **Vibe Override**: ⚠️ YES if vibe was ignored
-
-4. **Diversity Analysis**
-   - Reuse count and penalty
-   - Why clip still won despite penalty
+### **If Video Looks Wrong:**
+1. Check XRAY "Winner" vs "Runner-Up" comparison
+2. If Runner-Up had higher vibe score but lost, there's a tie-breaker bug
+3. If Winner has "Vibe Match: ❌ NO", the canonical map is missing a synonym
 
 ---
 
-## 🔍 KEY METRICS TO TRACK
+## 📊 SUCCESS METRICS
 
-Create a spreadsheet with these columns:
+### **Minimum Viable Demo (MVD):**
+- ✅ ref19 Vibe Accuracy: **≥70%** (up from 9%)
+- ✅ ref5 Vibe Accuracy: **≥80%** (up from 33%)
+- ✅ Visual coherence: Clips match the reference's "soul"
 
-| Test | Audio Match | Vibe Accuracy | Clips Repeated | Subject Overrides | Vibe Overrides |
-|------|-------------|---------------|----------------|-------------------|----------------|
-| ref4 | ✅ 14.23s   | 65.2%         | 0              | 2                 | 0              |
-| ref5 | ✅ 16.65s   | 58.3%         | 0              | 5                 | 1              |
-| ...  | ...         | ...           | ...            | ...               | ...            |
-
-**How to Extract**:
-- **Audio Match**: Compare final video duration to reference audio
-- **Vibe Accuracy**: Search log for "Vibe Accuracy: X%"
-- **Clips Repeated**: Count in "CLIPS REPEATED" section
-- **Subject Overrides**: Count "⚠️ YES" in XRAY "Subject Override" lines
-- **Vibe Overrides**: Count "⚠️ YES" in XRAY "Vibe Override" lines
+### **Stretch Goal:**
+- ✅ ref19 Vibe Accuracy: **≥90%**
+- ✅ No "Subject Override" warnings in XRAY logs
+- ✅ Tie-breaker always favors vibe matches
 
 ---
 
-## 🚨 RED FLAGS TO WATCH FOR
+## 🚨 KNOWN RISKS & MITIGATIONS
 
-1. **Audio Mismatch**: Final video duration ≠ reference audio duration
-   - **Diagnosis**: Fix #1 failed, check orchestrator.py:508
+### **Risk 1: Advisor Cache Corruption**
+**Symptom**: Advisor still uses old vocabulary (e.g., doesn't mention "ACTION")
+**Fix**: Delete `data/cache/advisor/` and re-run
 
-2. **Low Vibe Accuracy (<40%)**:
-   - **Diagnosis**: Fix #2 failed, check editor.py scoring weights
-   - **Check XRAY**: Count "Subject Override: ⚠️ YES" instances
+### **Risk 2: Clip Analysis Missing `emotional_tone`**
+**Symptom**: Vibe accuracy still low despite canonical map
+**Fix**: Check a clip's JSON in `data/cache/clips/`. If `emotional_tone` is empty, re-analyze clips.
 
-3. **Clip Repetition**:
-   - **Diagnosis**: Fix #3 failed, check editor.py diversity penalties
-   - **Check XRAY**: Look for "DIVERSITY WARNING" with low penalties
-
-4. **Subject Override Warnings (>30% of segments)**:
-   - **Diagnosis**: Subject bonus still too high
-   - **Tweak**: Reduce subject bonus further (15 → 10, 5 → 2)
-
-5. **Vibe Override Warnings (>10% of segments)**:
-   - **Diagnosis**: Vibe bonus not high enough
-   - **Tweak**: Increase vibe bonus further (60 → 80)
+### **Risk 3: Gemini Rate Limiting**
+**Symptom**: Pipeline fails with "429 Too Many Requests"
+**Fix**: Wait 60 seconds, then retry
 
 ---
 
-## 📝 POST-TEST ANALYSIS
+## 🎯 FINAL RECOMMENDATION
 
-After running all 5 tests:
+**Run in this exact order:**
+1. **ref19** (F1) - Proves ACTION category works
+2. **ref5** (Friends) - Proves JOY category works
+3. If both succeed → **Demo-ready**
+4. If either fails → Check XRAY logs and report findings
 
-1. **Aggregate Metrics**:
-   - Average vibe accuracy across all tests
-   - Total clip repetitions across all tests
-   - Total subject/vibe overrides
-
-2. **Identify Patterns**:
-   - Which segments consistently have overrides?
-   - Which vibes are hardest to match?
-   - Which subjects dominate unfairly?
-
-3. **Propose Tweaks**:
-   - If vibe accuracy still <60%: Increase vibe bonus to +80
-   - If repetition still occurs: Increase penalties to 150, 500, 1500
-   - If subject overrides >20%: Reduce subject bonus to +10/+2
+**Estimated Time**: 
+- ref19: ~3-5 minutes
+- ref5: ~3-5 minutes
+- Total: ~10 minutes for full validation
 
 ---
 
-## 🗑️ CLEANUP AFTER TESTING
+## 📝 NOTES FOR DEBUGGING SESSION
 
-Once fixes are validated and tweaks are made:
+If you encounter issues, capture:
+1. Terminal output (last 50 lines)
+2. XRAY log file (full content)
+3. Advisor cache file name (to check if it regenerated)
+4. One sample clip's JSON (to verify `emotional_tone` exists)
 
-1. **Delete XRAY files**: `data/results/*_XRAY.txt`
-2. **Remove XRAY logging code**: Lines 1191-1254 in editor.py
-3. **Keep the 3 fixes**: They are permanent
-
----
-
-## ✅ SUCCESS CRITERIA
-
-Reference Mode is **LOCKED** when:
-
-- ✅ Audio sync: 100% match across all tests
-- ✅ Vibe accuracy: >60% average across all tests
-- ✅ Clip repetition: 0 across all tests
-- ✅ Subject overrides: <10% of segments
-- ✅ Vibe overrides: <5% of segments
-
-**If all criteria met**: Reference Mode is production-ready. Delete XRAY logs and move to creative mode development.
+**Good luck! The system is ready. 🚀**
