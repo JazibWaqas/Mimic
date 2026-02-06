@@ -5,7 +5,7 @@ Handles file uploads, Gemini 3 processing, and video rendering.
 
 import os
 import sys
-from fastapi import FastAPI, UploadFile, File, WebSocket, HTTPException, BackgroundTasks, Body
+from fastapi import FastAPI, UploadFile, File, WebSocket, HTTPException, BackgroundTasks, Body, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import mimetypes
@@ -648,8 +648,8 @@ async def upload_files(
 async def generate_video(
     session_id: str, 
     background_tasks: BackgroundTasks,
-    text_prompt: Optional[str] = None,
-    target_duration: Optional[float] = 15.0
+    text_prompt: Optional[str] = Query(None, description="Text prompt for Creator Mode"),
+    target_duration: Optional[float] = Query(15.0, description="Target duration in seconds")
 ):
     """
     Start video generation pipeline.

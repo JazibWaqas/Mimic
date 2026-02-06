@@ -92,9 +92,13 @@ def calculate_cut_density_expectation(
     Returns:
         str: One of "Sparse", "Moderate", "Dense"
     """
-    # CDE only applies in REFERENCE mode
+    # v14.7: In PROMPT mode, use the segment's CDE field directly from the blueprint
+    # This respects the generator's creative intent
     if mode != "REFERENCE":
-        return "Moderate"  # Neutral default for creative mode
+        segment_cde = getattr(segment, 'cde', 'Moderate')
+        if segment_cde in ['Sparse', 'Moderate', 'Dense']:
+            return segment_cde
+        return "Moderate"  # Fallback for invalid values
     
     # === BASELINE FROM SEGMENT METADATA ===
     duration = segment.duration
@@ -546,6 +550,12 @@ def match_clips_to_blueprint(
             beat_density = len(segment_beats) / segment.duration if segment.duration > 0 else 0
             print(f"    🎵 CDE: {cde} (beats: {len(segment_beats)}, density: {beat_density:.2f}/s, hold: {getattr(segment, 'expected_hold', 'Normal')}, origin: {cut_origin})")
             print(f"    📐 max_cuts: {max_cuts_per_segment}")
+        else:
+            # v14.7: PROMPT mode observability
+            emotional_guidance = getattr(segment, 'emotional_guidance', '')
+            print(f"    🎨 PROMPT MODE: CDE={cde}, hold={getattr(segment, 'expected_hold', 'Normal')}, vibe={segment.vibe[:30] if segment.vibe else 'N/A'}")
+            if emotional_guidance:
+                print(f"    💭 Emotional guidance: {emotional_guidance}")
         
         # v14.0: ADVISOR-DRIVEN CONTEXTUAL MOMENT SELECTION
         # Check if Advisor has pre-computed moment plans for this segment
@@ -721,6 +731,60 @@ def match_clips_to_blueprint(
                 elif any(s in ["place-nature", "place-urban"] for s in clip_primary_subs):
                     return "Wide"
                 return "Medium"
+            
+            def compute_moment_overlap_penalty(clip: ClipMetadata, segment) -> Tuple[float, str]:
+                """
+                v14.7: MOMENT-LEVEL REUSE PROTECTION
+                
+                Prevents reusing the exact same visual moment from a clip.
+                Judges will forgive reusing a clip; they will NOT forgive seeing the same moment twice.
+                
+                Returns:
+                    Tuple of (penalty, reason_tag)
+                    
+                Penalty Levels:
+                - Exact overlap (>80%): -999.0 (FORBIDDEN in both modes)  
+                - Partial overlap (>30%): -200.0 (REFERENCE) / -100.0 (PROMPT)
+                - No overlap: 0.0
+                """
+                used_intervals = clip_used_intervals.get(clip.filename, [])
+                if not used_intervals:
+                    return 0.0, ""
+                
+                # Get the expected window for this clip based on segment energy
+                window_start = 0.0
+                window_end = clip.duration
+                
+                if clip.best_moments:
+                    best_moment_data = clip.get_best_moment_for_energy(segment.energy)
+                    if best_moment_data:
+                        window_start, window_end = best_moment_data
+                
+                window_duration = window_end - window_start
+                if window_duration <= 0:
+                    return 0.0, ""
+                
+                # Check overlap with all previously used intervals from this clip
+                max_overlap_ratio = 0.0
+                for used_start, used_end in used_intervals:
+                    # Calculate intersection
+                    overlap_start = max(window_start, used_start)
+                    overlap_end = min(window_end, used_end)
+                    overlap_duration = max(0, overlap_end - overlap_start)
+                    
+                    overlap_ratio = overlap_duration / window_duration
+                    max_overlap_ratio = max(max_overlap_ratio, overlap_ratio)
+                
+                # Apply penalties based on overlap severity
+                if max_overlap_ratio > 0.8:
+                    # FORBIDDEN: Same moment reuse
+                    return -999.0, "🚫SAME_MOMENT"
+                elif max_overlap_ratio > 0.3:
+                    # Partial overlap: Discourage but allow if desperate
+                    penalty = -200.0 if mode == "REFERENCE" else -100.0
+                    return penalty, f"⚠️OVERLAP_{int(max_overlap_ratio*100)}%"
+                else:
+                    return 0.0, ""
 
             def compute_continuity_bonus(candidate: ClipMetadata, segment, ctx, advisor: Optional[AdvisorHints]) -> Tuple[float, List[str]]:
                 """
@@ -1051,31 +1115,58 @@ def match_clips_to_blueprint(
                     score += 20.0  # Fresh clip bonus
                     reasons.append("✨New")
                 else:
-                    # REFERENCE MODE LOCK: EXPONENTIAL REUSE PENALTY
-                    # Diversity is a HARD CONSTRAINT, not a preference
-                    # Linear penalties (30, 80, 180) can be overcome by strong bonuses
-                    # Exponential penalties (100, 300, 900) enforce true diversity
-                    if usage == 1:
-                        penalty = 100.0  # Aggressive first reuse penalty
-                    elif usage == 2:
-                        penalty = 300.0  # Exponential second reuse
+                    # v14.7: PROMPT mode allows softer reuse penalties
+                    # Creative mode values emotional continuity over strict diversity
+                    if mode == "PROMPT":
+                        # Softer penalties for creative mode
+                        if usage == 1:
+                            penalty = 30.0   # Gentle first reuse
+                        elif usage == 2:
+                            penalty = 80.0   # Moderate second reuse
+                        else:
+                            penalty = 180.0  # Discouraging third+ reuse
                     else:
-                        penalty = 900.0  # Prohibitive third+ reuse
+                        # REFERENCE MODE LOCK: EXPONENTIAL REUSE PENALTY
+                        # Diversity is a HARD CONSTRAINT, not a preference
+                        # Linear penalties (30, 80, 180) can be overcome by strong bonuses
+                        # Exponential penalties (100, 300, 900) enforce true diversity
+                        if usage == 1:
+                            penalty = 100.0  # Aggressive first reuse penalty
+                        elif usage == 2:
+                            penalty = 300.0  # Exponential second reuse
+                        else:
+                            penalty = 900.0  # Prohibitive third+ reuse
                     
                     score -= penalty
                     reasons.append(f"Used:{usage}x")
-                
                 # === PENALTY LAYER ===
                 
-                # 1. Recent Cooldown (-100 points)
+                # 1. Recent Cooldown
                 time_since_last_use = timeline_position - clip_last_used_at[clip.filename]
-                dynamic_reuse_gap = max(2.0, segment.duration * 0.6)
+                
+                # v14.7: PROMPT mode allows shorter cooldown gaps
+                # Creative mode values emotional continuity over strict variety
+                if mode == "PROMPT":
+                    dynamic_reuse_gap = max(1.5, segment.duration * 0.4)  # Shorter gap
+                    cooldown_penalty = 50.0  # Softer penalty
+                else:
+                    dynamic_reuse_gap = max(2.0, segment.duration * 0.6)
+                    cooldown_penalty = 100.0
+                    
                 if segment.arc_stage.lower() == "peak":
-                    dynamic_reuse_gap = 2.0
+                    dynamic_reuse_gap = max(1.0, dynamic_reuse_gap * 0.5)  # Allow tighter cuts at peak
                 
                 if time_since_last_use < dynamic_reuse_gap:
-                    score -= 100.0
+                    score -= cooldown_penalty
                     reasons.append("Cooldown")
+                
+                # v14.7: MOMENT-LEVEL REUSE PROTECTION
+                # Same moment reuse is FORBIDDEN (-999). Partial overlap is discouraged.
+                moment_penalty, moment_reason = compute_moment_overlap_penalty(clip, segment)
+                if moment_penalty != 0:
+                    score += moment_penalty  # Already negative
+                    if moment_reason:
+                        reasons.append(moment_reason)
                 
                 # 2. Energy Matching (with Advisor override support)
                 # Determine what energy level we're matching against
@@ -1753,27 +1844,127 @@ def match_clips_to_blueprint(
     
     # === EXPORT X-RAY DIAGNOSTIC LOGS ===
     # Write detailed scoring breakdown to separate file for surgical debugging
-    if xray_logs and reference_path:
-        ref_name = Path(reference_path).stem
-        # Use absolute path from project root
-        BASE_DIR = Path(__file__).resolve().parent.parent.parent
-        xray_path = BASE_DIR / "data" / "results" / f"{ref_name}_XRAY.txt"
-        xray_path.parent.mkdir(parents=True, exist_ok=True)
+    # Now works for both REFERENCE and PROMPT mode
+    ref_name = Path(reference_path).stem if reference_path else "prompt_edit"
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+    xray_path = BASE_DIR / "data" / "results" / f"{ref_name}_XRAY.txt"
+    xray_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    with open(xray_path, 'w', encoding='utf-8') as f:
+        f.write("="*80 + "\n")
+        f.write(f"X-RAY DIAGNOSTIC REPORT - {mode} MODE\n")
+        f.write("="*80 + "\n")
+        f.write(f"Reference/Prompt: {ref_name}\n")
+        f.write(f"Total Segments: {len(blueprint.segments)}\n")
+        f.write(f"Total Clips: {len(clip_index.clips)}\n")
+        f.write(f"Total Decisions: {len(edl.decisions)}\n")
+        f.write("="*80 + "\n\n")
         
-        with open(xray_path, 'w', encoding='utf-8') as f:
-            f.write("="*80 + "\n")
-            f.write("X-RAY DIAGNOSTIC REPORT - REFERENCE MODE LOCK\n")
-            f.write("="*80 + "\n")
-            f.write(f"Reference: {ref_name}\n")
-            f.write(f"Total Segments: {len(blueprint.segments)}\n")
-            f.write(f"Total Clips: {len(clip_index.clips)}\n")
-            f.write("="*80 + "\n")
+        # === BLUEPRINT OVERVIEW ===
+        f.write("📑 BLUEPRINT SEGMENTS:\n")
+        f.write("-"*60 + "\n")
+        for seg in blueprint.segments:
+            cde = getattr(seg, 'cde', 'N/A')
+            hold = getattr(seg, 'expected_hold', 'Normal')
+            origin = getattr(seg, 'cut_origin', 'visual')
+            f.write(f"  Seg {seg.id:02d}: {seg.start:5.2f}s-{seg.end:5.2f}s | {seg.energy.value:6} | {seg.arc_stage:10} | CDE={cde:8} | Hold={hold:6} | Origin={origin}\n")
+            f.write(f"           Vibe: {seg.vibe}\n")
+        f.write("\n")
+        
+        # === CLIP USAGE BREAKDOWN (Microscopic) ===
+        f.write("📊 CLIP USAGE ANALYSIS:\n")
+        f.write("-"*60 + "\n")
+        
+        # Sort by usage count (descending)
+        sorted_clips = sorted(clip_index.clips, key=lambda c: clip_usage_count[c.filename], reverse=True)
+        
+        for clip in sorted_clips:
+            usage = clip_usage_count[clip.filename]
+            intervals = clip_used_intervals.get(clip.filename, [])
+            vibes = clip.vibes[:3] if clip.vibes else ['N/A']
+            subjects = clip.primary_subject[:2] if clip.primary_subject else ['N/A']
+            
+            status = "✅ USED" if usage > 0 else "❌ UNUSED"
+            warning = "⚠️ HEAVY" if usage >= 3 else ""
+            
+            f.write(f"\n  {status} {warning} {clip.filename}\n")
+            f.write(f"       Usage: {usage}x | Energy: {clip.energy.value} | Duration: {clip.duration:.1f}s\n")
+            f.write(f"       Vibes: {', '.join(vibes)} | Subjects: {', '.join(subjects)}\n")
+            
+            if intervals:
+                f.write(f"       Moments used:\n")
+                for i, (start, end) in enumerate(intervals):
+                    f.write(f"         [{i+1}] {start:.2f}s - {end:.2f}s ({end-start:.2f}s)\n")
+            
+            # Clip curation suggestion
+            if usage == 0:
+                f.write(f"       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.\n")
+            elif usage >= 3:
+                f.write(f"       💡 SUGGESTION: Heavily reused. Add more clips with similar vibes: {', '.join(vibes)}\n")
+        
+        f.write("\n")
+        
+        # === UNUSED CLIPS SUMMARY ===
+        unused = [c for c in clip_index.clips if clip_usage_count[c.filename] == 0]
+        if unused:
+            f.write("🚫 UNUSED CLIPS (Potential Issues):\n")
+            f.write("-"*60 + "\n")
+            for clip in unused:
+                f.write(f"  ❌ {clip.filename} | {clip.energy.value} | Vibes: {', '.join(clip.vibes[:2]) if clip.vibes else 'N/A'}\n")
+            f.write(f"\n  Total unused: {len(unused)}/{len(clip_index.clips)} ({100*len(unused)/len(clip_index.clips):.0f}%)\n")
+            f.write("\n")
+        
+        # === DECISION FLOW (Timeline View) ===
+        f.write("🎬 EDIT DECISION FLOW:\n")
+        f.write("-"*60 + "\n")
+        for i, dec in enumerate(edl.decisions):
+            clip_name = Path(dec.clip_path).name
+            dur = dec.timeline_end - dec.timeline_start
+            clip_dur = dec.clip_end - dec.clip_start
+            f.write(f"  [{i+1:02d}] {dec.timeline_start:6.2f}s-{dec.timeline_end:6.2f}s ({dur:4.2f}s) | {clip_name:20} [{dec.clip_start:5.2f}s-{dec.clip_end:5.2f}s]\n")
+            f.write(f"        Vibe Match: {'✅' if dec.vibe_match else '❌'} | {dec.reasoning[:60]}...\n")
+        f.write("\n")
+        
+        # === SEGMENT-LEVEL X-RAY LOGS ===
+        if xray_logs:
+            f.write("🔬 SEGMENT SCORING X-RAY:\n")
+            f.write("-"*60 + "\n")
             f.write('\n'.join(xray_logs))
-            f.write("\n\n" + "="*80 + "\n")
-            f.write("END OF X-RAY REPORT\n")
-            f.write("="*80 + "\n")
+            f.write("\n\n")
         
-        print(f"\n🔬 X-RAY diagnostic report exported: {xray_path}")
+        # === CURATION RECOMMENDATIONS ===
+        f.write("="*80 + "\n")
+        f.write("💡 CLIP CURATION RECOMMENDATIONS:\n")
+        f.write("="*80 + "\n")
+        
+        # Calculate gaps
+        needed_vibes = set()
+        needed_energies = set()
+        for seg in blueprint.segments:
+            seg_filled = any(d.segment_id == seg.id for d in edl.decisions)
+            if not seg_filled or any(d.segment_id == seg.id and not d.vibe_match for d in edl.decisions):
+                if seg.vibe:
+                    for v in seg.vibe.split(','):
+                        needed_vibes.add(v.strip().lower())
+                needed_energies.add(seg.energy.value)
+        
+        heavily_used = [c.filename for c in clip_index.clips if clip_usage_count[c.filename] >= 3]
+        
+        if needed_vibes:
+            f.write(f"\n📥 ADD clips with vibes: {', '.join(sorted(needed_vibes))}\n")
+        if heavily_used:
+            f.write(f"\n🔄 REPLACE heavily-used clips: {', '.join(heavily_used)}\n")
+            f.write(f"   Add alternative clips with similar content.\n")
+        if unused:
+            low_value = [c.filename for c in unused if clip_usage_count[c.filename] == 0][:5]
+            if low_value:
+                f.write(f"\n🗑️ CONSIDER REMOVING (never used): {', '.join(low_value)}\n")
+        
+        f.write("\n" + "="*80 + "\n")
+        f.write("END OF X-RAY REPORT\n")
+        f.write("="*80 + "\n")
+    
+    print(f"\n🔬 X-RAY diagnostic report exported: {xray_path}")
     
     return edl, advisor_hints
 

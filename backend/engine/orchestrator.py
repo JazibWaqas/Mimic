@@ -251,7 +251,8 @@ def run_mimic_pipeline(
                 print(f"  [WARN] No audio source provided for text-based edit, using default 120 BPM")
             
             # Now generate blueprint with the potentially updated target_duration
-            blueprint = generate_blueprint_from_text(text_prompt, target_duration, api_key)
+            # v14.7: Pass BPM for music-aware segment phrasing
+            blueprint = generate_blueprint_from_text(text_prompt, target_duration, api_key, bpm=ref_bpm)
             print(f"[OK] Gemini successfully synthesized blueprint from text: {len(blueprint.segments)} segments.")
         else:
             update_progress(2, TOTAL_STEPS, "Detecting visual cuts and analyzing reference structure...")
@@ -424,13 +425,17 @@ def run_mimic_pipeline(
             print(f"      Recommendation: Add {segment_count - clip_count}+ more clips for better diversity.")
             print()
         
+        # v14.7: Determine editing mode based on input source
+        edit_mode = "PROMPT" if text_prompt else "REFERENCE"
+        
         edl, advisor_hints = match_clips_to_blueprint(
             blueprint, 
             clip_index, 
             find_best_moments=True, 
             api_key=api_key,
             reference_path=reference_path,
-            bpm=ref_bpm
+            bpm=ref_bpm,
+            mode=edit_mode  # v14.7: Pass mode for PROMPT/REFERENCE behavioral split
         )
         
         # Validate EDL but don't fail - allow debugging even if timing is off
