@@ -1,0 +1,1725 @@
+================================================================================
+X-RAY DIAGNOSTIC REPORT - REFERENCE MODE LOCK
+================================================================================
+Reference: ref4
+Total Segments: 30
+Total Clips: 56
+================================================================================
+
+================================================================================
+SEGMENT 1 X-RAY | 0.00s-0.46s | Intro | Vibe: Adventurous
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_122.mp4 | SCORE: 313.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_108.mp4 | SCORE: 300.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -13.0 points
+
+   #3 | clip_107.mp4 | SCORE: 298.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #4 | clip_115.mp4 | SCORE: 298.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #5 | clip_130.mp4 | SCORE: 298.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_122.mp4
+   Final Score: 313.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 2 X-RAY | 0.46s-0.93s | Build-up | Vibe: Wanderlust
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_103.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_104.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_106.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_108.mp4 | SCORE: 350.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_109.mp4 | SCORE: 350.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_103.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 3 X-RAY | 0.93s-1.39s | Build-up | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_106.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_112.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -0.0 points
+
+   #3 | clip_113.mp4 | SCORE: 350.0
+   Vibes: Solo, Nature
+   Subjects: People-Solo, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -0.0 points
+
+   #4 | clip_131.mp4 | SCORE: 347.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -3.0 points
+
+   #5 | clip_151.mp4 | SCORE: 347.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -3.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_106.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 4 X-RAY | 1.39s-1.86s | Build-up | Vibe: Peaceful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_107.mp4 | SCORE: 350.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_112.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -0.0 points
+
+   #3 | clip_113.mp4 | SCORE: 350.0
+   Vibes: Solo, Nature
+   Subjects: People-Solo, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Peaceful' atmosphere perfect
+   Delta from winner: -0.0 points
+
+   #4 | clip_114.mp4 | SCORE: 350.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_115.mp4 | SCORE: 350.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_107.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 5 X-RAY | 1.86s-2.32s | Build-up | Vibe: Mystical
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_108.mp4 | SCORE: 350.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_110.mp4 | SCORE: 350.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_112.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segm
+   Delta from winner: -0.0 points
+
+   #4 | clip_124.mp4 | SCORE: 350.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_127.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_108.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 6 X-RAY | 2.32s-2.79s | Build-up | Vibe: Reflective
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_112.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+
+   #2 | clip_113.mp4 | SCORE: 350.0
+   Vibes: Solo, Nature
+   Subjects: People-Solo, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -0.0 points
+
+   #3 | clip_131.mp4 | SCORE: 347.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -3.0 points
+
+   #4 | clip_151.mp4 | SCORE: 347.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -3.0 points
+
+   #5 | clip_137.mp4 | SCORE: 345.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_112.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 7 X-RAY | 2.79s-3.25s | Build-up | Vibe: Awe
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_109.mp4 | SCORE: 349.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_123.mp4 | SCORE: 349.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_126.mp4 | SCORE: 349.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_134.mp4 | SCORE: 349.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_135.mp4 | SCORE: 349.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_109.mp4
+   Final Score: 349.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 8 X-RAY | 3.25s-3.72s | Build-up | Vibe: Adventurous
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_113.mp4 | SCORE: 350.0
+   Vibes: Solo, Nature
+   Subjects: People-Solo, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segm
+
+   #2 | clip_114.mp4 | SCORE: 349.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -1.0 points
+
+   #3 | clip_131.mp4 | SCORE: 347.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -3.0 points
+
+   #4 | clip_151.mp4 | SCORE: 347.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -3.0 points
+
+   #5 | clip_115.mp4 | SCORE: 343.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -7.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_113.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 9 X-RAY | 3.72s-4.18s | Build-up | Vibe: Free
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_137.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_104.mp4 | SCORE: 349.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -1.0 points
+
+   #3 | clip_110.mp4 | SCORE: 349.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -1.0 points
+
+   #4 | clip_114.mp4 | SCORE: 349.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -1.0 points
+
+   #5 | clip_123.mp4 | SCORE: 349.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -1.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_137.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 10 X-RAY | 4.18s-4.64s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_105.mp4 | SCORE: 350.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_104.mp4 | SCORE: 335.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -15.0 points
+
+   #3 | clip_126.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -15.0 points
+
+   #4 | clip_139.mp4 | SCORE: 335.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -15.0 points
+
+   #5 | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_105.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 11 X-RAY | 4.64s-5.11s | Peak | Vibe: Reflective
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_126.mp4 | SCORE: 345.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_145.mp4 | SCORE: 345.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip_155.mp4 | SCORE: 345.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip_145.mp4 | SCORE: 345.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #5 | clip_104.mp4 | SCORE: 330.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_126.mp4
+   Final Score: 345.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 12 X-RAY | 5.11s-5.57s | Peak | Vibe: Cultural
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_104.mp4 | SCORE: 335.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_139.mp4 | SCORE: 335.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip_155.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #5 | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_104.mp4
+   Final Score: 335.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 13 X-RAY | 5.57s-6.04s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_139.mp4 | SCORE: 335.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip_155.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #5 | clip_164.mp4 | SCORE: 280.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -55.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_139.mp4
+   Final Score: 335.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 14 X-RAY | 6.04s-6.50s | Peak | Vibe: Triumphant
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_155.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip_145.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip_164.mp4 | SCORE: 280.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -55.0 points
+
+   #5 | clip_140.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -75.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_145.mp4
+   Final Score: 335.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 15 X-RAY | 6.50s-6.97s | Peak | Vibe: Adventurous
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_155.mp4 | SCORE: 335.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_164.mp4 | SCORE: 280.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -55.0 points
+
+   #3 | clip_140.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -75.0 points
+
+   #4 | clip_160.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -75.0 points
+
+   #5 | clip_114.mp4 | SCORE: 255.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -80.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_155.mp4
+   Final Score: 335.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 16 X-RAY | 6.97s-7.43s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_164.mp4 | SCORE: 280.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+
+   #2 | clip_140.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -20.0 points
+
+   #3 | clip_160.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -20.0 points
+
+   #4 | clip_110.mp4 | SCORE: 245.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -35.0 points
+
+   #5 | clip_121.mp4 | SCORE: 245.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -35.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_164.mp4
+   Final Score: 280.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 17 X-RAY | 7.43s-7.89s | Peak | Vibe: Free
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_110.mp4 | SCORE: 275.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_121.mp4 | SCORE: 275.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_123.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_134.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_135.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_110.mp4
+   Final Score: 275.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 18 X-RAY | 7.89s-8.36s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_140.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+
+   #2 | clip_160.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip_121.mp4 | SCORE: 245.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #4 | clip_123.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #5 | clip_131.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_140.mp4
+   Final Score: 260.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 19 X-RAY | 8.36s-8.82s | Peak | Vibe: Adventurous
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_121.mp4 | SCORE: 275.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_123.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_134.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_135.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_136.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_121.mp4
+   Final Score: 275.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 20 X-RAY | 8.82s-9.29s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_160.mp4 | SCORE: 260.0
+   Vibes: Nature, Travel
+   Subjects: Place-Nature, Activity-Travel
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+
+   #2 | clip_123.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #3 | clip_131.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #4 | clip_134.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+   #5 | clip_135.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_160.mp4
+   Final Score: 260.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 21 X-RAY | 9.29s-9.75s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_123.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_134.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_135.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_136.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_146.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_123.mp4
+   Final Score: 275.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 22 X-RAY | 9.75s-10.22s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_131.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_134.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_135.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_136.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_146.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_131.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 23 X-RAY | 10.22s-10.68s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_134.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_135.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_136.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_146.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_154.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_134.mp4
+   Final Score: 275.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 24 X-RAY | 10.68s-11.15s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_135.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_136.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_146.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_151.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_154.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_135.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 25 X-RAY | 11.15s-11.61s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_136.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_146.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_151.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_154.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_156.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_136.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 26 X-RAY | 11.61s-12.07s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_146.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_151.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_154.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_156.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_159.mp4 | SCORE: 245.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_146.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 27 X-RAY | 12.07s-12.54s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_151.mp4 | SCORE: 245.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_154.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_156.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_159.mp4 | SCORE: 245.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip_165.mp4 | SCORE: 240.0
+   Vibes: Nature
+   Subjects: Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_151.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 28 X-RAY | 12.54s-13.00s | Peak | Vibe: Ecstatic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_154.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_156.mp4 | SCORE: 275.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_159.mp4 | SCORE: 275.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip_124.mp4 | SCORE: 265.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -10.0 points
+
+   #5 | clip_133.mp4 | SCORE: 265.0
+   Vibes: Group, Travel
+   Subjects: People-Group, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_154.mp4
+   Final Score: 275.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 29 X-RAY | 13.00s-13.47s | Peak | Vibe: Joyful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_156.mp4 | SCORE: 245.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip_159.mp4 | SCORE: 245.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip_165.mp4 | SCORE: 240.0
+   Vibes: Nature
+   Subjects: Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -5.0 points
+
+   #4 | clip_115.mp4 | SCORE: 237.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -8.0 points
+
+   #5 | clip_105.mp4 | SCORE: 235.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_156.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 30 X-RAY | 13.47s-14.23s | Outro | Vibe: Triumphant
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text 'The memories we all want to make with our friends' transforms the vide...
+   Dominant Narrative: A high-octane celebration of collective friendship and the pursuit of peak life ...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_159.mp4 | SCORE: 335.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip_114.mp4 | SCORE: 315.0
+   Vibes: Group, Nature
+   Subjects: People-Group, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -20.0 points
+
+   #3 | clip_143.mp4 | SCORE: 315.0
+   Vibes: Crowd, Nature
+   Subjects: People-Crowd, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -20.0 points
+
+   #4 | clip_124.mp4 | SCORE: 305.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -30.0 points
+
+   #5 | clip_132.mp4 | SCORE: 305.0
+   Vibes: Solo, Urban
+   Subjects: People-Solo, Place-Urban
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Button' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -30.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_159.mp4
+   Final Score: 335.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+END OF X-RAY REPORT
+================================================================================

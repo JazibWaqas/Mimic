@@ -498,14 +498,14 @@ def run_mimic_pipeline(
             final_output_path.unlink()
         
         if audio_extracted:
-            # CRITICAL FIX: trim_to_shortest=False to prevent video truncation
-            # If audio is shorter than video, video will play with silence at end
-            # This prevents losing the last 3 seconds of the edit
+            # REFERENCE MODE FIX: trim_to_shortest=True (ALWAYS in Reference Mode)
+            # Reference audio duration is SACRED - video must match it exactly
+            # This prevents silence padding and ensures music doesn't cut abruptly
             merge_audio_video(
                 str(render_source),
                 str(audio_path),
                 str(final_output_path),
-                trim_to_shortest=False  # Changed from True - prevents truncation
+                trim_to_shortest=True  # LOCKED: Reference audio is authority
             )
         else:
             create_silent_video(str(render_source), str(final_output_path))

@@ -364,6 +364,32 @@ def match_clips_to_blueprint(
             self.last_used_at = clip_last_used_at
 
     ctx = MatchContext()
+    
+    # === X-RAY DIAGNOSTIC LOGGING ===
+    # Collect detailed scoring breakdowns for surgical debugging
+    xray_logs = []
+
+    # === VIBE CANONICALIZATION LAYER (v14.1 Semantic Intelligence) ===
+    # This layer maps specific nouns (from clip analysis) to abstract editorial vibes.
+    # It also consolidates 'vibes' and 'emotional_tone' into a single descriptor set.
+    VIBE_CANONICAL_MAP = {
+        "ACTION": {"action", "racing", "speed", "fast", "adrenaline", "kinetic", "movement", "active", "dynamic", "vehicle", "sport", "drive", "launch"},
+        "INTENSITY": {"intensity", "intense", "dramatic", "hype", "power", "force", "cinematic", "epic", "peak", "mon monologue", "focus", "physical", "technical"},
+        "JOY": {"joy", "joyful", "fun", "laughter", "happy", "celebration", "celebratory", "sparkling", "ecstatic", "together", "candid", "casual", "smile"},
+        "ADVENTURE": {"adventure", "adventurous", "wanderlust", "travel", "explore", "scenic", "journey", "arrival", "mountains", "beach", "wilderness"},
+        "PEACE": {"peaceful", "serene", "reflective", "nostalgic", "nostalgia", "calm", "still", "golden", "sentimental", "memory", "intimate", "quiet", "soft", "warmth"},
+        "PLACE": {"nature", "scenic", "landscape", "outdoors", "urban", "city", "street", "architecture", "indoor", "room", "hotel"}
+    }
+
+    def canonicalize(raw_vibe_list):
+        canonical = set()
+        if not raw_vibe_list: return canonical
+        for rv in raw_vibe_list:
+            rv_low = str(rv).lower()
+            for key, synonyms in VIBE_CANONICAL_MAP.items():
+                if rv_low in synonyms or any(s in rv_low for s in synonyms):
+                    canonical.add(key)
+        return canonical
 
     # === PHRASE GROUPING (v12.4 Phase 2) ===
     # Groups segments by arc_stage for motif feasibility checks.
@@ -747,11 +773,11 @@ def match_clips_to_blueprint(
                     
                     if target_subject in clip_primary_subjects:
                         narrative_subject_match = True
-                        # P0 FIX #3: NARRATIVE ANCHOR DEMOTION (Lock → Bias)
-                        # DEMOTED BONUS (was +50/+15, now +25/+10)
-                        # Narrative anchor is now a TIE-BREAKER, not a PRIMARY SELECTOR
+                        # REFERENCE MODE LOCK: NARRATIVE ANCHOR DEMOTION (Lock → Tie-breaker)
+                        # FURTHER DEMOTED (was +25/+10, now +15/+5)
+                        # Vibe matching is PRIMARY, subject is SECONDARY
                         usage = clip_usage_count[clip.filename]
-                        bonus = 25.0 if usage == 0 else 10.0
+                        bonus = 15.0 if usage == 0 else 5.0
                         score += bonus
                         reasons.append("⚓ANCHOR" if usage == 0 else "⚓RECAP")
                     else:
@@ -800,59 +826,42 @@ def match_clips_to_blueprint(
                         else:
                             reasons.append(f"🚫{advisor_bonus}")
 
-                # === NARRATIVE LAYER: Semantic Matching ===
+                # === NARRATIVE LAYER: Canonical Vibe Matching (v14.1) ===
                 
-                # P0 FIX #1: ENHANCED VIBE MATCHING with Semantic Bridge
-                # Priority order:
-                # 1. Direct match (exact string)
-                # 2. Semantic bridge (Vehicle → Speed, Solo → Heroic, etc.)
-                # 3. Semantic neighbor (legacy fallback)
+                # Consolidate all clip descriptors (vibes + emotional_tone)
+                clip_descriptors = [v.lower() for v in (clip.vibes or [])]
+                if hasattr(clip, 'emotional_tone') and clip.emotional_tone:
+                    clip_descriptors.extend([t.lower() for t in clip.emotional_tone])
                 
                 target_vibe = (segment.vibe or "general").lower()
-                clip_vibes = [v.lower() for v in (clip.vibes or [])]
                 
-                # 1. Direct Vibe Match (+40 points) - INCREASED from +30
-                if any(target_vibe in v or v in target_vibe for v in clip_vibes):
-                    score += 40.0
+                # Canonicalize both sides
+                target_canonical = canonicalize([target_vibe])
+                clip_canonical = canonicalize(clip_descriptors)
+                
+                # 1. Direct Canonical Match (+100.0 points) - HIGH PRIORITY
+                if any(tc in clip_canonical for tc in target_canonical):
+                    score += 100.0
                     reasons.append(f"Vibe:{segment.vibe}")
                     vibe_matched = True
-                else:
-                    # 2. Semantic Bridge Match (+30 points) - NEW
-                    # Check if any clip vibe maps to the target vibe via semantic bridge
-                    bridge_matched = False
-                    for clip_vibe in clip_vibes:
-                        if clip_vibe in VIBE_SEMANTIC_BRIDGE:
-                            mapped_vibes = VIBE_SEMANTIC_BRIDGE[clip_vibe]
-                            if target_vibe in mapped_vibes:
-                                # INTENSITY GATING: Prevent false positives
-                                high_energy_vibes = ["speed", "adrenaline", "power", "launch", "precision"]
-                                if target_vibe in high_energy_vibes and getattr(clip, 'intensity', 1) < 2:
-                                    continue  # Skip low-intensity clips for high-energy vibes
-                                score += 30.0
-                                reasons.append(f"Bridge:{clip_vibe}→{segment.vibe}")
-                                vibe_matched = True
-                                bridge_matched = True
-                                break
-                    
-                    # Also check reverse: does target vibe map to any clip vibe?
-                    if not bridge_matched and target_vibe in VIBE_SEMANTIC_BRIDGE:
-                        mapped_vibes = VIBE_SEMANTIC_BRIDGE[target_vibe]
-                        if any(v in mapped_vibes for v in clip_vibes):
-                            score += 30.0
-                            reasons.append(f"Bridge:{segment.vibe}→{clip_vibes[0]}")
-                            vibe_matched = True
-                            bridge_matched = True
-                    
-                    # 3. Semantic neighbor match (+15 points) - LEGACY FALLBACK
-                    if not bridge_matched:
-                        for category, neighbors in SEMANTIC_MAP.items():
-                            if target_vibe in neighbors or target_vibe == category:
-                                if any(v in neighbors for v in clip_vibes):
-                                    score += 15.0
-                                    reasons.append(f"Nearby:{category}")
-                                    vibe_matched = True
-                                    break
                 
+                # 2. Literal Substring Match (+60.0 points) - Fallback
+                elif any(target_vibe in d or d in target_vibe for d in clip_descriptors):
+                    score += 60.0
+                    reasons.append(f"Vibe:{segment.vibe} (Literal)")
+                    vibe_matched = True
+                    
+                # 3. Structural Style Match (+20.0 points) - Deep Fallback
+                else:
+                    style_bonus = 0
+                    if "action" in target_vibe and clip.energy == EnergyLevel.HIGH:
+                        style_bonus = 20.0
+                    elif "peaceful" in target_vibe and clip.energy == EnergyLevel.LOW:
+                        style_bonus = 20.0
+                    
+                    if style_bonus > 0:
+                        score += style_bonus
+                        reasons.append("Vibe:StyleSync")
                 
                 # 2. Shot Function Match (+25 points)
                 function_to_utility = {
@@ -1012,15 +1021,16 @@ def match_clips_to_blueprint(
                     score += 20.0  # Fresh clip bonus
                     reasons.append("✨New")
                 else:
-                    # v12.1 REBALANCED REUSE:
-                    # We prefer quality repetition over poor-quality 'freshness'.
-                    # 1st reuse: -30, 2nd reuse: -80, 3rd+ reuse: -180
+                    # REFERENCE MODE LOCK: EXPONENTIAL REUSE PENALTY
+                    # Diversity is a HARD CONSTRAINT, not a preference
+                    # Linear penalties (30, 80, 180) can be overcome by strong bonuses
+                    # Exponential penalties (100, 300, 900) enforce true diversity
                     if usage == 1:
-                        penalty = 30.0
+                        penalty = 100.0  # Aggressive first reuse penalty
                     elif usage == 2:
-                        penalty = 80.0
+                        penalty = 300.0  # Exponential second reuse
                     else:
-                        penalty = 180.0
+                        penalty = 900.0  # Prohibitive third+ reuse
                     
                     score -= penalty
                     reasons.append(f"Used:{usage}x")
@@ -1170,22 +1180,85 @@ def match_clips_to_blueprint(
                     
                     scored_clips.append((c, total_score, reasoning, vibe_matched))
 
-            # Sort by total score
-            scored_clips.sort(key=lambda x: x[1], reverse=True)
+            # Sort by total score, then vibe match (TIE-BREAKER), then variety
+            scored_clips.sort(key=lambda x: (x[1], x[3], -clip_usage_count[x[0].filename]), reverse=True)
 
             # Top tier selection (v10.0: replaced randomness with Usage Tie-breaker)
             # Find clips within a "Finesse Buffer" of the max score
             max_score = scored_clips[0][1]
             top_tier = [(c, s, r, vm) for c, s, r, vm in scored_clips if (max_score - s) < 15.0]
             
-            # Sort top tier by usage (freshest clips first)
-            # This ensures we pick the "freshest clip that is still great"
-            top_tier.sort(key=lambda x: clip_usage_count[x[0].filename])
-
+            # v14.1: If there's a tie in the top tier, prioritize the one with a vibe match, then freshest
+            top_tier.sort(key=lambda x: (x[1], x[3], -clip_usage_count[x[0].filename]), reverse=True)
+            
             selected_clip, selected_score, selected_reasoning, vibe_matched = top_tier[0]
             
-            # ENHANCED LOGGING: Candidate rankings (top 3)
-            if DEBUG_MODE and cuts_in_segment == 0:  # Only log once per segment
+            # === X-RAY DIAGNOSTIC LOGGING (Reference Mode Lock) ===
+            # Export detailed scoring breakdown to XRAY.txt for surgical debugging
+            if cuts_in_segment == 0:  # Only log once per segment
+                xray_log = []
+                xray_log.append(f"\n{'='*80}")
+                xray_log.append(f"SEGMENT {segment.id} X-RAY | {segment.start:.2f}s-{segment.end:.2f}s | {segment.arc_stage} | Vibe: {segment.vibe}")
+                xray_log.append(f"{'='*80}")
+                
+                # 1. Advisor Input
+                if advisor_hints:
+                    xray_log.append(f"\n📋 ADVISOR INPUT:")
+                    xray_log.append(f"   Primary Subject: {advisor_hints.primary_narrative_subject.value if advisor_hints.primary_narrative_subject else 'None'}")
+                    xray_log.append(f"   Text Intent: {advisor_hints.text_overlay_intent[:80]}..." if advisor_hints.text_overlay_intent else "   Text Intent: None")
+                    xray_log.append(f"   Dominant Narrative: {advisor_hints.dominant_narrative[:80]}..." if advisor_hints.dominant_narrative else "   Dominant Narrative: None")
+                
+                # 2. Top 5 Candidate Scoring Breakdown
+                xray_log.append(f"\n🔬 TOP 5 CANDIDATES:")
+                top_5 = scored_clips[:5]
+                for idx, (c, score, reason, vm) in enumerate(top_5):
+                    usage = clip_usage_count[c.filename]
+                    winner_mark = "🏆 WINNER" if idx == 0 else f"   #{idx+1}"
+                    xray_log.append(f"\n{winner_mark} | {c.filename} | SCORE: {score:.1f}")
+                    xray_log.append(f"   Vibes: {', '.join(c.vibes[:3]) if c.vibes else 'None'}")
+                    xray_log.append(f"   Subjects: {', '.join(c.primary_subject[:2]) if c.primary_subject else 'None'}")
+                    xray_log.append(f"   Energy: {c.energy.value} | Usage: {usage}x")
+                    xray_log.append(f"   Vibe Match: {'✅ YES' if vm else '❌ NO'}")
+                    xray_log.append(f"   Reasoning: {reason[:120]}")
+                    
+                    # Score delta analysis
+                    if idx > 0:
+                        delta = top_5[0][1] - score
+                        xray_log.append(f"   Delta from winner: -{delta:.1f} points")
+                
+                # 3. Selection Decision Analysis
+                xray_log.append(f"\n🎯 SELECTION DECISION:")
+                xray_log.append(f"   Winner: {selected_clip.filename}")
+                xray_log.append(f"   Final Score: {selected_score:.1f}")
+                xray_log.append(f"   Vibe Match: {'✅ YES' if vibe_matched else '❌ NO'}")
+                
+                # Check for overrides
+                subject_override = False
+                vibe_override = False
+                if advisor_hints and advisor_hints.primary_narrative_subject:
+                    target_sub = advisor_hints.primary_narrative_subject.value
+                    if target_sub in (selected_clip.primary_subject or []):
+                        subject_override = True
+                
+                if len(top_5) > 1:
+                    runner_up = top_5[1]
+                    if runner_up[3] and not vibe_matched:  # Runner-up had vibe match, winner didn't
+                        vibe_override = True
+                
+                xray_log.append(f"   Subject Override: {'⚠️ YES' if subject_override and not vibe_matched else '✅ NO'}")
+                xray_log.append(f"   Vibe Override: {'⚠️ YES' if vibe_override else '✅ NO'}")
+                
+                # 4. Diversity Analysis
+                if usage > 0:
+                    xray_log.append(f"\n⚠️ DIVERSITY WARNING:")
+                    xray_log.append(f"   Clip reused {usage}x (penalty: -{100 * (3 ** (usage-1)):.0f} points)")
+                    xray_log.append(f"   Still won despite penalty - strong match")
+                
+                # Write to XRAY file
+                xray_logs.append('\n'.join(xray_log))
+            
+            # ENHANCED LOGGING: Candidate rankings (top 3) - LEGACY
+            if DEBUG_MODE and cuts_in_segment == 0:
                 top_3 = scored_clips[:3]
                 candidates = []
                 for idx, (c, score, reason, vm) in enumerate(top_3):
@@ -1622,6 +1695,28 @@ def match_clips_to_blueprint(
         "beat_alignment_logs": beat_alignment_logs,
         "unused_clips": unused_data
     }
+    
+    # === EXPORT X-RAY DIAGNOSTIC LOGS ===
+    # Write detailed scoring breakdown to separate file for surgical debugging
+    if xray_logs and reference_path:
+        ref_name = Path(reference_path).stem
+        xray_path = Path("data/results") / f"{ref_name}_XRAY.txt"
+        xray_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(xray_path, 'w', encoding='utf-8') as f:
+            f.write("="*80 + "\n")
+            f.write("X-RAY DIAGNOSTIC REPORT - REFERENCE MODE LOCK\n")
+            f.write("="*80 + "\n")
+            f.write(f"Reference: {ref_name}\n")
+            f.write(f"Total Segments: {len(blueprint.segments)}\n")
+            f.write(f"Total Clips: {len(clip_index.clips)}\n")
+            f.write("="*80 + "\n")
+            f.write('\n'.join(xray_logs))
+            f.write("\n\n" + "="*80 + "\n")
+            f.write("END OF X-RAY REPORT\n")
+            f.write("="*80 + "\n")
+        
+        print(f"\n🔬 X-RAY diagnostic report exported: {xray_path}")
     
     return edl, advisor_hints
 
