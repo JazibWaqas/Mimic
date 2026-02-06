@@ -281,44 +281,57 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
     
     print(f"  [GEOMETRY] Mode: premium_nostalgia_letterbox (clean + sharp)")
 
-    cmd = [
-        "ffmpeg",
-        "-i", input_path,
-        "-vf", (
-            f"{geometry_filters},"
-            "fps=30,"                           # Force consistent 30fps
-            "format=yuv420p,"                   # Ensure maximal compatibility
-            "setsar=1"
-        ),
-        "-c:v", "h264_qsv",         # Intel QuickSync GPU encode (5-10x faster than libx264)
-        "-global_quality", "20",     # QSV quality level (lower=better, 20 is near-lossless)
-        "-preset", "slow",          # Better compression efficiency
-        "-c:a", "aac",
-        "-b:a", "256k",             # Improved audio bitrate
-        "-ar", "48000",             # Higher sample rate
-        "-map_metadata", "-1",      # Strip all metadata
-        "-metadata:s:v:0", "rotate=0", 
-        "-movflags", "+faststart",
-        "-pix_fmt", "yuv420p",      # Explicit pixel format for compatibility
-        "-y",
-        output_path
-    ]
+    def run_ffmpeg(encoder: str):
+        cmd = [
+            "ffmpeg",
+            "-i", input_path,
+            "-vf", (
+                f"{geometry_filters},"
+                "fps=30,"                           # Force consistent 30fps
+                "format=yuv420p,"                   # Ensure maximal compatibility
+                "setsar=1"
+            ),
+            "-c:v", encoder,
+            "-preset", "slow" if encoder == "h264_qsv" else "veryfast",
+            "-c:a", "aac",
+            "-b:a", "256k",
+            "-ar", "48000",
+            "-map_metadata", "-1",
+            "-metadata:s:v:0", "rotate=0", 
+            "-movflags", "+faststart",
+            "-pix_fmt", "yuv420p",
+            "-y",
+            output_path
+        ]
 
-    
+        if encoder == "h264_qsv":
+            # Quality setting for QSV
+            cmd.insert(-1, "-global_quality")
+            cmd.insert(-1, "20")
+        else:
+            # Quality setting for libx264
+            cmd.insert(-1, "-crf")
+            cmd.insert(-1, "23")
+
+        return subprocess.run(cmd, capture_output=True, text=True, check=True)
+
     try:
-        result = subprocess.run(
-            cmd,
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        print(f"  [OK] Standardized: {Path(output_path).name}")
-    except subprocess.CalledProcessError as e:
-        raise RuntimeError(
-            f"FFmpeg standardization failed:\n"
-            f"STDOUT: {e.stdout}\n"
-            f"STDERR: {e.stderr}"
-        )
+        # Try hardware acceleration first (Intel QSV)
+        print(f"  [GEOMETRY] Standardizing with Intel QSV (GPU acceleration)...")
+        run_ffmpeg("h264_qsv")
+        print(f"  [OK] Standardized (QSV): {Path(output_path).name}")
+    except Exception as e:
+        print(f"  [WARN] Intel QSV failed or unavailable. Falling back to libx264 (Software CPU)...")
+        try:
+            # Fallback to software encoding (libx264) - universal
+            run_ffmpeg("libx264")
+            print(f"  [OK] Standardized (libx264): {Path(output_path).name}")
+        except subprocess.CalledProcessError as e2:
+            raise RuntimeError(
+                f"FFmpeg standardization failed totally:\n"
+                f"STDOUT: {e2.stdout}\n"
+                f"STDERR: {e2.stderr}"
+            )
 
 
 # ============================================================================
