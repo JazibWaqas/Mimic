@@ -1168,7 +1168,7 @@ def match_clips_to_blueprint(
                     if moment_reason:
                         reasons.append(moment_reason)
                 
-                # 2. Energy Matching (with Advisor override support)
+                # 2. Energy Matching (with Advisor override support + v14.8 Intent-Aware Relaxation)
                 # Determine what energy level we're matching against
                 target_energy = segment.energy
                 if required_energy_override:
@@ -1180,23 +1180,54 @@ def match_clips_to_blueprint(
                     except (ValueError, KeyError, TypeError):
                         pass
                 
-                if clip.energy != target_energy:
-                    # CRITICAL: If Advisor explicitly recommends this clip, ignore energy mismatch
-                    if not advisor_primary_carrier:
-                        # NARRATIVE SOFTENING (v9.5): Minor penalty if subject matches
-                        penalty = 5.0
-                        if narrative_subject_match:
-                            penalty = 1.0
-                            reasons.append("⚡Match")
-                            
-                        score -= penalty
-                        reasons.append(f"~{clip.energy.value}")
-                    else:
-                        # Advisor override: energy mismatch is irrelevant
-                        reasons.append(f"⚡{clip.energy.value}")
-                else:
+                # v14.8: VIBE-GATED ENERGY RELAXATION
+                # Energy should be strict when energy is the story.
+                # Energy should be flexible when emotion is the story.
+                EMOTION_DRIVEN_VIBES = {
+                    "peace", "stillness", "calm", "warmth", "nostalgia", "love",
+                    "reflection", "intimate", "quiet", "tender", "gentle", "soft",
+                    "bittersweet", "memory", "longing", "wonder", "innocence"
+                }
+                TEMPO_DRIVEN_VIBES = {
+                    "hype", "energy", "action", "intensity", "celebration",
+                    "dynamic", "fast", "power", "explosive", "rush"
+                }
+                
+                # Check segment vibes to determine if energy should be relaxed
+                segment_vibes_lower = set(v.strip().lower() for v in (segment.vibe or "").split(","))
+                is_emotion_driven = bool(segment_vibes_lower & EMOTION_DRIVEN_VIBES)
+                is_tempo_driven = bool(segment_vibes_lower & TEMPO_DRIVEN_VIBES)
+                
+                # Determine if energy is "adjacent" (within 1 level)
+                energy_order = {"Low": 0, "Medium": 1, "High": 2}
+                clip_level = energy_order.get(clip.energy.value, 1)
+                target_level = energy_order.get(target_energy.value, 1)
+                energy_distance = abs(clip_level - target_level)
+                is_adjacent = energy_distance == 1
+                is_exact_match = clip.energy == target_energy
+                
+                if is_exact_match:
+                    # Perfect energy match
                     score += 15.0
                     reasons.append(f"{clip.energy.value}")
+                elif is_emotion_driven and not is_tempo_driven and is_adjacent:
+                    # v14.8: Emotion-driven segment allows adjacent energy with small bonus
+                    # Medium can fill Low, High can fill Medium (but not Low ↔ High)
+                    score += 8.0  # Reduced bonus vs perfect match, but still positive
+                    reasons.append(f"~{clip.energy.value}✨")  # ✨ indicates vibe-gated relaxation
+                elif not advisor_primary_carrier:
+                    # Standard energy mismatch penalty
+                    # NARRATIVE SOFTENING (v9.5): Minor penalty if subject matches
+                    penalty = 5.0
+                    if narrative_subject_match:
+                        penalty = 1.0
+                        reasons.append("⚡Match")
+                        
+                    score -= penalty
+                    reasons.append(f"~{clip.energy.value}")
+                else:
+                    # Advisor override: energy mismatch is irrelevant
+                    reasons.append(f"⚡{clip.energy.value}")
                 
                 # 3. Lighting Continuity (+10 points)
                 content = (clip.content_description or "").lower()
@@ -1645,6 +1676,37 @@ def match_clips_to_blueprint(
                 print(f"    [SKIP] Invalid clip boundaries ({clip_start:.2f}s-{clip_end:.2f}s)")
                 cuts_in_segment += 1
                 continue
+
+            # v14.9: MICRO-CUT PREVENTION
+            # If remaining gap is too small for a meaningful cut, extend previous decision instead
+            segment_remaining_now = segment.end - timeline_position
+            MIN_CUT_DURATION = 1.0  # Minimum duration for a new cut (prevents flash cuts)
+            
+            if segment_remaining_now < MIN_CUT_DURATION and decisions and decisions[-1].segment_id == segment.id:
+                # Extend the previous cut to fill the remaining gap
+                prev_decision = decisions[-1]
+                prev_clip_path = prev_decision.clip_path
+                prev_clip = next((c for c in clip_index.clips if c.filepath == prev_clip_path), None)
+                
+                if prev_clip:
+                    extension_needed = segment_remaining_now
+                    new_clip_end = prev_decision.clip_end + extension_needed
+                    
+                    # Only extend if we have enough clip duration remaining
+                    if new_clip_end <= (prev_clip.duration + 0.002):
+                        prev_decision.clip_end = snap(new_clip_end)
+                        prev_decision.timeline_end = snap(segment.end)
+                        timeline_position = prev_decision.timeline_end
+                        
+                        print(f"    🔧 v14.9 Micro-cut prevention: Extended previous cut by {extension_needed:.2f}s to avoid flash cut")
+                        print(f"       {Path(prev_clip_path).name} now ends at {prev_decision.clip_end:.2f}s")
+                        
+                        # Break out of the loop - segment is now complete
+                        break
+                    else:
+                        print(f"    ⚠️ Cannot extend previous cut (would exceed clip duration). Creating micro-cut.")
+                else:
+                    print(f"    ⚠️ Previous clip not found for extension. Creating micro-cut.")
 
             # PHASE 4: Create Decision with Locked Boundaries
             # timeline_start is ALWAYS EXACTLY the previous timeline_end

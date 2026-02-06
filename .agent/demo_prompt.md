@@ -1,11 +1,4 @@
-# MIMIC Demo Prompt — Nostalgic Childhood Reel
-
-## Primary Prompt (Copy this into Creator Mode)
-
-```
-A warm, joyful, nostalgic childhood reel that celebrates innocence, happiness, and the beauty of growing up.
-
-This edit should feel like a memory you didn't know you missed.
+A warm, joyful, nostalgic childhood reel that celebrates innocence, happiness, and the beauty of growing up. This edit should feel like a memory you didn't know you missed.
 
 Start slow and gentle — calm, warm, and peaceful. Let the viewer settle into the world of childhood.
 Gradually build through candid laughter, playful energy, and moments of pure joy.
@@ -16,7 +9,6 @@ End softly and reflectively — a bittersweet, loving goodbye to a phase of life
 This is not about using every clip quickly.
 It's about letting moments breathe, reminiscing, and enjoying how sweet and innocent this time was.
 Use as many clips as feel natural, but never rush the emotion.
-
 The viewer should finish this edit feeling:
 – warm
 – happy
@@ -26,27 +18,10 @@ The viewer should finish this edit feeling:
 
 Text overlay (subtle, elegant):
 "Oh, to be this young again."
-
 Overall feeling:
 Joyful. Warm. Full of life. Innocent. Thought-provoking.
 A beautiful reminder of how fast time moves — and how precious these moments were.
-```
 
----
-
-## Why This Prompt Works
-
-| Element | Purpose | System Response |
-|---------|---------|-----------------|
-| **"warm, joyful nostalgia"** | Sets emotional_intent | Generator picks vibes: warmth, joy, innocence |
-| **"Start slow and gentle"** | Primes Intro | CDE=Sparse, Long hold, Low energy |
-| **"Build gradually"** | Primes Build-up | CDE=Moderate, energy escalation |
-| **"Peak with celebration"** | Primes Peak | Medium-High energy, movement clips |
-| **"End with peaceful, reflective"** | Primes Outro | CDE=Sparse, Long hold, Low energy |
-| **"Text overlay: Oh, to be this young again."** | Direct text instruction | Captured in blueprint.text_overlay |
-| **"Not fast. Not frantic."** | Pacing guidance | Expected_hold = Long/Normal, avoids Dense CDE |
-
----
 
 ## Expected Blueprint Output
 
