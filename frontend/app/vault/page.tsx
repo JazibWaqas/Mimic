@@ -30,7 +30,9 @@ import {
     CheckCircle2,
     Clock,
     Music,
-    TrendingUp
+    TrendingUp,
+    Check,
+    Wand2
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -57,8 +59,10 @@ export default function VaultPage() {
     const [duration, setDuration] = useState(0);
     const [searchQuery, setSearchQuery] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
+
+    // Module expansion states
     const [intelExpanded, setIntelExpanded] = useState(true);
-    const [showMoreDetails, setShowMoreDetails] = useState(false);
+
     const [isStylingOpen, setIsStylingOpen] = useState(false);
     const [isStylingLoading, setIsStylingLoading] = useState(false);
 
@@ -325,164 +329,174 @@ export default function VaultPage() {
                                 </div>
                             </div>
 
-                            {/* AI INTELLIGENCE SUITE: Collapsible Forensic Modules */}
+                            {/* AI INTELLIGENCE SUITE */}
                             <div className="w-full max-w-[820px] mx-auto space-y-4">
 
-                                {/* 1. WHY THE EDIT WORKS (The Story) */}
+                                {/* MODULE 1: NARRATIVE (Full Width) */}
                                 <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden group/module">
                                     <button
                                         onClick={() => setIntelExpanded(!intelExpanded)}
                                         className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
                                     >
                                         <div className="flex items-center gap-4">
-                                            <div className="h-10 w-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20">
+                                            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
                                                 <BrainCircuit className="h-5 w-5" />
                                             </div>
                                             <div className="text-left">
-                                                <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Why the edit works</h3>
-                                                <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">The Creative Logic</p>
+                                                <h3 className="text-[11px] font-black text-white uppercase tracking-[0.3em]">Creative Logic</h3>
+                                                <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">Narrative Intent</p>
                                             </div>
                                         </div>
                                         {intelExpanded ? <ChevronUp className="h-4 w-4 text-slate-600" /> : <ChevronDown className="h-4 w-4 text-slate-600" />}
                                     </button>
 
                                     {intelExpanded && (
-                                        <div className="p-8 pt-0 space-y-8 animate-slide-in-from-top">
-                                            <div className="space-y-4">
-                                                <p className="text-base font-medium text-slate-300 leading-relaxed italic border-l-2 border-cyan-500/30 pl-6">
-                                                    "{intelligence?.critique?.monologue ?
-                                                        intelligence.critique.monologue.split('.').slice(0, 2).join('.') + '.' :
-                                                        "This edit flows naturally, capturing the energy perfectly while maintaining a consistent visual rhythm."}"
-                                                </p>
-                                                <p className="text-sm text-slate-400 leading-relaxed pl-6 opacity-60">
-                                                    The system prioritized **narrative continuity** by anchoring on solo subjects, ensuring the transition from intro to peak feels earned rather than forced.
-                                                </p>
-                                            </div>
-
-                                            <div className="grid grid-cols-2 gap-8">
-                                                <div className="space-y-4">
-                                                    <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest">What Worked</p>
-                                                    <div className="space-y-2">
-                                                        {intelligence?.critique?.star_performers?.slice(0, 2).map((s: string, i: number) => (
-                                                            <div key={i} className="flex items-center gap-3 text-[10px] font-bold text-slate-400 uppercase bg-white/[0.02] p-3 rounded-xl border border-white/5"><CheckCircle2 className="h-3.5 w-3.5 text-indigo-500" />{s}</div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                <div className="space-y-4">
-                                                    <p className="text-[9px] font-black text-pink-500 uppercase tracking-widest">Ways to evolve</p>
-                                                    <div className="space-y-2">
-                                                        {intelligence?.critique?.missing_ingredients?.slice(0, 2).map((s: string, i: number) => (
-                                                            <div key={i} className="flex items-center gap-3 text-[10px] font-bold text-slate-500 uppercase bg-white/[0.02] p-3 rounded-xl border border-white/5"><Sparkles className="h-3.5 w-3.5 text-pink-500/30" />{s}</div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div className="p-8 pt-0 animate-slide-in-from-top">
+                                            <p className="text-base font-medium text-slate-300 leading-relaxed italic border-l-2 border-indigo-500/30 pl-6 mb-2">
+                                                "{intelligence?.critique?.monologue || "Analyzing narrative flow..."}"
+                                            </p>
                                         </div>
                                     )}
                                 </div>
 
-                                {/* MORE DETAILS TOGGLE */}
-                                {!showMoreDetails ? (
-                                    <button
-                                        onClick={() => setShowMoreDetails(true)}
-                                        className="w-full py-4 text-[9px] font-black text-slate-600 uppercase tracking-[0.3em] hover:text-indigo-400 transition-colors"
-                                    >
-                                        + Show System Details
-                                    </button>
-                                ) : (
-                                    <div className="space-y-4 animate-slide-in-from-top">
-                                        {/* 2. HOW THE SYSTEM THOUGHT (The Strategy) */}
-                                        <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden">
-                                            <button className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20">
-                                                        <Zap className="h-5 w-5" />
-                                                    </div>
-                                                    <div className="text-left">
-                                                        <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">How the system thought</h3>
-                                                        <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">Operational Strategy</p>
-                                                    </div>
-                                                </div>
-                                                <ChevronDown className="h-4 w-4 text-slate-600" />
-                                            </button>
-                                        </div>
-
-                                        {/* 3. EXTRA DETAILS (The Data) */}
-                                        <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden">
-                                            <button className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="h-10 w-10 rounded-xl bg-slate-500/10 flex items-center justify-center text-slate-400 border border-slate-500/20">
-                                                        <Activity className="h-5 w-5" />
-                                                    </div>
-                                                    <div className="text-left">
-                                                        <h3 className="text-[10px] font-black text-white uppercase tracking-[0.3em]">Extra Details</h3>
-                                                        <p className="text-[8px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">Frame-Level Data</p>
-                                                    </div>
-                                                </div>
-                                                <ChevronDown className="h-4 w-4 text-slate-600" />
-                                            </button>
-                                        </div>
-
-                                        <button
-                                            onClick={() => setShowMoreDetails(false)}
-                                            className="w-full py-2 text-[8px] font-black text-slate-700 uppercase tracking-widest hover:text-white transition-colors"
-                                        >
-                                            Hide Details
-                                        </button>
+                                {/* MODULE 2: DIRECTOR'S NOTES (Full Width) */}
+                                <div className="rounded-3xl border border-pink-500/10 bg-pink-500/[0.01] overflow-hidden relative min-h-[220px]">
+                                    <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+                                        <Sparkles className="h-24 w-24 text-pink-500" />
                                     </div>
-                                )}
+                                    <div className="p-6">
+                                        <div className="flex items-center gap-3 mb-6 relative z-10">
+                                            <div className="h-8 w-8 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400 border border-pink-500/20">
+                                                <Palette className="h-4 w-4" />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-[10px] font-black text-pink-100 uppercase tracking-[0.2em]">Director's Notes</h3>
+                                                <p className="text-[8px] font-bold text-pink-500/60 uppercase tracking-widest mt-0.5">Recommended Actions</p>
+                                            </div>
+                                        </div>
 
+                                        <div className="space-y-3 relative z-10">
+                                            {intelligence?.critique?.remake_actions?.length > 0 ? (
+                                                intelligence.critique.remake_actions.map((action: any, i: number) => (
+                                                    <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-pink-500/10 hover:border-pink-500/30 transition-colors group">
+                                                        <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-pink-500 shadow-[0_0_5px_#ec4899]" />
+                                                        <div className="flex-1">
+                                                            <div className="flex justify-between items-center mb-1">
+                                                                <span className="text-[9px] font-black text-pink-400 uppercase tracking-wider">{action.type.replace('_', ' ')}</span>
+                                                                <button className="opacity-0 group-hover:opacity-100 text-[8px] px-2 py-0.5 rounded bg-pink-500 text-white font-bold uppercase transition-opacity">Apply</button>
+                                                            </div>
+                                                            <p className="text-[10px] text-slate-300 leading-snug">{action.suggestion}</p>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="flex items-center gap-3 opacity-40 p-2">
+                                                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest">No Critical Actions Needed</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        {/* RIGHT: THE WHITEBOX (Decision Stream - Bigger & Stylized) */}
-                        <div className="w-[420px] flex flex-col bg-gradient-to-b from-white/[0.02] to-transparent border border-white/[0.05] rounded-[2.5rem] overflow-hidden shrink-0 shadow-2xl" style={{ height: '600px' }}>
-                            <div className="p-7 border-b border-white/[0.05] flex items-center justify-between bg-black/20 backdrop-blur-md">
-                                <div className="flex items-center gap-4">
-                                    <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
-                                    <h3 className="text-[11px] font-black text-white uppercase tracking-[0.4em]">Decision Stream</h3>
+                        {/* RIGHT COLUMN: DECISION STREAM + TELEMETRY */}
+                        <div className="w-[420px] flex flex-col gap-6 shrink-0">
+
+                            {/* DECISION STREAM: THE WHITEBOX */}
+                            <div className="flex flex-col bg-gradient-to-b from-white/[0.02] to-transparent border border-white/[0.05] rounded-[2.5rem] overflow-hidden shadow-2xl" style={{ height: '520px' }}>
+                                <div className="p-7 border-b border-white/[0.05] flex items-center justify-between bg-black/20 backdrop-blur-md">
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
+                                        <h3 className="text-[11px] font-black text-white uppercase tracking-[0.4em]">Decision Stream</h3>
+                                    </div>
+                                    <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10">
+                                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{intelligence?.edl?.decisions?.length || 0} Points</span>
+                                    </div>
                                 </div>
-                                <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10">
-                                    <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{intelligence?.edl?.decisions?.length || 0} Points</span>
+
+                                <div ref={decisionListRef} className="flex-1 overflow-y-auto p-7 space-y-5 custom-scrollbar-thin">
+                                    {!intelligence?.edl?.decisions?.length ? (
+                                        <div className="h-full flex flex-col items-center justify-center opacity-20 text-center px-12">
+                                            <Zap className="h-10 w-10 mb-6 text-indigo-500" />
+                                            <p className="text-[11px] font-black uppercase tracking-[0.2em] leading-relaxed">Awaiting logic<br />Play to sync</p>
+                                        </div>
+                                    ) : (
+                                        intelligence.edl.decisions.map((decision: any, idx: number) => {
+                                            const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
+                                            return (
+                                                <div key={idx} className={cn(
+                                                    "p-6 rounded-[2rem] border transition-all duration-700 relative group/card",
+                                                    isActive
+                                                        ? "bg-indigo-600/20 border-indigo-500/50 shadow-[0_20px_40px_rgba(0,0,0,0.3)] scale-[1.02] z-10"
+                                                        : "bg-white/[0.02] border-white/5 opacity-60 hover:opacity-100 hover:bg-white/[0.04]"
+                                                )}>
+                                                    <div className="flex items-center justify-between mb-4">
+                                                        <div className="flex items-center gap-3">
+                                                            <span className="text-[9px] font-black text-indigo-500/50 font-mono tracking-widest">POINT_{idx + 1}</span>
+                                                            {isActive && <div className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_10px_#818cf8]" />}
+                                                        </div>
+                                                        <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI VERIFIED</span>
+                                                    </div>
+                                                    <div className="space-y-3">
+                                                        <p className="text-[12px] text-white font-black uppercase tracking-tight leading-tight line-clamp-1">{decision.clip_path?.split(/[\\/]/).pop()}</p>
+                                                        <p className="text-[11px] text-slate-400 font-medium leading-relaxed">
+                                                            {cleanupReasoning(decision.reasoning)}
+                                                        </p>
+                                                    </div>
+                                                    {isActive && (
+                                                        <div className="absolute bottom-0 left-0 h-1 bg-indigo-500 rounded-full transition-all duration-300" style={{ width: '100%' }} />
+                                                    )}
+                                                </div>
+                                            );
+                                        })
+                                    )}
                                 </div>
                             </div>
 
-                            <div ref={decisionListRef} className="flex-1 overflow-y-auto p-7 space-y-5 custom-scrollbar-thin">
-                                {!intelligence?.edl?.decisions?.length ? (
-                                    <div className="h-full flex flex-col items-center justify-center opacity-20 text-center px-12">
-                                        <Zap className="h-10 w-10 mb-6 text-indigo-500" />
-                                        <p className="text-[11px] font-black uppercase tracking-[0.2em] leading-relaxed">Awaiting logic<br />Play to sync</p>
+                            {/* RIGHT: SYSTEM TELEMETRY (Relocated) */}
+                            <div className="rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] overflow-hidden relative shadow-xl">
+                                <div className="p-6">
+                                    <div className="flex items-center gap-3 mb-6 relative z-10">
+                                        <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+                                            <Activity className="h-4 w-4" />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-[10px] font-black text-blue-100 uppercase tracking-[0.2em]">Telemetry</h3>
+                                            <p className="text-[8px] font-bold text-blue-500/60 uppercase tracking-widest mt-0.5">System Status</p>
+                                        </div>
                                     </div>
-                                ) : (
-                                    intelligence.edl.decisions.map((decision: any, idx: number) => {
-                                        const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
-                                        return (
-                                            <div key={idx} className={cn(
-                                                "p-6 rounded-[2rem] border transition-all duration-700 relative group/card",
-                                                isActive
-                                                    ? "bg-indigo-600/20 border-indigo-500/50 shadow-[0_20px_40px_rgba(0,0,0,0.3)] scale-[1.02] z-10"
-                                                    : "bg-white/[0.02] border-white/5 opacity-60 hover:opacity-100 hover:bg-white/[0.04]"
-                                            )}>
-                                                <div className="flex items-center justify-between mb-4">
-                                                    <div className="flex items-center gap-3">
-                                                        <span className="text-[9px] font-black text-indigo-500/50 font-mono tracking-widest">POINT_{idx + 1}</span>
-                                                        {isActive && <div className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_10px_#818cf8]" />}
-                                                    </div>
-                                                    <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI VERIFIED</span>
-                                                </div>
-                                                <div className="space-y-3">
-                                                    <p className="text-[12px] text-white font-black uppercase tracking-tight leading-tight line-clamp-1">{decision.clip_path?.split(/[\\/]/).pop()}</p>
-                                                    <p className="text-[11px] text-slate-400 font-medium leading-relaxed">
-                                                        {cleanupReasoning(decision.reasoning)}
-                                                    </p>
-                                                </div>
-                                                {isActive && (
-                                                    <div className="absolute bottom-0 left-0 h-1 bg-indigo-500 rounded-full transition-all duration-300" style={{ width: '100%' }} />
-                                                )}
+
+                                    <div className="grid grid-cols-2 gap-4 relative z-10 mb-4">
+                                        <div className="p-3 rounded-xl bg-blue-500/[0.03] border border-blue-500/10 hover:border-blue-500/30 transition-colors">
+                                            <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Sync Engine</p>
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-[10px] font-bold text-slate-300">{intelligence?.bpm ? `${intelligence.bpm} BPM` : "Adaptive"}</span>
+                                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981] animate-pulse" />
                                             </div>
-                                        );
-                                    })
-                                )}
+                                        </div>
+                                        <div className="p-3 rounded-xl bg-blue-500/[0.03] border border-blue-500/10 hover:border-blue-500/30 transition-colors">
+                                            <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Confidence</p>
+                                            <div className="mt-1 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                                                <div className="h-full bg-blue-500 w-[92%]" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative z-10">
+                                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2">Star Performers</p>
+                                        <div className="space-y-2">
+                                            {intelligence?.critique?.star_performers?.slice(0, 3).map((s: string, i: number) => (
+                                                <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-emerald-500/[0.03] border border-emerald-500/10 hover:bg-emerald-500/[0.06] transition-colors group">
+                                                    <CheckCircle2 className="h-3 w-3 text-emerald-500" />
+                                                    <span className="text-[9px] font-bold text-slate-300 truncate w-full group-hover:text-emerald-400 transition-colors">{s}</span>
+                                                </div>
+                                            ))}
+                                            {(!intelligence?.critique?.star_performers?.length) && <div className="text-[9px] opacity-40 uppercase pl-1">None detected</div>}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
