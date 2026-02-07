@@ -104,6 +104,11 @@ For EACH segment, you MUST specify:
 12. **cde**: "Sparse" | "Moderate" | "Dense" (Cut Density Expectation)
 13. **emotional_guidance**: What should the viewer FEEL? (e.g., "peaceful reflection")
 
+14. **style_config**: A recommended visual style for the entire edit.
+   - **text**: object with font (Inter/Outfit), weight (400/600/700), color (hex), shadow (true/false), position (top/center/bottom), animation (fade/none)
+   - **color**: object with preset (neutral/warm/cool/high_contrast/vintage)
+   - **texture**: object with grain (true/false)
+
 ---
 
 ## CDE (CUT DENSITY EXPECTATION) GUIDELINES
@@ -131,6 +136,10 @@ FOR NOSTALGIA EDITS:
 6. If user description conflicts with standard pacing, prioritize EMOTIONAL INTENT.
 7. **HARD LIMIT**: If target_duration ≤ 30 seconds, NEVER produce more than 6 segments.
 8. **DURATION FIX**: If segment durations don't sum exactly to target_duration, adjust the FINAL segment duration to ensure the total equals target_duration exactly.
+9. **STYLE LOGIC**: Set the `style_config` based on the user's intent:
+   - Nostalgic/Warm/Memories -> "warm" or "vintage" preset, Inter font.
+   - Clean/Modern/Professional -> "neutral" preset, Outfit font.
+   - High Energy/Flashy -> "high_contrast" preset, Outfit font, weight 700.
 
 ---
 
@@ -138,9 +147,25 @@ FOR NOSTALGIA EDITS:
 
 {{
   "total_duration": {target_duration},
-  "editing_style": "Nostalgic/Emotional/Cinematic/etc.",
-  "emotional_intent": "The core feeling this edit should evoke",
-  "plan_summary": "2-3 sentence human-readable editing strategy",
+  "editing_style": "...",
+  "emotional_intent": "...",
+  "plan_summary": "...",
+  "style_config": {{
+    "text": {{
+      "font": "Inter",
+      "weight": 600,
+      "color": "#FFFFFF",
+      "shadow": true,
+      "position": "bottom",
+      "animation": "fade"
+    }},
+    "color": {{
+      "preset": "warm"
+    }},
+    "texture": {{
+      "grain": false
+    }}
+  }},
   "arc_description": "How emotion and energy evolve over time",
   "text_overlay": "1-3 short, impactful lines (or empty string if none)",
   "text_style": {{

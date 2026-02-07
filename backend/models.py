@@ -24,6 +24,31 @@ class EnergyLevel(str, Enum):
     HIGH = "High"
 
 
+# ============================================================================
+# STYLE CONFIG MODELS (v14.9 Post-Editor Layer)
+# ============================================================================
+
+class TextStyleConfig(BaseModel):
+    font: str = Field("Inter", description="Font family: Inter, Roboto, Outfit")
+    weight: int = Field(600, description="Font weight: 400, 600, 700")
+    color: str = Field("#FFFFFF", description="Hex text color")
+    shadow: bool = Field(True, description="Whether to show text shadow")
+    position: str = Field("bottom", description="Position: top, center, bottom")
+    animation: str = Field("fade", description="Entry animation: fade, none")
+
+class ColorConfig(BaseModel):
+    preset: str = Field("neutral", description="Color preset: neutral, warm, cool, high_contrast, vintage")
+
+class TextureConfig(BaseModel):
+    grain: bool = Field(False, description="Whether to show film grain")
+
+class StyleConfig(BaseModel):
+    text: TextStyleConfig = Field(default_factory=TextStyleConfig)
+    color: ColorConfig = Field(default_factory=ColorConfig)
+    texture: TextureConfig = Field(default_factory=TextureConfig)
+
+
+
 class MotionType(str, Enum):
     """
     Camera/subject movement classification.
@@ -211,6 +236,9 @@ class StyleBlueprint(BaseModel):
     text_style: dict = Field(default_factory=dict, description="Typography design: font_style, animation, placement, color_effects")
     text_behavior: dict = Field(default_factory=dict, description="Logic of text: appearance_logic, entry_moment, exit_rule, priority")
     text_cadence: str = Field("", description="Rhythm of text: Per-cut | Per-beat | Per-phrase | Static")
+    
+    # v14.9 Style Control (Post-Editor Layer)
+    style_config: Optional['StyleConfig'] = Field(None, description="Recommended visual styling configuration")
     
     overall_reasoning: str = Field("", description="AI's holistic thinking about this video's structure")
     ideal_material_suggestions: List[str] = Field(default_factory=list, description="Suggestions for the user on what clips would work best")
@@ -600,6 +628,7 @@ class PipelineResult(BaseModel):
     advisor: AdvisorHints | None = None  # NEW: Strategic guidance used
     critique: DirectorCritique | None = None # NEW: Post-render reflection
     library_health: LibraryHealth | None = None # NEW: Aggregated library metrics
+    style_config: Optional['StyleConfig'] = Field(None, description="Current visual styling configuration")
     iteration: int = Field(1, description="The version/iteration of this result")
     error: str | None = None
     processing_time_seconds: float | None = None

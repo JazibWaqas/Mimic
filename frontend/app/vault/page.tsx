@@ -8,6 +8,7 @@ import {
     X,
     Sparkles,
     Zap,
+    Palette,
     BrainCircuit,
     ChevronDown,
     ChevronUp,
@@ -34,7 +35,8 @@ import {
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { api } from "@/lib/api";
-import type { Result, Reference, Clip } from "@/lib/types";
+import type { Result, Reference, Clip, StyleConfig } from "@/lib/types";
+import StylingModal from "@/components/StylingModal";
 
 export type ViewMode = "results" | "references" | "clips";
 export type AssetItem = Clip | Reference | Result;
@@ -57,6 +59,8 @@ export default function VaultPage() {
     const [isPlaying, setIsPlaying] = useState(false);
     const [intelExpanded, setIntelExpanded] = useState(true);
     const [showMoreDetails, setShowMoreDetails] = useState(false);
+    const [isStylingOpen, setIsStylingOpen] = useState(false);
+    const [isStylingLoading, setIsStylingLoading] = useState(false);
 
     const videoRef = useRef<HTMLVideoElement>(null);
     const decisionListRef = useRef<HTMLDivElement>(null);
@@ -308,7 +312,16 @@ export default function VaultPage() {
                                 <div className="flex gap-3">
                                     <button className="h-12 px-7 rounded-2xl bg-white text-black font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all shadow-xl active:scale-95">Remix Vibe</button>
                                     <button className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-all active:scale-95"><Share2 className="h-5 w-5" /></button>
-                                    <button className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center hover:bg-white/10 transition-all active:scale-95"><Type className="h-4 w-4" /></button>
+                                    <button
+                                        onClick={() => setIsStylingOpen(true)}
+                                        disabled={viewMode !== "results"}
+                                        className={cn(
+                                            "h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center hover:bg-white/10 transition-all active:scale-95",
+                                            viewMode !== "results" && "opacity-20 cursor-not-allowed"
+                                        )}
+                                    >
+                                        <Palette className="h-4 w-4" />
+                                    </button>
                                 </div>
                             </div>
 
@@ -476,6 +489,40 @@ export default function VaultPage() {
                     </div>
                 </div>
             </main>
+
+            <StylingModal
+                isOpen={isStylingOpen}
+                onClose={() => setIsStylingOpen(false)}
+                initialConfig={intelligence?.style_config}
+                onApply={async (config) => {
+                    if (!selectedItem) return;
+                    setIsStylingLoading(true);
+                    const toastId = toast.loading("Applying styling...");
+                    try {
+                        await api.applyStyle(selectedItem.filename, config);
+
+                        // Force refresh intelligence to get new config
+                        const key = viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
+                        const data = await api.fetchIntelligence(viewMode, key);
+                        setIntelligence(data);
+
+                        toast.success("Aesthetic Path Updated", { id: toastId });
+                        setIsStylingOpen(false);
+
+                        // Refresh video to show changes
+                        if (videoRef.current) {
+                            const currentPos = videoRef.current.currentTime;
+                            videoRef.current.src = `${videoUrl}&t=${Date.now()}`;
+                            videoRef.current.currentTime = currentPos;
+                            videoRef.current.play();
+                        }
+                    } catch (err) {
+                        toast.error("Styling failed", { id: toastId });
+                    } finally {
+                        setIsStylingLoading(false);
+                    }
+                }}
+            />
         </div>
     );
 }

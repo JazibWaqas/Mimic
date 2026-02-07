@@ -134,6 +134,7 @@ RULES:
 - stylistic_invariants:
   Rules that NEVER break in this edit (e.g., “Hard cuts only”, “Center text only”).
 
+
 - shot_variety:
   * dominant_scale (Extreme CU | CU | Medium | Wide | Extreme Wide | Mixed)
   * variety_level (Consistent | Moderate | High variety)
@@ -315,7 +316,7 @@ Rules:
   "narrative_message": "",
   "intent_clarity": "",
 
-  "color_grading": {},
+  "color_grading": {{}},
   "aspect_ratio": "",
   "visual_effects": [],
   "stylistic_invariants": [],

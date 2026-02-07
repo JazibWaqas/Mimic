@@ -118,7 +118,7 @@
       }
     ],
     "phrases": [],
-    "text_prompt": "A warm, joyful, nostalgic childhood reel that celebrates innocence, happiness, and the beauty of growing up. This edit should feel like a memory you didn't know you missed.\n\nStart slow and gentle — calm, warm, and peaceful. Let the viewer settle into the world of childhood.\nGradually build through candid laughter, playful energy, and moments of pure joy.\nAs the music builds, allow the pacing to gently increase — symbolizing how time starts to slip faster as we grow older.\nThe peak should feel full of life, movement, and celebration, not chaotic or rushed.\nEnd softly and reflectively — a bittersweet, loving goodbye to a phase of life that has passed.\n\nThis is not about using every clip quickly.\nIt's about letting moments breathe, reminiscing, and enjoying how sweet and innocent this time was.\nUse as many clips as feel natural, but never rush the emotion.\nThe viewer should finish this edit feeling:\n– warm\n– happy\n– nostalgic\n– slightly bittersweet\n– smiling, even if they don't know the kids in the video\n\nText overlay (subtle, elegant):\n\"Oh, to be this young again.\"\nOverall feeling:\nJoyful. Warm. Full of life. Innocent. Thought-provoking.\nA beautiful reminder of how fast time moves — and how precious these moments were.\n\n",
+    "text_prompt": "A warm, joyful, nostalgic childhood reel that celebrates innocence, happiness, and the beauty of growing up. This edit should feel like a memory you didn't know you missed.\n\nStart slow and gentle \u2014 calm, warm, and peaceful. Let the viewer settle into the world of childhood.\nGradually build through candid laughter, playful energy, and moments of pure joy.\nAs the music builds, allow the pacing to gently increase \u2014 symbolizing how time starts to slip faster as we grow older.\nThe peak should feel full of life, movement, and celebration, not chaotic or rushed.\nEnd softly and reflectively \u2014 a bittersweet, loving goodbye to a phase of life that has passed.\n\nThis is not about using every clip quickly.\nIt's about letting moments breathe, reminiscing, and enjoying how sweet and innocent this time was.\nUse as many clips as feel natural, but never rush the emotion.\nThe viewer should finish this edit feeling:\n\u2013 warm\n\u2013 happy\n\u2013 nostalgic\n\u2013 slightly bittersweet\n\u2013 smiling, even if they don't know the kids in the video\n\nText overlay (subtle, elegant):\n\"Oh, to be this young again.\"\nOverall feeling:\nJoyful. Warm. Full of life. Innocent. Thought-provoking.\nA beautiful reminder of how fast time moves \u2014 and how precious these moments were.\n\n",
     "plan_summary": "A four-stage emotional journey that prioritizes long, breathable holds over rapid cuts. The edit transitions from quiet observation to joyful celebration, before settling into a reflective, lingering goodbye.",
     "assumed_material": [
       "candid laughter",
@@ -1679,7 +1679,7 @@
         "clip_end": 4.0,
         "timeline_start": 0.0,
         "timeline_end": 4.0,
-        "reasoning": "🌟 Serving as a strategic 'Establish' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Establish' shot within this sequence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1689,7 +1689,7 @@
         "clip_end": 16.4,
         "timeline_start": 4.0,
         "timeline_end": 6.4,
-        "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1699,7 +1699,7 @@
         "clip_end": 44.0,
         "timeline_start": 6.4,
         "timeline_end": 9.9,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1709,7 +1709,7 @@
         "clip_end": 6.5,
         "timeline_start": 9.9,
         "timeline_end": 12.4,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1719,7 +1719,7 @@
         "clip_end": 20.066666666666666,
         "timeline_start": 12.4,
         "timeline_end": 14.966666666666667,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1729,7 +1729,7 @@
         "clip_end": 22.366666666666667,
         "timeline_start": 14.966666666666667,
         "timeline_end": 16.833333333333332,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -1739,7 +1739,7 @@
         "clip_end": 7.9,
         "timeline_start": 16.833333333333332,
         "timeline_end": 18.53333333333333,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -1749,7 +1749,7 @@
         "clip_end": 77.8,
         "timeline_start": 18.53333333333333,
         "timeline_end": 20.333333333333332,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -1759,7 +1759,7 @@
         "clip_end": 46.03333333333334,
         "timeline_start": 20.333333333333332,
         "timeline_end": 22.166666666666668,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -1769,7 +1769,7 @@
         "clip_end": 28.400000000000002,
         "timeline_start": 22.166666666666668,
         "timeline_end": 23.766666666666666,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -1779,7 +1779,7 @@
         "clip_end": 1.8666666666666667,
         "timeline_start": 23.766666666666666,
         "timeline_end": 25.633333333333333,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'pure joy, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -1789,7 +1789,7 @@
         "clip_end": 21.233333333333334,
         "timeline_start": 25.633333333333333,
         "timeline_end": 28.366666666666667,
-        "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1799,7 +1799,7 @@
         "clip_end": 80.16666666666667,
         "timeline_start": 28.366666666666667,
         "timeline_end": 28.466666666666665,
-        "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
@@ -1809,7 +1809,7 @@
         "clip_end": 30.099999999999998,
         "timeline_start": 28.466666666666665,
         "timeline_end": 32.56666666666666,
-        "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
+        "reasoning": "\ud83c\udf1f Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       }
     ]
@@ -1875,5 +1875,21 @@
     "version": "12.1",
     "session_id": "text_music_0a07bf80f0562b9d2c3f364dbc1edb5c",
     "timestamp": "2026-02-07 04:47:05"
+  },
+  "style_config": {
+    "text": {
+      "font": "Inter",
+      "weight": 600,
+      "color": "#FFFFFF",
+      "shadow": false,
+      "position": "top",
+      "animation": "fade"
+    },
+    "color": {
+      "preset": "vintage"
+    },
+    "texture": {
+      "grain": true
+    }
   }
 }

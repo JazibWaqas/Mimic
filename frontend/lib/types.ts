@@ -51,3 +51,20 @@ export interface DirectorCritique {
     remake_actions: { type: string; segment: string; suggestion: string }[];
     technical_fidelity: string;
 }
+
+export interface StyleConfig {
+    text: {
+        font: string;
+        weight: number | string;
+        color: string;
+        shadow: boolean;
+        position: 'top' | 'center' | 'bottom';
+        animation: 'fade' | 'none';
+    };
+    color: {
+        preset: 'neutral' | 'warm' | 'cool' | 'high_contrast' | 'vintage';
+    };
+    texture: {
+        grain: boolean;
+    };
+}

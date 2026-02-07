@@ -649,7 +649,8 @@ async def generate_video(
     session_id: str, 
     background_tasks: BackgroundTasks,
     text_prompt: Optional[str] = Query(None, description="Text prompt for Creator Mode"),
-    target_duration: Optional[float] = Query(15.0, description="Target duration in seconds")
+    target_duration: Optional[float] = Query(15.0, description="Target duration in seconds"),
+    style_config: Optional[StyleConfig] = Body(None) # v14.9 Style Control (Post-Editor Layer)
 ):
     """
     Start video generation pipeline.
@@ -707,7 +708,8 @@ async def generate_video(
         current_iteration,
         text_prompt,
         target_duration,
-        session.get("music_path")
+        session.get("music_path"),
+        style_config
     )
     
     return {"status": "processing", "session_id": session_id, "iteration": current_iteration}
@@ -720,7 +722,8 @@ def process_video_pipeline(
     iteration: int = 1,
     text_prompt: Optional[str] = None,
     target_duration: float = 15.0,
-    music_path: Optional[str] = None
+    music_path: Optional[str] = None,
+    style_config: Optional[StyleConfig] = None # v14.9 Style Control (Post-Editor Layer)
 ):
     """
     Run the MIMIC pipeline with progress updates.
@@ -800,7 +803,8 @@ def process_video_pipeline(
             iteration=iteration,
             text_prompt=text_prompt,
             target_duration=target_duration,
-            music_path=music_path
+            music_path=music_path,
+            style_config=style_config
         )
         
         elapsed = time.time() - start_time
@@ -1302,113 +1306,100 @@ async def serve_thumbnail_file(filename: str):
 async def health():
     return {"status": "healthy"}
 
-@app.post("/api/results/{filename}/text-overlay")
-async def edit_text_overlay(
+@app.post("/api/results/{filename}/style")
+async def apply_style(
     filename: str,
-    text_content: str = Body("", embed=True),
-    placement: str = Body("center", embed=True),
-    font_style: str = Body("sans-serif", embed=True)
+    style_config: StyleConfig = Body(...)
 ):
     """
-    Edit text overlay on an existing result video.
-    Uses clean master approach - always applies text to clean version,
-    never stacks text on already-burned text.
+    v14.9: Apply visual styling (color, text, texture) to an existing result video.
+    Uses clean master approach - always applies styling to unstyled version.
     """
     from engine.stylist import apply_visual_styling
     
-    print(f"[TEXT-OVERLAY] Request received for {filename}")
-    print(f"[TEXT-OVERLAY] Text content: '{text_content}', placement: {placement}, font: {font_style}")
+    print(f"[STYLE] Request received for {filename}")
+    print(f"[STYLE] Preset: {style_config.color.preset}, Font: {style_config.text.font}")
     
     result_path = RESULTS_DIR / filename
     if not result_path.exists():
-        print(f"[TEXT-OVERLAY] ERROR: File not found: {result_path}")
+        print(f"[STYLE] ERROR: File not found: {result_path}")
         raise HTTPException(status_code=404, detail="Result video not found")
     
-    # Check for clean master
+    # Check for clean master (the unstyled export)
     clean_master_path = RESULTS_DIR / f"{Path(filename).stem}_clean.mp4"
     
-    # Determine source video (clean master if exists, otherwise current)
     if clean_master_path.exists():
         source_video = str(clean_master_path)
-        print(f"[TEXT-OVERLAY] Using clean master: {clean_master_path}")
+        print(f"[STYLE] Using clean master: {clean_master_path}")
     else:
-        # First edit - current video becomes clean master
+        # First style application - current video becomes clean master
         source_video = str(result_path)
-        print(f"[TEXT-OVERLAY] Creating clean master from: {result_path}")
-        # Copy current to clean master
+        print(f"[STYLE] Creating clean master from: {result_path}")
         import shutil
         shutil.copy2(source_video, clean_master_path)
-        print(f"[TEXT-OVERLAY] Clean master created: {clean_master_path}")
     
     # Temp output path
-    temp_output = RESULTS_DIR / f"{Path(filename).stem}_restyled.mp4"
-    
-    # Remove old temp if exists
+    temp_output = RESULTS_DIR / f"{Path(filename).stem}_styled_tmp.mp4"
     if temp_output.exists():
         temp_output.unlink()
     
+    # Read existing metadata to keep AI-generated text content
+    json_path = RESULTS_DIR / f"{Path(filename).stem}.json"
+    blueprint_data = {}
+    if json_path.exists():
+        try:
+            with open(json_path, "r", encoding="utf-8") as f:
+                master_data = json.load(f)
+                blueprint_data = master_data.get("blueprint", {})
+        except Exception as e:
+            print(f"[STYLE] WARN: Could not read master JSON: {e}")
+
     try:
-        # Apply text styling to clean master
-        text_style = {
-            "font_style": font_style,
-            "placement": placement
-        }
-        
-        print(f"[TEXT-OVERLAY] Applying text to source...")
+        # Apply visual styling
+        print(f"[STYLE] Calling stylist...")
         apply_visual_styling(
             input_video=source_video,
             output_video=str(temp_output),
-            text_overlay=text_content,
-            text_style=text_style
+            text_overlay=blueprint_data.get("text_overlay", ""),
+            text_style=blueprint_data.get("text_style", {}),
+            color_grading=blueprint_data.get("color_grading", {}),
+            text_events=blueprint_data.get("text_events", []),
+            style_config=style_config # v14.9 authoritative style
         )
         
-        # Check if temp output was created
         if not temp_output.exists():
-            print(f"[TEXT-OVERLAY] ERROR: No output file created")
             raise Exception("Styling failed - no output file created")
         
-        print(f"[TEXT-OVERLAY] Output created: {temp_output}")
-        
         # Replace original with restyled version
-        print(f"[TEXT-OVERLAY] Replacing original with restyled version...")
-        result_path.unlink()  # Delete old
-        temp_output.rename(result_path)  # Move new to original name
+        result_path.unlink()
+        temp_output.rename(result_path)
         
-        # Update result JSON (so modal shows current text)
-        json_path = RESULTS_DIR / f"{Path(filename).stem}.json"
+        # Update master JSON report
         if json_path.exists():
             try:
                 with open(json_path, "r", encoding="utf-8") as f:
-                    result_data = json.load(f)
-                blueprint = result_data.get("blueprint") or {}
-                blueprint["text_overlay"] = text_content
-                blueprint["text_style"] = {
-                    "font_style": font_style,
-                    "placement": placement
-                }
-                result_data["blueprint"] = blueprint
+                    master_data = json.load(f)
+                
+                # Persist style_config
+                master_data["style_config"] = style_config.model_dump()
+                
                 with open(json_path, "w", encoding="utf-8") as f:
-                    json.dump(result_data, f, indent=2)
+                    json.dump(master_data, f, indent=2)
+                print(f"[STYLE] Updated master JSON with new StyleConfig")
             except Exception as json_error:
-                print(f"[TEXT-OVERLAY] WARN: Failed updating result JSON: {json_error}")
+                print(f"[STYLE] WARN: Failed updating result JSON: {json_error}")
 
-        print(f"[TEXT-OVERLAY] SUCCESS: Text overlay applied")
-        
         return {
             "status": "success",
             "filename": filename,
-            "text_overlay": text_content,
-            "placement": placement
+            "style_config": style_config
         }
         
     except Exception as e:
-        print(f"[TEXT-OVERLAY] EXCEPTION: {e}")
-        import traceback
-        traceback.print_exc()
-        # Cleanup temp if exists
+        print(f"[STYLE] EXCEPTION: {e}")
         if temp_output.exists():
             temp_output.unlink()
-        raise HTTPException(status_code=500, detail=f"Restyling failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Styling failed: {str(e)}")
 
 
 # ============================================================================

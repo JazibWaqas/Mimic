@@ -36,21 +36,35 @@ export const api = {
     return res.json();
   },
 
-  startGeneration: async (sessionId: string, textPrompt?: string, targetDuration?: number) => {
+  startGeneration: async (sessionId: string, textPrompt?: string, targetDuration?: number, styleConfig?: any) => {
     let url = `${API_BASE}/api/generate/${sessionId}`;
     const params = new URLSearchParams();
     if (textPrompt) params.append("text_prompt", textPrompt);
     if (targetDuration) params.append("target_duration", targetDuration.toString());
-    
+
     if (params.toString()) {
       url += `?${params.toString()}`;
     }
 
     const res = await fetch(url, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: styleConfig ? JSON.stringify(styleConfig) : undefined
     });
 
     if (!res.ok) throw new Error("Generation failed");
+    return res.json();
+  },
+
+  applyStyle: async (filename: string, config: any) => {
+    const res = await fetch(`${API_BASE}/api/results/${encodeURIComponent(filename)}/style`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(config),
+    });
+    if (!res.ok) throw new Error("Style application failed");
+    // Clear intel cache for this file since it changed
+    intelCache.delete(`results:${filename}`);
     return res.json();
   },
 

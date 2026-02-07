@@ -21,7 +21,7 @@ import hashlib
 import shutil
 from pathlib import Path
 from typing import Callable, List, Optional, Tuple, Dict
-from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints, LibraryHealth
+from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints, LibraryHealth, StyleConfig
 
 from engine.brain import (
     analyze_reference_video,
@@ -113,7 +113,8 @@ def run_mimic_pipeline(
     iteration: int = 1,
     text_prompt: Optional[str] = None,
     target_duration: float = 15.0,
-    music_path: Optional[str] = None
+    music_path: Optional[str] = None,
+    style_config: Optional[StyleConfig] = None # v14.9 Style Control (Post-Editor Layer)
 ) -> PipelineResult:
     """
     Execute the complete MIMIC pipeline.
@@ -469,18 +470,22 @@ def run_mimic_pipeline(
         concatenate_videos(segment_paths, str(temp_video_path))
         
         # Apply visual styling (text overlay, color grading)
-        # DISABLED in Reference Mode for demo clarity (focus on timing precision)
-        if reference_path is None:  # Only apply styling in Creator Mode (text prompt)
+        # v14.9 Style Control (Post-Editor Layer)
+        current_style_config = style_config or getattr(blueprint, 'style_config', None)
+        
+        # v14.9: Stylize if reference_path is None (Creator Mode) OR if style_config explicitly provided
+        if reference_path is None or current_style_config:
             styled_video_path = temp_session_dir / "temp_video_styled.mp4"
             try:
-                print("[STYLIST] Applying visual styling (Creator Mode)...")
+                print(f"[STYLIST] Applying visual styling (v14.9 Style Control)...")
                 apply_visual_styling(
                     str(temp_video_path),
                     str(styled_video_path),
                     blueprint.text_overlay,
                     blueprint.text_style,
                     blueprint.color_grading,
-                    text_events=blueprint.text_events # v12.2 Timed Text
+                    text_events=blueprint.text_events, # v12.2 Timed Text
+                    style_config=current_style_config # v14.9 Pass StyleConfig
                 )
                 render_source = styled_video_path
             except Exception as e:
@@ -569,6 +574,7 @@ def run_mimic_pipeline(
             library_health=library_health,
             iteration=iteration,
             processing_time_seconds=processing_time,
+            style_config=current_style_config, # v14.9 Style Control (Post-Editor Layer)
             contract={
                 "type": "result",
                 "version": REFERENCE_CACHE_VERSION,
