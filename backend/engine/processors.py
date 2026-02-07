@@ -277,7 +277,7 @@ def standardize_clip(input_path: str, output_path: str, energy: Optional["Energy
     # - hqdn3d: Removes dancing grain/noise from old footage.
     # - unsharp: Restores edge clarity lost during upscale.
     # - lanczos: High-precision upscaling for sharper results.
-    geometry_filters = "scale=1080:-2:flags=lanczos:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black,hqdn3d=1.5:1.5:6:6,unsharp=3:3:0.5:3:3:0.5"
+    geometry_filters = "scale=1080:1920:flags=lanczos:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black,hqdn3d=1.5:1.5:6:6,unsharp=3:3:0.5:3:3:0.5"
     
     print(f"  [GEOMETRY] Mode: premium_nostalgia_letterbox (clean + sharp)")
 

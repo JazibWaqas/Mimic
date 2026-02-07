@@ -272,13 +272,13 @@ export default function VaultPage() {
             <main className="flex-1 flex overflow-hidden">
                 <div className="flex-1 flex flex-col overflow-y-auto custom-scrollbar p-12">
 
-                    <div className="max-w-[1400px] mx-auto w-full flex gap-10 items-start">
+                    <div className="max-w-[1500px] mx-auto w-full flex gap-10 items-start">
 
                         {/* LEFT: Video Stage (Increased height for cinematic feel) */}
                         <div className="flex-1 flex flex-col gap-10 min-w-0">
-                            <div className="relative w-full max-w-[820px] mx-auto group">
+                            <div className="relative w-full max-w-[850px] mx-auto group">
                                 <div className={cn("video-aura", isPlaying && "video-aura-active animate-pulse-vibrant")} />
-                                <div className="relative aspect-[16/11] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
+                                <div className="relative aspect-[16/12] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
                                     {selectedItem ? (
                                         <video
                                             ref={videoRef}
@@ -300,7 +300,7 @@ export default function VaultPage() {
                             </div>
 
                             {/* Info & Secondary Controls */}
-                            <div className="w-full max-w-[820px] mx-auto flex items-center justify-between px-4">
+                            <div className="w-full max-w-[850px] mx-auto flex items-center justify-between px-4">
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-4">
                                         <span className="text-2xl font-black text-white uppercase tracking-tighter italic drop-shadow-sm">{selectedItem?.filename.split('_')[0] || "UNTITLED"}</span>
@@ -330,7 +330,7 @@ export default function VaultPage() {
                             </div>
 
                             {/* AI INTELLIGENCE SUITE */}
-                            <div className="w-full max-w-[820px] mx-auto space-y-4">
+                            <div className="w-full max-w-[850px] mx-auto space-y-4">
 
                                 {/* MODULE 1: NARRATIVE (Full Width) */}
                                 <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden group/module">
