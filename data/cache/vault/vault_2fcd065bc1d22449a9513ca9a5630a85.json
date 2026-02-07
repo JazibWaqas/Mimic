@@ -1,0 +1,74 @@
+{
+  "header": "This is a 15-second music video edit across 22 segments. I had to force an aggressive pace because the library was missing the medium-energy shots needed for a smoother build.",
+  "advisor": {
+    "hero": "Your library is starving for payoff shots and fire motifs, which turned this edit into a frantic sprint just to keep the energy from flatlining.",
+    "body": "Because I couldn't find any medium-energy clips or a 'fire' motif, I had to lean on high-speed cuts and aggressive pacing. The technical sync is tight, but the emotional arc is limited by the lack of actual payoff visuals in the footage provided."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to open with preparation and focus.",
+      "decision": "Selected clip_004.mp4 and clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to ramp up the intensity here.",
+      "decision": "Deployed as a structural anchor clip_003.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "Maintaining the flow through action, technical, and speed shots.",
+      "decision": "Locked in clips 005, 006, and 007 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "Pushing for another burst of intensity.",
+      "decision": "Forced into the slot clip_008.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif if it were available."
+    },
+    {
+      "segment_id": 8,
+      "what_i_tried": "Bridging the gap with technical, efficiency, thrill, action, and competition clips.",
+      "decision": "Used clips 009, 014, 018, 010, and 017 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 13,
+      "what_i_tried": "Introducing a sense of danger to the sequence.",
+      "decision": "Used out of necessity clip_011.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an intensity motif if the library wasn't empty."
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "Closing out with chaos, catastrophe, a series of flashes, and branding.",
+      "decision": "Selected clips 019, 021, 023, 012, 024, 028, 027, 029, and 013 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    }
+  ],
+  "friction_log": [
+    "I felt confident setting up the intro, but the lack of fire motifs immediately limited my options.",
+    "The middle was a struggle; I had to force the pace because the library lacked the medium-energy clips to bridge the gaps.",
+    "I finished strong on technical sync, but the final sequence of flashes was a fallback because there were no real payoff shots to use."
+  ],
+  "post_mortem": {
+    "worked": "The rhythmic continuity is solid and the technical sync is tight despite the footage gaps.",
+    "didnt": "The edit feels emotionally thin because the library is missing fire motifs and high-impact payoff shots.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Shoot or source 'fire' motifs to fill the current thematic void.",
+    "Capture medium-energy transition shots to avoid forced aggressive pacing in future edits.",
+    "Get more high-impact payoff shots to give the sequence a proper climax."
+  ],
+  "technical": [
+    "Applied a filmic commercial LUT to unify the disparate clips.",
+    "Maintained a relentless pacing strategy to mask the lack of semantic variety.",
+    "Ensured every cut is tightly synced to the reference track's transients."
+  ]
+}

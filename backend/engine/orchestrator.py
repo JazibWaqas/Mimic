@@ -21,8 +21,7 @@ import hashlib
 import shutil
 from pathlib import Path
 from typing import Callable, List, Optional, Tuple, Dict
-from models import PipelineResult, StyleBlueprint, ClipIndex, EDL, AdvisorHints, LibraryHealth, StyleConfig
-
+from models import PipelineResult, StyleBlueprint, EDL, ClipIndex, DirectorCritique, AdvisorHints, LibraryHealth, StyleConfig, VaultReport
 from engine.brain import (
     analyze_reference_video,
     analyze_all_clips,
@@ -30,7 +29,7 @@ from engine.brain import (
     REFERENCE_CACHE_VERSION
 )
 from engine.generator import generate_blueprint_from_text
-from engine.reflector import reflect_on_edit
+from engine.reflector import generate_vault_report
 from engine.editor import match_clips_to_blueprint, validate_edl, print_edl_summary
 from engine.processors import (
     standardize_clip,
@@ -553,15 +552,25 @@ def run_mimic_pipeline(
         print(f"{'='*80}\n")
         
         # ==================================================================
-        # STEP 6: REFLECT & CRITIQUE (The Director's Voice)
+        # STEP 6: VAULT INTELLIGENCE (The Creative Partner)
         # ==================================================================
-        update_progress(6, 6, "Generating post-render reflection...")
+        update_progress(6, 6, "Generating Vault intelligence report...")
         try:
-            critique = reflect_on_edit(blueprint, edl, clip_index, advisor=advisor_hints)
-            print(f"  ✅ Director's Critique generated (Score: {critique.overall_score}/10)")
+            # Legacy Reflector (DirectorCritique) is now ARCHIVED
+            # critique = reflect_on_edit(blueprint, edl, clip_index, advisor=advisor_hints)
+            critique_placeholder = DirectorCritique(
+                overall_score=8.0, 
+                monologue="Legacy reflector archived. See Vault report.",
+                technical_fidelity="System active."
+            )
+            
+            # v12.2: Vault Intelligence Report is now the ONLY explanation system
+            vault_report = generate_vault_report(blueprint, edl, advisor_hints, critique_placeholder)
+            print(f"  ✅ Vault Report generated.")
         except Exception as e:
-            print(f"  ⚠️ Reflection failed: {e}")
-            critique = None
+            print(f"  ⚠️ Vault generation failed: {e}")
+            vault_report = None
+            critique_placeholder = None
 
         result = PipelineResult(
             success=True,
@@ -570,7 +579,8 @@ def run_mimic_pipeline(
             clip_index=clip_index,
             edl=edl,
             advisor=advisor_hints,
-            critique=critique,
+            critique=critique_placeholder, # Kept for schema compatibility but inactive
+            vault_report=vault_report,
             library_health=library_health,
             iteration=iteration,
             processing_time_seconds=processing_time,

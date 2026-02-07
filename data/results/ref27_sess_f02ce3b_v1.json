@@ -37,7 +37,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 2,
@@ -72,7 +73,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 3,
@@ -107,7 +109,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 4,
@@ -142,7 +145,8 @@
           "resolves": "None",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 5,
@@ -177,7 +181,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 6,
@@ -212,7 +217,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 7,
@@ -247,7 +253,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 8,
@@ -282,7 +289,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 9,
@@ -317,7 +325,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 10,
@@ -352,7 +361,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 11,
@@ -387,7 +397,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 12,
@@ -422,7 +433,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 13,
@@ -457,7 +469,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 14,
@@ -492,7 +505,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 15,
@@ -527,7 +541,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 16,
@@ -562,7 +577,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 17,
@@ -597,7 +613,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 18,
@@ -632,7 +649,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 19,
@@ -667,7 +685,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 20,
@@ -702,7 +721,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 21,
@@ -737,7 +757,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 22,
@@ -772,7 +793,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 23,
@@ -807,7 +829,8 @@
           "resolves": "Car disappears into smoke",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       }
     ],
     "phrases": [],
@@ -928,6 +951,7 @@
       "priority": "Primary"
     },
     "text_cadence": "Per-phrase",
+    "style_config": null,
     "overall_reasoning": "The video uses a classic high-energy montage structure, alternating between extreme close-ups of the driver's eyes to build psychological tension and wide, dynamic shots of the car on track to provide the payoff. The rhythmic hard cuts are perfectly synced to a percussive track, creating a relentless pace that mirrors the intensity of Formula 1 racing. Text overlays act as narrative anchors, reinforcing the theme of calculated speed.",
     "ideal_material_suggestions": [
       "High-frame-rate footage of mechanical parts moving",
@@ -3238,36 +3262,13 @@
     "cached_at": "2026-02-06T18:54:28.098874"
   },
   "critique": {
-    "overall_score": 7.8,
-    "monologue": "Based on the observed segments, the edit successfully establishes the 'Mental Fortitude' narrative by anchoring the intro and build-up on the driver's focus, effectively transplanting the aggressive rhythm of the reference into a technical racing context. While the system executed the 'Relentless' pace perfectly through the middle sequence, there is a noticeable narrative drift where the 'People-Solo' anchor is sacrificed for 'Reaction' and 'Action' shots to maintain energy. The transition from technical preparation to high-speed action is semantically sound, but the middle section feels more like a standard racing montage than the specific 'Man vs. Machine' character study intended, likely due to a lack of high-intensity human-centric footage in the library.",
-    "star_performers": [
-      "clip_003.mp4",
-      "clip_014.mp4",
-      "clip_024.mp4"
-    ],
-    "dead_weight": [
-      "clip_001.mp4",
-      "clip_008.mp4",
-      "clip_010.mp4"
-    ],
-    "missing_ingredients": [
-      "Macro close-ups of the driver's eyes or hands under high-G force (to maintain People-Solo anchor during action)",
-      "Branded close-ups of Shark Ninja and Expensify decals on the car chassis",
-      "Wide shots of car drifting with heavy smoke in a natural/forest environment"
-    ],
-    "remake_actions": [
-      {
-        "type": "change_subject",
-        "segment": "Build-up",
-        "suggestion": "Replace Segments 6-10 with 'People-Solo' clips that show the driver's physical strain to prevent narrative drift from the primary anchor."
-      },
-      {
-        "type": "increase_energy",
-        "segment": "Peak",
-        "suggestion": "Intercut the 'Fast' action in Segments 12-16 with rapid 'Technical' detail shots of the gear shifter or pedals to reinforce the 'Machine' side of the narrative."
-      }
-    ],
-    "technical_fidelity": "The system maintained high technical fidelity regarding energy gating and beat alignment, successfully ramping from 'Technical' to 'Fast' atmospheres. The narrative drift in the middle sequence appears to be a calculated trade-off to satisfy the 'Relentless' pace constraint given the available clip library."
+    "overall_score": 8.0,
+    "monologue": "Legacy reflector archived. See Vault report.",
+    "star_performers": [],
+    "dead_weight": [],
+    "missing_ingredients": [],
+    "remake_actions": [],
+    "technical_fidelity": "System active."
   },
   "library_health": {
     "asset_count": 30,
@@ -3290,6 +3291,7 @@
     },
     "confidence_score": 94.33333333333334
   },
+  "style_config": null,
   "iteration": 1,
   "error": null,
   "processing_time_seconds": 18.130675792694092,
@@ -3298,5 +3300,67 @@
     "version": "12.1",
     "session_id": "sess_f02ce3b38127f05dfc2aecda33cceb63",
     "timestamp": "2026-02-07 00:56:28"
+  },
+  "vault_report": {
+    "header": "This is a 16-second music video edit across 23 segments. The goal was a relentless, tightly synced commercial look, but the library's lack of high-energy payoffs forced significant compromises in the mid-section.",
+    "advisor": {
+      "hero": "The library is starving for real energy; I had to fake the intensity because the footage just wasn't there to back up the beat.",
+      "body": "We hit a major bottleneck with 'scarcity_medium_energy' and a total lack of payoff shots. I had to lean on rhythmic continuity to hide the fact that the library is missing the 'intensity' motif required for the peak moments."
+    },
+    "decision_stream": [
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted technical and atmospheric preparation to set the stage.",
+        "decision": "Used because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      },
+      {
+        "segment_id": 5,
+        "what_i_tried": "I wanted intense visuals to drive the mid-section and hit the primary beats.",
+        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced these with intensity if the library actually had it."
+      },
+      {
+        "segment_id": 12,
+        "what_i_tried": "I needed fast-paced movement to maintain the speed of the edit.",
+        "decision": "Selected because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed."
+      },
+      {
+        "segment_id": 20,
+        "what_i_tried": "I wanted aggressive cuts to finish the sequence with high energy.",
+        "decision": "Locked in because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed."
+      },
+      {
+        "segment_id": 23,
+        "what_i_tried": "I wanted an atmospheric close to wrap the 16-second run.",
+        "decision": "Used because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      }
+    ],
+    "friction_log": [
+      "Started with high confidence while setting the stage with technical and atmospheric fillers.",
+      "Confidence dipped in the middle as I realized the library lacked the intensity needed for the primary structural anchors.",
+      "Finished on rhythm, but the lack of aggressive payoff shots made the final stretch feel like a forced compromise."
+    ],
+    "post_mortem": {
+      "worked": "The relentless pacing and tight sync kept the 16 seconds moving without a collapse.",
+      "didnt": "The 'intensity' segments are faking it; the library didn't provide the actual payoff shots needed to land the punch.",
+      "responsibility": {
+        "vibe": "library",
+        "emotion": "library"
+      }
+    },
+    "next_steps": [
+      "Shoot or acquire high-energy 'intensity' motifs to fill the current library gap.",
+      "Source specific 'payoff shots' to resolve the bottleneck in the mid-section.",
+      "Expand the library's medium-energy options to avoid relying solely on filler for transitions."
+    ],
+    "technical": [
+      "Applied a filmic commercial LUT to unify the disparate library clips.",
+      "Maintained a relentless pacing strategy to mask the lack of semantic variety.",
+      "Ensured every cut was tightly synced to the reference track's transients."
+    ]
   }
 }

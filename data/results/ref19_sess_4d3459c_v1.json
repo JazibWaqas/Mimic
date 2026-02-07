@@ -37,7 +37,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 2,
@@ -72,7 +73,8 @@
           "resolves": "Driver movement",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 3,
@@ -107,7 +109,8 @@
           "resolves": "Helmet adjustment",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 4,
@@ -142,7 +145,8 @@
           "resolves": "Gaze",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 5,
@@ -177,7 +181,8 @@
           "resolves": "Car exit",
           "type": "Object-Interaction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 6,
@@ -212,7 +217,8 @@
           "resolves": "Mechanical motion",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 7,
@@ -247,7 +253,8 @@
           "resolves": "Racing motion",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 8,
@@ -282,7 +289,8 @@
           "resolves": "Gaze",
           "type": "Object-Interaction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 9,
@@ -317,7 +325,8 @@
           "resolves": "Digital display",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 10,
@@ -352,7 +361,8 @@
           "resolves": "Tire change",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 11,
@@ -387,7 +397,8 @@
           "resolves": "Driver focus",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 12,
@@ -422,7 +433,8 @@
           "resolves": "Wheel gun action",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 13,
@@ -457,7 +469,8 @@
           "resolves": "Overtake attempt",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 14,
@@ -492,7 +505,8 @@
           "resolves": "Fire eruption",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 15,
@@ -527,7 +541,8 @@
           "resolves": "Fire spread",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 16,
@@ -562,7 +577,8 @@
           "resolves": "Full fire scene",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 17,
@@ -597,7 +613,8 @@
           "resolves": "Racing flash",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 18,
@@ -632,7 +649,8 @@
           "resolves": "Racing flash 2",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 19,
@@ -667,7 +685,8 @@
           "resolves": "Racing flash 3",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 20,
@@ -702,7 +721,8 @@
           "resolves": "Racing flash 4",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 21,
@@ -737,7 +757,8 @@
           "resolves": "Racing flash 5",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 22,
@@ -772,7 +793,8 @@
           "resolves": "Final racing flash",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       }
     ],
     "phrases": [],
@@ -899,6 +921,7 @@
       "priority": "Primary"
     },
     "text_cadence": "Per-beat",
+    "style_config": null,
     "overall_reasoning": "The edit is a masterclass in rhythmic synchronization, using a high-energy rock track to drive every cut and text overlay. It balances intimate character moments (CU eyes) with high-octane action and technical details, creating a visceral sense of speed and danger. The use of text as narrative punctuation on lyrical beats reinforces the emotional arc of the song. The final sequence of rapid-fire racing shots builds maximum tension before resolving into a clean branding button.",
     "ideal_material_suggestions": [
       "High-resolution racing footage with clear motion blur",
@@ -3206,36 +3229,13 @@
     "cached_at": "2026-02-06T18:32:29.655929"
   },
   "critique": {
-    "overall_score": 8.5,
-    "monologue": "Based on the observed segments, the edit successfully translates the 'Relentless' strategy into a mechanical, forward-moving sequence that prioritizes the vehicle as the primary protagonist. The system excelled at escalating the scale from driver focus to high-speed track action, maintaining a rhythmic 'gear-shift' feel through the heavy use of technical and action-oriented clips. While the technical execution of the pacing is evident, the narrative's emotional peak relies heavily on a limited pool of high-energy assets, which the system managed well despite the noted absence of specific 'fire' footage.",
-    "star_performers": [
-      "clip_004.mp4",
-      "clip_006.mp4",
-      "clip_023.mp4",
-      "clip_028.mp4"
-    ],
-    "dead_weight": [
-      "clip_012.mp4",
-      "clip_018.mp4"
-    ],
-    "missing_ingredients": [
-      "Extreme close-ups of driver eyes or hands gripping the wheel (People-Solo stakes)",
-      "Macro shots of gear shifts or mechanical components in motion",
-      "High-contrast graphic shots of brand logos (GEICO/IWC) for the Graphic-Match motif"
-    ],
-    "remake_actions": [
-      {
-        "type": "change_subject",
-        "segment": "Build-up",
-        "suggestion": "Inject more 'People-Solo' reaction shots between technical clips to heighten the human stakes."
-      },
-      {
-        "type": "increase_energy",
-        "segment": "Peak",
-        "suggestion": "Replace the 'Transition' shot (clip_012) with a high-impact 'Emotional-Release' crash or impact shot to anchor the climax."
-      }
-    ],
-    "technical_fidelity": "The system demonstrated high technical discipline, strictly adhering to energy gating and lighting consistency across 20 segments. The 'Scale-Escalation' motif was clearly executed, moving from preparation to track action with logical flow, despite the library constraints regarding peak-intensity footage."
+    "overall_score": 8.0,
+    "monologue": "Legacy reflector archived. See Vault report.",
+    "star_performers": [],
+    "dead_weight": [],
+    "missing_ingredients": [],
+    "remake_actions": [],
+    "technical_fidelity": "System active."
   },
   "library_health": {
     "asset_count": 30,
@@ -3258,6 +3258,7 @@
     },
     "confidence_score": 94.33333333333334
   },
+  "style_config": null,
   "iteration": 1,
   "error": null,
   "processing_time_seconds": 17.73943305015564,
@@ -3266,5 +3267,79 @@
     "version": "12.1",
     "session_id": "sess_4d3459cd7761e2c11eb795cfb9829777",
     "timestamp": "2026-02-07 00:49:16"
+  },
+  "vault_report": {
+    "header": "This is a 15-second music video edit across 22 segments. I had to force an aggressive pace because the library was missing the medium-energy shots needed for a smoother build.",
+    "advisor": {
+      "hero": "Your library is starving for payoff shots and fire motifs, which turned this edit into a frantic sprint just to keep the energy from flatlining.",
+      "body": "Because I couldn't find any medium-energy clips or a 'fire' motif, I had to lean on high-speed cuts and aggressive pacing. The technical sync is tight, but the emotional arc is limited by the lack of actual payoff visuals in the footage provided."
+    },
+    "decision_stream": [
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted to open with preparation and focus.",
+        "decision": "Selected clip_004.mp4 and clip_001.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed."
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I wanted to ramp up the intensity here.",
+        "decision": "Deployed as a structural anchor clip_003.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif if the library had one."
+      },
+      {
+        "segment_id": 4,
+        "what_i_tried": "Maintaining the flow through action, technical, and speed shots.",
+        "decision": "Locked in clips 005, 006, and 007 because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      },
+      {
+        "segment_id": 7,
+        "what_i_tried": "Pushing for another burst of intensity.",
+        "decision": "Forced into the slot clip_008.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif if it were available."
+      },
+      {
+        "segment_id": 8,
+        "what_i_tried": "Bridging the gap with technical, efficiency, thrill, action, and competition clips.",
+        "decision": "Used clips 009, 014, 018, 010, and 017 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed."
+      },
+      {
+        "segment_id": 13,
+        "what_i_tried": "Introducing a sense of danger to the sequence.",
+        "decision": "Used out of necessity clip_011.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an intensity motif if the library wasn't empty."
+      },
+      {
+        "segment_id": 14,
+        "what_i_tried": "Closing out with chaos, catastrophe, a series of flashes, and branding.",
+        "decision": "Selected clips 019, 021, 023, 012, 024, 028, 027, 029, and 013 because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      }
+    ],
+    "friction_log": [
+      "I felt confident setting up the intro, but the lack of fire motifs immediately limited my options.",
+      "The middle was a struggle; I had to force the pace because the library lacked the medium-energy clips to bridge the gaps.",
+      "I finished strong on technical sync, but the final sequence of flashes was a fallback because there were no real payoff shots to use."
+    ],
+    "post_mortem": {
+      "worked": "The rhythmic continuity is solid and the technical sync is tight despite the footage gaps.",
+      "didnt": "The edit feels emotionally thin because the library is missing fire motifs and high-impact payoff shots.",
+      "responsibility": {
+        "vibe": "library",
+        "emotion": "library"
+      }
+    },
+    "next_steps": [
+      "Shoot or source 'fire' motifs to fill the current thematic void.",
+      "Capture medium-energy transition shots to avoid forced aggressive pacing in future edits.",
+      "Get more high-impact payoff shots to give the sequence a proper climax."
+    ],
+    "technical": [
+      "Applied a filmic commercial LUT to unify the disparate clips.",
+      "Maintained a relentless pacing strategy to mask the lack of semantic variety.",
+      "Ensured every cut is tightly synced to the reference track's transients."
+    ]
   }
 }

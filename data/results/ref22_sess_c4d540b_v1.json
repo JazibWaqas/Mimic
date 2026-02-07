@@ -37,7 +37,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 2,
@@ -72,7 +73,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 3,
@@ -107,7 +109,8 @@
           "resolves": "Gaze",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 4,
@@ -142,7 +145,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 5,
@@ -177,7 +181,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 6,
@@ -212,7 +217,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 7,
@@ -247,7 +253,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 8,
@@ -282,7 +289,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 9,
@@ -317,7 +325,8 @@
           "resolves": "None",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 10,
@@ -352,7 +361,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 11,
@@ -387,7 +397,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 12,
@@ -422,7 +433,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 13,
@@ -457,7 +469,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 14,
@@ -492,7 +505,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 15,
@@ -527,7 +541,8 @@
           "resolves": "None",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 16,
@@ -562,7 +577,8 @@
           "resolves": "Action sequence",
           "type": "Motion-Direction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 17,
@@ -597,7 +613,8 @@
           "resolves": "None",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       }
     ],
     "phrases": [],
@@ -680,6 +697,7 @@
       "priority": "Primary"
     },
     "text_cadence": "Static",
+    "style_config": null,
     "overall_reasoning": "The edit leverages a high-energy trap remix of the iconic Top Gun theme to drive a fast-paced montage of the film's most visually striking moments. It balances intense cockpit close-ups with wide, sweeping shots of jets in action, creating a sense of both personal stakes and epic scale. The pacing accelerates in the middle with rapid-fire cuts synced to the beat, then resolves with more reflective, legacy-focused imagery.",
     "ideal_material_suggestions": [
       "High-speed vehicle footage with dynamic camera angles.",
@@ -2964,38 +2982,13 @@
     "cached_at": "2026-02-06T10:21:43.290354"
   },
   "critique": {
-    "overall_score": 8.5,
-    "monologue": "Based on the observed segments, the system successfully translated the 'Top Gun' adrenaline into a high-stakes racing narrative by anchoring the edit with a clear trophy-to-track progression. The execution of the 'Peak' stage is particularly robust, utilizing a high density of speed and action shots to mirror the 'explosive chaos' defined in the strategy. While the lack of reflective, low-energy material forced a somewhat relentless pace, the system maintained thematic integrity through consistent lighting and high-energy visual choices. The result is a cohesive, albeit aggressive, tribute to elite performance that maximizes the available high-contrast assets despite library limitations.",
-    "star_performers": [
-      "clip_002.mp4",
-      "clip_008.mp4",
-      "clip_007.mp4",
-      "clip_019.mp4"
-    ],
-    "dead_weight": [
-      "clip_017.mp4",
-      "clip_005.mp4",
-      "clip_023.mp4"
-    ],
-    "missing_ingredients": [
-      "Extreme close-ups of mechanical ignition or start-light sequences",
-      "Macro shots of driver's eyes/visors to capture 'quiet intensity'",
-      "Podium celebrations or fireworks for the 'Emotional-Release' motif",
-      "Slow-motion 'Golden Hour' pit lane walks to provide the missing reflective arc"
-    ],
-    "remake_actions": [
-      {
-        "type": "change_subject",
-        "segment": "Build-up",
-        "suggestion": "Prioritize mechanical 'Scale-Escalation' shots (gears, tires, engines) over generic 'Action' to better distinguish the build from the peak."
-      },
-      {
-        "type": "fix_pacing",
-        "segment": "Intro",
-        "suggestion": "If reflective material is unavailable, use a series of static 'Detail' shots of the car's silhouette to simulate the 'quiet intensity' before the trophy reveal."
-      }
-    ],
-    "technical_fidelity": "The system adhered strictly to the energy gating and segment roles (Build-up, Peak, Outro). The use of a continuous camera move in the intro (clip_002) to satisfy a long-hold requirement while establishing narrative context shows sophisticated handling of temporal constraints. Lighting consistency was maintained across the teal-orange aesthetic despite the scarcity of natural light assets."
+    "overall_score": 8.0,
+    "monologue": "Legacy reflector archived. See Vault report.",
+    "star_performers": [],
+    "dead_weight": [],
+    "missing_ingredients": [],
+    "remake_actions": [],
+    "technical_fidelity": "System active."
   },
   "library_health": {
     "asset_count": 30,
@@ -3018,6 +3011,7 @@
     },
     "confidence_score": 94.33333333333334
   },
+  "style_config": null,
   "iteration": 1,
   "error": null,
   "processing_time_seconds": 15.214129209518433,
@@ -3026,5 +3020,97 @@
     "version": "12.1",
     "session_id": "sess_c4d540b5c05f15dc86ee75d4495a4d21",
     "timestamp": "2026-02-07 00:52:58"
+  },
+  "vault_report": {
+    "header": "I’ve assembled a 20.4-second music video edit across 17 segments. While the technical sync is tight, the library's lack of payoff shots forced me to prioritize rhythm over the intended emotional beats.",
+    "advisor": {
+      "hero": "The edit moves well, but it’s hollow because your library is missing the heavy-hitting payoff shots needed to actually land the punches.",
+      "body": "We hit a technical score of 8.0, but the 'severe' and 'lack' motifs are completely missing. I had to prioritize rhythmic continuity over semantic fit just to keep the sequence from falling apart."
+    },
+    "decision_stream": [
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted a heroic opening to set the stage.",
+        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an intensity motif if the library had it."
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "I was looking for an intense follow-up to build energy.",
+        "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif."
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "Selected clip_004, clip_003, clip_017, and clip_005 for the action, power, scale, and majesty beats.",
+        "decision": "These were selected because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      },
+      {
+        "segment_id": 7,
+        "what_i_tried": "I wanted to show the physical strain of the moment.",
+        "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif."
+      },
+      {
+        "segment_id": 8,
+        "what_i_tried": "Locked in clip_023 for a solemn beat.",
+        "decision": "Used because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      },
+      {
+        "segment_id": 9,
+        "what_i_tried": "I wanted a moment of respect to ground the sequence.",
+        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif."
+      },
+      {
+        "segment_id": 10,
+        "what_i_tried": "Used clip_008 and clip_024 for speed and precision.",
+        "decision": "Selected because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      },
+      {
+        "segment_id": 12,
+        "what_i_tried": "I wanted to highlight camaraderie between the subjects.",
+        "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif."
+      },
+      {
+        "segment_id": 13,
+        "what_i_tried": "I wanted to convey a sense of legacy.",
+        "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "I would have replaced this with an action motif."
+      },
+      {
+        "segment_id": 14,
+        "what_i_tried": "Grouped clip_009, clip_013, clip_015, and clip_019 to close out the power, agility, departure, and end beats.",
+        "decision": "Locked in because no better alternative was available in the library.",
+        "what_if": "This slot had no viable upgrade."
+      }
+    ],
+    "friction_log": [
+      "Start: I felt okay about the structure, but the lack of intensity motifs was immediately obvious.",
+      "Middle: Pacing became the only priority as I realized the library couldn't support the emotional shifts I wanted.",
+      "End: I locked the final sequence with high confidence in the rhythm, but low confidence in the narrative payoff."
+    ],
+    "post_mortem": {
+      "worked": "The sync is tight and the teal-orange/golden hour LUT keeps the visual profile consistent across all 17 cuts.",
+      "didnt": "The edit feels repetitive because we're missing the 'severe' payoff shots needed to break the cycle.",
+      "responsibility": {
+        "vibe": "library",
+        "emotion": "library"
+      }
+    },
+    "next_steps": [
+      "Shoot or source high-intensity action shots to fill the 'severe' motif gap.",
+      "Add more 'payoff' clips that can serve as structural anchors without compromising the vibe.",
+      "Review the library for more 'action' motifs to replace the current placeholders."
+    ],
+    "technical": [
+      "Applied a filmic teal-orange and golden hour LUT for visual cohesion.",
+      "Used syncopated pacing to maintain energy despite the clip limitations.",
+      "Maintained tight sync fidelity throughout the 20.4-second duration."
+    ]
   }
 }

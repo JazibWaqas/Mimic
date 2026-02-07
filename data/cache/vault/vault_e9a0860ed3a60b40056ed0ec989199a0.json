@@ -1,0 +1,62 @@
+{
+  "header": "This is a 16-second music video edit across 23 segments. The goal was a relentless, tightly synced commercial look, but the library's lack of high-energy payoffs forced significant compromises in the mid-section.",
+  "advisor": {
+    "hero": "The library is starving for real energy; I had to fake the intensity because the footage just wasn't there to back up the beat.",
+    "body": "We hit a major bottleneck with 'scarcity_medium_energy' and a total lack of payoff shots. I had to lean on rhythmic continuity to hide the fact that the library is missing the 'intensity' motif required for the peak moments."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted technical and atmospheric preparation to set the stage.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted intense visuals to drive the mid-section and hit the primary beats.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced these with intensity if the library actually had it."
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "I needed fast-paced movement to maintain the speed of the edit.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 20,
+      "what_i_tried": "I wanted aggressive cuts to finish the sequence with high energy.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 23,
+      "what_i_tried": "I wanted an atmospheric close to wrap the 16-second run.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    }
+  ],
+  "friction_log": [
+    "Started with high confidence while setting the stage with technical and atmospheric fillers.",
+    "Confidence dipped in the middle as I realized the library lacked the intensity needed for the primary structural anchors.",
+    "Finished on rhythm, but the lack of aggressive payoff shots made the final stretch feel like a forced compromise."
+  ],
+  "post_mortem": {
+    "worked": "The relentless pacing and tight sync kept the 16 seconds moving without a collapse.",
+    "didnt": "The 'intensity' segments are faking it; the library didn't provide the actual payoff shots needed to land the punch.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Shoot or acquire high-energy 'intensity' motifs to fill the current library gap.",
+    "Source specific 'payoff shots' to resolve the bottleneck in the mid-section.",
+    "Expand the library's medium-energy options to avoid relying solely on filler for transitions."
+  ],
+  "technical": [
+    "Applied a filmic commercial LUT to unify the disparate library clips.",
+    "Maintained a relentless pacing strategy to mask the lack of semantic variety.",
+    "Ensured every cut was tightly synced to the reference track's transients."
+  ]
+}

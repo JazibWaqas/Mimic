@@ -1,0 +1,86 @@
+{
+  "header": "This is a 25-second cinematic montage across 43 segments. The goal was a high-impact edit, but the library's lack of energy forced a pivot toward aggressive pacing to maintain interest.",
+  "advisor": {
+    "hero": "The library is starving for energy, and it shows. I had to overclock the pacing just to keep this edit from feeling stagnant because the footage simply didn't have the punch required for a cinematic payoff.",
+    "body": "We are facing a severe shortage of wide shots and high-energy payoff moments. To compensate, I've leaned heavily on tight synchronization and a relentless rhythmic structure to mask the scarcity of the source material."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to build anticipation and focus right out of the gate.",
+      "decision": "Selected clip_004.mp4 and clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to inject a burst of intensity to anchor the opening sequence.",
+      "decision": "Forced into the slot clip_003.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "This segment would have been replaced with an intensity motif if the library allowed."
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "I wanted to maintain a technical and cinematic flow through the first half.",
+      "decision": "Locked in clips 005 through 011 because no better alternative was available in the library, preserving the edit's momentum.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 19,
+      "what_i_tried": "I wanted a strong character beat to break up the technical sequence.",
+      "decision": "Deployed as a structural anchor clip_019.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "This segment would have been replaced with an action motif if the library allowed."
+    },
+    {
+      "segment_id": 20,
+      "what_i_tried": "I wanted to use detail and speed to bridge the middle section.",
+      "decision": "Used clips 018 through 014 because no better alternative was available in the library, preventing a pacing collapse.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 27,
+      "what_i_tried": "I wanted a character moment to provide an emotional beat.",
+      "decision": "Used out of necessity clip_029.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "This segment would have been replaced with a joy motif if the library allowed."
+    },
+    {
+      "segment_id": 28,
+      "what_i_tried": "I wanted to cycle through detail and cinematic motifs to keep the rhythm alive.",
+      "decision": "Selected clips 016 through 015 because no better alternative was available in the library, preserving the edit's momentum.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 35,
+      "what_i_tried": "I wanted another character beat to reinforce the narrative thread.",
+      "decision": "Forced into the slot clip_019.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "This segment would have been replaced with a joy motif if the library allowed."
+    },
+    {
+      "segment_id": 36,
+      "what_i_tried": "I wanted to build hype and move into a clean outro.",
+      "decision": "Locked in clips 022 through 024 because no better alternative was available in the library, preventing a pacing collapse.",
+      "what_if": "No stronger alternative existed."
+    }
+  ],
+  "friction_log": [
+    "Started with high confidence in the montage structure but immediately felt the weight of the missing wide shots.",
+    "Middle phase required a total reliance on relentless pacing to hide the fact that the clips were low-energy.",
+    "Ended the edit with a technical win on sync, but the lack of a true payoff shot leaves the emotional arc flat."
+  ],
+  "post_mortem": {
+    "worked": "The tight sync and teal-orange LUT provide a professional, cohesive look that holds the viewer's attention despite the footage gaps.",
+    "didnt": "The edit feels repetitive and lacks a climax because I was forced to reuse clips and had no high-energy payoff shots to work with.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Source or shoot high-energy wide shots to provide the necessary scale for a cinematic montage.",
+    "Capture specific 'payoff' moments—high action or clear emotional peaks—to anchor the climax.",
+    "Expand the library with more varied character motifs to avoid the need for repetitive clip usage."
+  ],
+  "technical": [
+    "Applied a teal-orange filmic LUT to unify disparate clips and establish a consistent cinematic tone.",
+    "Implemented a relentless pacing strategy to compensate for the low-energy profile of the available library.",
+    "Maintained nominal sync fidelity to ensure the edit feels intentional and rhythmically grounded."
+  ]
+}

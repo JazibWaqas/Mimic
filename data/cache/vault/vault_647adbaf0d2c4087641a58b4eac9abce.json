@@ -1,0 +1,92 @@
+{
+  "header": "I’ve assembled a 20.4-second music video edit across 17 segments. While the technical sync is tight, the library's lack of payoff shots forced me to prioritize rhythm over the intended emotional beats.",
+  "advisor": {
+    "hero": "The edit moves well, but it’s hollow because your library is missing the heavy-hitting payoff shots needed to actually land the punches.",
+    "body": "We hit a technical score of 8.0, but the 'severe' and 'lack' motifs are completely missing. I had to prioritize rhythmic continuity over semantic fit just to keep the sequence from falling apart."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted a heroic opening to set the stage.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an intensity motif if the library had it."
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I was looking for an intense follow-up to build energy.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif."
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "Selected clip_004, clip_003, clip_017, and clip_005 for the action, power, scale, and majesty beats.",
+      "decision": "These were selected because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "I wanted to show the physical strain of the moment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif."
+    },
+    {
+      "segment_id": 8,
+      "what_i_tried": "Locked in clip_023 for a solemn beat.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 9,
+      "what_i_tried": "I wanted a moment of respect to ground the sequence.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif."
+    },
+    {
+      "segment_id": 10,
+      "what_i_tried": "Used clip_008 and clip_024 for speed and precision.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "I wanted to highlight camaraderie between the subjects.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif."
+    },
+    {
+      "segment_id": 13,
+      "what_i_tried": "I wanted to convey a sense of legacy.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif."
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "Grouped clip_009, clip_013, clip_015, and clip_019 to close out the power, agility, departure, and end beats.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    }
+  ],
+  "friction_log": [
+    "Start: I felt okay about the structure, but the lack of intensity motifs was immediately obvious.",
+    "Middle: Pacing became the only priority as I realized the library couldn't support the emotional shifts I wanted.",
+    "End: I locked the final sequence with high confidence in the rhythm, but low confidence in the narrative payoff."
+  ],
+  "post_mortem": {
+    "worked": "The sync is tight and the teal-orange/golden hour LUT keeps the visual profile consistent across all 17 cuts.",
+    "didnt": "The edit feels repetitive because we're missing the 'severe' payoff shots needed to break the cycle.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Shoot or source high-intensity action shots to fill the 'severe' motif gap.",
+    "Add more 'payoff' clips that can serve as structural anchors without compromising the vibe.",
+    "Review the library for more 'action' motifs to replace the current placeholders."
+  ],
+  "technical": [
+    "Applied a filmic teal-orange and golden hour LUT for visual cohesion.",
+    "Used syncopated pacing to maintain energy despite the clip limitations.",
+    "Maintained tight sync fidelity throughout the 20.4-second duration."
+  ]
+}

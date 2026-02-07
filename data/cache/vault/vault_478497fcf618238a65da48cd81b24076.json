@@ -1,0 +1,86 @@
+{
+  "header": "This is a 22-second music video edit built across 20 segments. The goal was a high-intensity sync, but the library's lack of payoff shots forced significant structural compromises.",
+  "advisor": {
+    "hero": "The library is starving for energy and it shows. I had to lean on technical sync to hide the fact that we're missing the actual 'action' shots needed to make this edit land.",
+    "body": "We are facing a severe bottleneck with medium and low energy footage. Because the library is missing key payoff motifs, I had to prioritize rhythmic continuity over the actual meaning of the shots just to keep the momentum from collapsing."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted a clear branding beat to open the edit.",
+      "decision": "Used clip_004.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted an atmospheric setup to establish the mood.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "If the library had an action motif, I would have replaced this to increase the energy."
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "Maintaining the sequence with action, speed, danger, and intensity beats.",
+      "decision": "Locked in clips 005, 006, 003, and 007 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed for this filler sequence."
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "I wanted a reaction shot to sell the impact of the sequence.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "This should have been replaced with an action shot to maintain the narrative climb."
+    },
+    {
+      "segment_id": 8,
+      "what_i_tried": "Bridging the mid-section with speed, failure, spectacle, detail, pursuit, and victory beats.",
+      "decision": "Selected clips 009 through 015 because no better alternative was available in the library.",
+      "what_if": "This sequence had no viable upgrade."
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "I wanted a focus beat to draw the viewer in.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "An action shot would have been a better fit for this energy level."
+    },
+    {
+      "segment_id": 15,
+      "what_i_tried": "I wanted to double down on the focus motif.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "The library lacked the action motif required to elevate this moment."
+    },
+    {
+      "segment_id": 16,
+      "what_i_tried": "I wanted a survival beat to heighten the stakes.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with action would have prevented the narrative sacrifice."
+    },
+    {
+      "segment_id": 17,
+      "what_i_tried": "Closing out the edit with competition, intensity, release, and end beats.",
+      "decision": "Locked in clips 020, 021, 002, and 013 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed for the finale."
+    }
+  ],
+  "friction_log": [
+    "Started with high confidence on the branding, but immediately hit a wall with the lack of atmospheric variety.",
+    "The middle of the edit was a struggle; I had to use filler to bridge gaps where the library simply didn't have the energy I needed.",
+    "Ended with a tight sync, but the emotional payoff is weak because I was forced to use structural anchors instead of high-energy action."
+  ],
+  "post_mortem": {
+    "worked": "The relentless pacing and tight sync keep the edit moving despite the weak footage.",
+    "didnt": "The narrative feels hollow because I'm using 'focus' and 'survival' shots as placeholders for action that doesn't exist.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Capture high-energy action motifs to replace the current structural placeholders.",
+    "Address the scarcity of medium-energy clips to provide better bridging options.",
+    "Source specific payoff shots to resolve the tension created in the 'focus' segments."
+  ],
+  "technical": [
+    "Applied a teal-orange filmic LUT to create visual consistency across a fragmented library.",
+    "Enforced a relentless pacing profile to mask the lack of high-energy payoff shots.",
+    "Maintained nominal sync fidelity to ensure the edit stayed locked to the music video reference."
+  ]
+}

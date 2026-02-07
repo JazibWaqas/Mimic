@@ -37,7 +37,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 2,
@@ -72,7 +73,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 3,
@@ -107,7 +109,8 @@
           "resolves": "Walking action",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 4,
@@ -142,7 +145,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 5,
@@ -177,7 +181,8 @@
           "resolves": "Burnout smoke",
           "type": "Object-Interaction"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 6,
@@ -212,7 +217,8 @@
           "resolves": "Fire explosion",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 7,
@@ -247,7 +253,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 8,
@@ -282,7 +289,8 @@
           "resolves": "Onboard motion",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 9,
@@ -317,7 +325,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 10,
@@ -352,7 +361,8 @@
           "resolves": "Racing battle",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 11,
@@ -387,7 +397,8 @@
           "resolves": "Track overview",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 12,
@@ -422,7 +433,8 @@
           "resolves": "None",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 13,
@@ -457,7 +469,8 @@
           "resolves": "Car spin",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 14,
@@ -492,7 +505,8 @@
           "resolves": "B&W architecture",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 15,
@@ -527,7 +541,8 @@
           "resolves": "Smiling man",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 16,
@@ -562,7 +577,8 @@
           "resolves": "Car detail motion",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 17,
@@ -597,7 +613,8 @@
           "resolves": "Night racing",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 18,
@@ -632,7 +649,8 @@
           "resolves": "None",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 19,
@@ -667,7 +685,8 @@
           "resolves": "Kissing action",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 20,
@@ -702,7 +721,8 @@
           "resolves": "Card trick",
           "type": "Physical-Action"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 21,
@@ -737,7 +757,8 @@
           "resolves": "Foot on pedal",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 22,
@@ -772,7 +793,8 @@
           "resolves": "Side-by-side racing",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 23,
@@ -807,7 +829,8 @@
           "resolves": "Driver helmet CU",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 24,
@@ -842,7 +865,8 @@
           "resolves": "Car approaching camera",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 25,
@@ -877,7 +901,8 @@
           "resolves": "Driver interaction",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 26,
@@ -912,7 +937,8 @@
           "resolves": "Car spin 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 27,
@@ -947,7 +973,8 @@
           "resolves": "Racing action 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 28,
@@ -982,7 +1009,8 @@
           "resolves": "Onboard chasing",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 29,
@@ -1017,7 +1045,8 @@
           "resolves": "Driver tension",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 30,
@@ -1052,7 +1081,8 @@
           "resolves": "Crash debris",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 31,
@@ -1087,7 +1117,8 @@
           "resolves": "Night track overview",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 32,
@@ -1122,7 +1153,8 @@
           "resolves": "Car drifting",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 33,
@@ -1157,7 +1189,8 @@
           "resolves": "Onboard cornering",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 34,
@@ -1192,7 +1225,8 @@
           "resolves": "Fast car pass",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 35,
@@ -1227,7 +1261,8 @@
           "resolves": "Racing battle 2",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 36,
@@ -1262,7 +1297,8 @@
           "resolves": "Driver intensity 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 37,
@@ -1297,7 +1333,8 @@
           "resolves": "Side-by-side racing 2",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 38,
@@ -1332,7 +1369,8 @@
           "resolves": "Driver helmet CU 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 39,
@@ -1367,7 +1405,8 @@
           "resolves": "Car front view",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 40,
@@ -1402,7 +1441,8 @@
           "resolves": "Driver interaction 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 41,
@@ -1437,7 +1477,8 @@
           "resolves": "Car spin 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 42,
@@ -1472,7 +1513,8 @@
           "resolves": "Racing action 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 43,
@@ -1507,7 +1549,8 @@
           "resolves": "Onboard chasing 2",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 44,
@@ -1542,7 +1585,8 @@
           "resolves": "Driver tension 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 45,
@@ -1577,7 +1621,8 @@
           "resolves": "Crash debris 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 46,
@@ -1612,7 +1657,8 @@
           "resolves": "Night track overview 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 47,
@@ -1647,7 +1693,8 @@
           "resolves": "Car drifting 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 48,
@@ -1682,7 +1729,8 @@
           "resolves": "Onboard cornering 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 49,
@@ -1717,7 +1765,8 @@
           "resolves": "Fast car pass 2",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 50,
@@ -1752,7 +1801,8 @@
           "resolves": "Racing battle 3",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 51,
@@ -1787,7 +1837,8 @@
           "resolves": "Driver intensity 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 52,
@@ -1822,7 +1873,8 @@
           "resolves": "Crash debris 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 53,
@@ -1857,7 +1909,8 @@
           "resolves": "Night track overview 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 54,
@@ -1892,7 +1945,8 @@
           "resolves": "Car drifting 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 55,
@@ -1927,7 +1981,8 @@
           "resolves": "Onboard cornering 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 56,
@@ -1962,7 +2017,8 @@
           "resolves": "Fast car pass 3",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 57,
@@ -1997,7 +2053,8 @@
           "resolves": "Racing battle 4",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 58,
@@ -2032,7 +2089,8 @@
           "resolves": "Driver intensity 4",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 59,
@@ -2067,7 +2125,8 @@
           "resolves": "Crash debris 4",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 60,
@@ -2102,7 +2161,8 @@
           "resolves": "Night track overview 4",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 61,
@@ -2137,7 +2197,8 @@
           "resolves": "Car drifting 4",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 62,
@@ -2172,7 +2233,8 @@
           "resolves": "Onboard cornering 4",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 63,
@@ -2207,7 +2269,8 @@
           "resolves": "Fast car pass 4",
           "type": "Spatial-Movement"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 64,
@@ -2242,7 +2305,8 @@
           "resolves": "Racing battle 5",
           "type": "Gaze"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 65,
@@ -2277,7 +2341,8 @@
           "resolves": "Driver intensity 5",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 66,
@@ -2312,7 +2377,8 @@
           "resolves": "Logo reveal start",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 67,
@@ -2347,7 +2413,8 @@
           "resolves": "Logo reveal mid",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       },
       {
         "id": 68,
@@ -2382,7 +2449,8 @@
           "resolves": "Logo reveal end",
           "type": "None"
         },
-        "cut_origin": "visual"
+        "cut_origin": "visual",
+        "cde": "Moderate"
       }
     ],
     "phrases": [],
@@ -2476,6 +2544,7 @@
       "priority": "Primary"
     },
     "text_cadence": "Static",
+    "style_config": null,
     "overall_reasoning": "The edit functions as a high-octane trailer, utilizing a 'heartbeat' rhythmic structure that accelerates from a slow, atmospheric introduction into a relentless, high-density montage. The use of hard cuts synchronized to a driving beat creates a sense of overwhelming speed and sensory overload, mirroring the experience of a Formula 1 race. Emotional anchors are strategically placed through driver close-ups and high-impact crashes to maintain narrative stakes amidst the technical action. The final logo reveal acts as a powerful release of the built-up tension.",
     "ideal_material_suggestions": [
       "High-speed professional sports footage with multiple camera angles (onboard, aerial, trackside).",
@@ -5311,6 +5380,7 @@
     },
     "confidence_score": 94.33333333333334
   },
+  "style_config": null,
   "iteration": 1,
   "error": null,
   "processing_time_seconds": 40.34977841377258,
@@ -5319,5 +5389,445 @@
     "version": "12.1",
     "session_id": "sess_3d5c2ddcbb641b1879f096b668cc3f04",
     "timestamp": "2026-02-07 00:54:49"
+  },
+  "vault_report": {
+    "header": "We’ve put together a 35-second sprint that hits like a sledgehammer, but we had to fight the footage every step of the way to keep it from feeling repetitive. The goal was a cinematic gut-punch, and while the rhythm is there, the 'soul' is buried in the wide shots.",
+    "advisor": {
+      "hero": "The edit is fast and aggressive, but it’s missing the 'grease under the fingernails' because the library lacked close-up mechanical details.",
+      "body": "I wanted to start with a slow, intimate burn, but because we were out of low-energy clips, I had to use wider atmospheric shots and rely on slow camera pans to trick the viewer into feeling anticipation."
+    },
+    "decision_stream": [
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted a tight shot of a key turning or a finger on a button.",
+        "decision": "Used clip_015 (Wide) because it was the only thing with the right lighting to start the clock.",
+        "what_if": "If we had a macro shot of the ignition, the 'Anticipation' would feel 10x heavier."
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "Looking for a subtle movement.",
+        "decision": "Stuck with clip_013 to keep the lighting consistent.",
+        "what_if": "A shot of a driver's glove tightening would have bridged the gap better."
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "Trying to hold the tension.",
+        "decision": "Burned clip_002 early to satisfy the energy demand.",
+        "what_if": "I could have saved this for the climax if we had better 'low' energy filler."
+      },
+      {
+        "segment_id": 4,
+        "what_i_tried": "Establishing the car's presence.",
+        "decision": "Used clip_001 for pure 'Power'.",
+        "what_if": "A low-angle shot of the exhaust would have sold the 'Power' intent better than a profile shot."
+      },
+      {
+        "segment_id": 5,
+        "what_i_tried": "Injecting 'Danger' into the flow.",
+        "decision": "Forced clip_004 as a structural necessity.",
+        "what_if": "Without this, the transition to 'Focus' would have felt like a mistake."
+      },
+      {
+        "segment_id": 6,
+        "what_i_tried": "Getting inside the driver's head.",
+        "decision": "Used clip_003 as a 'Reaction' shot.",
+        "what_if": "If we had a shot of eyes in a mirror, we wouldn't have to rely on this wider angle."
+      },
+      {
+        "segment_id": 7,
+        "what_i_tried": "Starting the 'Speed' ramp.",
+        "decision": "Committed to clip_005 for the build-up.",
+        "what_if": "A blurry ground-level shot would have made this feel twice as fast."
+      },
+      {
+        "segment_id": 8,
+        "what_i_tried": "Maintaining the 'Speed' momentum.",
+        "decision": "Doubled down with clip_006.",
+        "what_if": "I wanted a gear shift here, but we don't have the footage."
+      },
+      {
+        "segment_id": 9,
+        "what_i_tried": "Showing the 'Competition'.",
+        "decision": "Used clip_014 to show there's more than one car on the track.",
+        "what_if": "A side-by-side door-banging shot would have been the 'Hero' choice here."
+      },
+      {
+        "segment_id": 10,
+        "what_i_tried": "Giving the viewer a sense of 'Scale'.",
+        "decision": "Used clip_008 to show the environment.",
+        "what_if": "A drone shot would have worked better, but this wide shot does the job."
+      },
+      {
+        "segment_id": 11,
+        "what_i_tried": "Continuing the 'Scale' beat.",
+        "decision": "Used clip_017 to keep the lighting from jumping around.",
+        "what_if": "I would have cut this if the library had more 'Action' variety."
+      },
+      {
+        "segment_id": 12,
+        "what_i_tried": "Breaking the rhythm with 'Chaos'.",
+        "decision": "Forced clip_010 to keep the viewer on their toes.",
+        "what_if": "If I didn't use this, the middle section would have felt like a screensaver."
+      },
+      {
+        "segment_id": 13,
+        "what_i_tried": "A moment of 'Abstract' breathing room.",
+        "decision": "Used clip_021 to reset the energy.",
+        "what_if": "A shot of heat haze off the hood would have been perfect here."
+      },
+      {
+        "segment_id": 14,
+        "what_i_tried": "Showing the 'Joy' of the drive.",
+        "decision": "Used clip_019 as a reaction.",
+        "what_if": "A shot of a driver's smirk would have been less 'stock' than this."
+      },
+      {
+        "segment_id": 15,
+        "what_i_tried": "Ramping 'Speed' back up.",
+        "decision": "Used clip_007 for a detail beat.",
+        "what_if": "I wanted a spinning tire, but settled for this."
+      },
+      {
+        "segment_id": 16,
+        "what_i_tried": "Transitioning to 'Night-Speed'.",
+        "decision": "Used clip_009 to shift the mood.",
+        "what_if": "If we didn't have this, the 'Night' theme would have felt like a glitch."
+      },
+      {
+        "segment_id": 17,
+        "what_i_tried": "Pushing the 'Night-Speed' further.",
+        "decision": "Used clip_011 to hammer the point home.",
+        "what_if": "I wanted sparks from the undercarriage, but we don't have them."
+      },
+      {
+        "segment_id": 18,
+        "what_i_tried": "A moment of 'Intimacy'.",
+        "decision": "Forced clip_024 to slow the heart rate.",
+        "what_if": "A shot of a hand on the steering wheel would have been the right move."
+      },
+      {
+        "segment_id": 19,
+        "what_i_tried": "Showing 'Skill'.",
+        "decision": "Used clip_027 to show the car being handled.",
+        "what_if": "A shot of counter-steering would have sold 'Skill' better."
+      },
+      {
+        "segment_id": 20,
+        "what_i_tried": "Back to 'Action'.",
+        "decision": "Used clip_012 for a quick detail.",
+        "what_if": "I wanted a brake rotor glowing red, but we used what we had."
+      },
+      {
+        "segment_id": 21,
+        "what_i_tried": "Entering the 'Peak' stage.",
+        "decision": "Used clip_023 for high-energy competition.",
+        "what_if": "A three-car-wide shot would have been the dream here."
+      },
+      {
+        "segment_id": 22,
+        "what_i_tried": "Upping the 'Intensity'.",
+        "decision": "Forced clip_018 to keep the pressure on.",
+        "what_if": "If I skipped this, the 'Peak' would have felt flat."
+      },
+      {
+        "segment_id": 23,
+        "what_i_tried": "Max 'Speed' beat.",
+        "decision": "Used clip_020 for pure velocity.",
+        "what_if": "A POV shot from the bumper would have been much more immersive."
+      },
+      {
+        "segment_id": 24,
+        "what_i_tried": "Building 'Tension'.",
+        "decision": "Used clip_022 to make the viewer sweat.",
+        "what_if": "A shot of a vibrating mirror would have been a great 'Tension' carrier."
+      },
+      {
+        "segment_id": 25,
+        "what_i_tried": "Pure 'Chaos'.",
+        "decision": "Used clip_028 to overwhelm the senses.",
+        "what_if": "If we had more 'Chaos' clips, I wouldn't have had to reuse this later."
+      },
+      {
+        "segment_id": 26,
+        "what_i_tried": "Maintaining 'Competition'.",
+        "decision": "Reused clip_024 because the lighting matched the peak.",
+        "what_if": "I hate reusing clips, but the library left me no choice for this energy level."
+      },
+      {
+        "segment_id": 27,
+        "what_i_tried": "Another 'Speed' hit.",
+        "decision": "Used clip_026 to keep the pace relentless.",
+        "what_if": "A shot of the speedometer climbing would have been the perfect sync."
+      },
+      {
+        "segment_id": 28,
+        "what_i_tried": "Holding the 'Tension'.",
+        "decision": "Used clip_029 to bridge the next action.",
+        "what_if": "A shot of the driver's eyes narrowing would have been better."
+      },
+      {
+        "segment_id": 29,
+        "what_i_tried": "More 'Chaos'.",
+        "decision": "Used clip_025 to keep the edit 'dirty'.",
+        "what_if": "I wanted a shot of gravel flying, but we don't have it."
+      },
+      {
+        "segment_id": 30,
+        "what_i_tried": "Showing 'Scale' at speed.",
+        "decision": "Used clip_023 again to maintain the 'Peak' vibe.",
+        "what_if": "Reusing this clip is a compromise, but it keeps the energy high."
+      },
+      {
+        "segment_id": 31,
+        "what_i_tried": "Final 'Speed' push.",
+        "decision": "Used clip_030 for the home stretch.",
+        "what_if": "A shot of the finish line would have been the logical 'Speed' end."
+      },
+      {
+        "segment_id": 32,
+        "what_i_tried": "Keeping the 'Speed' alive.",
+        "decision": "Reused clip_008.",
+        "what_if": "I'm recycling now because the library is empty of fresh high-energy shots."
+      },
+      {
+        "segment_id": 33,
+        "what_i_tried": "Night 'Speed' again.",
+        "decision": "Reused clip_009.",
+        "what_if": "The night shots are our strongest assets; I'm leaning on them too hard."
+      },
+      {
+        "segment_id": 34,
+        "what_i_tried": "Final 'Competition' beat.",
+        "decision": "Reused clip_010.",
+        "what_if": "I wanted a pass/overtake shot, but we don't have one."
+      },
+      {
+        "segment_id": 35,
+        "what_i_tried": "Max 'Intensity'.",
+        "decision": "Reused clip_019.",
+        "what_if": "This is where the lack of 'Detail' shots really hurts the variety."
+      },
+      {
+        "segment_id": 36,
+        "what_i_tried": "One last 'Speed' hit.",
+        "decision": "Reused clip_028.",
+        "what_if": "The edit is starting to loop visually, but the rhythm is still solid."
+      },
+      {
+        "segment_id": 37,
+        "what_i_tried": "Final 'Intensity' reaction.",
+        "decision": "Reused clip_027.",
+        "what_if": "I'm faking the narrative arc now with the only clips left."
+      },
+      {
+        "segment_id": 38,
+        "what_i_tried": "Speed, speed, speed.",
+        "decision": "Reused clip_006.",
+        "what_if": "If we had 10 more clips, this would be a masterpiece."
+      },
+      {
+        "segment_id": 39,
+        "what_i_tried": "A moment of 'Tension' before the end.",
+        "decision": "Used clip_016.",
+        "what_if": "A shot of a checkered flag would have been the right 'Tension' release."
+      },
+      {
+        "segment_id": 40,
+        "what_i_tried": "Final 'Chaos' burst.",
+        "decision": "Reused clip_007.",
+        "what_if": "I'm using every frame we have to keep the pace 'Relentless'."
+      },
+      {
+        "segment_id": 41,
+        "what_i_tried": "Closing 'Competition'.",
+        "decision": "Reused clip_004.",
+        "what_if": "This clip has appeared too many times, but it's the only one that fits the sync."
+      },
+      {
+        "segment_id": 42,
+        "what_i_tried": "Final 'Speed' detail.",
+        "decision": "Reused clip_012.",
+        "what_if": "I'm hiding the repetition with fast cuts."
+      },
+      {
+        "segment_id": 43,
+        "what_i_tried": "Double 'Tension' hit.",
+        "decision": "Used clip_018 and clip_022 back-to-back.",
+        "what_if": "This is a desperate move to keep the energy from dropping."
+      },
+      {
+        "segment_id": 44,
+        "what_i_tried": "Last 'Chaos' beat.",
+        "decision": "Reused clip_017.",
+        "what_if": "The library is officially tapped out of 'Chaos'."
+      },
+      {
+        "segment_id": 45,
+        "what_i_tried": "Final 'Scale' shot.",
+        "decision": "Reused clip_011.",
+        "what_if": "I'm using night shots to hide the fact that we're out of footage."
+      },
+      {
+        "segment_id": 46,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_005.",
+        "what_if": "The viewer will notice the repetition if they watch twice."
+      },
+      {
+        "segment_id": 47,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_021.",
+        "what_if": "I'm just keeping the beat alive now."
+      },
+      {
+        "segment_id": 48,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_001.",
+        "what_if": "Coming full circle to the first 'Power' shot."
+      },
+      {
+        "segment_id": 49,
+        "what_i_tried": "Competition.",
+        "decision": "Reused clip_025.",
+        "what_if": "The narrative is getting muddy because of the reuses."
+      },
+      {
+        "segment_id": 50,
+        "what_i_tried": "Intensity.",
+        "decision": "Reused clip_003.",
+        "what_if": "I'm using the driver's face to try and ground the chaos."
+      },
+      {
+        "segment_id": 51,
+        "what_i_tried": "Chaos.",
+        "decision": "Reused clip_026.",
+        "what_if": "One last push before the outro."
+      },
+      {
+        "segment_id": 52,
+        "what_i_tried": "Scale.",
+        "decision": "Reused clip_020.",
+        "what_if": "Showing the track one last time."
+      },
+      {
+        "segment_id": 53,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_029.",
+        "what_if": "The sync is the only thing saving this segment."
+      },
+      {
+        "segment_id": 54,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_030.",
+        "what_if": "Final high-energy frame."
+      },
+      {
+        "segment_id": 55,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_024.",
+        "what_if": "The 'Peak' is overstaying its welcome."
+      },
+      {
+        "segment_id": 56,
+        "what_i_tried": "Competition.",
+        "decision": "Reused clip_015.",
+        "what_if": "Back to the intro lighting to signal the end."
+      },
+      {
+        "segment_id": 57,
+        "what_i_tried": "Intensity.",
+        "decision": "Reused clip_014.",
+        "what_if": "Trying to find a 'win' moment."
+      },
+      {
+        "segment_id": 58,
+        "what_i_tried": "Chaos.",
+        "decision": "Reused clip_013.",
+        "what_if": "The edit is fighting to stay fresh."
+      },
+      {
+        "segment_id": 59,
+        "what_i_tried": "Scale.",
+        "decision": "Reused clip_016.",
+        "what_if": "A final look at the environment."
+      },
+      {
+        "segment_id": 60,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_008.",
+        "what_if": "The repetition is now a stylistic choice by necessity."
+      },
+      {
+        "segment_id": 61,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_023.",
+        "what_if": "One last flash of the car."
+      },
+      {
+        "segment_id": 62,
+        "what_i_tried": "Speed.",
+        "decision": "Reused clip_010.",
+        "what_if": "Keeping the motion going."
+      },
+      {
+        "segment_id": 63,
+        "what_i_tried": "Competition.",
+        "decision": "Reused clip_028.",
+        "what_if": "The final 'Action' beat."
+      },
+      {
+        "segment_id": 64,
+        "what_i_tried": "Intensity.",
+        "decision": "Reused clip_009.",
+        "what_if": "The night shots carry us to the finish line."
+      },
+      {
+        "segment_id": 65,
+        "what_i_tried": "Branding.",
+        "decision": "Used clip_002 for the logo bed.",
+        "what_if": "A shot of the car's badge would have been the professional choice."
+      },
+      {
+        "segment_id": 66,
+        "what_i_tried": "Branding.",
+        "decision": "Used clip_013.",
+        "what_if": "I'm just filling space for the text now."
+      },
+      {
+        "segment_id": 67,
+        "what_i_tried": "Branding.",
+        "decision": "Used clip_029.",
+        "what_if": "The energy is still high, which is good for the CTA."
+      },
+      {
+        "segment_id": 68,
+        "what_i_tried": "The 'Button' shot.",
+        "decision": "Used clip_004 to end on a low-energy note.",
+        "what_if": "A shot of the engine turning off would have been the perfect 'Button'."
+      }
+    ],
+    "friction_log": [
+      "Start: Frustrating. I wanted intimate details of the car waking up, but had to settle for wide shots that feel a bit distant.",
+      "Middle: Finding the groove. The 'Night-Speed' clips finally let the system open up the throttle and find a real rhythm.",
+      "End: Exhausted. I had to aggressively reuse clips for the branding section because we simply ran out of fresh 'win' shots."
+    ],
+    "post_mortem": {
+      "worked": "The lighting consistency is bulletproof, and the 'Night-Speed' transition actually feels like a narrative shift rather than just a time-of-day change.",
+      "didnt": "The lack of mechanical details (pedals, gears, eyes) makes the whole thing feel like a drone shot compilation rather than a driver's story.",
+      "responsibility": {
+        "vibe": "System (The pacing and color grade saved the energy)",
+        "emotion": "Library (The lack of close-ups killed the human connection)"
+      }
+    },
+    "next_steps": [
+      "Shoot the driver's eyes behind the visor—we need a human to root for.",
+      "Get a camera on the floor for those ground-level apex-blur shots; we need to feel the speed, not just see it.",
+      "Film the gear shifts and vibrating carbon fiber; the 'mechanical power' needs to be seen up close."
+    ],
+    "technical": [
+      "Applied a heavy Teal-Orange grade to unify the mixed lighting and hide the clip repetition.",
+      "Maintained a relentless 68-cut pace to ensure the viewer doesn't have time to notice the missing detail shots.",
+      "Frame-perfect sync on the 'Danger' and 'Chaos' beats to keep the 'Man vs. Machine' narrative alive."
+    ]
   }
 }
