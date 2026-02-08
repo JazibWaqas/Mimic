@@ -1,0 +1,103 @@
+{
+  "text_overlay_intent": "The text functions as rhythmic, percussive punctuation that bridges corporate identity with raw human emotion, demanding a staccato editing style where visual cuts synchronize with the 'Flash-on' delivery.",
+  "dominant_narrative": "The relentless psychological and physical pressure of elite motorsport, where technical precision meets chaotic danger.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Static preparation, technical checks, and low-angle hero shots of the vehicle.",
+      "intent_diluting_material": "Crowd shots or wide-angle scenic vistas that lack a central mechanical focus.",
+      "reasoning": "The intro must establish the 'Nerves' and 'Preparation' mentioned in the intent, focusing on the quiet before the kinetic explosion.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip52.mp4",
+        "clip74.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Pit lane activity, tire smoke, and rapid acceleration sequences.",
+      "intent_diluting_material": "Slow-motion shots that linger too long without a clear speed-ramp or directional exit.",
+      "reasoning": "This stage mimics the 'RPM' climb, using mechanical details to transition from preparation to full-throttle engagement.",
+      "recommended_clips": [
+        "clip53.mp4",
+        "clip69.mp4",
+        "clip75.mp4",
+        "clip66.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "High-speed collisions, sparks, fire, and aggressive on-board cockpit perspectives.",
+      "intent_diluting_material": "Clean, unobstructed racing lines that feel 'safe' or clinical.",
+      "reasoning": "The peak must deliver on the 'High-stakes crash' requirement, using visual chaos to represent the 'Aggressive' emotional intent.",
+      "recommended_clips": [
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip58.mp4",
+        "clip59.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "Confetti, podium celebrations, and branding-heavy urban backdrops.",
+      "intent_diluting_material": "Continued high-speed action that prevents the narrative from 'landing' on the brand resolution.",
+      "reasoning": "The 'Button' functions as the release of tension, moving from the violence of the crash to the prestige of the victory and sponsors.",
+      "recommended_clips": [
+        "clip78.mp4",
+        "clip61.mp4",
+        "clip70.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-intensity racing footage",
+      "Specific crash and fire sequences (clip71, clip72) perfectly match the 'Must-Have' criteria",
+      "Strong selection of technical and pit-lane details"
+    ],
+    "editorial_tradeoffs": [
+      "The scarcity of Low/Medium energy clips requires using 'Preparation' high-energy clips as the Intro to avoid a flat energy profile."
+    ],
+    "constraint_gaps": [
+      "Limited 'Slow motion' specific tags in metadata, though 'Dynamic' motion suggests speed-ramp potential."
+    ]
+  },
+  "editorial_strategy": "The edit must prioritize 'Relentless' pacing by favoring clips with forward-moving dynamic motion. Every cut should feel like a gear shift, using the 'Flash-on' text as the metronome for the entire sequence. We will lean into the 'Filmic Commercial' look by pairing high-contrast racing shots with the gritty, high-stakes crash footage to ensure the 'Aggressive' intent is never lost.",
+  "remake_strategy": "To elevate this to a Director's Cut, I would integrate more extreme macro-details of the driver's biometric responses—sweat, pupil dilation, and heart rate monitors—to ground the 'Object-Vehicle' action in 'People-Solo' stakes.",
+  "primary_narrative_subject": null,
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical failure or crash",
+      "desired_continuity": "Emotional-Release",
+      "priority": "High"
+    },
+    {
+      "trigger": "Text 'RPM' or 'Speed' cues",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Driver focus/eyes",
+      "desired_continuity": "Graphic-Match",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-08T15:18:11.826070"
+}

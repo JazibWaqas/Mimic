@@ -7,7 +7,7 @@ import json
 import hashlib
 from pathlib import Path
 from typing import Optional, Dict, Any, List
-from models import StyleBlueprint, EDL, ClipIndex, DirectorCritique, AdvisorHints, VaultReport
+from models import StyleBlueprint, EDL, ClipIndex, DirectorCritique, AdvisorHints, VaultReport, VaultDecision
 from engine.brain import initialize_gemini, _parse_json_response, GeminiConfig, rate_limiter, _handle_rate_limit_error
 from engine.vault_compiler import compile_vault_reasoning
 import time
@@ -24,6 +24,8 @@ CORE VOICE RULES:
    - For 'decision_type', pick one of the 3 variants provided in 'phrase_map.decisions' to ensure variety while remaining deterministic.
    - For causality, use the template provided in 'phrase_map.causality' that matches the 'causality_key'.
 6. DATA FIDELITY: You must mirror the 'responsibility' enums (system vs library) exactly as they appear in the input data.
+6b. NO FILTER HALLUCINATION (CRITICAL): Only mention LUTs, filters, grading changes, overlays, or any 'styling' if input edit_meta.styling_applied==true.
+    - If styling_applied==false, you may still discuss *native* reference look as an observation, but do NOT claim any applied filter/grade.
 7. TRADEOFF-FIRST TONE (CRITICAL): Do not narrate like an apology. Frame outcomes as constraint-driven optimization.
    - If the input data indicates constraints, describe the tradeoff explicitly.
    - Do NOT default to "the library failed" language unless responsibility=="library" OR status_tags indicate scarcity/missing motifs.
@@ -57,12 +59,11 @@ YOUR TASKS:
    DECISION WEIGHT RULES:
    - primary: write 2–3 sentences with full causal explanation
    - supporting: write 1–2 sentences, concise but clear
-   - filler:
-     - do NOT write verbose explanations
-     - either compress into one short sentence OR
-     - group adjacent filler segments into a single summarized entry
+   - filler: keep to 1 short sentence per field (do not be verbose)
 
-   Filler segments exist to maintain rhythm, not to convey intelligence. Do not over-explain them.
+   COVERAGE RULE (CRITICAL): decision_stream MUST include exactly one entry for EVERY segment in input edit_meta.segment_count.
+   - Do NOT group segments.
+   - Do NOT omit filler segments.
    KEY VS ALL (CRITICAL):
    - You must set `is_key` and `importance` for every entry.
    - Use the input field `is_key_candidate` (if present per segment) as the primary signal.
@@ -70,6 +71,8 @@ YOUR TASKS:
    - `tags` is optional but recommended (examples: "forced_compromise", "structural_necessity", "overuse", "scarcity").
 4. FRICTION LOG: 3 bullet points on how confidence evolved (Start, Middle, End).
 5. POST-MORTEM: Blunt reflection on what worked and what didn't. Assign responsibility (System vs Library) EXACTLY as provided in the JSON.
+   - Must cite at least 2 specific segment_id+clip_used pairs from input segments as evidence (e.g., "Segment 7 used clip52.mp4")
+   - If you praise sync/beat alignment, tie it to a specific segment's intent+decision (no generic "good timing" claims).
 6. NEXT STEPS: 3 actionable prescriptions for the user.
 6b. CLIP-LEVEL SUGGESTIONS (CRITICAL): Provide 4-8 descriptive suggestions that help the user improve future edits.
    - Use only the input data (including clip_usage.overused, missing_motifs, status_tags, constraint_gaps).
@@ -197,6 +200,55 @@ def generate_vault_report(
     # Step 1: Compile the truth
     reasoning = compile_vault_reasoning(blueprint, edl, advisor, critique, reasoning_file)
 
+    def _ensure_full_decision_coverage(report: VaultReport) -> VaultReport:
+        segment_rows = reasoning.get("segments", []) if isinstance(reasoning, dict) else []
+        if not isinstance(segment_rows, list) or not segment_rows:
+            return report
+
+        by_id: Dict[int, VaultDecision] = {d.segment_id: d for d in (report.decision_stream or [])}
+        out: List[VaultDecision] = []
+
+        for s in segment_rows:
+            try:
+                seg_id = int(s.get("segment_id"))
+            except Exception:
+                continue
+
+            existing = by_id.get(seg_id)
+            if existing is not None:
+                out.append(existing)
+                continue
+
+            intent_tag = str(s.get("intent_tag") or "general").replace("_", " ")
+            decision_type = str(s.get("decision_type") or "confident").replace("_", " ")
+            clip_used = str(s.get("clip_used") or "unknown")
+            counterfactual = s.get("counterfactual_tag")
+            what_if = "No stronger alternative existed."
+            if isinstance(counterfactual, str) and counterfactual:
+                what_if = counterfactual.replace("_", " ")
+
+            is_key = bool(s.get("is_key_candidate", False))
+            importance = "key" if is_key else "all"
+            tags: List[str] = []
+            if isinstance(s.get("decision_type"), str) and s.get("decision_type"):
+                tags.append(str(s.get("decision_type")))
+
+            out.append(
+                VaultDecision(
+                    segment_id=seg_id,
+                    what_i_tried=f"Target {intent_tag}.",
+                    decision=f"Used {clip_used} ({decision_type}).",
+                    what_if=what_if,
+                    is_key=is_key,
+                    importance=importance,
+                    tags=tags,
+                )
+            )
+
+        report.decision_stream = out
+        report.key_decision_stream = [d for d in out if d.is_key]
+        return report
+
     # Step 2: Translate with Gemini
     print(f"[VAULT] Translating reasoning into human report...")
     prompt = VAULT_TRANSLATOR_PROMPT.format(vault_reasoning=json.dumps(reasoning, indent=2))
@@ -208,6 +260,8 @@ def generate_vault_report(
             response = model.generate_content([prompt])
             data = _parse_json_response(response.text)
             report = VaultReport(**data)
+
+            report = _ensure_full_decision_coverage(report)
             
             report_file.write_text(report.model_dump_json(indent=2), encoding='utf-8')
             return report

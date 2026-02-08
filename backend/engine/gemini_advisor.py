@@ -141,8 +141,7 @@ def _generate_moment_plans_for_hints(
             )
             
             if not selection:
-                print(f"⚠️ No selection")
-                continue
+                raise ValueError("No selection returned")
             
             print(f"✓ Selected {selection.selection.clip_filename}")
             
@@ -166,17 +165,16 @@ def _generate_moment_plans_for_hints(
                 print(f"       Chaining: {plan.chaining_reason}")
             
         except Exception as e:
-            # Per-segment try/except: any failure falls back to V13.2 for this segment
-            print(f"     ⚠️ Segment {segment.id} V14.0 failed: {e}")
-            print(f"        Falling back to V13.2 CDE-based matching for this segment")
-            continue
+            raise ValueError(f"Segment {segment.id} V14.0 moment plan failed: {e}") from e
     
     # Attach moment plans to hints
     if segment_moment_plans:
         hints.segment_moment_plans = segment_moment_plans
         print(f"  ✅ V14.0: {len(segment_moment_plans)} segment(s) with contextual moment plans")
     else:
-        print(f"  ⚙️ V14.0: No moment plans generated, using V13.2 fallback")
+        if target_segments:
+            raise ValueError("V14.0 enabled but produced no moment plans")
+        print(f"  ⚙️ V14.0: No segments matched criteria")
     
     return hints
 
@@ -474,8 +472,7 @@ Do not add commentary. Do not explain. Only JSON.
                         )
                         
                         if not selection:
-                            print(f"⚠️ No selection")
-                            continue
+                            raise ValueError("No selection returned")
                         
                         print(f"✓ Selected {selection.selection.clip_filename}")
                         
@@ -499,17 +496,16 @@ Do not add commentary. Do not explain. Only JSON.
                             print(f"       Chaining: {plan.chaining_reason}")
                         
                     except Exception as e:
-                        # Per-segment try/except: any failure falls back to V13.2 for this segment
-                        print(f"     ⚠️ Segment {segment.id} V14.0 failed: {e}")
-                        print(f"        Falling back to V13.2 CDE-based matching for this segment")
-                        continue
+                        raise ValueError(f"Segment {segment.id} V14.0 moment plan failed: {e}") from e
                 
                 # Attach moment plans to hints
                 if segment_moment_plans:
                     hints.segment_moment_plans = segment_moment_plans
                     print(f"  ✅ V14.0: {len(segment_moment_plans)} segment(s) with contextual moment plans")
                 else:
-                    print(f"  ⚙️ V14.0: No moment plans generated, using V13.2 fallback")
+                    if target_segments:
+                        raise ValueError("V14.0 enabled but produced no moment plans")
+                    print(f"  ⚙️ V14.0: No segments matched criteria")
             
             # ============================================================================
             # Cache and return

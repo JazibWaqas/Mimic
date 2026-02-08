@@ -1,0 +1,605 @@
+{
+  "text_overlay": "It's never the Place , | It's always the People ✨",
+  "text_style": {
+    "font_style": "Serif, Elegant, Slightly Italicized",
+    "animation": "Static",
+    "placement": "Top-third",
+    "color_effects": "White text with yellow highlights on 'Place' and 'People'"
+  },
+  "text_behavior": {
+    "appearance_logic": "Continuous",
+    "entry_moment": "Opening-frame",
+    "exit_rule": "Hold-past-frame",
+    "priority": "Primary"
+  },
+  "text_cadence": "Static",
+  "text_events": [],
+  "narrative_message": "The essence of a journey is defined not by the destination, but by the shared joy and connection of the people you travel with.",
+  "intent_clarity": "Clear",
+  "color_grading": {
+    "tone": "Vibrant",
+    "contrast": "Medium",
+    "specific_look": "Commercial Clean / Travel Vlog"
+  },
+  "aspect_ratio": "9:16",
+  "visual_effects": [
+    "Slow motion",
+    "Natural snowfall",
+    "Motion blur"
+  ],
+  "stylistic_invariants": [
+    "Persistent top-third text overlay",
+    "Hard cuts synced to musical beats",
+    "People-centric framing"
+  ],
+  "shot_variety": {
+    "dominant_scale": "Medium",
+    "variety_level": "High variety"
+  },
+  "editing_style": "Memory reel",
+  "cut_style": "Hard cuts",
+  "transition_effects": [],
+  "emotional_intent": "Nostalgic and Joyful",
+  "arc_description": "The edit begins with a collective group pose, transitions into a rhythmic montage of various trip activities (dancing, running, zip-lining), and concludes with a warm, intimate group portrait.",
+  "pacing_feel": "Syncopated",
+  "visual_balance": "People-centric",
+  "peak_density": "Moderate",
+  "music_sync": "Tightly synced",
+  "audio_style": {
+    "genre": "Indian Pop",
+    "vocal_presence": "Vocals",
+    "energy": "Medium-High"
+  },
+  "must_have_content": [
+    "Group camaraderie shots showing interaction",
+    "Active movement like dancing, running, or cheering",
+    "Scenic mountain or snowy backgrounds",
+    "Candid smiles and genuine laughter"
+  ],
+  "should_have_content": [
+    "Variety of settings including indoor hangouts and outdoor transit",
+    "Close-ups of expressive, happy faces"
+  ],
+  "avoid_content": [
+    "Static landscapes without people",
+    "Low-energy or somber moments",
+    "Solo shots that feel disconnected from the group narrative"
+  ],
+  "music_structure": {
+    "phrases": "Intro, Build, Peak, Outro",
+    "accent_moments": "Beat hits at 3.72s, 6.5s, 10.22s, and 16.72s",
+    "ending_type": "Fade"
+  },
+  "total_duration": 21.035873,
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 3.72,
+      "duration": 3.72,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Camaraderie",
+      "shot_scale": "Medium",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Intro",
+      "shot_function": "Establish",
+      "relation_to_previous": "None",
+      "expected_hold": "Long",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Narrative-Shift",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Normal"
+      },
+      "continuity_hook": {
+        "opens": "Group posing in snow",
+        "resolves": "None",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 2,
+      "start": 3.72,
+      "end": 4.18,
+      "duration": 0.46,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Excitement",
+      "shot_scale": "CU",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Short",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Individual cheering",
+        "resolves": "Group posing",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 3,
+      "start": 4.18,
+      "end": 5.11,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Friendly",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Group waving",
+        "resolves": "Individual cheering",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 4,
+      "start": 5.11,
+      "end": 6.5,
+      "duration": 1.39,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Energetic",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Dancing in snowfall",
+        "resolves": "Group waving",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 5,
+      "start": 6.5,
+      "end": 6.97,
+      "duration": 0.47,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Playful",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Transition",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Short",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Staircase interaction",
+        "resolves": "Dancing in snowfall",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 6,
+      "start": 6.97,
+      "end": 8.36,
+      "duration": 1.39,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Free-spirited",
+      "shot_scale": "Wide",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Running through woods",
+        "resolves": "Staircase interaction",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 7,
+      "start": 8.36,
+      "end": 9.29,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Rowdy",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Cheering on bus",
+        "resolves": "Running through woods",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 8,
+      "start": 9.29,
+      "end": 10.22,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Adventurous",
+      "shot_scale": "Wide",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Zip-lining",
+        "resolves": "Cheering on bus",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 9,
+      "start": 10.22,
+      "end": 11.15,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Joyous",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Intimacy-Focus",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": true,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Indoor group dancing",
+        "resolves": "Zip-lining",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 10,
+      "start": 11.15,
+      "end": 12.07,
+      "duration": 0.92,
+      "media_type": "Video",
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Peaceful",
+      "shot_scale": "Wide",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Contrast",
+      "expected_hold": "Normal",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Narrative-Shift",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Sitting by stream",
+        "resolves": "Indoor group dancing",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Locked"
+    },
+    {
+      "id": 11,
+      "start": 12.07,
+      "end": 13.93,
+      "duration": 1.86,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Whimsical",
+      "shot_scale": "Wide",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Playing in snow at hotel",
+        "resolves": "Sitting by stream",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 12,
+      "start": 13.93,
+      "end": 14.86,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "Cozy",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Intimacy-Focus",
+      "arc_stage": "Build-up",
+      "shot_function": "Detail",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Indoor guitar session",
+        "resolves": "Playing in snow at hotel",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 13,
+      "start": 14.86,
+      "end": 15.79,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "United",
+      "shot_scale": "Wide",
+      "shot_scale_role": "World-Building",
+      "arc_stage": "Build-up",
+      "shot_function": "Establish",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Group outdoor pose with dog",
+        "resolves": "Indoor guitar session",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 14,
+      "start": 15.79,
+      "end": 16.72,
+      "duration": 0.93,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "Playful",
+      "shot_scale": "CU",
+      "shot_scale_role": "Action-Link",
+      "arc_stage": "Build-up",
+      "shot_function": "Action",
+      "relation_to_previous": "Continuation",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Snow interaction",
+        "resolves": "Group outdoor pose with dog",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 15,
+      "start": 16.72,
+      "end": 19.04,
+      "duration": 2.32,
+      "media_type": "Video",
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "Celebratory",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Intimacy-Focus",
+      "arc_stage": "Peak",
+      "shot_function": "Action",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Normal",
+      "temporal_weight": "Push",
+      "emotional_anchor": true,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Rhythmic-Snap",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Night dancing",
+        "resolves": "Snow interaction",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    },
+    {
+      "id": 16,
+      "start": 19.04,
+      "end": 21.035873,
+      "duration": 1.995873,
+      "media_type": "Video",
+      "energy": "Medium",
+      "motion": "Static",
+      "vibe": "Sentimental",
+      "shot_scale": "Medium",
+      "shot_scale_role": "Intimacy-Focus",
+      "arc_stage": "Outro",
+      "shot_function": "Button",
+      "relation_to_previous": "Payoff",
+      "expected_hold": "Normal",
+      "temporal_weight": "Breath",
+      "emotional_anchor": false,
+      "audio_driver": "Music-Rhythm",
+      "audio_priority": "Music > SFX",
+      "cut_motivation": "Narrative-Shift",
+      "transition_intent": {
+        "type": "Hard",
+        "mechanism": "None",
+        "strength": "Subtle"
+      },
+      "continuity_hook": {
+        "opens": "Final group pose at night",
+        "resolves": "Night dancing",
+        "type": "Physical-Action"
+      },
+      "camera_movement": "Handheld"
+    }
+  ],
+  "overall_reasoning": "The video follows a 'memory reel' editorial logic, where the narrative is driven by the emotional bond of a group of friends rather than a linear travel itinerary. The persistent text overlay acts as a thematic anchor, while the rhythmic hard cuts sync with the upbeat music to create a sense of high energy and a densely packed, joyful experience. The variety in shot scales and locations keeps the viewer engaged, while the consistent focus on group interaction reinforces the central message.",
+  "ideal_material_suggestions": [
+    "High-energy group interactions like dancing, cheering, or playing games.",
+    "A variety of settings within a single trip (e.g., transit, outdoors, cozy indoor spots).",
+    "Candid footage of laughter and expressive faces.",
+    "Activities that involve physical movement to maintain the edit's dynamic pace."
+  ],
+  "reference_audio": "original",
+  "audio_confidence": "Observed",
+  "_contract": {
+    "type": "reference",
+    "version": "12.1",
+    "source_hash": "5e3b08fbbce3ba7bb9fefe05514cfd54",
+    "fingerprint": "hc2d31bc3"
+  },
+  "_cache_version": "12.1",
+  "_cached_at": "2026-02-08 19:52:52"
+}

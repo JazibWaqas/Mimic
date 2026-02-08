@@ -567,36 +567,38 @@ def merge_audio_video(
         audio_path: Audio file to overlay
         output_path: Destination for merged video
     """
-    # P1 SAFEGUARD: Detect durations and pad audio if needed
+    # P1 SAFEGUARD: Detect durations and pad/trim audio to match video exactly
     try:
         video_duration = get_video_duration(video_path)
-        audio_duration = get_video_duration(audio_path)
     except Exception as e:
-        print(f"  [WARN] Could not detect durations, proceeding without padding: {e}")
+        print(f"  [WARN] Could not detect video duration, proceeding without padding/trim: {e}")
         video_duration = None
-        audio_duration = None
     
     cmd = [
         "ffmpeg",
         "-i", video_path,
         "-i", audio_path,
         "-c:v", "copy",  # Don't re-encode video (already encoded in concat step)
-        "-c:a", "aac",  # Re-encode audio to AAC
-        "-b:a", "192k",
-        "-map", "0:v:0",  # Take video from first input
-        "-map", "1:a:0",  # Take audio from second input
     ]
-    
-    # P1 SAFEGUARD: Audio padding if needed
-    if video_duration and audio_duration and audio_duration < video_duration:
-        pad_duration = video_duration - audio_duration
-        print(f"  [AUDIO PAD] Video is {pad_duration:.2f}s longer than audio - padding with silence")
-        # Use apad filter to pad audio with silence to match video duration
-        cmd.extend(["-af", f"apad=pad_dur={pad_duration:.3f}"])
-    
-    # P1 SAFEGUARD: Video duration is sacred, audio MUST NOT outlast it
-    if video_duration:
-        cmd.extend(["-t", f"{video_duration:.4f}"])
+
+    if video_duration is not None:
+        # Make the audio track exactly match the video duration.
+        # This avoids "silent tail" issues caused by AAC duration metadata drift.
+        cmd.extend([
+            "-filter_complex",
+            f"[1:a]apad,atrim=0:{video_duration:.4f},asetpts=N/SR/TB[a]",
+            "-map", "0:v:0",
+            "-map", "[a]",
+            "-c:a", "aac",
+            "-b:a", "192k",
+        ])
+    else:
+        cmd.extend([
+            "-map", "0:v:0",
+            "-map", "1:a:0",
+            "-c:a", "aac",
+            "-b:a", "192k",
+        ])
     
     # CRITICAL: Never use -shortest (video timing is sacred)
     # trim_to_shortest parameter is ignored for safety

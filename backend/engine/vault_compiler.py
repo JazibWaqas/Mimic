@@ -164,7 +164,8 @@ def compile_vault_reasoning(
         "edit_meta": {
             "duration_sec": blueprint.total_duration,
             "reference_type": blueprint.editing_style.lower().replace(" ", "_"),
-            "segment_count": len(blueprint.segments)
+            "segment_count": len(blueprint.segments),
+            "styling_applied": bool(getattr(blueprint, "style_config", None))
         },
         "library_health": library_health,
         "segments": segments,

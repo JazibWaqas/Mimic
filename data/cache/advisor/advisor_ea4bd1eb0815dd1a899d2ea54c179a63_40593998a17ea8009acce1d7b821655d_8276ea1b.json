@@ -1,0 +1,116 @@
+{
+  "text_overlay_intent": "The text 'For the stories we'll tell later' establishes a retrospective, legacy-building intent. It demands footage that feels like a 'core memory'—moments of high emotional resonance and shared experience that justify being recounted in the future.",
+  "dominant_narrative": "A high-energy retrospective of a brotherhood's journey, blending the awe of the landscape with the chaotic joy of shared experience.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "ADVENTURE",
+      "supporting_material": "Place-Nature, Object-Vehicle",
+      "intent_diluting_material": "Indoor pranks, high-intensity laughter",
+      "reasoning": "The intro must establish the 'where' and the 'how' of the journey. Using ADVENTURE-themed establishing shots of nature and travel creates the scale necessary for the personal stories to feel significant.",
+      "recommended_clips": [
+        "clip_162.mp4",
+        "clip_161.mp4",
+        "clip_142.mp4",
+        "clip_111.mp4",
+        "clip_141.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ADVENTURE",
+      "supporting_material": "People-Group, Activity-Travel",
+      "intent_diluting_material": "Static landscapes, solo shots without movement",
+      "reasoning": "This stage transitions from the environment to the inhabitants. It should favor movement—walking, riding, or exploring—to bridge the gap between the setting and the high-energy peak.",
+      "recommended_clips": [
+        "clip_107.mp4",
+        "clip_113.mp4",
+        "clip_115.mp4",
+        "clip_122.mp4",
+        "clip_150.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "ACTION, People-Group, Activity-Leisure",
+      "intent_diluting_material": "Empty landscapes, slow pans, quiet contemplation",
+      "reasoning": "The peak is the heart of the 'stories.' It requires a dense, syncopated montage of laughter, physical interaction, and group energy. This is where the 'Memory Reel' style is most aggressive.",
+      "recommended_clips": [
+        "clip_121.mp4",
+        "clip_104.mp4",
+        "clip_109.mp4",
+        "clip_134.mp4",
+        "clip_135.mp4",
+        "clip_136.mp4",
+        "clip_139.mp4",
+        "clip_145.mp4",
+        "clip_154.mp4",
+        "clip_155.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Place-Nature, Narrative-Contrast",
+      "intent_diluting_material": "High-energy shouting, rapid movement",
+      "reasoning": "The 'Release' functions as the final look back. It should return to the landscape but with a sense of completion, ideally using golden hour or sunset imagery to signify the end of the day/trip.",
+      "recommended_clips": [
+        "clip_131.mp4",
+        "clip_151.mp4",
+        "clip_164.mp4",
+        "clip_165.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy group footage perfectly suited for the JOY-driven peak.",
+      "Strong variety of travel-related movement (van, boat, plane, hiking) to support the ADVENTURE theme.",
+      "Multiple clips of genuine, high-intensity laughter which directly fulfill the 'stories we'll tell' intent."
+    ],
+    "editorial_tradeoffs": [
+      "The scarcity of Low-energy footage means the PEACE-driven intro and outro must rely on shorter durations of Medium-energy nature clips.",
+      "Many high-energy clips are indoor/night-based, requiring careful balancing against the 'Golden Hour' reference requirement."
+    ],
+    "constraint_gaps": [
+      "Limited 'Bus/Transportation' shots beyond the van and plane; the edit will have to lean heavily on the van footage (clip_121) to satisfy this 'Should-Have' content."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize the contrast between the 'Vastness' of the Pakistani landscape and the 'Intimacy' of the group's laughter. By bookending the chaotic, high-energy JOY of the peak with the ADVENTURE and PEACE of the natural world, we transform a simple trip montage into a nostalgic memory reel.",
+  "remake_strategy": "To achieve a true Director's Cut, I would integrate more slow-motion close-ups of individual friends during golden hour to heighten the 'Nostalgic' tone. Additionally, capturing more rhythmic, percussive sounds from the travel itself (wheels on road, plane engines) would better support the syncopated pacing.",
+  "primary_narrative_subject": "People-Group",
+  "allowed_supporting_subjects": [
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.9,
+  "editorial_motifs": [
+    {
+      "trigger": "Transportation (Van, Car, Plane)",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Uncontrollable Laughter",
+      "desired_continuity": "Emotional-Release",
+      "priority": "High"
+    },
+    {
+      "trigger": "Vast Landscapes to Intimate Faces",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Sunset/Golden Hour",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-08T15:05:37.412588"
+}

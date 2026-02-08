@@ -1,0 +1,139 @@
+{
+  "header": "This 16-second memory reel is a high-speed rhythmic edit that prioritizes momentum over narrative depth. The library's lack of energy variety forced me to lean on structural anchors to keep the pace from falling apart.",
+  "executive_summary": [
+    "The edit maintains a tight rhythmic flow despite a significant lack of high-energy payoff shots.",
+    "I used structural anchors to bridge gaps where the library ran dry on specific motifs.",
+    "Medium and low energy clips are in short supply, forcing a reliance on whatever was available to fill the timeline.",
+    "Semantic accuracy was sacrificed in several key spots to ensure the pacing didn't collapse.",
+    "The final cut is technically sound but limited by the narrow range of the provided footage."
+  ],
+  "advisor": {
+    "hero": "Your library is starving for variety, which turned this edit into a survival exercise in pacing rather than a narrative win.",
+    "body": "We hit major bottlenecks with medium-energy footage and payoff shots. Because the library was 'limited,' I had to use structural anchors like clip_015 and clip_019 to hold the timeline together, even though they likely didn't match the 'adventure' vibe I was looking for. The technical score remains high because the sync is tight, but the emotional impact is capped by the footage scarcity."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to establish a fast-paced travel and adventure sequence to open the reel.",
+      "decision": "Selected these clips because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted a reflective moment that still felt like an adventure to transition the energy.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with adventure footage would have landed the intent better.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 6,
+      "what_i_tried": "I was looking for a golden, adventurous highlight to serve as a primary visual hook.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with adventure footage would have landed the intent better.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "I needed a long sequence of high-energy social and musical beats to maintain the reel's intensity.",
+      "decision": "Locked in these clips because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 24,
+      "what_i_tried": "I wanted a nostalgic, peaceful closing shot to resolve the high-energy sequence.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with peace footage would have landed the intent better.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "missing_motifs"
+      ]
+    }
+  ],
+  "key_decision_stream": [
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted a reflective moment that still felt like an adventure to transition the energy.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with adventure footage would have landed the intent better.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 6,
+      "what_i_tried": "I was looking for a golden, adventurous highlight to serve as a primary visual hook.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with adventure footage would have landed the intent better.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 24,
+      "what_i_tried": "I wanted a nostalgic, peaceful closing shot to resolve the high-energy sequence.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "Replacing this with peace footage would have landed the intent better.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    }
+  ],
+  "friction_log": [
+    "I started with high confidence in the sync, but immediately hit a wall with the lack of 'adventure' motifs.",
+    "By the middle of the edit, the scarcity of medium-energy clips forced me to prioritize the beat over the actual content.",
+    "I ended the process feeling that the final payoff was compromised because the library lacked a true 'peace' motif."
+  ],
+  "post_mortem": {
+    "worked": "The sync is tight and the vintage filmic look unifies the disparate clips into a cohesive-feeling reel.",
+    "didnt": "The narrative feels thin because I was forced to use filler where I wanted high-impact adventure and peace motifs.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Shoot more 'adventure' themed footage to replace the structural placeholders in the first half.",
+    "Capture more medium-energy transition shots to avoid the current 'all or nothing' energy spikes.",
+    "Find a true 'peace' motif shot to give the ending the emotional weight it currently lacks."
+  ],
+  "clip_suggestions": [
+    "Adding more adventure-themed clips would help replace the current placeholders in segments 5 and 6.",
+    "The library needs more medium-energy footage to bridge the gap between high-energy peaks.",
+    "Including specific 'peace' motif shots would allow for a more resonant ending.",
+    "Adding more 'payoff' shots would give the edit the high-impact moments it's currently missing.",
+    "The library is currently 'limited,' so expanding the variety of motifs would improve future narrative flow."
+  ],
+  "technical": [
+    "Applied a vintage filmic LUT to unify the disparate clip qualities across the 24 segments.",
+    "Used syncopated pacing to maintain energy when the visual content was lacking.",
+    "Maintained tight sync throughout to ensure the 16-second duration felt intentional and professional."
+  ]
+}

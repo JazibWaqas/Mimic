@@ -8,6 +8,7 @@ v14.0 ADVISOR-AS-EDITOR VERSION:
 """
 
 import json
+import time
 from typing import List, Dict, Optional, Tuple
 from dataclasses import dataclass
 
@@ -22,7 +23,7 @@ from models import (
     StyleBlueprint,
     Segment
 )
-from engine.brain import initialize_gemini, GeminiConfig, rate_limiter, _handle_rate_limit_error
+from engine.brain import initialize_gemini, GeminiConfig, rate_limiter, _handle_rate_limit_error, _parse_json_response
 from engine.gemini_moment_prompt import CONTEXTUAL_MOMENT_PROMPT
 
 
@@ -295,47 +296,56 @@ def select_moment_with_advisor(
     )
     
     # Call Gemini
-    try:
-        model = initialize_gemini()
-        
-        rate_limiter.wait_if_needed()
-        response = model.generate_content([prompt])
-        
-        # Check for blocked response
-        if not response.candidates or response.candidates[0].finish_reason != 1:
-            print(f"    [Advisor Moment Selection blocked by Gemini]")
-            return None
-        
-        # Parse response
-        selection_data = json.loads(response.text)
-        
-        # Build ContextualMomentSelection
-        selection_candidate = MomentCandidate(
-            clip_filename=selection_data["selection"]["clip_filename"],
-            moment_energy_level=selection_data["selection"]["moment_energy_level"],
-            start=selection_data["selection"]["clip_start"],
-            end=selection_data["selection"]["clip_end"],
-            duration=selection_data["selection"]["duration"],
-            moment_role="",  # Would need to look up from clip
-            stable_moment=True,  # Would need to look up from clip
-            reason=selection_data["reasoning"]
-        )
-        
-        return ContextualMomentSelection(
-            segment_id=segment.id,
-            selection=selection_candidate,
-            reasoning=selection_data["reasoning"],
-            confidence=selection_data["confidence"],
-            alternatives_considered=selection_data.get("alternatives_considered", []),
-            continuity_notes=selection_data.get("continuity_notes", "")
-        )
-        
-    except Exception as e:
-        if _handle_rate_limit_error(e, "moment selection"):
-            # Retry after rotation (would need proper retry loop in production)
-            pass
-        print(f"    [Advisor Moment Selection Failed: {e}]")
-        return None
+    last_error: Exception | None = None
+    for attempt in range(GeminiConfig.MAX_RETRIES):
+        try:
+            model = initialize_gemini()
+            current_prompt = prompt
+            if attempt > 0:
+                current_prompt = f"""{prompt}
+
+CRITICAL: Your previous response was malformed JSON.
+Return ONLY valid JSON matching the schema EXACTLY.
+Do not add commentary. Do not explain. Only JSON.
+"""
+
+            rate_limiter.wait_if_needed()
+            response = model.generate_content([current_prompt])
+
+            if not response.candidates or response.candidates[0].finish_reason != 1:
+                raise ValueError("Advisor Moment Selection blocked by Gemini")
+
+            selection_data = _parse_json_response(response.text)
+
+            selection_candidate = MomentCandidate(
+                clip_filename=selection_data["selection"]["clip_filename"],
+                moment_energy_level=selection_data["selection"]["moment_energy_level"],
+                start=selection_data["selection"]["clip_start"],
+                end=selection_data["selection"]["clip_end"],
+                duration=selection_data["selection"]["duration"],
+                moment_role="",
+                stable_moment=True,
+                reason=selection_data["reasoning"]
+            )
+
+            return ContextualMomentSelection(
+                segment_id=segment.id,
+                selection=selection_candidate,
+                reasoning=selection_data["reasoning"],
+                confidence=selection_data["confidence"],
+                alternatives_considered=selection_data.get("alternatives_considered", []),
+                continuity_notes=selection_data.get("continuity_notes", "")
+            )
+
+        except Exception as e:
+            last_error = e
+            if _handle_rate_limit_error(e, "moment selection"):
+                continue
+            if attempt == GeminiConfig.MAX_RETRIES - 1:
+                raise
+            time.sleep(GeminiConfig.RETRY_DELAY)
+
+    raise RuntimeError(f"Moment selection failed after retries: {last_error}")
 
 
 def _find_phrase_boundaries(beat_grid: List[float]) -> List[float]:
