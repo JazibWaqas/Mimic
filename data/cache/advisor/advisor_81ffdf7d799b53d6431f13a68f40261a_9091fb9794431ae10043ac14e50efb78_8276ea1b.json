@@ -1,0 +1,111 @@
+{
+  "text_overlay_intent": "The phrase 'THE DARKNESS | THE NIGHT OF' demands a visual narrative centered on the nocturnal aesthetic, emphasizing the isolation of the driver and the high-contrast battle against the environment. It implies that the race is not just a sporting event, but a psychological confrontation with the night itself.",
+  "dominant_narrative": "A high-octane exploration of the dangerous intersection between human precision and mechanical power under the unforgiving lights of a night race.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Atmospheric track environments, night-time urban establishing shots, and mechanical anticipation.",
+      "intent_diluting_material": "Bright daylight racing, cheerful fan interactions, or high-speed chaotic movement before the mood is set.",
+      "reasoning": "The intro must establish the 'Darkness' motif. We need to feel the weight of the night and the technical preparation before the kinetic energy takes over.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip64.mp4",
+        "clip63.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Technical preparation, wind tunnel testing, driver focus, and escalating speed on the track.",
+      "intent_diluting_material": "Static interviews or repetitive wide shots that don't advance the sense of mounting pressure.",
+      "reasoning": "This stage should bridge the gap between the atmospheric intro and the chaotic peak by showing the 'how' behind the 'wow'—the training and the technology.",
+      "recommended_clips": [
+        "clip52.mp4",
+        "clip53.mp4",
+        "clip65.mp4",
+        "clip69.mp4",
+        "clip67.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Crashes, near-misses, fire, high-speed overtakes, and visceral onboard perspectives.",
+      "intent_diluting_material": "Slow-paced transitions or wide shots that distance the viewer from the danger.",
+      "reasoning": "The peak must deliver on the 'danger' promised in the narrative message. It requires the most aggressive movement and the highest stakes visuals available.",
+      "recommended_clips": [
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip58.mp4",
+        "clip78.mp4",
+        "clip55.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Reflective driver moments, post-race exhaustion, or the track returning to silence.",
+      "intent_diluting_material": "Continued high-energy racing or loud, celebratory music cues that disrupt the 'final spin' or 'button' feel.",
+      "reasoning": "The edit needs a moment of release. After the peak intensity, we must ground the experience back in the human or environmental reality of the night ending.",
+      "recommended_clips": [
+        "clip61.mp4",
+        "clip77.mp4",
+        "clip50.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage specifically at night.",
+      "Strong selection of 'Peak' content including crashes and high-speed maneuvers.",
+      "Excellent technical/mechanical detail shots (wind tunnel, start lights)."
+    ],
+    "editorial_tradeoffs": [
+      "The scarcity of 'Low' energy clips means the 'Intro' and 'Outro' will have to rely on 'Medium' energy clips or the few available 'Low' clips, potentially making the start feel faster than the reference."
+    ],
+    "constraint_gaps": [
+      "Lack of intimate driver close-ups (eyes/hands) to fully ground the 'INTENSITY' vibe during the build-up.",
+      "Limited 'PEACE' or 'LIFESTYLE' content to provide a truly quiet, reflective outro."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize the 'INTENSITY' of the night race by leveraging the high-contrast, high-energy racing clips. We will use the technical 'Build' clips to create a sense of inevitable momentum, leading into a 'Peak' that emphasizes the danger of the sport through crashes and onboard footage. The narrative will be anchored by the vehicle, but humanized by the driver's presence in the build and aftermath.",
+  "remake_strategy": "To achieve a true Director's Cut, I would source additional ultra-slow-motion macro shots of driver sweat and eyes to heighten the 'INTENSITY' vibe. I would also include more 'PEACE' category shots of an empty, dark track to bookend the film, reinforcing the 'THE DARKNESS' theme.",
+  "primary_narrative_subject": null,
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "The Darkness (Night shots)",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    },
+    {
+      "trigger": "Mechanical details (Wheels, lights, wings)",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Impact or Crash",
+      "desired_continuity": "Emotional-Release",
+      "priority": "High"
+    },
+    {
+      "trigger": "Driver focus/eyes",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-08T20:28:01.278704"
+}
