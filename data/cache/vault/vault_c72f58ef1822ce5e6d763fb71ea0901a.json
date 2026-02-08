@@ -1,86 +1,86 @@
 {
-  "header": "I’ve delivered a 25.1-second cinematic montage across 43 segments. The edit is technically sound, but I had to fight the library to keep the energy up.",
+  "header": "I've assembled a 25-second cinematic montage across 43 segments. The goal was a high-impact edit, but I had to fight against a library that's running on empty.",
   "advisor": {
-    "hero": "Your library is starving for energy; I had to force an aggressive pace just to keep this from feeling flat.",
-    "body": "We are missing wide shots and payoff moments. Without those anchors, I’m just cycling through close-ups to hide the lack of scale and impact."
+    "hero": "The library is starving for energy; I had to fake the intensity because the shots just weren't there.",
+    "body": "We are missing wide shots and payoff moments. This forced me into an aggressive pacing style to hide the fact that the footage lacks scale and emotional resolution."
   },
   "decision_stream": [
     {
       "segment_id": 1,
-      "what_i_tried": "I wanted to build anticipation and focus in the opening beats.",
-      "decision": "Selected because no better alternative was available in the library, preserving the edit's momentum.",
+      "what_i_tried": "I wanted to build anticipation and focus right out of the gate.",
+      "decision": "Selected because no better alternative was available in the library.",
       "what_if": "No stronger alternative existed."
     },
     {
       "segment_id": 3,
-      "what_i_tried": "I wanted to ramp up the intensity here to hit a peak.",
-      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit, preventing a pacing collapse despite the semantic mismatch.",
-      "what_if": "This would have been replaced with intensity if the library had it."
+      "what_i_tried": "I needed a high-intensity moment to anchor the opening sequence.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit. I had to use this clip because the library lacked the requested intensity motif.",
+      "what_if": "Replace with intensity."
     },
     {
       "segment_id": 4,
-      "what_i_tried": "I needed a long string of technical, kinetic, and atmospheric filler to bridge the gaps.",
-      "decision": "Locked in because no better alternative was available in the library, preserving the edit's momentum.",
+      "what_i_tried": "A long string of technical, kinetic, and atmospheric shots to build the world.",
+      "decision": "Locked in because no better alternative was available in the library, preventing a pacing collapse.",
       "what_if": "This slot had no viable upgrade."
     },
     {
       "segment_id": 19,
-      "what_i_tried": "I needed a character beat to land and ground the sequence.",
-      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit, preventing a pacing collapse despite the semantic mismatch.",
-      "what_if": "This would have been replaced with action if the library had it."
+      "what_i_tried": "I wanted a character beat here to ground the action.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit. This was a compromise because the library lacked the requested action motif.",
+      "what_if": "Replace with action."
     },
     {
       "segment_id": 20,
-      "what_i_tried": "I used a series of detail and speed shots to maintain the aggressive tempo.",
+      "what_i_tried": "A sequence of detail and hype shots to maintain the build-up.",
       "decision": "Used because no better alternative was available in the library, preserving the edit's momentum.",
       "what_if": "No stronger alternative existed."
     },
     {
       "segment_id": 27,
-      "what_i_tried": "I wanted to show character emotion to add some heart to the montage.",
-      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit, preventing a pacing collapse despite the semantic mismatch.",
-      "what_if": "This would have been replaced with joy if the library had it."
+      "what_i_tried": "I looked for a character moment that conveyed specific emotion.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit. I used this because the library lacked the requested joy motif.",
+      "what_if": "Replace with joy."
     },
     {
       "segment_id": 28,
-      "what_i_tried": "I cycled through more aesthetic and cinematic filler to keep the clock moving.",
-      "decision": "Selected because no better alternative was available in the library, preserving the edit's momentum.",
+      "what_i_tried": "Filler segments used to bridge the gap between character beats.",
+      "decision": "Selected because no better alternative was available in the library, preventing a pacing collapse.",
       "what_if": "This slot had no viable upgrade."
     },
     {
       "segment_id": 35,
-      "what_i_tried": "I needed another character moment to reinforce the narrative thread.",
-      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit, preventing a pacing collapse despite the semantic mismatch.",
-      "what_if": "This would have been replaced with joy if the library had it."
+      "what_i_tried": "Another attempt at a character beat to provide narrative structure.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit. The choice was made because the library lacked the requested joy motif.",
+      "what_if": "Replace with joy."
     },
     {
       "segment_id": 36,
-      "what_i_tried": "I closed out the edit with a final run of hype and preparation shots.",
+      "what_i_tried": "Final run of hype and preparation shots leading to the outro.",
       "decision": "Locked in because no better alternative was available in the library, preserving the edit's momentum.",
       "what_if": "No stronger alternative existed."
     }
   ],
   "friction_log": [
-    "Confidence was high at the start as I mapped out the anticipation and focus beats.",
-    "Middle segments became a struggle when the library failed to provide the action and joy motifs needed for character depth.",
-    "I ended by leaning into the aggressive pacing to mask the missing payoff shots and maintain technical sync."
+    "Started with high confidence in the sync, but immediately hit a wall with the lack of wide shots.",
+    "Middle of the edit became a struggle to maintain momentum without any real payoff shots to land on.",
+    "Ended by leaning heavily on aggressive pacing to mask the fact that we're recycling the same low-energy motifs."
   ],
   "post_mortem": {
-    "worked": "The relentless pacing and tight sync kept the momentum alive despite the footage gaps.",
-    "didnt": "The lack of wide shots and payoff moments means the edit never truly breathes or resolves.",
+    "worked": "The tight sync and teal-orange filmic grade successfully unified a very fragmented set of clips.",
+    "didnt": "The edit feels claustrophobic because there are zero wide shots to establish scale, and the 'payoff' moments feel unearned.",
     "responsibility": {
       "vibe": "library",
       "emotion": "library"
     }
   },
   "next_steps": [
-    "Shoot wide shots to give the edit some much-needed scale.",
-    "Capture high-energy payoff moments to resolve the tension I've built.",
-    "Find more 'joy' and 'action' motifs to fix the character beats that are currently just placeholders."
+    "Capture wide shots to provide visual relief and scale.",
+    "Record high-energy payoff footage to give the aggressive pacing a destination.",
+    "Source specific 'joy' and 'intensity' motifs to replace the structural placeholders."
   ],
   "technical": [
-    "Applied a teal-orange filmic LUT to unify the disparate clips across the 43 segments.",
-    "Maintained a relentless pace to compensate for the low-energy footage profile.",
-    "Kept all 43 segments tightly synced to the rhythmic grid to ensure nominal fidelity."
+    "Applied a relentless pacing strategy to compensate for the scarcity of high-energy footage.",
+    "Used a teal-orange filmic LUT to create visual consistency across disparate clip sources.",
+    "Maintained nominal sync fidelity to ensure the edit felt intentional despite the library gaps."
   ]
 }

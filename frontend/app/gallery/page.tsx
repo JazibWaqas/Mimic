@@ -278,13 +278,12 @@ export default function LibraryPage() {
                 {/* Search & Filter - Compact */}
                 <div className="flex gap-3 items-center">
                     <div className="relative flex-1">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
                         <input
                             type="text"
                             placeholder="Search files..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full h-10 bg-white/[0.03] border border-white/10 rounded-lg pl-11 pr-4 text-sm text-white placeholder:text-slate-600 outline-none focus:border-indigo-500/40 transition-all"
+                            className="w-full h-10 bg-white/[0.03] border border-white/10 rounded-lg pl-4 pr-4 text-sm text-white placeholder:text-slate-600 outline-none focus:border-indigo-500/40 transition-all"
                         />
                     </div>
 

@@ -1,74 +1,74 @@
 {
-  "header": "This is a 15-second music video edit across 22 segments where I had to force an aggressive pace to mask a significant lack of high-energy footage.",
+  "header": "This is a 15-second music video edit built across 22 segments. I aimed for a high-energy cut, but the library forced me to lean into aggressive pacing to hide a lack of variety.",
   "advisor": {
-    "hero": "The library is starving for medium-energy clips and payoff shots, so I had to redline the pacing just to keep the edit from feeling empty.",
-    "body": "We are missing the 'fire' motif entirely and facing a massive bottleneck with medium-energy footage. I leaned on high-frequency cuts to maintain momentum, but without actual payoff shots, the edit is working harder than the footage allows."
+    "hero": "The library is starving for payoff. I had to sprint through the edit just to keep it from feeling empty because the 'fire' and high-energy shots simply aren't there.",
+    "body": "We are dealing with a medium-energy scarcity. Without payoff shots or the 'fire' motif, I've used a relentless pacing strategy to manufacture intensity where the footage fails to provide it."
   },
   "decision_stream": [
     {
       "segment_id": 1,
-      "what_i_tried": "I wanted to establish the preparation and focus of the piece.",
-      "decision": "Locked in clip_004.mp4 and clip_001.mp4 because no better alternative was available in the library.",
+      "what_i_tried": "I wanted to establish the preparation and focus for the opening.",
+      "decision": "Used clip_004.mp4 and clip_001.mp4 because no better alternative was available in the library.",
       "what_if": "No stronger alternative existed."
     },
     {
       "segment_id": 3,
-      "what_i_tried": "I wanted to ramp up the intensity here to match the track.",
-      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit, preventing a pacing collapse.",
-      "what_if": "I would have replaced this with an action shot if the library hadn't failed me."
+      "what_i_tried": "I needed a high-intensity beat here to drive the energy up.",
+      "decision": "Deployed as a structural anchor clip_003.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif if the library had it."
     },
     {
       "segment_id": 4,
-      "what_i_tried": "I needed to bridge the gap with action, technical, and speed shots.",
-      "decision": "Selected these clips because no better alternative was available in the library.",
+      "what_i_tried": "I looked for action and speed to maintain the flow.",
+      "decision": "Locked in clips 005, 006, and 007 because no better alternative was available in the library.",
       "what_if": "This slot had no viable upgrade."
     },
     {
       "segment_id": 7,
-      "what_i_tried": "I needed a hit of intensity to keep the momentum from stalling.",
-      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit, preserving the edit's momentum.",
-      "what_if": "I would have swapped this for an action shot if one existed in the library."
+      "what_i_tried": "I wanted another hit of intensity to keep the momentum from stalling.",
+      "decision": "Forced into the slot clip_008.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an action motif if the library had it."
     },
     {
       "segment_id": 8,
-      "what_i_tried": "I used a string of technical, thrill, and competition shots to maintain the rhythm.",
-      "decision": "Used these clips because no better alternative was available in the library.",
+      "what_i_tried": "I needed to bridge the technical and thrill elements of the sequence.",
+      "decision": "Selected clips 009, 014, 018, 010, and 017 because no better alternative was available in the library.",
       "what_if": "No stronger alternative existed."
     },
     {
       "segment_id": 13,
-      "what_i_tried": "I wanted to signal a moment of danger.",
-      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit, despite the semantic mismatch.",
-      "what_if": "I would have used an intensity motif here if the library wasn't empty."
+      "what_i_tried": "I wanted to signal danger to create a narrative peak.",
+      "decision": "Used out of necessity clip_011.mp4 to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "I would have replaced this with an intensity motif if the library had it."
     },
     {
       "segment_id": 14,
-      "what_i_tried": "I closed the edit with a sequence of chaos, catastrophe, and rapid flashes.",
-      "decision": "Used these clips because no better alternative was available in the library.",
+      "what_i_tried": "I needed a rapid-fire series of flashes to close out the edit.",
+      "decision": "Locked in the remaining clips from 019 to 013 because no better alternative was available in the library.",
       "what_if": "This slot had no viable upgrade."
     }
   ],
   "friction_log": [
-    "Started with high confidence during the preparation phase, though the missing fire motifs were an immediate red flag.",
-    "Confidence dipped in the middle as I realized I was forcing the pace just to hide the lack of payoff shots.",
-    "Ended with high technical confidence because the sync is tight, even if the library let the narrative down."
+    "Started with high confidence in the technical setup, but immediately hit a wall with the lack of 'fire' motifs.",
+    "Mid-edit, I had to pivot to aggressive pacing to compensate for the medium-energy bottleneck in the library.",
+    "Finished with a tight sync, but the edit feels forced because the library couldn't deliver the necessary payoffs."
   ],
   "post_mortem": {
-    "worked": "The technical sync is tight and the relentless pacing successfully masks the fact that we're missing key motifs.",
-    "didnt": "The edit lacks a real emotional payoff because the library is missing the 'fire' and high-energy shots required for this genre.",
+    "worked": "The rhythmic continuity is solid and the sync is tight despite the footage gaps.",
+    "didnt": "The edit lacks a real payoff because the library is missing high-energy 'fire' shots and actual payoff moments.",
     "responsibility": {
       "vibe": "library",
       "emotion": "library"
     }
   },
   "next_steps": [
-    "Source or shoot high-energy 'fire' motifs to fill the current library gap.",
-    "Capture specific payoff shots to resolve the tension built by the aggressive pacing.",
-    "Expand the library's medium-energy category to avoid forcing the pace in future edits."
+    "Shoot or source high-energy 'fire' motifs to fill the current library gap.",
+    "Capture specific payoff shots to resolve the aggressive pacing with actual visual impact.",
+    "Expand the library's medium-energy pool to avoid forcing the edit into a relentless speed."
   ],
   "technical": [
     "Applied a filmic commercial LUT to unify the disparate library clips.",
-    "Maintained a relentless pacing strategy to compensate for the scarcity of medium-energy footage.",
-    "Ensured every cut was tightly synced to the reference track's rhythm for nominal fidelity."
+    "Maintained a relentless pacing rhythm to mask the scarcity of high-quality motifs.",
+    "Ensured every cut is tightly synced to the music video reference."
   ]
 }

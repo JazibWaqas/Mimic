@@ -15,7 +15,7 @@ export function Header() {
     const pathname = usePathname();
 
     return (
-        <header className="w-full z-50 py-6 px-6 md:px-12 bg-transparent">
+        <header className="w-full z-50 py-4 px-6 md:px-12 bg-transparent">
             <div className="max-w-[1700px] mx-auto flex items-center justify-between">
                 {/* Brand */}
                 <Link href="/" className="flex items-center gap-4 group">

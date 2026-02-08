@@ -63,6 +63,7 @@ export default function VaultPage() {
     // Module expansion states
     const [intelExpanded, setIntelExpanded] = useState(true);
 
+    const [showAllDecisions, setShowAllDecisions] = useState(false);
     const [isStylingOpen, setIsStylingOpen] = useState(false);
     const [isStylingLoading, setIsStylingLoading] = useState(false);
 
@@ -125,23 +126,62 @@ export default function VaultPage() {
         fetchIntel();
     }, [selectedItem, viewMode]);
 
-    // Auto-scroll decision list
-    useEffect(() => {
-        if (viewMode === "results" && intelligence?.edl?.decisions) {
-            const activeIdx = intelligence.edl.decisions.findIndex((d: any) =>
-                currentTime >= d.timeline_start && currentTime <= d.timeline_end
-            );
-            if (activeIdx !== -1 && decisionListRef.current) {
-                const activeEl = decisionListRef.current.children[activeIdx] as HTMLElement;
-                if (activeEl) {
-                    decisionListRef.current.scrollTo({
-                        top: activeEl.offsetTop - 40,
-                        behavior: "smooth"
-                    });
-                }
-            }
-        }
-    }, [currentTime, intelligence, viewMode]);
+    // Filter key decisions based on intelligence criteria
+    const keyDecisions = useMemo(() => {
+        if (!intelligence?.vault_report?.decision_stream) return [];
+        
+        return intelligence.vault_report.decision_stream.filter((decision: any) => {
+            // Key decision criteria:
+            // 1. Has counterfactual (what_if)
+            // 2. Decision indicates constraint/compromise
+            // 3. Structural importance
+            const hasCounterfactual = decision.what_if && 
+                !decision.what_if.toLowerCase().includes('no stronger alternative') && 
+                !decision.what_if.toLowerCase().includes('no viable upgrade');
+            
+            const isCompromise = decision.decision.toLowerCase().includes('necessity') ||
+                decision.decision.toLowerCase().includes('forced') ||
+                decision.decision.toLowerCase().includes('compromise') ||
+                decision.decision.toLowerCase().includes('structural');
+            
+            return hasCounterfactual || isCompromise;
+        });
+    }, [intelligence?.vault_report?.decision_stream]);
+
+    const displayDecisions = showAllDecisions ? 
+        (intelligence?.edl?.decisions || []) : 
+        (intelligence?.vault_report?.decision_stream || []);
+    const edlTimingMap = useMemo(() => {
+        const map = new Map<number, { start: number; end: number }>();
+
+        intelligence?.edl?.decisions?.forEach((d: any) => {
+            map.set(d.segment_id, {
+                start: d.timeline_start,
+                end: d.timeline_end
+            });
+        });
+
+        return map;
+    }, [intelligence?.edl?.decisions]);
+
+    // Auto-scroll decision list - REMOVED for better UX
+    // useEffect(() => {
+    //     if (viewMode === "results" && intelligence?.vault_report?.decision_stream) {
+    //         const activeIdx = intelligence.vault_report.decision_stream.findIndex((decision: any) => {
+    //             const timing = edlTimingMap.get(decision.segment_id);
+    //             return timing && currentTime >= timing.start && currentTime <= timing.end;
+    //         });
+    //         if (activeIdx !== -1 && decisionListRef.current) {
+    //             const activeEl = decisionListRef.current.children[activeIdx] as HTMLElement;
+    //             if (activeEl) {
+    //                 activeEl.scrollIntoView({
+    //                     behavior: "smooth",
+    //                     block: "center"
+    //                 });
+    //             }
+    //         }
+    //     }
+    // }, [currentTime, intelligence, viewMode, edlTimingMap]);
 
     const videoUrl = useMemo(() => {
         if (!selectedItem) return "";
@@ -177,7 +217,7 @@ export default function VaultPage() {
         <div className="min-h-screen bg-[#08090a] text-slate-100 flex flex-col overflow-hidden">
 
             {/* STAGE HEADER: Netflix-Deep Glass */}
-            <header className="h-20 flex items-center justify-between px-12 bg-[#08090a]/80 backdrop-blur-2xl border-b border-white/[0.03] shrink-0 z-[100]">
+            <header className="h-14 flex items-center justify-between px-12 bg-[#08090a]/80 backdrop-blur-2xl border-b border-white/[0.03] shrink-0 z-[100]">
                 <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2">
                         <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
@@ -187,14 +227,13 @@ export default function VaultPage() {
 
                 <div className="flex-1 max-w-lg mx-auto">
                     <div className="relative group">
-                        <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-3xl rounded-2xl border border-white/5 group-focus-within:border-indigo-500/20 group-focus-within:bg-white/[0.04] transition-all duration-700" />
-                        <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 group-focus-within:text-indigo-400 z-10 transition-colors" />
+                        <div className="absolute inset-0 bg-white/[0.03] backdrop-blur-3xl rounded-3xl border border-white/5 group-focus-within:border-indigo-500/20 group-focus-within:bg-white/[0.05] transition-all duration-700" />
                         <input
                             type="text"
                             placeholder="Search library..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="relative w-full bg-transparent py-3 pl-12 pr-4 text-[11px] font-medium text-white placeholder-slate-700 outline-none z-10"
+                            className="relative w-full bg-transparent py-2 pl-4 pr-4 text-[11px] font-normal text-white placeholder-slate-600 outline-none z-10"
                         />
                     </div>
                 </div>
@@ -275,10 +314,10 @@ export default function VaultPage() {
                     <div className="max-w-[1500px] mx-auto w-full flex gap-10 items-start">
 
                         {/* LEFT: Video Stage (Increased height for cinematic feel) */}
-                        <div className="flex-1 flex flex-col gap-10 min-w-0">
+                        <div className="flex-1 flex flex-col gap-6 min-w-0 -mt-4">
                             <div className="relative w-full max-w-[850px] mx-auto group">
                                 <div className={cn("video-aura", isPlaying && "video-aura-active animate-pulse-vibrant")} />
-                                <div className="relative aspect-[16/12] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
+                                <div className="relative aspect-[14/12] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
                                     {selectedItem ? (
                                         <video
                                             ref={videoRef}
@@ -411,46 +450,187 @@ export default function VaultPage() {
                                         <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
                                         <h3 className="text-[11px] font-black text-white uppercase tracking-[0.4em]">Decision Stream</h3>
                                     </div>
-                                    <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10">
-                                        <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">{intelligence?.edl?.decisions?.length || 0} Points</span>
+                                    <div className="flex items-center gap-3">
+                                        <div className="px-3 py-1 rounded-lg bg-white/5 border border-white/10">
+                                            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
+                                                {showAllDecisions ? "All" : "Key"} {displayDecisions.length} / {intelligence?.edl?.decisions?.length || 0}
+                                            </span>
+                                        </div>
+                                        <button
+                                            onClick={() => setShowAllDecisions(!showAllDecisions)}
+                                            className={cn(
+                                                "px-2 py-1 rounded-md transition-colors",
+                                                showAllDecisions 
+                                                    ? "bg-white/10 border-white/20 hover:bg-white/15"
+                                                    : "bg-indigo-500/15 border-indigo-500/30 hover:bg-indigo-500/25"
+                                            )}
+                                        >
+                                            <span className={cn(
+                                                "text-[7px] font-black uppercase tracking-widest",
+                                                showAllDecisions ? "text-slate-400" : "text-indigo-400"
+                                            )}>
+                                                {showAllDecisions ? "All" : "Key"}
+                                            </span>
+                                        </button>
                                     </div>
                                 </div>
 
-                                <div ref={decisionListRef} className="flex-1 overflow-y-auto p-7 space-y-5 custom-scrollbar-thin">
-                                    {!intelligence?.edl?.decisions?.length ? (
+                                <div ref={decisionListRef} className="flex-1 overflow-y-auto p-7 space-y-4 custom-scrollbar-thin">
+                                    {!displayDecisions.length ? (
                                         <div className="h-full flex flex-col items-center justify-center opacity-20 text-center px-12">
                                             <Zap className="h-10 w-10 mb-6 text-indigo-500" />
                                             <p className="text-[11px] font-black uppercase tracking-[0.2em] leading-relaxed">Awaiting logic<br />Play to sync</p>
                                         </div>
                                     ) : (
-                                        intelligence.edl.decisions.map((decision: any, idx: number) => {
-                                            const isActive = currentTime >= decision.timeline_start && currentTime <= decision.timeline_end;
-                                            return (
-                                                <div key={idx} className={cn(
-                                                    "p-6 rounded-[2rem] border transition-all duration-700 relative group/card",
-                                                    isActive
-                                                        ? "bg-indigo-600/20 border-indigo-500/50 shadow-[0_20px_40px_rgba(0,0,0,0.3)] scale-[1.02] z-10"
-                                                        : "bg-white/[0.02] border-white/5 opacity-60 hover:opacity-100 hover:bg-white/[0.04]"
-                                                )}>
-                                                    <div className="flex items-center justify-between mb-4">
-                                                        <div className="flex items-center gap-3">
-                                                            <span className="text-[9px] font-black text-indigo-500/50 font-mono tracking-widest">POINT_{idx + 1}</span>
-                                                            {isActive && <div className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_10px_#818cf8]" />}
+                                        <>
+                                            {/* Show filtered decisions with proper hierarchy */}
+                                            {displayDecisions.map((decision: any, idx: number) => {
+                                                const timing = edlTimingMap.get(decision.segment_id);
+                                                const isActive = timing && currentTime >= timing.start && currentTime <= timing.end;
+                                                const isKeyDecision = !showAllDecisions; // Vault decisions are key decisions, EDL are all decisions
+                                                
+                                                return (
+                                                    <div 
+                                                        key={idx} 
+                                                        onClick={() => {
+                                                            if (timing && videoRef.current) {
+                                                                videoRef.current.currentTime = timing.start;
+                                                            }
+                                                        }}
+                                                        className={cn(
+                                                            "transition-all duration-300 relative group/card cursor-pointer",
+                                                            isKeyDecision ? (
+                                                                "p-6 rounded-[1.25rem] bg-gradient-to-b from-white/[0.04] to-white/[0.015] border-[rgba(130,140,255,0.15] shadow-[0_0_40px_rgba(120,130,255,0.08)] border-l-2 border-[rgba(59,130,246,0.6)]"
+                                                            ) : (
+                                                                "p-4 rounded-[1rem] bg-gradient-to-b from-white/[0.02] to-white/[0.01] border-white/[0.1] shadow-[0_0_20px_rgba(120,130,255,0.04)]"
+                                                            ),
+                                                            isActive
+                                                                ? "scale-[1.05] z-20 border-2 border-indigo-400 shadow-[0_0_100px_rgba(99,102,241,0.4)] bg-gradient-to-b from-indigo-500/10 to-indigo-500/5 animate-pulse"
+                                                                : isKeyDecision
+                                                                    ? "opacity-90 hover:opacity-100 hover:translateY-[-2px] hover:shadow-[0_0_60px_rgba(120,130,255,0.15)]"
+                                                                    : "opacity-60 hover:opacity-80 hover:translateY-[-1px]"
+                                                        )}
+                                                    >
+                                                        <div className="flex items-center justify-between mb-3">
+                                                            <div className="flex items-center gap-3">
+                                                                <span className={cn(
+                                                                    "font-mono tracking-[0.12em]",
+                                                                    isKeyDecision ? "text-[#8B90FF]" : "text-slate-400"
+                                                                )}>
+                                                                    SEGMENT {String(decision.segment_id).padStart(2, '0')}
+                                                                </span>
+                                                                {isActive && (
+                                                                    <div className={cn(
+                                                                        "h-1.5 w-1.5 rounded-full animate-pulse",
+                                                                        isKeyDecision ? "bg-indigo-400 shadow-[0_0_10px_#818cf8]" : "bg-gray-400"
+                                                                    )} />
+                                                                )}
+                                                            </div>
+                                                            <div className="flex items-center gap-2">
+                                                                {timing && (
+                                                                    <span className="text-[10px] font-mono text-[rgba(180,190,255,0.7)]">
+                                                                        {timing.start.toFixed(1)}s – {timing.end.toFixed(1)}s
+                                                                    </span>
+                                                                )}
+                                                                {isKeyDecision && (
+                                                                    <span className="px-2 py-0.5 rounded bg-indigo-500/20 border border-indigo-500/30">
+                                                                        <span className="text-[6px] font-black text-indigo-300 uppercase tracking-widest">KEY DECISION</span>
+                                                                    </span>
+                                                                )}
+                                                            </div>
                                                         </div>
-                                                        <span className="text-[8px] font-black text-slate-600 uppercase tracking-widest">AI VERIFIED</span>
+                                                        
+                                                        <div className="space-y-3">
+                                                            {/* Vault decisions have full intelligence structure */}
+                                                            {isKeyDecision && (
+                                                                <>
+                                                                    {/* Intent Line (largest) */}
+                                                                    <div className="mb-2">
+                                                                        <p className="text-[15px] font-medium text-white leading-[1.35]">
+                                                                            <span className="text-[#9AA0FF] font-normal">I wanted </span>
+                                                                            {decision.what_i_tried}
+                                                                        </p>
+                                                                    </div>
+                                                                    
+                                                                    {/* Decision Label + Explanation */}
+                                                                    <div className="space-y-1">
+                                                                        <p className="text-[10px] font-black text-[#6F74FF] uppercase tracking-[0.14em]">DECISION</p>
+                                                                        <p className="text-[13px] text-[#D6D8FF] leading-relaxed">{decision.decision}</p>
+                                                                    </div>
+                                                                    
+                                                                    {/* Counterfactual (if exists) */}
+                                                                    {decision.what_if && 
+                                                                        !decision.what_if.toLowerCase().includes('no stronger alternative') && 
+                                                                        !decision.what_if.toLowerCase().includes('no viable upgrade') && (
+                                                                        <div className="flex items-start gap-2">
+                                                                            <span className="text-[rgba(180,190,255,0.55)] text-sm">→</span>
+                                                                            <p className="text-[12px] text-[rgba(180,190,255,0.55)] italic leading-relaxed flex-1">
+                                                                                {decision.what_if}
+                                                                            </p>
+                                                                        </div>
+                                                                    )}
+                                                                </>
+                                                            )}
+                                                            
+                                                            {/* EDL decisions have basic structure */}
+                                                            {!isKeyDecision && (
+                                                                <div className="space-y-2">
+                                                                    <p className="text-[11px] text-slate-300 leading-relaxed">
+                                                                        {decision.clip_path?.split(/[\\/]/).pop()}
+                                                                    </p>
+                                                                    <p className="text-[10px] text-slate-500 leading-relaxed">
+                                                                        {cleanupReasoning(decision.reasoning)}
+                                                                    </p>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        
+                                                        {isActive && (
+                                                            <div className="absolute bottom-0 left-0 h-1 bg-indigo-500 rounded-full transition-all duration-300" style={{ width: '100%' }} />
+                                                        )}
                                                     </div>
-                                                    <div className="space-y-3">
-                                                        <p className="text-[12px] text-white font-black uppercase tracking-tight leading-tight line-clamp-1">{decision.clip_path?.split(/[\\/]/).pop()}</p>
-                                                        <p className="text-[11px] text-slate-400 font-medium leading-relaxed">
-                                                            {cleanupReasoning(decision.reasoning)}
-                                                        </p>
+                                                );
+                                            })}
+                                            
+                                            {/* Show all EDL decisions when toggle is on */}
+                                            {showAllDecisions && intelligence?.edl?.decisions?.map((edlDecision: any, idx: number) => {
+                                                const timing = { start: edlDecision.timeline_start, end: edlDecision.timeline_end };
+                                                const isActive = currentTime >= timing.start && currentTime <= timing.end;
+                                                const vaultDecision = intelligence?.vault_report?.decision_stream?.find((v: any) => v.segment_id === edlDecision.segment_id);
+                                                
+                                                return (
+                                                    <div key={`all-${idx}`} className={cn(
+                                                        "p-4 rounded-[1rem] border transition-all duration-300 relative group/card",
+                                                        "bg-gradient-to-b from-white/[0.02] to-white/[0.01] border-white/[0.1]",
+                                                        "shadow-[0_0_20px_rgba(120,130,255,0.04)]",
+                                                        isActive
+                                                            ? "scale-[1.02] z-10 border-indigo-400/50 shadow-[0_0_40px_rgba(99,102,241,0.2)]"
+                                                            : "opacity-50 hover:opacity-70"
+                                                    )}>
+                                                        <div className="flex items-center justify-between mb-2">
+                                                            <div className="flex items-center gap-3">
+                                                                <span className="text-[10px] font-mono text-slate-400 tracking-widest">SEGMENT {String(edlDecision.segment_id).padStart(2, '0')}</span>
+                                                                {isActive && <div className="h-1 w-1 rounded-full bg-indigo-400 animate-pulse" />}
+                                                            </div>
+                                                            <span className="text-[9px] text-[rgba(180,190,255,0.5)] font-mono">
+                                                                {timing.start.toFixed(1)}s - {timing.end.toFixed(1)}s
+                                                            </span>
+                                                        </div>
+                                                        <div className="space-y-2">
+                                                            <p className="text-[11px] text-slate-300 leading-relaxed">
+                                                                {edlDecision.clip_path?.split(/[\\/]/).pop()}
+                                                            </p>
+                                                            <p className="text-[10px] text-slate-500 leading-relaxed">
+                                                                {cleanupReasoning(edlDecision.reasoning)}
+                                                            </p>
+                                                        </div>
+                                                        {isActive && (
+                                                            <div className="absolute bottom-0 left-0 h-0.5 bg-indigo-400 rounded-full transition-all duration-300" style={{ width: '100%' }} />
+                                                        )}
                                                     </div>
-                                                    {isActive && (
-                                                        <div className="absolute bottom-0 left-0 h-1 bg-indigo-500 rounded-full transition-all duration-300" style={{ width: '100%' }} />
-                                                    )}
-                                                </div>
-                                            );
-                                        })
+                                                );
+                                            })}
+                                        </>
                                     )}
                                 </div>
                             </div>
