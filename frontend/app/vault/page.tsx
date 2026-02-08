@@ -32,7 +32,12 @@ import {
     Music,
     TrendingUp,
     Check,
-    Wand2
+    Wand2,
+    Compass,
+    Microscope,
+    Footprints,
+    Code2,
+    BarChart3
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -60,7 +65,12 @@ export default function VaultPage() {
     const [searchQuery, setSearchQuery] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
 
-    // Module expansion states
+    // Module expansion states for lower half
+    const [advisorExpanded, setAdvisorExpanded] = useState(true);      // Expanded by default
+    const [frictionExpanded, setFrictionExpanded] = useState(false);  // Collapsed by default
+    const [postMortemExpanded, setPostMortemExpanded] = useState(true);  // Expanded by default
+    const [nextStepsExpanded, setNextStepsExpanded] = useState(false);  // Collapsed by default
+    const [technicalExpanded, setTechnicalExpanded] = useState(false);    // Collapsed by default
     const [intelExpanded, setIntelExpanded] = useState(true);
 
     const [showAllDecisions, setShowAllDecisions] = useState(false);
@@ -367,84 +377,13 @@ export default function VaultPage() {
                                     </button>
                                 </div>
                             </div>
-
-                            {/* AI INTELLIGENCE SUITE */}
-                            <div className="w-full max-w-[850px] mx-auto space-y-4">
-
-                                {/* MODULE 1: NARRATIVE (Full Width) */}
-                                <div className="rounded-3xl border border-white/[0.03] bg-white/[0.01] overflow-hidden group/module">
-                                    <button
-                                        onClick={() => setIntelExpanded(!intelExpanded)}
-                                        className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className="h-10 w-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
-                                                <BrainCircuit className="h-5 w-5" />
-                                            </div>
-                                            <div className="text-left">
-                                                <h3 className="text-[11px] font-black text-white uppercase tracking-[0.3em]">Creative Logic</h3>
-                                                <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest mt-0.5">Narrative Intent</p>
-                                            </div>
-                                        </div>
-                                        {intelExpanded ? <ChevronUp className="h-4 w-4 text-slate-600" /> : <ChevronDown className="h-4 w-4 text-slate-600" />}
-                                    </button>
-
-                                    {intelExpanded && (
-                                        <div className="p-8 pt-0 animate-slide-in-from-top">
-                                            <p className="text-base font-medium text-slate-300 leading-relaxed italic border-l-2 border-indigo-500/30 pl-6 mb-2">
-                                                "{intelligence?.critique?.monologue || "Analyzing narrative flow..."}"
-                                            </p>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* MODULE 2: DIRECTOR'S NOTES (Full Width) */}
-                                <div className="rounded-3xl border border-pink-500/10 bg-pink-500/[0.01] overflow-hidden relative min-h-[220px]">
-                                    <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-                                        <Sparkles className="h-24 w-24 text-pink-500" />
-                                    </div>
-                                    <div className="p-6">
-                                        <div className="flex items-center gap-3 mb-6 relative z-10">
-                                            <div className="h-8 w-8 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400 border border-pink-500/20">
-                                                <Palette className="h-4 w-4" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-[10px] font-black text-pink-100 uppercase tracking-[0.2em]">Director's Notes</h3>
-                                                <p className="text-[8px] font-bold text-pink-500/60 uppercase tracking-widest mt-0.5">Recommended Actions</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="space-y-3 relative z-10">
-                                            {intelligence?.critique?.remake_actions?.length > 0 ? (
-                                                intelligence.critique.remake_actions.map((action: any, i: number) => (
-                                                    <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-pink-500/10 hover:border-pink-500/30 transition-colors group">
-                                                        <div className="mt-0.5 h-1.5 w-1.5 rounded-full bg-pink-500 shadow-[0_0_5px_#ec4899]" />
-                                                        <div className="flex-1">
-                                                            <div className="flex justify-between items-center mb-1">
-                                                                <span className="text-[9px] font-black text-pink-400 uppercase tracking-wider">{action.type.replace('_', ' ')}</span>
-                                                                <button className="opacity-0 group-hover:opacity-100 text-[8px] px-2 py-0.5 rounded bg-pink-500 text-white font-bold uppercase transition-opacity">Apply</button>
-                                                            </div>
-                                                            <p className="text-[10px] text-slate-300 leading-snug">{action.suggestion}</p>
-                                                        </div>
-                                                    </div>
-                                                ))
-                                            ) : (
-                                                <div className="flex items-center gap-3 opacity-40 p-2">
-                                                    <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                                                    <span className="text-[10px] font-bold uppercase tracking-widest">No Critical Actions Needed</span>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
-                        {/* RIGHT COLUMN: DECISION STREAM + TELEMETRY */}
+                        {/* RIGHT COLUMN: DECISION STREAM */}
                         <div className="w-[420px] flex flex-col gap-6 shrink-0">
 
                             {/* DECISION STREAM: THE WHITEBOX */}
-                            <div className="flex flex-col bg-gradient-to-b from-white/[0.02] to-transparent border border-white/[0.05] rounded-[2.5rem] overflow-hidden shadow-2xl" style={{ height: '520px' }}>
+                            <div className="flex flex-col bg-gradient-to-b from-white/[0.02] to-transparent border border-white/[0.05] rounded-[2.5rem] overflow-hidden shadow-2xl" style={{ height: '630px' }}>
                                 <div className="p-7 border-b border-white/[0.05] flex items-center justify-between bg-black/20 backdrop-blur-md">
                                     <div className="flex items-center gap-4">
                                         <div className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_#6366f1]" />
@@ -634,53 +573,200 @@ export default function VaultPage() {
                                     )}
                                 </div>
                             </div>
-
-                            {/* RIGHT: SYSTEM TELEMETRY (Relocated) */}
-                            <div className="rounded-3xl border border-blue-500/10 bg-blue-500/[0.01] overflow-hidden relative shadow-xl">
-                                <div className="p-6">
-                                    <div className="flex items-center gap-3 mb-6 relative z-10">
-                                        <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
-                                            <Activity className="h-4 w-4" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-[10px] font-black text-blue-100 uppercase tracking-[0.2em]">Telemetry</h3>
-                                            <p className="text-[8px] font-bold text-blue-500/60 uppercase tracking-widest mt-0.5">System Status</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-2 gap-4 relative z-10 mb-4">
-                                        <div className="p-3 rounded-xl bg-blue-500/[0.03] border border-blue-500/10 hover:border-blue-500/30 transition-colors">
-                                            <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Sync Engine</p>
-                                            <div className="flex items-center justify-between">
-                                                <span className="text-[10px] font-bold text-slate-300">{intelligence?.bpm ? `${intelligence.bpm} BPM` : "Adaptive"}</span>
-                                                <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981] animate-pulse" />
-                                            </div>
-                                        </div>
-                                        <div className="p-3 rounded-xl bg-blue-500/[0.03] border border-blue-500/10 hover:border-blue-500/30 transition-colors">
-                                            <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-1">Confidence</p>
-                                            <div className="mt-1 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                                                <div className="h-full bg-blue-500 w-[92%]" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="relative z-10">
-                                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest mb-2">Star Performers</p>
-                                        <div className="space-y-2">
-                                            {intelligence?.critique?.star_performers?.slice(0, 3).map((s: string, i: number) => (
-                                                <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-emerald-500/[0.03] border border-emerald-500/10 hover:bg-emerald-500/[0.06] transition-colors group">
-                                                    <CheckCircle2 className="h-3 w-3 text-emerald-500" />
-                                                    <span className="text-[9px] font-bold text-slate-300 truncate w-full group-hover:text-emerald-400 transition-colors">{s}</span>
-                                                </div>
-                                            ))}
-                                            {(!intelligence?.critique?.star_performers?.length) && <div className="text-[9px] opacity-40 uppercase pl-1">None detected</div>}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
+
+                    {/* LOWER HALF: Two-column Intelligence Grid */}
+                    <div className="max-w-[1500px] mx-auto w-full mt-2 grid grid-cols-[60%_40%] gap-6">
+                        
+                        {/* LEFT COLUMN: Intelligence Stack */}
+                        <div className="space-y-4">
+                            
+                            {/* 1. ADVISOR DIAGNOSIS (Expanded by default) */}
+                            <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/[0.02] overflow-hidden shadow-xl max-w-[700px]">
+                                <button
+                                    onClick={() => setAdvisorExpanded(!advisorExpanded)}
+                                    className="w-full px-5 py-4 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                >
+                                    <div className="flex items-center gap-3">
+                                        <div className="h-8 w-8 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30 shadow-[0_0_20px_rgba(99,102,241,0.2)]">
+                                            <Compass className="h-4 w-4" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-[11px] font-black text-white uppercase tracking-[0.25em]">Advisor Diagnosis</h3>
+                                            <p className="text-[8px] font-bold text-indigo-400 uppercase tracking-widest mt-0.5">Executive Verdict</p>
+                                        </div>
+                                    </div>
+                                    {advisorExpanded ? <ChevronUp className="h-4 w-4 text-indigo-400" /> : <ChevronDown className="h-4 w-4 text-indigo-400" />}
+                                </button>
+                                
+                                {advisorExpanded && (
+                                    <div className="px-5 pb-5 pt-0 space-y-3 animate-in slide-in-from-top-2">
+                                        <p className="text-[15px] font-semibold text-white leading-relaxed">
+                                            {intelligence?.vault_report?.advisor?.hero || "Analyzing edit performance..."}
+                                        </p>
+                                        <p className="text-[13px] text-slate-400 leading-relaxed">
+                                            {intelligence?.vault_report?.advisor?.body || "Detailed analysis pending..."}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* 2. FRICTION TIMELINE (Collapsed by default) */}
+                            <div className="rounded-3xl border border-amber-500/10 bg-amber-500/[0.01] overflow-hidden">
+                                <button
+                                    onClick={() => setFrictionExpanded(!frictionExpanded)}
+                                    className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-10 w-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20">
+                                            <BarChart3 className="h-5 w-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Friction Timeline</h3>
+                                            <p className="text-[9px] font-bold text-amber-500/60 uppercase tracking-widest mt-0.5">Temporal Self-Awareness</p>
+                                        </div>
+                                    </div>
+                                    {frictionExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
+                                </button>
+                                
+                                {frictionExpanded && (
+                                    <div className="p-6 pt-0 space-y-3 animate-in slide-in-from-top-2">
+                                        {intelligence?.vault_report?.friction_log?.map((entry: string, i: number) => (
+                                            <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
+                                                <span className="text-[9px] font-black text-amber-500/80 uppercase tracking-wider shrink-0">
+                                                    {i === 0 ? "START" : i === intelligence.vault_report.friction_log.length - 1 ? "END" : "MID"}
+                                                </span>
+                                                <p className="text-[12px] text-slate-400 leading-relaxed">{entry}</p>
+                                            </div>
+                                        )) || <p className="text-[11px] text-slate-500 italic">No friction entries recorded</p>}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* 3. NEXT STEPS (Collapsed by default) */}
+                            <div className="rounded-3xl border border-cyan-500/10 bg-cyan-500/[0.01] overflow-hidden">
+                                <button
+                                    onClick={() => setNextStepsExpanded(!nextStepsExpanded)}
+                                    className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-10 w-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20">
+                                            <Footprints className="h-5 w-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Recommended Next Steps</h3>
+                                            <p className="text-[9px] font-bold text-cyan-500/60 uppercase tracking-widest mt-0.5">Turn Critique Into Action</p>
+                                        </div>
+                                    </div>
+                                    {nextStepsExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
+                                </button>
+                                
+                                {nextStepsExpanded && (
+                                    <div className="p-6 pt-0 animate-in slide-in-from-top-2">
+                                        <div className="space-y-2">
+                                            {intelligence?.vault_report?.next_steps?.map((step: string, i: number) => (
+                                                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
+                                                    <span className="text-[10px] font-black text-cyan-400/80 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                                                    <p className="text-[12px] text-slate-400 leading-relaxed">{step}</p>
+                                                </div>
+                                            )) || <p className="text-[11px] text-slate-500 italic">No next steps defined</p>}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* RIGHT COLUMN: System & Context + Post-Mortem */}
+                        <div className="space-y-6">
+                            
+                            {/* POST-MORTEM (Expanded by default) */}
+                            <div className="rounded-3xl border border-white/10 bg-white/[0.01] overflow-hidden">
+                                <button
+                                    onClick={() => setPostMortemExpanded(!postMortemExpanded)}
+                                    className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-10 w-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                                            <Microscope className="h-5 w-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Post-Mortem</h3>
+                                            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">Explicit Accountability</p>
+                                        </div>
+                                    </div>
+                                    {postMortemExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
+                                </button>
+                                
+                                {postMortemExpanded && (
+                                    <div className="p-6 pt-0 space-y-5 animate-in slide-in-from-top-2">
+                                        {/* WHAT WORKED */}
+                                        <div className="p-5 rounded-2xl bg-emerald-500/[0.03] border border-emerald-500/10">
+                                            <p className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-3">What Worked</p>
+                                            <p className="text-[14px] text-slate-300 leading-relaxed">
+                                                {intelligence?.vault_report?.post_mortem?.worked || "No post-mortem analysis available"}
+                                            </p>
+                                        </div>
+                                        
+                                        {/* WHAT DIDN'T */}
+                                        <div className="p-5 rounded-2xl bg-red-500/[0.03] border border-red-500/10">
+                                            <p className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-3">What Didn't</p>
+                                            <p className="text-[14px] text-slate-300 leading-relaxed">
+                                                {intelligence?.vault_report?.post_mortem?.didnt || "No critique recorded"}
+                                            </p>
+                                        </div>
+                                        
+                                        {/* RESPONSIBILITY */}
+                                        <div className="flex items-center gap-3 pt-2">
+                                            <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Responsibility:</span>
+                                            <div className="flex gap-2">
+                                                <span className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-bold text-indigo-400 uppercase">
+                                                    Vibe: {intelligence?.vault_report?.post_mortem?.responsibility?.vibe || "System"}
+                                                </span>
+                                                <span className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[9px] font-bold text-indigo-400 uppercase">
+                                                    Emotion: {intelligence?.vault_report?.post_mortem?.responsibility?.emotion || "System"}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* TECHNICAL DISCIPLINE (Collapsed by default) */}
+                            <div className="rounded-3xl border border-slate-500/10 bg-slate-500/[0.01] overflow-hidden">
+                                <button
+                                    onClick={() => setTechnicalExpanded(!technicalExpanded)}
+                                    className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-10 w-10 rounded-xl bg-slate-500/10 flex items-center justify-center text-slate-400 border border-slate-500/20">
+                                            <Code2 className="h-5 w-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Technical Discipline</h3>
+                                            <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">Implementation Depth</p>
+                                        </div>
+                                    </div>
+                                    {technicalExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
+                                </button>
+                                
+                                {technicalExpanded && (
+                                    <div className="p-6 pt-0 animate-in slide-in-from-top-2">
+                                        <div className="space-y-2">
+                                            {intelligence?.vault_report?.technical?.map((item: string, i: number) => (
+                                                <div key={i} className="flex items-start gap-2 p-2 rounded-lg bg-black/20">
+                                                    <span className="text-slate-600 mt-1">•</span>
+                                                    <p className="text-[11px] font-mono text-slate-400 leading-relaxed">{item}</p>
+                                                </div>
+                                            )) || <p className="text-[11px] text-slate-500 italic">No technical notes</p>}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </main>
 
