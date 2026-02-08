@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import { Check, Loader2 } from "lucide-react";
-import { getWebSocketUrl } from "@/lib/api";
+import { api } from "@/lib/api";
 
 interface ProgressStep {
   id: string;
@@ -35,10 +35,6 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
   const [steps, setSteps] = useState<ProgressStep[]>(baseSteps);
 
   useEffect(() => {
-    setSteps(baseSteps);
-  }, [baseSteps]);
-
-  useEffect(() => {
     if (!sessionId || sessionId === "undefined") return;
     
     let ws: WebSocket | null = null;
@@ -48,7 +44,7 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
     
     const connect = () => {
       try {
-        const wsUrl = getWebSocketUrl(sessionId);
+        const wsUrl = `ws://localhost:8000/ws/progress/${sessionId}`;
         console.log("Connecting to WebSocket:", wsUrl);
         console.log("Session ID:", sessionId);
         
@@ -66,7 +62,7 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
         }
         
         console.log("Creating WebSocket connection...");
-        ws = new WebSocket(wsUrl);
+        ws = api.connectProgress(sessionId);
 
         ws.onopen = () => {
           console.log("WebSocket connected successfully");

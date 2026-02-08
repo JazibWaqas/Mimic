@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useMemo } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
     Activity,
     MonitorPlay,
@@ -14,7 +14,6 @@ import {
     ChevronUp,
     Video,
     Search,
-    Type,
     Share2,
     Play,
     Info,
@@ -23,16 +22,9 @@ import {
     Download,
     Settings,
     Heart,
-    Plus,
     Film,
-    Layers,
-    Eye,
-    CheckCircle2,
     Clock,
     Music,
-    TrendingUp,
-    Check,
-    Wand2,
     Compass,
     Microscope,
     Footprints,
@@ -48,9 +40,51 @@ import StylingModal from "@/components/StylingModal";
 export type ViewMode = "results" | "references" | "clips";
 export type AssetItem = Clip | Reference | Result;
 
+type VaultDecision = {
+    segment_id: number;
+    what_i_tried: string;
+    decision: string;
+    what_if?: string;
+    is_key?: boolean;
+    importance?: "key" | "all" | string;
+    tags?: string[];
+};
+
+type EdlDecision = {
+    segment_id: number;
+    clip_path?: string;
+    reasoning?: string;
+    timeline_start: number;
+    timeline_end: number;
+};
+
+type VaultReportViewModel = {
+    executive_summary?: string[];
+    advisor?: { hero?: string; body?: string };
+    decision_stream?: VaultDecision[];
+    key_decision_stream?: VaultDecision[];
+    friction_log?: string[];
+    next_steps?: string[];
+    technical?: string[];
+    clip_suggestions?: string[];
+    post_mortem?: {
+        worked?: string;
+        didnt?: string;
+        responsibility?: { vibe?: string; emotion?: string };
+    };
+};
+
+type IntelligenceViewModel = {
+    vault_report?: VaultReportViewModel;
+    edl?: { decisions?: EdlDecision[] };
+    bpm?: number;
+    style_config?: StyleConfig;
+};
+
+type AssetWithPath = { path?: string; filepath?: string; url?: string };
+
 export default function VaultPage() {
     const searchParams = useSearchParams();
-    const router = useRouter();
 
     // Data state
     const [clips, setClips] = useState<Clip[]>([]);
@@ -59,7 +93,7 @@ export default function VaultPage() {
     const [selectedItem, setSelectedItem] = useState<AssetItem | null>(null);
     const [viewMode, setViewMode] = useState<ViewMode>("results");
     const [loading, setLoading] = useState(true);
-    const [intelligence, setIntelligence] = useState<any>(null);
+    const [intelligence, setIntelligence] = useState<IntelligenceViewModel | null>(null);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [searchQuery, setSearchQuery] = useState("");
@@ -72,6 +106,8 @@ export default function VaultPage() {
     const [nextStepsExpanded, setNextStepsExpanded] = useState(false);  // Collapsed by default
     const [technicalExpanded, setTechnicalExpanded] = useState(false);    // Collapsed by default
     const [intelExpanded, setIntelExpanded] = useState(true);
+
+    const [advisorShowMore, setAdvisorShowMore] = useState(false);
 
     const [showAllDecisions, setShowAllDecisions] = useState(false);
     const [isStylingOpen, setIsStylingOpen] = useState(false);
@@ -128,8 +164,8 @@ export default function VaultPage() {
             try {
                 const key = viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
                 const data = await api.fetchIntelligence(viewMode, key);
-                setIntelligence(data);
-            } catch (err) {
+                setIntelligence(data as IntelligenceViewModel);
+            } catch (_err) {
                 setIntelligence(null);
             }
         };
@@ -137,34 +173,18 @@ export default function VaultPage() {
     }, [selectedItem, viewMode]);
 
     // Filter key decisions based on intelligence criteria
-    const keyDecisions = useMemo(() => {
-        if (!intelligence?.vault_report?.decision_stream) return [];
-        
-        return intelligence.vault_report.decision_stream.filter((decision: any) => {
-            // Key decision criteria:
-            // 1. Has counterfactual (what_if)
-            // 2. Decision indicates constraint/compromise
-            // 3. Structural importance
-            const hasCounterfactual = decision.what_if && 
-                !decision.what_if.toLowerCase().includes('no stronger alternative') && 
-                !decision.what_if.toLowerCase().includes('no viable upgrade');
-            
-            const isCompromise = decision.decision.toLowerCase().includes('necessity') ||
-                decision.decision.toLowerCase().includes('forced') ||
-                decision.decision.toLowerCase().includes('compromise') ||
-                decision.decision.toLowerCase().includes('structural');
-            
-            return hasCounterfactual || isCompromise;
-        });
-    }, [intelligence?.vault_report?.decision_stream]);
+    const displayDecisions = useMemo(() => {
+        if (showAllDecisions) return intelligence?.vault_report?.decision_stream || [];
+        return intelligence?.vault_report?.key_decision_stream || intelligence?.vault_report?.decision_stream || [];
+    }, [showAllDecisions, intelligence?.vault_report?.decision_stream, intelligence?.vault_report?.key_decision_stream]);
 
-    const displayDecisions = showAllDecisions ? 
-        (intelligence?.edl?.decisions || []) : 
-        (intelligence?.vault_report?.decision_stream || []);
+    const displayEdlDecisions = useMemo(() => {
+        return (intelligence?.edl?.decisions || []) as EdlDecision[];
+    }, [intelligence?.edl?.decisions]);
     const edlTimingMap = useMemo(() => {
         const map = new Map<number, { start: number; end: number }>();
 
-        intelligence?.edl?.decisions?.forEach((d: any) => {
+        intelligence?.edl?.decisions?.forEach((d: EdlDecision) => {
             map.set(d.segment_id, {
                 start: d.timeline_start,
                 end: d.timeline_end
@@ -196,7 +216,8 @@ export default function VaultPage() {
     const videoUrl = useMemo(() => {
         if (!selectedItem) return "";
         const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-        let path = (selectedItem as any).path || (selectedItem as any).filepath || (selectedItem as any).url || "";
+        const withPath = selectedItem as AssetWithPath;
+        let path = withPath.path || withPath.filepath || withPath.url || "";
         if (path && !path.startsWith("/")) path = "/" + path;
         return `${API_BASE}${path}?v=${Date.now()}`;
     }, [selectedItem]);
@@ -215,6 +236,12 @@ export default function VaultPage() {
             .replace(/HIGH-ENERGY DEMAND/g, 'energy')
             .replace(/PRIMARY EMOTIONAL CARRIER/g, 'main vibe')
             .toLowerCase();
+    };
+
+    const truncate = (text: string, maxLen: number) => {
+        if (!text) return "";
+        if (text.length <= maxLen) return text;
+        return text.slice(0, maxLen).trimEnd() + "...";
     };
 
     if (loading) return (
@@ -367,10 +394,10 @@ export default function VaultPage() {
                                     <button className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-all active:scale-95"><Share2 className="h-5 w-5" /></button>
                                     <button
                                         onClick={() => setIsStylingOpen(true)}
-                                        disabled={viewMode !== "results"}
+                                        disabled={viewMode !== "results" || isStylingLoading}
                                         className={cn(
                                             "h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-slate-500 flex items-center justify-center hover:bg-white/10 transition-all active:scale-95",
-                                            viewMode !== "results" && "opacity-20 cursor-not-allowed"
+                                            (viewMode !== "results" || isStylingLoading) && "opacity-20 cursor-not-allowed"
                                         )}
                                     >
                                         <Palette className="h-4 w-4" />
@@ -423,7 +450,7 @@ export default function VaultPage() {
                                     ) : (
                                         <>
                                             {/* Show filtered decisions with proper hierarchy */}
-                                            {displayDecisions.map((decision: any, idx: number) => {
+                                            {displayDecisions.map((decision: VaultDecision, idx: number) => {
                                                 const timing = edlTimingMap.get(decision.segment_id);
                                                 const isActive = timing && currentTime >= timing.start && currentTime <= timing.end;
                                                 const isKeyDecision = !showAllDecisions; // Vault decisions are key decisions, EDL are all decisions
@@ -439,15 +466,15 @@ export default function VaultPage() {
                                                         className={cn(
                                                             "transition-all duration-300 relative group/card cursor-pointer",
                                                             isKeyDecision ? (
-                                                                "p-6 rounded-[1.25rem] bg-gradient-to-b from-white/[0.04] to-white/[0.015] border-[rgba(130,140,255,0.15] shadow-[0_0_40px_rgba(120,130,255,0.08)] border-l-2 border-[rgba(59,130,246,0.6)]"
+                                                                "p-6 rounded-[1.25rem] bg-gradient-to-b from-white/[0.04] to-white/[0.015] border-[rgba(130,140,255,0.15)] shadow-[0_0_40px_rgba(120,130,255,0.08)] border-l-2 border-[rgba(59,130,246,0.6)]"
                                                             ) : (
                                                                 "p-4 rounded-[1rem] bg-gradient-to-b from-white/[0.02] to-white/[0.01] border-white/[0.1] shadow-[0_0_20px_rgba(120,130,255,0.04)]"
                                                             ),
                                                             isActive
                                                                 ? "scale-[1.05] z-20 border-2 border-indigo-400 shadow-[0_0_100px_rgba(99,102,241,0.4)] bg-gradient-to-b from-indigo-500/10 to-indigo-500/5 animate-pulse"
                                                                 : isKeyDecision
-                                                                    ? "opacity-90 hover:opacity-100 hover:translateY-[-2px] hover:shadow-[0_0_60px_rgba(120,130,255,0.15)]"
-                                                                    : "opacity-60 hover:opacity-80 hover:translateY-[-1px]"
+                                                                    ? "opacity-90 hover:opacity-100 hover:-translate-y-0.5 hover:shadow-[0_0_60px_rgba(120,130,255,0.15)]"
+                                                                    : "opacity-60 hover:opacity-80 hover:-translate-y-0.5"
                                                         )}
                                                     >
                                                         <div className="flex items-center justify-between mb-3">
@@ -510,18 +537,6 @@ export default function VaultPage() {
                                                                     )}
                                                                 </>
                                                             )}
-                                                            
-                                                            {/* EDL decisions have basic structure */}
-                                                            {!isKeyDecision && (
-                                                                <div className="space-y-2">
-                                                                    <p className="text-[11px] text-slate-300 leading-relaxed">
-                                                                        {decision.clip_path?.split(/[\\/]/).pop()}
-                                                                    </p>
-                                                                    <p className="text-[10px] text-slate-500 leading-relaxed">
-                                                                        {cleanupReasoning(decision.reasoning)}
-                                                                    </p>
-                                                                </div>
-                                                            )}
                                                         </div>
                                                         
                                                         {isActive && (
@@ -531,11 +546,11 @@ export default function VaultPage() {
                                                 );
                                             })}
                                             
-                                            {/* Show all EDL decisions when toggle is on */}
-                                            {showAllDecisions && intelligence?.edl?.decisions?.map((edlDecision: any, idx: number) => {
+                                            {/* Show full EDL forensic view (always separate from Vault decision_stream) */}
+                                            {showAllDecisions && displayEdlDecisions.map((edlDecision: EdlDecision, idx: number) => {
                                                 const timing = { start: edlDecision.timeline_start, end: edlDecision.timeline_end };
                                                 const isActive = currentTime >= timing.start && currentTime <= timing.end;
-                                                const vaultDecision = intelligence?.vault_report?.decision_stream?.find((v: any) => v.segment_id === edlDecision.segment_id);
+                                                
                                                 
                                                 return (
                                                     <div key={`all-${idx}`} className={cn(
@@ -560,7 +575,7 @@ export default function VaultPage() {
                                                                 {edlDecision.clip_path?.split(/[\\/]/).pop()}
                                                             </p>
                                                             <p className="text-[10px] text-slate-500 leading-relaxed">
-                                                                {cleanupReasoning(edlDecision.reasoning)}
+                                                                {cleanupReasoning(edlDecision.reasoning || "")}
                                                             </p>
                                                         </div>
                                                         {isActive && (
@@ -603,12 +618,38 @@ export default function VaultPage() {
                                 
                                 {advisorExpanded && (
                                     <div className="px-5 pb-5 pt-0 space-y-3 animate-in slide-in-from-top-2">
+                                        {(intelligence?.vault_report?.executive_summary || []).length > 0 && (
+                                            <div className="p-4 rounded-2xl bg-black/20 border border-white/5">
+                                                <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-2">Executive Summary</p>
+                                                <div className="space-y-2">
+                                                    {(intelligence?.vault_report?.executive_summary || []).slice(0, 6).map((item: string, i: number) => (
+                                                        <div key={i} className="flex items-start gap-2">
+                                                            <span className="text-indigo-400/60 mt-[2px]">•</span>
+                                                            <p className="text-[12px] text-slate-300 leading-relaxed">{item}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                         <p className="text-[15px] font-semibold text-white leading-relaxed">
                                             {intelligence?.vault_report?.advisor?.hero || "Analyzing edit performance..."}
                                         </p>
-                                        <p className="text-[13px] text-slate-400 leading-relaxed">
-                                            {intelligence?.vault_report?.advisor?.body || "Detailed analysis pending..."}
-                                        </p>
+                                        <div className="space-y-2">
+                                            <p className="text-[13px] text-slate-400 leading-relaxed">
+                                                {advisorShowMore
+                                                    ? (intelligence?.vault_report?.advisor?.body || "Detailed analysis pending...")
+                                                    : truncate(intelligence?.vault_report?.advisor?.body || "Detailed analysis pending...", 240)
+                                                }
+                                            </p>
+                                            {(intelligence?.vault_report?.advisor?.body || "").length > 260 && (
+                                                <button
+                                                    onClick={() => setAdvisorShowMore(!advisorShowMore)}
+                                                    className="text-[10px] font-black text-indigo-400/80 uppercase tracking-widest hover:text-indigo-300 transition-colors"
+                                                >
+                                                    {advisorShowMore ? "Show Less" : "Show More"}
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                 )}
                             </div>
@@ -636,7 +677,11 @@ export default function VaultPage() {
                                         {intelligence?.vault_report?.friction_log?.map((entry: string, i: number) => (
                                             <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
                                                 <span className="text-[9px] font-black text-amber-500/80 uppercase tracking-wider shrink-0">
-                                                    {i === 0 ? "START" : i === intelligence.vault_report.friction_log.length - 1 ? "END" : "MID"}
+                                                    {i === 0
+                                                        ? "START"
+                                                        : i === ((intelligence?.vault_report?.friction_log || []).length - 1)
+                                                            ? "END"
+                                                            : "MID"}
                                                 </span>
                                                 <p className="text-[12px] text-slate-400 leading-relaxed">{entry}</p>
                                             </div>
@@ -676,6 +721,36 @@ export default function VaultPage() {
                                     </div>
                                 )}
                             </div>
+
+                            <div className="rounded-3xl border border-violet-500/10 bg-violet-500/[0.01] overflow-hidden">
+                                <button
+                                    onClick={() => setIntelExpanded(!intelExpanded)}
+                                    className="w-full p-6 flex items-center justify-between hover:bg-white/[0.02] transition-all"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-300 border border-violet-500/20">
+                                            <Sparkles className="h-5 w-5" />
+                                        </div>
+                                        <div className="text-left">
+                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Clip Suggestions</h3>
+                                            <p className="text-[9px] font-bold text-violet-500/60 uppercase tracking-widest mt-0.5">Library Curation Guidance</p>
+                                        </div>
+                                    </div>
+                                    {intelExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
+                                </button>
+                                {intelExpanded && (
+                                    <div className="p-6 pt-0 animate-in slide-in-from-top-2">
+                                        <div className="space-y-2">
+                                            {intelligence?.vault_report?.clip_suggestions?.map((s: string, i: number) => (
+                                                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
+                                                    <span className="text-[10px] font-black text-violet-300/80 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                                                    <p className="text-[12px] text-slate-400 leading-relaxed">{s}</p>
+                                                </div>
+                                            )) || <p className="text-[11px] text-slate-500 italic">No clip suggestions generated</p>}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
 
                         {/* RIGHT COLUMN: System & Context + Post-Mortem */}
@@ -711,7 +786,7 @@ export default function VaultPage() {
                                         
                                         {/* WHAT DIDN'T */}
                                         <div className="p-5 rounded-2xl bg-red-500/[0.03] border border-red-500/10">
-                                            <p className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-3">What Didn't</p>
+                                            <p className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-3">What Didn&apos;t</p>
                                             <p className="text-[14px] text-slate-300 leading-relaxed">
                                                 {intelligence?.vault_report?.post_mortem?.didnt || "No critique recorded"}
                                             </p>
@@ -771,6 +846,7 @@ export default function VaultPage() {
             </main>
 
             <StylingModal
+                key={`${selectedItem?.filename || "none"}:${(intelligence?.style_config && JSON.stringify(intelligence.style_config).length) || 0}`}
                 isOpen={isStylingOpen}
                 onClose={() => setIsStylingOpen(false)}
                 initialConfig={intelligence?.style_config}
@@ -784,7 +860,7 @@ export default function VaultPage() {
                         // Force refresh intelligence to get new config
                         const key = viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
                         const data = await api.fetchIntelligence(viewMode, key);
-                        setIntelligence(data);
+                        setIntelligence(data as IntelligenceViewModel);
 
                         toast.success("Aesthetic Path Updated", { id: toastId });
                         setIsStylingOpen(false);
@@ -796,7 +872,7 @@ export default function VaultPage() {
                             videoRef.current.currentTime = currentPos;
                             videoRef.current.play();
                         }
-                    } catch (err) {
+                    } catch (_err) {
                         toast.error("Styling failed", { id: toastId });
                     } finally {
                         setIsStylingLoading(false);

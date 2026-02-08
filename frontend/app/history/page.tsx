@@ -8,7 +8,14 @@ import { Button } from "@/components/ui/button";
 import { getHistory } from "@/lib/api";
 
 export default function HistoryPage() {
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<unknown[]>([]);
+
+  type ProjectLike = {
+    session_id: string;
+    reference_filename: string;
+    status: string;
+    clip_count: number;
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -37,18 +44,23 @@ export default function HistoryPage() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {projects.map((p) => (
-            <Card key={p.session_id} className="bg-card border-border p-5 space-y-3">
+            (() => {
+              const proj = p as ProjectLike;
+              return (
+            <Card key={proj.session_id} className="bg-card border-border p-5 space-y-3">
               <div className="flex items-center justify-between">
-                <div className="font-semibold truncate">{p.reference_filename}</div>
-                <Badge variant="secondary">{p.status}</Badge>
+                <div className="font-semibold truncate">{proj.reference_filename}</div>
+                <Badge variant="secondary">{proj.status}</Badge>
               </div>
               <div className="text-sm text-muted-foreground">
-                {p.clip_count} clips
+                {proj.clip_count} clips
               </div>
               <Button asChild variant="secondary" className="w-full">
-                <Link href={`/result/${p.session_id}`}>View</Link>
+                <Link href={`/result/${proj.session_id}`}>View</Link>
               </Button>
             </Card>
+              );
+            })()
           ))}
         </div>
       </div>

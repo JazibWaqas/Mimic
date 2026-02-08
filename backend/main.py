@@ -744,6 +744,50 @@ def process_video_pipeline(
             self.original_stdout = original_stdout
             self.session_id = session_id
             self.buffer = ""
+
+        def _should_store_line(self, line: str) -> bool:
+            """Filter noisy debug output for WS/UI logs without affecting stdout or file logs."""
+            s = (line or "").strip()
+            if not s:
+                return False
+
+            # Always keep warnings/errors/progress and top-level pipeline markers.
+            keep_prefixes = (
+                "[PROGRESS]",
+                "[PIPELINE]",
+                "[GENERATE]",
+                "[WARN]",
+                "[ERROR]",
+                "[OK]",
+                "✅",
+                "❌",
+            )
+            if s.startswith(keep_prefixes):
+                return True
+
+            # Drop high-volume debug noise (X-RAY, cache spam, deep analysis dumps)
+            drop_prefixes = (
+                "[CACHE]",
+                "[NEW]",
+                "[THUMB]",
+                "[INDEX]",
+                "🔬",
+            )
+            if s.startswith(drop_prefixes):
+                return False
+
+            drop_contains = (
+                "X-RAY",
+                "TOP 5 CANDIDATES",
+                "SEGMENT SCORING",
+                "CLIP USAGE ANALYSIS",
+                "BLUEPRINT SEGMENTS",
+                "END OF X-RAY REPORT",
+            )
+            if any(token in s for token in drop_contains):
+                return False
+
+            return False
         
         def write(self, s):
             # Write to original stdout (console)
@@ -756,7 +800,7 @@ def process_video_pipeline(
                     # Split by newlines and add each line
                     lines = s.split('\n')
                     for line in lines:
-                        if line.strip():
+                        if self._should_store_line(line):
                             active_sessions[self.session_id]["logs"].append(line.strip())
                             # Keep only last 500 lines to avoid memory issues
                             if len(active_sessions[self.session_id]["logs"]) > 500:

@@ -5,9 +5,39 @@
 // Makes it easy to change endpoints, add error handling, etc.
 // ============================================================================
 
+import type { StyleConfig } from "@/lib/types";
+
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-const intelCache = new Map<string, any>();
+const intelCache = new Map<string, unknown>();
+
+export const getStatus = async (sessionId: string) => {
+  const res = await fetch(`${API_BASE}/api/status/${encodeURIComponent(sessionId)}`);
+  if (!res.ok) throw new Error("Failed to fetch status");
+  return res.json();
+};
+
+export const generateVideo = async (sessionId: string) => {
+  const res = await fetch(`${API_BASE}/api/generate/${encodeURIComponent(sessionId)}`, {
+    method: "POST",
+  });
+  if (!res.ok) throw new Error("Failed to start generation");
+  return res.json();
+};
+
+export const getDownloadUrl = (sessionId: string) => {
+  return `${API_BASE}/api/download/${encodeURIComponent(sessionId)}`;
+};
+
+export const getWebSocketUrl = (sessionId: string) => {
+  return `ws://localhost:8000/ws/progress/${encodeURIComponent(sessionId)}`;
+};
+
+export const getHistory = async () => {
+  const res = await fetch(`${API_BASE}/api/history`);
+  if (!res.ok) throw new Error("Failed to fetch history");
+  return res.json();
+};
 
 export const api = {
   // ... existing uploadFiles, identify, startGeneration, etc.
@@ -36,7 +66,7 @@ export const api = {
     return res.json();
   },
 
-  startGeneration: async (sessionId: string, textPrompt?: string, targetDuration?: number, styleConfig?: any) => {
+  startGeneration: async (sessionId: string, textPrompt?: string, targetDuration?: number, styleConfig?: StyleConfig) => {
     let url = `${API_BASE}/api/generate/${sessionId}`;
     const params = new URLSearchParams();
     if (textPrompt) params.append("text_prompt", textPrompt);
@@ -56,7 +86,7 @@ export const api = {
     return res.json();
   },
 
-  applyStyle: async (filename: string, config: any) => {
+  applyStyle: async (filename: string, config: StyleConfig) => {
     const res = await fetch(`${API_BASE}/api/results/${encodeURIComponent(filename)}/style`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -116,12 +146,14 @@ export const api = {
 
   fetchIntelligence: async (type: string, key: string) => {
     const cacheKey = `${type}:${key}`;
-    if (intelCache.has(cacheKey)) return intelCache.get(cacheKey);
+    // Results can be deleted/recreated with the same filename during reruns.
+    // Avoid serving stale intelligence from an in-memory cache for results.
+    if (type !== "results" && intelCache.has(cacheKey)) return intelCache.get(cacheKey);
 
     const res = await fetch(`${API_BASE}/api/intelligence?type=${type}&filename=${encodeURIComponent(key)}`);
     if (!res.ok) throw new Error("Intelligence data not found");
-    const data = await res.json();
-    intelCache.set(cacheKey, data);
+    const data: unknown = await res.json();
+    if (type !== "results") intelCache.set(cacheKey, data);
     return data;
   },
 };

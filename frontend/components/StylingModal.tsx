@@ -1,7 +1,7 @@
 "use client";
 
-import { X, Check, Palette, Type, Hash, Sparkles } from "lucide-react";
-import { useState, useEffect } from "react";
+import { X, Check, Palette, Type, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { StyleConfig } from "@/lib/types";
 
@@ -29,10 +29,6 @@ export default function StylingModal({ isOpen, onClose, onApply, initialConfig }
         color: { preset: 'neutral' },
         texture: { grain: false }
     });
-
-    useEffect(() => {
-        if (initialConfig) setConfig(initialConfig);
-    }, [initialConfig]);
 
     if (!isOpen) return null;
 

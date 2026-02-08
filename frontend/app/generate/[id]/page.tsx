@@ -21,10 +21,11 @@ export default function GeneratePage({ params }: { params: Promise<{ id: string 
       try {
         const result = await generateVideo(sessionId);
         console.log("Generation started:", result);
-      } catch (e: any) {
+      } catch (e: unknown) {
         console.error("Failed to start generation:", e);
         // Don't reset started - prevent infinite retry loop
-        toast.error(e?.message || "Failed to start generation. Please try uploading again.");
+        const msg = e instanceof Error ? e.message : "Failed to start generation. Please try uploading again.";
+        toast.error(msg);
       }
     }
 

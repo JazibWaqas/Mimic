@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useMemo, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import {
     Play,
@@ -13,19 +13,20 @@ import {
 
 export default function ComparePage() {
     const searchParams = useSearchParams();
-    const [refUrl, setRefUrl] = useState("");
-    const [outputUrl, setOutputUrl] = useState("");
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(true);
 
     const refVideoRef = useRef<HTMLVideoElement>(null);
     const outputVideoRef = useRef<HTMLVideoElement>(null);
 
-    useEffect(() => {
+    const refUrl = useMemo(() => {
         const ref = searchParams.get("ref");
+        return ref ? `http://localhost:8000${ref}` : "";
+    }, [searchParams]);
+
+    const outputUrl = useMemo(() => {
         const output = searchParams.get("output");
-        if (ref) setRefUrl(`http://localhost:8000${ref}`);
-        if (output) setOutputUrl(`http://localhost:8000${output}`);
+        return output ? `http://localhost:8000${output}` : "";
     }, [searchParams]);
 
     const togglePlayPause = () => {

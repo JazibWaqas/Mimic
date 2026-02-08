@@ -115,6 +115,15 @@ def compile_vault_reasoning(
         else:
             decision_weight = "filler"
 
+        # v15.0: Key decision candidate flag (additive signal)
+        is_key_candidate = False
+        if decision_type != "confident":
+            is_key_candidate = True
+        if decision_weight in ["primary", "supporting"] and confidence in ["low", "medium"]:
+            is_key_candidate = True
+        if bp_seg and bp_seg.emotional_anchor:
+            is_key_candidate = True
+
         segments.append({
             "segment_id": decision.segment_id,
             "intent_tag": bp_seg.vibe.lower().replace(" ", "_") if bp_seg else "general",
@@ -124,8 +133,21 @@ def compile_vault_reasoning(
             "causality_key": causality_key,
             "clip_used": decision.clip_path.split('/')[-1].split('\\')[-1],
             "missing_ideal_motif": stage_guidance.primary_emotional_carrier.lower() if decision_type != "confident" and stage_guidance else None,
-            "counterfactual_tag": f"replace_with_{stage_guidance.primary_emotional_carrier.lower()}" if decision_type != "confident" and stage_guidance else None
+            "counterfactual_tag": f"replace_with_{stage_guidance.primary_emotional_carrier.lower()}" if decision_type != "confident" and stage_guidance else None,
+            "is_key_candidate": is_key_candidate
         })
+
+    # v15.0 Clip usage signals (additive; derived from EDL only)
+    clip_usage_counts: Dict[str, int] = {}
+    for d in edl.decisions:
+        name = d.clip_path.split('/')[-1].split('\\')[-1]
+        clip_usage_counts[name] = clip_usage_counts.get(name, 0) + 1
+
+    overused = sorted(
+        [{"clip": k, "count": v} for k, v in clip_usage_counts.items() if v >= 3],
+        key=lambda x: x["count"],
+        reverse=True
+    )
 
     # 3. Post-Mortem (Responsibility Consistency)
     post_mortem = {
@@ -146,6 +168,10 @@ def compile_vault_reasoning(
         },
         "library_health": library_health,
         "segments": segments,
+        "clip_usage": {
+            "counts": clip_usage_counts,
+            "overused": overused
+        },
         "post_mortem": post_mortem,
         "phrase_map": VAULT_PHRASE_MAP, # Explicitly injected for the translator
         "prescriptions": [m.lower().replace(" ", "_") for m in critique.missing_ingredients],

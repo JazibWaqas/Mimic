@@ -435,7 +435,8 @@ def run_mimic_pipeline(
             api_key=api_key,
             reference_path=reference_path,
             bpm=ref_bpm,
-            mode=edit_mode  # v14.7: Pass mode for PROMPT/REFERENCE behavioral split
+            mode=edit_mode,  # v14.7: Pass mode for PROMPT/REFERENCE behavioral split
+            run_id=base_output_name
         )
         
         # Validate EDL but don't fail - allow debugging even if timing is off

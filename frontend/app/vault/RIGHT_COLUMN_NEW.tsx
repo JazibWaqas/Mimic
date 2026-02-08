@@ -1,5 +1,23 @@
-{/* RIGHT: Telemetry-Inspired Intelligence Panel */ }
-<aside className="space-y-6 overflow-y-auto custom-scrollbar pr-2 max-h-[88vh]">
+"use client";
+
+import { TrendingUp, BrainCircuit, Sparkles } from "lucide-react";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+
+type SelectedItemLike = {
+    filename: string;
+};
+
+type RightColumnNewProps = {
+    currentTime: number;
+    viewMode: string;
+    selectedItem?: SelectedItemLike | null;
+    getVideoUrl: (item: SelectedItemLike) => string;
+};
+
+export default function RightColumnNew({ currentTime, viewMode, selectedItem, getVideoUrl }: RightColumnNewProps) {
+    return (
+        <aside className="space-y-6 overflow-y-auto custom-scrollbar pr-2 max-h-[88vh]">
     {/* EDITORIAL DECISIONS - Top Priority */}
     <div className="space-y-4">
         <div className="flex items-center gap-3 px-2">
@@ -92,3 +110,5 @@
         <p className="text-[9px] text-center text-slate-600 uppercase tracking-widest mt-3 font-black">Applies editorial insights automatically</p>
     </div>
 </aside>
+    );
+}

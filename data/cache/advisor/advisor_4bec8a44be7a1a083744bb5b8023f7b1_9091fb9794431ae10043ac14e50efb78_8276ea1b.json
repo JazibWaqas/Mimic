@@ -1,0 +1,115 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' branding demands a narrative of elite professional dominance, where the human spirit is fused with high-performance machinery. It requires moments that oscillate between cold technical precision and the raw, triumphant heat of competition.",
+  "dominant_narrative": "A high-stakes cinematic tribute to the 'Maverick' archetype, charting the journey from intense preparation to the adrenaline-fueled peak of elite performance.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mechanical details, atmospheric urban nightscapes, and high-tech environments.",
+      "intent_diluting_material": "Crowd celebrations or generic daytime travel footage.",
+      "reasoning": "The intro must establish the 'Maverick' persona—focused, solitary, and preparing for a high-stakes mission. We need the 'calm before the storm' aesthetic.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip52.mp4",
+        "clip74.mp4",
+        "clip65.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Physical training, engine ignitions, and the anticipation of the starting grid.",
+      "intent_diluting_material": "Static dialogue scenes or non-rhythmic movement.",
+      "reasoning": "This stage functions to bridge the gap between the man and the machine. The energy must feel like a pressure cooker about to blow.",
+      "recommended_clips": [
+        "clip62.mp4",
+        "clip67.mp4",
+        "clip75.mp4",
+        "clip53.mp4",
+        "clip73.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "High-speed maneuvers, crashes, sparks, fireworks, and rapid POV shots.",
+      "intent_diluting_material": "Wide establishing shots that lack kinetic movement or 'safe' looking driving.",
+      "reasoning": "The peak is the 'dogfight' equivalent. It must be a syncopated, high-velocity montage where the danger is palpable and the speed is overwhelming.",
+      "recommended_clips": [
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip76.mp4",
+        "clip57.mp4",
+        "clip55.mp4",
+        "clip78.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "Sunsets, slow-motion walks away from the machine, and symbolic legacy shots.",
+      "intent_diluting_material": "Abrupt cuts to black or high-intensity racing without a resolution.",
+      "reasoning": "The 'Top Gun' ethos concludes with a sense of legacy and 'mission accomplished.' We need a triumphant release of tension.",
+      "recommended_clips": [
+        "clip49.mp4",
+        "clip61.mp4",
+        "clip77.mp4",
+        "clip70.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy F1 footage perfectly mirrors the 'Top Gun' adrenaline.",
+      "Strong 'Maverick' character parallels in the training and cockpit close-ups.",
+      "Excellent night-time and high-contrast lighting matches the 'Filmic' requirement."
+    ],
+    "editorial_tradeoffs": [
+      "F1 cars must stand in for fighter jets to maintain the 'elite pilot' narrative.",
+      "Urban Las Vegas settings replace naval carriers, shifting the aesthetic to 'Street Elite'."
+    ],
+    "constraint_gaps": [
+      "Very scarce 'Low' energy footage makes the 'Solemn moments' requirement difficult to fulfill without using training montages.",
+      "Lack of actual aviation content requires the editor to lean heavily on the 'speed' metaphor."
+    ]
+  },
+  "editorial_strategy": "The edit will treat the Formula 1 track as a battleground. By anchoring the narrative on the 'Solo Pilot' (the driver) and using the high-energy racing footage as the 'combat' sequences, we fulfill the Top Gun intent. The pacing must be syncopated, using speed ramps to emphasize the G-force and technical mastery of the subject.",
+  "remake_strategy": "To achieve a true Director's Cut, integrate 4K aerial cinematography of fighter jets and carrier deck operations. Adding sound design of jet turbines overlaying the F1 engine screams would create a powerful cross-sensory link to the 'Top Gun' legacy.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "High-speed vehicle movement",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Close-ups of focused eyes or helmets",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    },
+    {
+      "trigger": "Explosive visual elements (fireworks, crashes)",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Transition from cockpit to track",
+      "desired_continuity": "Action-Completion",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-08T14:02:52.957616"
+}

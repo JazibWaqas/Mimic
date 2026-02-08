@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Layout, Library, Database, Wand2, UserCircle } from "lucide-react";
+import { Library, Database, Wand2, UserCircle } from "lucide-react";
 
 const navItems = [
     { label: "Studio", href: "/", icon: Wand2 },

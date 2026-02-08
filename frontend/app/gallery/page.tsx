@@ -27,6 +27,9 @@ import type { Clip, Reference, Result } from "@/lib/types";
 
 type AssetItem = Clip | Reference | Result;
 
+type ResultLike = Result & { url?: string };
+type ClipLike = Clip & { session_id?: string };
+
 export default function LibraryPage() {
     const router = useRouter();
     const [clips, setClips] = useState<Clip[]>([]);
@@ -117,13 +120,22 @@ export default function LibraryPage() {
         return "Reference";
     };
 
+    const getItemPath = (item: AssetItem): string => {
+        if ("path" in item) return item.path;
+        return (item as ResultLike).url || "";
+    };
+
+    const getSessionId = (item: AssetItem): string => {
+        return (item as ClipLike).session_id || "samples";
+    };
+
     const handleItemClick = (item: AssetItem) => {
         const type = getItemType(item) === 'Raw Sample' ? 'clips' : getItemType(item) === 'Synthesis Output' ? 'results' : 'references';
         router.push(`/vault?filename=${encodeURIComponent(item.filename)}&type=${type}`);
     };
 
     const handleDownload = async (item: AssetItem) => {
-        const path = "path" in item ? item.path : (item as any).url;
+        const path = getItemPath(item);
         try {
             const response = await fetch(`http://localhost:8000${path}`);
             const blob = await response.blob();
@@ -144,7 +156,7 @@ export default function LibraryPage() {
     const renderCard = (item: AssetItem, idx: number) => {
         const itemId = "session_id" in item ? `${item.session_id}-${item.filename}` : item.filename;
         const type = getItemType(item);
-        const path = "path" in item ? item.path : (item as any).url;
+        const path = getItemPath(item);
         const vibes = ["Cinematic", "Dynamic", "Tech", "Nostalgic", "Fast-Cuts", "Organic"];
         const randomVibe = vibes[idx % vibes.length];
 
@@ -237,7 +249,7 @@ export default function LibraryPage() {
                             </svg>
                         </button>
                         <button
-                            onClick={(e) => { e.stopPropagation(); deleteItem((item as any).session_id || 'samples', item.filename); }}
+                            onClick={(e) => { e.stopPropagation(); deleteItem(getSessionId(item), item.filename); }}
                             className="w-8 h-8 flex items-center justify-center bg-white/5 hover:bg-red-500/20 text-slate-600 hover:text-red-400 rounded transition-all border border-white/5"
                             title="Delete"
                         >
@@ -326,7 +338,7 @@ export default function LibraryPage() {
                                     ].map((cat) => (
                                         <button
                                             key={String(cat.id)}
-                                            onClick={() => setSelectedCategory(cat.id as any)}
+                                            onClick={() => setSelectedCategory(cat.id)}
                                             className={cn(
                                                 "h-12 px-4 rounded-xl border text-[10px] font-bold uppercase tracking-widest transition-all text-left flex items-center gap-3",
                                                 selectedCategory === cat.id

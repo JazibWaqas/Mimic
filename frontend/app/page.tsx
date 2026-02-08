@@ -24,8 +24,29 @@ export default function StudioPage() {
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
   const [logMessages, setLogMessages] = useState<string[]>([]);
   const [recommendations, setRecommendations] = useState<string[]>([]);
-  const [blueprint, setBlueprint] = useState<any>(null);
-  const [libraryHealth, setLibraryHealth] = useState<any>(null);
+
+  type BlueprintSegment = {
+    arc_stage: string;
+    energy: string;
+    duration: number;
+  };
+
+  type BlueprintViewModel = {
+    plan_summary?: string;
+    narrative_message?: string;
+    total_duration: number;
+    segments?: BlueprintSegment[];
+  };
+
+  type LibraryHealthViewModel = {
+    confidence_score: number;
+    avg_quality: number;
+    asset_count: number;
+    energy_distribution: Record<string, number>;
+  };
+
+  const [blueprint, setBlueprint] = useState<BlueprintViewModel | null>(null);
+  const [libraryHealth, setLibraryHealth] = useState<LibraryHealthViewModel | null>(null);
   const [pinnedCritique, setPinnedCritique] = useState<string | null>(null);
   const [isIdLoading, setIsIdLoading] = useState(false);
   const [lastMaterialHash, setLastMaterialHash] = useState<string | null>(null);
@@ -55,7 +76,8 @@ export default function StudioPage() {
     if (refineFile) {
       const fetchOldIntel = async () => {
         try {
-          const data = await api.fetchIntelligence("results", refineFile);
+          type RefineIntel = { advisor?: { remake_strategy?: string } };
+          const data = await api.fetchIntelligence("results", refineFile) as RefineIntel;
           if (data?.advisor?.remake_strategy) {
             setPinnedCritique(data.advisor.remake_strategy);
             toast.info("Advisor critique pinned for refinement");
@@ -259,9 +281,17 @@ export default function StudioPage() {
       } else {
         console.log("[STUDIO] Config changed or new session. Starting upload...");
         // 1. Upload assets (reference and music are optional now)
+        type UploadedClipMeta = {
+          filename: string;
+          size: number;
+          thumbnail_url?: string;
+          original_filename?: string;
+          original_size?: number;
+        };
+
         const uploadRes = await api.uploadFiles(refFile ?? undefined, materialFiles, musicFile ?? undefined) as {
           session_id: string;
-          clips?: { filename: string; size: number; thumbnail_url?: string }[];
+          clips?: UploadedClipMeta[];
         };
         session_id = uploadRes.session_id;
         setCurrentSessionId(session_id);
@@ -272,11 +302,12 @@ export default function StudioPage() {
         if (uploadRes.clips && uploadRes.clips.length > 0) {
           setPreviews(prev => {
             const next = { ...prev };
-            uploadRes.clips?.forEach((clip: any) => {
+            uploadRes.clips?.forEach((clip) => {
               // Perfect Match (v12.3): Link using original properties from backend
               if (clip.original_filename && clip.original_size) {
                 const key = clip.original_filename + clip.original_size;
-                const url = clip.thumbnail_url.startsWith("http") ? clip.thumbnail_url : `${apiBase}${clip.thumbnail_url}`;
+                const thumb = clip.thumbnail_url || "";
+                const url = thumb.startsWith("http") ? thumb : `${apiBase}${thumb}`;
                 next[key] = url;
               }
             });
@@ -441,7 +472,7 @@ export default function StudioPage() {
                         <BrainCircuit className="h-4 w-4 text-[#ff007f]" />
                       </div>
                       <div className="space-y-0.5">
-                        <p className="text-[10px] font-black text-white uppercase tracking-widest">Director's Chat</p>
+                        <p className="text-[10px] font-black text-white uppercase tracking-widest">Director&apos;s Chat</p>
                         <p className="text-[8px] font-bold text-slate-600 uppercase tracking-tight">Describe your vision below</p>
                       </div>
                     </div>
@@ -463,7 +494,7 @@ export default function StudioPage() {
                         <Info className="h-2.5 w-2.5 text-indigo-400" />
                       </div>
                       <p className="text-[10px] font-medium text-slate-500 leading-relaxed italic">
-                        Tip: Use the format "[Theme]. Start with [Intro]. Build through [Action]. Peak with [Climax]. Resolve with [Outro]." for best results.
+                        Tip: Use the format &quot;[Theme]. Start with [Intro]. Build through [Action]. Peak with [Climax]. Resolve with [Outro].&quot; for best results.
                       </p>
                     </div>
                   </div>
@@ -672,12 +703,12 @@ export default function StudioPage() {
                 <div className="space-y-4">
                   <div className="space-y-1">
                     <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">The Vibe</p>
-                    <p className="text-[11px] font-bold text-slate-300 leading-relaxed uppercase tracking-tight italic">"{blueprint.plan_summary || blueprint.narrative_message}"</p>
+                    <p className="text-[11px] font-bold text-slate-300 leading-relaxed uppercase tracking-tight italic">&quot;{blueprint.plan_summary || blueprint.narrative_message}&quot;</p>
                   </div>
                   <div className="space-y-2">
                     <p className="text-[8px] font-black text-indigo-500 uppercase tracking-widest">Story Arc</p>
                     <div className="flex gap-1 overflow-hidden rounded-lg h-8 border border-white/5">
-                      {blueprint.segments?.map((seg: any, i: number) => (
+                      {blueprint.segments?.map((seg, i: number) => (
                         <div
                           key={i}
                           className={cn(
@@ -874,7 +905,7 @@ export default function StudioPage() {
                   AI Storytelling
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Gemini 3 understands the story you're trying to tell and makes it feel cinematic.
+                  Gemini 3 understands the story you&apos;re trying to tell and makes it feel cinematic.
                 </p>
               </div>
             </div>

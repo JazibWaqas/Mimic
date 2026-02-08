@@ -229,7 +229,8 @@ def match_clips_to_blueprint(
     reference_path: Optional[str] = None,
     bpm: float = 120.0,
     use_advisor: bool = True,
-    mode: str = "REFERENCE"  # REFERENCE = strict structure | PROMPT = creative invention
+    mode: str = "REFERENCE",  # REFERENCE = strict structure | PROMPT = creative invention
+    run_id: Optional[str] = None
 ) -> Tuple[EDL, Optional[AdvisorHints]]:
     """
     Match user clips to blueprint segments using SIMPLIFIED algorithm.
@@ -1909,7 +1910,8 @@ def match_clips_to_blueprint(
     # Now works for both REFERENCE and PROMPT mode
     ref_name = Path(reference_path).stem if reference_path else "prompt_edit"
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
-    xray_path = BASE_DIR / "data" / "results" / f"{ref_name}_XRAY.txt"
+    xray_filename = f"{run_id}_XRAY.txt" if run_id else f"{ref_name}_XRAY.txt"
+    xray_path = BASE_DIR / "data" / "results" / xray_filename
     xray_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(xray_path, 'w', encoding='utf-8') as f:

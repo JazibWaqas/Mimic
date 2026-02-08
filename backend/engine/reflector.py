@@ -24,12 +24,22 @@ CORE VOICE RULES:
    - For 'decision_type', pick one of the 3 variants provided in 'phrase_map.decisions' to ensure variety while remaining deterministic.
    - For causality, use the template provided in 'phrase_map.causality' that matches the 'causality_key'.
 6. DATA FIDELITY: You must mirror the 'responsibility' enums (system vs library) exactly as they appear in the input data.
+7. TRADEOFF-FIRST TONE (CRITICAL): Do not narrate like an apology. Frame outcomes as constraint-driven optimization.
+   - If the input data indicates constraints, describe the tradeoff explicitly.
+   - Do NOT default to "the library failed" language unless responsibility=="library" OR status_tags indicate scarcity/missing motifs.
+8. CONFIDENCE QUALIFIERS (CRITICAL): When the input does not explicitly prove a claim, use calibrated language:
+   - "likely", "consistent with", "suggests", "cannot confirm".
+   - Never assert unseen footage properties.
+9. EXECUTIVE FIRST: The header and advisor.hero should read as an executive summary. Detail belongs in advisor.body and decision_stream.
 
 INPUT DATA (The Truth):
 {vault_reasoning}
 
 YOUR TASKS:
 1. HEADER: 1-2 sentences summarizing the context and goal.
+1b. EXECUTIVE SUMMARY (CRITICAL): Provide 3-6 short bullets for default view.
+   - Each bullet must be a single sentence.
+   - Prefer constraint/tradeoff framing.
 2. ADVISOR: 
    - 'hero': Emotional, blunt, and memorable summary of the library's impact on the edit.
    - 'body': Specific, actionable, and technical explanation of the constraints. Avoid repeating the hero.
@@ -53,21 +63,35 @@ YOUR TASKS:
      - group adjacent filler segments into a single summarized entry
 
    Filler segments exist to maintain rhythm, not to convey intelligence. Do not over-explain them.
+   KEY VS ALL (CRITICAL):
+   - You must set `is_key` and `importance` for every entry.
+   - Use the input field `is_key_candidate` (if present per segment) as the primary signal.
+   - `importance` MUST be either "key" or "all".
+   - `tags` is optional but recommended (examples: "forced_compromise", "structural_necessity", "overuse", "scarcity").
 4. FRICTION LOG: 3 bullet points on how confidence evolved (Start, Middle, End).
 5. POST-MORTEM: Blunt reflection on what worked and what didn't. Assign responsibility (System vs Library) EXACTLY as provided in the JSON.
 6. NEXT STEPS: 3 actionable prescriptions for the user.
+6b. CLIP-LEVEL SUGGESTIONS (CRITICAL): Provide 4-8 descriptive suggestions that help the user improve future edits.
+   - Use only the input data (including clip_usage.overused, missing_motifs, status_tags, constraint_gaps).
+   - Suggestions must be descriptive ("adding X would help"), not prescriptive ("delete clip Y").
+   - If overused clips exist, mention that adding substitutes with similar vibe/subject would reduce repetition.
 7. TECHNICAL: 2-3 behind-the-scenes notes on technical discipline.
 
 OUTPUT FORMAT (JSON ONLY):
 {{
   "header": "...",
+  "executive_summary": ["...", "..."],
   "advisor": {{ "hero": "...", "body": "..." }},
   "decision_stream": [
-    {{ "segment_id": 1, "what_i_tried": "...", "decision": "...", "what_if": "..." }}
+    {{ "segment_id": 1, "what_i_tried": "...", "decision": "...", "what_if": "...", "is_key": true, "importance": "key", "tags": ["..."] }}
+  ],
+  "key_decision_stream": [
+    {{ "segment_id": 1, "what_i_tried": "...", "decision": "...", "what_if": "...", "is_key": true, "importance": "key", "tags": ["..."] }}
   ],
   "friction_log": ["...", "...", "..."],
   "post_mortem": {{ "worked": "...", "didnt": "...", "responsibility": {{ "vibe": "...", "emotion": "..." }} }},
   "next_steps": ["...", "...", "..."],
+  "clip_suggestions": ["...", "..."],
   "technical": ["...", "...", "..."]
 }}
 """

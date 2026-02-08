@@ -10,7 +10,11 @@ import { getDownloadUrl, getStatus } from "@/lib/api";
 
 export default function ResultPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: sessionId } = use(params);
-  const [status, setStatus] = useState<any>(null);
+  const [status, setStatus] = useState<unknown>(null);
+
+  type StatusLike = {
+    blueprint?: unknown;
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -64,7 +68,9 @@ export default function ResultPage({ params }: { params: Promise<{ id: string }>
           </div>
           <Separator />
           <pre className="text-xs whitespace-pre-wrap text-muted-foreground">
-            {status ? JSON.stringify(status.blueprint || status, null, 2) : "Loading..."}
+            {status
+              ? JSON.stringify(((status as StatusLike).blueprint ?? status), null, 2)
+              : "Loading..."}
           </pre>
         </Card>
       </div>
