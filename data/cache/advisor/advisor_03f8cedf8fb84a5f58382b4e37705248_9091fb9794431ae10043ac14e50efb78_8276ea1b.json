@@ -1,0 +1,110 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands an aesthetic of military-grade precision, elite performance, and the heavy burden of legacy. It requires imagery that feels technically superior and emotionally high-stakes.",
+  "dominant_narrative": "A high-stakes pursuit of excellence where the machine serves as an extension of the human spirit, honoring a legacy of speed, danger, and collective triumph.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Object-Detail, Place-Urban",
+      "intent_diluting_material": "JOY, LIFESTYLE",
+      "reasoning": "The intro must establish the 'weight of duty.' We need focused, singular subjects that suggest a calm before the storm, emphasizing the professional dominance required for the task ahead.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip52.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "INTENSITY, Object-Vehicle",
+      "intent_diluting_material": "PEACE, ADVENTURE",
+      "reasoning": "This stage bridges the mental preparation with physical momentum. We move from the 'pilot's' focus to the 'machine's' capability, using training and technical details to build tension.",
+      "recommended_clips": [
+        "clip62.mp4",
+        "clip65.mp4",
+        "clip75.mp4",
+        "clip53.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "INTENSITY, Object-Vehicle",
+      "intent_diluting_material": "LIFESTYLE, PEACE",
+      "reasoning": "The peak is the 'dogfight'—maximum kinetic energy. It must balance the thrill of speed with the visceral reality of risk (crashes/reactions) to maintain the 'Maverick' sense of consequence.",
+      "recommended_clips": [
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip56.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "INTENSITY, People-Group",
+      "intent_diluting_material": "ADVENTURE, ACTION",
+      "reasoning": "The conclusion must provide the 'triumphant' release. We shift from the solo struggle to collective celebration and camaraderie, providing a 'button' that feels earned and heroic.",
+      "recommended_clips": [
+        "clip78.mp4",
+        "clip77.mp4",
+        "clip60.mp4",
+        "clip69.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage perfectly mirrors the 'high-octane' requirement.",
+      "Strong 'Intensity' clips (training, wind tunnel) provide the necessary narrative weight.",
+      "Excellent 'Peak' material with crashes and night-racing fireworks."
+    ],
+    "editorial_tradeoffs": [
+      "F1 racing serves as a thematic proxy for Naval Aviation due to the lack of jet footage.",
+      "Urban night-scapes and track environments replace the 'vast landscapes' requested in the reference."
+    ],
+    "constraint_gaps": [
+      "Significant scarcity of 'Golden Hour' nature shots; the edit will rely on 'Teal-Orange' urban night lighting instead.",
+      "Limited 'Solemn Duty' moments; the narrative will lean more into 'Professional Intensity' to compensate."
+    ]
+  },
+  "editorial_strategy": "The edit will pivot the 'Top Gun' military aesthetic into a high-performance racing narrative. By using the driver's physical and mental preparation as the emotional anchor, we transform mechanical speed into a story of human legacy and triumphant camaraderie.",
+  "remake_strategy": "To achieve a true Director's Cut, integrate actual aerial cinematography and desert 'Golden Hour' wide shots. Increasing the frequency of extreme close-ups on the eyes would further heighten the 'Intensity' carrier to match the reference's character focus.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical ignition or start lights",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed vehicle tracking",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "The driver's focused gaze",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Explosive victory or fireworks",
+      "desired_continuity": "Emotional-Release",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-08T17:05:03.837722"
+}

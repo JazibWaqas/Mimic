@@ -600,7 +600,7 @@ class ClipIndex(BaseModel):
 class EditDecision(BaseModel):
     """
     A single edit instruction: "Use clip X from time A to B".
-    
+
     Example: {
         "segment_id": 1,
         "clip_path": "/temp/xyz/clips/dance.mp4",
@@ -616,7 +616,8 @@ class EditDecision(BaseModel):
     clip_end: float = Field(..., gt=0, description="End time in source clip")
     timeline_start: float = Field(..., ge=0, description="Start time in final video")
     timeline_end: float = Field(..., gt=0, description="End time in final video")
-    
+    hold_end_seconds: Optional[float] = Field(None, ge=0, description="Demo fill: hold last frame this long so slot duration matches timeline")
+
     # Matching metadata for Thinking UI
     reasoning: str = Field("", description="Why this clip was chosen for this segment")
     vibe_match: bool = Field(False, description="Did the vibes match?")

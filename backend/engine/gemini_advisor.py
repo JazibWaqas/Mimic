@@ -36,7 +36,7 @@ import time
 # ============================================================================
 # Phase 1: Minimal activation - visual origin + Long hold + Intro/Peak only
 # Phase 2: Expand to all visual-origin segments after validation
-ENABLE_CONTEXTUAL_MOMENTS = True
+ENABLE_CONTEXTUAL_MOMENTS = False
 
 # Which segments to process with V14.0 (empty = all, or list of segment IDs)
 # Phase 1: Intro (segment 1) + Peak (segment 7) with visual origin + Long hold

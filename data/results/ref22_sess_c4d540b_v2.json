@@ -9,9 +9,9 @@
         "start": 0.0,
         "end": 4.6,
         "duration": 4.6,
-        "energy": "Medium",
+        "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Heroic",
+        "vibe": "Adrenaline",
         "reasoning": "",
         "arc_stage": "Intro",
         "shot_scale": "Wide",
@@ -23,19 +23,19 @@
         "media_type": "Video",
         "shot_scale_role": "World-Building",
         "temporal_weight": "Breath",
-        "emotional_anchor": true,
+        "emotional_anchor": false,
         "audio_driver": "Music-Rhythm",
         "audio_priority": "Music > SFX",
-        "cut_motivation": "Narrative-Shift",
+        "cut_motivation": "Rhythmic-Snap",
         "transition_intent": {
           "type": "Hard",
-          "mechanism": "None",
+          "mechanism": "Directional motion",
           "strength": "Normal"
         },
         "continuity_hook": {
-          "opens": "Action sequence",
+          "opens": "Physical-Action",
           "resolves": "None",
-          "type": "Physical-Action"
+          "type": "Motion-Direction"
         },
         "cut_origin": "visual",
         "cde": "Moderate"
@@ -45,32 +45,32 @@
         "start": 4.6,
         "end": 5.633333333333333,
         "duration": 1.0333333333333332,
-        "energy": "High",
+        "energy": "Medium",
         "motion": "Static",
-        "vibe": "Intense",
+        "vibe": "Focus",
         "reasoning": "",
         "arc_stage": "Build-up",
-        "shot_scale": "Extreme CU",
+        "shot_scale": "CU",
         "shot_function": "Detail",
-        "relation_to_previous": "Contrast",
-        "expected_hold": "Short",
+        "relation_to_previous": "Setup",
+        "expected_hold": "Normal",
         "camera_movement": "Locked",
         "emotional_guidance": "",
         "media_type": "Video",
         "shot_scale_role": "Intimacy-Focus",
         "temporal_weight": "Push",
         "emotional_anchor": true,
-        "audio_driver": "Music-Rhythm",
+        "audio_driver": "Sound-Event",
         "audio_priority": "Music > SFX",
         "cut_motivation": "Rhythmic-Snap",
         "transition_intent": {
           "type": "Hard",
           "mechanism": "None",
-          "strength": "Aggressive"
+          "strength": "Normal"
         },
         "continuity_hook": {
-          "opens": "Gaze",
-          "resolves": "None",
+          "opens": "None",
+          "resolves": "Physical-Action",
           "type": "Gaze"
         },
         "cut_origin": "visual",
@@ -89,11 +89,263 @@
         "shot_scale": "Medium",
         "shot_function": "Action",
         "relation_to_previous": "Continuation",
+        "expected_hold": "Normal",
+        "camera_movement": "Locked",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "Action-Link",
+        "temporal_weight": "Push",
+        "emotional_anchor": false,
+        "audio_driver": "Music-Rhythm",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Rhythmic-Snap",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "Spatial-Movement",
+          "resolves": "None",
+          "type": "Spatial-Movement"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 4,
+        "start": 6.633333333333333,
+        "end": 7.133333333333333,
+        "duration": 0.5,
+        "energy": "Medium",
+        "motion": "Static",
+        "vibe": "Intensity",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "CU",
+        "shot_function": "Detail",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Locked",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "Intimacy-Focus",
+        "temporal_weight": "Push",
+        "emotional_anchor": false,
+        "audio_driver": "Music-Rhythm",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Rhythmic-Snap",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "None",
+          "resolves": "None",
+          "type": "Gaze"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 5,
+        "start": 7.133333333333333,
+        "end": 7.666666666666667,
+        "duration": 0.5333333333333341,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Power",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Action",
+        "relation_to_previous": "Payoff",
         "expected_hold": "Short",
         "camera_movement": "Locked",
         "emotional_guidance": "",
         "media_type": "Video",
         "shot_scale_role": "Action-Link",
+        "temporal_weight": "Push",
+        "emotional_anchor": false,
+        "audio_driver": "Sound-Event",
+        "audio_priority": "SFX > Music",
+        "cut_motivation": "Rhythmic-Snap",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "Directional motion",
+          "strength": "Aggressive"
+        },
+        "continuity_hook": {
+          "opens": "Physical-Action",
+          "resolves": "None",
+          "type": "Motion-Direction"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 6,
+        "start": 7.666666666666667,
+        "end": 8.166666666666666,
+        "duration": 0.4999999999999991,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Impact",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Reaction",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Short",
+        "camera_movement": "Locked",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "Action-Link",
+        "temporal_weight": "Push",
+        "emotional_anchor": false,
+        "audio_driver": "Sound-Event",
+        "audio_priority": "SFX > Music",
+        "cut_motivation": "Rhythmic-Snap",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "None",
+          "resolves": "Physical-Action",
+          "type": "Physical-Action"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 7,
+        "start": 8.166666666666666,
+        "end": 11.233333333333333,
+        "duration": 3.0666666666666664,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Scale",
+        "reasoning": "",
+        "arc_stage": "Build-up",
+        "shot_scale": "Wide",
+        "shot_function": "Establish",
+        "relation_to_previous": "None",
+        "expected_hold": "Long",
+        "camera_movement": "Smooth pan",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "World-Building",
+        "temporal_weight": "Breath",
+        "emotional_anchor": false,
+        "audio_driver": "Music-Rhythm",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Narrative-Shift",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "Spatial-Movement",
+          "resolves": "None",
+          "type": "Spatial-Movement"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 8,
+        "start": 11.233333333333333,
+        "end": 12.266666666666666,
+        "duration": 1.0333333333333332,
+        "energy": "High",
+        "motion": "Dynamic",
+        "vibe": "Speed",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Action",
+        "relation_to_previous": "Continuation",
+        "expected_hold": "Normal",
+        "camera_movement": "Smooth pan",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "Action-Link",
+        "temporal_weight": "Push",
+        "emotional_anchor": false,
+        "audio_driver": "Music-Rhythm",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Rhythmic-Snap",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "Directional motion",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "None",
+          "resolves": "None",
+          "type": "Motion-Direction"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 9,
+        "start": 12.266666666666666,
+        "end": 12.766666666666666,
+        "duration": 0.5,
+        "energy": "Low",
+        "motion": "Static",
+        "vibe": "Grief",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "CU",
+        "shot_function": "Reaction",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Short",
+        "camera_movement": "Locked",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "Intimacy-Focus",
+        "temporal_weight": "Push",
+        "emotional_anchor": true,
+        "audio_driver": "Emotional-Silence",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Narrative-Shift",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "Gaze",
+          "resolves": "None",
+          "type": "Gaze"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 10,
+        "start": 12.766666666666666,
+        "end": 13.799999999999999,
+        "duration": 1.0333333333333332,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Solemn",
+        "reasoning": "",
+        "arc_stage": "Peak",
+        "shot_scale": "Wide",
+        "shot_function": "Action",
+        "relation_to_previous": "Payoff",
+        "expected_hold": "Normal",
+        "camera_movement": "Locked",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "World-Building",
         "temporal_weight": "Push",
         "emotional_anchor": false,
         "audio_driver": "Music-Rhythm",
@@ -113,206 +365,26 @@
         "cde": "Moderate"
       },
       {
-        "id": 4,
-        "start": 6.633333333333333,
-        "end": 7.133333333333333,
-        "duration": 0.5,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Power",
-        "reasoning": "",
-        "arc_stage": "Build-up",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Setup",
-        "expected_hold": "Short",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": false,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Aggressive"
-        },
-        "continuity_hook": {
-          "opens": "Dust cloud",
-          "resolves": "None",
-          "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 5,
-        "start": 7.133333333333333,
-        "end": 7.666666666666667,
-        "duration": 0.5333333333333341,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Scale",
-        "reasoning": "",
-        "arc_stage": "Build-up",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Continuation",
-        "expected_hold": "Short",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": false,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 6,
-        "start": 7.666666666666667,
-        "end": 8.166666666666666,
-        "duration": 0.4999999999999991,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Majesty",
-        "reasoning": "",
-        "arc_stage": "Build-up",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Continuation",
-        "expected_hold": "Short",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": false,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 7,
-        "start": 8.166666666666666,
-        "end": 11.233333333333333,
-        "duration": 3.0666666666666664,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Strain",
+        "id": 11,
+        "start": 13.799999999999999,
+        "end": 14.799999999999999,
+        "duration": 1.0,
+        "energy": "Low",
+        "motion": "Static",
+        "vibe": "Duty",
         "reasoning": "",
         "arc_stage": "Peak",
         "shot_scale": "CU",
         "shot_function": "Reaction",
-        "relation_to_previous": "Payoff",
-        "expected_hold": "Long",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "Intimacy-Focus",
-        "temporal_weight": "Breath",
-        "emotional_anchor": true,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Narrative-Shift",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "Physical strain",
-          "resolves": "None",
-          "type": "Physical-Action"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 8,
-        "start": 11.233333333333333,
-        "end": 12.266666666666666,
-        "duration": 1.0333333333333332,
-        "energy": "Medium",
-        "motion": "Dynamic",
-        "vibe": "Solemn",
-        "reasoning": "",
-        "arc_stage": "Peak",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Contrast",
+        "relation_to_previous": "Continuation",
         "expected_hold": "Normal",
         "camera_movement": "Locked",
         "emotional_guidance": "",
         "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": false,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 9,
-        "start": 12.266666666666666,
-        "end": 12.766666666666666,
-        "duration": 0.5,
-        "energy": "Medium",
-        "motion": "Static",
-        "vibe": "Respect",
-        "reasoning": "",
-        "arc_stage": "Peak",
-        "shot_scale": "CU",
-        "shot_function": "Reaction",
-        "relation_to_previous": "Continuation",
-        "expected_hold": "Short",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
         "shot_scale_role": "Intimacy-Focus",
         "temporal_weight": "Push",
         "emotional_anchor": true,
-        "audio_driver": "Music-Rhythm",
+        "audio_driver": "Emotional-Silence",
         "audio_priority": "Music > SFX",
         "cut_motivation": "Rhythmic-Snap",
         "transition_intent": {
@@ -329,56 +401,20 @@
         "cde": "Moderate"
       },
       {
-        "id": 10,
-        "start": 12.766666666666666,
-        "end": 13.799999999999999,
-        "duration": 1.0333333333333332,
+        "id": 12,
+        "start": 14.799999999999999,
+        "end": 15.333333333333334,
+        "duration": 0.533333333333335,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "Speed",
+        "vibe": "Thrill",
         "reasoning": "",
         "arc_stage": "Peak",
         "shot_scale": "Wide",
         "shot_function": "Action",
         "relation_to_previous": "Contrast",
-        "expected_hold": "Normal",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": false,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 11,
-        "start": 13.799999999999999,
-        "end": 14.799999999999999,
-        "duration": 1.0,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Precision",
-        "reasoning": "",
-        "arc_stage": "Peak",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Continuation",
-        "expected_hold": "Normal",
-        "camera_movement": "Locked",
+        "expected_hold": "Short",
+        "camera_movement": "Smooth pan",
         "emotional_guidance": "",
         "media_type": "Video",
         "shot_scale_role": "Action-Link",
@@ -389,49 +425,13 @@
         "cut_motivation": "Rhythmic-Snap",
         "transition_intent": {
           "type": "Hard",
-          "mechanism": "None",
+          "mechanism": "Directional motion",
           "strength": "Normal"
         },
         "continuity_hook": {
-          "opens": "None",
+          "opens": "Spatial-Movement",
           "resolves": "None",
           "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 12,
-        "start": 14.799999999999999,
-        "end": 15.333333333333334,
-        "duration": 0.533333333333335,
-        "energy": "Medium",
-        "motion": "Dynamic",
-        "vibe": "Camaraderie",
-        "reasoning": "",
-        "arc_stage": "Peak",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Contrast",
-        "expected_hold": "Short",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": true,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Physical-Action"
         },
         "cut_origin": "visual",
         "cde": "Moderate"
@@ -443,85 +443,13 @@
         "duration": 1.0333333333333332,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Legacy",
+        "vibe": "Unity",
         "reasoning": "",
         "arc_stage": "Peak",
         "shot_scale": "Wide",
         "shot_function": "Action",
         "relation_to_previous": "Continuation",
         "expected_hold": "Normal",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": true,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Physical-Action"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 14,
-        "start": 16.366666666666667,
-        "end": 17.366666666666667,
-        "duration": 1.0,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Power",
-        "reasoning": "",
-        "arc_stage": "Outro",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Contrast",
-        "expected_hold": "Normal",
-        "camera_movement": "Locked",
-        "emotional_guidance": "",
-        "media_type": "Video",
-        "shot_scale_role": "World-Building",
-        "temporal_weight": "Push",
-        "emotional_anchor": false,
-        "audio_driver": "Music-Rhythm",
-        "audio_priority": "Music > SFX",
-        "cut_motivation": "Rhythmic-Snap",
-        "transition_intent": {
-          "type": "Hard",
-          "mechanism": "None",
-          "strength": "Normal"
-        },
-        "continuity_hook": {
-          "opens": "None",
-          "resolves": "None",
-          "type": "Motion-Direction"
-        },
-        "cut_origin": "visual",
-        "cde": "Moderate"
-      },
-      {
-        "id": 15,
-        "start": 17.366666666666667,
-        "end": 17.866666666666667,
-        "duration": 0.5,
-        "energy": "High",
-        "motion": "Dynamic",
-        "vibe": "Agility",
-        "reasoning": "",
-        "arc_stage": "Outro",
-        "shot_scale": "Wide",
-        "shot_function": "Action",
-        "relation_to_previous": "Continuation",
-        "expected_hold": "Short",
         "camera_movement": "Locked",
         "emotional_guidance": "",
         "media_type": "Video",
@@ -539,29 +467,65 @@
         "continuity_hook": {
           "opens": "None",
           "resolves": "None",
-          "type": "Motion-Direction"
+          "type": "Spatial-Movement"
         },
         "cut_origin": "visual",
         "cde": "Moderate"
       },
       {
-        "id": 16,
-        "start": 17.866666666666667,
-        "end": 18.4,
-        "duration": 0.5333333333333314,
+        "id": 14,
+        "start": 16.366666666666667,
+        "end": 17.366666666666667,
+        "duration": 1.0,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "Departure",
+        "vibe": "Freedom",
         "reasoning": "",
-        "arc_stage": "Outro",
+        "arc_stage": "Peak",
         "shot_scale": "Wide",
         "shot_function": "Release",
-        "relation_to_previous": "Continuation",
+        "relation_to_previous": "Contrast",
+        "expected_hold": "Long",
+        "camera_movement": "Smooth pan",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "World-Building",
+        "temporal_weight": "Breath",
+        "emotional_anchor": true,
+        "audio_driver": "Music-Rhythm",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Narrative-Shift",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "Physical-Action",
+          "resolves": "None",
+          "type": "Physical-Action"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 15,
+        "start": 17.366666666666667,
+        "end": 17.866666666666667,
+        "duration": 0.5,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Purpose",
+        "reasoning": "",
+        "arc_stage": "Outro",
+        "shot_scale": "Medium",
+        "shot_function": "Action",
+        "relation_to_previous": "Setup",
         "expected_hold": "Short",
         "camera_movement": "Locked",
         "emotional_guidance": "",
         "media_type": "Video",
-        "shot_scale_role": "World-Building",
+        "shot_scale_role": "Action-Link",
         "temporal_weight": "Push",
         "emotional_anchor": false,
         "audio_driver": "Music-Rhythm",
@@ -574,8 +538,44 @@
         },
         "continuity_hook": {
           "opens": "None",
-          "resolves": "Action sequence",
-          "type": "Motion-Direction"
+          "resolves": "Physical-Action",
+          "type": "Spatial-Movement"
+        },
+        "cut_origin": "visual",
+        "cde": "Moderate"
+      },
+      {
+        "id": 16,
+        "start": 17.866666666666667,
+        "end": 18.4,
+        "duration": 0.5333333333333314,
+        "energy": "Medium",
+        "motion": "Dynamic",
+        "vibe": "Legacy",
+        "reasoning": "",
+        "arc_stage": "Outro",
+        "shot_scale": "Wide",
+        "shot_function": "Button",
+        "relation_to_previous": "Payoff",
+        "expected_hold": "Normal",
+        "camera_movement": "Locked",
+        "emotional_guidance": "",
+        "media_type": "Video",
+        "shot_scale_role": "World-Building",
+        "temporal_weight": "Breath",
+        "emotional_anchor": false,
+        "audio_driver": "Music-Rhythm",
+        "audio_priority": "Music > SFX",
+        "cut_motivation": "Rhythmic-Snap",
+        "transition_intent": {
+          "type": "Hard",
+          "mechanism": "None",
+          "strength": "Normal"
+        },
+        "continuity_hook": {
+          "opens": "None",
+          "resolves": "None",
+          "type": "Spatial-Movement"
         },
         "cut_origin": "visual",
         "cde": "Moderate"
@@ -587,13 +587,13 @@
         "duration": 2.0,
         "energy": "Low",
         "motion": "Static",
-        "vibe": "End",
+        "vibe": "Resolution",
         "reasoning": "",
         "arc_stage": "Outro",
         "shot_scale": "Wide",
         "shot_function": "Button",
         "relation_to_previous": "None",
-        "expected_hold": "Long",
+        "expected_hold": "Normal",
         "camera_movement": "Locked",
         "emotional_guidance": "",
         "media_type": "Video",
@@ -621,43 +621,42 @@
     "text_prompt": null,
     "plan_summary": "",
     "assumed_material": [],
-    "editing_style": "Music video",
+    "editing_style": "Cinematic montage",
     "emotional_intent": "Triumphant",
-    "arc_description": "Starts with a heroic build-up, transitions into a high-energy rhythmic montage of action, and concludes with a sense of legacy and power.",
+    "arc_description": "The edit opens with pure adrenaline, builds tension through intense character focus, transitions into a solemn reflection on legacy, and concludes with a sense of collective purpose.",
     "text_overlay": "TOP GUN MAVERICK",
-    "narrative_message": "A high-octane tribute to the legacy and adrenaline-fueled world of elite naval aviation.",
+    "narrative_message": "A high-octane tribute to the legacy of naval aviation, balancing extreme speed with the weight of duty and camaraderie.",
     "intent_clarity": "Clear",
     "text_events": [],
     "must_have_content": [
-      "High-speed vehicle action (jets/motorcycles)",
-      "Intense close-ups of focused characters",
-      "Sweeping aerial or landscape vistas",
-      "Group camaraderie or symbolic formations",
-      "Powerful machinery in motion"
+      "High-speed vehicle tracking shots",
+      "Intense close-ups of pilot eyes/faces",
+      "Aerial formations in vast landscapes",
+      "Moments of camaraderie or solemn duty"
     ],
     "should_have_content": [
-      "Golden hour or high-contrast lighting",
-      "Environmental effects from speed (dust/water)",
-      "Solemn moments to balance high energy"
+      "Golden hour lighting",
+      "Military hardware details",
+      "Environmental reactions to speed (dust, water spray)"
     ],
     "avoid_content": [
-      "Low-energy static scenes",
-      "Shaky handheld camera",
-      "Flat, non-cinematic lighting"
+      "Static dialogue scenes",
+      "Low-contrast lighting",
+      "Handheld shaky cam"
     ],
     "pacing_feel": "Syncopated",
     "visual_balance": "Action-focused",
     "color_grading": {
       "tone": "Warm",
       "contrast": "High",
-      "specific_look": "Filmic Teal-Orange / Golden Hour"
+      "specific_look": "Teal-Orange cinematic grade with heavy golden hour influence"
     },
     "aspect_ratio": "21:9",
     "visual_effects": [
       "Slow motion",
-      "Speed ramps",
       "Motion blur",
-      "Grain"
+      "Lens flare",
+      "Heat haze"
     ],
     "shot_variety": {
       "dominant_scale": "Wide",
@@ -666,7 +665,8 @@
     "stylistic_invariants": [
       "Hard cuts only",
       "Center-weighted action",
-      "Cinemascope aspect ratio"
+      "Symmetry in formation shots",
+      "High-speed tracking shots"
     ],
     "peak_density": "Dense",
     "cut_style": "Hard cuts",
@@ -675,36 +675,36 @@
     "audio_confidence": "Observed",
     "music_sync": "Tightly synced",
     "audio_style": {
-      "genre": "Trap Remix",
-      "vocal_presence": "Instrumental",
+      "genre": "Cinematic Rock / Orchestral",
+      "vocal_presence": "Mixed",
       "energy": "High"
     },
     "music_structure": {
-      "phrases": "Intro (0.0-4.6), Main Beat (4.6-18.39), Outro (18.39-20.4)",
-      "accent_moments": "4.6 (Beat drop), 6.64, 7.15, 7.66, 8.17 (Rapid cuts)",
+      "phrases": "Intro (0-4.6), Build (4.6-11.24), Peak Anthem (11.24-18.39), Resolve (18.39-end)",
+      "accent_moments": "4.6 (Beat drop), 8.17 (Transition to carrier), 16.35 (Shift to beach run)",
       "ending_type": "Hard stop"
     },
     "text_style": {
       "font_style": "Bold Stencil Sans-serif",
-      "animation": "Static",
-      "placement": "Center",
-      "color_effects": "Silver metallic with slight glow"
+      "animation": "Fade-on",
+      "placement": "Center-left",
+      "color_effects": "Silver with metallic sheen"
     },
     "text_behavior": {
       "appearance_logic": "Intro-only",
       "entry_moment": "First-push",
       "exit_rule": "Cut-with-shot",
-      "priority": "Primary"
+      "priority": "Branding"
     },
     "text_cadence": "Static",
     "style_config": null,
-    "overall_reasoning": "The edit leverages a high-energy trap remix of the iconic Top Gun theme to drive a fast-paced montage of the film's most visually striking moments. It balances intense cockpit close-ups with wide, sweeping shots of jets in action, creating a sense of both personal stakes and epic scale. The pacing accelerates in the middle with rapid-fire cuts synced to the beat, then resolves with more reflective, legacy-focused imagery.",
+    "overall_reasoning": "The edit follows a classic cinematic trailer structure: an establishing high-energy hook, a rapid-fire rhythmic build-up using character close-ups and kinetic action, a mid-point shift to wider world-building, and a final peak that blends action with emotional release. The use of hard cuts synced to a driving beat creates a sense of precision and military discipline. The color palette is consistently warm and high-contrast, reinforcing the 'Golden Hour' aesthetic associated with the source material.",
     "ideal_material_suggestions": [
-      "High-speed vehicle footage with dynamic camera angles.",
-      "Close-ups of focused individuals showing physical strain or determination.",
-      "Sweeping landscape shots at golden hour.",
-      "Group activities or formations that imply teamwork and legacy.",
-      "Powerful machinery (jets, engines, cars) in high-motion states."
+      "High-speed racing or flight footage with clear directional motion.",
+      "Close-up shots of eyes or faces showing intense concentration or emotion.",
+      "Wide landscape shots with subjects moving through the frame at high speed.",
+      "Group activities at sunset to mirror the beach camaraderie scene.",
+      "Formal or uniform-based shots to maintain the sense of duty and legacy."
     ],
     "contract": {
       "type": "reference",
@@ -2675,22 +2675,24 @@
     "decisions": [
       {
         "segment_id": 1,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_002.mp4",
-        "clip_start": 0.0,
-        "clip_end": 4.6,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_001.mp4",
+        "clip_start": 6.5,
+        "clip_end": 11.1,
         "timeline_start": 0.0,
         "timeline_end": 4.6,
-        "reasoning": "Advisor-selected: This selection utilizes a continuous 4.6s shot from clip50.mp4, seamlessly transitioning from a static establishing shot of trophies (0.0-3.0s) into a smooth camera pan (3.0-4.6s). This perfectly satisfies the 'Long' expected hold and 'Establish' function while the thematic focus on trophies aligns with the 'Heroic' vibe and 'Intro' arc stage.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a strategic 'Establish' shot within this sequence. The visual content captures the 'Adrenaline' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 2,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_001.mp4",
-        "clip_start": 6.5,
-        "clip_end": 7.533333333333333,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_002.mp4",
+        "clip_start": 3.0,
+        "clip_end": 4.033333333333333,
         "timeline_start": 4.6,
         "timeline_end": 5.633333333333333,
-        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a strategic 'Detail' shot within this sequence. The visual content captures the 'Intense' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 The visual content captures the 'Focus' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
@@ -2700,225 +2702,240 @@
         "clip_end": 11.0,
         "timeline_start": 5.633333333333333,
         "timeline_end": 6.633333333333333,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Action' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Action' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 4,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_003.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.5,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_005.mp4",
+        "clip_start": 6.0,
+        "clip_end": 6.5,
         "timeline_start": 6.633333333333333,
         "timeline_end": 7.133333333333333,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. The visual content captures the 'Power' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. The visual content captures the 'Intensity' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 5,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_014.mp4",
-        "clip_start": 2.5,
-        "clip_end": 3.033333333333333,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_003.mp4",
+        "clip_start": 0.0,
+        "clip_end": 0.5333333333333333,
         "timeline_start": 7.133333333333333,
         "timeline_end": 7.666666666666667,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": false
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. The visual content captures the 'Power' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness.",
+        "vibe_match": true
       },
       {
         "segment_id": 6,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_019.mp4",
-        "clip_start": 5.5,
-        "clip_end": 6.0,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_017.mp4",
+        "clip_start": 22.5,
+        "clip_end": 23.0,
         "timeline_start": 7.666666666666667,
         "timeline_end": 8.166666666666666,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 7,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_004.mp4",
-        "clip_start": 9.933333333333334,
-        "clip_end": 13.0,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_014.mp4",
+        "clip_start": 1.0,
+        "clip_end": 3.1,
         "timeline_start": 8.166666666666666,
         "timeline_end": 11.233333333333333,
-        "reasoning": "Advisor-selected: The wind tunnel shot in clip52.mp4 is the strongest match for the 'Peak' arc stage and 'Strain' vibe, visually representing the physical pressure and aerodynamic intensity of high-performance testing. It satisfies the 'Long' expected hold with a single stable, high-energy moment, adhering to Rule 1 (Restraint) and Rule 2 (Hold Authority) while providing a powerful visual 'reaction' to the preceding narrative build-up.",
-        "vibe_match": true
-      },
-      {
-        "segment_id": 8,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_023.mp4",
-        "clip_start": 2.2,
-        "clip_end": 3.2333333333333334,
-        "timeline_start": 11.233333333333333,
-        "timeline_end": 12.266666666666666,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "hold_end_seconds": 0.9666666666666667,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
+        "segment_id": 8,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_006.mp4",
+        "clip_start": 15.0,
+        "clip_end": 16.03333333333333,
+        "timeline_start": 11.233333333333333,
+        "timeline_end": 12.266666666666666,
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": true
+      },
+      {
         "segment_id": 9,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_005.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_024.mp4",
         "clip_start": 6.0,
         "clip_end": 6.5,
         "timeline_start": 12.266666666666666,
         "timeline_end": 12.766666666666666,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 10,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_006.mp4",
-        "clip_start": 15.0,
-        "clip_end": 16.03333333333333,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_023.mp4",
+        "clip_start": 2.2,
+        "clip_end": 3.2333333333333334,
         "timeline_start": 12.766666666666666,
         "timeline_end": 13.799999999999999,
-        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "vibe_match": false
       },
       {
         "segment_id": 11,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_017.mp4",
-        "clip_start": 22.5,
-        "clip_end": 23.5,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_008.mp4",
+        "clip_start": 0.0,
+        "clip_end": 1.0,
         "timeline_start": 13.799999999999999,
         "timeline_end": 14.799999999999999,
-        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
         "vibe_match": false
       },
       {
         "segment_id": 12,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_030.mp4",
-        "clip_start": 17.5,
-        "clip_end": 18.033333333333335,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_019.mp4",
+        "clip_start": 5.5,
+        "clip_end": 6.033333333333333,
         "timeline_start": 14.799999999999999,
         "timeline_end": 15.333333333333334,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
-        "vibe_match": false
-      },
-      {
-        "segment_id": 13,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_024.mp4",
-        "clip_start": 3.0,
-        "clip_end": 4.033333333333333,
-        "timeline_start": 15.333333333333334,
-        "timeline_end": 16.366666666666667,
+        "hold_end_seconds": null,
         "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
-        "segment_id": 14,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_015.mp4",
+        "segment_id": 13,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_010.mp4",
         "clip_start": 5.5,
-        "clip_end": 6.5,
+        "clip_end": 6.533333333333333,
+        "timeline_start": 15.333333333333334,
+        "timeline_end": 16.366666666666667,
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 14,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_027.mp4",
+        "clip_start": 0.0,
+        "clip_end": 1.0,
         "timeline_start": 16.366666666666667,
         "timeline_end": 17.366666666666667,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
       },
       {
         "segment_id": 15,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_013.mp4",
-        "clip_start": 0.0,
-        "clip_end": 0.5,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_030.mp4",
+        "clip_start": 17.5,
+        "clip_end": 18.0,
         "timeline_start": 17.366666666666667,
         "timeline_end": 17.866666666666667,
+        "hold_end_seconds": null,
         "reasoning": "🌟 Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 16,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_016.mp4",
-        "clip_start": 0.5,
-        "clip_end": 1.0333333333333332,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_013.mp4",
+        "clip_start": 3.0,
+        "clip_end": 3.533333333333333,
         "timeline_start": 17.866666666666667,
         "timeline_end": 18.4,
-        "reasoning": "🌟 Serving as a strategic 'Release' shot within this sequence. Maintains visual freshness.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Serving as a strategic 'Button' shot within this sequence. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 17,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_002.mp4",
-        "clip_start": 0.0,
-        "clip_end": 2.0,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_021.mp4",
+        "clip_start": 3.5,
+        "clip_end": 5.5,
         "timeline_start": 18.4,
         "timeline_end": 20.4,
-        "reasoning": "🌟 Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segment. Maintains lighting consistency.",
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       }
     ]
   },
   "advisor": {
-    "text_overlay_intent": "The 'TOP GUN MAVERICK' branding demands an atmosphere of elite professionalism, high-stakes adrenaline, and the heavy weight of legacy. It requires imagery that suggests being the 'best of the best' through a combination of technical mastery and raw, kinetic power.",
-    "dominant_narrative": "A visceral exploration of the symbiotic relationship between a master operator and their high-performance machine, culminating in the explosive triumph of elite competition.",
+    "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands an aesthetic of military-grade precision, elite performance, and the heavy burden of legacy. It requires imagery that feels technically superior and emotionally high-stakes.",
+    "dominant_narrative": "A high-stakes pursuit of excellence where the machine serves as an extension of the human spirit, honoring a legacy of speed, danger, and collective triumph.",
     "arc_stage_guidance": {
       "Intro": {
         "primary_emotional_carrier": "INTENSITY",
-        "supporting_material": "Atmospheric urban landscapes and technical preparations.",
-        "intent_diluting_material": "Casual, low-stakes social interactions or bright, flat lighting.",
-        "reasoning": "The intro must establish the 'Maverick' persona—focused, isolated, and preparing for a high-stakes environment. We need to see the man before the machine.",
+        "supporting_material": "Object-Detail, Place-Urban",
+        "intent_diluting_material": "JOY, LIFESTYLE",
+        "reasoning": "The intro must establish the 'weight of duty.' We need focused, singular subjects that suggest a calm before the storm, emphasizing the professional dominance required for the task ahead.",
         "recommended_clips": [
           "clip51.mp4",
-          "clip52.mp4",
-          "clip74.mp4"
-        ],
-        "required_energy": "Medium"
-      },
-      "Build-up": {
-        "primary_emotional_carrier": "ACTION",
-        "supporting_material": "Physical training, mechanical details, and the anticipation of the starting grid.",
-        "intent_diluting_material": "Static scenery without a sense of impending movement or purpose.",
-        "reasoning": "This stage bridges the individual's focus to the machine's power. The energy must climb through rhythmic cutting of preparation and engine starts.",
-        "recommended_clips": [
-          "clip62.mp4",
-          "clip67.mp4",
-          "clip75.mp4",
-          "clip63.mp4"
+          "clip74.mp4",
+          "clip52.mp4"
         ],
         "required_energy": "High"
       },
+      "Build-up": {
+        "primary_emotional_carrier": "ACTION",
+        "supporting_material": "INTENSITY, Object-Vehicle",
+        "intent_diluting_material": "PEACE, ADVENTURE",
+        "reasoning": "This stage bridges the mental preparation with physical momentum. We move from the 'pilot's' focus to the 'machine's' capability, using training and technical details to build tension.",
+        "recommended_clips": [
+          "clip62.mp4",
+          "clip65.mp4",
+          "clip75.mp4",
+          "clip53.mp4"
+        ],
+        "required_energy": "Medium"
+      },
       "Peak": {
         "primary_emotional_carrier": "ACTION",
-        "supporting_material": "High-speed maneuvers, dramatic crashes, and explosive visual punctuation like fireworks.",
-        "intent_diluting_material": "Wide shots that linger too long, losing the sense of subjective speed.",
-        "reasoning": "The peak is the 'dogfight' equivalent. It must be a syncopated, high-velocity montage where the machine and driver are tested to their limits.",
+        "supporting_material": "INTENSITY, Object-Vehicle",
+        "intent_diluting_material": "LIFESTYLE, PEACE",
+        "reasoning": "The peak is the 'dogfight'—maximum kinetic energy. It must balance the thrill of speed with the visceral reality of risk (crashes/reactions) to maintain the 'Maverick' sense of consequence.",
         "recommended_clips": [
           "clip58.mp4",
           "clip71.mp4",
-          "clip78.mp4",
-          "clip56.mp4",
-          "clip54.mp4"
+          "clip72.mp4",
+          "clip57.mp4",
+          "clip56.mp4"
         ],
         "required_energy": "High"
       },
       "Outro": {
         "primary_emotional_carrier": "JOY",
-        "supporting_material": "Reflective moments, trophies, and symbolic departures into the sunset.",
-        "intent_diluting_material": "Abrupt cuts or high-energy racing that fails to resolve into a 'button'.",
-        "reasoning": "The conclusion must provide the 'Triumphant' emotional release, shifting from the heat of battle to the legacy of the win.",
+        "supporting_material": "INTENSITY, People-Group",
+        "intent_diluting_material": "ADVENTURE, ACTION",
+        "reasoning": "The conclusion must provide the 'triumphant' release. We shift from the solo struggle to collective celebration and camaraderie, providing a 'button' that feels earned and heroic.",
         "recommended_clips": [
+          "clip78.mp4",
           "clip77.mp4",
-          "clip50.mp4",
-          "clip61.mp4",
-          "clip49.mp4"
+          "clip60.mp4",
+          "clip69.mp4"
         ],
-        "required_energy": "Low"
+        "required_energy": "Medium"
       }
     },
     "library_alignment": {
       "strengths": [
-        "Abundant high-intensity racing footage that mirrors the kinetic energy of aerial combat.",
-        "Strong 'training' and 'preparation' clips to build the character narrative.",
-        "High-quality cinematic lighting (Golden Hour/Night) matches the reference aesthetic."
+        "Abundant high-energy racing footage perfectly mirrors the 'high-octane' requirement.",
+        "Strong 'Intensity' clips (training, wind tunnel) provide the necessary narrative weight.",
+        "Excellent 'Peak' material with crashes and night-racing fireworks."
       ],
       "editorial_tradeoffs": [
-        "Formula 1 racing must serve as a narrative proxy for naval aviation due to lack of aircraft.",
-        "Urban Las Vegas settings will be used to ground the 'elite' lifestyle in lieu of military bases."
+        "F1 racing serves as a thematic proxy for Naval Aviation due to the lack of jet footage.",
+        "Urban night-scapes and track environments replace the 'vast landscapes' requested in the reference."
       ],
       "constraint_gaps": [
-        "Lack of actual jet/aviation footage requires heavy reliance on 'Object-Vehicle' speed cues to maintain the Top Gun theme.",
-        "Scarce 'Low' energy footage makes the 'Solemn' requirement for balance difficult to sustain."
+        "Significant scarcity of 'Golden Hour' nature shots; the edit will rely on 'Teal-Orange' urban night lighting instead.",
+        "Limited 'Solemn Duty' moments; the narrative will lean more into 'Professional Intensity' to compensate."
       ]
     },
-    "editorial_strategy": "The edit will pivot the 'Top Gun' legacy onto the world of elite Formula 1 racing, treating the cockpit as the flight deck. We will prioritize the 'Pilot's' journey—from the isolation of training to the chaos of the track—ensuring that every high-speed shot feels earned by a moment of human focus.",
-    "remake_strategy": "To achieve a true Director's Cut, integrate authentic cockpit POV audio and air-to-air style tracking shots. Adding more 'Golden Hour' landscape vistas would further cement the cinematic 'Maverick' aesthetic.",
+    "editorial_strategy": "The edit will pivot the 'Top Gun' military aesthetic into a high-performance racing narrative. By using the driver's physical and mental preparation as the emotional anchor, we transform mechanical speed into a story of human legacy and triumphant camaraderie.",
+    "remake_strategy": "To achieve a true Director's Cut, integrate actual aerial cinematography and desert 'Golden Hour' wide shots. Increasing the frequency of extreme close-ups on the eyes would further heighten the 'Intensity' carrier to match the reference's character focus.",
     "primary_narrative_subject": "People-Solo",
     "allowed_supporting_subjects": [
       "People-Group",
@@ -2932,71 +2949,28 @@
         "priority": "High"
       },
       {
-        "trigger": "High-speed vehicle motion",
+        "trigger": "High-speed vehicle tracking",
         "desired_continuity": "Motion-Carry",
         "priority": "High"
       },
       {
-        "trigger": "Driver focus or intense eye contact",
+        "trigger": "The driver's focused gaze",
         "desired_continuity": "Semantic-Resonance",
         "priority": "Medium"
       },
       {
-        "trigger": "Fireworks or podium celebrations",
+        "trigger": "Explosive victory or fireworks",
         "desired_continuity": "Emotional-Release",
         "priority": "High"
       }
     ],
-    "segment_moment_plans": {
-      "1": {
-        "segment_id": 1,
-        "moments": [
-          {
-            "clip_filename": "clip50.mp4",
-            "moment_energy_level": "Low",
-            "start": 0.0,
-            "end": 4.6,
-            "duration": 4.6,
-            "moment_role": "",
-            "stable_moment": true,
-            "reason": "This selection utilizes a continuous 4.6s shot from clip50.mp4, seamlessly transitioning from a static establishing shot of trophies (0.0-3.0s) into a smooth camera pan (3.0-4.6s). This perfectly satisfies the 'Long' expected hold and 'Establish' function while the thematic focus on trophies aligns with the 'Heroic' vibe and 'Intro' arc stage.",
-            "semantic_score": 0.0,
-            "musical_alignment": 0.0,
-            "narrative_continuity": 0.0
-          }
-        ],
-        "total_duration": 4.6,
-        "is_single_moment": true,
-        "chaining_reason": null
-      },
-      "7": {
-        "segment_id": 7,
-        "moments": [
-          {
-            "clip_filename": "clip52.mp4",
-            "moment_energy_level": "High",
-            "start": 9.933333333333334,
-            "end": 13.0,
-            "duration": 3.0666666666666664,
-            "moment_role": "",
-            "stable_moment": true,
-            "reason": "The wind tunnel shot in clip52.mp4 is the strongest match for the 'Peak' arc stage and 'Strain' vibe, visually representing the physical pressure and aerodynamic intensity of high-performance testing. It satisfies the 'Long' expected hold with a single stable, high-energy moment, adhering to Rule 1 (Restraint) and Rule 2 (Hold Authority) while providing a powerful visual 'reaction' to the preceding narrative build-up.",
-            "semantic_score": 0.0,
-            "musical_alignment": 0.0,
-            "narrative_continuity": 0.0
-          }
-        ],
-        "total_duration": 3.07,
-        "is_single_moment": true,
-        "chaining_reason": null
-      }
-    },
+    "segment_moment_plans": {},
     "library_assessment": null,
     "creative_audit": null,
     "overall_strategy": "",
     "required_improvements": [],
     "cache_version": "4.1",
-    "cached_at": "2026-02-08T14:40:14.612888"
+    "cached_at": "2026-02-08T17:05:03.837722"
   },
   "critique": {
     "overall_score": 8.0,
@@ -3031,32 +3005,43 @@
   "style_config": null,
   "iteration": 2,
   "error": null,
-  "processing_time_seconds": 101.26106977462769,
+  "processing_time_seconds": 14.798251152038574,
   "contract": {
     "type": "result",
     "version": "12.1",
     "session_id": "sess_c4d540b5c05f15dc86ee75d4495a4d21",
-    "timestamp": "2026-02-08 19:41:46"
+    "timestamp": "2026-02-08 22:20:49"
   },
   "vault_report": {
-    "header": "This is a 20.4-second music video edit across 17 segments. The goal was a high-impact sequence, but the library's lack of payoff shots forced a choice between rhythmic timing and thematic accuracy.",
+    "header": "This 20.4-second cinematic montage was built to maintain high-intensity pacing, though a lack of payoff shots in the library forced several structural compromises.",
     "executive_summary": [
-      "The edit maintains a tight syncopated rhythm despite a clear scarcity of high-intensity action footage.",
-      "Structural anchors were forced into key slots to prioritize pacing over perfect thematic alignment.",
-      "A significant library gap in payoff shots resulted in several segments serving as rhythmic placeholders.",
-      "The library is responsible for the emotional ceiling of this cut due to missing motifs.",
-      "Momentum was preserved by recycling key clips where no viable alternatives existed."
+      "The edit successfully hits 17 segments but relies on filler to bridge significant gaps in the library.",
+      "Structural anchors were deployed in key slots to prioritize rhythmic continuity over the missing action motifs.",
+      "A lack of high-impact payoff shots remains the primary bottleneck for the narrative's resolution.",
+      "Pacing was preserved throughout the sequence despite a semantic mismatch in primary emotional beats.",
+      "The library is currently missing the 'significant' and 'limited' motifs required for a full cinematic payoff."
     ],
     "advisor": {
-      "hero": "The edit hits every beat, but it’s punching with pillows because the library lacks the heavy-hitting action shots required for a real payoff.",
-      "body": "We hit a 'missing_payoff_shots' bottleneck early on. While the clips are technically aligned, the lack of 'intensity' and 'action' motifs forced me to use structural anchors that keep the rhythm but sacrifice the intended punch. You're seeing clips like 002 and 004 repeat because the library didn't provide enough variety to sustain 17 segments without recycling."
+      "hero": "The library is starving for real action, forcing me to use filler just to keep the heart beating.",
+      "body": "While the technical sync is nominal, the library health shows a clear bottleneck in missing payoff shots. I had to rely on structural necessities in segments like 2 and 9 because the requested action motifs simply weren't there. We have the rhythm, but we're missing the punch."
     },
     "decision_stream": [
       {
         "segment_id": 1,
-        "what_i_tried": "I wanted a heroic opening to set the tone for the sequence.",
-        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "Replacing this with intensity would have landed the heroic intent more effectively.",
+        "what_i_tried": "I wanted to open with adrenaline.",
+        "decision": "Used clip_001.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "I needed a focused shot to ground the sequence. This required a primary anchor to set the tone.",
+        "decision": "Deployed as a structural anchor with clip_002.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
         "is_key": true,
         "importance": "key",
         "tags": [
@@ -3065,20 +3050,42 @@
         ]
       },
       {
-        "segment_id": 2,
-        "what_i_tried": "I looked for an intense shot to follow the hero beat and build energy.",
-        "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "This likely needed an action shot to bridge the energy gap.",
-        "is_key": true,
-        "importance": "key",
+        "segment_id": 3,
+        "what_i_tried": "I wanted to maintain the action.",
+        "decision": "Locked in clip_004.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
         "tags": [
-          "structural_necessity"
+          "library_gap"
         ]
       },
       {
-        "segment_id": 3,
-        "what_i_tried": "Maintaining the flow through action, power, scale, and majesty beats.",
-        "decision": "Selected because no better alternative was available in the library.",
+        "segment_id": 4,
+        "what_i_tried": "I wanted to increase intensity.",
+        "decision": "Selected clip_005.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 5,
+        "what_i_tried": "I wanted to show power.",
+        "decision": "Used clip_003.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 6,
+        "what_i_tried": "I wanted an impact shot.",
+        "decision": "Locked in clip_017.mp4 because no better alternative was available in the library.",
         "what_if": "No stronger alternative existed.",
         "is_key": false,
         "importance": "all",
@@ -3088,41 +3095,8 @@
       },
       {
         "segment_id": 7,
-        "what_i_tried": "I wanted to convey the physical strain of the moment.",
-        "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "An action shot would have better illustrated the physical strain.",
-        "is_key": true,
-        "importance": "key",
-        "tags": [
-          "structural_necessity"
-        ]
-      },
-      {
-        "segment_id": 8,
-        "what_i_tried": "A solemn beat for contrast.",
-        "decision": "Locked in because no better alternative was available in the library.",
-        "what_if": "This slot had no viable upgrade.",
-        "is_key": false,
-        "importance": "all",
-        "tags": [
-          "library_gap"
-        ]
-      },
-      {
-        "segment_id": 9,
-        "what_i_tried": "A moment of respect to shift the tone.",
-        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "An action shot would have provided a more dynamic transition.",
-        "is_key": true,
-        "importance": "key",
-        "tags": [
-          "structural_necessity"
-        ]
-      },
-      {
-        "segment_id": 10,
-        "what_i_tried": "Quick beats for speed and precision.",
-        "decision": "Used because no better alternative was available in the library.",
+        "what_i_tried": "I wanted to show scale.",
+        "decision": "Selected clip_014.mp4 because no better alternative was available in the library.",
         "what_if": "No stronger alternative existed.",
         "is_key": false,
         "importance": "all",
@@ -3131,20 +3105,111 @@
         ]
       },
       {
-        "segment_id": 12,
-        "what_i_tried": "Building camaraderie and legacy through the mid-section.",
-        "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "These segments suggest a need for action shots to elevate the stakes.",
+        "segment_id": 8,
+        "what_i_tried": "I wanted to convey speed.",
+        "decision": "Used clip_006.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 9,
+        "what_i_tried": "I looked for a moment of grief to add emotional depth. This was a primary structural requirement.",
+        "decision": "Forced into the slot with clip_024.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
         "is_key": true,
         "importance": "key",
         "tags": [
-          "structural_necessity"
+          "structural_necessity",
+          "scarcity"
+        ]
+      },
+      {
+        "segment_id": 10,
+        "what_i_tried": "I wanted a solemn beat.",
+        "decision": "Locked in clip_023.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 11,
+        "what_i_tried": "I wanted to emphasize duty. This segment needed to act as a primary narrative bridge.",
+        "decision": "Used out of necessity with clip_008.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
+        "is_key": true,
+        "importance": "key",
+        "tags": [
+          "structural_necessity",
+          "scarcity"
+        ]
+      },
+      {
+        "segment_id": 12,
+        "what_i_tried": "I wanted a thrill beat.",
+        "decision": "Selected clip_019.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 13,
+        "what_i_tried": "I wanted to show unity.",
+        "decision": "Used clip_010.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
         ]
       },
       {
         "segment_id": 14,
-        "what_i_tried": "Closing out with power, agility, and a final departure.",
-        "decision": "Selected because no better alternative was available in the library.",
+        "what_i_tried": "I wanted to convey freedom. This primary slot was critical for the final build.",
+        "decision": "Deployed as a structural anchor with clip_027.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
+        "is_key": true,
+        "importance": "key",
+        "tags": [
+          "structural_necessity",
+          "scarcity"
+        ]
+      },
+      {
+        "segment_id": 15,
+        "what_i_tried": "I wanted to show purpose.",
+        "decision": "Locked in clip_030.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 16,
+        "what_i_tried": "I wanted to establish legacy.",
+        "decision": "Selected clip_013.mp4 because no better alternative was available in the library.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 17,
+        "what_i_tried": "I wanted a final resolution.",
+        "decision": "Used clip_021.mp4 because no better alternative was available in the library.",
         "what_if": "No stronger alternative existed.",
         "is_key": false,
         "importance": "all",
@@ -3155,10 +3220,10 @@
     ],
     "key_decision_stream": [
       {
-        "segment_id": 1,
-        "what_i_tried": "I wanted a heroic opening to set the tone for the sequence.",
-        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "Replacing this with intensity would have landed the heroic intent more effectively.",
+        "segment_id": 2,
+        "what_i_tried": "I needed a focused shot to ground the sequence. This required a primary anchor to set the tone.",
+        "decision": "Deployed as a structural anchor with clip_002.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
         "is_key": true,
         "importance": "key",
         "tags": [
@@ -3167,78 +3232,71 @@
         ]
       },
       {
-        "segment_id": 2,
-        "what_i_tried": "I looked for an intense shot to follow the hero beat and build energy.",
-        "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "This likely needed an action shot to bridge the energy gap.",
-        "is_key": true,
-        "importance": "key",
-        "tags": [
-          "structural_necessity"
-        ]
-      },
-      {
-        "segment_id": 7,
-        "what_i_tried": "I wanted to convey the physical strain of the moment.",
-        "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "An action shot would have better illustrated the physical strain.",
-        "is_key": true,
-        "importance": "key",
-        "tags": [
-          "structural_necessity"
-        ]
-      },
-      {
         "segment_id": 9,
-        "what_i_tried": "A moment of respect to shift the tone.",
-        "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "An action shot would have provided a more dynamic transition.",
+        "what_i_tried": "I looked for a moment of grief to add emotional depth. This was a primary structural requirement.",
+        "decision": "Forced into the slot with clip_024.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
         "is_key": true,
         "importance": "key",
         "tags": [
-          "structural_necessity"
+          "structural_necessity",
+          "scarcity"
         ]
       },
       {
-        "segment_id": 12,
-        "what_i_tried": "Building camaraderie and legacy through the mid-section.",
-        "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
-        "what_if": "These segments suggest a need for action shots to elevate the stakes.",
+        "segment_id": 11,
+        "what_i_tried": "I wanted to emphasize duty. This segment needed to act as a primary narrative bridge.",
+        "decision": "Used out of necessity with clip_008.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
         "is_key": true,
         "importance": "key",
         "tags": [
-          "structural_necessity"
+          "structural_necessity",
+          "scarcity"
+        ]
+      },
+      {
+        "segment_id": 14,
+        "what_i_tried": "I wanted to convey freedom. This primary slot was critical for the final build.",
+        "decision": "Deployed as a structural anchor with clip_027.mp4 to prioritize rhythmic continuity over semantic fit.",
+        "what_if": "Replacing this with an action motif would have better served the intent.",
+        "is_key": true,
+        "importance": "key",
+        "tags": [
+          "structural_necessity",
+          "scarcity"
         ]
       }
     ],
     "friction_log": [
-      "Start: Confidence was high as the initial syncopated rhythm took shape.",
-      "Middle: Momentum stalled when the library gap for action motifs became a clear bottleneck.",
-      "End: Finalized the edit by prioritizing pacing over semantic fit to prevent a total collapse."
+      "Confidence was high at the start as the adrenaline intent in Segment 1 aligned well with the library.",
+      "Friction increased mid-edit when the library failed to provide action motifs for primary structural anchors.",
+      "The edit concluded with a focus on technical sync to compensate for the lack of narrative payoff shots."
     ],
     "post_mortem": {
-      "worked": "The syncopated pacing is tight and the teal-orange/golden hour LUT provides a consistent filmic look.",
-      "didnt": "The emotional payoff is weak because the library lacked the 'intensity' and 'action' motifs required for the key segments.",
+      "worked": "The syncopated pacing is tightly locked, especially in Segment 1 with clip_001.mp4, which sets a strong initial tone and maintains momentum.",
+      "didnt": "The narrative feels hollow because the library lacked the 'significant' motifs needed for a real payoff, seen clearly in Segment 14 where clip_027.mp4 had to fill a primary slot without the ideal action.",
       "responsibility": {
         "vibe": "library",
         "emotion": "library"
       }
     },
     "next_steps": [
-      "Source high-intensity action footage to replace the structural anchors in segments 1, 2, and 7.",
-      "Expand the library with unique payoff shots to avoid recycling clip_002 and clip_004.",
-      "Review the 'missing_payoff_shots' bottleneck to ensure future edits have a stronger emotional arc."
+      "Acquire high-energy action motifs to replace the structural fillers in segments 2, 9, and 14.",
+      "Source 'significant' payoff shots to resolve the tension built in the first half of the montage.",
+      "Expand the library with 'limited' motif variations to diversify the emotional range of the primary segments."
     ],
     "clip_suggestions": [
-      "Adding more 'intensity' motifs would help land the heroic opening.",
-      "Adding 'action' shots would resolve the pacing-priority compromises in the mid-section.",
-      "Adding substitutes for clip_002 and clip_004 would reduce the repetitive feel of the edit.",
-      "Adding high-energy payoff shots would bridge the gap between the rhythmic sync and the emotional intent."
+      "Adding more 'action' motifs would allow for better replacement of structural fillers.",
+      "The library needs 'significant' payoff shots to resolve the tension built in the first half.",
+      "Including 'limited' motif variations would help diversify the emotional range.",
+      "Acquiring high-energy 'payoff' clips would solve the current bottleneck in the edit's resolution.",
+      "Adding clips with a similar vibe to the adrenaline intent would reduce the reliance on library-gap fillers."
     ],
     "technical": [
-      "Applied a filmic teal-orange and golden hour LUT to unify the disparate library clips.",
-      "Maintained a syncopated pacing structure to keep the 20.4s duration engaging.",
-      "Ensured nominal sync fidelity despite the library's thematic scarcity."
+      "The footage is consistent with a teal-orange cinematic grade and heavy golden hour influence, though no styling was applied in this pass.",
+      "Pacing is strictly syncopated to maintain a 20.4-second duration across 17 segments.",
+      "Sync fidelity is nominal, ensuring that every cut aligns tightly with the rhythmic structure."
     ]
   }
 }

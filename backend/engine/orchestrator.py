@@ -453,22 +453,38 @@ def run_mimic_pipeline(
         # ==================================================================
         update_progress(5, TOTAL_STEPS, "Rendering final video...")
         
-        # Extract segments according to EDL
+        # Extract segments according to EDL (Clock-Lock: timeline duration is authority)
         segment_paths = []
         for i, decision in enumerate(edl.decisions, start=1):
             segment_path = segments_dir / f"segment_{i:03d}.mp4"
-            extract_segment(
-                decision.clip_path,
-                str(segment_path),
-                decision.clip_start,
-                decision.clip_end - decision.clip_start
-            )
+            slot_duration = decision.timeline_end - decision.timeline_start
+            hold_secs = getattr(decision, 'hold_end_seconds', None)
+            if hold_secs and hold_secs > 0.01:
+                content_duration = decision.clip_end - decision.clip_start
+                extract_segment(
+                    decision.clip_path,
+                    str(segment_path),
+                    decision.clip_start,
+                    content_duration,
+                    hold_last_frame_seconds=hold_secs
+                )
+            else:
+                extract_segment(
+                    decision.clip_path,
+                    str(segment_path),
+                    decision.clip_start,
+                    slot_duration
+                )
             segment_paths.append(str(segment_path))
         
         # Concatenate segments
         temp_video_path = temp_session_dir / "temp_video.mp4"
         concatenate_videos(segment_paths, str(temp_video_path))
-        
+        concat_duration = get_video_duration(str(temp_video_path))
+        target_duration = blueprint.total_duration
+        if abs(concat_duration - target_duration) > 0.05:
+            print(f"  [WARN] Concat duration {concat_duration:.2f}s differs from blueprint {target_duration:.2f}s (drift: {concat_duration - target_duration:+.2f}s)")
+
         # Apply visual styling (text overlay, color grading)
         # v14.9 Style Control (Post-Editor Layer)
         current_style_config = style_config or getattr(blueprint, 'style_config', None)

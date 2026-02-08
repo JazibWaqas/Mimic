@@ -392,48 +392,51 @@ def extract_audio(video_path: str, audio_output_path: str) -> bool:
 # VIDEO SEGMENTATION
 # ============================================================================
 
+EXTRACT_FPS = 30.0
+
+
 def extract_segment(
     input_path: str,
     output_path: str,
     start_time: float,
-    duration: float
+    duration: float,
+    hold_last_frame_seconds: Optional[float] = None
 ) -> None:
     """
     Extract a segment from a video (precise frame-accurate cutting).
-    
-    SYNC LOCK (v14.6): Absolute Frame Accuracy.
-    - Moved -ss after -i for decode-accurate seeking (eliminates ±1-2 frame jitter).
-    - Resets PTS for both audio and video per segment.
-    - Forces Constant Frame Rate (CFR) via -vsync.
-    - Relies on upstream standardization for 30fps (no redundant -r 30).
-
-    Args:
-        input_path: Source video
-        output_path: Destination for segment
-        start_time: Start time in seconds
-        duration: Length of segment in seconds
+    If hold_last_frame_seconds is set, output duration = duration + hold_last_frame_seconds
+    by holding the last frame (demo fill so timeline matches blueprint).
     """
+    n_frames = max(1, round(duration * EXTRACT_FPS))
+    exact_duration = n_frames / EXTRACT_FPS
+    out_duration = exact_duration
+    vf = "setpts=PTS-STARTPTS,fps=30"
+    if hold_last_frame_seconds and hold_last_frame_seconds > 0.01:
+        hold_frames = max(1, round(hold_last_frame_seconds * EXTRACT_FPS))
+        hold_duration = hold_frames / EXTRACT_FPS
+        out_duration = exact_duration + hold_duration
+        vf = f"setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration={hold_duration:.6f}"
     cmd = [
         "ffmpeg",
         "-y",
         "-i", input_path,
-        "-ss", f"{start_time:.4f}",    # Sync Lock: Decode-accurate seeking (v14.6)
-        "-t", f"{duration:.4f}",     # Accurate duration
-        "-vf", "setpts=PTS-STARTPTS",  # Sync Lock: Reset video timestamps
-        "-af", "asetpts=PTS-STARTPTS", # Sync Lock: Reset audio timestamps
-        "-c:v", "libx264",             # Re-encode for precision
+        "-ss", f"{start_time:.4f}",
+        "-t", f"{exact_duration:.6f}",
+        "-vf", vf,
+        "-af", "asetpts=PTS-STARTPTS",
+        "-c:v", "libx264",
         "-preset", "ultrafast",
         "-crf", "23",
         "-c:a", "aac",
         "-b:a", "192k",
-        "-vsync", "cfr",               # Sync Lock: Force constant frame rate
+        "-vsync", "cfr",
         "-avoid_negative_ts", "make_zero",
+        "-t", f"{out_duration:.6f}",
         output_path
     ]
-
     try:
         subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print(f"    [OK] Segment extracted (Sync Lock v14.6): {start_time:.2f}s - {start_time + duration:.2f}s")
+        print(f"    [OK] Segment extracted: {start_time:.2f}s + {exact_duration:.2f}s" + (f" + {hold_last_frame_seconds:.2f}s hold" if hold_last_frame_seconds else "") + f" -> {out_duration:.2f}s")
     except subprocess.CalledProcessError as e:
         raise RuntimeError(f"Segment extraction failed: {e.stderr}")
 

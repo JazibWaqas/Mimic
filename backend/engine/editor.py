@@ -516,8 +516,7 @@ def match_clips_to_blueprint(
         if abs(segment.start - orig_start) > 0.001:
             print(f"    📐 v14.7 Frame-Snap: Boundary adjusted for 30fps sync.")
 
-        # Guard against timeline drift
-        if abs(timeline_position - segment.start) > 0.05:
+        if timeline_position > segment.start + 0.05:
             print(f"[WARN] Timeline drift: {timeline_position:.3f} vs segment.start {segment.start:.3f}, snapping.")
             timeline_position = segment.start
 
@@ -1777,9 +1776,13 @@ def match_clips_to_blueprint(
                         print(f"    🔧 Extended decision {len(decisions)} and clip to segment end: {segment.end:.4f}s")
                     else:
                         print(f"    ⚠️ GAP PERMANENT: Last clip {Path(clip_path).name} hits duration limit.")
-                        timeline_position = snap(segment.end)
+                        hold_secs = segment.end - decisions[-1].timeline_end
+                        decisions[-1].timeline_end = snap(segment.end)
+                        decisions[-1].hold_end_seconds = snap(hold_secs) if hold_secs > 0.02 else None
+                        timeline_position = decisions[-1].timeline_end
+                        print(f"    🔧 Demo fill: holding last frame {hold_secs:.2f}s so timeline reaches segment end")
                 else:
-                    timeline_position = segment.end
+                    timeline_position = decisions[-1].timeline_end if decisions else segment.end
             else:
                 # PROMPT MODE: Allow gap filling (legacy behavior)
                 print(f"    🔗 Filling gap in segment {segment.id} ({gap:.4f}s remaining)")
@@ -1802,6 +1805,14 @@ def match_clips_to_blueprint(
     # v14.7: Finalize blueprint duration to match snapped segments
     if blueprint.segments:
         blueprint.total_duration = blueprint.segments[-1].end
+
+    if mode == "REFERENCE" and decisions and timeline_position < blueprint.total_duration - 0.05:
+        shortfall = blueprint.total_duration - timeline_position
+        last = decisions[-1]
+        last.timeline_end = snap(blueprint.total_duration)
+        last.hold_end_seconds = (last.hold_end_seconds or 0) + snap(shortfall)
+        timeline_position = last.timeline_end
+        print(f"    🔧 Demo reconciliation: last decision extended by {shortfall:.2f}s so total = {blueprint.total_duration:.2f}s")
         
     edl = EDL(decisions=decisions)
     unique_clips_used = len(set(d.clip_path for d in decisions))
