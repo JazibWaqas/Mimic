@@ -1,0 +1,193 @@
+{
+  "header": "This 35-second cinematic montage was built to hit hard, but the library's low energy forced me to prioritize rhythm over raw power. I had to grind through 68 segments while fighting a serious lack of payoff shots.",
+  "advisor": {
+    "hero": "The library is starving for energy; I’m basically trying to build a bonfire with damp matches.",
+    "body": "We are hitting a bottleneck because of missing payoff shots and a general lack of high-energy motifs. I had to lean on relentless pacing to hide the fact that the footage doesn't always have the teeth to match the intent."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to build anticipation and establish power.",
+      "decision": "Used clips 015, 013, 002, and 001 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted to inject a sense of danger here.",
+      "decision": "Deployed as a structural anchor clip_004.mp4 to prioritize rhythmic continuity over semantic fit. This was a necessary pivot to keep the timeline moving.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 6,
+      "what_i_tried": "I needed to maintain focus, speed, and scale through the transition.",
+      "decision": "Selected clips 003, 005, 006, 014, 008, and 017 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "I wanted to create a moment of chaos.",
+      "decision": "Used out of necessity clip_010.mp4 to prioritize rhythmic continuity over semantic fit. This choice kept the sequence from stalling out early.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 13,
+      "what_i_tried": "I wanted to cycle through abstract, joy, and night-speed motifs.",
+      "decision": "Locked in clips 021, 019, 007, 009, and 011 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 18,
+      "what_i_tried": "I wanted to establish a beat of intimacy.",
+      "decision": "Forced into the slot clip_024.mp4 to prioritize rhythmic continuity over semantic fit. This preserved the edit's momentum despite the semantic mismatch.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 19,
+      "what_i_tried": "I needed to show skill, action, and competition.",
+      "decision": "Used clips 027, 012, and 023 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 22,
+      "what_i_tried": "I wanted to ramp up the intensity.",
+      "decision": "Deployed as a structural anchor clip_018.mp4 to prioritize rhythmic continuity over semantic fit. This prevented a pacing collapse in the middle of the edit.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 23,
+      "what_i_tried": "I wanted to sustain speed and tension.",
+      "decision": "Selected clips 020 and 022 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 25,
+      "what_i_tried": "I wanted to return to a chaos motif.",
+      "decision": "Used out of necessity clip_028.mp4 to prioritize rhythmic continuity over semantic fit. This kept the energy from dipping too low.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 26,
+      "what_i_tried": "I needed to bridge competition, speed, and tension.",
+      "decision": "Locked in clips 024, 026, and 029 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 29,
+      "what_i_tried": "I wanted to hit another chaos beat.",
+      "decision": "Forced into the slot clip_025.mp4 to prioritize rhythmic continuity over semantic fit. This preserved the edit's momentum despite the semantic mismatch.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 30,
+      "what_i_tried": "I wanted to showcase scale, speed, and competition.",
+      "decision": "Used clips 023, 030, 008, 009, and 010 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 35,
+      "what_i_tried": "I wanted to push the intensity higher.",
+      "decision": "Deployed as a structural anchor clip_019.mp4 to prioritize rhythmic continuity over semantic fit. This prevented a pacing collapse during the second half.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 36,
+      "what_i_tried": "I needed to maintain speed, intensity, and tension.",
+      "decision": "Selected clips 028, 027, 006, and 016 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 40,
+      "what_i_tried": "I wanted to trigger a chaos sequence.",
+      "decision": "Used out of necessity clip_007.mp4 to prioritize rhythmic continuity over semantic fit. This choice was about momentum over meaning.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 41,
+      "what_i_tried": "I wanted to cycle through competition, speed, and tension.",
+      "decision": "Locked in clips 004, 012, 018, and 022 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 44,
+      "what_i_tried": "I wanted to hit a chaos beat.",
+      "decision": "Forced into the slot clip_017.mp4 to prioritize rhythmic continuity over semantic fit. This preserved the edit's momentum despite the semantic mismatch.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 45,
+      "what_i_tried": "I needed to fill scale, speed, and competition slots.",
+      "decision": "Used clips 011, 005, 021, 001, and 025 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 50,
+      "what_i_tried": "I wanted to maximize intensity.",
+      "decision": "Deployed as a structural anchor clip_003.mp4 to prioritize rhythmic continuity over semantic fit. This prevented a pacing collapse as we approached the finale.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 51,
+      "what_i_tried": "I wanted to maintain the chaos.",
+      "decision": "Used out of necessity clip_026.mp4 to prioritize rhythmic continuity over semantic fit. This kept the timeline tight despite the lack of ideal footage.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 52,
+      "what_i_tried": "I wanted to show scale, speed, and competition.",
+      "decision": "Selected clips 020, 029, 030, 024, and 015 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    },
+    {
+      "segment_id": 57,
+      "what_i_tried": "I wanted to hit a final peak of intensity.",
+      "decision": "Forced into the slot clip_014.mp4 to prioritize rhythmic continuity over semantic fit. This preserved the edit's momentum despite the semantic mismatch.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 58,
+      "what_i_tried": "I wanted to end the main sequence with chaos.",
+      "decision": "Deployed as a structural anchor clip_013.mp4 to prioritize rhythmic continuity over semantic fit. This prevented a pacing collapse before the branding hit.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 59,
+      "what_i_tried": "I needed to bridge scale, speed, and competition into the end.",
+      "decision": "Locked in clips 016, 008, 023, 010, and 028 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade."
+    },
+    {
+      "segment_id": 64,
+      "what_i_tried": "I wanted one last burst of intensity.",
+      "decision": "Used out of necessity clip_009.mp4 to prioritize rhythmic continuity over semantic fit. This choice was purely about maintaining the relentless pace.",
+      "what_if": "I would have replaced this with an action motif if the library had one."
+    },
+    {
+      "segment_id": 65,
+      "what_i_tried": "I wanted to close with branding motifs.",
+      "decision": "Used clips 002, 013, 029, and 004 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed."
+    }
+  ],
+  "friction_log": [
+    "Start: High confidence in the montage structure, but immediately hit a wall with the lack of high-energy clips.",
+    "Middle: Had to repeatedly compromise on semantic fit to keep the relentless pacing from falling apart.",
+    "End: Finished with a tight sync, but the branding section felt like a repeat of earlier filler due to library scarcity."
+  ],
+  "post_mortem": {
+    "worked": "The relentless pacing and tight sync kept the 35-second run feeling cinematic despite the footage issues.",
+    "didnt": "The lack of payoff shots and action motifs meant the edit never truly exploded the way it should have.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Shoot or source high-energy action motifs to replace the structural placeholders.",
+    "Find specific payoff shots to resolve the tension built in the anticipation segments.",
+    "Expand the library to include more diverse 'power' and 'chaos' clips to avoid repeating filler."
+  ],
+  "technical": [
+    "Applied a filmic teal-orange LUT to unify the disparate library clips.",
+    "Maintained a relentless pacing strategy to mask the low-energy clip profiles."
+  ]
+}

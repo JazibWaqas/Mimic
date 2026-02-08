@@ -39,6 +39,11 @@ YOUR TASKS:
    - Beat 3 (Impact/Tradeoff): A short note on the consequence (e.g., "This preserved momentum but added no new energy"). Use phrase_map.impacts.
    - 'what_if': If no counterfactual motif is provided, use a deterministic fallback like "No stronger alternative existed" or "This slot had no viable upgrade". NEVER use "No counterfactual intent provided".
 
+   SCHEMA CONSTRAINT:
+   - `segment_id` MUST ALWAYS be a single integer.
+   - When grouping multiple segments into one decision entry, ALWAYS use the FIRST segment's ID.
+   - NEVER use ranges (e.g. "1-4"), arrays, or strings.
+
    DECISION WEIGHT RULES:
    - primary: write 2–3 sentences with full causal explanation
    - supporting: write 1–2 sentences, concise but clear
