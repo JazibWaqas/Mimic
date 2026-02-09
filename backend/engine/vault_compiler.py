@@ -54,23 +54,29 @@ def compile_vault_reasoning(
     
     # 1. Library Health (Symbolic Only)
     status_tags = []
-    if advisor.library_alignment.editorial_tradeoffs:
-        for tradeoff in advisor.library_alignment.editorial_tradeoffs:
-            if "Medium" in tradeoff: status_tags.append("scarcity_medium_energy")
-            if "Low" in tradeoff: status_tags.append("scarcity_low_energy")
-            if "aggressive" in tradeoff: status_tags.append("forced_aggressive_pacing")
-    
-    if not status_tags:
-        status_tags = ["aligned"]
-
     clean_missing_motifs = []
-    for gap in advisor.library_alignment.constraint_gaps:
-        gap_lower = gap.lower()
-        if "fire" in gap_lower: clean_missing_motifs.append("fire")
-        elif "eyes" in gap_lower or "face" in gap_lower: clean_missing_motifs.append("human_detail")
-        elif "macro" in gap_lower: clean_missing_motifs.append("macro")
-        elif "establishing" in gap_lower: clean_missing_motifs.append("wide_shot")
-        else: clean_missing_motifs.append(gap.split()[0].lower())
+    
+    # Handle case where advisor is None (e.g., when Advisor fails or is disabled)
+    if advisor and advisor.library_alignment:
+        if advisor.library_alignment.editorial_tradeoffs:
+            for tradeoff in advisor.library_alignment.editorial_tradeoffs:
+                if "Medium" in tradeoff: status_tags.append("scarcity_medium_energy")
+                if "Low" in tradeoff: status_tags.append("scarcity_low_energy")
+                if "aggressive" in tradeoff: status_tags.append("forced_aggressive_pacing")
+        
+        if not status_tags:
+            status_tags = ["aligned"]
+
+        for gap in advisor.library_alignment.constraint_gaps:
+            gap_lower = gap.lower()
+            if "fire" in gap_lower: clean_missing_motifs.append("fire")
+            elif "eyes" in gap_lower or "face" in gap_lower: clean_missing_motifs.append("human_detail")
+            elif "macro" in gap_lower: clean_missing_motifs.append("macro")
+            elif "establishing" in gap_lower: clean_missing_motifs.append("wide_shot")
+            else: clean_missing_motifs.append(gap.split()[0].lower())
+    else:
+        # Advisor is None - use safe defaults
+        status_tags = ["advisor_unavailable"]
 
     library_health = {
         "status_tags": status_tags,
@@ -88,7 +94,7 @@ def compile_vault_reasoning(
     for decision in edl.decisions:
         bp_seg = next((s for s in blueprint.segments if s.id == decision.segment_id), None)
         stage = bp_seg.arc_stage if bp_seg else "Main"
-        stage_guidance = advisor.arc_stage_guidance.get(stage)
+        stage_guidance = advisor.arc_stage_guidance.get(stage) if advisor else None
 
         # Determine Decision Type
         decision_type = "confident"

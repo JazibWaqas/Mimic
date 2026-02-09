@@ -1,0 +1,142 @@
+{
+  "total_duration": 27.285351,
+  "editing_style": "Nostalgic Narrative",
+  "emotional_intent": "To evoke a deep sense of warmth and longing for the simplicity of childhood, transitioning from kinetic joy to a grounded, loving resolution.",
+  "plan_summary": "A four-stage emotional journey that mirrors a summer afternoon: starting with a quiet observation, building into the breathless energy of play, peaking with shared laughter, and settling into a tender, quiet embrace.",
+  "style_config": {
+    "text": {
+      "font": "Inter",
+      "weight": 600,
+      "color": "#FFFFFF",
+      "shadow": true,
+      "position": "bottom",
+      "animation": "fade"
+    },
+    "color": {
+      "preset": "warm"
+    },
+    "texture": {
+      "grain": true
+    }
+  },
+  "arc_description": "The edit begins with low-energy, observational shots, gradually increasing in motion and cut frequency during the build-up and peak, before a significant deceleration into a long, static final shot.",
+  "text_overlay": "The days that felt like forever.",
+  "text_style": {
+    "font_style": "Sans-serif",
+    "animation": "Fade",
+    "placement": "Bottom-third",
+    "color_effects": "Warm White"
+  },
+  "color_grading": {
+    "tone": "Warm",
+    "contrast": "Medium",
+    "specific_look": "Vintage Film"
+  },
+  "visual_effects": [
+    "subtle film grain",
+    "soft light leaks",
+    "gentle bloom"
+  ],
+  "narrative_message": "Childhood is a collection of fleeting, golden moments that culminate in lasting love.",
+  "intent_clarity": "Clear",
+  "assumed_material": [
+    "golden hour light",
+    "children running in grass",
+    "close-ups of hands or faces",
+    "candid laughter",
+    "a quiet hug or resting moment"
+  ],
+  "must_have_content": [
+    "at least one shot of eye contact/connection",
+    "a moment of physical movement (running/spinning)"
+  ],
+  "should_have_content": [
+    "tactile details (hands in grass, sun on skin)",
+    "wide shots of the environment"
+  ],
+  "avoid_content": [
+    "fast whip-pans",
+    "digital glitches",
+    "staged/posed looking shots"
+  ],
+  "pacing_feel": "Breathable and Reflective",
+  "visual_balance": "People-centric",
+  "peak_density": "Moderate",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 5.34,
+      "duration": 5.34,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "warmth, nostalgia",
+      "reasoning": "Establish the setting and tone with a long, breathing shot. This allows the viewer to step into the memory without being rushed.",
+      "arc_stage": "Intro",
+      "shot_scale": "Wide",
+      "shot_function": "Establish",
+      "expected_hold": "Long",
+      "cut_origin": "visual",
+      "cde": "Sparse",
+      "emotional_guidance": "peaceful anticipation"
+    },
+    {
+      "id": 2,
+      "start": 5.34,
+      "end": 12.816,
+      "duration": 7.476,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "playfulness, energy",
+      "reasoning": "Introduce movement and the 'energy of being a kid.' The pacing picks up slightly to match the rising musical phrase.",
+      "arc_stage": "Build-up",
+      "shot_scale": "Medium",
+      "shot_function": "Action",
+      "expected_hold": "Normal",
+      "cut_origin": "beat",
+      "cde": "Moderate",
+      "emotional_guidance": "growing excitement"
+    },
+    {
+      "id": 3,
+      "start": 12.816,
+      "end": 21.36,
+      "duration": 8.544,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "joy, connection",
+      "reasoning": "The emotional climax. Focus on laughter and close-up reactions. Even at 'High' energy, we maintain moderate density to keep it feeling like a memory, not a music video.",
+      "arc_stage": "Peak",
+      "shot_scale": "Close",
+      "shot_function": "Reaction",
+      "expected_hold": "Normal",
+      "cut_origin": "beat",
+      "cde": "Moderate",
+      "emotional_guidance": "pure unadulterated joy"
+    },
+    {
+      "id": 4,
+      "start": 21.36,
+      "end": 27.285351,
+      "duration": 5.925351,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "love, peace",
+      "reasoning": "A soft landing. One final, long hold on a quiet moment of connection to resolve the energy and leave a lasting emotional imprint.",
+      "arc_stage": "Outro",
+      "shot_scale": "Medium",
+      "shot_function": "Release",
+      "expected_hold": "Long",
+      "cut_origin": "visual",
+      "cde": "Sparse",
+      "emotional_guidance": "tender resolution"
+    }
+  ],
+  "text_prompt": "Make a childhood memory video that feels warm and real. Show the energy and joy of being a kid playful moments, laughter, running around, and connection. Build naturally through different moods and end on a quiet moment that shows love.",
+  "contract": {
+    "type": "blueprint",
+    "version": "12.1",
+    "source": "text_prompt",
+    "timestamp": "2026-02-09 21:02:55"
+  }
+}

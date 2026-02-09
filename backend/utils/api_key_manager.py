@@ -68,7 +68,7 @@ class APIKeyManager:
         
         print(f"[API KEY MANAGER] Loaded {len(self.keys)} API key(s)")
         if self.keys:
-            print(f"[API KEY MANAGER] Current key: {self.keys[0][:10]}...{self.keys[0][-5:]}")
+            print(f"[API KEY MANAGER] Key rotation system active.")
     
     def get_current_key(self) -> Optional[str]:
         """Get the currently active API key."""
@@ -102,7 +102,7 @@ class APIKeyManager:
         current_key = self.get_current_key()
         if current_key:
             self.exhausted_keys.add(current_key)
-            print(f"[API KEY MANAGER] Marking key as exhausted: {current_key[:10]}...{current_key[-5:]} ({reason})")
+            print(f"[API KEY MANAGER] Marking current key as exhausted ({reason})")
         
         self.current_index += 1
         
@@ -116,7 +116,7 @@ class APIKeyManager:
             return None
         
         new_key = self.keys[self.current_index]
-        print(f"[API KEY MANAGER] Rotated to key {self.current_index + 1}/{len(self.keys)}: {new_key[:10]}...{new_key[-5:]}")
+        print(f"[API KEY MANAGER] Rotated to key {self.current_index + 1}/{len(self.keys)}")
         return new_key
     
     def reset_exhausted(self) -> None:

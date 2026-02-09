@@ -242,6 +242,10 @@ def create_fallback_blueprint(target_duration: float, user_prompt: str = "") -> 
     peak_end = buildup_end + peak_dur
     outro_end = target_duration
     
+    # Add contract for Advisor compatibility
+    from engine.brain import REFERENCE_CACHE_VERSION
+    import time
+    
     fallback_data = {
         "total_duration": target_duration,
         "editing_style": "Nostalgic Fallback",
@@ -271,6 +275,12 @@ def create_fallback_blueprint(target_duration: float, user_prompt: str = "") -> 
         "visual_balance": "Balanced",
         "peak_density": "Moderate",
         "text_prompt": user_prompt,
+        "contract": {
+            "type": "blueprint",
+            "version": REFERENCE_CACHE_VERSION,
+            "source": "fallback",
+            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+        },
         "segments": [
             {
                 "id": 1,

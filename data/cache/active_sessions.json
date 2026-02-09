@@ -65905,11 +65905,14 @@
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip87.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip88.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip89.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip91.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip92.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip93.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip94.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip95.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip96.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip97.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip98.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip99.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip100.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip101.mp4",
@@ -65921,9 +65924,9 @@
     "logs": [
       "[PIPELINE] STARTING NEW PIPELINE RUN",
       "[PIPELINE] Session ID: text_music_5f56868f415c827a3bed08491d86e0ad",
-      "[PIPELINE] Timestamp: 2026-02-09 18:59:24",
+      "[PIPELINE] Timestamp: 2026-02-09 21:02:29",
       "[PIPELINE] Reference: None",
-      "[PIPELINE] Clips (21): ['C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip79.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip80.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip81.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip82.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip83.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip84.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip85.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip86.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip87.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip88.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip89.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip93.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip94.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip95.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip96.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip97.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip99.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip100.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip101.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip102.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip103.mp4']",
+      "[PIPELINE] Clips (24): ['C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip79.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip80.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip81.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip82.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip83.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip84.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip85.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip86.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip87.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip88.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip89.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip91.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip92.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip93.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip94.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip95.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip96.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip97.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip98.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip99.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip100.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip101.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip102.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip103.mp4']",
       "[PIPELINE] Running pipeline with Gemini...",
       "[PROGRESS] Step 1/5: Validating inputs...",
       "[PROGRESS] Step 2/5: Synthesizing Blueprint from text prompt...",
@@ -65953,32 +65956,36 @@
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
-      "[OK] All 21 clips analyzed in parallel",
-      "[OK] Gemini successfully analyzed 21 clips (using originals for cache).",
-      "\u2705 Library Health: 79.0% readiness",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "[OK] All 24 clips analyzed in parallel",
+      "[OK] Gemini successfully analyzed 24 clips (using originals for cache).",
+      "\u2705 Library Health: 79.2% readiness",
       "[OK] All clips standardized (cached or new) and ready for render.",
       "[PROGRESS] Step 4/5: Creating edit sequence...",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "\u2705 Advisor hints generated and cached",
       "\u2705 Advisor enabled: Strategic guidance active",
-      "[OK] Matching complete: 11 edit decisions",
+      "[OK] Matching complete: 12 edit decisions",
       "[OK] Total timeline duration: 27.30s (target: 27.30s)",
       "\u2705 NO CLIPS REPEATED! Perfect diversity achieved.",
       "[PROGRESS] Step 5/5: Rendering final video...",
-      "[OK] Segment extracted: 7.50s + 1.77s -> 1.77s",
-      "[OK] Segment extracted: 18.50s + 2.73s -> 2.73s",
-      "[OK] Segment extracted: 0.00s + 0.83s -> 0.83s",
-      "[OK] Segment extracted: 40.50s + 2.57s -> 2.57s",
-      "[OK] Segment extracted: 6.00s + 2.73s -> 2.73s",
-      "[OK] Segment extracted: 13.50s + 3.27s -> 3.27s",
-      "[OK] Segment extracted: 17.50s + 3.00s -> 3.00s",
-      "[OK] Segment extracted: 23.50s + 3.00s -> 3.00s",
-      "[OK] Segment extracted: 4.00s + 2.53s -> 2.53s",
       "[OK] Segment extracted: 33.00s + 3.37s -> 3.37s",
-      "[OK] Segment extracted: 14.00s + 1.50s -> 1.50s",
-      "[OK] Concatenated 11 segments (frame-perfect)",
-      "[WARN] Concat duration 27.55s differs from blueprint 27.30s (drift: +0.25s)",
-      "[WARN] Stylist failed (likely FFmpeg syntax/missing font), falling back to unstylized: Command '['ffmpeg', '-y', '-i', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\temp\\\\text_music_5f56868f415c827a3bed08491d86e0ad\\\\temp_video.mp4', '-vf', \"eq=saturation=1.1:brightness=0.02,colorbalance=rh=0.08:gh=0.04:bh=-0.04,noise=alls=7:allf=t+u,drawtext=text='The days were long... but the love':x=(w-text_w)/2:y=(h*0.8 - (2 * 63.0/2)) + 0.0:fontsize=42:fontcolor=0xFFFFFF:fontfile='C:/Windows/Fonts/arial.ttf':shadowcolor=black@0.6:shadowx=2:shadowy=2,drawtext=text='was forever.':x=(w-text_w)/2:y=(h*0.8 - (2 * 63.0/2)) + 63.0:fontsize=42:fontcolor=0xFFFFFF:fontfile='C:/Windows/Fonts/arial.ttf':shadowcolor=black@0.6:shadowx=2:shadowy=2\", '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '23', '-c:a', 'copy', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\temp\\\\text_music_5f56868f415c827a3bed08491d86e0ad\\\\temp_video_styled.mp4']' returned non-zero exit status 4294967274.",
+      "[OK] Segment extracted: 0.00s + 1.97s -> 1.97s",
+      "[OK] Segment extracted: 66.00s + 2.63s -> 2.63s",
+      "[OK] Segment extracted: 6.50s + 2.57s -> 2.57s",
+      "[OK] Segment extracted: 4.00s + 2.27s -> 2.27s",
+      "[OK] Segment extracted: 96.50s + 1.67s -> 1.67s",
+      "[OK] Segment extracted: 10.20s + 1.73s -> 1.73s",
+      "[OK] Segment extracted: 44.20s + 1.60s -> 1.60s",
+      "[OK] Segment extracted: 0.00s + 1.70s -> 1.70s",
+      "[OK] Segment extracted: 8.50s + 1.87s -> 1.87s",
+      "[OK] Segment extracted: 19.00s + 4.00s -> 4.00s",
+      "[OK] Segment extracted: 18.50s + 1.93s -> 1.93s",
+      "[OK] Concatenated 12 segments (frame-perfect)",
+      "[WARN] Concat duration 27.57s differs from blueprint 27.30s (drift: +0.27s)",
+      "[WARN] Stylist failed (likely FFmpeg syntax/missing font), falling back to unstylized: Command '['ffmpeg', '-y', '-i', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\temp\\\\text_music_5f56868f415c827a3bed08491d86e0ad\\\\temp_video.mp4', '-vf', \"eq=saturation=1.1:brightness=0.02,colorbalance=rh=0.08:gh=0.04:bh=-0.04,noise=alls=7:allf=t+u,drawtext=text='The days that felt like forever.':x=(w-text_w)/2:y=(h*0.8 - (1 * 63.0/2)) + 0.0:fontsize=42:fontcolor=0xFFFFFF:fontfile='C:/Windows/Fonts/arial.ttf':shadowcolor=black@0.6:shadowx=2:shadowy=2\", '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '23', '-c:a', 'copy', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\temp\\\\text_music_5f56868f415c827a3bed08491d86e0ad\\\\temp_video_styled.mp4']' returned non-zero exit status 4294967274.",
       "[OK] Audio extracted: ref_audio.aac",
       "[OK] Audio merged onto video (optimized)",
       "\u2705 SUCCESS!",
@@ -65987,16 +65994,16 @@
       "[PROGRESS] Step 6/6: Generating Vault intelligence report...",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "\u2705 Vault Report generated.",
-      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v3.json (71295 bytes)",
-      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v3.log",
-      "[PIPELINE] SUCCESS - Pipeline completed in 317.6s",
-      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v3.mp4"
+      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v2.json (78419 bytes)",
+      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v2.log",
+      "[PIPELINE] SUCCESS - Pipeline completed in 501.5s",
+      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v2.mp4"
     ],
-    "iteration": 3,
-    "created_at": 1770645564.0552125,
+    "iteration": 2,
+    "created_at": 1770652949.3809006,
     "current_step": "Generating Vault intelligence report...",
-    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v3.mp4",
-    "thumbnail_url": "/api/files/thumbnails/thumb_d910a24fb35b9e4e140c0b5df672be4e.jpg",
+    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v2.mp4",
+    "thumbnail_url": "/api/files/thumbnails/thumb_2b0b869a84baa4eba8a8f5f2ee62288c.jpg",
     "blueprint": {
       "total_duration": 27.3,
       "segments": [
@@ -66007,15 +66014,15 @@
           "duration": 5.333333333333333,
           "energy": "Low",
           "motion": "Static",
-          "vibe": "stillness, memory",
-          "reasoning": "Establish the 'world' of the memory. A long hold on an atmospheric shot allows the viewer to settle into the nostalgia.",
+          "vibe": "warmth, nostalgia",
+          "reasoning": "Establish the setting and tone with a long, breathing shot. This allows the viewer to step into the memory without being rushed.",
           "arc_stage": "Intro",
           "shot_scale": "Wide",
           "shot_function": "Establish",
           "relation_to_previous": "None",
           "expected_hold": "Long",
           "camera_movement": "",
-          "emotional_guidance": "A quiet breath before the story begins.",
+          "emotional_guidance": "peaceful anticipation",
           "media_type": "Video",
           "shot_scale_role": "",
           "temporal_weight": "Push",
@@ -66031,19 +66038,19 @@
         {
           "id": 2,
           "start": 5.333333333333333,
-          "end": 13.9,
-          "duration": 8.566666666666666,
+          "end": 12.8,
+          "duration": 7.466666666666668,
           "energy": "Medium",
           "motion": "Dynamic",
-          "vibe": "playfulness, discovery",
-          "reasoning": "Introduce movement and life. This segment represents the active energy of childhood\u2014running, playing, and the passage of time.",
+          "vibe": "playfulness, energy",
+          "reasoning": "Introduce movement and the 'energy of being a kid.' The pacing picks up slightly to match the rising musical phrase.",
           "arc_stage": "Build-up",
           "shot_scale": "Medium",
           "shot_function": "Action",
           "relation_to_previous": "None",
           "expected_hold": "Normal",
           "camera_movement": "",
-          "emotional_guidance": "The feeling of a golden summer afternoon.",
+          "emotional_guidance": "growing excitement",
           "media_type": "Video",
           "shot_scale_role": "",
           "temporal_weight": "Push",
@@ -66058,20 +66065,20 @@
         },
         {
           "id": 3,
-          "start": 13.9,
-          "end": 22.433333333333334,
-          "duration": 8.533333333333333,
-          "energy": "Medium",
+          "start": 12.8,
+          "end": 21.366666666666667,
+          "duration": 8.566666666666666,
+          "energy": "High",
           "motion": "Dynamic",
           "vibe": "joy, connection",
-          "reasoning": "The emotional core. Focus on faces and reactions. The cuts here align with the music's peak phrases to emphasize shared laughter.",
+          "reasoning": "The emotional climax. Focus on laughter and close-up reactions. Even at 'High' energy, we maintain moderate density to keep it feeling like a memory, not a music video.",
           "arc_stage": "Peak",
           "shot_scale": "Close",
           "shot_function": "Reaction",
           "relation_to_previous": "None",
           "expected_hold": "Normal",
           "camera_movement": "",
-          "emotional_guidance": "Pure presence and the warmth of being seen.",
+          "emotional_guidance": "pure unadulterated joy",
           "media_type": "Video",
           "shot_scale_role": "",
           "temporal_weight": "Push",
@@ -66081,25 +66088,25 @@
           "cut_motivation": "",
           "transition_intent": {},
           "continuity_hook": {},
-          "cut_origin": "visual",
+          "cut_origin": "beat",
           "cde": "Moderate"
         },
         {
           "id": 4,
-          "start": 22.433333333333334,
+          "start": 21.366666666666667,
           "end": 27.3,
-          "duration": 4.866666666666667,
+          "duration": 5.933333333333334,
           "energy": "Low",
           "motion": "Static",
-          "vibe": "love, safety",
-          "reasoning": "The 'soft landing'. A single, long-held shot of a loving gesture (a hug or a hand) to leave the viewer with a sense of peace.",
+          "vibe": "love, peace",
+          "reasoning": "A soft landing. One final, long hold on a quiet moment of connection to resolve the energy and leave a lasting emotional imprint.",
           "arc_stage": "Outro",
-          "shot_scale": "Close",
+          "shot_scale": "Medium",
           "shot_function": "Release",
           "relation_to_previous": "None",
           "expected_hold": "Long",
           "camera_movement": "",
-          "emotional_guidance": "A warm hug that lingers after the screen goes dark.",
+          "emotional_guidance": "tender resolution",
           "media_type": "Video",
           "shot_scale_role": "",
           "temporal_weight": "Push",
@@ -66114,48 +66121,47 @@
         }
       ],
       "phrases": [],
-      "text_prompt": "\u201cMake a short video about childhood memories. I want it to feel warm and real \u2014 more about emotion than perfect shots. End on something that really shows love.",
-      "plan_summary": "A four-stage journey starting with quiet observation, moving into the kinetic energy of play, peaking with intimate connection, and resolving in a lingering moment of affection.",
+      "text_prompt": "Make a childhood memory video that feels warm and real. Show the energy and joy of being a kid playful moments, laughter, running around, and connection. Build naturally through different moods and end on a quiet moment that shows love.",
+      "plan_summary": "A four-stage emotional journey that mirrors a summer afternoon: starting with a quiet observation, building into the breathless energy of play, peaking with shared laughter, and settling into a tender, quiet embrace.",
       "assumed_material": [
-        "sun-drenched rooms",
-        "children playing",
-        "close-ups of hands",
-        "hugs",
-        "candid laughter"
+        "golden hour light",
+        "children running in grass",
+        "close-ups of hands or faces",
+        "candid laughter",
+        "a quiet hug or resting moment"
       ],
-      "editing_style": "Nostalgic Verit\u00e9",
-      "emotional_intent": "To evoke the visceral, warm feeling of being safe and loved during childhood, prioritizing raw moments over polished cinematography.",
-      "arc_description": "The edit begins with low-energy, atmospheric stillness, gently builds through rhythmic movement, reaches an emotional high point of human connection, and settles into a soft, high-held finish.",
-      "text_overlay": "The days were long... but the love was forever.",
-      "narrative_message": "Childhood isn't a series of events, but a collection of feelings.",
+      "editing_style": "Nostalgic Narrative",
+      "emotional_intent": "To evoke a deep sense of warmth and longing for the simplicity of childhood, transitioning from kinetic joy to a grounded, loving resolution.",
+      "arc_description": "The edit begins with low-energy, observational shots, gradually increasing in motion and cut frequency during the build-up and peak, before a significant deceleration into a long, static final shot.",
+      "text_overlay": "The days that felt like forever.",
+      "narrative_message": "Childhood is a collection of fleeting, golden moments that culminate in lasting love.",
       "intent_clarity": "Clear",
       "text_events": [],
       "must_have_content": [
-        "A shot of physical affection (hug/hand-holding) for the ending"
+        "at least one shot of eye contact/connection",
+        "a moment of physical movement (running/spinning)"
       ],
       "should_have_content": [
-        "Natural light",
-        "Soft focus backgrounds",
-        "Candid reactions"
+        "tactile details (hands in grass, sun on skin)",
+        "wide shots of the environment"
       ],
       "avoid_content": [
-        "Fast whip-pans",
-        "Digital glitches",
-        "Staged posing",
-        "High-saturation neon"
+        "fast whip-pans",
+        "digital glitches",
+        "staged/posed looking shots"
       ],
-      "pacing_feel": "Reflective",
+      "pacing_feel": "Breathable and Reflective",
       "visual_balance": "People-centric",
       "color_grading": {
         "tone": "Warm",
-        "contrast": "Low",
+        "contrast": "Medium",
         "specific_look": "Vintage Film"
       },
       "aspect_ratio": "",
       "visual_effects": [
-        "film grain",
-        "light leaks",
-        "soft glow"
+        "subtle film grain",
+        "soft light leaks",
+        "gentle bloom"
       ],
       "shot_variety": {},
       "stylistic_invariants": [],
@@ -66197,7 +66203,7 @@
         "type": "blueprint",
         "version": "12.1",
         "source": "text_prompt",
-        "timestamp": "2026-02-09 18:59:40"
+        "timestamp": "2026-02-09 21:02:55"
       }
     },
     "clip_index": {
@@ -66915,8 +66921,138 @@
           "best_moment_end": null
         },
         {
-          "filename": "clip93.mp4",
+          "filename": "clip91.mp4",
           "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_012.mp4",
+          "duration": 18.0,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Solo",
+            "Activity-Leisure"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Peak"
+          ],
+          "emotional_tone": [
+            "Joyful",
+            "Energetic"
+          ],
+          "clip_quality": 3,
+          "best_for": [
+            "Candid childhood moments",
+            "Outdoor activity montages"
+          ],
+          "avoid_for": [
+            "Formal presentations",
+            "Static background loops"
+          ],
+          "vibes": [
+            "Solo",
+            "Leisure"
+          ],
+          "content_description": "A young boy enthusiastically digs a hole in the dirt with a small trowel while smiling.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 2.2,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Peak engagement with laughter and vigorous digging action."
+            },
+            "Medium": {
+              "start": 4.0,
+              "end": 6.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Consistent digging activity with moderate pacing and clear subject focus."
+            },
+            "Low": {
+              "start": 14.5,
+              "end": 17.5,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "More methodical digging with slightly reduced camera movement."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "3f635e24c77dc55d6bffa0329488cc0d"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip92.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_013.mp4",
+          "duration": 23.76,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Group",
+            "Activity-Leisure"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Joyful",
+            "Energetic"
+          ],
+          "clip_quality": 3,
+          "best_for": [
+            "Family montages",
+            "Childhood memories",
+            "Playful transitions"
+          ],
+          "avoid_for": [
+            "Professional corporate videos",
+            "Serious documentaries"
+          ],
+          "vibes": [
+            "Group",
+            "Leisure"
+          ],
+          "content_description": "Children playing with a toy scooter on a rooftop while adults watch in the background.",
+          "best_moments": {
+            "High": {
+              "start": 0.0,
+              "end": 2.5,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Peak physical activity with the boy pushing the girl on the scooter."
+            },
+            "Medium": {
+              "start": 6.0,
+              "end": 8.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Steady movement and direct engagement with the camera as the girl rides."
+            },
+            "Low": {
+              "start": 19.0,
+              "end": 23.0,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Action subsides as the children stand still on the toy at the end."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "c8c8ca4f7d2ebab08de786e1756b435e"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip93.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_014.mp4",
           "duration": 19.08,
           "energy": "High",
           "motion": "Dynamic",
@@ -66980,7 +67116,7 @@
         },
         {
           "filename": "clip94.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_013.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_015.mp4",
           "duration": 62.64,
           "energy": "High",
           "motion": "Dynamic",
@@ -67044,7 +67180,7 @@
         },
         {
           "filename": "clip95.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_014.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_016.mp4",
           "duration": 21.24,
           "energy": "High",
           "motion": "Dynamic",
@@ -67107,7 +67243,7 @@
         },
         {
           "filename": "clip96.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_015.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_017.mp4",
           "duration": 23.786667,
           "energy": "High",
           "motion": "Dynamic",
@@ -67171,7 +67307,7 @@
         },
         {
           "filename": "clip97.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_016.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_018.mp4",
           "duration": 85.212,
           "energy": "High",
           "motion": "Dynamic",
@@ -67235,8 +67371,74 @@
           "best_moment_end": null
         },
         {
+          "filename": "clip98.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_019.mp4",
+          "duration": 74.412,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Solo",
+            "Place-Indoor"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Joyful"
+          ],
+          "clip_quality": 3,
+          "best_for": [
+            "Home video montages",
+            "Practice and progress sequences",
+            "Youth activity highlights"
+          ],
+          "avoid_for": [
+            "Professional sports documentaries",
+            "Cinematic dramatic narratives"
+          ],
+          "vibes": [
+            "Solo",
+            "Indoor"
+          ],
+          "content_description": "A young boy practices handstands in a living room while being filmed and encouraged by someone off-camera.",
+          "best_moments": {
+            "High": {
+              "start": 26.8,
+              "end": 29.3,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "The most successful and energetic handstand attempt in the clip."
+            },
+            "Medium": {
+              "start": 18.5,
+              "end": 21.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "The boy moves into position and prepares for another attempt, maintaining steady activity."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 4.0,
+              "moment_role": "Establishing",
+              "stable_moment": true,
+              "reason": "The boy stands still at the beginning, setting the scene before the activity starts."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "a7690fa7c64b8c5eecc5cbc956560706"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
           "filename": "clip99.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_017.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_020.mp4",
           "duration": 49.212,
           "energy": "High",
           "motion": "Dynamic",
@@ -67301,7 +67503,7 @@
         },
         {
           "filename": "clip100.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_018.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_021.mp4",
           "duration": 38.7,
           "energy": "High",
           "motion": "Dynamic",
@@ -67365,7 +67567,7 @@
         },
         {
           "filename": "clip101.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_019.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_022.mp4",
           "duration": 80.16,
           "energy": "High",
           "motion": "Dynamic",
@@ -67428,7 +67630,7 @@
         },
         {
           "filename": "clip102.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_020.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_023.mp4",
           "duration": 58.78,
           "energy": "High",
           "motion": "Dynamic",
@@ -67492,7 +67694,7 @@
         },
         {
           "filename": "clip103.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_021.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_5f56868f415c827a3bed08491d86e0ad\\standardized\\clip_024.mp4",
           "duration": 49.6,
           "energy": "High",
           "motion": "Dynamic",
