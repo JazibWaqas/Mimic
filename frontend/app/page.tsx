@@ -369,24 +369,23 @@ export default function StudioPage() {
     <div className="min-h-screen bg-[#020306] overflow-x-hidden pt-4 pb-24">
       <div className="max-w-[1700px] mx-auto px-6 md:px-12 relative transition-all duration-700">
 
-        {/* Hero Section - Professional Scale (Reduced 20%) */}
-        <div className="shrink-0 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
-          <div className="space-y-2 max-w-2xl">
+        {/* Hero Section - More Compact */}
+        <div className="shrink-0 flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/10">
+          <div className="space-y-2 max-w-3xl">
             <div className="space-y-0.5 group">
               <div className="flex items-center gap-3">
                 <div className="p-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
                   <Wand2 className="h-4 w-4" />
                 </div>
                 <h1 className="text-3xl font-black tracking-tighter text-white uppercase italic">
-                  Studio {searchParams.get("refine") ? <span className="text-[#ff007f] ml-2 animate-pulse">V2_Refinement</span> : "V1"}
+                  Studio
                 </h1>
               </div>
               <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">AI Creative Engine</p>
             </div>
             <div className="space-y-1.5 ml-10 border-l-2 border-white/5 pl-6 py-1">
-              <h2 className="text-lg font-bold text-white/90">Remix your videos with Gemini 3</h2>
-              <p className="text-xs text-slate-500 leading-relaxed font-medium">
-                Upload a reference and your clips. Mimic analyzes the vibe, pacing, and energy to automatically edit your footage into a masterpiece.
+              <p className="text-xs text-slate-400 leading-relaxed font-medium">
+                MIMIC is a translation engine that uses Gemini 3's power to convert human creative intent into deterministic editorial structure, executes under real-world constraints, and explains the outcome transparently.
               </p>
             </div>
           </div>
@@ -730,7 +729,7 @@ export default function StudioPage() {
 
           {/* Logic Sidebar - Command Center Layout */}
           <div className="space-y-6">
-            <div className="glass-premium rounded-xl flex flex-col h-[520px] shadow-2xl border border-white/5 relative overflow-hidden group/telemetry">
+            <div className="glass-premium rounded-xl flex flex-col h-[600px] shadow-2xl border border-white/5 relative overflow-hidden group/telemetry">
               {/* Background Glow */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-[60px] -mr-16 -mt-16 group-hover/telemetry:bg-cyan-500/20 transition-all duration-1000" />
 
@@ -829,42 +828,7 @@ export default function StudioPage() {
               </div>
             </div>
 
-            <div className={cn(
-              "glass-premium rounded-xl px-5 py-6 transition-all duration-1000 border relative overflow-hidden",
-              recommendations.length > 0 ? "border-indigo-500/40 bg-indigo-500/[0.03] shadow-[0_0_30px_rgba(99,102,241,0.1)] animate-synthesis" : "border-white/5 opacity-60"
-            )}>
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em]">
-                  <Sparkles className={cn("h-3.5 w-3.5", recommendations.length > 0 ? "text-[#ccff00]" : "text-pink-400")} />
-                  <span className={cn(recommendations.length > 0 ? "text-[#ccff00]" : "text-white")}>AI Insights</span>
-                </div>
-                {recommendations.length > 0 && (
-                  <div className="px-2 py-0.5 rounded bg-[#ccff00]/10 border border-[#ccff00]/20 text-[8px] font-black text-[#ccff00] uppercase animate-pulse">Thinking...</div>
-                )}
-              </div>
-              <div className="space-y-4">
-                {pinnedCritique && (
-                  <div className="flex gap-4 items-start group/rec p-2 rounded-lg bg-amber-500/5 border-l-2 border-amber-500 shadow-[inset_4px_0_10px_-4px_rgba(245,158,11,0.2)] transition-all">
-                    <div className="h-1.5 w-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
-                    <div className="space-y-1">
-                      <p className="text-[8px] font-black text-amber-500 uppercase tracking-widest">Pinned Critique from V1</p>
-                      <p className="text-[11px] font-bold text-amber-200 leading-relaxed uppercase tracking-tight">{pinnedCritique}</p>
-                    </div>
-                  </div>
-                )}
-                {recommendations.length === 0 && !pinnedCritique ? (
-                  <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest italic leading-relaxed border-l border-white/10 pl-4 py-1">System in idle state. Analysis requires source material injection.</p>
-                ) : (
-                  recommendations.map((rec, i) => (
-                    <div key={i} className="flex gap-4 items-start group/rec p-2 rounded-lg hover:bg-white/[0.02] border-l-2 border-[#ff007f] shadow-[inset_4px_0_10px_-4px_rgba(255,0,127,0.2)] transition-all">
-                      <div className="h-1.5 w-1.5 rounded-full bg-[#ff007f] mt-1.5 shrink-0 shadow-[0_0_8px_rgba(255,0,127,0.8)] group-hover/rec:scale-125 transition-transform" />
-                      <p className="text-[11px] font-bold text-slate-300 leading-relaxed uppercase tracking-tight group-hover/rec:text-white transition-colors">{rec}</p>
-                    </div>
-                  ))
-                )}
-              </div>
             </div>
-          </div>
         </div>
 
         {/* System Protocol Description & Pipeline Preview */}
@@ -873,7 +837,10 @@ export default function StudioPage() {
 
           <div className="space-y-8 relative z-10">
             <div className="flex items-center justify-between">
-              <h3 className="text-[11px] font-black text-indigo-400 uppercase tracking-[0.5em]">How it Works</h3>
+              <div>
+                <h3 className="text-[11px] font-black text-indigo-400 uppercase tracking-[0.5em]">HOW MIMIC WORKS</h3>
+                <p className="text-[9px] text-slate-600 uppercase tracking-[0.3em] mt-1">INTENT → EDIT → EXPLANATION</p>
+              </div>
               <div className="flex gap-2">
                 <div className="h-1 w-6 bg-indigo-500/20 rounded-full" />
                 <div className="h-1 w-1 bg-indigo-500/40 rounded-full" />
@@ -884,28 +851,28 @@ export default function StudioPage() {
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-cyan-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover/bp:bg-cyan-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(34,211,238,0.2)] group-hover/bp:shadow-[0_0_20px_rgba(34,211,238,0.4)]"><Layers className="h-2.5 w-2.5" /></div>
-                  Smart Selection
+                  INTENT TRANSLATION
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Mimic picks your best moments to match the vibe and energy of the reference.
+                  MIMIC interprets creative intent—pace, emotion, and narrative arc—and converts it into a structured editorial plan.
                 </p>
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-purple-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover/bp:bg-purple-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(191,0,255,0.2)] group-hover/bp:shadow-[0_0_191,0,255,0.4)]"><Zap className="h-2.5 w-2.5" /></div>
-                  Perfect Pacing
+                  DETERMINISTIC EDIT EXECUTION
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Every cut is timed to the beat and the visual rhythm of the original edit.
+                  The system selects clips, timings, and transitions under real-world constraints, then executes the edit.
                 </p>
               </div>
               <div className="space-y-3 group/bp card-glint p-4 -m-4 hover:border-lime-500/30 transition-all duration-500">
                 <h4 className="text-[11px] font-black text-white uppercase tracking-widest flex items-center gap-3">
                   <div className="h-4 w-4 rounded-lg bg-lime-500/10 border border-lime-500/20 flex items-center justify-center text-lime-400 group-hover/bp:bg-lime-500 group-hover/bp:text-white transition-all duration-500 shadow-[0_0_10px_rgba(204,255,0,0.2)] group-hover/bp:shadow-[0_0_204,255,0,0.4)]"><BrainCircuit className="h-2.5 w-2.5" /></div>
-                  AI Storytelling
+                  EXPLAINABLE DECISION MAKING
                 </h4>
                 <p className="text-[11px] text-slate-500 leading-relaxed font-bold uppercase tracking-tight group-hover/bp:text-slate-400 transition-colors">
-                  Gemini 3 understands the story you&apos;re trying to tell and makes it feel cinematic.
+                  Every cut is traceable. MIMIC exposes the reasoning behind its editorial decisions.
                 </p>
               </div>
             </div>

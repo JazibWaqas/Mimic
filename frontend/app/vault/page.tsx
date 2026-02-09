@@ -380,19 +380,21 @@ export default function VaultPage() {
                             {/* Info & Secondary Controls */}
                             <div className="w-full max-w-[850px] mx-auto flex items-center justify-between px-4">
                                 <div className="space-y-1">
-                                    <div className="flex items-center gap-4">
-                                        <span className="text-2xl font-black text-white uppercase tracking-tighter italic drop-shadow-sm">{selectedItem?.filename.split('_')[0] || "UNTITLED"}</span>
-                                        <div className="px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">
-                                            <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Edit Feel: 9.2</span>
-                                        </div>
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-2xl font-black text-white uppercase tracking-tighter italic drop-shadow-sm">{selectedItem?.filename.replace(/\.[^/.]+$/, "") || "UNTITLED"}</span>
                                     </div>
                                     <div className="flex items-center gap-5 opacity-50">
                                         <div className="flex items-center gap-2"><Clock className="h-3.5 w-3.5" /><span className="text-[10px] font-bold uppercase tracking-wider">{duration.toFixed(1)}s</span></div>
                                         <div className="flex items-center gap-2"><Music className="h-3.5 w-3.5" /><span className="text-[10px] font-bold uppercase tracking-wider">{intelligence?.bpm || 128} BPM</span></div>
                                     </div>
+                                    {(intelligence as any)?.blueprint?.text_overlay && (
+                                        <div className="mt-2 text-[11px] text-white/40 font-medium italic">
+                                            "{(intelligence as any).blueprint.text_overlay}"
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="flex gap-3">
-                                    <button className="h-12 px-7 rounded-2xl bg-white text-black font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all shadow-xl active:scale-95">Remix Vibe</button>
+                                    <button className="h-12 px-7 rounded-2xl bg-white text-black font-black text-[10px] uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all shadow-xl active:scale-95">Download</button>
                                     <button className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center hover:bg-white/10 transition-all active:scale-95"><Share2 className="h-5 w-5" /></button>
                                     <button
                                         onClick={() => setIsStylingOpen(true)}
@@ -750,6 +752,9 @@ export default function VaultPage() {
                                                 </div>
                                             )) || <p className="text-[11px] text-slate-500 italic">No clip suggestions generated</p>}
                                         </div>
+                                        <button className="mt-4 w-full h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-300 font-black text-[10px] uppercase tracking-widest hover:bg-violet-500/20 transition-all">
+                                            Retry with Better Clips
+                                        </button>
                                     </div>
                                 )}
                             </div>

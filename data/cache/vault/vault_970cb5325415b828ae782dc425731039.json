@@ -1,0 +1,1052 @@
+{
+  "header": "This 35.4-second cinematic montage was built to hit a high-density 68-segment structure, but a thin library forced heavy clip repetition to maintain the rhythm.",
+  "executive_summary": [
+    "The edit hits the target duration but relies on only 30 unique clips to fill 68 distinct segments.",
+    "A lack of medium-energy footage forced the system to reuse high-intensity shots to prevent a pacing collapse.",
+    "Eight specific clips were used three times each because no better alternatives were available in the library.",
+    "Pacing was prioritized over semantic variety to ensure the montage remained tightly synced to the structure.",
+    "No grading or styling was applied, leaving the edit in its native reference state despite the teal-orange target look."
+  ],
+  "advisor": {
+    "hero": "Your library is starving for variety, forcing me to loop the same 'power' and 'speed' shots just to keep the heart beating.",
+    "body": "The technical sync is nominal, but we hit a wall with 'scarcity_medium_energy' and 'missing_payoff_shots.' To keep the 68-segment structure intact, I had to lean on clips like clip_004.mp4 and clip_006.mp4 three times each. The edit is relentless, but the narrative feels repetitive because the library didn't provide enough unique 'action' or 'intensity' motifs to swap in for the primary anchors."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted anticipation for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted preparation for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted power for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "I wanted danger for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted focus for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_intensity",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 6,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 8,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 9,
+      "what_i_tried": "I wanted scale for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 10,
+      "what_i_tried": "I wanted atmosphere for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 11,
+      "what_i_tried": "I wanted abstract for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "I wanted joy for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 13,
+      "what_i_tried": "I wanted detail for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "I wanted night-speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 15,
+      "what_i_tried": "I wanted night-speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 16,
+      "what_i_tried": "I wanted intimacy for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 17,
+      "what_i_tried": "I wanted skill for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 18,
+      "what_i_tried": "I wanted control for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 19,
+      "what_i_tried": "I wanted competition for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 20,
+      "what_i_tried": "I wanted intensity for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 21,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 22,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 23,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 24,
+      "what_i_tried": "I wanted celebration for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 25,
+      "what_i_tried": "I wanted power for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 26,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 27,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 28,
+      "what_i_tried": "I wanted conflict for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 29,
+      "what_i_tried": "I wanted crash for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 30,
+      "what_i_tried": "I wanted crash for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 31,
+      "what_i_tried": "I wanted scale for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 32,
+      "what_i_tried": "I wanted power for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 33,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 34,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 35,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 36,
+      "what_i_tried": "I wanted intensity for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 37,
+      "what_i_tried": "I wanted resolution for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 38,
+      "what_i_tried": "I wanted preparation for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 39,
+      "what_i_tried": "I wanted power for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 40,
+      "what_i_tried": "I wanted danger for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 41,
+      "what_i_tried": "I wanted focus for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_intensity",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 42,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 43,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 44,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 45,
+      "what_i_tried": "I wanted scale for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 46,
+      "what_i_tried": "I wanted atmosphere for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 47,
+      "what_i_tried": "I wanted abstract for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 48,
+      "what_i_tried": "I wanted joy for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 49,
+      "what_i_tried": "I wanted detail for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 50,
+      "what_i_tried": "I wanted night-speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 51,
+      "what_i_tried": "I wanted night-speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 52,
+      "what_i_tried": "I wanted intimacy for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 53,
+      "what_i_tried": "I wanted skill for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 54,
+      "what_i_tried": "I wanted control for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 55,
+      "what_i_tried": "I wanted competition for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 56,
+      "what_i_tried": "I wanted intensity for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 57,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 58,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 59,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 60,
+      "what_i_tried": "I wanted celebration for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 61,
+      "what_i_tried": "I wanted power for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 62,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 63,
+      "what_i_tried": "I wanted speed for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 64,
+      "what_i_tried": "I wanted conflict for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 65,
+      "what_i_tried": "I wanted crash for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    },
+    {
+      "segment_id": 66,
+      "what_i_tried": "I wanted crash for this segment.",
+      "decision": "Used because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 67,
+      "what_i_tried": "I wanted scale for this segment.",
+      "decision": "Locked in because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 68,
+      "what_i_tried": "I wanted resolution for this segment.",
+      "decision": "Selected because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "filler",
+        "library_gap"
+      ]
+    }
+  ],
+  "key_decision_stream": [
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted focus for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_intensity",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "I wanted joy for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 16,
+      "what_i_tried": "I wanted intimacy for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 20,
+      "what_i_tried": "I wanted intensity for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 24,
+      "what_i_tried": "I wanted celebration for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 28,
+      "what_i_tried": "I wanted conflict for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 36,
+      "what_i_tried": "I wanted intensity for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 41,
+      "what_i_tried": "I wanted focus for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_intensity",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 48,
+      "what_i_tried": "I wanted joy for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 52,
+      "what_i_tried": "I wanted intimacy for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 56,
+      "what_i_tried": "I wanted intensity for this segment.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    },
+    {
+      "segment_id": 60,
+      "what_i_tried": "I wanted celebration for this segment.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority",
+        "overuse"
+      ]
+    },
+    {
+      "segment_id": 64,
+      "what_i_tried": "I wanted conflict for this segment.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit.",
+      "what_if": "replace_with_action",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity",
+        "pacing_priority"
+      ]
+    }
+  ],
+  "friction_log": [
+    "Confidence was high during the initial mapping of anticipation beats using clip_013.mp4.",
+    "Confidence dipped in the middle as I realized I had to reuse clip_030.mp4 for both 'detail' and 'celebration' due to missing action motifs.",
+    "Finalized the edit with a focus on rhythmic continuity, accepting that the resolution would have to reuse clip_002.mp4."
+  ],
+  "post_mortem": {
+    "worked": "The relentless pacing and tight sync held together despite the thin library. Segment 56 used clip_011.mp4 to bridge an intensity gap, maintaining the flow.",
+    "didnt": "The repetition is obvious; Segment 24 and Segment 60 both used clip_030.mp4 for celebration, which feels stale.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Add at least 10 unique 'action' and 'intensity' clips to replace structural fillers.",
+    "Source medium-energy footage to bridge the gap between anticipation and payoff.",
+    "Provide unique 'payoff' shots to reduce the 3x overuse of clips like clip_004.mp4 and clip_006.mp4."
+  ],
+  "clip_suggestions": [
+    "Adding more unique 'action' motifs would help reduce the reliance on repeating clip_030.mp4.",
+    "The library suggests a need for more 'intensity' shots to replace structural fillers like clip_003.mp4.",
+    "Including more medium-energy clips would prevent the system from overusing high-speed assets.",
+    "Adding distinct 'payoff' shots would provide better anchors for the primary segments.",
+    "Substitutes for clip_004.mp4 and clip_006.mp4 with similar speed vibes would improve variety.",
+    "Adding more 'night-speed' variety would help differentiate segments 14, 15, 50, and 51."
+  ],
+  "technical": [
+    "Native reference look maintained as styling_applied was false.",
+    "Relentless pacing logic applied to manage 68 segments in 35.4 seconds.",
+    "Tight sync discipline used to anchor clips to the montage structure."
+  ]
+}

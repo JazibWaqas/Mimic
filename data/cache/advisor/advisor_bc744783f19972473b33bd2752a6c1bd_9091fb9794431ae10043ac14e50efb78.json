@@ -1,0 +1,110 @@
+{
+  "text_overlay_intent": "The extensive list of luxury and technical sponsors signifies the elite, commercial ecosystem of Formula 1; it demands shots that feel expensive, professional, and sanctioned by the world's most prestigious brands.",
+  "dominant_narrative": "A visceral exploration of the high-stakes intersection between human endurance and mechanical velocity.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Place-Urban, People-Solo",
+      "intent_diluting_material": "Low-energy lifestyle shots, nature scenery",
+      "reasoning": "The intro must establish the 'World of F1'—a mix of high-end locations and the focused individuals who inhabit them. It sets the scale before the speed takes over.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip61.mp4",
+        "clip74.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Object-Detail, People-Solo",
+      "intent_diluting_material": "Crowd celebrations, generic travel footage",
+      "reasoning": "This stage focuses on the 'Preparation'—the technical testing and physical training required to handle the machine. It builds tension through focus.",
+      "recommended_clips": [
+        "clip52.mp4",
+        "clip62.mp4",
+        "clip65.mp4",
+        "clip73.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Activity-Celebration, People-Crowd",
+      "intent_diluting_material": "Static interviews, slow-panning establishing shots",
+      "reasoning": "The peak is the 'Race'—pure kinetic energy, crashes, and the explosive release of victory. It must feel relentless and overwhelming.",
+      "recommended_clips": [
+        "clip54.mp4",
+        "clip56.mp4",
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip78.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Object-Detail, People-Solo",
+      "intent_diluting_material": "High-speed racing, loud graphics",
+      "reasoning": "The 'Button' provides the resolution. It should reflect on the prestige (trophies) or the human cost (rest/reflection) after the intensity subsides.",
+      "recommended_clips": [
+        "clip50.mp4",
+        "clip77.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage (ACTION)",
+      "Strong night-racing and firework visuals for the Peak",
+      "Excellent crash and reaction footage (clip71, clip72) for high-stakes narrative"
+    ],
+    "editorial_tradeoffs": [
+      "Scarce 'Low' energy footage means the Outro must rely heavily on the few reflective moments available (clip50, clip77)",
+      "Medium energy 'Build-up' material is limited, requiring high-energy training clips to be paced as tension-builders"
+    ],
+    "constraint_gaps": [
+      "Lack of extreme close-up mechanical details (pedals, steering wheel) as requested in 'Must-Have' content",
+      "Limited 'Static' branding shots, requiring the use of press-event backdrops (clip73) to satisfy sponsorship intent"
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize 'Relentless' pacing by favoring clips with internal forward motion that carries across cuts. We will anchor the mechanical speed with human grit—using the training and reaction clips as the 'soul' of the machine. The transition from the technical build-up to the chaotic peak will be triggered by the race-start lights (clip74).",
+  "remake_strategy": "To achieve a true Director's Cut, additional macro-photography of glowing brake discs and extreme close-ups of a driver's eyes behind a visor are needed to heighten the 'intimacy' and 'mechanical detail' requirements.",
+  "primary_narrative_subject": null,
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical details or wind tunnel testing",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "High-speed racing maneuvers",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "On-track crashes or high-stakes moments",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    },
+    {
+      "trigger": "Victory celebrations and fireworks",
+      "desired_continuity": "Emotional-Release",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T02:16:42.326782"
+}
