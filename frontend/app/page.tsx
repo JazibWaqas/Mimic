@@ -488,17 +488,9 @@ export default function StudioPage() {
                       <div className="absolute -left-[9px] top-0 w-0 h-0 border-t-[10px] border-t-white/10 border-l-[10px] border-l-transparent" />
                     </div>
 
-                    <div className="flex items-start gap-3 px-2">
-                      <div className="h-5 w-5 rounded-full bg-indigo-500/10 flex items-center justify-center shrink-0 mt-0.5">
-                        <Info className="h-2.5 w-2.5 text-indigo-400" />
-                      </div>
-                      <p className="text-[10px] font-medium text-slate-500 leading-relaxed italic">
-                        Tip: Use the format &quot;[Theme]. Start with [Intro]. Build through [Action]. Peak with [Climax]. Resolve with [Outro].&quot; for best results.
-                      </p>
-                    </div>
-                  </div>
+                                      </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                  <div className="flex items-center justify-between pt-10 border-t border-white/5">
                     <div className="flex gap-4">
                       <div className="flex items-center gap-2">
                         <div className={cn("h-1 w-1 rounded-full animate-pulse", textPrompt ? "bg-[#ff007f]" : "bg-slate-700")} />
