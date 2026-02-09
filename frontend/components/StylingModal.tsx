@@ -1,15 +1,16 @@
 "use client";
 
 import { X, Check, Palette, Type, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import type { StyleConfig } from "@/lib/types";
 
 interface StylingModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onApply: (config: StyleConfig) => void;
+    onApply: (payload: { config: StyleConfig; caption: string }) => void;
     initialConfig?: StyleConfig;
+    initialCaption?: string;
 }
 
 const COLOR_PRESETS = [
@@ -23,12 +24,20 @@ const COLOR_PRESETS = [
 const FONTS = ['Inter', 'Outfit', 'serif', 'sans-serif', 'mono'];
 const POSITIONS = ['top', 'center', 'bottom'] as const;
 
-export default function StylingModal({ isOpen, onClose, onApply, initialConfig }: StylingModalProps) {
+export default function StylingModal({ isOpen, onClose, onApply, initialConfig, initialCaption }: StylingModalProps) {
     const [config, setConfig] = useState<StyleConfig>(initialConfig || {
         text: { font: 'Inter', weight: 600, color: '#FFFFFF', shadow: true, position: 'bottom', animation: 'fade' },
         color: { preset: 'neutral' },
         texture: { grain: false }
     });
+
+    const [caption, setCaption] = useState("");
+
+    useEffect(() => {
+        if (!isOpen) return;
+        if (initialConfig) setConfig(initialConfig);
+        if (typeof initialCaption === "string") setCaption(initialCaption);
+    }, [isOpen, initialConfig, initialCaption]);
 
     if (!isOpen) return null;
 
@@ -54,6 +63,23 @@ export default function StylingModal({ isOpen, onClose, onApply, initialConfig }
                 </div>
 
                 <div className="flex-1 overflow-y-auto p-8 space-y-10 custom-scrollbar">
+                    {/* 0. Text Overlay */}
+                    <section className="space-y-4">
+                        <div className="flex items-center gap-3">
+                            <Type className="h-4 w-4 text-indigo-500" />
+                            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Text Overlay</h3>
+                        </div>
+                        <div className="space-y-2">
+                            <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">Caption</p>
+                            <input
+                                value={caption}
+                                onChange={(e) => setCaption(e.target.value)}
+                                placeholder='Type overlay text (e.g. "Oh, to be this young again.")'
+                                className="w-full h-12 px-4 rounded-xl bg-white/[0.02] border border-white/5 text-[11px] text-slate-200 placeholder:text-slate-600 outline-none focus:border-indigo-500/30 focus:bg-white/[0.04] transition-all"
+                            />
+                        </div>
+                    </section>
+
                     {/* 1. Color Treatment */}
                     <section className="space-y-6">
                         <div className="flex items-center gap-3">
@@ -172,7 +198,7 @@ export default function StylingModal({ isOpen, onClose, onApply, initialConfig }
                         Cancel
                     </button>
                     <button
-                        onClick={() => onApply(config)}
+                        onClick={() => onApply({ config, caption })}
                         className="flex-[1.5] h-14 rounded-2xl bg-indigo-600 text-[10px] font-black text-white uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-600/20"
                     >
                         Update Visual Path

@@ -113,6 +113,9 @@ export default function VaultPage() {
     const [isStylingOpen, setIsStylingOpen] = useState(false);
     const [isStylingLoading, setIsStylingLoading] = useState(false);
 
+    const [vaultStylePreview, setVaultStylePreview] = useState<StyleConfig | null>(null);
+    const [vaultCaptionPreview, setVaultCaptionPreview] = useState<string>("");
+
     const videoRef = useRef<HTMLVideoElement>(null);
     const decisionListRef = useRef<HTMLDivElement>(null);
 
@@ -223,6 +226,22 @@ export default function VaultPage() {
         if (path && !path.startsWith("/")) path = "/" + path;
         return `${API_BASE}${path}?v=${Date.now()}`;
     }, [selectedItem]);
+
+    const cssFilterForPreset = (preset?: StyleConfig["color"]["preset"]) => {
+        switch (preset) {
+            case "warm":
+                return "contrast(1.05) saturate(1.15) sepia(0.18) hue-rotate(-10deg)";
+            case "cool":
+                return "contrast(1.05) saturate(1.05) hue-rotate(15deg)";
+            case "high_contrast":
+                return "contrast(1.25) saturate(1.1)";
+            case "vintage":
+                return "contrast(1.05) saturate(0.9) sepia(0.28)";
+            case "neutral":
+            default:
+                return "none";
+        }
+    };
 
     const currentModeAssets = useMemo(() => {
         const assets = viewMode === "results" ? results : viewMode === "references" ? references : clips;
@@ -358,20 +377,52 @@ export default function VaultPage() {
                                 <div className={cn("video-aura", isPlaying && "video-aura-active animate-pulse-vibrant")} />
                                 <div className="relative aspect-[14/12] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
                                     {selectedItem ? (
-                                        <video
-                                            ref={videoRef}
-                                            src={videoUrl}
-                                            onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime || 0)}
-                                            onLoadedMetadata={() => setDuration(videoRef.current?.duration || 0)}
-                                            onPlay={() => setIsPlaying(true)}
-                                            onPause={() => setIsPlaying(false)}
-                                            className="w-full h-full object-cover"
-                                            controls
-                                        />
+                                        <div
+                                            className="absolute inset-0"
+                                            style={{ filter: cssFilterForPreset(vaultStylePreview?.color?.preset) }}
+                                        >
+                                            <video
+                                                ref={videoRef}
+                                                src={videoUrl}
+                                                onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime || 0)}
+                                                onLoadedMetadata={() => setDuration(videoRef.current?.duration || 0)}
+                                                onPlay={() => setIsPlaying(true)}
+                                                onPause={() => setIsPlaying(false)}
+                                                className="w-full h-full object-cover"
+                                                controls
+                                            />
+                                        </div>
                                     ) : (
                                         <div className="w-full h-full flex flex-col items-center justify-center opacity-20">
                                             <Play className="h-12 w-12 mb-4" />
                                             <p className="text-[10px] font-black uppercase tracking-widest">Select specimen</p>
+                                        </div>
+                                    )}
+
+                                    {/* Vault-only overlays (non-destructive preview) */}
+                                    {(vaultCaptionPreview || (intelligence as any)?.blueprint?.text_overlay) && (
+                                        <div className="absolute inset-0 pointer-events-none">
+                                            <div
+                                                className={cn(
+                                                    "absolute left-0 right-0 px-10 text-center",
+                                                    (vaultStylePreview?.text?.position || "bottom") === "top" && "top-[8%]",
+                                                    (vaultStylePreview?.text?.position || "bottom") === "center" && "top-1/2 -translate-y-1/2",
+                                                    (vaultStylePreview?.text?.position || "bottom") === "bottom" && "bottom-[10%]"
+                                                )}
+                                                style={{
+                                                    fontFamily: vaultStylePreview?.text?.font || "Inter",
+                                                    fontWeight: vaultStylePreview?.text?.weight || 600,
+                                                    color: vaultStylePreview?.text?.color || "#FFFFFF",
+                                                    textShadow: vaultStylePreview?.text?.shadow ? "0 2px 12px rgba(0,0,0,0.85)" : undefined,
+                                                }}
+                                            >
+                                                <div className={cn(
+                                                    "text-[28px] sm:text-[34px] leading-tight",
+                                                    vaultStylePreview?.text?.animation === "fade" && "animate-in fade-in duration-500"
+                                                )}>
+                                                    {vaultCaptionPreview || (intelligence as any)?.blueprint?.text_overlay}
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
                                 </div>
@@ -857,30 +908,13 @@ export default function VaultPage() {
                 isOpen={isStylingOpen}
                 onClose={() => setIsStylingOpen(false)}
                 initialConfig={intelligence?.style_config}
-                onApply={async (config) => {
-                    if (!selectedItem) return;
+                initialCaption={vaultCaptionPreview || (intelligence as any)?.blueprint?.text_overlay || ""}
+                onApply={async (payload) => {
                     setIsStylingLoading(true);
-                    const toastId = toast.loading("Applying styling...");
                     try {
-                        await api.applyStyle(selectedItem.filename, config);
-
-                        // Force refresh intelligence to get new config
-                        const key = viewMode === "clips" ? (selectedItem as Clip).clip_hash || selectedItem.filename : selectedItem.filename;
-                        const data = await api.fetchIntelligence(viewMode, key);
-                        setIntelligence(data as IntelligenceViewModel);
-
-                        toast.success("Aesthetic Path Updated", { id: toastId });
+                        setVaultStylePreview(payload.config);
+                        setVaultCaptionPreview(payload.caption);
                         setIsStylingOpen(false);
-
-                        // Refresh video to show changes
-                        if (videoRef.current) {
-                            const currentPos = videoRef.current.currentTime;
-                            videoRef.current.src = `${videoUrl}&t=${Date.now()}`;
-                            videoRef.current.currentTime = currentPos;
-                            videoRef.current.play();
-                        }
-                    } catch (_err) {
-                        toast.error("Styling failed", { id: toastId });
                     } finally {
                         setIsStylingLoading(false);
                     }
