@@ -124,7 +124,7 @@ export const api = {
   fetchClips: async () => {
     if (IS_DEMO) {
       const data = await fetchDemoIndex();
-      return data.clips;
+      return { clips: data.clips };
     }
     const res = await fetch(`${API_BASE}/api/clips`);
     if (!res.ok) throw new Error("Failed to fetch clips");
@@ -143,7 +143,7 @@ export const api = {
   fetchResults: async () => {
     if (IS_DEMO) {
       const data = await fetchDemoIndex();
-      return data.results;
+      return { results: data.results };
     }
     const res = await fetch(`${API_BASE}/api/results`);
     if (!res.ok) throw new Error("Failed to fetch results");
@@ -171,7 +171,7 @@ export const api = {
   fetchReferences: async () => {
     if (IS_DEMO) {
       const data = await fetchDemoIndex();
-      return data.references;
+      return { references: data.references };
     }
     const res = await fetch(`${API_BASE}/api/references`);
     if (!res.ok) throw new Error("Failed to fetch references");
