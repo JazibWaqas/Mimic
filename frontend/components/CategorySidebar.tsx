@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import type { Clip, Reference, Result } from "@/lib/types";
 
 interface CategorySidebarProps {
-    onSelect: (category: string, item?: Clip | Reference | Result) => void;
+    onSelect: (category: string | null, item?: Clip | Reference | Result) => void;
     selectedCategory: string | null;
 }
 
