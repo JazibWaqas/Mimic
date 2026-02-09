@@ -36,33 +36,34 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
 
   useEffect(() => {
     if (!sessionId || sessionId === "undefined") return;
-    
+
     let ws: WebSocket | null = null;
     let reconnectTimeout: NodeJS.Timeout | null = null;
     let reconnectAttempts = 0;
     const maxReconnectAttempts = 10;
-    
+
     const connect = () => {
       try {
         const wsUrl = `ws://localhost:8000/ws/progress/${sessionId}`;
         console.log("Connecting to WebSocket:", wsUrl);
         console.log("Session ID:", sessionId);
-        
+
         // Verify session exists before connecting
         if (!sessionId || sessionId === "undefined" || sessionId === "null") {
           console.error("Invalid session ID, cannot connect WebSocket");
           return;
         }
-        
+
         // Verify WebSocket URL is valid
         if (!wsUrl || !wsUrl.startsWith("ws://") && !wsUrl.startsWith("wss://")) {
           console.error("Invalid WebSocket URL:", wsUrl);
           setConnectionError("Invalid WebSocket URL. Check API configuration.");
           return;
         }
-        
+
         console.log("Creating WebSocket connection...");
         ws = api.connectProgress(sessionId);
+        if (!ws) return;
 
         ws.onopen = () => {
           console.log("WebSocket connected successfully");
@@ -100,7 +101,7 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
           console.error("WebSocket state:", ws?.readyState);
           console.error("WebSocket URL:", wsUrl);
           console.error("Session ID:", sessionId);
-          
+
           // WebSocket errors don't provide detailed info, but we can check the state
           if (ws?.readyState === WebSocket.CLOSED) {
             const errorMsg = `Cannot connect to ${wsUrl}. Make sure backend is running on port 8000.`;
@@ -113,7 +114,7 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
 
         ws.onclose = (event) => {
           console.log("WebSocket closed", event.code, event.reason);
-          
+
           if (event.code !== 1000 && reconnectAttempts < maxReconnectAttempts) {
             reconnectAttempts++;
             console.log(`Reconnecting WebSocket (attempt ${reconnectAttempts}/${maxReconnectAttempts})...`);
@@ -128,7 +129,7 @@ export function ProgressTracker({ sessionId }: ProgressTrackerProps) {
         }
       }
     };
-    
+
     // Wait a bit longer for session to be created and generation to start
     setTimeout(connect, 1500);
 
