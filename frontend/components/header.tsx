@@ -17,16 +17,26 @@ export function Header() {
     return (
         <header className="w-full z-50 py-4 px-6 md:px-12 bg-transparent">
             <div className="max-w-[1700px] mx-auto flex items-center justify-between">
-                {/* Brand */}
-                <Link href="/" className="flex items-center gap-4 group">
-                    <div className="h-12 w-12 bg-indigo-500 border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                        <Wand2 className="h-6 w-6 text-white" />
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-2xl font-black tracking-tighter text-white leading-none">MIMIC</span>
-                        <span className="text-[11px] font-black tracking-[0.2em] text-indigo-400 mt-1 uppercase">Smart Editor</span>
-                    </div>
-                </Link>
+                <div className="flex items-center gap-6">
+                    <Link href="/" className="flex items-center gap-4 group">
+                        <div className="h-12 w-12 bg-indigo-500 border border-white/20 rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                            <Wand2 className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-2xl font-black tracking-tighter text-white leading-none">MIMIC</span>
+                            <span className="text-[11px] font-black tracking-[0.2em] text-indigo-400 mt-1 uppercase">Smart Editor</span>
+                        </div>
+                    </Link>
+
+                    {process.env.NEXT_PUBLIC_DEMO_MODE === "true" && (
+                        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 shadow-[0_0_20px_rgba(99,102,241,0.1)]">
+                            <div className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse shadow-[0_0_8px_rgba(129,140,248,0.8)]" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.1em] text-indigo-300 whitespace-nowrap">
+                                Reference Demo · Deterministic Run
+                            </span>
+                        </div>
+                    )}
+                </div>
 
                 {/* Navigation - High Visibility */}
                 <nav className="flex items-center gap-12">

@@ -1,0 +1,279 @@
+{
+  "header": "This 20.4-second cinematic montage was built across 17 segments to establish a high-energy rhythm. The edit prioritizes pacing and structural integrity over perfect thematic alignment due to library limitations.",
+  "executive_summary": [
+    "The edit maintains a tight rhythmic structure despite a lack of high-impact payoff shots.",
+    "Structural anchors were forced into specific slots to prioritize pacing over perfect thematic alignment.",
+    "The library is currently limited in intensity and action motifs, leading to several filler choices.",
+    "No styling or grading was applied to the final output, leaving the native reference look intact.",
+    "Pacing was preserved throughout the sequence by accepting semantic mismatches in key segments."
+  ],
+  "advisor": {
+    "hero": "The library is healthy but hollow; it has the right vibe but lacks the heavy-hitting payoff shots needed to truly land the cinematic promise.",
+    "body": "We hit a bottleneck with missing payoff shots. While the sync is tight, I had to lean on filler clips to keep the momentum because the library lacked the specific high-intensity motifs requested for the key beats. The technical score of 8.0 reflects a solid assembly that is currently held back by the available assets."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to open with adrenaline.",
+      "decision": "Used clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted to establish focus here.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit. This choice was made despite the semantic mismatch to ensure the edit didn't stall.",
+      "what_if": "This could have been replaced with action.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to transition into action.",
+      "decision": "Locked in clip_004.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "I wanted to build intensity.",
+      "decision": "Selected clip_005.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted to project power.",
+      "decision": "Used clip_006.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 6,
+      "what_i_tried": "I wanted a moment of impact.",
+      "decision": "Locked in clip_014.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "I wanted to show scale.",
+      "decision": "Selected clip_017.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 8,
+      "what_i_tried": "I wanted to emphasize speed.",
+      "decision": "Used clip_007.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 9,
+      "what_i_tried": "I wanted to introduce a beat of grief.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit. This was necessary to prevent a pacing collapse even though the clip wasn't the ideal match.",
+      "what_if": "This could have been replaced with intensity.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 10,
+      "what_i_tried": "I wanted a solemn beat.",
+      "decision": "Locked in clip_023.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 11,
+      "what_i_tried": "I wanted to convey duty.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit. I chose to keep the momentum saved rather than hunt for a motif that didn't exist.",
+      "what_if": "This could have been replaced with intensity.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "I wanted a thrill.",
+      "decision": "Selected clip_027.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 13,
+      "what_i_tried": "I wanted to show unity.",
+      "decision": "Used clip_010.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "I wanted a sense of freedom.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit. This preserved the edit's momentum while acknowledging the library gap.",
+      "what_if": "This could have been replaced with intensity.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 15,
+      "what_i_tried": "I wanted to show purpose.",
+      "decision": "Locked in clip_030.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 16,
+      "what_i_tried": "I wanted to touch on legacy.",
+      "decision": "Selected clip_013.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 17,
+      "what_i_tried": "I wanted a final resolution.",
+      "decision": "Used clip_002.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    }
+  ],
+  "key_decision_stream": [
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted to establish focus here.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit. This choice was made despite the semantic mismatch to ensure the edit didn't stall.",
+      "what_if": "This could have been replaced with action.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 9,
+      "what_i_tried": "I wanted to introduce a beat of grief.",
+      "decision": "Forced into the slot to prioritize rhythmic continuity over semantic fit. This was necessary to prevent a pacing collapse even though the clip wasn't the ideal match.",
+      "what_if": "This could have been replaced with intensity.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 11,
+      "what_i_tried": "I wanted to convey duty.",
+      "decision": "Used out of necessity to prioritize rhythmic continuity over semantic fit. I chose to keep the momentum saved rather than hunt for a motif that didn't exist.",
+      "what_if": "This could have been replaced with intensity.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "I wanted a sense of freedom.",
+      "decision": "Deployed as a structural anchor to prioritize rhythmic continuity over semantic fit. This preserved the edit's momentum while acknowledging the library gap.",
+      "what_if": "This could have been replaced with intensity.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    }
+  ],
+  "friction_log": [
+    "Started with high confidence in the syncopated pacing plan for the cinematic montage.",
+    "Hit a wall in the middle when the library failed to provide the intensity and action motifs needed for the primary beats.",
+    "Ended by prioritizing the edit's momentum over the semantic mismatch to ensure the 20.4s duration felt cohesive."
+  ],
+  "post_mortem": {
+    "worked": "The syncopated pacing is tight and nominal, especially evident in Segment 2 (clip_003.mp4) where focus was maintained despite a lack of action. The rhythmic continuity is the strongest asset of this edit.",
+    "didnt": "The library's lack of payoff shots forced a reliance on filler, like in Segment 9 (clip_024.mp4), which likely suggests a missed opportunity for a more emotionally intense beat.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Source high-intensity payoff shots to replace current structural anchors in key segments.",
+    "Expand the library with more action and intensity motifs to reduce reliance on filler clips.",
+    "Review the missing_payoff_shots bottleneck to ensure future montages have a clear climax."
+  ],
+  "clip_suggestions": [
+    "Adding more action motifs would help replace the structural necessity in Segment 2.",
+    "The library would benefit from intensity clips to upgrade the primary beats in Segments 9, 11, and 14.",
+    "Including more high-impact payoff shots would resolve the current bottleneck in the library health.",
+    "Adding clips with a scale motif would strengthen segments like Segment 7 where the current choice is likely filler.",
+    "Sourcing more adrenaline-focused clips would provide better alternatives for the opening segment."
+  ],
+  "technical": [
+    "The edit follows a syncopated pacing discipline to maintain energy across the 17 segments.",
+    "Native reference look shows a teal-orange cinematic grade with heavy golden hour influence, though no styling was applied in this pass.",
+    "Sync fidelity is nominal, ensuring every cut lands tightly on the intended rhythmic beat."
+  ]
+}

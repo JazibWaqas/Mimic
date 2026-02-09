@@ -225,11 +225,20 @@ export default function VaultPage() {
 
     const videoUrl = useMemo(() => {
         if (!selectedItem) return "";
-        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
         const withPath = selectedItem as AssetWithPath;
         let path = withPath.path || withPath.filepath || withPath.url || "";
-        if (path && !path.startsWith("/")) path = "/" + path;
-        return `${API_BASE}${path}?v=${Date.now()}`;
+
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+
+        // v14.9 Demo Mode Support
+        if (path.startsWith("/demo/") || process.env.NEXT_PUBLIC_DEMO_MODE === "true") {
+            const relPath = path.startsWith("/") ? path : `/${path}`;
+            return `${relPath}?v=${Date.now()}`;
+        }
+
+        // Backend assets
+        const fullPath = path.startsWith("/") ? path : `/${path}`;
+        return `${API_BASE}${fullPath}?v=${Date.now()}`;
     }, [selectedItem]);
 
     const selectedKey = selectedItem?.filename || "";
@@ -356,13 +365,16 @@ export default function VaultPage() {
                                 >
                                     {item.thumbnail_url ? (
                                         <img
-                                            src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${item.thumbnail_url}`}
+                                            src={item.thumbnail_url.startsWith("http") || item.thumbnail_url.startsWith("/demo/")
+                                                ? item.thumbnail_url
+                                                : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${item.thumbnail_url.startsWith("/") ? item.thumbnail_url : `/${item.thumbnail_url}`}`}
                                             alt={item.filename}
                                             className="w-full h-full object-cover"
                                         />
                                     ) : (
-                                        <div className="w-full h-full flex items-center justify-center bg-indigo-500/5">
+                                        <div className="w-full h-full flex flex-col items-center justify-center bg-indigo-500/5 gap-2">
                                             <Film className="h-6 w-6 text-indigo-500/20" />
+                                            <span className="text-[8px] font-black uppercase text-indigo-500/40">No Preview</span>
                                         </div>
                                     )}
 
@@ -499,7 +511,7 @@ export default function VaultPage() {
                                             onClick={() => setShowAllDecisions(!showAllDecisions)}
                                             className={cn(
                                                 "px-2 py-1 rounded-md transition-colors",
-                                                showAllDecisions 
+                                                showAllDecisions
                                                     ? "bg-white/10 border-white/20 hover:bg-white/15"
                                                     : "bg-indigo-500/15 border-indigo-500/30 hover:bg-indigo-500/25"
                                             )}
@@ -527,10 +539,10 @@ export default function VaultPage() {
                                                 const timing = edlTimingMap.get(decision.segment_id);
                                                 const isActive = timing && currentTime >= timing.start && currentTime <= timing.end;
                                                 const isKeyDecision = !showAllDecisions; // Vault decisions are key decisions, EDL are all decisions
-                                                
+
                                                 return (
-                                                    <div 
-                                                        key={idx} 
+                                                    <div
+                                                        key={idx}
                                                         onClick={() => {
                                                             if (timing && videoRef.current) {
                                                                 videoRef.current.currentTime = timing.start;
@@ -578,7 +590,7 @@ export default function VaultPage() {
                                                                 )}
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div className="space-y-3">
                                                             {/* Vault decisions have full intelligence structure */}
                                                             {isKeyDecision && (
@@ -590,41 +602,41 @@ export default function VaultPage() {
                                                                             {decision.what_i_tried}
                                                                         </p>
                                                                     </div>
-                                                                    
+
                                                                     {/* Decision Label + Explanation */}
                                                                     <div className="space-y-1">
                                                                         <p className="text-[10px] font-black text-[#6F74FF] uppercase tracking-[0.14em]">DECISION</p>
                                                                         <p className="text-[13px] text-[#D6D8FF] leading-relaxed">{decision.decision}</p>
                                                                     </div>
-                                                                    
+
                                                                     {/* Counterfactual (if exists) */}
-                                                                    {decision.what_if && 
-                                                                        !decision.what_if.toLowerCase().includes('no stronger alternative') && 
+                                                                    {decision.what_if &&
+                                                                        !decision.what_if.toLowerCase().includes('no stronger alternative') &&
                                                                         !decision.what_if.toLowerCase().includes('no viable upgrade') && (
-                                                                        <div className="flex items-start gap-2">
-                                                                            <span className="text-[rgba(180,190,255,0.55)] text-sm">→</span>
-                                                                            <p className="text-[12px] text-[rgba(180,190,255,0.55)] italic leading-relaxed flex-1">
-                                                                                {decision.what_if}
-                                                                            </p>
-                                                                        </div>
-                                                                    )}
+                                                                            <div className="flex items-start gap-2">
+                                                                                <span className="text-[rgba(180,190,255,0.55)] text-sm">→</span>
+                                                                                <p className="text-[12px] text-[rgba(180,190,255,0.55)] italic leading-relaxed flex-1">
+                                                                                    {decision.what_if}
+                                                                                </p>
+                                                                            </div>
+                                                                        )}
                                                                 </>
                                                             )}
                                                         </div>
-                                                        
+
                                                         {isActive && (
                                                             <div className="absolute bottom-0 left-0 h-1 bg-indigo-500 rounded-full transition-all duration-300" style={{ width: '100%' }} />
                                                         )}
                                                     </div>
                                                 );
                                             })}
-                                            
+
                                             {/* Show full EDL forensic view (always separate from Vault decision_stream) */}
                                             {showAllDecisions && displayEdlDecisions.map((edlDecision: EdlDecision, idx: number) => {
                                                 const timing = { start: edlDecision.timeline_start, end: edlDecision.timeline_end };
                                                 const isActive = currentTime >= timing.start && currentTime <= timing.end;
-                                                
-                                                
+
+
                                                 return (
                                                     <div key={`all-${idx}`} className={cn(
                                                         "p-4 rounded-[1rem] border transition-all duration-300 relative group/card",
@@ -667,10 +679,10 @@ export default function VaultPage() {
 
                     {/* LOWER HALF: Two-column Intelligence Grid */}
                     <div className="max-w-[1500px] mx-auto w-full mt-2 grid grid-cols-[60%_40%] gap-6">
-                        
+
                         {/* LEFT COLUMN: Intelligence Stack */}
                         <div className="space-y-4">
-                            
+
                             {/* 1. ADVISOR DIAGNOSIS (Expanded by default) */}
                             <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/[0.02] overflow-hidden shadow-xl max-w-[700px]">
                                 <button
@@ -688,7 +700,7 @@ export default function VaultPage() {
                                     </div>
                                     {advisorExpanded ? <ChevronUp className="h-4 w-4 text-indigo-400" /> : <ChevronDown className="h-4 w-4 text-indigo-400" />}
                                 </button>
-                                
+
                                 {advisorExpanded && (
                                     <div className="px-5 pb-5 pt-0 space-y-3 animate-in slide-in-from-top-2">
                                         {(intelligence?.vault_report?.executive_summary || []).length > 0 && (
@@ -744,7 +756,7 @@ export default function VaultPage() {
                                     </div>
                                     {frictionExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
                                 </button>
-                                
+
                                 {frictionExpanded && (
                                     <div className="p-6 pt-0 space-y-3 animate-in slide-in-from-top-2">
                                         {intelligence?.vault_report?.friction_log?.map((entry: string, i: number) => (
@@ -780,7 +792,7 @@ export default function VaultPage() {
                                     </div>
                                     {nextStepsExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
                                 </button>
-                                
+
                                 {nextStepsExpanded && (
                                     <div className="p-6 pt-0 animate-in slide-in-from-top-2">
                                         <div className="space-y-2">
@@ -831,7 +843,7 @@ export default function VaultPage() {
 
                         {/* RIGHT COLUMN: System & Context + Post-Mortem */}
                         <div className="space-y-6">
-                            
+
                             {/* POST-MORTEM (Expanded by default) */}
                             <div className="rounded-3xl border border-white/10 bg-white/[0.01] overflow-hidden">
                                 <button
@@ -849,7 +861,7 @@ export default function VaultPage() {
                                     </div>
                                     {postMortemExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
                                 </button>
-                                
+
                                 {postMortemExpanded && (
                                     <div className="p-6 pt-0 space-y-5 animate-in slide-in-from-top-2">
                                         {/* WHAT WORKED */}
@@ -859,7 +871,7 @@ export default function VaultPage() {
                                                 {intelligence?.vault_report?.post_mortem?.worked || "No post-mortem analysis available"}
                                             </p>
                                         </div>
-                                        
+
                                         {/* WHAT DIDN'T */}
                                         <div className="p-5 rounded-2xl bg-red-500/[0.03] border border-red-500/10">
                                             <p className="text-[10px] font-black text-red-400 uppercase tracking-widest mb-3">What Didn&apos;t</p>
@@ -867,7 +879,7 @@ export default function VaultPage() {
                                                 {intelligence?.vault_report?.post_mortem?.didnt || "No critique recorded"}
                                             </p>
                                         </div>
-                                        
+
                                         {/* RESPONSIBILITY */}
                                         <div className="flex items-center gap-3 pt-2">
                                             <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Responsibility:</span>
@@ -901,7 +913,7 @@ export default function VaultPage() {
                                     </div>
                                     {technicalExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
                                 </button>
-                                
+
                                 {technicalExpanded && (
                                     <div className="p-6 pt-0 animate-in slide-in-from-top-2">
                                         <div className="space-y-2">

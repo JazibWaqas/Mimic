@@ -1,0 +1,110 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands an aesthetic of elite military-grade precision and the heavy burden of individual excellence within a high-stakes environment.",
+  "dominant_narrative": "A visceral exploration of elite performance where the boundary between the human pilot and the high-speed machine dissolves under the pressure of duty.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mechanical details and environmental scale to establish the 'arena'.",
+      "intent_diluting_material": "Casual crowds or low-stakes lifestyle footage.",
+      "reasoning": "The intro must establish the 'Maverick' archetype—a singular focus on the machine and the mission ahead.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip52.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Training montages and technical preparation to show the 'weight' of the craft.",
+      "intent_diluting_material": "Static scenery without a sense of impending movement.",
+      "reasoning": "This stage builds the 'G-force' of the narrative, moving from the preparation of the individual to the kinetic energy of the vehicle.",
+      "recommended_clips": [
+        "clip62.mp4",
+        "clip65.mp4",
+        "clip75.mp4",
+        "clip53.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "High-speed maneuvers, crashes, and the visceral reactions of the driver/pilot.",
+      "intent_diluting_material": "Wide shots that distance the viewer from the danger.",
+      "reasoning": "The peak must mirror the 'dogfight'—maximum stakes, rapid motion, and the consequences of elite performance.",
+      "recommended_clips": [
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip58.mp4",
+        "clip56.mp4",
+        "clip76.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "Moments of camaraderie, victory celebrations, and the quiet after the storm.",
+      "intent_diluting_material": "Abrupt cuts or high-energy racing that refuses to resolve.",
+      "reasoning": "The 'Top Gun' ethos concludes with the bond of the unit; the individual returns from the cockpit to the collective.",
+      "recommended_clips": [
+        "clip78.mp4",
+        "clip77.mp4",
+        "clip61.mp4",
+        "clip50.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-intensity racing footage that mirrors the kinetic energy of aerial combat.",
+      "Strong 'driver-in-cockpit' shots that align with the pilot-focus of the reference.",
+      "Excellent night-time and firework visuals to substitute for the 'triumphant' cinematic grade."
+    ],
+    "editorial_tradeoffs": [
+      "Formula 1 cars must stand in for fighter jets; the 'track' is the new 'sky'.",
+      "Urban Las Vegas settings replace the vast natural landscapes of the reference."
+    ],
+    "constraint_gaps": [
+      "Lack of 'Golden Hour' natural lighting; the library is dominated by artificial night lighting.",
+      "Limited 'Solemn Duty' moments; most low-energy footage is conversational rather than reflective."
+    ]
+  },
+  "editorial_strategy": "The edit will pivot from aviation to high-stakes motorsport, treating the Formula 1 driver as a modern-day fighter pilot. We will prioritize tight, claustrophobic shots of the driver and the machine's technical details to build tension, releasing that energy through wide, explosive racing sequences and celebratory fireworks.",
+  "remake_strategy": "To achieve a true Director's Cut, integrate 35mm-style 'Golden Hour' desert landscapes to provide breathing room between action beats. Adding authentic naval aviation b-roll would bridge the thematic gap between the text overlay and the racing-heavy library.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "The 'Pilot's' gaze or focused eyes",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    },
+    {
+      "trigger": "Engine ignition or racing start lights",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "High-speed vehicle exit frame left/right",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Post-crash or post-race exhaustion",
+      "desired_continuity": "Emotional-Release",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T08:40:21.238833"
+}

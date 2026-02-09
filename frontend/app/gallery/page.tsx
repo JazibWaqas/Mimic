@@ -137,7 +137,10 @@ export default function LibraryPage() {
     const handleDownload = async (item: AssetItem) => {
         const path = getItemPath(item);
         try {
-            const response = await fetch(`http://localhost:8000${path}`);
+            const baseUrl = (path.startsWith("/demo/"))
+                ? ""
+                : (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000");
+            const response = await fetch(`${baseUrl}${path.startsWith("/") ? path : `/${path}`}`);
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -175,8 +178,14 @@ export default function LibraryPage() {
 
                 <div className="w-full aspect-video bg-black relative overflow-hidden">
                     <video
-                        src={`http://localhost:8000${path}`}
-                        poster={item.thumbnail_url ? `http://localhost:8000${item.thumbnail_url}` : undefined}
+                        src={path.startsWith("http") || path.startsWith("/demo/")
+                            ? path
+                            : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${path.startsWith("/") ? path : `/${path}`}`}
+                        poster={item.thumbnail_url
+                            ? (item.thumbnail_url.startsWith("http") || item.thumbnail_url.startsWith("/demo/")
+                                ? item.thumbnail_url
+                                : `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${item.thumbnail_url.startsWith("/") ? item.thumbnail_url : `/${item.thumbnail_url}`}`)
+                            : undefined}
                         className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-300"
                         muted
                         preload="none"

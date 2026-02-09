@@ -1,0 +1,35 @@
+{
+    "results": [
+        {
+            "filename": "result.mp4",
+            "url": "/demo/files/result.mp4",
+            "timestamp": "2026-02-09 10:00:00",
+            "session_id": "sess_3d5c2dd",
+            "iteration": 1
+        }
+    ],
+    "references": [
+        {
+            "filename": "ref26.mp4",
+            "url": "/demo/files/ref26.mp4",
+            "hash": "3d5c2ddcbb641b1879f096b668cc3f04"
+        }
+    ],
+    "clips": [
+        {
+            "filename": "clip13.mp4",
+            "url": "/demo/files/clips/clip13.mp4",
+            "duration": 5.0
+        },
+        {
+            "filename": "clip30.mp4",
+            "url": "/demo/files/clips/clip30.mp4",
+            "duration": 4.5
+        },
+        {
+            "filename": "clip2.mp4",
+            "url": "/demo/files/clips/clip2.mp4",
+            "duration": 6.2
+        }
+    ]
+}

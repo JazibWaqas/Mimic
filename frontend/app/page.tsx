@@ -325,6 +325,22 @@ export default function StudioPage() {
       console.log("[STUDIO] Generation started:", genRes);
 
       const ws = api.connectProgress(session_id);
+
+      if (!ws) {
+        // v14.9 Demo Mode Simulation: Success without backend
+        if (process.env.NEXT_PUBLIC_DEMO_MODE === "true") {
+          setTimeout(() => {
+            setStatusMsg("Protocol Simulation Complete");
+            setProgress(100);
+            setIsGenerating(false);
+            toast.success("Demo execution successful. Loading Vault...");
+            router.push(`/vault?filename=result.mp4&type=results`);
+          }, 2000);
+          return;
+        }
+        throw new Error("Could not establish communication protocol");
+      }
+
       ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
         setProgress(data.progress * 100);
@@ -459,7 +475,7 @@ export default function StudioPage() {
                   "absolute inset-0 rounded-2xl pointer-events-none transition-colors duration-500 z-20",
                   activeMode === "text" ? "border border-[#ff007f]/20" : "border border-cyan-500/20"
                 )} />
-                
+
                 {/* Text/Creator Mode Layer */}
                 <div className={cn(
                   "col-start-1 row-start-1 flex flex-col p-8 space-y-6 transition-opacity duration-300",
@@ -488,7 +504,7 @@ export default function StudioPage() {
                       <div className="absolute -left-[9px] top-0 w-0 h-0 border-t-[10px] border-t-white/10 border-l-[10px] border-l-transparent" />
                     </div>
 
-                                      </div>
+                  </div>
 
                   <div className="flex items-center justify-between pt-10 border-t border-white/5">
                     <div className="flex gap-4">
@@ -820,7 +836,7 @@ export default function StudioPage() {
               </div>
             </div>
 
-            </div>
+          </div>
         </div>
 
         {/* System Protocol Description & Pipeline Preview */}
