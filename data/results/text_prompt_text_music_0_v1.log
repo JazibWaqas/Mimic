@@ -3,8 +3,8 @@ PIPELINE RUN: TEXT_PROMPT
 ================================================================================
 Session ID: text_music_0a07bf80f0562b9d2c3f364dbc1edb5c
 Reference: None (Creator Mode)
-Clips: 21
-Timestamp: 2026-02-09 00:35:04
+Clips: 22
+Timestamp: 2026-02-09 06:10:33
 
 [PROGRESS] Step 1/5: Validating inputs...
 
@@ -27,148 +27,210 @@ Timestamp: 2026-02-09 00:35:04
 [API KEY MANAGER] Loaded 32 API key(s)
 [API KEY MANAGER] Current key: AIzaSyD-i-...fqpqg
 [OK] Using Gemini 3 model: gemini-3-flash-preview
-  [CACHE] Saved new blueprint synthesis: blueprint_4c657af5dd4c.json
-  ✅ Blueprint successfully synthesized (Attempt 1)
+  ⚠️ Blueprint Generation attempt 1 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 21.367069984s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 21
+}
+]
+[QUOTA] Rate limit detected during blueprint generation
+[API KEY MANAGER] Marking key as exhausted: AIzaSyD-i-...fqpqg (Rate limit during blueprint generation)
+[API KEY MANAGER] Rotated to key 2/32: AIzaSyAjP3...SS5Pk
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  ⚠️ Blueprint Generation attempt 2 failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash
+Please retry in 20.278680049s. [links {
+  description: "Learn more about Gemini API quotas"
+  url: "https://ai.google.dev/gemini-api/docs/rate-limits"
+}
+, violations {
+  quota_metric: "generativelanguage.googleapis.com/generate_content_free_tier_requests"
+  quota_id: "GenerateRequestsPerDayPerProjectPerModel-FreeTier"
+  quota_dimensions {
+    key: "model"
+    value: "gemini-3-flash"
+  }
+  quota_dimensions {
+    key: "location"
+    value: "global"
+  }
+  quota_value: 20
+}
+, retry_delay {
+  seconds: 20
+}
+]
+[QUOTA] Rate limit detected during blueprint generation
+[API KEY MANAGER] Marking key as exhausted: AIzaSyAjP3...SS5Pk (Rate limit during blueprint generation)
+[API KEY MANAGER] Rotated to key 3/32: AIzaSyCyiV...ASpNo
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  [CACHE] Saved new blueprint synthesis: blueprint_47cb9941c136.json
+  ✅ Blueprint successfully synthesized (Attempt 3)
 [OK] Gemini successfully synthesized blueprint from text: 4 segments.
 [PROGRESS] Step 3/5: Analyzing user clips with Gemini AI...
 
 [3/5] Analyzing user clips with Gemini AI...
 
 ============================================================
-[BRAIN] PARALLEL ANALYSIS: 21 clips
+[BRAIN] PARALLEL ANALYSIS: 22 clips
 [BRAIN] Model: gemini-3-flash-preview
 ============================================================
 
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip79.mp4...[OK] Using Gemini 3 model: gemini-3-flash-preview
-
-  Analyzing comprehensively: clip81.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   Analyzing comprehensively: clip80.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+  Analyzing comprehensively: clip79.mp4...
+  Analyzing comprehensively: clip86.mp4...
+
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+
+
+    [CACHE] Subject: People-Group, Activity-Leisure    [CACHE] Subject: People-Group, Activity-Leisure[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Subject: People-Group, Place-Indoor
+
+    [CACHE] Derived vibes: Group, Leisure
+
+
+    [CACHE] Derived vibes: Group, Leisure    [CACHE] Derived vibes: Group, Indoor
+  Analyzing comprehensively: clip85.mp4...
+
+[OK] Using Gemini 3 model: gemini-3-flash-preview[OK] Using Gemini 3 model: gemini-3-flash-preview
+
+  Analyzing comprehensively: clip87.mp4...    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments  Analyzing comprehensively: clip84.mp4...
+
+
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
 
     [CACHE] Subject: People-Group, Activity-Leisure    [CACHE] Subject: People-Group, Activity-Leisure
 
     [CACHE] Derived vibes: Group, Leisure    [CACHE] Derived vibes: Group, Leisure
 
-    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
-    [CACHE] Subject: People-Group, Place-Indoor
-    [CACHE] Derived vibes: Group, Indoor
 [OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip82.mp4...
+  Analyzing comprehensively: clip81.mp4...
 [OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip86.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
-    [CACHE] Subject: People-Group, Activity-Leisure
-    [CACHE] Derived vibes: Group, Leisure    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+  Analyzing comprehensively: clip88.mp4...    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
 
-    [CACHE] Subject: People-Group, Activity-Leisure
-    [CACHE] Derived vibes: Group, Leisure
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip88.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Group, Place-Indoor
-    [CACHE] Derived vibes: Group, Indoor
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip91.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Solo, Activity-Leisure
-    [CACHE] Derived vibes: Solo, Leisure
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip89.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Group, Activity-Celebration
-    [CACHE] Derived vibes: Group, Celebration
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip83.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Group, Activity-Celebration
-    [CACHE] Derived vibes: Group, Celebration
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip87.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
-    [CACHE] Subject: People-Group, Activity-Leisure
-    [CACHE] Derived vibes: Group, Leisure
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip94.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
     [CACHE] Derived vibes: Group, Leisure[OK] Using Gemini 3 model: gemini-3-flash-preview
 
+  Analyzing comprehensively: clip83.mp4...    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Place-Indoor
+
+    [CACHE] Derived vibes: Group, Indoor
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip82.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
+[OK] Using Gemini 3 model: gemini-3-flash-preview
   Analyzing comprehensively: clip93.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Solo, Place-Indoor
     [CACHE] Derived vibes: Solo, Indoor
 [OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip92.mp4...
+  Analyzing comprehensively: clip89.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip91.mp4...    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Activity-Leisure
+    [CACHE] Derived vibes: Solo, Leisure
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip97.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip98.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+[OK] Using Gemini 3 model: gemini-3-flash-preview    [CACHE] Subject: People-Solo, Place-Indoor
+
+  Analyzing comprehensively: clip94.mp4...    [CACHE] Derived vibes: Solo, Indoor
+
+    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+    [CACHE] Subject: People-Solo, Place-Indoor
+    [CACHE] Derived vibes: Solo, Indoor
     [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
     [CACHE] Subject: People-Group, Activity-Leisure
     [CACHE] Derived vibes: Group, Leisure
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip97.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
-    [CACHE] Subject: People-Solo, Place-Indoor
-    [CACHE] Derived vibes: Solo, Indoor
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip96.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Solo, Place-Indoor
-    [CACHE] Derived vibes: Solo, Indoor
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip98.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Solo, Place-Indoor
-    [CACHE] Derived vibes: Solo, Indoor
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip95.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
-    [CACHE] Subject: People-Group
-    [CACHE] Derived vibes: Group
-[OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip99.mp4...
-    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
-    [CACHE] Subject: People-Group, Activity-Celebration
-    [CACHE] Derived vibes: Group, Celebration
 [OK] Using Gemini 3 model: gemini-3-flash-preview
   Analyzing comprehensively: clip100.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Group, Place-Indoor
     [CACHE] Derived vibes: Group, Indoor
 [OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip99.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Celebration
+    [CACHE] Derived vibes: Group, Celebration
+[OK] Using Gemini 3 model: gemini-3-flash-preview
   Analyzing comprehensively: clip101.mp4...
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Solo
     [CACHE] Derived vibes: Solo
 [OK] Using Gemini 3 model: gemini-3-flash-preview
-  Analyzing comprehensively: clip102.mp4...
+  Analyzing comprehensively: clip95.mp4...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip102.mp4...    [CACHE] Loaded: High/Dynamic/intensity=2 with 3 best moments
+
+    [CACHE] Subject: People-Group
+    [CACHE] Derived vibes: Group
     [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
     [CACHE] Subject: People-Solo, Place-Indoor
     [CACHE] Derived vibes: Solo, Indoor
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+  Analyzing comprehensively: clip103.mp4...
+    [CACHE] Loaded: High/Dynamic/intensity=3 with 3 best moments
+    [CACHE] Subject: People-Group, Activity-Leisure
+    [CACHE] Derived vibes: Group, Leisure
 
-[OK] All 21 clips analyzed in parallel
-[OK] Gemini successfully analyzed 21 clips (using originals for cache).
-  ✅ Library Health: 79.5% readiness
+[OK] All 22 clips analyzed in parallel
+[OK] Gemini successfully analyzed 22 clips (using originals for cache).
+  ✅ Library Health: 79.1% readiness
   [CACHE] Hit! Using persistent standardized clip: clip79.mp4
   [CACHE] Hit! Using persistent standardized clip: clip80.mp4
   [CACHE] Hit! Using persistent standardized clip: clip81.mp4
   [CACHE] Hit! Using persistent standardized clip: clip82.mp4
   [CACHE] Hit! Using persistent standardized clip: clip83.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip84.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip85.mp4
   [CACHE] Hit! Using persistent standardized clip: clip86.mp4
   [CACHE] Hit! Using persistent standardized clip: clip87.mp4
   [CACHE] Hit! Using persistent standardized clip: clip88.mp4
   [CACHE] Hit! Using persistent standardized clip: clip89.mp4
   [CACHE] Hit! Using persistent standardized clip: clip91.mp4
-  [CACHE] Hit! Using persistent standardized clip: clip92.mp4
   [CACHE] Hit! Using persistent standardized clip: clip93.mp4
   [CACHE] Hit! Using persistent standardized clip: clip94.mp4
   [CACHE] Hit! Using persistent standardized clip: clip95.mp4
-  [CACHE] Hit! Using persistent standardized clip: clip96.mp4
   [CACHE] Hit! Using persistent standardized clip: clip97.mp4
   [CACHE] Hit! Using persistent standardized clip: clip98.mp4
   [CACHE] Hit! Using persistent standardized clip: clip99.mp4
   [CACHE] Hit! Using persistent standardized clip: clip100.mp4
   [CACHE] Hit! Using persistent standardized clip: clip101.mp4
   [CACHE] Hit! Using persistent standardized clip: clip102.mp4
+  [CACHE] Hit! Using persistent standardized clip: clip103.mp4
 [OK] All clips standardized (cached or new) and ready for render.
 [PROGRESS] Step 4/5: Creating edit sequence...
 
@@ -179,89 +241,117 @@ Timestamp: 2026-02-09 00:35:04
 ============================================================
   🎨 PROMPT MODE: Creative invention allowed
   Segments: 4
-  Clips: 21
-  Clips with pre-computed best moments: 21/21
+  Clips: 22
+  Clips with pre-computed best moments: 22/22
 
 ============================================================
 [ADVISOR] GENERATING STRATEGIC GUIDANCE
 ============================================================
-  ❌ AUTHORITY FAILURE: Blueprint version (0.0) != Required (12.1)
-  ⚠️ Skipping strategic guidance. Please re-analyze reference 
-  ⚙️ Advisor disabled: Using base matcher only
+  🤝 Authority Confirmed: v12.1 Director-Soul Intelligence active.
+  🧠 Calling Gemini for strategic guidance...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.07s). Index: 172 clips, 4 results, 19 refs.
+  ✅ Advisor hints generated and cached
+  💡 Text Overlay Intent: The phrase 'Oh, to be this young again' acts as a nostalgic anchor that transforms simple home movies into a poignant reflection on the loss of innocence and the fleeting nature of time.
+  📖 Dominant Narrative: A bittersweet celebration of the ephemeral nature of childhood joy, framed through the lens of adult remembrance.
+  🎯 Editorial Strategy: The edit will lean into the 'JOY' of the peak to earn the 'PEACE' of the nostalgia. By framing the high-energy group moments as a precious, fleeting dream, the scarcity of quiet footage becomes a narrative choice—childhood is fast and loud, and we only see it in glimpses once it's gone.
+  ✅ Advisor enabled: Strategic guidance active
   🔇 No beats detected - using visual cuts only
 
 
 📊 CLIP DEMAND ANALYSIS:
    Reference needs: High=1, Medium=1, Low=2
-   You have:        High=21, Medium=0, Low=0
+   You have:        High=22, Medium=0, Low=0
    ⚠️ DEFICIT: Need 1 more Medium-energy clips
    ⚠️ DEFICIT: Need 2 more Low-energy clips
 
 
-Segment 1: 0.000000s-6.433333s (6.433333s, Low/Static)
-    🎨 PROMPT MODE: CDE=Sparse, hold=Long, vibe=peace, innocence
-    💭 Emotional guidance: peaceful anticipation
+Segment 1: 0.000000s-6.400000s (6.400000s, Low/Static)
+    🎨 PROMPT MODE: CDE=Sparse, hold=Long, vibe=peace, warmth
+    💭 Emotional guidance: calm and settled
+      ⚡ADVISOR OVERRIDE: Using Low energy for Intro
       ⚠️ No clips match Low energy. Relaxing constraints...
-  🧠 AI: 🌟 Serving as a strategic 'Establish' shot within this sequence. Maintains visual freshness, lighting consistency.
-  📎 Selected: clip88.mp4 (Score: 210.0)
-    ✂️ Cut 1: clip88.mp4 [0.00s-4.00s] (4.00s) → timeline [0.000000s-4.000000s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. The visual content captures the 'peace, warmth' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.
+  📎 Selected: clip83.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip83.mp4 [7.50s-9.27s] (1.77s) → timeline [0.000000s-1.766667s]
+      ⚡ADVISOR OVERRIDE: Using Low energy for Intro
       ⚠️ No clips match Low energy. Relaxing constraints...
-    ✂️ Cut 2: clip93.mp4 [14.00s-16.43s] (2.43s) → timeline [4.000000s-6.433333s]
-[SEGMENT 1 LOG] Ref: 6.43s | Rendered: 6.43s | Cuts: 2 | Mode: PROMPT
+    ✂️ Cut 2: clip95.mp4 [18.50s-21.23s] (2.73s) → timeline [1.766667s-4.500000s]
+      ⚡ADVISOR OVERRIDE: Using Low energy for Intro
+      ⚠️ No clips match Low energy. Relaxing constraints...
+    ✂️ Cut 3: clip100.mp4 [22.00s-23.90s] (1.90s) → timeline [4.500000s-6.400000s]
+[SEGMENT 1 LOG] Ref: 6.40s | Rendered: 6.40s | Cuts: 3 | Mode: PROMPT
 
-Segment 2: 6.433333s-14.966667s (8.533333s, Medium/Dynamic)
+Segment 2: 6.400000s-14.966667s (8.566667s, Medium/Dynamic)
     📐 v14.7 Frame-Snap: Boundary adjusted for 30fps sync.
-    🎨 PROMPT MODE: CDE=Moderate, hold=Normal, vibe=curiosity, joy
-    💭 Emotional guidance: growing warmth
-  🧠 AI: 🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere perfectly. Maintains visual freshness, lighting consistency.
-  📎 Selected: clip79.mp4 (Score: 333.0)
-    ✂️ Cut 1: clip79.mp4 [40.50s-44.00s] (3.50s) → timeline [6.433333s-9.933333s]
-    ✂️ Cut 2: clip91.mp4 [4.00s-6.50s] (2.50s) → timeline [9.933333s-12.433333s]
-    ✂️ Cut 3: clip80.mp4 [17.50s-20.03s] (2.53s) → timeline [12.433333s-14.966667s]
-[SEGMENT 2 LOG] Ref: 8.53s | Rendered: 8.53s | Cuts: 3 | Mode: PROMPT
+    🎨 PROMPT MODE: CDE=Moderate, hold=Normal, vibe=playful, innocent
+    💭 Emotional guidance: growing joy
+      ⚡ADVISOR OVERRIDE: Using Medium energy for Build-up
+  🧠 AI: 🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+  📎 Selected: clip91.mp4 (Score: 338.0)
+    ✂️ Cut 1: clip91.mp4 [4.00s-6.50s] (2.50s) → timeline [6.400000s-8.900000s]
+      ⚡ADVISOR OVERRIDE: Using Medium energy for Build-up
+    ✂️ Cut 2: clip103.mp4 [4.00s-6.47s] (2.47s) → timeline [8.900000s-11.366667s]
+      ⚡ADVISOR OVERRIDE: Using Medium energy for Build-up
+    ✂️ Cut 3: clip93.mp4 [4.00s-6.50s] (2.50s) → timeline [11.366667s-13.866667s]
+      ⚡ADVISOR OVERRIDE: Using Medium energy for Build-up
+    ✂️ Cut 4: clip98.mp4 [18.50s-19.60s] (1.10s) → timeline [13.866667s-14.966667s]
+[SEGMENT 2 LOG] Ref: 8.57s | Rendered: 8.57s | Cuts: 4 | Mode: PROMPT
 
-Segment 3: 14.966667s-25.666667s (10.700000s, High/Dynamic)
+Segment 3: 14.966667s-25.633333s (10.666667s, High/Dynamic)
     📐 v14.7 Frame-Snap: Boundary adjusted for 30fps sync.
-    🎨 PROMPT MODE: CDE=Moderate, hold=Normal, vibe=vitality, celebration
-    💭 Emotional guidance: pure happiness
-  🧠 AI: 🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.
-  📎 Selected: clip96.mp4 (Score: 350.0)
-    ✂️ Cut 1: clip96.mp4 [20.50s-22.10s] (1.60s) → timeline [14.966667s-16.566667s]
-    ✂️ Cut 2: clip81.mp4 [6.20s-8.03s] (1.83s) → timeline [16.566667s-18.400000s]
-    ✂️ Cut 3: clip97.mp4 [76.00s-77.77s] (1.77s) → timeline [18.400000s-20.166667s]
-    ✂️ Cut 4: clip82.mp4 [44.20s-45.77s] (1.57s) → timeline [20.166667s-21.733333s]
-    ✂️ Cut 5: clip98.mp4 [26.80s-28.67s] (1.87s) → timeline [21.733333s-23.600000s]
-    ✂️ Cut 6: clip83.mp4 [0.00s-1.63s] (1.63s) → timeline [23.600000s-25.233333s]
-    🔧 v14.9 Micro-cut prevention: Extended previous cut by 0.43s to avoid flash cut
-       clip_005.mp4 now ends at 2.07s
-[SEGMENT 3 LOG] Ref: 10.70s | Rendered: 10.70s | Cuts: 6 | Mode: PROMPT
+    🎨 PROMPT MODE: CDE=Moderate, hold=Normal, vibe=vibrant, celebratory
+    💭 Emotional guidance: fullness of life
+      ⚡ADVISOR OVERRIDE: Using High energy for Peak
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.
+  📎 Selected: clip79.mp4 (Score: 350.0)
+    ✂️ Cut 1: clip79.mp4 [96.50s-98.43s] (1.93s) → timeline [14.966667s-16.900000s]
+      ⚡ADVISOR OVERRIDE: Using High energy for Peak
+    ✂️ Cut 2: clip80.mp4 [10.20s-12.10s] (1.90s) → timeline [16.900000s-18.800000s]
+      ⚡ADVISOR OVERRIDE: Using High energy for Peak
+    ✂️ Cut 3: clip81.mp4 [6.20s-7.90s] (1.70s) → timeline [18.800000s-20.500000s]
+      ⚡ADVISOR OVERRIDE: Using High energy for Peak
+    ✂️ Cut 4: clip82.mp4 [44.20s-46.00s] (1.80s) → timeline [20.500000s-22.300000s]
+      ⚡ADVISOR OVERRIDE: Using High energy for Peak
+    ✂️ Cut 5: clip84.mp4 [8.50s-10.30s] (1.80s) → timeline [22.300000s-24.100000s]
+      ⚡ADVISOR OVERRIDE: Using High energy for Peak
+    ✂️ Cut 6: clip85.mp4 [38.20s-39.73s] (1.53s) → timeline [24.100000s-25.633333s]
+[SEGMENT 3 LOG] Ref: 10.67s | Rendered: 10.67s | Cuts: 6 | Mode: PROMPT
 
-Segment 4: 25.666667s-32.566667s (6.900000s, Low/Static)
+Segment 4: 25.633333s-32.566667s (6.933333s, Low/Static)
     📐 v14.7 Frame-Snap: Boundary adjusted for 30fps sync.
-    🎨 PROMPT MODE: CDE=Sparse, hold=Long, vibe=bittersweet, love
-    💭 Emotional guidance: reflective nostalgia
+    🎨 PROMPT MODE: CDE=Sparse, hold=Long, vibe=bittersweet, nostalgic
+    💭 Emotional guidance: reflective longing
+      ⚡ADVISOR OVERRIDE: Using Low energy for Outro
       ⚠️ No clips match Low energy. Relaxing constraints...
-  🧠 AI: 🌟 Serving as a strategic 'Release' shot within this sequence. Maintains visual freshness, lighting consistency.
-  📎 Selected: clip92.mp4 (Score: 200.0)
-    ✂️ Cut 1: clip92.mp4 [19.00s-23.00s] (4.00s) → timeline [25.666667s-29.666667s]
+  🧠 AI: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Outro stage. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.
+  📎 Selected: clip81.mp4 (Score: 250.0)
+    ✂️ Cut 1: clip81.mp4 [33.00s-36.37s] (3.37s) → timeline [25.633333s-29.000000s]
+      ⚡ADVISOR OVERRIDE: Using Low energy for Outro
       ⚠️ No clips match Low energy. Relaxing constraints...
-    ✂️ Cut 2: clip100.mp4 [22.00s-24.90s] (2.90s) → timeline [29.666667s-32.566667s]
-[SEGMENT 4 LOG] Ref: 6.90s | Rendered: 6.90s | Cuts: 2 | Mode: PROMPT
+    ✂️ Cut 2: clip97.mp4 [72.50s-75.50s] (3.00s) → timeline [29.000000s-32.000000s]
+      ⚡ADVISOR OVERRIDE: Using Low energy for Outro
+      ⚠️ No clips match Low energy. Relaxing constraints...
+    🔧 v14.9 Micro-cut prevention: Extended previous cut by 0.57s to avoid flash cut
+       clip_016.mp4 now ends at 76.07s
+[SEGMENT 4 LOG] Ref: 6.93s | Rendered: 6.93s | Cuts: 2 | Mode: PROMPT
 
 ============================================================
-[OK] Matching complete: 13 edit decisions
+[OK] Matching complete: 15 edit decisions
 [OK] Total timeline duration: 32.57s (target: 32.57s)
 
 📊 DIVERSITY REPORT:
-   Unique clips used: 13/21
+   Unique clips used: 14/22
    ⚠️ 8 clips were not used.
 
-   ✅ NO CLIPS REPEATED! Perfect diversity achieved.
+   ⚠️ CLIPS REPEATED:
+      clip_003.mp4: 2x
 
-📋 ENERGY COMPROMISES: 7
+📋 ENERGY COMPROMISES: 10
    (Used adjacent energy when exact wasn't available)
-      Low→High: 4 times
-      Medium→High: 3 times
+      Low→High: 6 times
+      Medium→High: 4 times
 
 💡 RECOMMENDATIONS TO IMPROVE THIS EDIT:
    [Inventory Gaps]
@@ -269,7 +359,7 @@ Segment 4: 25.666667s-32.566667s (6.900000s, Low/Static)
    → Add 2 more LOW-ENERGY clips (scenic, calm, establishing shots, landscapes)
 
    [Quality Improvements]
-   → 4 segments wanted 'Low' energy but used 'Medium'.
+   → 6 segments wanted 'Low' energy but used 'Medium'.
      Add more 'Nature' or 'Calm' clips to reduce jitter here.
 ============================================================
 
@@ -280,60 +370,61 @@ Segment 4: 25.666667s-32.566667s (6.900000s, Low/Static)
 [EDL] EDIT DECISION LIST SUMMARY
 ============================================================
 
-Total decisions: 13
+Total decisions: 15
 Total segments: 4
-Available clips: 21
+Available clips: 22
 
 Clip usage distribution:
-  clip_008.mp4: 1 times
-  clip_012.mp4: 1 times
-  clip_001.mp4: 1 times
-  clip_010.mp4: 1 times
-  clip_002.mp4: 1 times
-  clip_015.mp4: 1 times
-  clip_003.mp4: 1 times
-  clip_016.mp4: 1 times
-  clip_004.mp4: 1 times
-  clip_017.mp4: 1 times
+  clip_003.mp4: 2 times
   clip_005.mp4: 1 times
-  clip_011.mp4: 1 times
+  clip_015.mp4: 1 times
   clip_019.mp4: 1 times
+  clip_012.mp4: 1 times
+  clip_022.mp4: 1 times
+  clip_013.mp4: 1 times
+  clip_017.mp4: 1 times
+  clip_001.mp4: 1 times
+  clip_002.mp4: 1 times
+  clip_004.mp4: 1 times
+  clip_006.mp4: 1 times
+  clip_007.mp4: 1 times
+  clip_016.mp4: 1 times
 
 🧠 INTELLIGENCE AUDIT (Narrative Compliance):
-   Vibe Accuracy: 69.2% matching suggested vibes
+   Vibe Accuracy: 53.3% matching suggested vibes
 
    Shot Function Breakdown:
       Reaction    : 6 cuts
-      Action      : 3 cuts
-      Establish   : 2 cuts
+      Action      : 4 cuts
+      Establish   : 3 cuts
       Release     : 2 cuts
 
    Arc Stage Fidelity:
-      Intro       : 0.0% intent alignment
-      Build-up    : 100.0% intent alignment
+      Intro       : 66.7% intent alignment
+      Build-up    : 0.0% intent alignment
       Peak        : 100.0% intent alignment
       Outro       : 0.0% intent alignment
 
 [PROGRESS] Step 5/5: Rendering final video...
 
 [5/5] Rendering final video...
-    [OK] Segment extracted: 0.00s + 4.00s -> 4.00s
-    [OK] Segment extracted: 14.00s + 2.43s -> 2.43s
-    [OK] Segment extracted: 40.50s + 3.50s -> 3.50s
-[INDEX] Global Refresh Started...
+    [OK] Segment extracted: 7.50s + 1.77s -> 1.77s
+    [OK] Segment extracted: 18.50s + 2.73s -> 2.73s
+    [OK] Segment extracted: 22.00s + 1.90s -> 1.90s
     [OK] Segment extracted: 4.00s + 2.50s -> 2.50s
-[INDEX] Refresh Complete (0.07s). Index: 172 clips, 3 results, 19 refs.
-    [OK] Segment extracted: 17.50s + 2.53s -> 2.53s
-    [OK] Segment extracted: 20.50s + 1.60s -> 1.60s
-    [OK] Segment extracted: 6.20s + 1.83s -> 1.83s
-    [OK] Segment extracted: 76.00s + 1.77s -> 1.77s
-    [OK] Segment extracted: 44.20s + 1.57s -> 1.57s
-    [OK] Segment extracted: 26.80s + 1.87s -> 1.87s
-    [OK] Segment extracted: 0.00s + 2.07s -> 2.07s
-    [OK] Segment extracted: 19.00s + 4.00s -> 4.00s
-    [OK] Segment extracted: 22.00s + 2.90s -> 2.90s
-  [OK] Concatenated 13 segments (frame-perfect)
-  [WARN] Concat duration 32.84s differs from blueprint 32.57s (drift: +0.28s)
+    [OK] Segment extracted: 4.00s + 2.47s -> 2.47s
+    [OK] Segment extracted: 4.00s + 2.50s -> 2.50s
+    [OK] Segment extracted: 18.50s + 1.10s -> 1.10s
+    [OK] Segment extracted: 96.50s + 1.93s -> 1.93s
+    [OK] Segment extracted: 10.20s + 1.90s -> 1.90s
+    [OK] Segment extracted: 6.20s + 1.70s -> 1.70s
+    [OK] Segment extracted: 44.20s + 1.80s -> 1.80s
+    [OK] Segment extracted: 8.50s + 1.80s -> 1.80s
+    [OK] Segment extracted: 38.20s + 1.53s -> 1.53s
+    [OK] Segment extracted: 33.00s + 3.37s -> 3.37s
+    [OK] Segment extracted: 72.50s + 3.57s -> 3.57s
+  [OK] Concatenated 15 segments (frame-perfect)
+  [WARN] Concat duration 32.90s differs from blueprint 32.57s (drift: +0.34s)
 [STYLIST] Applying visual styling (v14.9 Style Control)...
   [STYLIST] Applying v14.9 Style (Preset: warm): 4 filters
   [WARN] Stylist failed (likely FFmpeg syntax/missing font), falling back to unstylized: Command '['ffmpeg', '-y', '-i', 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\temp_video.mp4', '-vf', "eq=saturation=1.1:brightness=0.02,colorbalance=rh=0.08:gh=0.04:bh=-0.04,noise=alls=7:allf=t+u,drawtext=text='Oh to be this young again.':x=(w-text_w)/2:y=(h*0.8 - (1 * 63.0/2)) + 0.0:fontsize=42:fontcolor=0xFFFFFF:fontfile='C:/Windows/Fonts/arial.ttf':shadowcolor=black@0.6:shadowx=2:shadowy=2", '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '23', '-c:a', 'copy', 'C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\temp_video_styled.mp4']' returned non-zero exit status 4294967274.
@@ -346,9 +437,9 @@ Clip usage distribution:
 
 📊 Basic Results:
    Output: text_prompt_text_music_0_v1.mp4
-   Duration: 32.84s (ref: 32.57s)
-   Difference: 0.28s
-   Processing time: 44.2s
+   Duration: 32.90s (ref: 32.57s)
+   Difference: 0.34s
+   Processing time: 78.8s
 
 ================================================================================
 🧠 COMPREHENSIVE SYSTEM ANALYSIS
@@ -356,15 +447,15 @@ Clip usage distribution:
 
 📹 Reference Analysis:
    Editing Style: Nostalgic Narrative
-   Emotional Intent: To evoke a deep sense of warmth and bittersweet longing for the simplicity of childhood through intentional pacing and visual breathing room.
-   Arc Description: The edit begins with low-energy, long-hold shots to establish peace. It gently accelerates in the bu...
+   Emotional Intent: To evoke a deep sense of warmth and bittersweet longing for the innocence of childhood through a rhythmic, breathable assembly of memories.
+   Arc Description: The edit starts with low-energy, long-duration holds to establish peace. As the music phrases progre...
    Total Segments: 4
 
 📑 BLUEPRINT FULL SEGMENT LIST:
-   01:  0.00- 6.43s | Low    | Vibe: peace, innocence | Intro
-   02:  6.43-14.97s | Medium | Vibe: curiosity, joy | Build-up
-   03: 14.97-25.67s | High   | Vibe: vitality, celebration | Peak
-   04: 25.67-32.57s | Low    | Vibe: bittersweet, love | Outro
+   01:  0.00- 6.40s | Low    | Vibe: peace, warmth | Intro
+   02:  6.40-14.97s | Medium | Vibe: playful, innocent | Build-up
+   03: 14.97-25.63s | High   | Vibe: vibrant, celebratory | Peak
+   04: 25.63-32.57s | Low    | Vibe: bittersweet, nostalgic | Outro
 
 📈 Arc Stage Distribution:
    Intro: 1 segments (25.0%)
@@ -373,19 +464,19 @@ Clip usage distribution:
    Outro: 1 segments (25.0%)
 
 🎨 Vibe Distribution:
-   peace, innocence: 1 segments (25.0%)
-   curiosity, joy: 1 segments (25.0%)
-   vitality, celebration: 1 segments (25.0%)
-   bittersweet, love: 1 segments (25.0%)
+   peace, warmth: 1 segments (25.0%)
+   playful, innocent: 1 segments (25.0%)
+   vibrant, celebratory: 1 segments (25.0%)
+   bittersweet, nostalgic: 1 segments (25.0%)
 
 📎 Clip Usage Analysis:
-   Unique clips used: 13/21
+   Unique clips used: 14/22
    Most used clips:
-     clip_008.mp4: 1 times (7.7%)
-     clip_012.mp4: 1 times (7.7%)
-     clip_001.mp4: 1 times (7.7%)
-     clip_010.mp4: 1 times (7.7%)
-     clip_002.mp4: 1 times (7.7%)
+     clip_003.mp4: 2 times (13.3%)
+     clip_005.mp4: 1 times (6.7%)
+     clip_015.mp4: 1 times (6.7%)
+     clip_019.mp4: 1 times (6.7%)
+     clip_012.mp4: 1 times (6.7%)
 
 🧠 AI Reasoning Breakdown:
    ✨ Smart Match: 0 (0.0%)
@@ -393,63 +484,91 @@ Clip usage distribution:
    ⚙️ Constraint Relaxation: 0 (0.0%)
 
 🎨 Vibe Matching:
-   Matches: 9/13 (69.2%)
+   Matches: 8/15 (53.3%)
 
 📏 Cut Statistics by Arc Stage:
-   Intro: 2 cuts, avg 3.22s
-   Build-up: 3 cuts, avg 2.84s
+   Intro: 3 cuts, avg 2.13s
+   Build-up: 4 cuts, avg 2.14s
    Peak: 6 cuts, avg 1.78s
-   Outro: 2 cuts, avg 3.45s
+   Outro: 2 cuts, avg 3.47s
 
 📏 Overall Cut Statistics:
-   Total cuts: 13
-   Average cut: 2.51s
-   Shortest cut: 1.57s
-   Longest cut: 4.00s
+   Total cuts: 15
+   Average cut: 2.17s
+   Shortest cut: 1.10s
+   Longest cut: 3.57s
 
 💭 Sample AI Reasoning (first 5 decisions):
-   1. clip_008.mp4: 🌟 Serving as a strategic 'Establish' shot within this sequence. Maintains visual...
-   2. clip_012.mp4: 🌟 Maintains visual freshness, lighting consistency.
-   3. clip_001.mp4: 🌟 Serving as a strategic 'Action' shot within this sequence. The visual content ...
-   4. clip_010.mp4: 🌟 Serving as a strategic 'Action' shot within this sequence. The visual content ...
-   5. clip_002.mp4: 🌟 Serving as a strategic 'Action' shot within this sequence. The visual content ...
+   1. clip_005.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   2. clip_015.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   3. clip_019.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
+   4. clip_012.mp4: 🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visu...
+   5. clip_022.mp4: 🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested ...
 
-📦 CLIP REGISTRY (21 total):
+📦 CLIP REGISTRY (22 total):
    01: clip100.mp4     | High   |  38.7s | Vibes: Group, Indoor
    02: clip101.mp4     | High   |  80.2s | Vibes: Solo
    03: clip102.mp4     | High   |  58.8s | Vibes: Solo, Indoor
-   04: clip79.mp4      | High   | 193.0s | Vibes: Group, Leisure
-   05: clip80.mp4      | High   |  29.9s | Vibes: Group, Indoor
-   06: clip81.mp4      | High   |  36.4s | Vibes: Group, Leisure
-   07: clip82.mp4      | High   |  70.2s | Vibes: Group, Leisure
-   08: clip83.mp4      | High   |   9.3s | Vibes: Group, Celebration
-   09: clip86.mp4      | High   |  32.0s | Vibes: Group, Leisure
-   10: clip87.mp4      | High   |  22.3s | Vibes: Group, Leisure
-   11: clip88.mp4      | High   | 280.4s | Vibes: Group, Indoor
-   12: clip89.mp4      | High   |  30.2s | Vibes: Group, Celebration
-   13: clip91.mp4      | High   |  18.0s | Vibes: Solo, Leisure
-   14: clip92.mp4      | High   |  23.8s | Vibes: Group, Leisure
-   15: clip93.mp4      | High   |  19.1s | Vibes: Solo, Indoor
-   16: clip94.mp4      | High   |  62.6s | Vibes: Group, Leisure
-   17: clip95.mp4      | High   |  21.2s | Vibes: Group
-   18: clip96.mp4      | High   |  23.8s | Vibes: Solo, Indoor
-   19: clip97.mp4      | High   |  85.2s | Vibes: Solo, Indoor
-   20: clip98.mp4      | High   |  74.4s | Vibes: Solo, Indoor
-   21: clip99.mp4      | High   |  49.2s | Vibes: Group, Celebration
+   04: clip103.mp4     | High   |  49.6s | Vibes: Group, Leisure
+   05: clip79.mp4      | High   | 193.0s | Vibes: Group, Leisure
+   06: clip80.mp4      | High   |  29.9s | Vibes: Group, Indoor
+   07: clip81.mp4      | High   |  36.4s | Vibes: Group, Leisure
+   08: clip82.mp4      | High   |  70.2s | Vibes: Group, Leisure
+   09: clip83.mp4      | High   |   9.3s | Vibes: Group, Celebration
+   10: clip84.mp4      | High   |  28.4s | Vibes: Group, Leisure
+   11: clip85.mp4      | High   |  43.0s | Vibes: Group, Leisure
+   12: clip86.mp4      | High   |  32.0s | Vibes: Group, Leisure
+   13: clip87.mp4      | High   |  22.3s | Vibes: Group, Leisure
+   14: clip88.mp4      | High   | 280.4s | Vibes: Group, Indoor
+   15: clip89.mp4      | High   |  30.2s | Vibes: Group, Celebration
+   16: clip91.mp4      | High   |  18.0s | Vibes: Solo, Leisure
+   17: clip93.mp4      | High   |  19.1s | Vibes: Solo, Indoor
+   18: clip94.mp4      | High   |  62.6s | Vibes: Group, Leisure
+   19: clip95.mp4      | High   |  21.2s | Vibes: Group
+   20: clip97.mp4      | High   |  85.2s | Vibes: Solo, Indoor
+   21: clip98.mp4      | High   |  74.4s | Vibes: Solo, Indoor
+   22: clip99.mp4      | High   |  49.2s | Vibes: Group, Celebration
 
 📋 Metadata Coverage:
-   Best Moments: 21/21
-   Vibes: 21/21
+   Best Moments: 22/22
+   Vibes: 22/22
 
 🔍 Temporal Precision Check:
    ✅ TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)
 
 📦 Material Efficiency:
-   Total source duration available: 1258.69s
+   Total source duration available: 1332.14s
    Total duration used in edit: 32.57s
-   Unique clip segments used: 13
-   Utilization Ratio: 2.6%
+   Unique clip segments used: 15
+   Utilization Ratio: 2.4%
    💡 Note: Low utilization suggests clips may not match reference vibes well
+
+================================================================================
+💡 POST-EDIT CREATIVE REVIEW (ADVISOR CRITIQUE)
+================================================================================
+
+🎨 THE EDITORIAL DEBRIEF:
+   ✅ STRENGTHS:
+      - Abundant high-energy 'Peak' material that perfectly captures raw childhood joy.
+      - Strong thematic consistency across clips (family, play, celebration).
+      - Multiple clips featuring the 'Must-Have' genuine smiles and eye contact.
+
+   ⚠️ EDITORIAL TRADEOFFS:
+      - Due to the extreme scarcity of Low/Medium energy clips, the 'Intro' and 'Outro' must be manufactured by selecting the most stable, intimate moments from higher-energy clips.
+      - The 'Nostalgic Narrative' will lean more toward 'Vibrant' than 'Breathable' due to the library's high-motion bias.
+
+   🔍 CONSTRAINT GAPS:
+      - Lack of 'Golden Hour' lighting in the raw footage requires the 'Warm' color grading and 'Soft Light Leaks' to do the heavy lifting for the nostalgic aesthetic.
+      - Absence of 'Tactile Details' (hands in grass, etc.) means the narrative must rely entirely on human expression rather than environmental texture.
+
+🧠 EDITORIAL STRATEGY:
+   The edit will lean into the 'JOY' of the peak to earn the 'PEACE' of the nostalgia. By framing the high-energy group moments as a precious, fleeting dream, the scarcity of quiet footage becomes a narrative choice—childhood is fast and loud, and we only see it in glimpses once it's gone.
+
+🚀 REMAKE STRATEGY (HOW TO REACH DIRECTOR'S CUT):
+   To achieve a true Director's Cut, I would shoot slow-motion B-roll of environmental textures (sun-dappled leaves, dust motes, grass) and solitary, quiet moments of children in thought to provide the 'breathable' pacing the reference demands.
+
+================================================================================
+
 
 ================================================================================
 🎉 Watch the result: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\text_prompt_text_music_0_v1.mp4
@@ -458,6 +577,26 @@ Clip usage distribution:
 [PROGRESS] Step 6/6: Generating Vault intelligence report...
 
 [6/6] Generating Vault intelligence report...
-  ⚠️ Vault generation failed: 'NoneType' object has no attribute 'library_alignment'
+[VAULT] Translating reasoning into human report...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+[QUOTA] Rate limit detected during vault translation
+[API KEY MANAGER] Marking key as exhausted: AIzaSyCyiV...ASpNo (Rate limit during vault translation)
+[API KEY MANAGER] Rotated to key 4/32: AIzaSyCuGa...Nb5WU
+[QUOTA] Rotated to new API key, re-initializing genai...
+[OK] Using Gemini 3 model: gemini-3-flash-preview
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.27s). Index: 172 clips, 5 results, 19 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.08s). Index: 172 clips, 5 results, 19 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.06s). Index: 172 clips, 5 results, 19 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.07s). Index: 172 clips, 5 results, 19 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.06s). Index: 172 clips, 5 results, 19 refs.
+[INDEX] Global Refresh Started...
+[INDEX] Refresh Complete (0.06s). Index: 172 clips, 5 results, 19 refs.
+  ✅ Vault Report generated.
 [PROCESS] Exporting master intelligence report...
-[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\text_prompt_text_music_0_v1.json (58946 bytes)
+   (Intelligence data confirmed: 287 chars)
+[OK] Intelligence report saved: C:\Users\OMNIBOOK\Documents\GitHub\Mimic\data\results\text_prompt_text_music_0_v1.json (78708 bytes)

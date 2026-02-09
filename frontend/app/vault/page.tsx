@@ -174,8 +174,10 @@ export default function VaultPage() {
 
     // Filter key decisions based on intelligence criteria
     const displayDecisions = useMemo(() => {
-        if (showAllDecisions) return intelligence?.vault_report?.decision_stream || [];
-        return intelligence?.vault_report?.key_decision_stream || intelligence?.vault_report?.decision_stream || [];
+        const all = intelligence?.vault_report?.decision_stream || [];
+        const key = intelligence?.vault_report?.key_decision_stream || [];
+        if (showAllDecisions) return all;
+        return key.length ? key : all;
     }, [showAllDecisions, intelligence?.vault_report?.decision_stream, intelligence?.vault_report?.key_decision_stream]);
 
     const displayEdlDecisions = useMemo(() => {

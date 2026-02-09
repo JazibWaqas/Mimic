@@ -3,59 +3,66 @@ X-RAY DIAGNOSTIC REPORT - PROMPT MODE
 ================================================================================
 Reference/Prompt: prompt_edit
 Total Segments: 4
-Total Clips: 21
-Total Decisions: 13
+Total Clips: 22
+Total Decisions: 15
 ================================================================================
 
 📑 BLUEPRINT SEGMENTS:
 ------------------------------------------------------------
-  Seg 01:  0.00s- 6.43s | Low    | Intro      | CDE=Sparse   | Hold=Long   | Origin=visual
-           Vibe: peace, innocence
-  Seg 02:  6.43s-14.97s | Medium | Build-up   | CDE=Moderate | Hold=Normal | Origin=visual
-           Vibe: curiosity, joy
-  Seg 03: 14.97s-25.67s | High   | Peak       | CDE=Moderate | Hold=Normal | Origin=beat
-           Vibe: vitality, celebration
-  Seg 04: 25.67s-32.57s | Low    | Outro      | CDE=Sparse   | Hold=Long   | Origin=visual
-           Vibe: bittersweet, love
+  Seg 01:  0.00s- 6.40s | Low    | Intro      | CDE=Sparse   | Hold=Long   | Origin=visual
+           Vibe: peace, warmth
+  Seg 02:  6.40s-14.97s | Medium | Build-up   | CDE=Moderate | Hold=Normal | Origin=beat
+           Vibe: playful, innocent
+  Seg 03: 14.97s-25.63s | High   | Peak       | CDE=Moderate | Hold=Normal | Origin=beat
+           Vibe: vibrant, celebratory
+  Seg 04: 25.63s-32.57s | Low    | Outro      | CDE=Sparse   | Hold=Long   | Origin=visual
+           Vibe: bittersweet, nostalgic
 
 📊 CLIP USAGE ANALYSIS:
 ------------------------------------------------------------
+
+  ✅ USED  clip81.mp4
+       Usage: 2x | Energy: High | Duration: 36.4s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       Moments used:
+         [1] 6.20s - 7.90s (1.70s)
+         [2] 33.00s - 36.37s (3.37s)
 
   ✅ USED  clip79.mp4
        Usage: 1x | Energy: High | Duration: 193.0s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 40.50s - 44.00s (3.50s)
+         [1] 96.50s - 98.43s (1.93s)
 
   ✅ USED  clip80.mp4
        Usage: 1x | Energy: High | Duration: 29.9s
        Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
        Moments used:
-         [1] 17.50s - 20.03s (2.53s)
-
-  ✅ USED  clip81.mp4
-       Usage: 1x | Energy: High | Duration: 36.4s
-       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
-       Moments used:
-         [1] 6.20s - 8.03s (1.83s)
+         [1] 10.20s - 12.10s (1.90s)
 
   ✅ USED  clip82.mp4
        Usage: 1x | Energy: High | Duration: 70.2s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 44.20s - 45.77s (1.57s)
+         [1] 44.20s - 46.00s (1.80s)
 
   ✅ USED  clip83.mp4
        Usage: 1x | Energy: High | Duration: 9.3s
        Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
        Moments used:
-         [1] 0.00s - 1.63s (1.63s)
+         [1] 7.50s - 9.27s (1.77s)
 
-  ✅ USED  clip88.mp4
-       Usage: 1x | Energy: High | Duration: 280.4s
-       Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
+  ✅ USED  clip84.mp4
+       Usage: 1x | Energy: High | Duration: 28.4s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 0.00s - 4.00s (4.00s)
+         [1] 8.50s - 10.30s (1.80s)
+
+  ✅ USED  clip85.mp4
+       Usage: 1x | Energy: High | Duration: 43.0s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       Moments used:
+         [1] 38.20s - 39.73s (1.53s)
 
   ✅ USED  clip91.mp4
        Usage: 1x | Energy: High | Duration: 18.0s
@@ -63,41 +70,41 @@ Total Decisions: 13
        Moments used:
          [1] 4.00s - 6.50s (2.50s)
 
-  ✅ USED  clip92.mp4
-       Usage: 1x | Energy: High | Duration: 23.8s
-       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
-       Moments used:
-         [1] 19.00s - 23.00s (4.00s)
-
   ✅ USED  clip93.mp4
        Usage: 1x | Energy: High | Duration: 19.1s
        Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
        Moments used:
-         [1] 14.00s - 16.43s (2.43s)
+         [1] 4.00s - 6.50s (2.50s)
 
-  ✅ USED  clip96.mp4
-       Usage: 1x | Energy: High | Duration: 23.8s
-       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+  ✅ USED  clip95.mp4
+       Usage: 1x | Energy: High | Duration: 21.2s
+       Vibes: Group | Subjects: People-Group
        Moments used:
-         [1] 20.50s - 22.10s (1.60s)
+         [1] 18.50s - 21.23s (2.73s)
 
   ✅ USED  clip97.mp4
        Usage: 1x | Energy: High | Duration: 85.2s
        Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
        Moments used:
-         [1] 76.00s - 77.77s (1.77s)
+         [1] 72.50s - 75.50s (3.00s)
 
   ✅ USED  clip98.mp4
        Usage: 1x | Energy: High | Duration: 74.4s
        Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
        Moments used:
-         [1] 26.80s - 28.67s (1.87s)
+         [1] 18.50s - 19.60s (1.10s)
 
   ✅ USED  clip100.mp4
        Usage: 1x | Energy: High | Duration: 38.7s
        Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
        Moments used:
-         [1] 22.00s - 24.90s (2.90s)
+         [1] 22.00s - 23.90s (1.90s)
+
+  ✅ USED  clip103.mp4
+       Usage: 1x | Energy: High | Duration: 49.6s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       Moments used:
+         [1] 4.00s - 6.47s (2.47s)
 
   ❌ UNUSED  clip86.mp4
        Usage: 0x | Energy: High | Duration: 32.0s
@@ -109,6 +116,11 @@ Total Decisions: 13
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
 
+  ❌ UNUSED  clip88.mp4
+       Usage: 0x | Energy: High | Duration: 280.4s
+       Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
   ❌ UNUSED  clip89.mp4
        Usage: 0x | Energy: High | Duration: 30.2s
        Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
@@ -117,11 +129,6 @@ Total Decisions: 13
   ❌ UNUSED  clip94.mp4
        Usage: 0x | Energy: High | Duration: 62.6s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
-       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
-
-  ❌ UNUSED  clip95.mp4
-       Usage: 0x | Energy: High | Duration: 21.2s
-       Vibes: Group | Subjects: People-Group
        💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
 
   ❌ UNUSED  clip99.mp4
@@ -143,262 +150,286 @@ Total Decisions: 13
 ------------------------------------------------------------
   ❌ clip86.mp4 | High | Vibes: Group, Leisure
   ❌ clip87.mp4 | High | Vibes: Group, Leisure
+  ❌ clip88.mp4 | High | Vibes: Group, Indoor
   ❌ clip89.mp4 | High | Vibes: Group, Celebration
   ❌ clip94.mp4 | High | Vibes: Group, Leisure
-  ❌ clip95.mp4 | High | Vibes: Group
   ❌ clip99.mp4 | High | Vibes: Group, Celebration
   ❌ clip101.mp4 | High | Vibes: Solo
   ❌ clip102.mp4 | High | Vibes: Solo, Indoor
 
-  Total unused: 8/21 (38%)
+  Total unused: 8/22 (36%)
 
 🎬 EDIT DECISION FLOW:
 ------------------------------------------------------------
-  [01]   0.00s-  4.00s (4.00s) | clip_008.mp4         [ 0.00s- 4.00s]
-        Vibe Match: ❌ | 🌟 Serving as a strategic 'Establish' shot within this sequen...
-  [02]   4.00s-  6.43s (2.43s) | clip_012.mp4         [14.00s-16.43s]
-        Vibe Match: ❌ | 🌟 Maintains visual freshness, lighting consistency....
-  [03]   6.43s-  9.93s (3.50s) | clip_001.mp4         [40.50s-44.00s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
-  [04]   9.93s- 12.43s (2.50s) | clip_010.mp4         [ 4.00s- 6.50s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
-  [05]  12.43s- 14.97s (2.53s) | clip_002.mp4         [17.50s-20.03s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
-  [06]  14.97s- 16.57s (1.60s) | clip_015.mp4         [20.50s-22.10s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
-  [07]  16.57s- 18.40s (1.83s) | clip_003.mp4         [ 6.20s- 8.03s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
-  [08]  18.40s- 20.17s (1.77s) | clip_016.mp4         [76.00s-77.77s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
-  [09]  20.17s- 21.73s (1.57s) | clip_004.mp4         [44.20s-45.77s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
-  [10]  21.73s- 23.60s (1.87s) | clip_017.mp4         [26.80s-28.67s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
-  [11]  23.60s- 25.67s (2.07s) | clip_005.mp4         [ 0.00s- 2.07s]
-        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
-  [12]  25.67s- 29.67s (4.00s) | clip_011.mp4         [19.00s-23.00s]
-        Vibe Match: ❌ | 🌟 Serving as a strategic 'Release' shot within this sequence...
-  [13]  29.67s- 32.57s (2.90s) | clip_019.mp4         [22.00s-24.90s]
+  [01]   0.00s-  1.77s (1.77s) | clip_005.mp4         [ 7.50s- 9.27s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [02]   1.77s-  4.50s (2.73s) | clip_015.mp4         [18.50s-21.23s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [03]   4.50s-  6.40s (1.90s) | clip_019.mp4         [22.00s-23.90s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [04]   6.40s-  8.90s (2.50s) | clip_012.mp4         [ 4.00s- 6.50s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [05]   8.90s- 11.37s (2.47s) | clip_022.mp4         [ 4.00s- 6.47s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [06]  11.37s- 13.87s (2.50s) | clip_013.mp4         [ 4.00s- 6.50s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [07]  13.87s- 14.97s (1.10s) | clip_017.mp4         [18.50s-19.60s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [08]  14.97s- 16.90s (1.93s) | clip_001.mp4         [96.50s-98.43s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [09]  16.90s- 18.80s (1.90s) | clip_002.mp4         [10.20s-12.10s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [10]  18.80s- 20.50s (1.70s) | clip_003.mp4         [ 6.20s- 7.90s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [11]  20.50s- 22.30s (1.80s) | clip_004.mp4         [44.20s-46.00s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [12]  22.30s- 24.10s (1.80s) | clip_006.mp4         [ 8.50s-10.30s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [13]  24.10s- 25.63s (1.53s) | clip_007.mp4         [38.20s-39.73s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [14]  25.63s- 29.00s (3.37s) | clip_003.mp4         [33.00s-36.37s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [15]  29.00s- 32.57s (3.57s) | clip_016.mp4         [72.50s-76.07s]
         Vibe Match: ❌ | 🌟 Maintains visual freshness, lighting consistency....
 
 🔬 SEGMENT SCORING X-RAY:
 ------------------------------------------------------------
 
 ================================================================================
-SEGMENT 1 X-RAY | 0.00s-6.43s | Intro | Vibe: peace, innocence
+SEGMENT 1 X-RAY | 0.00s-6.40s | Intro | Vibe: peace, warmth
 ================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'Oh, to be this young again' acts as a nostalgic anchor that transfor...
+   Dominant Narrative: A bittersweet celebration of the ephemeral nature of childhood joy, framed throu...
 
 🔬 TOP 5 CANDIDATES:
 
-🏆 WINNER | clip88.mp4 | SCORE: 210.0
+🏆 WINNER | clip83.mp4 | SCORE: 350.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip95.mp4 | SCORE: 350.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #3 | clip100.mp4 | SCORE: 265.0
    Vibes: Group, Indoor
    Subjects: People-Group, Place-Indoor
    Energy: High | Usage: 0x
    Vibe Match: ❌ NO
-   Reasoning: Serving as a strategic 'Establish' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -85.0 points
 
-   #2 | clip80.mp4 | SCORE: 185.0
+   #4 | clip88.mp4 | SCORE: 204.0
    Vibes: Group, Indoor
    Subjects: People-Group, Place-Indoor
    Energy: High | Usage: 0x
    Vibe Match: ❌ NO
-   Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -25.0 points
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -146.0 points
 
-   #3 | clip93.mp4 | SCORE: 185.0
-   Vibes: Solo, Indoor
-   Subjects: People-Solo, Place-Indoor
-   Energy: High | Usage: 0x
-   Vibe Match: ❌ NO
-   Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -25.0 points
-
-   #4 | clip96.mp4 | SCORE: 185.0
-   Vibes: Solo, Indoor
-   Subjects: People-Solo, Place-Indoor
-   Energy: High | Usage: 0x
-   Vibe Match: ❌ NO
-   Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -25.0 points
-
-   #5 | clip97.mp4 | SCORE: 185.0
-   Vibes: Solo, Indoor
-   Subjects: People-Solo, Place-Indoor
-   Energy: High | Usage: 0x
-   Vibe Match: ❌ NO
-   Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -25.0 points
-
-🎯 SELECTION DECISION:
-   Winner: clip88.mp4
-   Final Score: 210.0
-   Vibe Match: ❌ NO
-   Subject Override: ✅ NO
-   Vibe Override: ✅ NO
-
-================================================================================
-SEGMENT 2 X-RAY | 6.43s-14.97s | Build-up | Vibe: curiosity, joy
-================================================================================
-
-🔬 TOP 5 CANDIDATES:
-
-🏆 WINNER | clip79.mp4 | SCORE: 333.0
-   Vibes: Group, Leisure
-   Subjects: People-Group, Activity-Leisure
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere p
-
-   #2 | clip80.mp4 | SCORE: 333.0
+   #5 | clip80.mp4 | SCORE: 179.0
    Vibes: Group, Indoor
    Subjects: People-Group, Place-Indoor
    Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere p
-   Delta from winner: -0.0 points
-
-   #3 | clip81.mp4 | SCORE: 333.0
-   Vibes: Group, Leisure
-   Subjects: People-Group, Activity-Leisure
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere p
-   Delta from winner: -0.0 points
-
-   #4 | clip82.mp4 | SCORE: 333.0
-   Vibes: Group, Leisure
-   Subjects: People-Group, Activity-Leisure
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere p
-   Delta from winner: -0.0 points
-
-   #5 | clip86.mp4 | SCORE: 333.0
-   Vibes: Group, Leisure
-   Subjects: People-Group, Activity-Leisure
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere p
-   Delta from winner: -0.0 points
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -171.0 points
 
 🎯 SELECTION DECISION:
-   Winner: clip79.mp4
-   Final Score: 333.0
-   Vibe Match: ✅ YES
-   Subject Override: ✅ NO
-   Vibe Override: ✅ NO
-
-================================================================================
-SEGMENT 3 X-RAY | 14.97s-25.67s | Peak | Vibe: vitality, celebration
-================================================================================
-
-🔬 TOP 5 CANDIDATES:
-
-🏆 WINNER | clip96.mp4 | SCORE: 350.0
-   Vibes: Solo, Indoor
-   Subjects: People-Solo, Place-Indoor
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atm
-
-   #2 | clip97.mp4 | SCORE: 350.0
-   Vibes: Solo, Indoor
-   Subjects: People-Solo, Place-Indoor
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atm
-   Delta from winner: -0.0 points
-
-   #3 | clip98.mp4 | SCORE: 350.0
-   Vibes: Solo, Indoor
-   Subjects: People-Solo, Place-Indoor
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atm
-   Delta from winner: -0.0 points
-
-   #4 | clip101.mp4 | SCORE: 350.0
-   Vibes: Solo
-   Subjects: People-Solo
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atm
-   Delta from winner: -0.0 points
-
-   #5 | clip81.mp4 | SCORE: 347.0
-   Vibes: Group, Leisure
-   Subjects: People-Group, Activity-Leisure
-   Energy: High | Usage: 0x
-   Vibe Match: ✅ YES
-   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atm
-   Delta from winner: -3.0 points
-
-🎯 SELECTION DECISION:
-   Winner: clip96.mp4
+   Winner: clip83.mp4
    Final Score: 350.0
    Vibe Match: ✅ YES
    Subject Override: ✅ NO
    Vibe Override: ✅ NO
 
 ================================================================================
-SEGMENT 4 X-RAY | 25.67s-32.57s | Outro | Vibe: bittersweet, love
+SEGMENT 2 X-RAY | 6.40s-14.97s | Build-up | Vibe: playful, innocent
 ================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'Oh, to be this young again' acts as a nostalgic anchor that transfor...
+   Dominant Narrative: A bittersweet celebration of the ephemeral nature of childhood joy, framed throu...
 
 🔬 TOP 5 CANDIDATES:
 
-🏆 WINNER | clip92.mp4 | SCORE: 200.0
+🏆 WINNER | clip91.mp4 | SCORE: 338.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+
+   #2 | clip93.mp4 | SCORE: 338.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip98.mp4 | SCORE: 338.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #4 | clip103.mp4 | SCORE: 318.0
    Vibes: Group, Leisure
    Subjects: People-Group, Activity-Leisure
    Energy: High | Usage: 0x
    Vibe Match: ❌ NO
-   Reasoning: Serving as a strategic 'Release' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -20.0 points
 
-   #2 | clip100.mp4 | SCORE: 190.0
+   #5 | clip97.mp4 | SCORE: 273.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -65.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip91.mp4
+   Final Score: 338.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 3 X-RAY | 14.97s-25.63s | Peak | Vibe: vibrant, celebratory
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'Oh, to be this young again' acts as a nostalgic anchor that transfor...
+   Dominant Narrative: A bittersweet celebration of the ephemeral nature of childhood joy, framed throu...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip79.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip80.mp4 | SCORE: 350.0
    Vibes: Group, Indoor
    Subjects: People-Group, Place-Indoor
    Energy: High | Usage: 0x
-   Vibe Match: ❌ NO
-   Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -10.0 points
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
 
-   #3 | clip102.mp4 | SCORE: 190.0
+   #3 | clip81.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip82.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip84.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip79.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 4 X-RAY | 25.63s-32.57s | Outro | Vibe: bittersweet, nostalgic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The phrase 'Oh, to be this young again' acts as a nostalgic anchor that transfor...
+   Dominant Narrative: A bittersweet celebration of the ephemeral nature of childhood joy, framed throu...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip81.mp4 | SCORE: 250.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip97.mp4 | SCORE: 200.0
    Vibes: Solo, Indoor
    Subjects: People-Solo, Place-Indoor
    Energy: High | Usage: 0x
    Vibe Match: ❌ NO
    Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -10.0 points
+   Delta from winner: -50.0 points
 
-   #4 | clip95.mp4 | SCORE: 187.0
-   Vibes: Group
-   Subjects: People-Group
-   Energy: High | Usage: 0x
-   Vibe Match: ❌ NO
-   Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -13.0 points
-
-   #5 | clip101.mp4 | SCORE: 185.0
+   #3 | clip101.mp4 | SCORE: 200.0
    Vibes: Solo
    Subjects: People-Solo
    Energy: High | Usage: 0x
    Vibe Match: ❌ NO
    Reasoning: Maintains visual freshness, lighting consistency.
-   Delta from winner: -15.0 points
+   Delta from winner: -50.0 points
+
+   #4 | clip102.mp4 | SCORE: 190.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -60.0 points
+
+   #5 | clip86.mp4 | SCORE: 184.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -66.0 points
 
 🎯 SELECTION DECISION:
-   Winner: clip92.mp4
-   Final Score: 200.0
+   Winner: clip81.mp4
+   Final Score: 250.0
    Vibe Match: ❌ NO
-   Subject Override: ✅ NO
+   Subject Override: ⚠️ YES
    Vibe Override: ✅ NO
 
 ================================================================================
 💡 CLIP CURATION RECOMMENDATIONS:
 ================================================================================
 
-📥 ADD clips with vibes: bittersweet, innocence, love, peace
+📥 ADD clips with vibes: bittersweet, innocent, nostalgic, peace, playful, warmth
 
-🗑️ CONSIDER REMOVING (never used): clip86.mp4, clip87.mp4, clip89.mp4, clip94.mp4, clip95.mp4
+🗑️ CONSIDER REMOVING (never used): clip86.mp4, clip87.mp4, clip88.mp4, clip89.mp4, clip94.mp4
 
 ================================================================================
 END OF X-RAY REPORT

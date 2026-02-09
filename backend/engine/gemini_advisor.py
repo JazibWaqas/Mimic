@@ -228,12 +228,10 @@ def get_advisor_suggestions(
     library_hash = hashlib.md5(
         "".join(sorted(c.filename for c in clip_index.clips)).encode()
     ).hexdigest()
-    
-    # Include prompt version in cache key to invalidate on prompt changes
-    prompt_hash = hashlib.md5(ADVISOR_PROMPT.encode()).hexdigest()[:8]
-    
-    cache_file = cache_dir / f"advisor_{ref_hash}_{library_hash}_{prompt_hash}.json"
-    
+
+    cache_key = f"advisor_{ref_hash}_{library_hash}.json"
+    cache_file = cache_dir / cache_key
+
     if not force_refresh and cache_file.exists():
         try:
             print(f"  📦 Loading cached advisor hints...")

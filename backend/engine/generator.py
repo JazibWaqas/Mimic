@@ -14,6 +14,7 @@ v14.7 PROMPT MODE ENHANCEMENTS:
 
 import json
 import hashlib
+import time
 from typing import Optional
 from pathlib import Path
 from models import StyleBlueprint, EnergyLevel, MotionType, Segment
@@ -468,6 +469,15 @@ Since no BPM is provided, focus on visual rhythm and story arc.
                 # Default CDE to "Moderate" if not specified
                 if "cde" not in seg:
                     seg["cde"] = "Moderate"
+            
+            # Add contract field for Advisor compatibility
+            from engine.brain import REFERENCE_CACHE_VERSION
+            data["contract"] = {
+                "type": "blueprint",
+                "version": REFERENCE_CACHE_VERSION,
+                "source": "text_prompt",
+                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
+            }
             
             # Save to Cache immediately
             try:

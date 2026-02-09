@@ -7,19 +7,19 @@
       {
         "id": 1,
         "start": 0.0,
-        "end": 6.433333333333334,
-        "duration": 6.433333333333334,
+        "end": 6.4,
+        "duration": 6.4,
         "energy": "Low",
         "motion": "Static",
-        "vibe": "peace, innocence",
-        "reasoning": "The intro needs to ground the viewer. By using a long hold (3 musical phrases), we allow the viewer to actually 'see' the child and the environment without distraction.",
+        "vibe": "peace, warmth",
+        "reasoning": "The intro needs to ground the viewer. Using three full musical phrases for a single, beautiful establishing shot allows the viewer to 'inhale' the world of the video.",
         "arc_stage": "Intro",
         "shot_scale": "Wide",
         "shot_function": "Establish",
         "relation_to_previous": "None",
         "expected_hold": "Long",
         "camera_movement": "",
-        "emotional_guidance": "peaceful anticipation",
+        "emotional_guidance": "calm and settled",
         "media_type": "Video",
         "shot_scale_role": "",
         "temporal_weight": "Push",
@@ -34,20 +34,20 @@
       },
       {
         "id": 2,
-        "start": 6.433333333333334,
+        "start": 6.4,
         "end": 14.966666666666667,
-        "duration": 8.533333333333333,
+        "duration": 8.566666666666666,
         "energy": "Medium",
         "motion": "Dynamic",
-        "vibe": "curiosity, joy",
-        "reasoning": "Transitioning into the 'Build-up'. We introduce movement—walking, reaching, or smiling—to signal the start of the narrative journey.",
+        "vibe": "playful, innocent",
+        "reasoning": "As the music builds, we introduce movement. This segment represents the 'active' part of childhood—running, playing, and candid discovery.",
         "arc_stage": "Build-up",
         "shot_scale": "Medium",
         "shot_function": "Action",
         "relation_to_previous": "None",
         "expected_hold": "Normal",
         "camera_movement": "",
-        "emotional_guidance": "growing warmth",
+        "emotional_guidance": "growing joy",
         "media_type": "Video",
         "shot_scale_role": "",
         "temporal_weight": "Push",
@@ -57,25 +57,25 @@
         "cut_motivation": "",
         "transition_intent": {},
         "continuity_hook": {},
-        "cut_origin": "visual",
+        "cut_origin": "beat",
         "cde": "Moderate"
       },
       {
         "id": 3,
         "start": 14.966666666666667,
-        "end": 25.666666666666668,
-        "duration": 10.700000000000001,
+        "end": 25.633333333333333,
+        "duration": 10.666666666666666,
         "energy": "High",
         "motion": "Dynamic",
-        "vibe": "vitality, celebration",
-        "reasoning": "The emotional peak. This segment covers 5 musical phrases. It should feel full of life—running, spinning, or group laughter—but the cuts remain intentional to avoid a 'music video' feel.",
+        "vibe": "vibrant, celebratory",
+        "reasoning": "The peak of the edit. It should feel like the height of summer. Pacing is slightly faster to symbolize time moving, but shots still have enough length to be felt.",
         "arc_stage": "Peak",
         "shot_scale": "Close",
         "shot_function": "Reaction",
         "relation_to_previous": "None",
         "expected_hold": "Normal",
         "camera_movement": "",
-        "emotional_guidance": "pure happiness",
+        "emotional_guidance": "fullness of life",
         "media_type": "Video",
         "shot_scale_role": "",
         "temporal_weight": "Push",
@@ -90,20 +90,20 @@
       },
       {
         "id": 4,
-        "start": 25.666666666666668,
+        "start": 25.633333333333333,
         "end": 32.56666666666666,
-        "duration": 6.899999999999995,
+        "duration": 6.93333333333333,
         "energy": "Low",
         "motion": "Static",
-        "vibe": "bittersweet, love",
-        "reasoning": "The resolution. A final, lingering shot (likely a close-up or a wide shot of a child walking away) where the text overlay appears. This provides the 'soft landing' requested.",
+        "vibe": "bittersweet, nostalgic",
+        "reasoning": "The resolution. We slow down significantly to a final, lingering shot. This is where the text overlay appears, leaving the viewer with a soft, emotional landing.",
         "arc_stage": "Outro",
-        "shot_scale": "Wide",
+        "shot_scale": "Medium",
         "shot_function": "Release",
         "relation_to_previous": "None",
         "expected_hold": "Long",
         "camera_movement": "",
-        "emotional_guidance": "reflective nostalgia",
+        "emotional_guidance": "reflective longing",
         "media_type": "Video",
         "shot_scale_role": "",
         "temporal_weight": "Push",
@@ -118,48 +118,50 @@
       }
     ],
     "phrases": [],
-    "text_prompt": "A warm, joyful, nostalgic childhood reel that celebrates innocence, happiness, and the beauty of growing up. This edit should feel like a memory you didn't know you missed.\n\nStart slow and gentle — calm, warm, and peaceful. Let the viewer settle into the world of childhood.\nGradually build through candid laughter, playful energy, and moments of pure joy.\nAs the music builds, allow the pacing to gently increase — symbolizing how time starts to slip faster as we grow older.\nThe peak should feel full of life, movement, and celebration, not chaotic or rushed.\nEnd softly and reflectively — a bittersweet, loving goodbye to a phase of life that has passed.\n\nThis is not about using every clip quickly.\nIt's about letting moments breathe, reminiscing, and enjoying how sweet and innocent this time was.\nUse as many clips as feel natural, but never rush the emotion.\nThe viewer should finish this edit feeling:\n– warm\n– happy\n– nostalgic\n– slightly bittersweet\n– smiling, even if they don't know the kids in the video\n\nText overlay (subtle, elegant):\n\"Oh, to be this young again.\"\nOverall feeling:\nJoyful. Warm. Full of life. Innocent. Thought-provoking.\nA beautiful reminder of how fast time moves — and how precious these moments were.",
-    "plan_summary": "A four-stage emotional journey that mirrors the acceleration of time—starting with a still, peaceful introduction, moving into the active joy of play, peaking in a vibrant celebration of life, and settling into a reflective, quiet conclusion.",
+    "text_prompt": "A warm, joyful, nostalgic childhood reel that celebrates innocence, happiness, and the beauty of growing up. This edit should feel like a memory you didn't know you missed.\n\nStart slow and gentle — calm, warm, and peaceful. Let the viewer settle into the world of childhood.\nGradually build through candid laughter, playful energy, and moments of pure joy.\nAs the music builds, allow the pacing to gently increase — symbolizing how time starts to slip faster as we grow older.\nThe peak should feel full of life, movement, and celebration, not chaotic or rushed.\nEnd softly and reflectively — a bittersweet, loving goodbye to a phase of life that has passed.\n\nThis is not about using every clip quickly.\nIt's about letting moments breathe, reminiscing, and enjoying how sweet and innocent this time was.\nUse as many clips as feel natural, but never rush the emotion.\nThe viewer should finish this edit feeling:\n– warm\n– happy\n– nostalgic\n– slightly bittersweet\n– smiling, even if they don't know the kids in the video\n\nText overlay (subtle, elegant):\n\"Oh, to be this young again.\"\nOverall feeling:\nJoyful. Warm. Full of life. Innocent. Thought-provoking.\nA beautiful reminder of how fast time moves — and how precious these moments were.\n",
+    "plan_summary": "A four-stage emotional journey that mirrors the 'speed' of growing up. It begins with long, still moments of peace, transitions into playful candid energy, peaks in a vibrant celebration of life, and settles into a quiet, reflective goodbye.",
     "assumed_material": [
-      "children playing",
+      "soft-focus close-ups of children",
+      "wide shots of kids running in nature",
       "candid laughter",
-      "soft sunlight",
-      "close-ups of hands or faces",
-      "running through grass"
+      "slow-motion play",
+      "quiet moments of wonder"
     ],
     "editing_style": "Nostalgic Narrative",
-    "emotional_intent": "To evoke a deep sense of warmth and bittersweet longing for the simplicity of childhood through intentional pacing and visual breathing room.",
-    "arc_description": "The edit begins with low-energy, long-hold shots to establish peace. It gently accelerates in the build-up and peak stages to represent the 'speed' of growing up, before decelerating into a soft, lingering outro.",
+    "emotional_intent": "To evoke a deep sense of warmth and bittersweet longing for the innocence of childhood through a rhythmic, breathable assembly of memories.",
+    "arc_description": "The edit starts with low-energy, long-duration holds to establish peace. As the music phrases progress, the energy shifts to medium with more movement. The peak is vibrant and full of life but maintains a 'moderate' cut density to avoid feeling frantic. The outro returns to a low-energy, sparse state for reflection.",
     "text_overlay": "Oh, to be this young again.",
     "narrative_message": "Childhood is a fleeting, beautiful dream that stays with us forever.",
     "intent_clarity": "Clear",
     "text_events": [],
     "must_have_content": [
-      "at least one moment of direct eye contact with the camera",
-      "candid laughter"
-    ],
-    "should_have_content": [
+      "eye contact or genuine smiles",
       "golden hour lighting",
       "tactile details (hands in grass, bubbles, etc.)"
+    ],
+    "should_have_content": [
+      "slow-motion footage",
+      "natural environments",
+      "interaction between children"
     ],
     "avoid_content": [
       "fast whip-pans",
       "digital glitches",
-      "aggressive transitions",
+      "harsh artificial lighting",
       "staged/posed looking shots"
     ],
-    "pacing_feel": "Reflective and Breathable",
+    "pacing_feel": "Reflective and intentional",
     "visual_balance": "People-centric",
     "color_grading": {
       "tone": "Warm",
-      "contrast": "Low-Medium",
-      "specific_look": "Vintage Film / Golden Hour"
+      "contrast": "Medium-Low",
+      "specific_look": "Vintage Film with soft highlights"
     },
     "aspect_ratio": "",
     "visual_effects": [
-      "film grain",
-      "subtle light leaks",
-      "soft focus edges"
+      "subtle film grain",
+      "soft light leaks",
+      "gentle bloom"
     ],
     "shot_variety": {},
     "stylistic_invariants": [],
@@ -172,10 +174,10 @@
     "audio_style": {},
     "music_structure": {},
     "text_style": {
-      "font_style": "Sans-serif (Inter)",
-      "animation": "Slow Fade-in",
-      "placement": "Bottom-center",
-      "color_effects": "Soft White with subtle drop shadow"
+      "font_style": "Sans-serif (Elegant)",
+      "animation": "Soft Fade",
+      "placement": "Bottom-third",
+      "color_effects": "Warm White"
     },
     "text_behavior": {},
     "text_cadence": "",
@@ -197,7 +199,12 @@
     },
     "overall_reasoning": "",
     "ideal_material_suggestions": [],
-    "contract": {}
+    "contract": {
+      "type": "blueprint",
+      "version": "12.1",
+      "source": "text_prompt",
+      "timestamp": "2026-02-09 06:11:00"
+    }
   },
   "clip_index": {
     "clips": [
@@ -526,8 +533,137 @@
         "best_moment_end": null
       },
       {
-        "filename": "clip86.mp4",
+        "filename": "clip84.mp4",
         "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_006.mp4",
+        "duration": 28.4,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 2,
+        "best_for": [
+          "Family home videos",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional cinematic projects"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "A young child runs and shouts playfully on a rooftop while interacting with an adult.",
+        "best_moments": {
+          "High": {
+            "start": 8.5,
+            "end": 11.0,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak shouting and expressive arm movements from the child."
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Child walking and turning with moderate energy and interaction."
+          },
+          "Low": {
+            "start": 0.0,
+            "end": 3.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Initial interaction with minimal movement and lower vocal intensity."
+          }
+        },
+        "contract": {
+          "type": "clip",
+          "version": "7.0",
+          "source_hash": "75649a6fdd66e9edd36aac8cbb1aa9ef"
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip85.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_007.mp4",
+        "duration": 43.0,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "High-energy peaks",
+          "Family montages",
+          "Capturing raw childhood joy"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two young children play and laugh energetically on a rooftop while an adult interacts with them.",
+        "best_moments": {
+          "High": {
+            "start": 38.2,
+            "end": 40.8,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak laughter and expressive facial expressions from the child."
+          },
+          "Medium": {
+            "start": 10.5,
+            "end": 13.5,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Sustained motion as the girl runs across the rooftop."
+          },
+          "Low": {
+            "start": 26.0,
+            "end": 30.0,
+            "moment_role": "Establishing",
+            "stable_moment": true,
+            "reason": "Relatively calm moment where the girl stands still for a photo."
+          }
+        },
+        "contract": {
+          "type": "clip",
+          "version": "7.0",
+          "source_hash": "0baa6d663cbe52175a6a96db4be0ea50"
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
+      },
+      {
+        "filename": "clip86.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_008.mp4",
         "duration": 32.04,
         "energy": "High",
         "motion": "Dynamic",
@@ -592,7 +728,7 @@
       },
       {
         "filename": "clip87.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_007.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_009.mp4",
         "duration": 22.32,
         "energy": "High",
         "motion": "Dynamic",
@@ -656,7 +792,7 @@
       },
       {
         "filename": "clip88.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_008.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_010.mp4",
         "duration": 280.44,
         "energy": "High",
         "motion": "Dynamic",
@@ -722,7 +858,7 @@
       },
       {
         "filename": "clip89.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_009.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_011.mp4",
         "duration": 30.24,
         "energy": "High",
         "motion": "Dynamic",
@@ -786,7 +922,7 @@
       },
       {
         "filename": "clip91.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_010.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_012.mp4",
         "duration": 18.0,
         "energy": "High",
         "motion": "Dynamic",
@@ -849,74 +985,8 @@
         "best_moment_end": null
       },
       {
-        "filename": "clip92.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_011.mp4",
-        "duration": 23.76,
-        "energy": "High",
-        "motion": "Dynamic",
-        "intensity": 2,
-        "primary_subject": [
-          "People-Group",
-          "Activity-Leisure"
-        ],
-        "narrative_utility": [
-          "Peak",
-          "Build",
-          "Reflection"
-        ],
-        "emotional_tone": [
-          "Joyful",
-          "Energetic"
-        ],
-        "clip_quality": 3,
-        "best_for": [
-          "Family montages",
-          "Childhood memories",
-          "Playful transitions"
-        ],
-        "avoid_for": [
-          "Professional corporate videos",
-          "Serious documentaries"
-        ],
-        "vibes": [
-          "Group",
-          "Leisure"
-        ],
-        "content_description": "Children playing with a toy scooter on a rooftop while adults watch in the background.",
-        "best_moments": {
-          "High": {
-            "start": 0.0,
-            "end": 2.5,
-            "moment_role": "Climax",
-            "stable_moment": true,
-            "reason": "Peak physical activity with the boy pushing the girl on the scooter."
-          },
-          "Medium": {
-            "start": 6.0,
-            "end": 8.5,
-            "moment_role": "Build",
-            "stable_moment": true,
-            "reason": "Steady movement and direct engagement with the camera as the girl rides."
-          },
-          "Low": {
-            "start": 19.0,
-            "end": 23.0,
-            "moment_role": "Reflection",
-            "stable_moment": true,
-            "reason": "Action subsides as the children stand still on the toy at the end."
-          }
-        },
-        "contract": {
-          "type": "clip",
-          "version": "7.0",
-          "source_hash": "c8c8ca4f7d2ebab08de786e1756b435e"
-        },
-        "best_moment_start": null,
-        "best_moment_end": null
-      },
-      {
         "filename": "clip93.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_012.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_013.mp4",
         "duration": 19.08,
         "energy": "High",
         "motion": "Dynamic",
@@ -980,7 +1050,7 @@
       },
       {
         "filename": "clip94.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_013.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_014.mp4",
         "duration": 62.64,
         "energy": "High",
         "motion": "Dynamic",
@@ -1044,7 +1114,7 @@
       },
       {
         "filename": "clip95.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_014.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_015.mp4",
         "duration": 21.24,
         "energy": "High",
         "motion": "Dynamic",
@@ -1101,70 +1171,6 @@
           "type": "clip",
           "version": "7.0",
           "source_hash": "8b7a8f3e13381dc55d798cc1be88c12f"
-        },
-        "best_moment_start": null,
-        "best_moment_end": null
-      },
-      {
-        "filename": "clip96.mp4",
-        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_015.mp4",
-        "duration": 23.786667,
-        "energy": "High",
-        "motion": "Dynamic",
-        "intensity": 2,
-        "primary_subject": [
-          "People-Solo",
-          "Place-Indoor"
-        ],
-        "narrative_utility": [
-          "Peak",
-          "Build"
-        ],
-        "emotional_tone": [
-          "Joyful",
-          "Energetic"
-        ],
-        "clip_quality": 3,
-        "best_for": [
-          "Activity highlights",
-          "Family montages"
-        ],
-        "avoid_for": [
-          "Calm reflective outros",
-          "Professional sports analysis"
-        ],
-        "vibes": [
-          "Solo",
-          "Indoor"
-        ],
-        "content_description": "A young boy in a yellow striped shirt performs martial arts kicks and jumps in a living room.",
-        "best_moments": {
-          "High": {
-            "start": 20.5,
-            "end": 22.5,
-            "moment_role": "Climax",
-            "stable_moment": true,
-            "reason": "Strongest kick and jump sequence with peak physical movement."
-          },
-          "Medium": {
-            "start": 2.0,
-            "end": 5.0,
-            "moment_role": "Build",
-            "stable_moment": true,
-            "reason": "Sustained balance on one leg showing controlled preparation for action."
-          },
-          "Low": {
-            "start": 17.0,
-            "end": 20.0,
-            "moment_role": "Reflection",
-            "stable_moment": true,
-            "reason": "A still moment of focus and minimal movement before the final kick."
-          }
-        },
-        "contract": {
-          "type": "clip",
-          "version": "7.0",
-          "source_hash": "e6188031ecb80b4efd45eb0d17ffd9f4"
         },
         "best_moment_start": null,
         "best_moment_end": null
@@ -1555,6 +1561,70 @@
         },
         "best_moment_start": null,
         "best_moment_end": null
+      },
+      {
+        "filename": "clip103.mp4",
+        "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_022.mp4",
+        "duration": 49.6,
+        "energy": "High",
+        "motion": "Dynamic",
+        "intensity": 3,
+        "primary_subject": [
+          "People-Group",
+          "Activity-Leisure"
+        ],
+        "narrative_utility": [
+          "Peak",
+          "Build"
+        ],
+        "emotional_tone": [
+          "Joyful",
+          "Energetic"
+        ],
+        "clip_quality": 3,
+        "best_for": [
+          "Childhood memory montages",
+          "High-energy peaks"
+        ],
+        "avoid_for": [
+          "Calm reflective outros",
+          "Professional corporate videos"
+        ],
+        "vibes": [
+          "Group",
+          "Leisure"
+        ],
+        "content_description": "Two young children are swinging together on a playground swing while singing and laughing.",
+        "best_moments": {
+          "High": {
+            "start": 15.0,
+            "end": 17.5,
+            "moment_role": "Climax",
+            "stable_moment": true,
+            "reason": "Peak singing and expressive movement"
+          },
+          "Medium": {
+            "start": 4.0,
+            "end": 7.0,
+            "moment_role": "Build",
+            "stable_moment": true,
+            "reason": "Steady swinging with clear facial expressions"
+          },
+          "Low": {
+            "start": 27.5,
+            "end": 31.5,
+            "moment_role": "Reflection",
+            "stable_moment": true,
+            "reason": "Closer shot with relatively less chaotic motion"
+          }
+        },
+        "contract": {
+          "type": "clip",
+          "version": "7.0",
+          "source_hash": "44699c7102ac7f82829f98ffb4b6aa8a"
+        },
+        "best_moment_start": null,
+        "best_moment_end": null
       }
     ]
   },
@@ -1562,142 +1632,164 @@
     "decisions": [
       {
         "segment_id": 1,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_008.mp4",
-        "clip_start": 0.0,
-        "clip_end": 4.0,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_005.mp4",
+        "clip_start": 7.5,
+        "clip_end": 9.266666666666666,
         "timeline_start": 0.0,
-        "timeline_end": 4.0,
+        "timeline_end": 1.7666666666666666,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Establish' shot within this sequence. Maintains visual freshness, lighting consistency.",
-        "vibe_match": false
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. The visual content captures the 'peace, warmth' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
+        "vibe_match": true
       },
       {
         "segment_id": 1,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_012.mp4",
-        "clip_start": 14.0,
-        "clip_end": 16.433333333333334,
-        "timeline_start": 4.0,
-        "timeline_end": 6.433333333333334,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_015.mp4",
+        "clip_start": 18.5,
+        "clip_end": 21.233333333333334,
+        "timeline_start": 1.7666666666666666,
+        "timeline_end": 4.5,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. The visual content captures the 'peace, warmth' atmosphere perfectly. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
+        "vibe_match": true
+      },
+      {
+        "segment_id": 1,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_019.mp4",
+        "clip_start": 22.0,
+        "clip_end": 23.9,
+        "timeline_start": 4.5,
+        "timeline_end": 6.4,
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Intro stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 2,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_001.mp4",
-        "clip_start": 40.5,
-        "clip_end": 44.0,
-        "timeline_start": 6.433333333333334,
-        "timeline_end": 9.933333333333334,
-        "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
-      },
-      {
-        "segment_id": 2,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_010.mp4",
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_012.mp4",
         "clip_start": 4.0,
         "clip_end": 6.5,
-        "timeline_start": 9.933333333333334,
-        "timeline_end": 12.433333333333334,
+        "timeline_start": 6.4,
+        "timeline_end": 8.9,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
       },
       {
         "segment_id": 2,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_002.mp4",
-        "clip_start": 17.5,
-        "clip_end": 20.03333333333333,
-        "timeline_start": 12.433333333333334,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_022.mp4",
+        "clip_start": 4.0,
+        "clip_end": 6.466666666666667,
+        "timeline_start": 8.9,
+        "timeline_end": 11.366666666666667,
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Build-up stage. Matching narrative subject over raw energy to preserve story coherence. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_013.mp4",
+        "clip_start": 4.0,
+        "clip_end": 6.5,
+        "timeline_start": 11.366666666666667,
+        "timeline_end": 13.866666666666667,
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 2,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_017.mp4",
+        "clip_start": 18.5,
+        "clip_end": 19.6,
+        "timeline_start": 13.866666666666667,
         "timeline_end": 14.966666666666667,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'curiosity, joy' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.",
+        "vibe_match": false
+      },
+      {
+        "segment_id": 3,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_001.mp4",
+        "clip_start": 96.5,
+        "clip_end": 98.43333333333334,
+        "timeline_start": 14.966666666666667,
+        "timeline_end": 16.9,
+        "hold_end_seconds": null,
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_015.mp4",
-        "clip_start": 20.5,
-        "clip_end": 22.1,
-        "timeline_start": 14.966666666666667,
-        "timeline_end": 16.566666666666666,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_002.mp4",
+        "clip_start": 10.2,
+        "clip_end": 12.1,
+        "timeline_start": 16.9,
+        "timeline_end": 18.8,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 3,
         "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_003.mp4",
         "clip_start": 6.2,
-        "clip_end": 8.033333333333333,
-        "timeline_start": 16.566666666666666,
-        "timeline_end": 18.4,
+        "clip_end": 7.9,
+        "timeline_start": 18.8,
+        "timeline_end": 20.5,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
-        "vibe_match": true
-      },
-      {
-        "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_016.mp4",
-        "clip_start": 76.0,
-        "clip_end": 77.76666666666667,
-        "timeline_start": 18.4,
-        "timeline_end": 20.166666666666668,
-        "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 3,
         "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_004.mp4",
         "clip_start": 44.2,
-        "clip_end": 45.76666666666667,
-        "timeline_start": 20.166666666666668,
-        "timeline_end": 21.733333333333334,
+        "clip_end": 46.0,
+        "timeline_start": 20.5,
+        "timeline_end": 22.3,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_017.mp4",
-        "clip_start": 26.8,
-        "clip_end": 28.666666666666668,
-        "timeline_start": 21.733333333333334,
-        "timeline_end": 23.6,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_006.mp4",
+        "clip_start": 8.5,
+        "clip_end": 10.3,
+        "timeline_start": 22.3,
+        "timeline_end": 24.1,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 3,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_005.mp4",
-        "clip_start": 0.0,
-        "clip_end": 2.0666666666666664,
-        "timeline_start": 23.6,
-        "timeline_end": 25.666666666666668,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_007.mp4",
+        "clip_start": 38.2,
+        "clip_end": 39.733333333333334,
+        "timeline_start": 24.1,
+        "timeline_end": 25.633333333333333,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'vitality, celebration' atmosphere perfectly. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'vibrant, celebratory' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.",
         "vibe_match": true
       },
       {
         "segment_id": 4,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_011.mp4",
-        "clip_start": 19.0,
-        "clip_end": 23.0,
-        "timeline_start": 25.666666666666668,
-        "timeline_end": 29.666666666666668,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_003.mp4",
+        "clip_start": 33.0,
+        "clip_end": 36.36666666666667,
+        "timeline_start": 25.633333333333333,
+        "timeline_end": 29.0,
         "hold_end_seconds": null,
-        "reasoning": "🌟 Serving as a strategic 'Release' shot within this sequence. Maintains visual freshness, lighting consistency.",
+        "reasoning": "🌟 Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary emotional carrier for the Outro stage. Matching narrative subject over raw energy to preserve story coherence. Maintains lighting consistency.",
         "vibe_match": false
       },
       {
         "segment_id": 4,
-        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_019.mp4",
-        "clip_start": 22.0,
-        "clip_end": 24.9,
-        "timeline_start": 29.666666666666668,
+        "clip_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\text_music_0a07bf80f0562b9d2c3f364dbc1edb5c\\standardized\\clip_016.mp4",
+        "clip_start": 72.5,
+        "clip_end": 76.06666666666666,
+        "timeline_start": 29.0,
         "timeline_end": 32.56666666666666,
         "hold_end_seconds": null,
         "reasoning": "🌟 Maintains visual freshness, lighting consistency.",
@@ -1705,22 +1797,140 @@
       }
     ]
   },
-  "advisor": null,
-  "critique": null,
+  "advisor": {
+    "text_overlay_intent": "The phrase 'Oh, to be this young again' acts as a nostalgic anchor that transforms simple home movies into a poignant reflection on the loss of innocence and the fleeting nature of time.",
+    "dominant_narrative": "A bittersweet celebration of the ephemeral nature of childhood joy, framed through the lens of adult remembrance.",
+    "arc_stage_guidance": {
+      "Intro": {
+        "primary_emotional_carrier": "PEACE",
+        "supporting_material": "Intimate eye contact, soft smiles, or quiet physical connections between two people.",
+        "intent_diluting_material": "High-velocity camera movement, group chaos, or wide shots with no clear emotional focus.",
+        "reasoning": "To establish the 'Nostalgic Narrative,' the edit must begin in a state of reflective calm. Since low-energy material is scarce, the system must prioritize clips with the most stable framing and intimate human connection to simulate a 'memory' surfacing.",
+        "recommended_clips": [
+          "clip95.mp4",
+          "clip83.mp4",
+          "clip100.mp4"
+        ],
+        "required_energy": "Low"
+      },
+      "Build-up": {
+        "primary_emotional_carrier": "JOY",
+        "supporting_material": "Individual children engaged in tactile or physical play, showing progression of movement.",
+        "intent_diluting_material": "Staged performances or school-play footage that feels overly structured or 'directed.'",
+        "reasoning": "The build-up should feel like the awakening of a memory, moving from the internal state of the intro to the external reality of play. It bridges the gap between reflection and the high-energy peak.",
+        "recommended_clips": [
+          "clip91.mp4",
+          "clip98.mp4",
+          "clip103.mp4",
+          "clip93.mp4"
+        ],
+        "required_energy": "Medium"
+      },
+      "Peak": {
+        "primary_emotional_carrier": "JOY",
+        "supporting_material": "High-intensity group interactions, laughter, jumping, and uninhibited physical movement.",
+        "intent_diluting_material": "Static shots or solitary activities that break the momentum of collective celebration.",
+        "reasoning": "The peak represents the 'vibrant dream' mentioned in the narrative message. It must feel full of life and kinetic energy to contrast with the 'bittersweet longing' of the text overlay.",
+        "recommended_clips": [
+          "clip79.mp4",
+          "clip80.mp4",
+          "clip85.mp4",
+          "clip87.mp4",
+          "clip99.mp4",
+          "clip101.mp4"
+        ],
+        "required_energy": "High"
+      },
+      "Outro": {
+        "primary_emotional_carrier": "PEACE",
+        "supporting_material": "Lingering smiles, hugs, or a single subject looking toward the camera/off-camera with contentment.",
+        "intent_diluting_material": "Abrupt cuts, loud visual activity, or high-motion group shots.",
+        "reasoning": "The 'Release' function requires a return to the reflective state. The final image should serve as a visual period to the sentence 'Oh, to be this young again,' leaving the viewer with a sense of warmth.",
+        "recommended_clips": [
+          "clip95.mp4",
+          "clip100.mp4",
+          "clip81.mp4"
+        ],
+        "required_energy": "Low"
+      }
+    },
+    "library_alignment": {
+      "strengths": [
+        "Abundant high-energy 'Peak' material that perfectly captures raw childhood joy.",
+        "Strong thematic consistency across clips (family, play, celebration).",
+        "Multiple clips featuring the 'Must-Have' genuine smiles and eye contact."
+      ],
+      "editorial_tradeoffs": [
+        "Due to the extreme scarcity of Low/Medium energy clips, the 'Intro' and 'Outro' must be manufactured by selecting the most stable, intimate moments from higher-energy clips.",
+        "The 'Nostalgic Narrative' will lean more toward 'Vibrant' than 'Breathable' due to the library's high-motion bias."
+      ],
+      "constraint_gaps": [
+        "Lack of 'Golden Hour' lighting in the raw footage requires the 'Warm' color grading and 'Soft Light Leaks' to do the heavy lifting for the nostalgic aesthetic.",
+        "Absence of 'Tactile Details' (hands in grass, etc.) means the narrative must rely entirely on human expression rather than environmental texture."
+      ]
+    },
+    "editorial_strategy": "The edit will lean into the 'JOY' of the peak to earn the 'PEACE' of the nostalgia. By framing the high-energy group moments as a precious, fleeting dream, the scarcity of quiet footage becomes a narrative choice—childhood is fast and loud, and we only see it in glimpses once it's gone.",
+    "remake_strategy": "To achieve a true Director's Cut, I would shoot slow-motion B-roll of environmental textures (sun-dappled leaves, dust motes, grass) and solitary, quiet moments of children in thought to provide the 'breathable' pacing the reference demands.",
+    "primary_narrative_subject": "People-Group",
+    "allowed_supporting_subjects": [
+      "People-Solo",
+      "Object-Detail",
+      "Abstract"
+    ],
+    "subject_lock_strength": 0.9,
+    "editorial_motifs": [
+      {
+        "trigger": "Genuine smiles or eye contact",
+        "desired_continuity": "Semantic-Resonance",
+        "priority": "High"
+      },
+      {
+        "trigger": "Physical touch (hugging, holding hands)",
+        "desired_continuity": "Emotional-Release",
+        "priority": "High"
+      },
+      {
+        "trigger": "Rhythmic movement (swinging, jumping, dancing)",
+        "desired_continuity": "Motion-Carry",
+        "priority": "Medium"
+      },
+      {
+        "trigger": "Transition from solitary play to group play",
+        "desired_continuity": "Scale-Escalation",
+        "priority": "Medium"
+      }
+    ],
+    "segment_moment_plans": {},
+    "library_assessment": null,
+    "creative_audit": null,
+    "overall_strategy": "",
+    "required_improvements": [],
+    "cache_version": "4.1",
+    "cached_at": "2026-02-09T01:11:36.351821"
+  },
+  "critique": {
+    "overall_score": 8.0,
+    "monologue": "Legacy reflector archived. See Vault report.",
+    "star_performers": [],
+    "dead_weight": [],
+    "missing_ingredients": [],
+    "remake_actions": [],
+    "technical_fidelity": "System active."
+  },
   "library_health": {
-    "asset_count": 21,
-    "avg_quality": 2.9523809523809526,
+    "asset_count": 22,
+    "avg_quality": 2.909090909090909,
     "energy_distribution": {
-      "High": 21
+      "High": 22
     },
     "primary_subject_distribution": {
-      "People-Group": 14,
-      "Activity-Leisure": 8,
-      "Place-Indoor": 8,
+      "People-Group": 16,
+      "Activity-Leisure": 10,
+      "Place-Indoor": 7,
       "Activity-Celebration": 3,
-      "People-Solo": 7
+      "People-Solo": 6
     },
-    "confidence_score": 79.52380952380952
+    "confidence_score": 79.0909090909091
   },
   "style_config": {
     "text": {
@@ -1740,12 +1950,236 @@
   },
   "iteration": 1,
   "error": null,
-  "processing_time_seconds": 44.181992292404175,
+  "processing_time_seconds": 78.78201293945312,
   "contract": {
     "type": "result",
     "version": "12.1",
     "session_id": "text_music_0a07bf80f0562b9d2c3f364dbc1edb5c",
-    "timestamp": "2026-02-09 00:35:48"
+    "timestamp": "2026-02-09 06:17:55"
   },
-  "vault_report": null
+  "vault_report": {
+    "header": "32-second nostalgic narrative edit focused on warmth and celebration.",
+    "executive_summary": [
+      "The library lacked medium and low energy clips, forcing a reliance on available assets.",
+      "A vintage film LUT was applied to unify the look across disparate clips.",
+      "Missing payoff shots prevented a high-impact conclusion.",
+      "Pacing remained intentional despite the scarcity of specific motifs."
+    ],
+    "advisor": {
+      "hero": "The library's energy gaps turned this into a game of making do with what was on the shelf.",
+      "body": "We hit a wall with energy levels. The lack of medium-energy footage meant transitions between quiet and loud moments felt abrupt. Without payoff shots, the narrative arc is flatter than intended."
+    },
+    "decision_stream": [
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted to establish peace and warmth.",
+        "decision": "Used clip_005.mp4 because no better alternative was available in the library, preserving the edit's momentum.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted to establish peace and warmth.",
+        "decision": "Used clip_005.mp4 because no better alternative was available in the library, preserving the edit's momentum.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 1,
+        "what_i_tried": "I wanted to establish peace and warmth.",
+        "decision": "Used clip_005.mp4 because no better alternative was available in the library, preserving the edit's momentum.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "I aimed for a playful and innocent vibe.",
+        "decision": "Locked in clip_012.mp4 because no better alternative was available in the library, momentum_saved.",
+        "what_if": "This slot had no viable upgrade.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "I aimed for a playful and innocent vibe.",
+        "decision": "Locked in clip_012.mp4 because no better alternative was available in the library, momentum_saved.",
+        "what_if": "This slot had no viable upgrade.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "I aimed for a playful and innocent vibe.",
+        "decision": "Locked in clip_012.mp4 because no better alternative was available in the library, momentum_saved.",
+        "what_if": "This slot had no viable upgrade.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 2,
+        "what_i_tried": "I aimed for a playful and innocent vibe.",
+        "decision": "Locked in clip_012.mp4 because no better alternative was available in the library, momentum_saved.",
+        "what_if": "This slot had no viable upgrade.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I looked for vibrant, celebratory energy.",
+        "decision": "Selected clip_001.mp4 because no better alternative was available in the library, narrative_sacrifice.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I looked for vibrant, celebratory energy.",
+        "decision": "Selected clip_001.mp4 because no better alternative was available in the library, narrative_sacrifice.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I looked for vibrant, celebratory energy.",
+        "decision": "Selected clip_001.mp4 because no better alternative was available in the library, narrative_sacrifice.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I looked for vibrant, celebratory energy.",
+        "decision": "Selected clip_001.mp4 because no better alternative was available in the library, narrative_sacrifice.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I looked for vibrant, celebratory energy.",
+        "decision": "Selected clip_001.mp4 because no better alternative was available in the library, narrative_sacrifice.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 3,
+        "what_i_tried": "I looked for vibrant, celebratory energy.",
+        "decision": "Selected clip_001.mp4 because no better alternative was available in the library, narrative_sacrifice.",
+        "what_if": "No stronger alternative existed.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 4,
+        "what_i_tried": "I wanted a bittersweet, nostalgic finish.",
+        "decision": "Used clip_003.mp4 because no better alternative was available in the library, preserving the edit's momentum.",
+        "what_if": "This slot had no viable upgrade.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      },
+      {
+        "segment_id": 4,
+        "what_i_tried": "I wanted a bittersweet, nostalgic finish.",
+        "decision": "Used clip_003.mp4 because no better alternative was available in the library, preserving the edit's momentum.",
+        "what_if": "This slot had no viable upgrade.",
+        "is_key": false,
+        "importance": "all",
+        "tags": [
+          "scarcity",
+          "library_gap"
+        ]
+      }
+    ],
+    "key_decision_stream": [],
+    "friction_log": [
+      "Started with high confidence in the nostalgic narrative structure.",
+      "Confidence dipped when the library's energy scarcity became apparent.",
+      "Ended with a functional edit that relies heavily on the applied styling to bridge gaps."
+    ],
+    "post_mortem": {
+      "worked": "The intentional pacing and vintage LUT created a cohesive feel. Segment 1 used clip_005.mp4 effectively for warmth.",
+      "didnt": "The lack of payoff shots left the ending feeling unresolved. Segment 4 used clip_003.mp4, which was a repeat from Segment 3.",
+      "responsibility": {
+        "vibe": "library",
+        "emotion": "library"
+      }
+    },
+    "next_steps": [
+      "Source medium-energy clips to bridge the current pacing gaps.",
+      "Capture specific payoff shots to provide a stronger narrative conclusion.",
+      "Expand the library to include more 'vibrant' motifs to avoid clip repetition."
+    ],
+    "clip_suggestions": [
+      "Adding medium-energy clips would help resolve the scarcity identified in the library.",
+      "Adding low-energy clips would help provide more variety for the quiet segments.",
+      "Adding payoff shots would help provide the missing narrative conclusion.",
+      "Adding substitutes for clip_003.mp4 would help reduce repetition in the final segments."
+    ],
+    "technical": [
+      "Applied a vintage film LUT with soft highlights to unify the visual style.",
+      "Maintained reflective and intentional pacing throughout the 32-second duration.",
+      "Managed a segment count of 4 despite library bottlenecks."
+    ]
+  }
 }
