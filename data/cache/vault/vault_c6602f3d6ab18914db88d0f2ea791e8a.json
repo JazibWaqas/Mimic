@@ -1,0 +1,543 @@
+{
+  "header": "This 25-second music video edit prioritizes a relentless pace and cool tone, though it was heavily constrained by a library lacking high-energy payoffs.",
+  "executive_summary": [
+    "The edit maintains a relentless rhythm despite a significant scarcity of high-energy footage.",
+    "A cool tone was applied to ensure visual consistency across all 43 segments.",
+    "Structural anchors were deployed in key slots to prevent a pacing collapse where ideal motifs were missing.",
+    "The lack of human detail in the library limited the emotional depth of the final cut.",
+    "Strategic pivots ensured narrative coherence by prioritizing the rhythmic soul over raw visual energy."
+  ],
+  "advisor": {
+    "hero": "The library's low energy and missing human details turned this edit into a fight for momentum rather than a victory lap.",
+    "body": "We hit a major bottleneck with missing payoff shots, which forced me to lean on the edit's rhythm to mask the lack of visual punch. While the cool tone provides a professional sheen, the absence of 'human_detail' motifs makes the connection feel distant. To fix this, we need high-intensity action and close-up human elements to replace the structural fillers currently holding the timeline together."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "Preparation.",
+      "decision": "Used clip_004.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "Focus.",
+      "decision": "Locked in clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to inject raw intensity here to hit the beat.",
+      "decision": "Deployed as a structural anchor clip_002.mp4 to preserve the rhythmic soul of the edit.",
+      "what_if": "Replacing this with an intensity motif would have landed the punch I wanted.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "Focus.",
+      "decision": "Selected clip_003.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "Technical.",
+      "decision": "Used clip_005.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 6,
+      "what_i_tried": "Speed.",
+      "decision": "Locked in clip_006.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 7,
+      "what_i_tried": "Immersive.",
+      "decision": "Selected clip_016.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 8,
+      "what_i_tried": "Speed.",
+      "decision": "Used clip_007.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 9,
+      "what_i_tried": "Anticipation.",
+      "decision": "Locked in clip_018.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 10,
+      "what_i_tried": "Speed.",
+      "decision": "Selected clip_008.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 11,
+      "what_i_tried": "Confidence.",
+      "decision": "Used clip_023.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 12,
+      "what_i_tried": "Competition.",
+      "decision": "Locked in clip_024.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 13,
+      "what_i_tried": "Power.",
+      "decision": "Selected clip_014.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 14,
+      "what_i_tried": "Focus.",
+      "decision": "Used clip_020.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 15,
+      "what_i_tried": "Speed.",
+      "decision": "Locked in clip_010.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 16,
+      "what_i_tried": "Speed.",
+      "decision": "Selected clip_019.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 17,
+      "what_i_tried": "Suspense.",
+      "decision": "Used clip_026.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 18,
+      "what_i_tried": "Urgency.",
+      "decision": "Locked in clip_022.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 19,
+      "what_i_tried": "Preparation.",
+      "decision": "Selected clip_009.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 20,
+      "what_i_tried": "Speed.",
+      "decision": "Used clip_011.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 21,
+      "what_i_tried": "I was looking for a sharp focus on action to drive the mid-section.",
+      "decision": "Forced into the slot clip_012.mp4 to preserve the rhythmic soul of the edit.",
+      "what_if": "Replacing this with an action motif would have provided the necessary visual payoff.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 22,
+      "what_i_tried": "Preparation.",
+      "decision": "Locked in clip_027.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 23,
+      "what_i_tried": "Speed.",
+      "decision": "Selected clip_017.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 24,
+      "what_i_tried": "Speed.",
+      "decision": "Used clip_021.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 25,
+      "what_i_tried": "Suspense.",
+      "decision": "Locked in clip_023.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 26,
+      "what_i_tried": "Branding.",
+      "decision": "Selected clip_028.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 27,
+      "what_i_tried": "Preparation.",
+      "decision": "Used clip_025.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 28,
+      "what_i_tried": "Speed.",
+      "decision": "Locked in clip_004.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 29,
+      "what_i_tried": "Focus.",
+      "decision": "Selected clip_022.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 30,
+      "what_i_tried": "Speed.",
+      "decision": "Used clip_006.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 31,
+      "what_i_tried": "Focus.",
+      "decision": "Locked in clip_016.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 32,
+      "what_i_tried": "Speed.",
+      "decision": "Selected clip_010.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 33,
+      "what_i_tried": "Focus.",
+      "decision": "Used clip_005.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 34,
+      "what_i_tried": "Speed.",
+      "decision": "Locked in clip_027.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 35,
+      "what_i_tried": "Focus.",
+      "decision": "Selected clip_018.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 36,
+      "what_i_tried": "Speed.",
+      "decision": "Used clip_007.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 37,
+      "what_i_tried": "Focus.",
+      "decision": "Locked in clip_009.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 38,
+      "what_i_tried": "Speed.",
+      "decision": "Selected clip_026.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 39,
+      "what_i_tried": "Focus.",
+      "decision": "Used clip_024.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 40,
+      "what_i_tried": "Speed.",
+      "decision": "Locked in clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 41,
+      "what_i_tried": "Focus.",
+      "decision": "Selected clip_008.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 42,
+      "what_i_tried": "Speed.",
+      "decision": "Used clip_013.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 43,
+      "what_i_tried": "Outro.",
+      "decision": "Locked in clip_002.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    }
+  ],
+  "key_decision_stream": [
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to inject raw intensity here to hit the beat.",
+      "decision": "Deployed as a structural anchor clip_002.mp4 to preserve the rhythmic soul of the edit.",
+      "what_if": "Replacing this with an intensity motif would have landed the punch I wanted.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    },
+    {
+      "segment_id": 21,
+      "what_i_tried": "I was looking for a sharp focus on action to drive the mid-section.",
+      "decision": "Forced into the slot clip_012.mp4 to preserve the rhythmic soul of the edit.",
+      "what_if": "Replacing this with an action motif would have provided the necessary visual payoff.",
+      "is_key": true,
+      "importance": "key",
+      "tags": [
+        "structural_necessity"
+      ]
+    }
+  ],
+  "friction_log": [
+    "Started with high confidence as the cool tone established a consistent visual baseline for the music video.",
+    "Confidence dipped in the middle as the lack of action and intensity motifs forced structural compromises to maintain the relentless pace.",
+    "Finished by prioritizing the rhythmic soul of the edit to mask the missing payoff shots and scarcity of high-energy footage."
+  ],
+  "post_mortem": {
+    "worked": "The relentless pacing and tight sync kept the 25-second duration feeling active and professional. Specifically, Segment 3 used clip_002.mp4 as a structural anchor to preserve the rhythmic soul, preventing a pacing collapse early on.",
+    "didnt": "The library's low energy and missing human detail meant the edit couldn't reach a true emotional peak. This is evident in Segment 21, where I used clip_012.mp4 out of necessity rather than having a high-action payoff shot to land the mid-section focus.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Source high-energy payoff shots to resolve the current bottleneck in the library.",
+    "Capture human detail motifs to improve the emotional connection and depth of future edits.",
+    "Expand the library with high-intensity action clips to better support relentless pacing requirements."
+  ],
+  "clip_suggestions": [
+    "Adding human detail shots would bridge the emotional gap currently present in the library.",
+    "The edit would benefit from high-energy payoff clips to replace current structural fillers.",
+    "Including more action-oriented motifs would allow for better intensity peaks in the timeline.",
+    "The scarcity of high-energy clips suggests a need for more diverse energy levels in future uploads.",
+    "Adding substitutes for clip_002.mp4 and clip_004.mp4 would reduce the need for clip repetition in short edits."
+  ],
+  "technical": [
+    "Maintained a cool tone throughout the edit to ensure visual cohesion without external styling.",
+    "Executed a relentless pacing strategy to compensate for the library's energy scarcity.",
+    "Ensured all 43 segments were tightly synced to the rhythmic soul of the track for maximum impact."
+  ]
+}

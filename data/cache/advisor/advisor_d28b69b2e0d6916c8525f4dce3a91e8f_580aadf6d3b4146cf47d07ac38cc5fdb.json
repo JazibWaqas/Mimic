@@ -1,0 +1,113 @@
+{
+  "text_overlay_intent": "The text demands a high-prestige cinematic blockbuster aesthetic that balances star power with technical precision, framing the footage as a high-stakes narrative event rather than a simple sports highlight reel.",
+  "dominant_narrative": "The relentless pursuit of professional dominance and the high-stakes tension between human endurance and mechanical speed.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Technical details, urban establishing shots, and anticipation-building objects.",
+      "intent_diluting_material": "High-speed racing action or chaotic movement that spoils the later payoff.",
+      "reasoning": "The intro must establish the 'Star' and the 'Machine' in a state of preparation to create a narrative foundation for the speed to follow.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip52.mp4",
+        "clip74.mp4",
+        "clip63.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Pit crew activity, driver focus, training montages, and press event flashes.",
+      "intent_diluting_material": "Generic travel scenery or disconnected lifestyle shots that lack professional focus.",
+      "reasoning": "This stage bridges the gap between preparation and performance, using technical and human focus to ramp up the stakes.",
+      "recommended_clips": [
+        "clip53.mp4",
+        "clip65.mp4",
+        "clip73.mp4",
+        "clip67.mp4",
+        "clip69.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Crashes, high-speed overtakes, onboard perspectives, and crowd reactions.",
+      "intent_diluting_material": "Static shots, slow-motion without purpose, or long-duration clips that break the rhythmic montage.",
+      "reasoning": "The peak must be a relentless sensory assault of speed and danger, mirroring the 'Relentless' pacing of the reference video.",
+      "recommended_clips": [
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip76.mp4",
+        "clip55.mp4",
+        "clip54.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "Podium celebrations, victory hugs, and reflective moments of the driver walking away.",
+      "intent_diluting_material": "Continued high-speed racing or aggressive transitions that prevent emotional release.",
+      "reasoning": "The outro provides the narrative resolution, shifting from the kinetic energy of the race to the emotional payoff of the result.",
+      "recommended_clips": [
+        "clip77.mp4",
+        "clip70.mp4",
+        "clip61.mp4",
+        "clip50.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage perfectly matches the 'Action' vibe.",
+      "Strong presence of the primary subject (Brad Pitt/Drivers) in high-quality cinematic clips.",
+      "Excellent variety of night racing and fireworks to match the 'Filmic Teal-Orange' and 'Glow' aesthetic."
+    ],
+    "editorial_tradeoffs": [
+      "The scarcity of 'Low' energy clips means the 'Intro' and 'Outro' will feel more intense than the reference.",
+      "Limited 'Place-Nature' clips requires leaning heavily on 'Place-Urban' for establishing shots."
+    ],
+    "constraint_gaps": [
+      "Lack of extreme close-ups of driver eyes (as requested in Must-Have) requires using mid-shots of drivers to carry the same intent."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize a 'Human-Machine' duality, using the star-driven clips (Pitt/Idris) to anchor the technical spectacle. By front-loading the 'Intensity' of preparation and back-loading the 'Joy' of victory, the middle 'Action' peak will feel like a high-stakes narrative journey rather than a random montage.",
+  "remake_strategy": "To achieve a true Director's Cut, additional macro-photography of mechanical components and more 'Peace' category footage of the drivers in solitude would provide the necessary contrast to make the racing sequences feel even more explosive.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical start lights or engine ignition",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed impact or crash",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    },
+    {
+      "trigger": "Fireworks or camera flashes",
+      "desired_continuity": "Graphic-Match",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Driver eye contact or helmet adjustment",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T18:17:11.795447"
+}
