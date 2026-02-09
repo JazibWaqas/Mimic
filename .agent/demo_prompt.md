@@ -28,3 +28,6 @@ Create a warm childhood memory video that captures the joy and energy of being a
 
 
 prompt 3:
+Create a joyful childhood memory video that captures the innocence and happiness of being a kid. Start with warm, peaceful moments that make you smile. Build through candid laughter and playful energy as the music grows, letting the pacing gradually quicken—like how time feels faster as we grow up. Peak with pure celebration and movement, then end on a quiet, intimate moment of love that lingers and lets the emotion breathe. Make it feel like a memory you didn’t know you missed.
+
+Text overlay: “Oh, to be this young again.”
