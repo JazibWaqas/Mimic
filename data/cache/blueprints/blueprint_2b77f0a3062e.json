@@ -1,0 +1,144 @@
+{
+  "total_duration": 27.285351,
+  "editing_style": "Cinematic Nostalgia / Main Character Odyssey",
+  "emotional_intent": "To transform home footage into a profound family legacy that feels like a 35mm memory found in an attic.",
+  "plan_summary": "A four-stage emotional journey moving from wide-angle observation to intimate connection, peaking with raw childhood energy, and resolving in a long, soulful embrace.",
+  "style_config": {
+    "text": {
+      "font": "Inter",
+      "weight": 600,
+      "color": "#FFFFFF",
+      "shadow": true,
+      "position": "bottom",
+      "animation": "fade"
+    },
+    "color": {
+      "preset": "vintage"
+    },
+    "texture": {
+      "grain": true
+    }
+  },
+  "arc_description": "The edit begins with a slow, warm invitation, builds through tactile ground-level interaction, explodes into a high-vibrancy peak of joy, and settles into a deep, lingering emotional resolution.",
+  "text_overlay": "We didn't know we were making memories. We just knew we were having fun.",
+  "text_style": {
+    "font_style": "Sans-serif (Inter)",
+    "animation": "Soft Fade",
+    "placement": "Bottom-third",
+    "color_effects": "Warm White"
+  },
+  "color_grading": {
+    "tone": "Warm",
+    "contrast": "Medium-Low",
+    "specific_look": "35mm Film Grain / Attic Discovery"
+  },
+  "visual_effects": [
+    "film grain",
+    "light leaks",
+    "subtle bloom"
+  ],
+  "narrative_message": "Every childhood moment is a masterpiece of innocence and the foundation of a life's story.",
+  "intent_clarity": "Clear",
+  "assumed_material": [
+    "wide shots of children playing",
+    "low-angle floor shots",
+    "running/screaming joy",
+    "intimate hugs"
+  ],
+  "must_have_content": [
+    "wide-angle establishing shot",
+    "ground-level interaction",
+    "high-energy movement",
+    "long-hold embrace"
+  ],
+  "should_have_content": [
+    "tactile textures (carpet, grass)",
+    "unfiltered laughter",
+    "eye-contact moments"
+  ],
+  "avoid_content": [
+    "fast whip-pans",
+    "digital-looking sharpness",
+    "modern tech distractions"
+  ],
+  "pacing_feel": "Breathable and Reflective",
+  "visual_balance": "People-centric",
+  "peak_density": "Moderate",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 6.408,
+      "duration": 6.408,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "innocence, warmth",
+      "reasoning": "The Invitation: Establish the 'Purest Innocence' with a slow, wide observation. This allows the viewer to settle into the warmth of the light and the world of the child.",
+      "arc_stage": "Intro",
+      "shot_scale": "Wide",
+      "shot_function": "Establish",
+      "expected_hold": "Long",
+      "cut_origin": "visual",
+      "cde": "Sparse",
+      "emotional_guidance": "peaceful observation"
+    },
+    {
+      "id": 2,
+      "start": 6.408,
+      "end": 14.952,
+      "duration": 8.544,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "connection, tactile",
+      "reasoning": "The Spark of Connection: Move to ground-level magic. Focus on the tactile joy of the floor and shared laughter, creating an intimate bond between the viewer and the subject.",
+      "arc_stage": "Build-up",
+      "shot_scale": "Medium",
+      "shot_function": "Action",
+      "expected_hold": "Normal",
+      "cut_origin": "visual",
+      "cde": "Moderate",
+      "emotional_guidance": "growing warmth and connection"
+    },
+    {
+      "id": 3,
+      "start": 14.952,
+      "end": 21.36,
+      "duration": 6.408,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "vitality, joy",
+      "reasoning": "The Kinetic Soul: The peak of childhood vitality. Capture the 'Unfiltered Scream of Joy' with high-vibrancy energy and movement, even if chaotic.",
+      "arc_stage": "Peak",
+      "shot_scale": "Close",
+      "shot_function": "Reaction",
+      "expected_hold": "Normal",
+      "cut_origin": "beat",
+      "cde": "Moderate",
+      "emotional_guidance": "exhilarating joy"
+    },
+    {
+      "id": 4,
+      "start": 21.36,
+      "end": 27.285351,
+      "duration": 5.925351,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "love, reflection",
+      "reasoning": "The Anchor of Attachment: The 'Final Exhale'. A single, long, uninterrupted hold on an intimate embrace to serve as the emotional anchor of the entire edit.",
+      "arc_stage": "Outro",
+      "shot_scale": "Close",
+      "shot_function": "Release",
+      "expected_hold": "Long",
+      "cut_origin": "visual",
+      "cde": "Sparse",
+      "emotional_guidance": "profound love and closure"
+    }
+  ],
+  "text_prompt": "# THE MAIN CHARACTER CUT: A CHILDHOOD ODYSSEY\n\n**Editorial Philosophy:**\nSynthesize a cinematic masterpiece that proves these clips aren't just footage\u2014they are a family's legacy. This edit must feel like the \"Main Character\" moment of a life well-lived. Prioritize \"Soul\" and \"Emotional Rawness\" over technical polish.\n\n**Narrative Arc:**\n1. **The Invitation (Intro):** Start with a slow, wide-angle observation of childhood. Focus on the 'Purest Innocence'\u2014let the viewer settle into the warmth of the light.\n2. **The Spark of Connection (Build-up):** Transition into shared, ground-level magic. We want to see children rolling in laughter, literally down on their level\u2014capture the tactile joy of the carpet and the floor. (Note: Targets clip 81 perfectly).\n3. **The Kinetic Soul (The Peak):** Explode into raw, high-vibrancy energy. I want to see the \"Unfiltered Scream of Joy\"\u2014even if the camera is moving or the moments are chaotic, the energy must be undeniable. This is the peak of childhood vitality. (Note: Targets clip 102's unique energy).\n4. **The Anchor of Attachment (The Outro):** Conclude with the ultimate emotional anchor. A single, intimate embrace that defines childhood love. This final shot MUST be a long, uninterrupted hold that lets the hug breathe until the very last frame. Treat this as the \"Final Exhale\" of the memory. (Note: Targets clip 95's reflection moment).\n\n**Tactical Intelligence Rules:**\n- **Pacing:** Sparse CDE for the Intro/Outro (Long Breaths). Dense CDE for the Peak.\n- **Text Overlay (Subtle/Elegant):** \"We didn't know we were making memories. We just knew we were having fun.\"\n- **Vibe Bridge:** Prioritize 'Intimacy' and 'Pure Affection' as the strongest signals.\n- **Visuals:** Warm tones. Film grain. Make it feel like 35mm film found in an attic.\n\n**Overall Feeling:** \nSmiling through tears. Precious. Profoundly human. A reminder that everyone is the main character of their own story.",
+  "contract": {
+    "type": "blueprint",
+    "version": "12.1",
+    "source": "text_prompt",
+    "timestamp": "2026-02-09 18:55:32"
+  }
+}
