@@ -31,7 +31,7 @@ Total Decisions: 13
        Usage: 1x | Energy: High | Duration: 29.9s
        Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
        Moments used:
-         [1] 17.50s - 20.20s (2.70s)
+         [1] 17.50s - 19.83s (2.33s)
 
   ✅ USED  clip81.mp4
        Usage: 1x | Energy: High | Duration: 36.4s
@@ -43,37 +43,37 @@ Total Decisions: 13
        Usage: 1x | Energy: High | Duration: 70.2s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 23.50s - 24.53s (1.03s)
+         [1] 23.50s - 24.90s (1.40s)
 
   ✅ USED  clip83.mp4
        Usage: 1x | Energy: High | Duration: 9.3s
        Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
        Moments used:
-         [1] 0.00s - 1.73s (1.73s)
+         [1] 0.00s - 1.70s (1.70s)
 
   ✅ USED  clip84.mp4
        Usage: 1x | Energy: High | Duration: 28.4s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 8.50s - 10.27s (1.77s)
+         [1] 8.50s - 10.40s (1.90s)
 
   ✅ USED  clip85.mp4
        Usage: 1x | Energy: High | Duration: 43.0s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 38.20s - 39.80s (1.60s)
+         [1] 38.20s - 39.87s (1.67s)
 
   ✅ USED  clip86.mp4
        Usage: 1x | Energy: High | Duration: 32.0s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 14.50s - 16.17s (1.67s)
+         [1] 14.50s - 16.13s (1.63s)
 
   ✅ USED  clip87.mp4
        Usage: 1x | Energy: High | Duration: 22.3s
        Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
        Moments used:
-         [1] 18.20s - 20.00s (1.80s)
+         [1] 18.20s - 19.87s (1.67s)
 
   ✅ USED  clip88.mp4
        Usage: 1x | Energy: High | Duration: 280.4s
@@ -178,21 +178,21 @@ Total Decisions: 13
         Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Intro stag...
   [03]   5.33s-  7.67s (2.33s) | clip_001.mp4         [40.50s-42.83s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [04]   7.67s- 10.37s (2.70s) | clip_002.mp4         [17.50s-20.20s]
+  [04]   7.67s- 10.00s (2.33s) | clip_002.mp4         [17.50s-19.83s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [05]  10.37s- 12.87s (2.50s) | clip_003.mp4         [ 3.00s- 5.50s]
+  [05]  10.00s- 12.50s (2.50s) | clip_003.mp4         [ 3.00s- 5.50s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [06]  12.87s- 13.90s (1.03s) | clip_004.mp4         [23.50s-24.53s]
+  [06]  12.50s- 13.90s (1.40s) | clip_004.mp4         [23.50s-24.90s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [07]  13.90s- 15.63s (1.73s) | clip_005.mp4         [ 0.00s- 1.73s]
+  [07]  13.90s- 15.60s (1.70s) | clip_005.mp4         [ 0.00s- 1.70s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [08]  15.63s- 17.40s (1.77s) | clip_006.mp4         [ 8.50s-10.27s]
+  [08]  15.60s- 17.50s (1.90s) | clip_006.mp4         [ 8.50s-10.40s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [09]  17.40s- 19.00s (1.60s) | clip_007.mp4         [38.20s-39.80s]
+  [09]  17.50s- 19.17s (1.67s) | clip_007.mp4         [38.20s-39.87s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [10]  19.00s- 20.67s (1.67s) | clip_008.mp4         [14.50s-16.17s]
+  [10]  19.17s- 20.80s (1.63s) | clip_008.mp4         [14.50s-16.13s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
-  [11]  20.67s- 22.47s (1.80s) | clip_009.mp4         [18.20s-20.00s]
+  [11]  20.80s- 22.47s (1.67s) | clip_009.mp4         [18.20s-19.87s]
         Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
   [12]  22.47s- 26.47s (4.00s) | clip_013.mp4         [19.00s-23.00s]
         Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
