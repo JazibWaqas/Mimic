@@ -381,10 +381,10 @@ export default function StudioPage() {
                   Studio
                 </h1>
               </div>
-              <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">AI Creative Engine</p>
+              <p className="text-[12px] font-black text-indigo-400 uppercase tracking-[0.3em] ml-10">AI Creative Engine</p>
             </div>
             <div className="space-y-1.5 ml-10 border-l-2 border-white/5 pl-6 py-1">
-              <p className="text-xs text-slate-400 leading-relaxed font-medium">
+              <p className="text-[14px] text-slate-400 leading-relaxed font-medium">
                 MIMIC is a translation engine that uses Gemini 3's power to convert human creative intent into deterministic editorial structure, executes under real-world constraints, and explains the outcome transparently.
               </p>
             </div>

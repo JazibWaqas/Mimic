@@ -682,8 +682,8 @@ export default function VaultPage() {
                                             <Compass className="h-4 w-4" />
                                         </div>
                                         <div className="text-left">
-                                            <h3 className="text-[11px] font-black text-white uppercase tracking-[0.25em]">Advisor Diagnosis</h3>
-                                            <p className="text-[8px] font-bold text-indigo-400 uppercase tracking-widest mt-0.5">Executive Verdict</p>
+                                            <h3 className="text-[13px] font-black text-white uppercase tracking-[0.25em]">Advisor Diagnosis</h3>
+                                            <p className="text-[11px] font-bold text-indigo-400 uppercase tracking-widest mt-0.5">Executive Verdict</p>
                                         </div>
                                     </div>
                                     {advisorExpanded ? <ChevronUp className="h-4 w-4 text-indigo-400" /> : <ChevronDown className="h-4 w-4 text-indigo-400" />}
@@ -693,12 +693,12 @@ export default function VaultPage() {
                                     <div className="px-5 pb-5 pt-0 space-y-3 animate-in slide-in-from-top-2">
                                         {(intelligence?.vault_report?.executive_summary || []).length > 0 && (
                                             <div className="p-4 rounded-2xl bg-black/20 border border-white/5">
-                                                <p className="text-[9px] font-black text-indigo-400 uppercase tracking-widest mb-2">Executive Summary</p>
+                                                <p className="text-[12px] font-black text-indigo-400 uppercase tracking-widest mb-2">Executive Summary</p>
                                                 <div className="space-y-2">
                                                     {(intelligence?.vault_report?.executive_summary || []).slice(0, 6).map((item: string, i: number) => (
                                                         <div key={i} className="flex items-start gap-2">
                                                             <span className="text-indigo-400/60 mt-[2px]">•</span>
-                                                            <p className="text-[12px] text-slate-300 leading-relaxed">{item}</p>
+                                                            <p className="text-[14px] text-slate-300 leading-relaxed">{item}</p>
                                                         </div>
                                                     ))}
                                                 </div>
@@ -738,8 +738,8 @@ export default function VaultPage() {
                                             <BarChart3 className="h-5 w-5" />
                                         </div>
                                         <div className="text-left">
-                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Friction Timeline</h3>
-                                            <p className="text-[9px] font-bold text-amber-500/60 uppercase tracking-widest mt-0.5">Temporal Self-Awareness</p>
+                                            <h3 className="text-[14px] font-black text-white uppercase tracking-[0.25em]">Friction Timeline</h3>
+                                            <p className="text-[12px] font-bold text-amber-500/60 uppercase tracking-widest mt-0.5">Temporal Self-Awareness</p>
                                         </div>
                                     </div>
                                     {frictionExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
@@ -749,14 +749,14 @@ export default function VaultPage() {
                                     <div className="p-6 pt-0 space-y-3 animate-in slide-in-from-top-2">
                                         {intelligence?.vault_report?.friction_log?.map((entry: string, i: number) => (
                                             <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
-                                                <span className="text-[9px] font-black text-amber-500/80 uppercase tracking-wider shrink-0">
+                                                <span className="text-[11px] font-black text-amber-500/80 uppercase tracking-wider shrink-0">
                                                     {i === 0
                                                         ? "START"
                                                         : i === ((intelligence?.vault_report?.friction_log || []).length - 1)
                                                             ? "END"
                                                             : "MID"}
                                                 </span>
-                                                <p className="text-[12px] text-slate-400 leading-relaxed">{entry}</p>
+                                                <p className="text-[14px] text-slate-400 leading-relaxed">{entry}</p>
                                             </div>
                                         )) || <p className="text-[11px] text-slate-500 italic">No friction entries recorded</p>}
                                     </div>
@@ -774,8 +774,8 @@ export default function VaultPage() {
                                             <Footprints className="h-5 w-5" />
                                         </div>
                                         <div className="text-left">
-                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Recommended Next Steps</h3>
-                                            <p className="text-[9px] font-bold text-cyan-500/60 uppercase tracking-widest mt-0.5">Turn Critique Into Action</p>
+                                            <h3 className="text-[14px] font-black text-white uppercase tracking-[0.25em]">Recommended Next Steps</h3>
+                                            <p className="text-[11px] font-bold text-cyan-500/60 uppercase tracking-widest mt-0.5">Turn Critique Into Action</p>
                                         </div>
                                     </div>
                                     {nextStepsExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
@@ -786,8 +786,8 @@ export default function VaultPage() {
                                         <div className="space-y-2">
                                             {intelligence?.vault_report?.next_steps?.map((step: string, i: number) => (
                                                 <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
-                                                    <span className="text-[10px] font-black text-cyan-400/80 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                                                    <p className="text-[12px] text-slate-400 leading-relaxed">{step}</p>
+                                                    <span className="text-[12px] font-black text-cyan-400/80 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                                                    <p className="text-[14px] text-slate-400 leading-relaxed">{step}</p>
                                                 </div>
                                             )) || <p className="text-[11px] text-slate-500 italic">No next steps defined</p>}
                                         </div>
@@ -805,8 +805,8 @@ export default function VaultPage() {
                                             <Sparkles className="h-5 w-5" />
                                         </div>
                                         <div className="text-left">
-                                            <h3 className="text-[12px] font-black text-white uppercase tracking-[0.25em]">Clip Suggestions</h3>
-                                            <p className="text-[9px] font-bold text-violet-500/60 uppercase tracking-widest mt-0.5">Library Curation Guidance</p>
+                                            <h3 className="text-[14px] font-black text-white uppercase tracking-[0.25em]">Clip Suggestions</h3>
+                                            <p className="text-[10px] font-bold text-violet-500/60 uppercase tracking-widest mt-0.5">Library Curation Guidance</p>
                                         </div>
                                     </div>
                                     {intelExpanded ? <ChevronUp className="h-4 w-4 text-slate-500" /> : <ChevronDown className="h-4 w-4 text-slate-500" />}
@@ -816,12 +816,12 @@ export default function VaultPage() {
                                         <div className="space-y-2">
                                             {intelligence?.vault_report?.clip_suggestions?.map((s: string, i: number) => (
                                                 <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-black/20 border border-white/5">
-                                                    <span className="text-[10px] font-black text-violet-300/80 shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                                                    <p className="text-[12px] text-slate-400 leading-relaxed">{s}</p>
+                                                    <span className="text-[11px] font-black text-violet-300/80 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                                                    <p className="text-[14px] text-slate-400 leading-relaxed">{s}</p>
                                                 </div>
-                                            )) || <p className="text-[11px] text-slate-500 italic">No clip suggestions generated</p>}
+                                            )) || <p className="text-[13px] text-slate-500 italic">No clip suggestions generated</p>}
                                         </div>
-                                        <button className="mt-4 w-full h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-300 font-black text-[10px] uppercase tracking-widest hover:bg-violet-500/20 transition-all">
+                                        <button className="mt-4 w-full h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-300 font-black text-[12px] uppercase tracking-widest hover:bg-violet-500/20 transition-all">
                                             Retry with Better Clips
                                         </button>
                                     </div>
