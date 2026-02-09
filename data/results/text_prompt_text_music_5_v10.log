@@ -1,0 +1,10 @@
+================================================================================
+PIPELINE RUN: TEXT_PROMPT
+================================================================================
+Session ID: text_music_5f56868f415c827a3bed08491d86e0ad
+Reference: None (Creator Mode)
+Clips: 24
+Timestamp: 2026-02-10 02:36:40
+
+
+[PIPELINE] EXCEPTION after 0.0s: local variable 'os' referenced before assignment

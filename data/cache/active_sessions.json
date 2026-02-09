@@ -8024,6 +8024,7 @@
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip59.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip60.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip61.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip62.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip63.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip64.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip65.mp4",
@@ -8038,16 +8039,17 @@
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip74.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip75.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip76.mp4",
-      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip77.mp4"
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip77.mp4",
+      "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip78.mp4"
     ],
     "status": "complete",
     "progress": 1.0,
     "logs": [
       "[PIPELINE] STARTING NEW PIPELINE RUN",
       "[PIPELINE] Session ID: sess_c4d540b5c05f15dc86ee75d4495a4d21",
-      "[PIPELINE] Timestamp: 2026-02-09 23:06:34",
+      "[PIPELINE] Timestamp: 2026-02-10 01:54:08",
       "[PIPELINE] Reference: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\reference\\ref22.mp4",
-      "[PIPELINE] Clips (28): ['C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip49.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip50.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip51.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip52.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip53.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip54.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip55.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip56.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip57.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip58.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip59.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip60.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip61.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip63.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip64.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip65.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip66.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip67.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip68.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip69.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip70.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip71.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip72.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip73.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip74.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip75.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip76.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip77.mp4']",
+      "[PIPELINE] Clips (30): ['C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip49.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip50.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip51.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip52.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip53.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip54.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip55.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip56.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip57.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip58.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip59.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip60.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip61.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip62.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip63.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip64.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip65.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip66.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip67.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip68.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip69.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip70.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip71.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip72.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip73.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip74.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip75.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip76.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip77.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip78.mp4']",
       "[PIPELINE] Running pipeline with Gemini...",
       "[PROGRESS] Step 1/5: Validating inputs...",
       "[PROGRESS] Step 2/5: Detecting visual cuts and analyzing reference structure...",
@@ -8084,34 +8086,36 @@
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
-      "[OK] All 28 clips analyzed in parallel",
-      "[OK] Gemini successfully analyzed 28 clips (using originals for cache).",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "[OK] All 30 clips analyzed in parallel",
+      "[OK] Gemini successfully analyzed 30 clips (using originals for cache).",
       "\u2705 Library Health: 94.3% readiness",
       "[OK] All clips standardized (cached or new) and ready for render.",
       "[PROGRESS] Step 4/5: Creating edit sequence...",
-      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
-      "\u2705 Advisor hints generated and cached",
+      "\u2705 Loaded from cache: advisor_03f8cedf8fb84a5f58382b4e37705248_9091fb9794431ae10043ac14e50efb78.json",
       "\u2705 Advisor enabled: Strategic guidance active",
       "\u2705 Active beat grid: 47 points",
       "[OK] Matching complete: 17 edit decisions",
       "[OK] Total timeline duration: 20.40s (target: 20.40s)",
+      "\u2705 NO CLIPS REPEATED! Perfect diversity achieved.",
       "[PROGRESS] Step 5/5: Rendering final video...",
       "[OK] Segment extracted: 6.50s + 4.60s -> 4.60s",
-      "[OK] Segment extracted: 3.00s + 1.03s -> 1.03s",
+      "[OK] Segment extracted: 1.50s + 1.03s -> 1.03s",
       "[OK] Segment extracted: 10.00s + 1.00s -> 1.00s",
       "[OK] Segment extracted: 6.00s + 0.50s -> 0.50s",
-      "[OK] Segment extracted: 0.00s + 0.53s -> 0.53s",
-      "[OK] Segment extracted: 5.50s + 0.50s -> 0.50s",
+      "[OK] Segment extracted: 15.00s + 0.53s -> 0.53s",
+      "[OK] Segment extracted: 2.50s + 0.50s -> 0.50s",
       "[OK] Segment extracted: 3.50s + 3.07s -> 3.07s",
-      "[OK] Segment extracted: 15.00s + 1.03s -> 1.03s",
+      "[OK] Segment extracted: 0.00s + 1.03s -> 1.03s",
       "[OK] Segment extracted: 6.00s + 0.50s -> 0.50s",
       "[OK] Segment extracted: 2.20s + 1.03s -> 1.03s",
       "[OK] Segment extracted: 0.00s + 1.00s -> 1.00s",
-      "[OK] Segment extracted: 5.50s + 0.53s -> 0.53s",
+      "[OK] Segment extracted: 1.50s + 0.53s -> 0.53s",
       "[OK] Segment extracted: 5.50s + 1.03s -> 1.03s",
-      "[OK] Segment extracted: 0.00s + 1.00s -> 1.00s",
-      "[OK] Segment extracted: 3.00s + 0.50s -> 0.50s",
-      "[OK] Segment extracted: 0.50s + 0.53s -> 0.53s",
+      "[OK] Segment extracted: 13.50s + 1.00s -> 1.00s",
+      "[OK] Segment extracted: 17.50s + 0.50s -> 0.50s",
+      "[OK] Segment extracted: 3.00s + 0.53s -> 0.53s",
       "[OK] Segment extracted: 0.00s + 2.00s -> 2.00s",
       "[OK] Concatenated 17 segments (frame-perfect)",
       "[WARN] Concat duration 20.77s differs from blueprint 20.40s (drift: +0.37s)",
@@ -8121,18 +8125,17 @@
       "\u2705 TIMELINE INTEGRITY: No gaps or overlaps detected (all within 0.001s tolerance)",
       "\u2705 STRENGTHS:",
       "[PROGRESS] Step 6/6: Generating Vault intelligence report...",
-      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "\u2705 Vault Report generated.",
-      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v7.json (110216 bytes)",
-      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v7.log",
-      "[PIPELINE] SUCCESS - Pipeline completed in 79.7s",
-      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v7.mp4"
+      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v8.json (113731 bytes)",
+      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v8.log",
+      "[PIPELINE] SUCCESS - Pipeline completed in 18.6s",
+      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v8.mp4"
     ],
-    "iteration": 7,
-    "created_at": 1770660393.7397382,
+    "iteration": 8,
+    "created_at": 1770670448.1113222,
     "current_step": "Generating Vault intelligence report...",
-    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v7.mp4",
-    "thumbnail_url": "/api/files/thumbnails/thumb_24ac03ac1df264fa8cd6a3bc97222633.jpg",
+    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref22_sess_c4d540b_v8.mp4",
+    "thumbnail_url": "/api/files/thumbnails/thumb_911e3ae0a209ed196e4d896d95ff834a.jpg",
     "blueprint": {
       "total_duration": 20.4,
       "segments": [
@@ -9696,8 +9699,70 @@
           "best_moment_end": null
         },
         {
-          "filename": "clip63.mp4",
+          "filename": "clip62.mp4",
           "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_014.mp4",
+          "duration": 3.096,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 2,
+          "primary_subject": [
+            "People-Solo"
+          ],
+          "narrative_utility": [
+            "Build",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Dramatic"
+          ],
+          "clip_quality": 4,
+          "best_for": [
+            "Dramatic montages",
+            "Sports training sequences",
+            "Character introductions"
+          ],
+          "avoid_for": [
+            "Joyful celebrations",
+            "Peaceful nature scenes"
+          ],
+          "vibes": [
+            "Solo"
+          ],
+          "content_description": "A cinematic montage of a man reflecting and training for boxing.",
+          "best_moments": {
+            "High": {
+              "start": 2.5,
+              "end": 3.096,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Fast-paced boxing training with high physical intensity and rapid cuts."
+            },
+            "Medium": {
+              "start": 1.0,
+              "end": 2.5,
+              "moment_role": "Transition",
+              "stable_moment": true,
+              "reason": "Walking sequence with steady camera tracking and moderate movement."
+            },
+            "Low": {
+              "start": 0.0,
+              "end": 1.0,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "Initial contemplative close-up with minimal subject movement."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "919004077f225db547cebb84a8aa6ad5"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip63.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_015.mp4",
           "duration": 8.73,
           "energy": "Medium",
           "motion": "Dynamic",
@@ -9762,7 +9827,7 @@
         },
         {
           "filename": "clip64.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_015.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_016.mp4",
           "duration": 4.433,
           "energy": "Medium",
           "motion": "Dynamic",
@@ -9827,7 +9892,7 @@
         },
         {
           "filename": "clip65.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_016.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_017.mp4",
           "duration": 31.792,
           "energy": "High",
           "motion": "Dynamic",
@@ -9893,7 +9958,7 @@
         },
         {
           "filename": "clip66.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_017.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_018.mp4",
           "duration": 3.05,
           "energy": "High",
           "motion": "Dynamic",
@@ -9958,7 +10023,7 @@
         },
         {
           "filename": "clip67.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_018.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_019.mp4",
           "duration": 13.865,
           "energy": "High",
           "motion": "Dynamic",
@@ -10023,7 +10088,7 @@
         },
         {
           "filename": "clip68.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_019.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_020.mp4",
           "duration": 17.158,
           "energy": "High",
           "motion": "Dynamic",
@@ -10089,7 +10154,7 @@
         },
         {
           "filename": "clip69.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_020.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_021.mp4",
           "duration": 10.736,
           "energy": "High",
           "motion": "Dynamic",
@@ -10155,7 +10220,7 @@
         },
         {
           "filename": "clip70.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_021.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_022.mp4",
           "duration": 15.857,
           "energy": "High",
           "motion": "Dynamic",
@@ -10220,7 +10285,7 @@
         },
         {
           "filename": "clip71.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_022.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_023.mp4",
           "duration": 3.968,
           "energy": "High",
           "motion": "Dynamic",
@@ -10286,7 +10351,7 @@
         },
         {
           "filename": "clip72.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_023.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_024.mp4",
           "duration": 8.185,
           "energy": "High",
           "motion": "Dynamic",
@@ -10352,7 +10417,7 @@
         },
         {
           "filename": "clip73.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_024.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_025.mp4",
           "duration": 3.011,
           "energy": "High",
           "motion": "Dynamic",
@@ -10415,7 +10480,7 @@
         },
         {
           "filename": "clip74.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_025.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_026.mp4",
           "duration": 3.086417,
           "energy": "High",
           "motion": "Dynamic",
@@ -10478,7 +10543,7 @@
         },
         {
           "filename": "clip75.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_026.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_027.mp4",
           "duration": 4.923,
           "energy": "High",
           "motion": "Dynamic",
@@ -10543,7 +10608,7 @@
         },
         {
           "filename": "clip76.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_027.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_028.mp4",
           "duration": 18.741,
           "energy": "High",
           "motion": "Dynamic",
@@ -10609,7 +10674,7 @@
         },
         {
           "filename": "clip77.mp4",
-          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_028.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_029.mp4",
           "duration": 11.314,
           "energy": "High",
           "motion": "Dynamic",
@@ -10669,6 +10734,72 @@
             "type": "clip",
             "version": "7.0",
             "source_hash": "a64c6ea34a1d312b39bb21b76da8fea7"
+          },
+          "best_moment_start": null,
+          "best_moment_end": null
+        },
+        {
+          "filename": "clip78.mp4",
+          "filepath": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\temp\\sess_c4d540b5c05f15dc86ee75d4495a4d21\\standardized\\clip_030.mp4",
+          "duration": 48.071,
+          "energy": "High",
+          "motion": "Dynamic",
+          "intensity": 3,
+          "primary_subject": [
+            "People-Group",
+            "Object-Vehicle"
+          ],
+          "narrative_utility": [
+            "Peak",
+            "Build",
+            "Reflection"
+          ],
+          "emotional_tone": [
+            "Energetic",
+            "Joyful"
+          ],
+          "clip_quality": 5,
+          "best_for": [
+            "High-energy sports montages",
+            "Climactic victory sequences",
+            "Fast-paced trailers"
+          ],
+          "avoid_for": [
+            "Quiet ambient backgrounds",
+            "Instructional content"
+          ],
+          "vibes": [
+            "Group",
+            "Vehicle"
+          ],
+          "content_description": "A cinematic montage showcasing the intensity of Formula 1 racing followed by explosive victory celebrations and fireworks.",
+          "best_moments": {
+            "High": {
+              "start": 7.5,
+              "end": 11.0,
+              "moment_role": "Climax",
+              "stable_moment": true,
+              "reason": "Peak emotional intensity with screaming celebration and vibrant fireworks in the background."
+            },
+            "Medium": {
+              "start": 17.5,
+              "end": 20.5,
+              "moment_role": "Build",
+              "stable_moment": true,
+              "reason": "Joyful interaction between drivers showing camaraderie and relief after a race."
+            },
+            "Low": {
+              "start": 24.5,
+              "end": 27.5,
+              "moment_role": "Reflection",
+              "stable_moment": true,
+              "reason": "A quiet, emotional close-up of a man's face, providing a contemplative end to the high-energy sequence."
+            }
+          },
+          "contract": {
+            "type": "clip",
+            "version": "7.0",
+            "source_hash": "bb7845d837c7a7f6a6c24346204440a1"
           },
           "best_moment_start": null,
           "best_moment_end": null
@@ -45745,7 +45876,7 @@
     "logs": [
       "[PIPELINE] STARTING NEW PIPELINE RUN",
       "[PIPELINE] Session ID: sess_3d5c2ddcbb641b1879f096b668cc3f04",
-      "[PIPELINE] Timestamp: 2026-02-09 23:25:49",
+      "[PIPELINE] Timestamp: 2026-02-10 02:25:51",
       "[PIPELINE] Reference: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\reference\\ref26.mp4",
       "[PIPELINE] Clips (30): ['C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip49.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip50.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip51.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip52.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip53.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip54.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip55.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip56.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip57.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip58.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip59.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip60.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip61.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip62.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip63.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip64.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip65.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip66.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip67.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip68.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip69.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip70.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip71.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip72.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip73.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip74.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip75.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip76.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip77.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip78.mp4']",
       "[PIPELINE] Running pipeline with Gemini...",
@@ -45875,15 +46006,15 @@
       "\u2705 STRENGTHS:",
       "[PROGRESS] Step 6/6: Generating Vault intelligence report...",
       "\u2705 Vault Report generated.",
-      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v3.json (222256 bytes)",
-      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v3.log",
-      "[PIPELINE] SUCCESS - Pipeline completed in 29.5s",
-      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v3.mp4"
+      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v4.json (222256 bytes)",
+      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v4.log",
+      "[PIPELINE] SUCCESS - Pipeline completed in 28.3s",
+      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v4.mp4"
     ],
-    "iteration": 3,
-    "created_at": 1770661548.5560288,
+    "iteration": 4,
+    "created_at": 1770672351.595228,
     "current_step": "Generating Vault intelligence report...",
-    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v3.mp4",
+    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\ref26_sess_3d5c2dd_v4.mp4",
     "thumbnail_url": "/api/files/thumbnails/thumb_c3ff3f3feedb7638cd66dc47ff0aca96.jpg",
     "blueprint": {
       "total_duration": 35.4,
@@ -72291,7 +72422,7 @@
   },
   "text_music_5f56868f415c827a3bed08491d86e0ad": {
     "reference_path": null,
-    "music_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\music\\raabtashorter.mp4",
+    "music_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\music\\raabta.mp4",
     "clip_paths": [
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip79.mp4",
       "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\samples\\clips\\clip80.mp4",
@@ -72323,7 +72454,7 @@
     "logs": [
       "[PIPELINE] STARTING NEW PIPELINE RUN",
       "[PIPELINE] Session ID: text_music_5f56868f415c827a3bed08491d86e0ad",
-      "[PIPELINE] Timestamp: 2026-02-09 23:56:17",
+      "[PIPELINE] Timestamp: 2026-02-10 02:38:24",
       "[PIPELINE] Reference: None",
       "[PIPELINE] Clips (24): ['C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip79.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip80.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip81.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip82.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip83.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip84.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip85.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip86.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip87.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip88.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip89.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip91.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip92.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip93.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip94.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip95.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip96.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip97.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip98.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip99.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip100.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip101.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip102.mp4', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\data\\\\samples\\\\clips\\\\clip103.mp4']",
       "[PIPELINE] Running pipeline with Gemini...",
@@ -72361,27 +72492,27 @@
       "\u2705 Library Health: 79.2% readiness",
       "[OK] All clips standardized (cached or new) and ready for render.",
       "[PROGRESS] Step 4/5: Creating edit sequence...",
-      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
-      "\u2705 Advisor hints generated and cached",
+      "\u2705 Loaded from cache: advisor_5891d8a6b29cc9ac9dd7c4d48230ef22_9b8e56c2964dfbac90b517c775938618.json",
       "\u2705 Advisor enabled: Strategic guidance active",
-      "[OK] Matching complete: 12 edit decisions",
+      "[OK] Matching complete: 13 edit decisions",
       "[OK] Total timeline duration: 27.30s (target: 27.30s)",
       "\u2705 NO CLIPS REPEATED! Perfect diversity achieved.",
       "[PROGRESS] Step 5/5: Rendering final video...",
-      "[OK] Segment extracted: 18.50s + 2.73s -> 2.73s",
-      "[OK] Segment extracted: 22.00s + 2.60s -> 2.60s",
-      "[OK] Segment extracted: 4.00s + 2.53s -> 2.53s",
-      "[OK] Segment extracted: 4.00s + 2.50s -> 2.50s",
-      "[OK] Segment extracted: 40.50s + 2.30s -> 2.30s",
-      "[OK] Segment extracted: 4.00s + 1.23s -> 1.23s",
-      "[OK] Segment extracted: 10.20s + 1.87s -> 1.87s",
-      "[OK] Segment extracted: 6.20s + 1.67s -> 1.67s",
-      "[OK] Segment extracted: 44.20s + 1.87s -> 1.87s",
-      "[OK] Segment extracted: 8.50s + 1.90s -> 1.90s",
-      "[OK] Segment extracted: 38.20s + 1.23s -> 1.23s",
-      "[OK] Segment extracted: 0.00s + 4.87s -> 4.87s",
-      "[OK] Concatenated 12 segments (frame-perfect)",
-      "[WARN] Concat duration 27.57s differs from blueprint 27.30s (drift: +0.27s)",
+      "[OK] Segment extracted: 0.00s + 4.00s -> 4.00s",
+      "[OK] Segment extracted: 0.00s + 1.33s -> 1.33s",
+      "[OK] Segment extracted: 40.50s + 2.33s -> 2.33s",
+      "[OK] Segment extracted: 17.50s + 2.53s -> 2.53s",
+      "[OK] Segment extracted: 3.00s + 2.50s -> 2.50s",
+      "[OK] Segment extracted: 23.50s + 1.20s -> 1.20s",
+      "[OK] Segment extracted: 0.00s + 1.83s -> 1.83s",
+      "[OK] Segment extracted: 8.50s + 1.83s -> 1.83s",
+      "[OK] Segment extracted: 38.20s + 1.70s -> 1.70s",
+      "[OK] Segment extracted: 14.50s + 1.70s -> 1.70s",
+      "[OK] Segment extracted: 18.20s + 1.50s -> 1.50s",
+      "[OK] Segment extracted: 19.00s + 4.00s -> 4.00s",
+      "[OK] Segment extracted: 19.00s + 0.83s -> 0.83s",
+      "[OK] Concatenated 13 segments (frame-perfect)",
+      "[WARN] Concat duration 27.60s differs from blueprint 27.30s (drift: +0.30s)",
       "[WARN] Stylist failed (likely FFmpeg syntax/missing font), falling back to unstylized: Command '['ffmpeg', '-y', '-i', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\temp\\\\text_music_5f56868f415c827a3bed08491d86e0ad\\\\temp_video.mp4', '-vf', \"eq=saturation=1.1:brightness=0.02,colorbalance=rh=0.08:gh=0.04:bh=-0.04,noise=alls=7:allf=t+u,drawtext=text='Oh to be this young again.':x=(w-text_w)/2:y=(h*0.8 - (1 * 63.0/2)) + 0.0:fontsize=42:fontcolor=0xFFFFFF:fontfile='C:/Windows/Fonts/arial.ttf':shadowcolor=black@0.6:shadowx=2:shadowy=2\", '-c:v', 'libx264', '-preset', 'ultrafast', '-crf', '23', '-c:a', 'copy', 'C:\\\\Users\\\\OMNIBOOK\\\\Documents\\\\GitHub\\\\Mimic\\\\temp\\\\text_music_5f56868f415c827a3bed08491d86e0ad\\\\temp_video_styled.mp4']' returned non-zero exit status 4294967274.",
       "[OK] Audio extracted: ref_audio.aac",
       "[OK] Audio merged onto video (optimized)",
@@ -72390,17 +72521,18 @@
       "\u2705 STRENGTHS:",
       "[PROGRESS] Step 6/6: Generating Vault intelligence report...",
       "[OK] Using Gemini 3 model: gemini-3-flash-preview",
+      "[OK] Using Gemini 3 model: gemini-3-flash-preview",
       "\u2705 Vault Report generated.",
-      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v7.json (78747 bytes)",
-      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v7.log",
-      "[PIPELINE] SUCCESS - Pipeline completed in 156.6s",
-      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v7.mp4"
+      "[OK] Intelligence report saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v9.json (79632 bytes)",
+      "[OK] Analysis log saved: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v9.log",
+      "[PIPELINE] SUCCESS - Pipeline completed in 49.8s",
+      "[PIPELINE] Output: C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v9.mp4"
     ],
-    "iteration": 7,
-    "created_at": 1770663377.6809983,
+    "iteration": 9,
+    "created_at": 1770673104.0513773,
     "current_step": "Generating Vault intelligence report...",
-    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v7.mp4",
-    "thumbnail_url": "/api/files/thumbnails/thumb_23fcdf68261ef488879ce4a7101d1b78.jpg",
+    "output_path": "C:\\Users\\OMNIBOOK\\Documents\\GitHub\\Mimic\\data\\results\\text_prompt_text_music_5_v9.mp4",
+    "thumbnail_url": "/api/files/thumbnails/thumb_ba996eb6046bf618365da328ca02cfdb.jpg",
     "blueprint": {
       "total_duration": 27.3,
       "segments": [
@@ -72411,8 +72543,8 @@
           "duration": 5.333333333333333,
           "energy": "Low",
           "motion": "Static",
-          "vibe": "peace, warmth",
-          "reasoning": "Establishes the 'dreamlike' quality of memory with long holds. Aligns with the first 2.5 musical phrases.",
+          "vibe": "peace, innocence",
+          "reasoning": "Establishes the 'memory' feel with a long, stable hold. This aligns with the first 2.5 musical phrases to let the viewer settle into the world.",
           "arc_stage": "Intro",
           "shot_scale": "Wide",
           "shot_function": "Establish",
@@ -72439,8 +72571,8 @@
           "duration": 8.566666666666666,
           "energy": "Medium",
           "motion": "Dynamic",
-          "vibe": "laughter, play",
-          "reasoning": "Introduces movement and interaction to mirror the quickening of time. Spans exactly 4 musical phrases.",
+          "vibe": "joy, playfulness",
+          "reasoning": "The music begins to build. We introduce candid laughter and movement, increasing the cut frequency slightly to match the rising energy of childhood play.",
           "arc_stage": "Build-up",
           "shot_scale": "Medium",
           "shot_function": "Action",
@@ -72463,19 +72595,19 @@
         {
           "id": 3,
           "start": 13.9,
-          "end": 22.433333333333334,
-          "duration": 8.533333333333333,
+          "end": 22.466666666666665,
+          "duration": 8.566666666666665,
           "energy": "High",
           "motion": "Dynamic",
-          "vibe": "celebration, freedom",
-          "reasoning": "The emotional climax where the music and visuals reach their most vibrant state. Uses 4 phrases to sustain the peak.",
+          "vibe": "celebration, vitality",
+          "reasoning": "The emotional peak. This segment captures the 'fast' feeling of growing up with more movement and vibrant action, timed to the strongest musical phrases.",
           "arc_stage": "Peak",
           "shot_scale": "Medium",
-          "shot_function": "Reaction",
+          "shot_function": "Action",
           "relation_to_previous": "None",
           "expected_hold": "Normal",
           "camera_movement": "",
-          "emotional_guidance": "pure joy",
+          "emotional_guidance": "pure exhilaration",
           "media_type": "Video",
           "shot_scale_role": "",
           "temporal_weight": "Push",
@@ -72490,13 +72622,13 @@
         },
         {
           "id": 4,
-          "start": 22.433333333333334,
+          "start": 22.466666666666665,
           "end": 27.3,
-          "duration": 4.866666666666667,
+          "duration": 4.833333333333336,
           "energy": "Low",
           "motion": "Static",
-          "vibe": "love, intimacy",
-          "reasoning": "A soft landing that leaves the viewer with a sense of warmth. The text overlay appears here to anchor the sentiment.",
+          "vibe": "love, reflection",
+          "reasoning": "The resolution. A single, long-held close-up of an intimate moment (like a hug) allows the text overlay to appear and the emotion to linger as the music fades.",
           "arc_stage": "Outro",
           "shot_scale": "Close",
           "shot_function": "Release",
@@ -72518,49 +72650,48 @@
         }
       ],
       "phrases": [],
-      "text_prompt": "Create a joyful childhood memory video that captures the innocence and happiness of being a kid. Start with warm, peaceful moments that make you smile. Build through candid laughter and playful energy as the music grows, letting the pacing gradually quicken\u2014like how time feels faster as we grow up. Peak with pure celebration and movement, then end on a quiet, intimate moment of love that lingers and lets the emotion breathe. Make it feel like a memory you didn\u2019t know you missed.\n\nText overlay: \u201cOh, to be this young again.\u201d",
-      "plan_summary": "A four-stage journey from quiet observation to active play, peaking in a celebratory crescendo before settling into a tender, lingering embrace. The edit uses musical phrasing to guide the emotional intensity.",
+      "text_prompt": "Create a joyful childhood memory video that captures the innocence and happiness of being a kid. Start with warm, peaceful moments that make you smile. Build through candid laughter and playful energy as the music grows, letting the pacing gradually quicken\u2014like how time feels faster as we grow up. Peak with pure celebration and movement, then end on a quiet, intimate moment of love that lingers and lets the emotion breathe. Make it feel like a memory you didn\u2019t know you missed.\n\nText overlay: \u201cOh, to be this young again.\u201d\n",
+      "plan_summary": "The edit follows a classic emotional swell: starting with quiet, sun-drenched innocence, building into the kinetic energy of play, peaking with a celebratory burst of movement, and finally settling into a tender, lingering moment of connection.",
       "assumed_material": [
-        "children smiling",
-        "running in grass",
-        "hugging parents",
-        "golden hour light",
-        "candid laughter"
+        "children playing in sunlight",
+        "candid laughter",
+        "running through grass",
+        "hugs or gentle touches",
+        "slow-motion smiles"
       ],
-      "editing_style": "Nostalgic Rhythmic Flow",
-      "emotional_intent": "To evoke a bittersweet longing for the simplicity and pure joy of childhood through a rhythmic acceleration that mirrors the passage of time.",
-      "arc_description": "The edit begins with slow, lingering shots of peace, gradually introduces more frequent movement and cuts during the build-up, reaches a vibrant peak of celebration, and concludes with a long, still shot of affection.",
+      "editing_style": "Nostalgic Rhythms",
+      "emotional_intent": "To evoke a bittersweet longing for the simplicity and unbridled joy of childhood through a rhythmic, breathing edit.",
+      "arc_description": "A gentle ascent from low-energy peace to high-energy celebration, followed by a soft, emotional landing that allows the final sentiment to resonate.",
       "text_overlay": "Oh, to be this young again.",
-      "narrative_message": "Childhood is a fleeting, golden era of pure emotion and connection.",
+      "narrative_message": "Childhood is a fleeting, golden era defined by love and play.",
       "intent_clarity": "Clear",
       "text_events": [],
       "must_have_content": [
-        "a close-up of a smile",
-        "an active movement shot",
-        "a quiet moment of physical affection"
+        "at least one close-up of a genuine smile",
+        "a moment of physical affection (hug/hand-hold)"
       ],
       "should_have_content": [
-        "sun-drenched environments",
-        "slow-motion laughter",
-        "eye-contact with the camera"
+        "golden hour lighting",
+        "natural environments",
+        "unposed movement"
       ],
       "avoid_content": [
-        "fast whip-pans",
-        "glitch effects",
-        "dark or moody lighting",
-        "staged/posed looking shots"
+        "fast digital zooms",
+        "staged/posed looking shots",
+        "harsh artificial lighting"
       ],
-      "pacing_feel": "Reflective then Energetic",
+      "pacing_feel": "Reflective and Breathable",
       "visual_balance": "People-centric",
       "color_grading": {
         "tone": "Warm",
-        "contrast": "Low",
+        "contrast": "Medium",
         "specific_look": "Vintage Film"
       },
       "aspect_ratio": "",
       "visual_effects": [
         "film grain",
-        "light leaks"
+        "subtle light leaks",
+        "soft glow"
       ],
       "shot_variety": {},
       "stylistic_invariants": [],
@@ -72576,7 +72707,7 @@
         "font_style": "Sans-serif",
         "animation": "Fade",
         "placement": "Bottom-third",
-        "color_effects": "White"
+        "color_effects": "Warm White"
       },
       "text_behavior": {},
       "text_cadence": "",
@@ -72602,7 +72733,7 @@
         "type": "blueprint",
         "version": "12.1",
         "source": "text_prompt",
-        "timestamp": "2026-02-09 23:45:07"
+        "timestamp": "2026-02-10 02:32:00"
       }
     },
     "clip_index": {
