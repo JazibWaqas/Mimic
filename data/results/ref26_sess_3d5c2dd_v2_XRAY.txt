@@ -1,0 +1,4599 @@
+================================================================================
+X-RAY DIAGNOSTIC REPORT - REFERENCE MODE
+================================================================================
+Reference/Prompt: ref26
+Total Segments: 68
+Total Clips: 48
+Total Decisions: 68
+================================================================================
+
+📑 BLUEPRINT SEGMENTS:
+------------------------------------------------------------
+  Seg 01:  0.00s- 0.20s | Low    | Intro      | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Anticipation
+  Seg 02:  0.20s- 0.53s | Medium | Intro      | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Preparation
+  Seg 03:  0.53s- 1.07s | High   | Build-up   | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Power
+  Seg 04:  1.07s- 1.60s | High   | Build-up   | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Danger
+  Seg 05:  1.60s- 2.13s | Medium | Build-up   | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Focus
+  Seg 06:  2.13s- 2.67s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 07:  2.67s- 2.93s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 08:  2.93s- 3.20s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 09:  3.20s- 3.73s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Scale
+  Seg 10:  3.73s- 4.27s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Atmosphere
+  Seg 11:  4.27s- 4.80s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Abstract
+  Seg 12:  4.80s- 5.33s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Joy
+  Seg 13:  5.33s- 5.87s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Detail
+  Seg 14:  5.87s- 6.40s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Night-Speed
+  Seg 15:  6.40s- 6.93s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Night-Speed
+  Seg 16:  6.93s- 7.47s | Low    | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Intimacy
+  Seg 17:  7.47s- 8.00s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Skill
+  Seg 18:  8.00s- 8.53s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Control
+  Seg 19:  8.53s- 9.07s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Competition
+  Seg 20:  9.07s- 9.60s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Intensity
+  Seg 21:  9.60s-10.13s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 22: 10.13s-10.40s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 23: 10.40s-10.67s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 24: 10.67s-11.23s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Celebration
+  Seg 25: 11.23s-11.73s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Power
+  Seg 26: 11.73s-12.27s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 27: 12.27s-12.83s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 28: 12.83s-13.33s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Conflict
+  Seg 29: 13.33s-13.63s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Crash
+  Seg 30: 13.63s-13.90s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Crash
+  Seg 31: 13.90s-14.43s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Scale
+  Seg 32: 14.43s-14.93s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Power
+  Seg 33: 14.93s-15.50s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 34: 15.50s-16.03s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 35: 16.03s-16.57s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 36: 16.57s-17.10s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Intensity
+  Seg 37: 17.10s-17.63s | Low    | Outro      | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Resolution
+  Seg 38: 17.63s-18.17s | Medium | Intro      | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Preparation
+  Seg 39: 18.17s-18.70s | High   | Build-up   | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Power
+  Seg 40: 18.70s-19.50s | High   | Build-up   | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Danger
+  Seg 41: 19.50s-19.77s | Medium | Build-up   | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Focus
+  Seg 42: 19.77s-20.30s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 43: 20.30s-20.83s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 44: 20.83s-21.37s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 45: 21.37s-21.90s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Scale
+  Seg 46: 21.90s-22.43s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Atmosphere
+  Seg 47: 22.43s-22.70s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Abstract
+  Seg 48: 22.70s-22.97s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Joy
+  Seg 49: 22.97s-23.50s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Detail
+  Seg 50: 23.50s-24.03s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Night-Speed
+  Seg 51: 24.03s-24.57s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Night-Speed
+  Seg 52: 24.57s-25.10s | Low    | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Intimacy
+  Seg 53: 25.10s-25.63s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Skill
+  Seg 54: 25.63s-25.90s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Control
+  Seg 55: 25.90s-26.70s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Competition
+  Seg 56: 26.70s-27.23s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Intensity
+  Seg 57: 27.23s-27.50s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 58: 27.50s-27.77s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 59: 27.77s-28.30s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 60: 28.30s-28.83s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Celebration
+  Seg 61: 28.83s-29.37s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Power
+  Seg 62: 29.37s-29.90s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 63: 29.90s-30.43s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Speed
+  Seg 64: 30.43s-30.97s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Conflict
+  Seg 65: 30.97s-31.50s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Crash
+  Seg 66: 31.50s-32.03s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Crash
+  Seg 67: 32.03s-32.57s | Medium | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Scale
+  Seg 68: 32.57s-35.40s | Low    | Outro      | CDE=Moderate | Hold=Long   | Origin=visual
+           Vibe: Resolution
+
+📊 CLIP USAGE ANALYSIS:
+------------------------------------------------------------
+
+  ✅ USED  clip_005.mp4
+       Usage: 2x | Energy: High | Duration: 16.0s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 8.50s - 9.03s (0.53s)
+         [2] 9.03s - 9.57s (0.53s)
+
+  ✅ USED  clip_008.mp4
+       Usage: 2x | Energy: High | Duration: 8.8s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 1.50s - 2.03s (0.53s)
+         [2] 2.03s - 2.57s (0.53s)
+
+  ✅ USED  clip_012.mp4
+       Usage: 2x | Energy: High | Duration: 6.6s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 1.50s - 2.03s (0.53s)
+         [2] 3.00s - 3.53s (0.53s)
+
+  ✅ USED  clip_013.mp4
+       Usage: 2x | Energy: High | Duration: 5.4s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 1.00s - 1.53s (0.53s)
+         [2] 1.53s - 2.07s (0.53s)
+
+  ✅ USED  clip_014.mp4
+       Usage: 2x | Energy: High | Duration: 3.1s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 1.00s - 1.53s (0.53s)
+         [2] 1.53s - 2.07s (0.53s)
+
+  ✅ USED  clip_016.mp4
+       Usage: 2x | Energy: Medium | Duration: 4.7s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 2.50s - 3.03s (0.53s)
+         [2] 1.00s - 1.53s (0.53s)
+
+  ✅ USED  clip_021.mp4
+       Usage: 2x | Energy: High | Duration: 7.4s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 2.00s - 2.53s (0.53s)
+         [2] 4.50s - 5.03s (0.53s)
+
+  ✅ USED  clip_023.mp4
+       Usage: 2x | Energy: High | Duration: 4.0s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 0.80s - 1.30s (0.50s)
+         [2] 1.30s - 1.83s (0.53s)
+
+  ✅ USED  clip_024.mp4
+       Usage: 2x | Energy: High | Duration: 7.0s
+       Vibes: Solo, Group | Subjects: People-Solo, People-Group
+       Moments used:
+         [1] 3.20s - 3.73s (0.53s)
+         [2] 3.73s - 4.27s (0.53s)
+
+  ✅ USED  clip_028.mp4
+       Usage: 2x | Energy: High | Duration: 9.4s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 6.00s - 6.50s (0.50s)
+         [2] 0.00s - 0.53s (0.53s)
+
+  ✅ USED  clip_029.mp4
+       Usage: 2x | Energy: High | Duration: 3.8s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 1.00s - 1.57s (0.57s)
+         [2] 1.57s - 2.10s (0.53s)
+
+  ✅ USED  clip_030.mp4
+       Usage: 2x | Energy: High | Duration: 6.3s
+       Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
+       Moments used:
+         [1] 2.00s - 2.57s (0.57s)
+         [2] 2.57s - 2.83s (0.27s)
+
+  ✅ USED  clip_033.mp4
+       Usage: 2x | Energy: High | Duration: 15.2s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 10.50s - 11.03s (0.53s)
+         [2] 0.00s - 0.27s (0.27s)
+
+  ✅ USED  clip_036.mp4
+       Usage: 2x | Energy: High | Duration: 3.7s
+       Vibes: Solo, Travel | Subjects: People-Solo, Activity-Travel
+       Moments used:
+         [1] 1.00s - 1.53s (0.53s)
+         [2] 1.53s - 2.07s (0.53s)
+
+  ✅ USED  clip_039.mp4
+       Usage: 2x | Energy: High | Duration: 4.5s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 0.00s - 0.53s (0.53s)
+         [2] 2.50s - 3.03s (0.53s)
+
+  ✅ USED  clip_040.mp4
+       Usage: 2x | Energy: High | Duration: 12.5s
+       Vibes: Vehicle, Solo | Subjects: Object-Vehicle, People-Solo
+       Moments used:
+         [1] 3.20s - 3.73s (0.53s)
+         [2] 3.73s - 4.00s (0.27s)
+
+  ✅ USED  clip_042.mp4
+       Usage: 2x | Energy: High | Duration: 4.5s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 1.50s - 2.03s (0.53s)
+         [2] 0.00s - 0.27s (0.27s)
+
+  ✅ USED  clip_043.mp4
+       Usage: 2x | Energy: High | Duration: 5.3s
+       Vibes: Vehicle, Solo | Subjects: Object-Vehicle, People-Solo
+       Moments used:
+         [1] 3.20s - 3.47s (0.27s)
+         [2] 1.80s - 2.33s (0.53s)
+
+  ✅ USED  clip_044.mp4
+       Usage: 2x | Energy: High | Duration: 9.9s
+       Vibes: Vehicle, Solo | Subjects: Object-Vehicle, People-Solo
+       Moments used:
+         [1] 3.50s - 4.03s (0.53s)
+         [2] 7.50s - 7.77s (0.27s)
+
+  ✅ USED  clip_045.mp4
+       Usage: 2x | Energy: High | Duration: 4.4s
+       Vibes: Vehicle, Solo | Subjects: Object-Vehicle, People-Solo
+       Moments used:
+         [1] 2.80s - 3.33s (0.53s)
+         [2] 1.50s - 2.03s (0.53s)
+
+  ✅ USED  clip_047.mp4
+       Usage: 2x | Energy: High | Duration: 5.8s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 3.20s - 3.73s (0.53s)
+         [2] 3.73s - 4.53s (0.80s)
+
+  ✅ USED  clip_048.mp4
+       Usage: 2x | Energy: High | Duration: 23.5s
+       Vibes: Vehicle, Solo | Subjects: Object-Vehicle, People-Solo
+       Moments used:
+         [1] 1.50s - 1.80s (0.30s)
+         [2] 1.80s - 2.00s (0.20s)
+
+  ✅ USED  clip_001.mp4
+       Usage: 1x | Energy: High | Duration: 8.5s
+       Vibes: Group, Vehicle | Subjects: People-Group, Object-Vehicle
+       Moments used:
+         [1] 6.00s - 6.53s (0.53s)
+
+  ✅ USED  clip_003.mp4
+       Usage: 1x | Energy: Medium | Duration: 10.1s
+       Vibes: Vehicle, Group | Subjects: Object-Vehicle, People-Group
+       Moments used:
+         [1] 4.00s - 4.33s (0.33s)
+
+  ✅ USED  clip_006.mp4
+       Usage: 1x | Energy: Medium | Duration: 14.4s
+       Vibes: Vehicle, Solo | Subjects: Object-Vehicle, People-Solo
+       Moments used:
+         [1] 10.50s - 10.70s (0.20s)
+
+  ✅ USED  clip_007.mp4
+       Usage: 1x | Energy: Medium | Duration: 3.3s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 1.50s - 1.77s (0.27s)
+
+  ✅ USED  clip_009.mp4
+       Usage: 1x | Energy: High | Duration: 4.5s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 1.50s - 2.03s (0.53s)
+
+  ✅ USED  clip_010.mp4
+       Usage: 1x | Energy: Low | Duration: 3.0s
+       Vibes: Vehicle | Subjects: Object-Vehicle
+       Moments used:
+         [1] 0.00s - 2.83s (2.83s)
+
+  ✅ USED  clip_011.mp4
+       Usage: 1x | Energy: High | Duration: 7.4s
+       Vibes: Vehicle, Travel | Subjects: Object-Vehicle, Activity-Travel
+       Moments used:
+         [1] 5.00s - 5.27s (0.27s)
+
+  ✅ USED  clip_015.mp4
+       Usage: 1x | Energy: High | Duration: 3.1s
+       Vibes: Nature, Vehicle | Subjects: Place-Nature, Object-Vehicle
+       Moments used:
+         [1] 0.50s - 1.03s (0.53s)
+
+  ✅ USED  clip_017.mp4
+       Usage: 1x | Energy: Medium | Duration: 3.7s
+       Vibes: Group, Vehicle | Subjects: People-Group, Object-Vehicle
+       Moments used:
+         [1] 1.00s - 1.53s (0.53s)
+
+  ✅ USED  clip_018.mp4
+       Usage: 1x | Energy: Medium | Duration: 7.1s
+       Vibes: Group, Vehicle | Subjects: People-Group, Object-Vehicle
+       Moments used:
+         [1] 3.50s - 4.03s (0.53s)
+
+  ✅ USED  clip_019.mp4
+       Usage: 1x | Energy: High | Duration: 3.6s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       Moments used:
+         [1] 0.00s - 0.53s (0.53s)
+
+  ✅ USED  clip_020.mp4
+       Usage: 1x | Energy: High | Duration: 10.4s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 2.50s - 2.77s (0.27s)
+
+  ✅ USED  clip_022.mp4
+       Usage: 1x | Energy: High | Duration: 3.1s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 1.50s - 1.77s (0.27s)
+
+  ✅ USED  clip_025.mp4
+       Usage: 1x | Energy: High | Duration: 3.7s
+       Vibes: Nature, Vehicle | Subjects: Place-Nature, Object-Vehicle
+       Moments used:
+         [1] 2.00s - 2.57s (0.57s)
+
+  ✅ USED  clip_026.mp4
+       Usage: 1x | Energy: High | Duration: 4.9s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 0.00s - 0.53s (0.53s)
+
+  ✅ USED  clip_027.mp4
+       Usage: 1x | Energy: High | Duration: 3.3s
+       Vibes: Solo | Subjects: People-Solo
+       Moments used:
+         [1] 0.50s - 1.00s (0.50s)
+
+  ✅ USED  clip_031.mp4
+       Usage: 1x | Energy: High | Duration: 10.5s
+       Vibes: Solo, Vehicle | Subjects: People-Solo, Object-Vehicle
+       Moments used:
+         [1] 1.20s - 1.73s (0.53s)
+
+  ✅ USED  clip_032.mp4
+       Usage: 1x | Energy: High | Duration: 3.5s
+       Vibes: Vehicle | Subjects: Object-Vehicle
+       Moments used:
+         [1] 0.00s - 0.53s (0.53s)
+
+  ✅ USED  clip_034.mp4
+       Usage: 1x | Energy: Low | Duration: 9.6s
+       Vibes: Solo, Group | Subjects: People-Solo, People-Group
+       Moments used:
+         [1] 0.00s - 0.53s (0.53s)
+
+  ✅ USED  clip_035.mp4
+       Usage: 1x | Energy: High | Duration: 12.5s
+       Vibes: Group, Vehicle | Subjects: People-Group, Object-Vehicle
+       Moments used:
+         [1] 8.50s - 9.30s (0.80s)
+
+  ✅ USED  clip_037.mp4
+       Usage: 1x | Energy: High | Duration: 5.2s
+       Vibes: Vehicle, Nature | Subjects: Object-Vehicle, Place-Nature
+       Moments used:
+         [1] 2.80s - 3.07s (0.27s)
+
+  ✅ USED  clip_038.mp4
+       Usage: 1x | Energy: High | Duration: 4.0s
+       Vibes: Vehicle | Subjects: Object-Vehicle
+       Moments used:
+         [1] 2.20s - 2.73s (0.53s)
+
+  ✅ USED  clip_041.mp4
+       Usage: 1x | Energy: High | Duration: 4.0s
+       Vibes: Vehicle | Subjects: Object-Vehicle
+       Moments used:
+         [1] 0.50s - 1.03s (0.53s)
+
+  ✅ USED  clip_046.mp4
+       Usage: 1x | Energy: High | Duration: 3.2s
+       Vibes: Vehicle | Subjects: Object-Vehicle
+       Moments used:
+         [1] 1.00s - 1.53s (0.53s)
+
+  ❌ UNUSED  clip_002.mp4
+       Usage: 0x | Energy: Low | Duration: 4.8s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip_004.mp4
+       Usage: 0x | Energy: Low | Duration: 3.7s
+       Vibes: Group | Subjects: People-Group
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+🚫 UNUSED CLIPS (Potential Issues):
+------------------------------------------------------------
+  ❌ clip_002.mp4 | Low | Vibes: Solo, Indoor
+  ❌ clip_004.mp4 | Low | Vibes: Group
+
+  Total unused: 2/48 (4%)
+
+🎬 EDIT DECISION FLOW:
+------------------------------------------------------------
+  [01]   0.00s-  0.20s (0.20s) | clip_006.mp4         [10.50s-10.70s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [02]   0.20s-  0.53s (0.33s) | clip_003.mp4         [ 4.00s- 4.33s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Intro stag...
+  [03]   0.53s-  1.07s (0.53s) | clip_005.mp4         [ 8.50s- 9.03s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [04]   1.07s-  1.60s (0.53s) | clip_008.mp4         [ 1.50s- 2.03s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [05]   1.60s-  2.13s (0.53s) | clip_012.mp4         [ 1.50s- 2.03s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [06]   2.13s-  2.67s (0.53s) | clip_001.mp4         [ 6.00s- 6.53s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [07]   2.67s-  2.93s (0.27s) | clip_007.mp4         [ 1.50s- 1.77s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [08]   2.93s-  3.20s (0.27s) | clip_011.mp4         [ 5.00s- 5.27s]
+        Vibe Match: ✅ | 🌟 Maintaining sequence flow with supporting material, though...
+  [09]   3.20s-  3.73s (0.53s) | clip_013.mp4         [ 1.00s- 1.53s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [10]   3.73s-  4.27s (0.53s) | clip_019.mp4         [ 0.00s- 0.53s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [11]   4.27s-  4.80s (0.53s) | clip_021.mp4         [ 2.00s- 2.53s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [12]   4.80s-  5.33s (0.53s) | clip_024.mp4         [ 3.20s- 3.73s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [13]   5.33s-  5.87s (0.53s) | clip_039.mp4         [ 0.00s- 0.53s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [14]   5.87s-  6.40s (0.53s) | clip_009.mp4         [ 1.50s- 2.03s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [15]   6.40s-  6.93s (0.53s) | clip_014.mp4         [ 1.00s- 1.53s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [16]   6.93s-  7.47s (0.53s) | clip_033.mp4         [10.50s-11.03s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [17]   7.47s-  8.00s (0.53s) | clip_040.mp4         [ 3.20s- 3.73s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [18]   8.00s-  8.53s (0.53s) | clip_045.mp4         [ 2.80s- 3.33s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [19]   8.53s-  9.07s (0.53s) | clip_047.mp4         [ 3.20s- 3.73s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [20]   9.07s-  9.60s (0.53s) | clip_015.mp4         [ 0.50s- 1.03s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
+  [21]   9.60s- 10.13s (0.53s) | clip_016.mp4         [ 2.50s- 3.03s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [22]  10.13s- 10.40s (0.27s) | clip_020.mp4         [ 2.50s- 2.77s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [23]  10.40s- 10.67s (0.27s) | clip_022.mp4         [ 1.50s- 1.77s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [24]  10.67s- 11.23s (0.57s) | clip_030.mp4         [ 2.00s- 2.57s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
+  [25]  11.23s- 11.73s (0.50s) | clip_023.mp4         [ 0.80s- 1.30s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [26]  11.73s- 12.27s (0.53s) | clip_017.mp4         [ 1.00s- 1.53s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [27]  12.27s- 12.83s (0.57s) | clip_025.mp4         [ 2.00s- 2.57s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [28]  12.83s- 13.33s (0.50s) | clip_027.mp4         [ 0.50s- 1.00s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [29]  13.33s- 13.63s (0.30s) | clip_048.mp4         [ 1.50s- 1.80s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [30]  13.63s- 13.90s (0.27s) | clip_043.mp4         [ 3.20s- 3.47s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [31]  13.90s- 14.43s (0.53s) | clip_044.mp4         [ 3.50s- 4.03s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [32]  14.43s- 14.93s (0.50s) | clip_028.mp4         [ 6.00s- 6.50s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [33]  14.93s- 15.50s (0.57s) | clip_029.mp4         [ 1.00s- 1.57s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [34]  15.50s- 16.03s (0.53s) | clip_026.mp4         [ 0.00s- 0.53s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [35]  16.03s- 16.57s (0.53s) | clip_031.mp4         [ 1.20s- 1.73s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [36]  16.57s- 17.10s (0.53s) | clip_032.mp4         [ 0.00s- 0.53s]
+        Vibe Match: ✅ | 🌟 Maintaining sequence flow with supporting material, though...
+  [37]  17.10s- 17.63s (0.53s) | clip_034.mp4         [ 0.00s- 0.53s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [38]  17.63s- 18.17s (0.53s) | clip_042.mp4         [ 1.50s- 2.03s]
+        Vibe Match: ❌ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [39]  18.17s- 18.70s (0.53s) | clip_036.mp4         [ 1.00s- 1.53s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [40]  18.70s- 19.50s (0.80s) | clip_035.mp4         [ 8.50s- 9.30s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [41]  19.50s- 19.77s (0.27s) | clip_037.mp4         [ 2.80s- 3.07s]
+        Vibe Match: ✅ | 🌟 The visual content captures the 'Focus' atmosphere perfect...
+  [42]  19.77s- 20.30s (0.53s) | clip_038.mp4         [ 2.20s- 2.73s]
+        Vibe Match: ✅ | 🌟 Maintaining sequence flow with supporting material, though...
+  [43]  20.30s- 20.83s (0.53s) | clip_041.mp4         [ 0.50s- 1.03s]
+        Vibe Match: ✅ | 🌟 Maintaining sequence flow with supporting material, though...
+  [44]  20.83s- 21.37s (0.53s) | clip_046.mp4         [ 1.00s- 1.53s]
+        Vibe Match: ✅ | 🌟 Maintaining sequence flow with supporting material, though...
+  [45]  21.37s- 21.90s (0.53s) | clip_048.mp4         [ 1.80s- 2.33s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [46]  21.90s- 22.43s (0.53s) | clip_013.mp4         [ 1.53s- 2.07s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [47]  22.43s- 22.70s (0.27s) | clip_040.mp4         [ 3.73s- 4.00s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [48]  22.70s- 22.97s (0.27s) | clip_030.mp4         [ 2.57s- 2.83s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Reaction' shot within this sequenc...
+  [49]  22.97s- 23.50s (0.53s) | clip_008.mp4         [ 2.03s- 2.57s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [50]  23.50s- 24.03s (0.53s) | clip_021.mp4         [ 4.50s- 5.03s]
+        Vibe Match: ✅ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [51]  24.03s- 24.57s (0.53s) | clip_018.mp4         [ 3.50s- 4.03s]
+        Vibe Match: ✅ | 🌟 The visual content captures the 'Night-Speed' atmosphere p...
+  [52]  24.57s- 25.10s (0.53s) | clip_045.mp4         [ 1.50s- 2.03s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [53]  25.10s- 25.63s (0.53s) | clip_039.mp4         [ 2.50s- 3.03s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [54]  25.63s- 25.90s (0.27s) | clip_033.mp4         [ 0.00s- 0.27s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [55]  25.90s- 26.70s (0.80s) | clip_047.mp4         [ 3.73s- 4.53s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Peak stage...
+  [56]  26.70s- 27.23s (0.53s) | clip_043.mp4         [ 1.80s- 2.33s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [57]  27.23s- 27.50s (0.27s) | clip_042.mp4         [ 0.00s- 0.27s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [58]  27.50s- 27.77s (0.27s) | clip_044.mp4         [ 7.50s- 7.77s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [59]  27.77s- 28.30s (0.53s) | clip_014.mp4         [ 1.53s- 2.07s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [60]  28.30s- 28.83s (0.53s) | clip_024.mp4         [ 3.73s- 4.27s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [61]  28.83s- 29.37s (0.53s) | clip_023.mp4         [ 1.30s- 1.83s]
+        Vibe Match: ✅ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [62]  29.37s- 29.90s (0.53s) | clip_005.mp4         [ 9.03s- 9.57s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [63]  29.90s- 30.43s (0.53s) | clip_012.mp4         [ 3.00s- 3.53s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [64]  30.43s- 30.97s (0.53s) | clip_028.mp4         [ 0.00s- 0.53s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [65]  30.97s- 31.50s (0.53s) | clip_036.mp4         [ 1.53s- 2.07s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [66]  31.50s- 32.03s (0.53s) | clip_029.mp4         [ 1.57s- 2.10s]
+        Vibe Match: ❌ | 🌟 Serving as a strategic 'Action' shot within this sequence....
+  [67]  32.03s- 32.57s (0.53s) | clip_016.mp4         [ 1.00s- 1.53s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [68]  32.57s- 35.40s (2.83s) | clip_010.mp4         [ 0.00s- 2.83s]
+        Vibe Match: ❌ | 🌟 Maintaining sequence flow with supporting material, though...
+
+🔬 SEGMENT SCORING X-RAY:
+------------------------------------------------------------
+
+================================================================================
+SEGMENT 1 X-RAY | 0.00s-0.20s | Intro | Vibe: Anticipation
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_006.mp4 | SCORE: 333.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_016.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_005.mp4 | SCORE: 318.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -15.0 points
+
+   #4 | clip_003.mp4 | SCORE: 308.0
+   Vibes: Vehicle, Group
+   Subjects: Object-Vehicle, People-Group
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Intro stage. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -25.0 points
+
+   #5 | clip_007.mp4 | SCORE: 293.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -40.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_006.mp4
+   Final Score: 333.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 2 X-RAY | 0.20s-0.53s | Intro | Vibe: Preparation
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_003.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Group
+   Subjects: Object-Vehicle, People-Group
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Intro stage. Satisfies the narrative's high-energy demand for this segme
+
+   #2 | clip_005.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_017.mp4 | SCORE: 333.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -17.0 points
+
+   #5 | clip_007.mp4 | SCORE: 328.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -22.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_003.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 3 X-RAY | 0.53s-1.07s | Build-up | Vibe: Power
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_005.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_007.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_012.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_013.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #5 | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_005.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 4 X-RAY | 1.07s-1.60s | Build-up | Vibe: Danger
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_008.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_012.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_036.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_019.mp4 | SCORE: 345.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -5.0 points
+
+   #5 | clip_035.mp4 | SCORE: 340.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this se
+   Delta from winner: -10.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_008.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 5 X-RAY | 1.60s-2.13s | Build-up | Vibe: Focus
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_012.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_013.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Focus' atmosphere perfectl
+   Delta from winner: -0.0 points
+
+   #3 | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Focus' atmosphere perfectl
+   Delta from winner: -0.0 points
+
+   #4 | clip_015.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Focus' atmosphere perfectl
+   Delta from winner: -0.0 points
+
+   #5 | clip_019.mp4 | SCORE: 350.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_012.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 6 X-RAY | 2.13s-2.67s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_001.mp4 | SCORE: 350.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+
+   #2 | clip_007.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_011.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_013.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly
+   Delta from winner: -0.0 points
+
+   #5 | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_001.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 7 X-RAY | 2.67s-2.93s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_007.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_009.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_011.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_013.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly
+   Delta from winner: -0.0 points
+
+   #5 | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_007.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 8 X-RAY | 2.93s-3.20s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_011.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+
+   #2 | clip_013.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly
+   Delta from winner: -0.0 points
+
+   #3 | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #4 | clip_015.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #5 | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_011.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 9 X-RAY | 3.20s-3.73s | Peak | Vibe: Scale
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_013.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_019.mp4 | SCORE: 350.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_021.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #5 | clip_022.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_013.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 10 X-RAY | 3.73s-4.27s | Peak | Vibe: Atmosphere
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_019.mp4 | SCORE: 350.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_021.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #3 | clip_024.mp4 | SCORE: 350.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_036.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_019.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 11 X-RAY | 4.27s-4.80s | Peak | Vibe: Abstract
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_021.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_039.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #3 | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_045.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #5 | clip_047.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_021.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 12 X-RAY | 4.80s-5.33s | Peak | Vibe: Joy
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_024.mp4 | SCORE: 350.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_030.mp4 | SCORE: 350.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Joy' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_027.mp4 | SCORE: 350.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_033.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_024.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 13 X-RAY | 5.33s-5.87s | Peak | Vibe: Detail
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_039.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_045.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_047.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #5 | clip_048.mp4 | SCORE: 330.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -20.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_039.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 14 X-RAY | 5.87s-6.40s | Peak | Vibe: Night-Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_009.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Night-Speed' atmosphere perf
+   Delta from winner: -0.0 points
+
+   #3 | clip_015.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Night-Speed' atmosphere perf
+   Delta from winner: -0.0 points
+
+   #4 | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_020.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_009.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 15 X-RAY | 6.40s-6.93s | Peak | Vibe: Night-Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_014.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Night-Speed' atmosphere perf
+
+   #2 | clip_015.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Night-Speed' atmosphere perf
+   Delta from winner: -0.0 points
+
+   #3 | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_022.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_023.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Night-Speed' atmosphere perf
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_014.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 16 X-RAY | 6.93s-7.47s | Peak | Vibe: Intimacy
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_033.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_043.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_044.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_045.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_033.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 17 X-RAY | 7.47s-8.00s | Peak | Vibe: Skill
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_045.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_047.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #4 | clip_048.mp4 | SCORE: 330.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -20.0 points
+
+   #5 | clip_043.mp4 | SCORE: 300.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -50.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_040.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 18 X-RAY | 8.00s-8.53s | Peak | Vibe: Control
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_045.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_047.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #3 | clip_048.mp4 | SCORE: 330.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -20.0 points
+
+   #4 | clip_043.mp4 | SCORE: 300.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -50.0 points
+
+   #5 | clip_044.mp4 | SCORE: 300.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -50.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_045.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 19 X-RAY | 8.53s-9.07s | Peak | Vibe: Competition
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_047.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_048.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_043.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -35.0 points
+
+   #4 | clip_044.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -35.0 points
+
+   #5 | clip_028.mp4 | SCORE: 313.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -37.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_047.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 20 X-RAY | 9.07s-9.60s | Peak | Vibe: Intensity
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_015.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Intensity' atmosphere perf
+
+   #2 | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_018.mp4 | SCORE: 350.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Intensity' atmosphere perf
+   Delta from winner: -0.0 points
+
+   #4 | clip_022.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_023.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Intensity' atmosphere perf
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_015.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 21 X-RAY | 9.60s-10.13s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_016.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_017.mp4 | SCORE: 350.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_020.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_022.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_023.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_016.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 22 X-RAY | 10.13s-10.40s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_020.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_022.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_023.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #4 | clip_025.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #5 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_020.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 23 X-RAY | 10.40s-10.67s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_022.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_023.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_025.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #4 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_029.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_022.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 24 X-RAY | 10.67s-11.23s | Peak | Vibe: Celebration
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_030.mp4 | SCORE: 350.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Celebration' atmosphere pe
+
+   #2 | clip_048.mp4 | SCORE: 330.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -20.0 points
+
+   #3 | clip_043.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -35.0 points
+
+   #4 | clip_044.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -35.0 points
+
+   #5 | clip_027.mp4 | SCORE: 313.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -37.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_030.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 25 X-RAY | 11.23s-11.73s | Peak | Vibe: Power
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_023.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+
+   #2 | clip_025.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_026.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_027.mp4 | SCORE: 350.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_023.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 26 X-RAY | 11.73s-12.27s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_017.mp4 | SCORE: 350.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+
+   #2 | clip_025.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_026.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_029.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_017.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 27 X-RAY | 12.27s-12.83s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_025.mp4 | SCORE: 350.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+
+   #2 | clip_026.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_029.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #5 | clip_031.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_025.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 28 X-RAY | 12.83s-13.33s | Peak | Vibe: Conflict
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_027.mp4 | SCORE: 350.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_036.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_043.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_044.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_027.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 29 X-RAY | 13.33s-13.63s | Peak | Vibe: Crash
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_048.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_043.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -35.0 points
+
+   #3 | clip_044.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -35.0 points
+
+   #4 | clip_028.mp4 | SCORE: 313.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -37.0 points
+
+   #5 | clip_036.mp4 | SCORE: 313.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -37.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_048.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 30 X-RAY | 13.63s-13.90s | Peak | Vibe: Crash
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_043.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_044.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_028.mp4 | SCORE: 313.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #4 | clip_036.mp4 | SCORE: 313.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #5 | clip_042.mp4 | SCORE: 310.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_043.mp4
+   Final Score: 315.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 31 X-RAY | 13.90s-14.43s | Peak | Vibe: Scale
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_044.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_028.mp4 | SCORE: 313.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #3 | clip_036.mp4 | SCORE: 313.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #4 | clip_042.mp4 | SCORE: 310.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segm
+   Delta from winner: -5.0 points
+
+   #5 | clip_029.mp4 | SCORE: 300.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Establish' shot within this sequence. Satisfies the narrative's high-energy demand for this segm
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_044.mp4
+   Final Score: 315.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 32 X-RAY | 14.43s-14.93s | Peak | Vibe: Power
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_028.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_031.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_032.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_036.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #5 | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_028.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 33 X-RAY | 14.93s-15.50s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_029.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+
+   #2 | clip_031.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_032.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #5 | clip_038.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_029.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 34 X-RAY | 15.50s-16.03s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_026.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_031.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_032.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_035.mp4 | SCORE: 350.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #5 | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_026.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 35 X-RAY | 16.03s-16.57s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_031.mp4 | SCORE: 350.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_032.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #3 | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #4 | clip_038.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #5 | clip_041.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_031.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 36 X-RAY | 16.57s-17.10s | Peak | Vibe: Intensity
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_032.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+
+   #2 | clip_036.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: The visual content captures the 'Intensity' atmosphere perfectly. Satisfies the narrative's high-energy demand for this 
+   Delta from winner: -0.0 points
+
+   #4 | clip_038.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #5 | clip_041.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_032.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 37 X-RAY | 17.10s-17.63s | Outro | Vibe: Resolution
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_034.mp4 | SCORE: 350.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_002.mp4 | SCORE: 348.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Satisfies the narrative
+   Delta from winner: -2.0 points
+
+   #3 | clip_010.mp4 | SCORE: 286.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -64.0 points
+
+   #4 | clip_004.mp4 | SCORE: 273.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -77.0 points
+
+   #5 | clip_018.mp4 | SCORE: 253.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -97.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_034.mp4
+   Final Score: 350.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 38 X-RAY | 17.63s-18.17s | Intro | Vibe: Preparation
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_042.mp4 | SCORE: 315.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Maintains visual freshness, lighting consistency.
+
+   #2 | clip_036.mp4 | SCORE: 312.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -3.0 points
+
+   #3 | clip_041.mp4 | SCORE: 301.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -14.0 points
+
+   #4 | clip_018.mp4 | SCORE: 298.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.
+   Delta from winner: -17.0 points
+
+   #5 | clip_038.mp4 | SCORE: 293.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -22.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_042.mp4
+   Final Score: 315.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 39 X-RAY | 18.17s-18.70s | Build-up | Vibe: Power
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_036.mp4 | SCORE: 350.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_038.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_041.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #5 | clip_046.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_036.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 40 X-RAY | 18.70s-19.50s | Build-up | Vibe: Danger
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_035.mp4 | SCORE: 340.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Satisfies the narrative's high-energy demand for this se
+
+   #2 | clip_041.mp4 | SCORE: 296.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -44.0 points
+
+   #3 | clip_038.mp4 | SCORE: 273.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -67.0 points
+
+   #4 | clip_046.mp4 | SCORE: 271.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -69.0 points
+
+   #5 | clip_037.mp4 | SCORE: 258.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Satisfies the narrative's high-energy demand for this segment. Maintains visual freshness, lighting consistency.
+   Delta from winner: -82.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_035.mp4
+   Final Score: 340.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 41 X-RAY | 19.50s-19.77s | Build-up | Vibe: Focus
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_037.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: The visual content captures the 'Focus' atmosphere perfectly. Satisfies the narrative's high-energy demand for this segm
+
+   #2 | clip_038.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #3 | clip_041.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_046.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #5 | clip_018.mp4 | SCORE: 303.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Focus' atmosphere perfectl
+   Delta from winner: -47.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_037.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 42 X-RAY | 19.77s-20.30s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_038.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+
+   #2 | clip_041.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #3 | clip_046.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #4 | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #5 | clip_048.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_038.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 43 X-RAY | 20.30s-20.83s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_041.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+
+   #2 | clip_046.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -0.0 points
+
+   #3 | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_048.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #5 | clip_013.mp4 | SCORE: 345.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_041.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 44 X-RAY | 20.83s-21.37s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_046.mp4 | SCORE: 350.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+
+   #2 | clip_040.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_048.mp4 | SCORE: 350.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #4 | clip_013.mp4 | SCORE: 345.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly
+   Delta from winner: -5.0 points
+
+   #5 | clip_021.mp4 | SCORE: 345.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Speed' atmosphere perfectly
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_046.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 45 X-RAY | 21.37s-21.90s | Peak | Vibe: Scale
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_048.mp4 | SCORE: 300.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_045.mp4 | SCORE: 285.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -15.0 points
+
+   #3 | clip_040.mp4 | SCORE: 260.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -40.0 points
+
+   #4 | clip_013.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -55.0 points
+
+   #5 | clip_021.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -55.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_048.mp4
+   Final Score: 300.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 46 X-RAY | 21.90s-22.43s | Peak | Vibe: Atmosphere
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_013.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_021.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #3 | clip_039.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #4 | clip_047.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #5 | clip_018.mp4 | SCORE: 228.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Establish' shot within this sequence. Maintains visual freshness, lighting consistency.
+   Delta from winner: -17.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_013.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 47 X-RAY | 22.43s-22.70s | Peak | Vibe: Abstract
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_040.mp4 | SCORE: 275.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_045.mp4 | SCORE: 275.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -0.0 points
+
+   #3 | clip_018.mp4 | SCORE: 243.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintains visual freshness, lighting consistency.
+   Delta from winner: -32.0 points
+
+   #4 | clip_021.mp4 | SCORE: 235.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -40.0 points
+
+   #5 | clip_039.mp4 | SCORE: 235.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -40.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_040.mp4
+   Final Score: 275.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 48 X-RAY | 22.70s-22.97s | Peak | Vibe: Joy
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_030.mp4 | SCORE: 288.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Joy' atmosphere perfectly.
+
+   #2 | clip_024.mp4 | SCORE: 283.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #3 | clip_021.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -43.0 points
+
+   #4 | clip_039.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -43.0 points
+
+   #5 | clip_047.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -43.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_030.mp4
+   Final Score: 288.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 49 X-RAY | 22.97s-23.50s | Peak | Vibe: Detail
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_008.mp4 | SCORE: 230.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_021.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #3 | clip_033.mp4 | SCORE: 230.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_039.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #5 | clip_043.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_008.mp4
+   Final Score: 230.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 50 X-RAY | 23.50s-24.03s | Peak | Vibe: Night-Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_021.mp4 | SCORE: 320.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Night-Speed' atmosphere per
+
+   #2 | clip_039.mp4 | SCORE: 320.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Night-Speed' atmosphere per
+   Delta from winner: -0.0 points
+
+   #3 | clip_047.mp4 | SCORE: 320.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Night-Speed' atmosphere per
+   Delta from winner: -0.0 points
+
+   #4 | clip_018.mp4 | SCORE: 278.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: The visual content captures the 'Night-Speed' atmosphere perfectly. Maintains visual freshness.
+   Delta from winner: -42.0 points
+
+   #5 | clip_042.mp4 | SCORE: 265.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Night-Speed' atmosphere perf
+   Delta from winner: -55.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_021.mp4
+   Final Score: 320.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 51 X-RAY | 24.03s-24.57s | Peak | Vibe: Night-Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_018.mp4 | SCORE: 333.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: The visual content captures the 'Night-Speed' atmosphere perfectly. Maintains visual freshness.
+
+   #2 | clip_039.mp4 | SCORE: 325.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Night-Speed' atmosphere per
+   Delta from winner: -8.0 points
+
+   #3 | clip_043.mp4 | SCORE: 325.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -8.0 points
+
+   #4 | clip_044.mp4 | SCORE: 325.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -8.0 points
+
+   #5 | clip_047.mp4 | SCORE: 325.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. The visual content captures the 'Night-Speed' atmosphere per
+   Delta from winner: -8.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_018.mp4
+   Final Score: 333.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 52 X-RAY | 24.57s-25.10s | Peak | Vibe: Intimacy
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_045.mp4 | SCORE: 285.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+
+   #2 | clip_033.mp4 | SCORE: 230.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -55.0 points
+
+   #3 | clip_039.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -55.0 points
+
+   #4 | clip_043.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -55.0 points
+
+   #5 | clip_044.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -55.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_045.mp4
+   Final Score: 285.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 53 X-RAY | 25.10s-25.63s | Peak | Vibe: Skill
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_039.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_047.mp4 | SCORE: 230.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #3 | clip_014.mp4 | SCORE: 173.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -57.0 points
+
+   #4 | clip_023.mp4 | SCORE: 173.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Detail' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -57.0 points
+
+   #5 | clip_033.mp4 | SCORE: 170.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -60.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_039.mp4
+   Final Score: 230.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 54 X-RAY | 25.63s-25.90s | Peak | Vibe: Control
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_033.mp4 | SCORE: 220.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_043.mp4 | SCORE: 220.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_044.mp4 | SCORE: 220.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_047.mp4 | SCORE: 220.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+   Delta from winner: -0.0 points
+
+   #5 | clip_005.mp4 | SCORE: 218.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_033.mp4
+   Final Score: 220.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 55 X-RAY | 25.90s-26.70s | Peak | Vibe: Competition
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_047.mp4 | SCORE: 245.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Peak stage. Satisfies the narrative's high-energy demand for this segmen
+
+   #2 | clip_042.mp4 | SCORE: 190.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -55.0 points
+
+   #3 | clip_014.mp4 | SCORE: 188.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -57.0 points
+
+   #4 | clip_023.mp4 | SCORE: 188.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -57.0 points
+
+   #5 | clip_043.mp4 | SCORE: 185.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -60.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_047.mp4
+   Final Score: 245.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 56 X-RAY | 26.70s-27.23s | Peak | Vibe: Intensity
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_043.mp4 | SCORE: 320.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_005.mp4 | SCORE: 318.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #3 | clip_024.mp4 | SCORE: 318.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #4 | clip_028.mp4 | SCORE: 318.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #5 | clip_001.mp4 | SCORE: 305.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. The visual content captures the 'Intensity' atmosphere perf
+   Delta from winner: -15.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_043.mp4
+   Final Score: 320.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 57 X-RAY | 27.23s-27.50s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_042.mp4 | SCORE: 290.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+
+   #2 | clip_014.mp4 | SCORE: 288.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -2.0 points
+
+   #3 | clip_023.mp4 | SCORE: 288.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -2.0 points
+
+   #4 | clip_044.mp4 | SCORE: 285.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #5 | clip_005.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -7.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_042.mp4
+   Final Score: 290.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 58 X-RAY | 27.50s-27.77s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_044.mp4 | SCORE: 335.0
+   Vibes: Vehicle, Solo
+   Subjects: Object-Vehicle, People-Solo
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_005.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #3 | clip_012.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #4 | clip_028.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -2.0 points
+
+   #5 | clip_041.mp4 | SCORE: 316.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -19.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_044.mp4
+   Final Score: 335.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 59 X-RAY | 27.77s-28.30s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_014.mp4 | SCORE: 288.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+
+   #2 | clip_023.mp4 | SCORE: 288.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -0.0 points
+
+   #3 | clip_005.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #4 | clip_012.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #5 | clip_028.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_014.mp4
+   Final Score: 288.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 60 X-RAY | 28.30s-28.83s | Peak | Vibe: Celebration
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_024.mp4 | SCORE: 337.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_005.mp4 | SCORE: 233.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -104.0 points
+
+   #3 | clip_028.mp4 | SCORE: 233.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -104.0 points
+
+   #4 | clip_001.mp4 | SCORE: 220.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -117.0 points
+
+   #5 | clip_016.mp4 | SCORE: 217.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -120.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_024.mp4
+   Final Score: 337.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 61 X-RAY | 28.83s-29.37s | Peak | Vibe: Power
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_023.mp4 | SCORE: 288.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Power' atmosphere perfectly.
+
+   #2 | clip_005.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #3 | clip_012.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #4 | clip_028.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+   #5 | clip_036.mp4 | SCORE: 283.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_023.mp4
+   Final Score: 288.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 62 X-RAY | 29.37s-29.90s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_005.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_012.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_028.mp4 | SCORE: 333.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #4 | clip_041.mp4 | SCORE: 316.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -17.0 points
+
+   #5 | clip_022.mp4 | SCORE: 313.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -20.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_005.mp4
+   Final Score: 333.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 63 X-RAY | 29.90s-30.43s | Peak | Vibe: Speed
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_012.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_028.mp4 | SCORE: 283.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -0.0 points
+
+   #3 | clip_029.mp4 | SCORE: 280.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -3.0 points
+
+   #4 | clip_015.mp4 | SCORE: 278.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -5.0 points
+
+   #5 | clip_037.mp4 | SCORE: 278.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ✅ YES
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. The visual content captures the 'Speed' atmosphere perfectly.
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_012.mp4
+   Final Score: 283.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 64 X-RAY | 30.43s-30.97s | Peak | Vibe: Conflict
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_028.mp4 | SCORE: 183.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_001.mp4 | SCORE: 180.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -3.0 points
+
+   #3 | clip_015.mp4 | SCORE: 178.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -5.0 points
+
+   #4 | clip_025.mp4 | SCORE: 178.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Reaction' shot within this sequence. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -5.0 points
+
+   #5 | clip_041.mp4 | SCORE: 176.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -7.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_028.mp4
+   Final Score: 183.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 65 X-RAY | 30.97s-31.50s | Peak | Vibe: Crash
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_036.mp4 | SCORE: 183.0
+   Vibes: Solo, Travel
+   Subjects: People-Solo, Activity-Travel
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_029.mp4 | SCORE: 180.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -3.0 points
+
+   #3 | clip_015.mp4 | SCORE: 178.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -5.0 points
+
+   #4 | clip_037.mp4 | SCORE: 178.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -5.0 points
+
+   #5 | clip_041.mp4 | SCORE: 176.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -7.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_036.mp4
+   Final Score: 183.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 66 X-RAY | 31.50s-32.03s | Peak | Vibe: Crash
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_029.mp4 | SCORE: 180.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+
+   #2 | clip_015.mp4 | SCORE: 178.0
+   Vibes: Nature, Vehicle
+   Subjects: Place-Nature, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -2.0 points
+
+   #3 | clip_037.mp4 | SCORE: 178.0
+   Vibes: Vehicle, Nature
+   Subjects: Object-Vehicle, Place-Nature
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Serving as a strategic 'Action' shot within this sequence. Satisfies the narrative's high-energy demand for this segment
+   Delta from winner: -2.0 points
+
+   #4 | clip_041.mp4 | SCORE: 176.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -4.0 points
+
+   #5 | clip_019.mp4 | SCORE: 175.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -5.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_029.mp4
+   Final Score: 180.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 67 X-RAY | 32.03s-32.57s | Peak | Vibe: Scale
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_016.mp4 | SCORE: 217.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: Medium | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+
+   #2 | clip_041.mp4 | SCORE: 216.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -1.0 points
+
+   #3 | clip_022.mp4 | SCORE: 213.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -4.0 points
+
+   #4 | clip_031.mp4 | SCORE: 213.0
+   Vibes: Solo, Vehicle
+   Subjects: People-Solo, Object-Vehicle
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Serving as a strategic 
+   Delta from winner: -4.0 points
+
+   #5 | clip_011.mp4 | SCORE: 208.0
+   Vibes: Vehicle, Travel
+   Subjects: Object-Vehicle, Activity-Travel
+   Energy: High | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+   Delta from winner: -9.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_016.mp4
+   Final Score: 217.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+SEGMENT 68 X-RAY | 32.57s-35.40s | Outro | Vibe: Resolution
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Solo
+   Text Intent: The presence of elite global brands demands a visual language of professional do...
+   Dominant Narrative: A cinematic exploration of the high-stakes, high-velocity life of an elite pilot...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip_010.mp4 | SCORE: 296.0
+   Vibes: Vehicle
+   Subjects: Object-Vehicle
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Maintaining sequence flow with supporting material, though it drifts from the primary narrative anchor. Serving as a str
+
+   #2 | clip_002.mp4 | SCORE: 288.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Satisfies the narrative
+   Delta from winner: -8.0 points
+
+   #3 | clip_004.mp4 | SCORE: 283.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: Low | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Satisfies the narrative's high-energy demand for this segme
+   Delta from winner: -13.0 points
+
+   #4 | clip_017.mp4 | SCORE: 228.0
+   Vibes: Group, Vehicle
+   Subjects: People-Group, Object-Vehicle
+   Energy: Medium | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Maintains lighting consistency.
+   Delta from winner: -68.0 points
+
+   #5 | clip_034.mp4 | SCORE: 198.0
+   Vibes: Solo, Group
+   Subjects: People-Solo, People-Group
+   Energy: Low | Usage: 1x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Solo' as requested by the text intent. Acting as the primary e
+   Delta from winner: -98.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip_010.mp4
+   Final Score: 296.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+⚠️ DIVERSITY WARNING:
+   Clip reused 1x (penalty: -100 points)
+   Still won despite penalty - strong match
+
+================================================================================
+💡 CLIP CURATION RECOMMENDATIONS:
+================================================================================
+
+📥 ADD clips with vibes: abstract, anticipation, atmosphere, competition, conflict, control, crash, danger, detail, intimacy, preparation, resolution, scale, skill
+
+🗑️ CONSIDER REMOVING (never used): clip_002.mp4, clip_004.mp4
+
+================================================================================
+END OF X-RAY REPORT
+================================================================================

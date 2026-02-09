@@ -1,0 +1,112 @@
+{
+  "text_overlay_intent": "The text demands a psychological profile of high-performance pressure; it frames the machine's 'RPM' as the character's heartbeat and 'NERVES' as the price of 'LOVE' for the sport.",
+  "dominant_narrative": "The symbiotic and visceral relationship between a high-stakes pilot and the mechanical violence of their craft.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mechanical details, gear preparation, eye close-ups.",
+      "intent_diluting_material": "Wide scenic vistas without a clear human or mechanical anchor.",
+      "reasoning": "The 'NERVES' text requires an immediate sense of claustrophobic focus and preparation before the release of speed.",
+      "recommended_clips": [
+        "clip_002.mp4",
+        "clip_009.mp4",
+        "clip_010.mp4",
+        "clip_036.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Cockpit POV, engine ignitions, deck crew signals, rapid acceleration.",
+      "intent_diluting_material": "Nostalgic or slow-motion beach sequences that break the forward momentum.",
+      "reasoning": "This stage must mirror the 'RPM' climb; every shot should feel like a gear shift toward the peak.",
+      "recommended_clips": [
+        "clip_008.mp4",
+        "clip_012.mp4",
+        "clip_013.mp4",
+        "clip_019.mp4",
+        "clip_035.mp4",
+        "clip_038.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mid-air explosions, high-G maneuvers, afterburners, banking turns.",
+      "intent_diluting_material": "Stable formation flying or calm horizon lines.",
+      "reasoning": "The peak must deliver on the 'High-stakes' requirement of the reference, using the most aggressive kinetic motion available.",
+      "recommended_clips": [
+        "clip_014.mp4",
+        "clip_021.mp4",
+        "clip_032.mp4",
+        "clip_039.mp4",
+        "clip_045.mp4",
+        "clip_047.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Silhouettes, sunset landings, or a final look of resolve.",
+      "intent_diluting_material": "Abrupt cuts to high-action that prevent the 'Button' resolution.",
+      "reasoning": "The 'A MAN' text concludes the arc, requiring a moment of singular focus to ground the preceding chaos.",
+      "recommended_clips": [
+        "clip_004.mp4",
+        "clip_016.mp4",
+        "clip_048.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundance of high-energy aviation footage perfectly matches the 'Relentless' pacing requirement.",
+      "Excellent 'Peak' material with explosions and high-speed maneuvers.",
+      "Strong 'People-Solo' assets to anchor the 'A MAN' narrative."
+    ],
+    "editorial_tradeoffs": [
+      "Aviation assets must stand in for 'Racing' assets; the editorial intent pivots from track-racing to air-racing/combat.",
+      "Limited 'Medium' energy clips mean the build-up must rely on shorter cuts of 'High' energy clips to simulate a ramp."
+    ],
+    "constraint_gaps": [
+      "Lack of literal 'fire imagery' outside of the dogfight explosion; afterburners will be used as the primary visual surrogate for 'fire'."
+    ]
+  },
+  "editorial_strategy": "The edit will treat the jet cockpit as the 'driver's seat,' using tight internal shots to establish 'NERVES' and wide external kinetic shots to satisfy 'RPM.' We will prioritize the 'Filmic Commercial' look by favoring golden hour and high-contrast silhouettes, ensuring the human element (the pilot) remains the emotional anchor amidst the mechanical chaos.",
+  "remake_strategy": "To achieve a true Director's Cut, I would integrate macro-photography of vibrating cockpit needles and extreme close-ups of a pilot's dilating pupils. Adding literal asphalt-level racing textures would bridge the gap between the 'Racing' text and the 'Aviation' visuals.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.85,
+  "editorial_motifs": [
+    {
+      "trigger": "Text: RPM",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Text: NERVES",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Engine Ignition",
+      "desired_continuity": "Action-Completion",
+      "priority": "High"
+    },
+    {
+      "trigger": "Pilot Focus",
+      "desired_continuity": "Graphic-Match",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:28:50.481882"
+}

@@ -1,0 +1,113 @@
+{
+  "text_overlay_intent": "The presence of elite global brands demands a visual language of professional dominance, high-tier engineering, and the absolute pinnacle of human-machine synergy.",
+  "dominant_narrative": "A cinematic exploration of the high-stakes, high-velocity life of an elite pilot, balancing the raw power of machinery with the heavy weight of personal legacy.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Establishing shots of the 'arena' (aircraft carriers, runways) and the 'tools' (jets, helmets).",
+      "intent_diluting_material": "Casual lifestyle shots or low-energy domestic environments.",
+      "reasoning": "The intro must mirror the F1 reference's 'Establish' function by grounding the viewer in a world of elite performance and preparation.",
+      "recommended_clips": [
+        "clip_003.mp4",
+        "clip_005.mp4",
+        "clip_006.mp4",
+        "clip_016.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Mechanical details, pilot preparation, and the transition from static to kinetic energy.",
+      "intent_diluting_material": "Abstract scenery without a human or mechanical anchor.",
+      "reasoning": "This stage builds the 'visceral' quality of the reference, focusing on the tactile reality of high-speed professions.",
+      "recommended_clips": [
+        "clip_008.mp4",
+        "clip_012.mp4",
+        "clip_019.mp4",
+        "clip_035.mp4",
+        "clip_036.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "High-speed maneuvers, dogfights, explosions, and intense cockpit reactions.",
+      "intent_diluting_material": "Slow-paced nostalgic cuts that break the 'relentless' pacing feel.",
+      "reasoning": "The peak must replicate the 'High-speed racing POV' and 'Crashes/High stakes' of the reference through aerial combat and extreme flight.",
+      "recommended_clips": [
+        "clip_013.mp4",
+        "clip_021.mp4",
+        "clip_039.mp4",
+        "clip_040.mp4",
+        "clip_045.mp4",
+        "clip_047.mp4",
+        "clip_048.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Reflective gazes, silhouettes, and symbols of legacy or resolution.",
+      "intent_diluting_material": "High-energy action that prevents the 'Button' function from landing.",
+      "reasoning": "The outro provides the 'personal stakes' resolution, moving from the machine back to the human soul.",
+      "recommended_clips": [
+        "clip_004.mp4",
+        "clip_017.mp4",
+        "clip_034.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy, high-quality (5/5) action footage that matches the 'Relentless' pacing.",
+      "Strong thematic overlap between F1 racing and elite fighter pilot culture.",
+      "Excellent 'Mechanical details' and 'Driver intimacy' equivalents in the cockpit shots."
+    ],
+    "editorial_tradeoffs": [
+      "The 'Crashes/High stakes' requirement is met by dogfights and explosions rather than racing accidents.",
+      "The 'Branding/Sponsorship' intent is carried by the elite nature of the military hardware rather than explicit logos."
+    ],
+    "constraint_gaps": [
+      "Lack of 'Crowd/Atmosphere' shots; the library is more solitary than the F1 reference.",
+      "No 'Night racing' equivalent, though dusk/golden hour shots provide a similar high-contrast aesthetic."
+    ]
+  },
+  "editorial_strategy": "The edit will pivot from the F1 racing context to a 'Top Gun' style narrative, using the high-energy jet maneuvers to satisfy the 'Relentless' pacing while utilizing the funeral and nostalgic photo clips to ground the 'Personal Stakes' mentioned in the reference intent.",
+  "remake_strategy": "To achieve a true Director's Cut, I would integrate more 'Ground Crew' footage to simulate the F1 pit-stop energy and seek out night-flight footage with heavy lens flares to match the 'Night racing' and 'Teal-Orange' filmic look of the reference.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Ignition or afterburner activation",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed banking or rolls",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Pilot looking at a photograph or reflecting",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Transition from cockpit to wide aerial",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:38:27.390864"
+}

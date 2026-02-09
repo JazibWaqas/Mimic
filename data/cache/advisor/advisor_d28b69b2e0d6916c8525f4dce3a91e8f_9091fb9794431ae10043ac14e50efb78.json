@@ -1,0 +1,109 @@
+{
+  "text_overlay_intent": "The text demands a high-prestige cinematic trailer aesthetic that elevates Formula 1 from a sport to a dramatic narrative event, requiring a balance between celebrity presence and technical mastery.",
+  "dominant_narrative": "The relentless pursuit of professional dominance where human grit meets high-velocity engineering.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Technical details, wind tunnels, and track examinations to establish the 'professional dominance' theme.",
+      "intent_diluting_material": "High-speed overtakes or chaotic crashes which should be reserved for the peak.",
+      "reasoning": "The intro must establish the 'Director' and 'Star' credits through focused, high-quality imagery that suggests preparation and expertise rather than just raw speed.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip52.mp4",
+        "clip74.mp4",
+        "clip63.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Training montages, pit lane preparations, and the illumination of start lights to create a sense of impending velocity.",
+      "intent_diluting_material": "Static trophy shots or slow-paced dialogue that breaks the rhythmic tension.",
+      "reasoning": "This stage needs to bridge the gap between the 'man' and the 'machine' by showing the physical and technical preparation required for the race.",
+      "recommended_clips": [
+        "clip62.mp4",
+        "clip65.mp4",
+        "clip67.mp4",
+        "clip75.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Crashes, night racing with fireworks, and rapid-fire onboard perspectives to simulate the 'relentless' pacing of the reference.",
+      "intent_diluting_material": "Wide establishing shots that lack kinetic energy or clear focal points.",
+      "reasoning": "The peak must deliver on the 'High-Octane' promise, using the most dynamic motion and highest energy clips to overwhelm the viewer's senses.",
+      "recommended_clips": [
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip58.mp4",
+        "clip78.mp4",
+        "clip57.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Reflective moments, walking away from the track, and the aftermath of the spectacle.",
+      "intent_diluting_material": "Aggressive engine noise or fast-cutting action that prevents a clean emotional release.",
+      "reasoning": "The 'Release' function requires a return to the human element, showing the quiet after the storm to solidify the narrative arc.",
+      "recommended_clips": [
+        "clip61.mp4",
+        "clip77.mp4",
+        "clip50.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage",
+      "Strong technical and training-related B-roll",
+      "Excellent night-time racing visuals with high contrast"
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of Medium/Low energy clips requires using training sequences (clip62, clip65) to simulate the 'Build-up' phase rather than pure racing."
+    ],
+    "constraint_gaps": [
+      "Limited close-up eye/helmet shots of the specific lead actors compared to the reference's requirements, necessitating a focus on the 'Driver' archetype."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize the 'Professional Dominance' narrative by framing the racing action as the result of intense human preparation. By anchoring the high-energy peaks with training and technical motifs, the system will avoid a generic highlight reel feel and instead achieve the 'Movie Trailer' intent.",
+  "remake_strategy": "To reach a Director's Cut level, additional macro-photography of driver eyes and vibrating cockpit components should be integrated to heighten the sensory connection between the human and the machine.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban",
+    "Object-Detail"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical details (steering wheels, wind tunnels)",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed racing crashes",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    },
+    {
+      "trigger": "Night racing stadium lights",
+      "desired_continuity": "Graphic-Match",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Physical training (boxing, running)",
+      "desired_continuity": "Action-Completion",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:13:12.487666"
+}

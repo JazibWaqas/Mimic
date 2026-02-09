@@ -1,0 +1,113 @@
+{
+  "text_overlay_intent": "The text establishes a hierarchy where 'STRATEGY' is the cold, calculated foundation, while 'FAST' is the visceral, undeniable result. It demands a juxtaposition of still, focused preparation against explosive, kinetic release.",
+  "dominant_narrative": "The film explores the psychological and mechanical transition from disciplined preparation to the raw, high-stakes adrenaline of elite performance.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mechanical details, tactile objects, and low-motion establishing shots.",
+      "intent_diluting_material": "Wide, empty landscapes or high-speed movement that lacks a human anchor.",
+      "reasoning": "The 'IS' and 'STRATEGY' phase requires a sense of weight and deliberation. We are establishing the 'Calculated' part of the narrative through close-up textures.",
+      "recommended_clips": [
+        "clip_002.mp4",
+        "clip_010.mp4",
+        "clip_005.mp4",
+        "clip_016.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Human focus, eye contact, helmet adjustments, and engine ignitions.",
+      "intent_diluting_material": "Celebratory or joyful imagery that breaks the tension too early.",
+      "reasoning": "This stage must bridge the gap between the plan and the action. The focus shifts from the machine to the pilot's readiness, building internal pressure.",
+      "recommended_clips": [
+        "clip_012.mp4",
+        "clip_036.mp4",
+        "clip_022.mp4",
+        "clip_019.mp4",
+        "clip_008.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Extreme maneuvers, afterburners, high-speed flyovers, and visual chaos like smoke or vapor.",
+      "intent_diluting_material": "Static shots or slow-motion that feels 'graceful' rather than 'aggressive'.",
+      "reasoning": "This is the 'FAST' manifestation. The edit must feel relentless, favoring shots where the subject dominates the frame through speed and power.",
+      "recommended_clips": [
+        "clip_013.mp4",
+        "clip_021.mp4",
+        "clip_039.mp4",
+        "clip_047.mp4",
+        "clip_048.mp4",
+        "clip_045.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "JOY",
+      "supporting_material": "Human connection, sunset lighting, and reflective pauses.",
+      "intent_diluting_material": "Continued high-intensity combat or mechanical aggression.",
+      "reasoning": "The 'Release' function requires a shift from the 'Aggressive' intent to a 'Celebratory' or 'Peaceful' resolution, validating the success of the strategy.",
+      "recommended_clips": [
+        "clip_024.mp4",
+        "clip_030.mp4",
+        "clip_017.mp4",
+        "clip_004.mp4"
+      ],
+      "required_energy": "Medium"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundance of high-energy 'ACTION' and 'INTENSITY' clips perfectly matching the 'FAST' and 'Aggressive' requirements.",
+      "Strong thematic cohesion between the pilot/jet footage and the high-stakes narrative.",
+      "High-quality cinematic visuals with consistent cool/neutral tones."
+    ],
+    "editorial_tradeoffs": [
+      "The library is aviation-focused while the reference is automotive; the 'Racing' intent must be translated into 'Flight Combat' or 'High-Speed Maneuvers'.",
+      "Scarcity of low-energy 'Strategy' moments requires using nostalgic or reflective clips (photos, insignias) to represent the 'Calculated' phase."
+    ],
+    "constraint_gaps": [
+      "Limited 'Medium' energy clips for the build-up stage, necessitating careful trimming of high-energy clips to simulate tension.",
+      "Lack of literal 'Mechanical close-ups' of cars; must substitute with jet engines and cockpit controls."
+    ]
+  },
+  "editorial_strategy": "The edit will pivot the automotive racing theme into an elite aviation narrative. We will use the 'Strategy' text to anchor the human preparation and the 'Fast' text to trigger a transition into maximum-kinetic flight maneuvers. The 'Aggressive' tone will be maintained through high-contrast grading and rapid-fire cutting during the Peak stage, using the pilot's eyes as the recurring narrative anchor.",
+  "remake_strategy": "To achieve a true Director's Cut, I would integrate macro-photography of vibrating mechanical parts and high-shutter-speed close-ups of the pilot's face to emphasize the physical toll of 'FAST'. Adding more 'Place-Indoor' strategy-room footage would further strengthen the 'Calculated' narrative arc.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Text 'STRATEGY'",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    },
+    {
+      "trigger": "Engine Ignition",
+      "desired_continuity": "Action-Completion",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Text 'FAST'",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Pilot Eye Contact",
+      "desired_continuity": "Graphic-Match",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T18:01:18.829912"
+}

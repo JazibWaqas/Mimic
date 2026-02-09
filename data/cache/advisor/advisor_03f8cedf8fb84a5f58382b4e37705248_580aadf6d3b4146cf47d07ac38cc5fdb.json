@@ -1,0 +1,109 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands an aesthetic of professional dominance and the heavy weight of legacy; it requires shots that frame the protagonist not just as a participant, but as a master of a high-stakes, high-velocity craft.",
+  "dominant_narrative": "A visceral exploration of the intersection between human focus and mechanical violence, where the pursuit of speed is balanced by the solemnity of professional duty.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mechanical details and environmental establishing shots.",
+      "intent_diluting_material": "Crowd shots or wide-angle celebratory moments.",
+      "reasoning": "The intro must establish the 'Pilot' (Driver) and the 'Cockpit' (Vehicle) as the singular focus to mirror the high-stakes entry of a cinematic military drama.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip74.mp4",
+        "clip52.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Technical preparation, wind tunnels, and pre-race rituals.",
+      "intent_diluting_material": "Casual urban walking or non-technical dialogue.",
+      "reasoning": "This stage builds the 'machinery of war' vibe, using technical precision to justify the upcoming kinetic release.",
+      "recommended_clips": [
+        "clip75.mp4",
+        "clip63.mp4",
+        "clip73.mp4",
+        "clip65.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "High-speed tracking, crashes, and onboard perspectives.",
+      "intent_diluting_material": "Static shots or slow-motion that lacks directional motion.",
+      "reasoning": "The peak must simulate the 'dogfight'—pure kinetic energy where the danger of the craft (the crash) is juxtaposed with the skill of the operator.",
+      "recommended_clips": [
+        "clip58.mp4",
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip55.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Camaraderie, trophies, and reflective silence.",
+      "intent_diluting_material": "Aggressive racing footage or high-energy music cues.",
+      "reasoning": "The 'Top Gun' ethos concludes with the weight of the mission; we need to see the human cost and the shared bond after the adrenaline fades.",
+      "recommended_clips": [
+        "clip77.mp4",
+        "clip50.mp4",
+        "clip61.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-intensity racing footage that serves as a perfect surrogate for aerial combat.",
+      "Strong 'Hero' imagery with Brad Pitt and professional drivers providing the necessary 'Maverick' archetype.",
+      "Excellent technical b-roll (wind tunnels, start lights) to build cinematic tension."
+    ],
+    "editorial_tradeoffs": [
+      "Using Formula 1 as a proxy for Naval Aviation; the edit must rely on speed and 'cockpit' intimacy to bridge the thematic gap.",
+      "Limited 'Nature' shots means the 'vast landscape' requirement must be fulfilled by wide track shots or desert urban settings."
+    ],
+    "constraint_gaps": [
+      "Scarcity of 'Low' energy reflective moments requires stretching clip50 and clip77 to carry the entire emotional weight of the outro.",
+      "Lack of actual aircraft requires the 'Object-Vehicle' shots to be edited with extreme kinetic bias to maintain the Top Gun feel."
+    ]
+  },
+  "editorial_strategy": "The edit will treat the racetrack as a battlefield. By anchoring the narrative on the 'Driver' as a 'Pilot' figure, we use the high-speed F1 footage to replicate the G-force intensity of flight. The sequence must prioritize the 'Man-Machine' interface, moving from the cold precision of the garage to the violent heat of the track, finally resolving in the quiet dignity of the winner's circle.",
+  "remake_strategy": "To achieve a true Director's Cut, integrate 35mm grain overlays and authentic cockpit radio chatter. Adding shots of vast desert horizons or actual jet flyovers would solidify the 'Top Gun' legacy beyond the racing surrogate.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical ignition or start lights",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed directional motion",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "The moment of impact or crash",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    },
+    {
+      "trigger": "Eye contact or helmet visors",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T18:06:56.428140"
+}

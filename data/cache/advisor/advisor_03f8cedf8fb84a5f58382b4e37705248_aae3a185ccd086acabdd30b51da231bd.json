@@ -1,0 +1,110 @@
+{
+  "text_overlay_intent": "The 'TOP GUN MAVERICK' stencil demands an aesthetic of elite military professionalism and high-stakes legacy. It requires a visual language that balances the cold precision of advanced machinery with the warm, human sweat of the pilots who command them.",
+  "dominant_narrative": "A visceral exploration of the cost and glory of elite aviation, where personal legacy meets the cutting edge of speed.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Mechanical details and facility reveals.",
+      "intent_diluting_material": "Casual lifestyle or low-energy domesticity.",
+      "reasoning": "The intro must establish the 'Maverick' persona—a singular force entering a world of high-tech power. We need to see the man and the machine as a unified entity from the first frame.",
+      "recommended_clips": [
+        "clip_005.mp4",
+        "clip_006.mp4",
+        "clip_012.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Preparation, training, and the ritual of flight (helmets, signals, launches).",
+      "intent_diluting_material": "Static landscapes without a vehicle or human presence.",
+      "reasoning": "This stage builds the 'High-Octane' promise. It’s about the kinetic energy of preparation—the motorcycle, the treadmill, the carrier deck—leading toward the inevitable release of flight.",
+      "recommended_clips": [
+        "clip_003.mp4",
+        "clip_008.mp4",
+        "clip_009.mp4",
+        "clip_019.mp4",
+        "clip_036.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Extreme aerial maneuvers, dogfights, and the physical strain on the pilot.",
+      "intent_diluting_material": "Wide shots that lose the sense of speed or the pilot's perspective.",
+      "reasoning": "The peak must juxtapose the 'extreme speed' with the 'weight of duty.' We intercut the adrenaline of the dogfight with the somber reality of the mission's stakes (the flag, the cockpit strain).",
+      "recommended_clips": [
+        "clip_021.mp4",
+        "clip_026.mp4",
+        "clip_040.mp4",
+        "clip_047.mp4",
+        "clip_048.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Camaraderie, sunset reflections, and the legacy of the team.",
+      "intent_diluting_material": "Aggressive cuts or high-speed maneuvers.",
+      "reasoning": "The 'Button' must land on collective purpose. We transition from the solo pilot to the group, emphasizing that the legacy is carried by those who remain and the memories they share.",
+      "recommended_clips": [
+        "clip_004.mp4",
+        "clip_017.mp4",
+        "clip_024.mp4",
+        "clip_034.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy aviation footage perfectly matching the 'Top Gun' aesthetic.",
+      "Strong 'Golden Hour' and 'Teal-Orange' color consistency across key clips.",
+      "Excellent variety of pilot-perspective and cockpit-intensity shots."
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of Medium-energy clips requires using high-energy clips with slower internal motion to simulate the build-up.",
+      "The 'solemn reflection' must be carried by static objects (photos, flags) due to a lack of quiet character dialogue."
+    ],
+    "constraint_gaps": [
+      "Limited 'Activity-Celebration' footage makes the 'collective purpose' outro rely heavily on a few beach and bar-style clips."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize the 'Syncopated' pacing by alternating between the mechanical roar of the jets and the silent, heavy moments of character reflection. We will use the motorcycle and runway sequences as the connective tissue between the pilot's personal life and his professional duty, ensuring the 'Golden Hour' lighting acts as the visual glue for the entire narrative arc.",
+  "remake_strategy": "To achieve a true Director's Cut, additional footage of intimate, low-light dialogue between pilots would deepen the 'camaraderie' theme. More 'Medium' energy ground-crew footage would also help smooth the transition from the intro's facility reveal to the peak's aerial combat.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "High-speed flight or afterburners",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Nostalgic photographs or medals",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Pilot visor adjustments or eye close-ups",
+      "desired_continuity": "Graphic-Match",
+      "priority": "High"
+    },
+    {
+      "trigger": "Transition from cockpit intensity to funeral/flag imagery",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:22:05.867917"
+}

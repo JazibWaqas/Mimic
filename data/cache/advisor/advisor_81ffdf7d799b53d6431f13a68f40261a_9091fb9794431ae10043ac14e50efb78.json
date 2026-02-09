@@ -1,0 +1,108 @@
+{
+  "text_overlay_intent": "The phrase 'THE DARKNESS | THE NIGHT OF' demands a visual language of high-contrast nocturnals, where artificial light pierces through shadows to highlight the isolation and danger of the driver. It requires moments where the environment feels oppressive and the racing feels like an escape from that void.",
+  "dominant_narrative": "The psychological and physical toll of high-stakes night racing, where the machine and the darkness collide in a display of visceral intensity.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Atmospheric night tracks, urban neon, and mechanical anticipation.",
+      "intent_diluting_material": "Daylight sequences or cheerful crowd interactions.",
+      "reasoning": "The intro must establish the 'Darkness' motif. We need to feel the weight of the night before the engines start, using static or slow-moving high-contrast imagery to build dread.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip64.mp4",
+        "clip74.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Wind tunnel testing, pit lane preparations, and driver focus.",
+      "intent_diluting_material": "Generic travel footage or unrelated lifestyle shots.",
+      "reasoning": "This stage represents the transition from preparation to kinetic energy. The focus should shift from the environment to the synergy between the driver and the machine.",
+      "recommended_clips": [
+        "clip52.mp4",
+        "clip53.mp4",
+        "clip65.mp4",
+        "clip75.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "High-speed crashes, fire, sparks, and explosive celebrations.",
+      "intent_diluting_material": "Wide shots that distance the viewer from the danger.",
+      "reasoning": "The peak must deliver on the 'danger' promised in the narrative intent. High-impact collisions and onboard perspectives should dominate to create a sense of claustrophobic speed.",
+      "recommended_clips": [
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip58.mp4",
+        "clip76.mp4",
+        "clip78.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Reflective silhouettes, walking away from the track, or cooling machinery.",
+      "intent_diluting_material": "High-energy racing or loud celebrations.",
+      "reasoning": "The 'Button' needs to provide a narrative release. After the intensity of the peak, we return to the darkness, but with the silence of a race concluded.",
+      "recommended_clips": [
+        "clip61.mp4",
+        "clip77.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-intensity racing footage specifically at night.",
+      "Strong selection of crash and high-stakes impact sequences.",
+      "Excellent mechanical and technical 'build' material (wind tunnel, pit lane)."
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of true 'Low' energy clips requires using 'Medium' clips with high-contrast grading to simulate the intro's atmospheric requirements.",
+      "Limited intimate driver close-ups means driver 'reactions' must be inferred through cockpit onboards."
+    ],
+    "constraint_gaps": [
+      "Lack of 'static' night environments forces a reliance on urban/Vegas shots to establish the 'Darkness' theme."
+    ]
+  },
+  "editorial_strategy": "The edit will prioritize a 'Machine-First' narrative, using the car as the primary vessel for the 'Darkness' theme. We will lean heavily into the high-contrast, cool-toned night footage to maintain the filmic look, ensuring that every high-energy peak is punctuated by a moment of mechanical or human consequence (crashes or reactions).",
+  "remake_strategy": "To achieve a true Director's Cut, I would integrate macro-photography of driver's eyes reflecting track lights and extreme slow-motion captures of heat haze and tire deformation. Adding more 'quiet' moments of post-race exhaustion would deepen the emotional arc.",
+  "primary_narrative_subject": null,
+  "allowed_supporting_subjects": [
+    "People-Solo",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical details (wheels, lights, cockpit)",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed racing motion",
+      "desired_continuity": "Motion-Carry",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Crashes or fire",
+      "desired_continuity": "Emotional-Release",
+      "priority": "High"
+    },
+    {
+      "trigger": "Night lights and fireworks",
+      "desired_continuity": "Graphic-Match",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:16:48.227261"
+}

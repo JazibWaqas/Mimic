@@ -1,0 +1,109 @@
+{
+  "text_overlay_intent": "The phrase 'THE DARKNESS | THE NIGHT OF' demands a narrative arc that moves from internal, shadowed preparation to the explosive, externalized release of high-stakes performance. It requires a visual contrast between the quiet 'darkness' of the mind/hangar and the kinetic 'light' of the afterburners and action.",
+  "dominant_narrative": "The psychological and physical transition from quiet, nostalgic preparation to the explosive, high-stakes intensity of elite aerial performance.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "LIFESTYLE",
+      "intent_diluting_material": "ACTION",
+      "reasoning": "The 'Darkness' must be established through reflective, low-energy moments of preparation and memory to create a vacuum that the subsequent action will fill. Using PEACE-category clips here establishes the human stakes before the mechanical chaos begins.",
+      "recommended_clips": [
+        "clip_002.mp4",
+        "clip_010.mp4",
+        "clip_034.mp4",
+        "clip_004.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "ADVENTURE",
+      "intent_diluting_material": "JOY",
+      "reasoning": "This stage must bridge the gap between thought and action. INTENSITY is required to show the machine coming to life—engines igniting, pilots masking up—signaling that the 'Night of' the event has arrived. ADVENTURE clips provide the necessary scale of the environment.",
+      "recommended_clips": [
+        "clip_005.mp4",
+        "clip_008.mp4",
+        "clip_012.mp4",
+        "clip_019.mp4",
+        "clip_036.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "INTENSITY",
+      "intent_diluting_material": "PEACE",
+      "reasoning": "The peak must embody the 'visceral intensity' of the reference. High-speed maneuvers and dogfights serve as the surrogate for F1 racing. The focus is on kinetic dominance and the 'danger' mentioned in the intent, culminating in high-impact visual releases.",
+      "recommended_clips": [
+        "clip_013.mp4",
+        "clip_021.mp4",
+        "clip_033.mp4",
+        "clip_040.mp4",
+        "clip_047.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "PEACE",
+      "intent_diluting_material": "JOY",
+      "reasoning": "The edit should not end on a 'happy' note, but rather a 'heavy' one. A return to the 'Darkness' or a singular, focused moment of the pilot ensures the high-stakes drama lingers rather than dissipating into a generic celebration.",
+      "recommended_clips": [
+        "clip_031.mp4",
+        "clip_026.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy aviation footage perfectly mirrors the 'visceral intensity' and 'speed' of the F1 reference.",
+      "The 'Filmic' and 'Cool' tone of the library aligns with the 'Darkness' aesthetic.",
+      "Strong 'People-Solo' presence allows for the 'intimate driver close-ups' requested."
+    ],
+    "editorial_tradeoffs": [
+      "The lack of actual F1 footage requires a thematic pivot to aviation, using jets as the primary vehicle for 'high-stakes drama'.",
+      "Scarcity of true 'Night' footage means 'Dusk' and 'Indoor/Dimly lit' clips must be prioritized to satisfy the 'Darkness' theme."
+    ],
+    "constraint_gaps": [
+      "The library lacks 'Dramatic crashes' in a racing context, so the mid-air explosion (clip_047) must be used as the narrative peak for 'danger'."
+    ]
+  },
+  "editorial_strategy": "The edit will leverage the 'Top Gun' aesthetic to fulfill the F1 'intensity' intent. By framing the pilot's internal focus (PEACE/INTENSITY) against the external violence of the jet (ACTION), we satisfy the 'Darkness' theme. The syncopated pacing will be driven by mechanical triggers—switches, ignitions, and banking maneuvers—rather than just musical beats.",
+  "remake_strategy": "To achieve a true Director's Cut, I would integrate high-contrast night-time telemetry overlays and more 'mechanical failure' close-ups. Adding shots of extreme weather or low-visibility environments would further lean into the 'Darkness' text intent.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Ignition or Afterburners",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Pilot Eye-line or Visor Adjustments",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "High-speed directional flyovers",
+      "desired_continuity": "Motion-Carry",
+      "priority": "High"
+    },
+    {
+      "trigger": "Nostalgic photographs or medals",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:34:36.457739"
+}

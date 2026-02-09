@@ -1,0 +1,115 @@
+{
+  "text_overlay_intent": "The text demands a high-prestige cinematic blockbuster atmosphere that prioritizes professional dominance, technical mastery, and the 'Hero' archetype found in elite-tier sports and military operations.",
+  "dominant_narrative": "The symbiotic relationship between an elite operator and their high-performance machine, where technical precision meets raw, visceral speed.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Object-Detail, Place-Indoor",
+      "intent_diluting_material": "High-speed wide shots, chaotic motion",
+      "reasoning": "The intro must establish the 'weight' of the protagonist and the tools of their trade. Using INTENSITY through close-ups of gear and quiet, focused environments builds the necessary tension before the kinetic release.",
+      "recommended_clips": [
+        "clip_002.mp4",
+        "clip_005.mp4",
+        "clip_006.mp4",
+        "clip_016.mp4"
+      ],
+      "required_energy": "Low"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Object-Vehicle, Activity-Travel",
+      "intent_diluting_material": "Static landscapes, celebratory group shots",
+      "reasoning": "This stage functions as the 'pre-flight' sequence. It requires a rhythmic escalation of technical preparation—adjusting visors, engine ignitions, and slow-moving machinery—to signal that the transition to ACTION is imminent.",
+      "recommended_clips": [
+        "clip_003.mp4",
+        "clip_007.mp4",
+        "clip_009.mp4",
+        "clip_012.mp4",
+        "clip_019.mp4",
+        "clip_036.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "Place-Nature, People-Solo",
+      "intent_diluting_material": "Slow-motion reflections, indoor shots, dialogue-heavy moments",
+      "reasoning": "The peak must be relentless. It should favor high-velocity movement and aggressive maneuvers. The machine (jet/vehicle) becomes the primary actor, but intercutting the pilot's focused gaze maintains the human stakes.",
+      "recommended_clips": [
+        "clip_013.mp4",
+        "clip_014.mp4",
+        "clip_021.mp4",
+        "clip_032.mp4",
+        "clip_039.mp4",
+        "clip_040.mp4",
+        "clip_045.mp4",
+        "clip_047.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "PEACE",
+      "supporting_material": "Place-Nature, People-Solo",
+      "intent_diluting_material": "Fast cuts, loud mechanical noise, aggressive motion",
+      "reasoning": "The release requires a return to the human element. A single, evocative shot of reflection or a vast, quiet landscape provides the 'afterburn' effect, allowing the audience to process the preceding intensity.",
+      "recommended_clips": [
+        "clip_004.mp4",
+        "clip_031.mp4",
+        "clip_034.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy aviation footage that mirrors the 'F1' speed requirement.",
+      "Strong 'Hero' imagery of pilots that aligns with the driver-focused intent.",
+      "High-quality cinematic textures (grain, lens flares, golden hour) matching the reference style."
+    ],
+    "editorial_tradeoffs": [
+      "Aviation assets must serve as a narrative proxy for automotive racing to maintain the 'F1' text intent.",
+      "Limited 'Medium' energy clips require careful pacing in the build-up to avoid a premature jump to peak energy."
+    ],
+    "constraint_gaps": [
+      "Lack of actual Formula 1 vehicles; the edit must rely on the 'feeling' of speed and technical precision rather than literal subject matter.",
+      "Scarce indoor/technical display shots may limit the 'technical precision' aspect of the reference."
+    ]
+  },
+  "editorial_strategy": "The edit will treat the fighter jets as the spiritual equivalent of F1 cars, focusing on the 'Operator vs. Machine' narrative. By anchoring the high-speed action with intense human close-ups, the system will replicate the 'F1 The Movie' trailer's emotional arc—moving from the quiet focus of the garage (hangar) to the violent speed of the track (sky).",
+  "remake_strategy": "To achieve a true Director's Cut, integrate macro-photography of mechanical components (pistons, telemetry screens) and high-frame-rate shots of driver/pilot perspiration to heighten the physical toll of the speed.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Nature"
+  ],
+  "subject_lock_strength": 0.85,
+  "editorial_motifs": [
+    {
+      "trigger": "Mechanical ignition or engine glow",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Pilot visor adjustment or eye contact",
+      "desired_continuity": "Semantic-Resonance",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed directional flyover",
+      "desired_continuity": "Motion-Carry",
+      "priority": "Medium"
+    },
+    {
+      "trigger": "Transition from cockpit to vast landscape",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T17:31:48.495683"
+}
