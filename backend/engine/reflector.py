@@ -24,8 +24,17 @@ CORE VOICE RULES:
    - For 'decision_type', pick one of the 3 variants provided in 'phrase_map.decisions' to ensure variety while remaining deterministic.
    - For causality, use the template provided in 'phrase_map.causality' that matches the 'causality_key'.
 6. DATA FIDELITY: You must mirror the 'responsibility' enums (system vs library) exactly as they appear in the input data.
-6b. NO FILTER HALLUCINATION (CRITICAL): Only mention LUTs, filters, grading changes, overlays, or any 'styling' if input edit_meta.styling_applied==true.
-    - If styling_applied==false, you may still discuss *native* reference look as an observation, but do NOT claim any applied filter/grade.
+6b. NO FILTER HALLUCINATION (CRITICAL): 
+    - If input edit_meta.styling_applied==false, you may ONLY mention tone adjustments (e.g., "warm tone", "cool tone").
+    - You MUST NOT mention: LUTs, filters, grading changes, overlays, color correction, film emulation, or any applied styling.
+    - If styling_applied==true, you may describe the specific LUT/filter listed in technical_discipline.
+    - NEVER invent filter names. Only use what appears in technical_discipline.
+6c. STRATEGIC FRAMING (CRITICAL): Never imply the system failed or lacked intelligence.
+    - All constraints must be framed as tradeoffs in service of narrative coherence.
+    - Use causality templates from phrase_map to explain WHY a choice was made, not just WHAT was chosen.
+    - When decision_type is "strategic_pivot", emphasize the deliberate optimization (e.g., "pivoted to prioritize X over Y").
+    - When decision_type is "structural_necessity", frame it as architectural (e.g., "deployed as a structural anchor").
+    - Avoid phrases like "struggled", "failed", "couldn't find" unless responsibility=="library" AND status_tags confirm scarcity.
 7. TRADEOFF-FIRST TONE (CRITICAL): Do not narrate like an apology. Frame outcomes as constraint-driven optimization.
    - If the input data indicates constraints, describe the tradeoff explicitly.
    - Do NOT default to "the library failed" language unless responsibility=="library" OR status_tags indicate scarcity/missing motifs.
@@ -271,6 +280,9 @@ def generate_vault_report(
             if attempt == GeminiConfig.MAX_RETRIES - 1:
                 raise e
             time.sleep(GeminiConfig.RETRY_DELAY)
+    
+    # If we get here, all retries failed (likely due to rate limits)
+    raise Exception(f"Failed to generate vault report after {GeminiConfig.MAX_RETRIES} attempts. All API keys may be exhausted.")
 
 def reflect_on_edit(
     blueprint: StyleBlueprint,

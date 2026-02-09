@@ -1,0 +1,190 @@
+{
+  "header": "This 27.3-second nostalgic narrative was built to prioritize atmosphere over energy due to significant library constraints.",
+  "executive_summary": [
+    "The edit leans into a reflective pace because the library lacked high-energy clips.",
+    "Missing wide shots forced a tighter, more intimate focus throughout the narrative.",
+    "A lack of payoff shots resulted in a story that prioritizes atmosphere over a big climax.",
+    "Every clip choice was a tradeoff to maintain coherence despite significant library gaps."
+  ],
+  "advisor": {
+    "hero": "The library didn't have the teeth for a high-energy edit, so I pivoted to a quiet, warm reflection.",
+    "body": "Scarcity of wide shots and payoff moments created a bottleneck that prevented a traditional narrative arc. I optimized for a breathable pace to ensure the nostalgic tone felt intentional rather than accidental. The technical score of 8.0 reflects a solid assembly that was ultimately capped by the available footage."
+  },
+  "decision_stream": [
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to establish a sense of wonder and nostalgia.",
+      "decision": "Used clip_005.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to establish a sense of wonder and nostalgia.",
+      "decision": "Used clip_005.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 1,
+      "what_i_tried": "I wanted to establish a sense of wonder and nostalgia.",
+      "decision": "Used clip_005.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted to inject playful energy into the sequence.",
+      "decision": "Locked in clip_008.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity_low_energy"
+      ]
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted to inject playful energy into the sequence.",
+      "decision": "Locked in clip_008.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity_low_energy"
+      ]
+    },
+    {
+      "segment_id": 2,
+      "what_i_tried": "I wanted to inject playful energy into the sequence.",
+      "decision": "Locked in clip_008.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity_low_energy"
+      ]
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to build toward joy and exhilaration.",
+      "decision": "Selected clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "missing_payoff_shots"
+      ]
+    },
+    {
+      "segment_id": 3,
+      "what_i_tried": "I wanted to build toward joy and exhilaration.",
+      "decision": "Selected clip_001.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "missing_payoff_shots"
+      ]
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "I wanted to showcase connection and warmth.",
+      "decision": "Used clip_021.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "I wanted to showcase connection and warmth.",
+      "decision": "Used clip_021.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 4,
+      "what_i_tried": "I wanted to showcase connection and warmth.",
+      "decision": "Used clip_021.mp4 because no better alternative was available in the library.",
+      "what_if": "This slot had no viable upgrade.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted to land on a feeling of peace and home.",
+      "decision": "Locked in clip_003.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    },
+    {
+      "segment_id": 5,
+      "what_i_tried": "I wanted to land on a feeling of peace and home.",
+      "decision": "Locked in clip_003.mp4 because no better alternative was available in the library.",
+      "what_if": "No stronger alternative existed.",
+      "is_key": false,
+      "importance": "all",
+      "tags": [
+        "scarcity"
+      ]
+    }
+  ],
+  "key_decision_stream": [],
+  "friction_log": [
+    "Started with a clear nostalgic goal but immediately hit a wall with low-energy footage.",
+    "Mid-edit, the lack of wide shots made it difficult to establish the necessary scale for the narrative.",
+    "Finished by leaning into the reflective pace since the library could not support a high-energy payoff."
+  ],
+  "post_mortem": {
+    "worked": "The warm tone and breathable pacing kept the edit feeling intentional. Segment 1 used clip_005.mp4 to establish a consistent mood that carried through the piece.",
+    "didnt": "The edit lacks a visual payoff because the library was missing wide shots and high-energy clips. Segment 3 used clip_001.mp4 to try for exhilaration, but the result was limited by the available energy.",
+    "responsibility": {
+      "vibe": "library",
+      "emotion": "library"
+    }
+  },
+  "next_steps": [
+    "Capture wide shots to provide a sense of scale and place.",
+    "Record high-energy payoff moments to allow for a more dynamic climax.",
+    "Diversify the library with more 'joy' motifs to strengthen emotional peaks."
+  ],
+  "clip_suggestions": [
+    "Adding wide shots would help establish the setting.",
+    "Including high-energy clips would allow for a stronger payoff.",
+    "More variety in 'joy' motifs would improve the emotional peak.",
+    "Capturing more 'payoff' moments would solve the current bottleneck.",
+    "Adding clips with more movement would help break the low-energy cycle.",
+    "Finding more wide-angle perspectives would fix the current lack of scale."
+  ],
+  "technical": [
+    "Applied a warm tone to unify the nostalgic feel across all segments.",
+    "Prioritized a reflective and breathable pace to match the low-energy footage profile.",
+    "Maintained nominal sync fidelity despite the library gaps in high-energy motifs."
+  ]
+}

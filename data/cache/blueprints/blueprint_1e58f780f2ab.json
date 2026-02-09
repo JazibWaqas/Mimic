@@ -1,0 +1,144 @@
+{
+  "total_duration": 27.285351,
+  "editing_style": "Nostalgic Narrative",
+  "emotional_intent": "To evoke a sense of longing and warmth by contrasting the kinetic energy of childhood with the quiet safety of home.",
+  "plan_summary": "A four-stage journey starting with high-energy movement, transitioning through candid laughter, peaking in a sun-drenched moment of pure joy, and resolving into a tender, static embrace.",
+  "style_config": {
+    "text": {
+      "font": "Inter",
+      "weight": 600,
+      "color": "#FFFFFF",
+      "shadow": true,
+      "position": "bottom",
+      "animation": "fade"
+    },
+    "color": {
+      "preset": "warm"
+    },
+    "texture": {
+      "grain": true
+    }
+  },
+  "arc_description": "The edit begins with physical momentum, builds emotional depth through close-up reactions, reaches a peak of uninhibited joy, and finally exhales into a peaceful, low-energy resolution.",
+  "text_overlay": "The magic of being small.",
+  "text_style": {
+    "font_style": "Sans-serif",
+    "animation": "Fade",
+    "placement": "Bottom-third",
+    "color_effects": "Warm White"
+  },
+  "color_grading": {
+    "tone": "Warm",
+    "contrast": "Medium",
+    "specific_look": "Vintage Film with golden hour hues"
+  },
+  "visual_effects": [
+    "film grain",
+    "subtle light leaks",
+    "soft focus edges"
+  ],
+  "narrative_message": "Childhood is a beautiful blur of energy that eventually finds its rest in the arms of loved ones.",
+  "intent_clarity": "Clear",
+  "assumed_material": [
+    "children running",
+    "candid laughter",
+    "spinning in circles",
+    "hugging a parent",
+    "quiet indoor light"
+  ],
+  "must_have_content": [
+    "running or fast movement",
+    "a close-up of a smile",
+    "a quiet final shot"
+  ],
+  "should_have_content": [
+    "sun flare",
+    "slow-motion laughter",
+    "tactile details like hands or grass"
+  ],
+  "avoid_content": [
+    "fast strobe effects",
+    "modern technology/screens",
+    "harsh artificial lighting"
+  ],
+  "pacing_feel": "Breathable and Reflective",
+  "visual_balance": "People-centric",
+  "peak_density": "Moderate",
+  "segments": [
+    {
+      "id": 1,
+      "start": 0.0,
+      "end": 5.34,
+      "duration": 5.34,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "playful, energy",
+      "reasoning": "Establish the 'joy of being a kid' immediately with movement to hook the viewer, using a slightly longer hold to avoid a frantic start.",
+      "arc_stage": "Intro",
+      "shot_scale": "Wide",
+      "shot_function": "Establish",
+      "expected_hold": "Long",
+      "cut_origin": "visual",
+      "cde": "Sparse",
+      "emotional_guidance": "carefree excitement"
+    },
+    {
+      "id": 2,
+      "start": 5.34,
+      "end": 12.816,
+      "duration": 7.476,
+      "energy": "Medium",
+      "motion": "Dynamic",
+      "vibe": "laughter, connection",
+      "reasoning": "Shift from wide action to more personal, medium shots. This builds the emotional connection by showing faces and reactions.",
+      "arc_stage": "Build-up",
+      "shot_scale": "Medium",
+      "shot_function": "Action",
+      "expected_hold": "Normal",
+      "cut_origin": "beat",
+      "cde": "Moderate",
+      "emotional_guidance": "growing warmth"
+    },
+    {
+      "id": 3,
+      "start": 12.816,
+      "end": 21.36,
+      "duration": 8.544,
+      "energy": "High",
+      "motion": "Dynamic",
+      "vibe": "pure joy, freedom",
+      "reasoning": "The emotional climax. Use the most vibrant, sun-soaked footage here. Pacing remains intentional but allows for a few more cuts to match the musical swell.",
+      "arc_stage": "Peak",
+      "shot_scale": "Close",
+      "shot_function": "Reaction",
+      "expected_hold": "Normal",
+      "cut_origin": "beat",
+      "cde": "Moderate",
+      "emotional_guidance": "uninhibited happiness"
+    },
+    {
+      "id": 4,
+      "start": 21.36,
+      "end": 27.285351,
+      "duration": 5.925351,
+      "energy": "Low",
+      "motion": "Static",
+      "vibe": "love, home, peace",
+      "reasoning": "The 'soft landing'. A single, long-held shot of a quiet moment to resolve the energy and leave the viewer with a sense of belonging.",
+      "arc_stage": "Outro",
+      "shot_scale": "Medium",
+      "shot_function": "Release",
+      "expected_hold": "Long",
+      "cut_origin": "visual",
+      "cde": "Sparse",
+      "emotional_guidance": "peaceful belonging"
+    }
+  ],
+  "text_prompt": "Create a warm childhood memory video that captures the joy and energy of being a kid. Start with playful, energetic moments running, laughter, and movement. Build through different moods and emotions, then end on a quiet, loving moment that feels like home.",
+  "contract": {
+    "type": "blueprint",
+    "version": "12.1",
+    "source": "text_prompt",
+    "timestamp": "2026-02-09 21:30:04"
+  }
+}

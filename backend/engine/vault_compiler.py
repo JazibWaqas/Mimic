@@ -12,6 +12,11 @@ VAULT_PHRASE_MAP = {
             "Locked in",
             "Selected"
         ],
+        "strategic_pivot": [
+            "Optimized with",
+            "Pivoted to",
+            "Strategically deployed"
+        ],
         "structural_necessity": [
             "Used out of necessity",
             "Forced into the slot",
@@ -24,15 +29,17 @@ VAULT_PHRASE_MAP = {
         ]
     },
     "causality": {
+        "narrative_priority": "to ensure the {subject} story remained the primary focus",
+        "energy_mismatch": "to prioritize the {intent} vibe over raw energy levels",
         "missing_ideal_motif": "because the library lacked the requested {motif} motif",
-        "energy_mismatch": "because the energy profile didn't match the target",
         "library_gap": "because no better alternative was available in the library",
-        "pacing_priority": "to prioritize rhythmic continuity over semantic fit"
+        "pacing_priority": "to preserve the rhythmic soul of the edit"
     },
     "impacts": {
         "pacing_preserved": "preserving the edit's momentum",
         "momentum_saved": "preventing a pacing collapse",
-        "narrative_sacrifice": "despite the semantic mismatch"
+        "narrative_sacrifice": "despite the semantic mismatch",
+        "strategic_choice": "maintaining narrative coherence"
     }
 }
 
@@ -166,12 +173,32 @@ def compile_vault_reasoning(
         "unmet_requirements": [m.lower().replace(" ", "_") for m in critique.missing_ingredients]
     }
 
+    # Build technical discipline list based on what was actually applied
+    technical_discipline = []
+    
+    # TEMPORARY FIX: Styling is currently failing in production (FFmpeg font issues)
+    # Set to false to prevent LUT hallucinations until styling is fixed
+    styling_applied = False  # TODO: Get this from orchestrator/stylist return value
+    
+    if styling_applied:
+        # Styling was applied - mention the specific LUT/grade
+        technical_discipline.append(f"lut_{blueprint.color_grading.get('specific_look', 'neutral').lower().replace(' ', '_')}")
+    else:
+        # No styling applied - only mention tone adjustments (not LUTs)
+        tone = blueprint.color_grading.get('tone', 'neutral').lower()
+        if tone and tone != 'neutral':
+            technical_discipline.append(f"tone_{tone}")
+    
+    # Always include pacing and sync info (these are editorial, not styling)
+    technical_discipline.append(f"pacing_{blueprint.pacing_feel.lower()}")
+    technical_discipline.append(f"sync_{blueprint.music_sync.lower().replace(' ', '_')}")
+    
     reasoning = {
         "edit_meta": {
             "duration_sec": blueprint.total_duration,
             "reference_type": blueprint.editing_style.lower().replace(" ", "_"),
             "segment_count": len(blueprint.segments),
-            "styling_applied": bool(getattr(blueprint, "style_config", None))
+            "styling_applied": styling_applied
         },
         "library_health": library_health,
         "segments": segments,
@@ -182,11 +209,7 @@ def compile_vault_reasoning(
         "post_mortem": post_mortem,
         "phrase_map": VAULT_PHRASE_MAP, # Explicitly injected for the translator
         "prescriptions": [m.lower().replace(" ", "_") for m in critique.missing_ingredients],
-        "technical_discipline": [
-            f"lut_{blueprint.color_grading.get('specific_look', 'neutral').lower().replace(' ', '_')}",
-            f"pacing_{blueprint.pacing_feel.lower()}",
-            f"sync_{blueprint.music_sync.lower().replace(' ', '_')}"
-        ]
+        "technical_discipline": technical_discipline
     }
 
     output_path.write_text(json.dumps(reasoning, indent=2), encoding='utf-8')
