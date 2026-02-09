@@ -113,8 +113,13 @@ export default function VaultPage() {
     const [isStylingOpen, setIsStylingOpen] = useState(false);
     const [isStylingLoading, setIsStylingLoading] = useState(false);
 
-    const [vaultStylePreview, setVaultStylePreview] = useState<StyleConfig | null>(null);
     const [vaultCaptionPreview, setVaultCaptionPreview] = useState<string>("");
+    const [vaultCaptionPosition, setVaultCaptionPosition] = useState<'top' | 'center' | 'bottom'>('center');
+
+    const [vaultCaptionDraft, setVaultCaptionDraft] = useState<string>("");
+    const [vaultCaptionPositionDraft, setVaultCaptionPositionDraft] = useState<'top' | 'center' | 'bottom'>('center');
+
+    const vaultTextStoreRef = useRef(new Map<string, { caption: string; position: 'top' | 'center' | 'bottom' }>());
 
     const videoRef = useRef<HTMLVideoElement>(null);
     const decisionListRef = useRef<HTMLDivElement>(null);
@@ -227,21 +232,39 @@ export default function VaultPage() {
         return `${API_BASE}${path}?v=${Date.now()}`;
     }, [selectedItem]);
 
-    const cssFilterForPreset = (preset?: StyleConfig["color"]["preset"]) => {
-        switch (preset) {
-            case "warm":
-                return "contrast(1.05) saturate(1.15) sepia(0.18) hue-rotate(-10deg)";
-            case "cool":
-                return "contrast(1.05) saturate(1.05) hue-rotate(15deg)";
-            case "high_contrast":
-                return "contrast(1.25) saturate(1.1)";
-            case "vintage":
-                return "contrast(1.05) saturate(0.9) sepia(0.28)";
-            case "neutral":
-            default:
-                return "none";
+    const selectedKey = selectedItem?.filename || "";
+    const blueprintOverlay = (intelligence as any)?.blueprint?.text_overlay || "";
+    const blueprintSource = (intelligence as any)?.blueprint?.contract?.source || "";
+    const isPromptModeResult = Boolean((intelligence as any)?.blueprint?.text_prompt) || blueprintSource === "text_prompt";
+
+    // Keep modal drafts aligned with current committed state when opening
+    useEffect(() => {
+        if (!isStylingOpen) return;
+        setVaultCaptionDraft(vaultCaptionPreview);
+        setVaultCaptionPositionDraft(vaultCaptionPosition);
+    }, [isStylingOpen, vaultCaptionPreview, vaultCaptionPosition]);
+
+    // Load per-video preview state (avoid leaking caption across assets)
+    useEffect(() => {
+        if (!selectedKey) return;
+        const saved = vaultTextStoreRef.current.get(selectedKey);
+        if (saved) {
+            setVaultCaptionPreview(saved.caption);
+            setVaultCaptionPosition(saved.position);
+        } else {
+            setVaultCaptionPreview("");
+            setVaultCaptionPosition('center');
         }
-    };
+    }, [selectedKey]);
+
+    // Auto-load caption ONLY for prompt-mode results (text_prompt generator)
+    useEffect(() => {
+        if (!selectedKey) return;
+        if (vaultTextStoreRef.current.has(selectedKey)) return;
+        if (!isPromptModeResult) return;
+        if (!blueprintOverlay) return;
+        setVaultCaptionPreview(blueprintOverlay);
+    }, [selectedKey, isPromptModeResult, blueprintOverlay]);
 
     const currentModeAssets = useMemo(() => {
         const assets = viewMode === "results" ? results : viewMode === "references" ? references : clips;
@@ -377,21 +400,16 @@ export default function VaultPage() {
                                 <div className={cn("video-aura", isPlaying && "video-aura-active animate-pulse-vibrant")} />
                                 <div className="relative aspect-[14/12] rounded-[2.5rem] overflow-hidden bg-black shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-indigo-500/30 transition-all duration-700">
                                     {selectedItem ? (
-                                        <div
-                                            className="absolute inset-0"
-                                            style={{ filter: cssFilterForPreset(vaultStylePreview?.color?.preset) }}
-                                        >
-                                            <video
-                                                ref={videoRef}
-                                                src={videoUrl}
-                                                onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime || 0)}
-                                                onLoadedMetadata={() => setDuration(videoRef.current?.duration || 0)}
-                                                onPlay={() => setIsPlaying(true)}
-                                                onPause={() => setIsPlaying(false)}
-                                                className="w-full h-full object-cover"
-                                                controls
-                                            />
-                                        </div>
+                                        <video
+                                            ref={videoRef}
+                                            src={videoUrl}
+                                            onTimeUpdate={() => setCurrentTime(videoRef.current?.currentTime || 0)}
+                                            onLoadedMetadata={() => setDuration(videoRef.current?.duration || 0)}
+                                            onPlay={() => setIsPlaying(true)}
+                                            onPause={() => setIsPlaying(false)}
+                                            className="w-full h-full object-cover"
+                                            controls
+                                        />
                                     ) : (
                                         <div className="w-full h-full flex flex-col items-center justify-center opacity-20">
                                             <Play className="h-12 w-12 mb-4" />
@@ -400,27 +418,27 @@ export default function VaultPage() {
                                     )}
 
                                     {/* Vault-only overlays (non-destructive preview) */}
-                                    {(vaultCaptionPreview || (intelligence as any)?.blueprint?.text_overlay) && (
+                                    {vaultCaptionPreview && (
                                         <div className="absolute inset-0 pointer-events-none">
                                             <div
                                                 className={cn(
                                                     "absolute left-0 right-0 px-10 text-center",
-                                                    (vaultStylePreview?.text?.position || "bottom") === "top" && "top-[8%]",
-                                                    (vaultStylePreview?.text?.position || "bottom") === "center" && "top-1/2 -translate-y-1/2",
-                                                    (vaultStylePreview?.text?.position || "bottom") === "bottom" && "bottom-[10%]"
+                                                    (vaultCaptionPosition || "center") === "top" && "top-[8%]",
+                                                    (vaultCaptionPosition || "center") === "center" && "top-1/2 -translate-y-1/2",
+                                                    (vaultCaptionPosition || "center") === "bottom" && "bottom-[10%]"
                                                 )}
                                                 style={{
-                                                    fontFamily: vaultStylePreview?.text?.font || "Inter",
-                                                    fontWeight: vaultStylePreview?.text?.weight || 600,
-                                                    color: vaultStylePreview?.text?.color || "#FFFFFF",
-                                                    textShadow: vaultStylePreview?.text?.shadow ? "0 2px 12px rgba(0,0,0,0.85)" : undefined,
+                                                    fontFamily: "var(--font-cormorant-garamond), serif",
+                                                    fontWeight: 600,
+                                                    color: "#FFFFFF",
+                                                    textShadow: "0 2px 12px rgba(0,0,0,0.85)",
                                                 }}
                                             >
                                                 <div className={cn(
                                                     "text-[28px] sm:text-[34px] leading-tight",
-                                                    vaultStylePreview?.text?.animation === "fade" && "animate-in fade-in duration-500"
+                                                    "animate-in fade-in duration-500"
                                                 )}>
-                                                    {vaultCaptionPreview || (intelligence as any)?.blueprint?.text_overlay}
+                                                    {vaultCaptionPreview}
                                                 </div>
                                             </div>
                                         </div>
@@ -906,15 +924,24 @@ export default function VaultPage() {
             <StylingModal
                 key={`${selectedItem?.filename || "none"}:${(intelligence?.style_config && JSON.stringify(intelligence.style_config).length) || 0}`}
                 isOpen={isStylingOpen}
-                onClose={() => setIsStylingOpen(false)}
-                initialConfig={intelligence?.style_config}
-                initialCaption={vaultCaptionPreview || (intelligence as any)?.blueprint?.text_overlay || ""}
+                onClose={() => {
+                    setIsStylingOpen(false);
+                    setVaultCaptionDraft("");
+                    setVaultCaptionPositionDraft('center');
+                }}
+                initialCaption={vaultCaptionDraft}
+                initialPosition={vaultCaptionPositionDraft}
                 onApply={async (payload) => {
                     setIsStylingLoading(true);
                     try {
-                        setVaultStylePreview(payload.config);
+                        if (selectedKey) {
+                            vaultTextStoreRef.current.set(selectedKey, { caption: payload.caption, position: payload.position });
+                        }
                         setVaultCaptionPreview(payload.caption);
+                        setVaultCaptionPosition(payload.position);
                         setIsStylingOpen(false);
+                        setVaultCaptionDraft("");
+                        setVaultCaptionPositionDraft('center');
                     } finally {
                         setIsStylingLoading(false);
                     }

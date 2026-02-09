@@ -1,0 +1,677 @@
+================================================================================
+X-RAY DIAGNOSTIC REPORT - REFERENCE MODE
+================================================================================
+Reference/Prompt: ref12
+Total Segments: 8
+Total Clips: 25
+Total Decisions: 9
+================================================================================
+
+📑 BLUEPRINT SEGMENTS:
+------------------------------------------------------------
+  Seg 01:  0.00s- 4.83s | Medium | Intro      | CDE=Moderate | Hold=Long   | Origin=visual
+           Vibe: Playful
+  Seg 02:  4.83s- 9.07s | Medium | Build-up   | CDE=Moderate | Hold=Normal | Origin=visual
+           Vibe: Carefree
+  Seg 03:  9.07s-13.27s | Low    | Build-up   | CDE=Moderate | Hold=Normal | Origin=visual
+           Vibe: Collective
+  Seg 04: 13.27s-16.90s | Medium | Build-up   | CDE=Moderate | Hold=Normal | Origin=visual
+           Vibe: Domestic
+  Seg 05: 16.90s-17.50s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Energetic
+  Seg 06: 17.50s-18.10s | High   | Peak       | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Candid
+  Seg 07: 18.10s-19.60s | Low    | Outro      | CDE=Moderate | Hold=Short  | Origin=visual
+           Vibe: Intimate
+  Seg 08: 19.60s-22.23s | Medium | Outro      | CDE=Moderate | Hold=Normal | Origin=visual
+           Vibe: Celebration
+
+📊 CLIP USAGE ANALYSIS:
+------------------------------------------------------------
+
+  ✅ USED  clip79.mp4
+       Usage: 1x | Energy: High | Duration: 193.0s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       Moments used:
+         [1] 96.50s - 97.10s (0.60s)
+
+  ✅ USED  clip80.mp4
+       Usage: 1x | Energy: High | Duration: 29.9s
+       Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
+       Moments used:
+         [1] 10.20s - 10.80s (0.60s)
+
+  ✅ USED  clip81.mp4
+       Usage: 1x | Energy: High | Duration: 36.4s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       Moments used:
+         [1] 3.00s - 5.63s (2.63s)
+
+  ✅ USED  clip83.mp4
+       Usage: 1x | Energy: High | Duration: 9.3s
+       Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
+       Moments used:
+         [1] 7.50s - 9.00s (1.50s)
+
+  ✅ USED  clip88.mp4
+       Usage: 1x | Energy: High | Duration: 280.4s
+       Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
+       Moments used:
+         [1] 66.00s - 70.83s (4.83s)
+
+  ✅ USED  clip90.mp4
+       Usage: 1x | Energy: High | Duration: 30.2s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       Moments used:
+         [1] 14.00s - 18.23s (4.23s)
+
+  ✅ USED  clip91.mp4
+       Usage: 1x | Energy: High | Duration: 18.0s
+       Vibes: Solo, Leisure | Subjects: People-Solo, Activity-Leisure
+       Moments used:
+         [1] 4.00s - 7.63s (3.63s)
+
+  ✅ USED  clip93.mp4
+       Usage: 1x | Energy: High | Duration: 19.1s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       Moments used:
+         [1] 14.00s - 15.47s (1.47s)
+
+  ✅ USED  clip95.mp4
+       Usage: 1x | Energy: High | Duration: 21.2s
+       Vibes: Group | Subjects: People-Group
+       Moments used:
+         [1] 18.50s - 21.23s (2.73s)
+
+  ❌ UNUSED  clip82.mp4
+       Usage: 0x | Energy: High | Duration: 70.2s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip84.mp4
+       Usage: 0x | Energy: High | Duration: 28.4s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip85.mp4
+       Usage: 0x | Energy: High | Duration: 43.0s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip86.mp4
+       Usage: 0x | Energy: High | Duration: 32.0s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip87.mp4
+       Usage: 0x | Energy: High | Duration: 22.3s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip89.mp4
+       Usage: 0x | Energy: High | Duration: 30.2s
+       Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip92.mp4
+       Usage: 0x | Energy: High | Duration: 23.8s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip94.mp4
+       Usage: 0x | Energy: High | Duration: 62.6s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip96.mp4
+       Usage: 0x | Energy: High | Duration: 23.8s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip97.mp4
+       Usage: 0x | Energy: High | Duration: 85.2s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip98.mp4
+       Usage: 0x | Energy: High | Duration: 74.4s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip99.mp4
+       Usage: 0x | Energy: High | Duration: 49.2s
+       Vibes: Group, Celebration | Subjects: People-Group, Activity-Celebration
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip100.mp4
+       Usage: 0x | Energy: High | Duration: 38.7s
+       Vibes: Group, Indoor | Subjects: People-Group, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip101.mp4
+       Usage: 0x | Energy: High | Duration: 80.2s
+       Vibes: Solo | Subjects: People-Solo
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip102.mp4
+       Usage: 0x | Energy: High | Duration: 58.8s
+       Vibes: Solo, Indoor | Subjects: People-Solo, Place-Indoor
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+  ❌ UNUSED  clip103.mp4
+       Usage: 0x | Energy: High | Duration: 49.6s
+       Vibes: Group, Leisure | Subjects: People-Group, Activity-Leisure
+       💡 SUGGESTION: Not used. Consider if vibes/energy match the edit.
+
+🚫 UNUSED CLIPS (Potential Issues):
+------------------------------------------------------------
+  ❌ clip82.mp4 | High | Vibes: Group, Leisure
+  ❌ clip84.mp4 | High | Vibes: Group, Leisure
+  ❌ clip85.mp4 | High | Vibes: Group, Leisure
+  ❌ clip86.mp4 | High | Vibes: Group, Leisure
+  ❌ clip87.mp4 | High | Vibes: Group, Leisure
+  ❌ clip89.mp4 | High | Vibes: Group, Celebration
+  ❌ clip92.mp4 | High | Vibes: Group, Leisure
+  ❌ clip94.mp4 | High | Vibes: Group, Leisure
+  ❌ clip96.mp4 | High | Vibes: Solo, Indoor
+  ❌ clip97.mp4 | High | Vibes: Solo, Indoor
+  ❌ clip98.mp4 | High | Vibes: Solo, Indoor
+  ❌ clip99.mp4 | High | Vibes: Group, Celebration
+  ❌ clip100.mp4 | High | Vibes: Group, Indoor
+  ❌ clip101.mp4 | High | Vibes: Solo
+  ❌ clip102.mp4 | High | Vibes: Solo, Indoor
+  ❌ clip103.mp4 | High | Vibes: Group, Leisure
+
+  Total unused: 16/25 (64%)
+
+🎬 EDIT DECISION FLOW:
+------------------------------------------------------------
+  [01]   0.00s-  4.83s (4.83s) | clip_010.mp4         [66.00s-70.83s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [02]   4.83s-  9.07s (4.23s) | clip_012.mp4         [14.00s-18.23s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [03]   9.07s- 11.80s (2.73s) | clip_017.mp4         [18.50s-21.23s]
+        Vibe Match: ❌ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [04]  11.80s- 13.27s (1.47s) | clip_015.mp4         [14.00s-15.47s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [05]  13.27s- 16.90s (3.63s) | clip_013.mp4         [ 4.00s- 7.63s]
+        Vibe Match: ❌ | 🌟 Acting as the primary emotional carrier for the Build-up s...
+  [06]  16.90s- 17.50s (0.60s) | clip_001.mp4         [96.50s-97.10s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [07]  17.50s- 18.10s (0.60s) | clip_002.mp4         [10.20s-10.80s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [08]  18.10s- 19.60s (1.50s) | clip_005.mp4         [ 7.50s- 9.00s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+  [09]  19.60s- 22.23s (2.63s) | clip_003.mp4         [ 3.00s- 5.63s]
+        Vibe Match: ✅ | 🌟 Prioritizing narrative continuity by anchoring on 'People-...
+
+🔬 SEGMENT SCORING X-RAY:
+------------------------------------------------------------
+
+================================================================================
+SEGMENT 1 X-RAY | 0.00s-4.83s | Intro | Vibe: Playful
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip88.mp4 | SCORE: 290.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip101.mp4 | SCORE: 250.0
+   Vibes: Solo
+   Subjects: People-Solo
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Intro stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -40.0 points
+
+   #3 | clip79.mp4 | SCORE: 184.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -106.0 points
+
+   #4 | clip80.mp4 | SCORE: 184.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -106.0 points
+
+   #5 | clip81.mp4 | SCORE: 184.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Matching narrative sub
+   Delta from winner: -106.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip88.mp4
+   Final Score: 290.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 2 X-RAY | 4.83s-9.07s | Build-up | Vibe: Carefree
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip90.mp4 | SCORE: 298.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+
+   #2 | clip93.mp4 | SCORE: 298.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -0.0 points
+
+   #3 | clip91.mp4 | SCORE: 283.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -15.0 points
+
+   #4 | clip95.mp4 | SCORE: 280.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -18.0 points
+
+   #5 | clip80.mp4 | SCORE: 212.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -86.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip90.mp4
+   Final Score: 298.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 3 X-RAY | 9.07s-13.27s | Build-up | Vibe: Collective
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip95.mp4 | SCORE: 290.0
+   Vibes: Group
+   Subjects: People-Group
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip93.mp4 | SCORE: 288.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -2.0 points
+
+   #3 | clip91.mp4 | SCORE: 273.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -17.0 points
+
+   #4 | clip80.mp4 | SCORE: 222.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -68.0 points
+
+   #5 | clip100.mp4 | SCORE: 222.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -68.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip95.mp4
+   Final Score: 290.0
+   Vibe Match: ❌ NO
+   Subject Override: ⚠️ YES
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 4 X-RAY | 13.27s-16.90s | Build-up | Vibe: Domestic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip91.mp4 | SCORE: 288.0
+   Vibes: Solo, Leisure
+   Subjects: People-Solo, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Build-up stage. Maintains visual freshness, lighting consistency.
+
+   #2 | clip79.mp4 | SCORE: 222.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -66.0 points
+
+   #3 | clip80.mp4 | SCORE: 222.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -66.0 points
+
+   #4 | clip81.mp4 | SCORE: 222.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -66.0 points
+
+   #5 | clip82.mp4 | SCORE: 222.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -66.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip91.mp4
+   Final Score: 288.0
+   Vibe Match: ❌ NO
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 5 X-RAY | 16.90s-17.50s | Peak | Vibe: Energetic
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip79.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip80.mp4 | SCORE: 350.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip82.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip84.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip85.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip79.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 6 X-RAY | 17.50s-18.10s | Peak | Vibe: Candid
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip80.mp4 | SCORE: 350.0
+   Vibes: Group, Indoor
+   Subjects: People-Group, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip82.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip83.mp4 | SCORE: 350.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+   #4 | clip84.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip85.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip80.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 7 X-RAY | 18.10s-19.60s | Outro | Vibe: Intimate
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip83.mp4 | SCORE: 322.0
+   Vibes: Group, Celebration
+   Subjects: People-Group, Activity-Celebration
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+
+   #2 | clip81.mp4 | SCORE: 295.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -27.0 points
+
+   #3 | clip92.mp4 | SCORE: 295.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+   Delta from winner: -27.0 points
+
+   #4 | clip98.mp4 | SCORE: 290.0
+   Vibes: Solo, Indoor
+   Subjects: People-Solo, Place-Indoor
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Acting as the primary emotional carrier for the Outro stage. Maintains visual freshness, lighting consistency.
+   Delta from winner: -32.0 points
+
+   #5 | clip82.mp4 | SCORE: 264.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ❌ NO
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -58.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip83.mp4
+   Final Score: 322.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+SEGMENT 8 X-RAY | 19.60s-22.23s | Outro | Vibe: Celebration
+================================================================================
+
+📋 ADVISOR INPUT:
+   Primary Subject: People-Group
+   Text Intent: The text demands a juxtaposition between the vibrant, uninhibited joy of the pas...
+   Dominant Narrative: A poignant exploration of how the sheer intensity of past childhood happiness cr...
+
+🔬 TOP 5 CANDIDATES:
+
+🏆 WINNER | clip81.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Acting as the primary 
+
+   #2 | clip82.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #3 | clip84.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #4 | clip85.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+   #5 | clip86.mp4 | SCORE: 350.0
+   Vibes: Group, Leisure
+   Subjects: People-Group, Activity-Leisure
+   Energy: High | Usage: 0x
+   Vibe Match: ✅ YES
+   Reasoning: Prioritizing narrative continuity by anchoring on 'People-Group' as requested by the text intent. Serving as a strategic
+   Delta from winner: -0.0 points
+
+🎯 SELECTION DECISION:
+   Winner: clip81.mp4
+   Final Score: 350.0
+   Vibe Match: ✅ YES
+   Subject Override: ✅ NO
+   Vibe Override: ✅ NO
+
+================================================================================
+💡 CLIP CURATION RECOMMENDATIONS:
+================================================================================
+
+📥 ADD clips with vibes: carefree, collective, domestic, playful
+
+🗑️ CONSIDER REMOVING (never used): clip82.mp4, clip84.mp4, clip85.mp4, clip86.mp4, clip87.mp4
+
+================================================================================
+END OF X-RAY REPORT
+================================================================================

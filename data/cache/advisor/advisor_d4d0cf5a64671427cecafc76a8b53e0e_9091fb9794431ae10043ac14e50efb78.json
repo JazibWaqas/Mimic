@@ -1,0 +1,102 @@
+{
+  "text_overlay_intent": "The text 'NERVES | MY | LOVE | A MAN | WHAT A | RPM' implies a deeply personal, almost obsessive connection between the driver's psyche and the machine. It demands a juxtaposition of internal human tension and external mechanical violence.",
+  "dominant_narrative": "The symbiotic and high-stakes relationship between a driver's psychological focus and the visceral, dangerous reality of professional racing.",
+  "arc_stage_guidance": {
+    "Intro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "Object-Detail, Place-Urban",
+      "intent_diluting_material": "JOY, ADVENTURE",
+      "reasoning": "The intro must establish the 'Man' and the 'Nerves' before the speed. We need focused, high-stakes preparation to set the tone of professional dominance and technical focus.",
+      "recommended_clips": [
+        "clip51.mp4",
+        "clip52.mp4",
+        "clip74.mp4"
+      ],
+      "required_energy": "Medium"
+    },
+    "Build-up": {
+      "primary_emotional_carrier": "ACTION",
+      "supporting_material": "INTENSITY, People-Group",
+      "intent_diluting_material": "LIFESTYLE, PEACE",
+      "reasoning": "This stage escalates the 'RPM'. It should focus on the technical precision of the pit crew and the increasing kinetic movement of the cars to build toward the peak.",
+      "recommended_clips": [
+        "clip53.mp4",
+        "clip65.mp4",
+        "clip69.mp4",
+        "clip75.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Peak": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "ACTION",
+      "intent_diluting_material": "JOY, LIFESTYLE",
+      "reasoning": "The peak represents the 'What a...' moment—the visceral consequence of speed. It requires the most dramatic imagery available, specifically the crash and high-speed maneuvers.",
+      "recommended_clips": [
+        "clip71.mp4",
+        "clip72.mp4",
+        "clip57.mp4",
+        "clip58.mp4"
+      ],
+      "required_energy": "High"
+    },
+    "Outro": {
+      "primary_emotional_carrier": "INTENSITY",
+      "supporting_material": "JOY, Place-Urban",
+      "intent_diluting_material": "ACTION",
+      "reasoning": "The resolution should ground the 'Man' back to reality. It needs to feel like a final breath after the chaos, using reflective or celebratory imagery to close the loop.",
+      "recommended_clips": [
+        "clip50.mp4",
+        "clip61.mp4",
+        "clip77.mp4"
+      ],
+      "required_energy": "Low"
+    }
+  },
+  "library_alignment": {
+    "strengths": [
+      "Abundant high-energy racing footage (ACTION)",
+      "Strong technical and mechanical details (INTENSITY)",
+      "High-quality cinematic assets for the peak (Crashes/Fireworks)"
+    ],
+    "editorial_tradeoffs": [
+      "Scarcity of Medium/Low energy clips requires using high-intensity shots with tighter framing to simulate the 'Intro' tension.",
+      "Limited 'Fire' imagery is compensated for by using high-impact crash sequences and fireworks."
+    ],
+    "constraint_gaps": [
+      "Lack of specific 'Close-ups of driver focus' outside of cockpit shots; will rely on training montages to represent the 'Man'."
+    ]
+  },
+  "editorial_strategy": "The edit must prioritize the human element ('The Man') as the anchor for the mechanical speed. By framing the racing action as a psychological extension of the driver's 'Nerves' and 'Love', the system will avoid a generic sports montage and instead deliver a visceral, narrative-driven experience.",
+  "remake_strategy": "To achieve a true Director's Cut, additional macro-photography of driver sweat, eyes behind visors, and actual engine-block fire should be integrated to heighten the 'visceral' and 'high-stakes' requirements.",
+  "primary_narrative_subject": "People-Solo",
+  "allowed_supporting_subjects": [
+    "People-Group",
+    "Place-Urban"
+  ],
+  "subject_lock_strength": 0.8,
+  "editorial_motifs": [
+    {
+      "trigger": "Text 'RPM' or mechanical details",
+      "desired_continuity": "Scale-Escalation",
+      "priority": "High"
+    },
+    {
+      "trigger": "Text 'NERVES' or driver focus",
+      "desired_continuity": "Narrative-Contrast",
+      "priority": "High"
+    },
+    {
+      "trigger": "High-speed racing maneuvers",
+      "desired_continuity": "Motion-Carry",
+      "priority": "Medium"
+    }
+  ],
+  "segment_moment_plans": {},
+  "library_assessment": null,
+  "creative_audit": null,
+  "overall_strategy": "",
+  "required_improvements": [],
+  "cache_version": "4.1",
+  "cached_at": "2026-02-09T06:11:38.520282"
+}

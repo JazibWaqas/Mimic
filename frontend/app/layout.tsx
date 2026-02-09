@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { Suspense } from "react";
@@ -16,6 +16,12 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-cormorant-garamond",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "MIMIC | Surgical Cinematic Synthesis",
   description:
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased text-foreground selection:bg-indigo-500 selection:text-white`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${cormorantGaramond.variable} antialiased text-foreground selection:bg-indigo-500 selection:text-white`}
       >
         <div className="bg-mesh" />
         <Header />
