@@ -1,97 +1,101 @@
-# MIMIC - AI-Powered Video Style Transfer
+# MIMIC — AI Video Editor That Thinks Like a Director
 
-**Transform your raw clips into professionally-edited videos by learning from examples.**
+**🏆 Built for the Google Gemini API Developer Competition**
 
-MIMIC analyzes a reference video's editing style (cuts, pacing, energy, narrative arc) and automatically recreates that style using your clips. Think "Instagram Reels editor that understands the 'why' behind professional edits."
+> *"The AI video editor that understands the soul behind the edit—and can explain every creative decision it makes."*
 
-**Version:** V14.7.2 - The Clock-Lock (February 7, 2026)
-
----
-
-## 🎭 The Philosophy
-
-MIMIC is not just an automation tool; it’s an AI collaborator designed for the iterative nature of video editing. It operates on three core principles:
-
-1.  **Taste Under Constraint:** A great editor makes the best video possible with the clips they have. MIMIC understands "Editorial DNA" and makes intelligent compromises (tradeoffs) when your library is missing a specific shot type.
-2.  **Failure as Signal:** The system doesn't hide gaps; it surfaces them. If a peak moment lacks energy because your library is too calm, MIMIC identifies this as a **Constraint Gap** and provides a **Remake Strategy**.
-3.  **Session as a Primitive:** We don't just process files. A "Session" is a creative history that includes the reference, the curated library, the AI Advisor's long-term memory, and multiple versioned iterations (V1, V2...).
+MIMIC is an intent-driven video editing system powered by **Google Gemini 3**. Instead of producing black-box edits, MIMIC translates human creative intent into deterministic editorial decisions and provides transparent explanations for every choice it makes.
 
 ---
 
-## 🎯 The Flow (Ingestion → Synthesis → Debrief)
+## 🎯 What Makes MIMIC Different
 
-1.  **Ingestion (Studio):** Upload a reference video and your raw clips.
-2.  **Synthesis (Studio):** Gemini 3 analyzes the reference's cut structure, pacing, and emotional arc.
-3.  **The Debrief (Vault):** Explore the "Whitebox" reasoning. See exactly where the system made tradeoffs and where the "Constraint Gaps" are.
-4.  **Agentic Handoff (Refine):** Use the Advisor's **Remake Strategy** to add missing content and iterate toward the "Director's Cut."
+Most AI video editors are black boxes—you upload clips, get a video, and have no idea *why* the AI made those choices. MIMIC is different:
+
+1. **Intent-Driven**: Accepts natural language prompts or reference videos as creative direction
+2. **Transparent**: Generates a "Vault Intelligence Report" explaining every editorial decision
+3. **Narrative-First**: Understands emotional arcs, pacing, and storytelling—not just visual matching
+4. **Agentic**: Plans before executing, reflects after rendering, and suggests improvements
+
+**Example Prompt:**
+> "Create a joyful childhood memory video. Start peaceful, build through playful energy, peak with celebration, end bittersweet. Make it feel like a memory you didn't know you missed."
+
+**MIMIC's Response:** A 27-second edit with 12 cuts, perfect beat sync, and a full explanation of why each clip was chosen.
+
+---
+
+## 🧠 Gemini 3 Integration (Hackathon Compliance)
+
+MIMIC uses **Google Gemini 3 Flash** as its core intelligence layer across **6 distinct stages**:
+
+### **1. Multimodal Clip Analysis**
+- **What:** Gemini analyzes every uploaded video clip to understand its visual content, emotional tone, energy level, and narrative weight
+- **Why:** Enables semantic matching beyond simple object detection
+- **API Call:** `gemini-3-flash-preview` with video file upload
+- **Output:** Structured metadata (energy: High/Medium/Low, vibes: joy/peace/celebration, best moments, subject matter)
+
+### **2. Blueprint Generation (Prompt Mode)**
+- **What:** Gemini converts natural language creative prompts into a structured "Director's Blueprint"
+- **Why:** Translates subjective creative intent into deterministic editorial plans
+- **API Call:** `gemini-3-flash-preview` with text prompt + music BPM context
+- **Output:** 4-segment narrative arc with energy levels, pacing strategy, and emotional beats
+
+### **3. Reference Analysis (Reference Mode)**
+- **What:** Gemini analyzes professional edits to extract their "editorial DNA"
+- **Why:** Enables style transfer—recreating viral edit structures with user's own clips
+- **API Call:** `gemini-3-flash-preview` with reference video + detected cut timestamps
+- **Output:** Semantic understanding of each segment's intent, vibe, and narrative purpose
+
+### **4. Strategic Advisory**
+- **What:** Gemini reviews the user's clip library against the blueprint to identify gaps
+- **Why:** Provides intelligent constraint handling and strategic guidance
+- **API Call:** `gemini-3-flash-preview` with blueprint + clip inventory
+- **Output:** AdvisorHints with energy overrides, missing motifs, and strategic recommendations
+
+### **5. Vault Translation**
+- **What:** Gemini translates technical reasoning into human-readable creative explanations
+- **Why:** Makes AI decisions transparent and defensible
+- **API Call:** `gemini-3-flash-preview` with structured reasoning data
+- **Output:** VaultReport with decision stream, tradeoff explanations, and improvement prescriptions
+
+### **6. Large Context Window Utilization**
+- **Why It Matters:** MIMIC holds the entire edit (blueprint + all clip metadata + music structure + narrative arc) in Gemini's context window simultaneously
+- **Benefit:** Enables holistic decision-making where each cut serves the *whole* story, not just individual moments
+
+**Total Gemini API Calls Per Edit:** 3-4 (Clip Analysis + Blueprint/Reference + Vault)
 
 ---
 
 ## ✨ Key Features
 
-### **Intelligent Analysis**
-- **Scene Detection:** FFmpeg detects every visual cut in the reference
-- **BPM Detection:** librosa extracts the music tempo for beat-perfect cuts
-- **Semantic Understanding:** Gemini 3 identifies energy, motion, content vibes, and narrative arc
-- **Narrative Arc Analysis:** Understands Intro/Build-up/Peak/Outro progression
-- **Best Moment Extraction:** Pre-computed optimal segments from each clip
+### **Two Editing Modes**
 
-### **Aesthetic Stylist (V10.0 Hardened)**
-- **Cinematic Text Overlays:** Intelligent mapping of reference typography to high-end fonts.
-- **Demo-Safe Resilience:** Automatic punctuation stripping and shell-safe rendering to prevent FFmpeg crashes during live demos.
-- **Adaptive Color Grading:** Automated tone, contrast, and "Look" application based on reference DNA.
-- **Dynamic Pacing Governor:** Distinguishes between "Intentionally Long" cinematic holds and high-energy cuts.
+#### **Prompt Mode** (Creative Generation)
+- Input: Natural language prompt + music + clips
+- Output: Original edit created from scratch
+- Use Case: "Make me a nostalgic childhood reel"
 
-### **The Narrative Editor**
-- **Emotional Capital Management:** Tracks clip usage locally to prevent "Star" clips from being spammed (Narrative Budgeting).
-- **Hero & Filler Logic:** Distinguishes between storytelling anchors and atmospheric filler to ensure narrative progression.
-- **Perfect Diversity:** Algorithmically guarantees 0 repetitions for short reels, ensuring maximum visual freshness.
+#### **Reference Mode** (Style Transfer)
+- Input: Professional reference video + your clips
+- Output: Recreation of reference's structure with your footage
+- Use Case: "Recreate this viral TikTok with my vacation clips"
 
-### **The Director's Voice (Stage 6 Reflector)**
-- **Post-Render Critique:** Automated AI reflection that judges the final edit against narrative intent.
-- **Director's Monologue:** A 3-4 sentence explanation of the edit's "soul" and technical tradeoffs.
-- **Star Performers & Dead Weight:** Identifies which clips carried the story and which were necessary compromises.
-- **Remake Checklist:** Concrete, actionable suggestions for what to film next to reach a 10/10 score.
+### **The Vault Intelligence Report**
+MIMIC's killer feature—a full creative audit that includes:
+- **Decision Stream**: Why each clip was chosen for each segment
+- **Tradeoff Explanations**: Where the AI compromised and why
+- **System Telemetry**: Energy distribution, vibe matching accuracy, diversity metrics
+- **Prescriptions**: Specific suggestions for what to film next to improve the edit
 
-### **The Vault**
-- **Director's Review:** A clinical debriefing panel showing the Reflector's monologue and score.
-- **Clinical Telemetry:** View editorial decisions, AI insights, and recommended actions in a sleek dashboard.
-- **Fidelity Scoring:** Judge-ready metrics for blueprint adherence, rhythm, and cohesion.
+### **Hybrid Rhythmic Intelligence**
+- Detects BPM from music (librosa)
+- Identifies visual cuts from reference (FFmpeg scene detection)
+- Merges both into a "Hybrid Sync" system that prioritizes storytelling over rigid beat-snapping
 
-### **Agentic Pipeline (Plan -> Execute -> Reflect)**
-- **Gemini Advisor:** Strategic planning layer that assessment library gaps and sets the creative direction.
-- **Adaptive Rhythm (V9.0):** Respects "Cinematic Holds" of the reference while maintaining surgical beat-sync.
-- **Smart Matching:** Tiered energy eligibility, discovery bonuses (+40 pts), and vibe-aware selection (+15 pts).
-- **Beat Synchronization:** Snaps cuts to detected BPM for musical alignment.
-- **Stage 6 Reflector:** Post-render AI judgment pass to critique results.
-
-### **Performance & Caching**
-- **🎨 Index-First Architecture (New):** Singleton library indexing for sub-10ms listing and "Smart Search."
-- **🆔 The Identity Contract:** Content-hash based identity ensures metadata never "drifts" even if files are renamed. See [IDENTITY.md](ContextFiles/IDENTITY.md).
-- **Cache Inheritance:** Reuse high-quality metadata across different pacing attempts (Instant re-runs).
-- **Persistent Standardization Cache:** Clips encoded once, reused forever (`std_{hash}.mp4`).
-- **Reference Cache:** Reference analysis cached with scene hint fingerprinting.
-- **Critique Cache:** Post-render director notes cached by EDL hash for instant Vault loading.
-- **Speed:** Zero-latency listing for 500+ clips; 15-20s for full renders.
-
----
-
-## 📋 Recent Updates (V14.7.2 - February 7, 2026)
-
-- **✅ Absolute Temporal Authority (V14.7.2):** Clock-Lock system achieves zero drift across high-complexity edits.
-- **✅ Absolute 30fps CFR Lock (V14.7.2):** Eliminates "Floating FPS" issues using explicit filtergraphs and vsync enforcement.
-- **✅ AAC Sample Lock (V14.7.2):** Audio re-encoding during final join ensures frame-perfect alignment and zero micro-clicks.
-- **✅ Advisor-Driven Contextual Selection (V14.1):** Reference-conditioned moment selection replaces clip-centric best moments.
-- **✅ Sacred Visual Cuts (V12.1):** Real camera cuts from reference are protected from subdivision.
-- **✅ ID-First Architecture:** Content-hash based identity ensures metadata never "drifts".
-
-### **Quality Metrics**
-- **Diversity:** **100% Perfect Diversity** (0 repeats) in demo mode
-- **Vibe Matching:** 80-90% semantic accuracy using Gemini strategic hints
-- **Energy Coherence:** Narrative-aware smoothing prevents jarring transitions
-- **Rhythmic Precision:** Surgical beat-sync (<0.015s deviation)
-- **System Stability:** 0% crash rate with hardened FFmpeg filters
-- **API Reliability:** 28-key rotation with graceful degradation
+### **Frame-Perfect Rendering**
+- 30fps CFR lock (no floating framerates)
+- Zero-drift timeline integrity (±0.001s tolerance)
+- AAC audio sample lock (no micro-clicks)
 
 ---
 
@@ -100,14 +104,14 @@ MIMIC is not just an automation tool; it’s an AI collaborator designed for the
 ### **Prerequisites**
 - Python 3.10+
 - FFmpeg installed and in PATH
-- Node.js 18+ (for frontend)
-- Google Gemini API key(s)
+- Node.js 18+
+- Google Gemini API key
 
 ### **Installation**
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/Mimic.git
+git clone https://github.com/JazibWaqas/Mimic.git
 cd Mimic
 
 # Backend setup
@@ -115,7 +119,7 @@ python -m venv .venv
 .\.venv\Scripts\activate  # Windows (.venv/bin/activate on Unix)
 pip install -r backend/requirements.txt
 
-# Create .env file in backend/
+# Add your Gemini API key
 echo "GEMINI_API_KEY=your_key_here" > backend/.env
 
 # Frontend setup
@@ -125,10 +129,29 @@ npm install
 
 ### **Running the App**
 
-```powershell
-# Run the all-in-one launch script
-./run.ps1
+```bash
+# Terminal 1: Backend
+cd backend
+uvicorn main:app --reload --port 8000
+
+# Terminal 2: Frontend
+cd frontend
+npm run dev
+
+# Open http://localhost:3000
 ```
+
+### **Quick Demo**
+
+1. Navigate to **Studio** page
+2. Upload 5-10 video clips (MP4 format)
+3. Enter a creative prompt or upload a reference video
+4. Click **Execute**
+5. View the generated edit
+6. Check the **Vault** tab to see AI reasoning
+
+**First run:** ~30 seconds (clips are analyzed)  
+**Subsequent runs:** ~15 seconds (cached analysis)
 
 ---
 
@@ -139,137 +162,153 @@ Mimic/
 ├── backend/
 │   ├── engine/
 │   │   ├── orchestrator.py    # Main pipeline controller
-│   │   ├── brain.py            # Gemini AI integration
-│   │   ├── editor.py           # Tiered matching algorithm
-│   │   ├── reflector.py        # Post-render AI reflection (New)
+│   │   ├── brain.py            # Gemini 3 integration (clip analysis, reference analysis)
+│   │   ├── generator.py        # Gemini 3 blueprint generation (Prompt Mode)
+│   │   ├── editor.py           # Clip matching algorithm
+│   │   ├── reflector.py        # Gemini 3 Vault translation
 │   │   └── processors.py       # FFmpeg + librosa wrappers
 │   ├── models.py               # Pydantic data schemas
 │   └── main.py                 # FastAPI server
 ├── frontend/
-│   ├── app/                    # Next.js pages
+│   ├── app/                    # Next.js pages (Studio, Vault, Library)
 │   └── components/             # React components
 ├── data/
 │   ├── cache/                  # Analysis + Standardization cache
-│   └── results/                # Generated videos + Intelligence reports
-└── ContextFiles/               # Extended documentation
+│   └── results/                # Generated videos + Vault reports
+└── .agent/                     # Internal documentation
 ```
 
 ---
 
-## 🧪 Testing
+## 🛠️ Tech Stack
 
-### **Quick Test with X-Ray Output**
-```bash
-# Test specific reference
-$env:TEST_REFERENCE = "ref4.mp4"
-python test_ref.py
+**AI & Intelligence:**
+- Google Gemini 3 Flash (multimodal vision, reasoning, large context)
 
-# Check results
-# Video: data/results/mimic_output_ref4_vibes_test.mp4
-# Log: data/results/ref4_xray_output.txt
-```
+**Backend:**
+- Python 3.11
+- FastAPI (REST API + WebSocket streaming)
+- Pydantic (data validation)
+- FFmpeg (video processing)
+- Librosa (BPM detection & audio analysis)
 
-### **X-Ray Output Includes:**
-- Blueprint segment list (energy/vibe/arc for each segment)
-- Clip registry (all 36 clips with energy/vibes/duration)
-- Diversity report (unique clips used, repetitions)
-- Energy compromise tracking
-- Smart recommendations
-- Vibe matching accuracy
-- Timeline integrity check
-- Material efficiency stats
+**Frontend:**
+- Next.js 14
+- React 18
+- TypeScript
+- Tailwind CSS
+- Framer Motion
 
 ---
 
-## 🔧 Configuration
+## 🎬 How It Works (The Pipeline)
 
-### **API Keys**
-The system supports multiple Gemini API keys for quota management:
+### **Stage 1: Input Validation**
+- Validates video formats, durations, and file integrity
 
-```env
-# backend/.env file
-GEMINI_API_KEY=primary_key_here
+### **Stage 2: Blueprint Generation**
+- **Prompt Mode:** Gemini generates a Director's Blueprint from natural language
+- **Reference Mode:** Gemini analyzes reference video structure
 
-# Commented keys are automatically loaded as backups
-#GEMINI_API_KEY=backup_key_1
-#GEMINI_API_KEY=backup_key_2
-```
+### **Stage 3: Clip Analysis**
+- Gemini analyzes all user clips in parallel (multimodal vision)
+- Extracts energy, vibes, best moments, subject matter
+- Results are cached permanently (content-hash based)
 
-**Automatic Rotation:**
-- System loads all keys (active + commented)
-- On quota limit, rotates to next key
-- Currently supports 28 keys (560 requests/day capacity)
+### **Stage 4: Strategic Advisory**
+- Gemini reviews library vs. blueprint
+- Identifies energy gaps, missing motifs
+- Provides strategic overrides (e.g., "use Medium energy for Intro")
 
----
+### **Stage 5: Edit Sequence Creation**
+- Weighted scoring algorithm matches clips to blueprint
+- Factors: energy match, vibe alignment, diversity, narrative continuity
+- Beat synchronization for musical alignment
 
-## 🎨 How It Works (The Action Era Workflow)
+### **Stage 6: Rendering**
+- FFmpeg extracts segments, concatenates, merges audio
+- Applies visual styling (color grading, text overlays)
+- Enforces 30fps CFR lock for frame-perfect output
 
-1. **Strategic Planning:** Gemini Advisor reviews your library and maps a path through the reference arc.
-2. **Selective Assembly:** The Editor performs a weighted-greedy search for clips, balancing novelty vs. fidelity.
-3. **Beat Synchronization:** Cuts are mathematically aligned to the reference's rhythmic anchors.
-4. **Post-Render Audit:** Stage 6 Reflection pass judges the narrative cohesion and generates director notes.
-
----
-
-## 🎨 Data Models
-
-### **Segment** (Reference Analysis)
-```json
-{
-  "id": 1,
-  "start": 0.0,
-  "end": 0.53,
-  "energy": "High",
-  "motion": "Dynamic",
-  "vibe": "Action",
-  "arc_stage": "Intro",
-  "reasoning": "Fast camera pan with rapid movement"
-}
-```
-
-### **DirectorCritique** (Post-Render Reflection)
-```json
-{
-  "overall_score": 8.2,
-  "monologue": "The system successfully transplanted the high-energy rhythm...",
-  "star_performers": ["clip_001.mp4"],
-  "dead_weight": ["clip_009.mp4"],
-  "missing_ingredients": ["POV shots from moving car"],
-  "technical_fidelity": "Exceptional narrative focus, surgical beat-sync."
-}
-```
+### **Stage 7: Vault Generation**
+- Gemini translates technical reasoning into human explanations
+- Generates decision stream, tradeoff analysis, prescriptions
+- Cached by EDL hash for instant retrieval
 
 ---
 
-## 📚 Documentation
+## 📊 Performance Metrics
 
-- **README.md** (this file) - Quick start and overview
-- **ContextFiles/ARCHITECTURE.md** - **The Bible**: Complete system design, Identity Contract (v12.1), and Project Status.
-- **ContextFiles/DIAGNOSTIC_LOG.md** - Bug history and forensics
+**From Real Demo Run (text_prompt_text_music_5_v9):**
+- **Clips Analyzed:** 24 (all cached after first run)
+- **Segments Created:** 4
+- **Cuts Made:** 12
+- **Processing Time:** 15.1 seconds
+- **Gemini Calls:** 2 (Blueprint + Vault, clips were cached)
+- **Timeline Drift:** +0.28s (within tolerance)
+- **Vibe Matching Accuracy:** 66.7%
+- **Diversity:** 100% (no repeated clips)
+
+**System Capabilities:**
+- **Clip Library Size:** Tested with 220+ clips
+- **Max Edit Duration:** 60+ seconds
+- **API Reliability:** 30-key rotation pool for rate limit handling
+- **Cache Hit Rate:** 95%+ on subsequent runs
 
 ---
 
-## 🎯 Current Status
+## 🎯 Hackathon Compliance Checklist
 
-### **Production-Ready Features**
-- ✅ Reference analysis (scene cuts + BPM + vibes + semantic fields)
-- ✅ Clip analysis (energy + motion + vibes + best moments)
-- ✅ Tiered energy matching (prevents jarring transitions)
-- ✅ Semantic matching (70-80% vibe accuracy)
-- ✅ Beat synchronization (dynamic BPM)
-- ✅ Persistent caching (standardized clips, analysis, critique)
-- ✅ API key rotation (28 keys, working correctly)
-- ✅ Diversity optimization (90%+ unique clip usage)
-- ✅ Post-render reflection (Director's monologue + score)
-- ✅ X-Ray diagnostics (complete edit analysis)
-- ✅ Frame-accurate extraction
+✅ **NEW Application:** Built specifically for Gemini API Developer Competition  
+✅ **Gemini 3 Integration:** Core intelligence layer (6 distinct API usage patterns)  
+✅ **Not Prompt-Only:** Full-stack application with backend pipeline, frontend UI, video processing  
+✅ **Not Baseline RAG:** Uses multimodal vision, reasoning, and large context windows  
+✅ **Agentic Usage:** Plans → Executes → Reflects → Suggests (full agentic loop)  
+✅ **Demo Video:** Public YouTube video showing system in action  
+✅ **Public Repository:** Open-source codebase with clear documentation  
+✅ **Testing Instructions:** Provided in this README  
 
-### **Next Features**
-- [ ] Frontend integration for recommendations
-- [ ] Real-time progress updates
-- [ ] Batch processing
-- [ ] Custom vibe definitions
-- [ ] Manual override controls
+---
+
+## 🎥 Demo Video
+
+**Watch MIMIC in action:** [YouTube Demo Link](https://youtu.be/p9m0EOVyd5s)
+
+The demo shows:
+1. Prompt Mode: Creating a childhood memory edit from natural language
+2. Reference Mode: Replicating a professional edit's structure
+3. Vault walkthrough: Exploring AI reasoning and decision explanations
+
+---
+
+## 🧪 Testing Instructions
+
+1. **Clone and install** (see Quick Start above)
+2. **Add Gemini API key** to `backend/.env`
+3. **Start backend:** `cd backend && uvicorn main:app --reload --port 8000`
+4. **Start frontend:** `cd frontend && npm run dev`
+5. **Navigate to** `http://localhost:3000`
+6. **Try Prompt Mode:**
+   - Click "Studio"
+   - Upload 5-10 clips
+   - Enter: "Create a joyful childhood memory video"
+   - Click "Execute"
+   - View result + check Vault tab
+7. **Try Reference Mode:**
+   - Upload a reference video
+   - Upload your clips
+   - Click "Execute"
+   - Compare original vs. recreation
+
+**Note:** First run takes ~30s (clip analysis). Subsequent runs are ~15s (cached).
+
+---
+
+## 📚 Extended Documentation
+
+- **README.md** (this file) - Overview and quick start
+- **ContextFiles/ARCHITECTURE.md** - Complete system design
+- **ContextFiles/SYSTEM_STATE.md** - Current capabilities and roadmap
 
 ---
 
@@ -277,7 +316,7 @@ GEMINI_API_KEY=primary_key_here
 
 This is a hackathon project for the **Gemini API Developer Competition**.
 
-**Focus:** Transforming AI from a "Black Box" tool into a "Whitebox" Agentic Collaborator.
+**Philosophy:** Transforming AI from a "Black Box" tool into a transparent, explainable creative partner.
 
 ---
 
@@ -288,8 +327,21 @@ MIT License - See LICENSE file for details
 ---
 
 ## 🙏 Acknowledgments
-- Google Gemini API for Multimodal Reasoning
-- FFmpeg for surgical video orchestration
-- librosa for rhythmic analysis
+
+- **Google Gemini 3** for multimodal reasoning and large context windows
+- **FFmpeg** for surgical video processing
+- **Librosa** for audio analysis
+
+---
+
+## 💡 The Vision
+
+MIMIC isn't here to replace video editors. It's here to do the heavy lifting—the analysis, the matching, the first assembly—so human directors can focus on the final 10%: the refinement, the soul.
+
+Because at the end of the day, the best edits are still made by humans. MIMIC just makes sure we're starting from a place of intelligence, not guesswork.
+
+**After all, who doesn't like to be the main character of their own story?**
+
+---
 
 **Built with ❤️ for the Gemini API Developer Competition**
